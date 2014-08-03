@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (c) 2014. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+  ~ Morbi non lorem porttitor neque feugiat blandit. Ut vitae ipsum eget quam lacinia accumsan.
+  ~ Etiam sed turpis ac ipsum condimentum fringilla. Maecenas magna.
+  ~ Proin dapibus sapien vel ante. Aliquam erat volutpat. Pellentesque sagittis ligula eget metus.
+  ~ Vestibulum commodo. Ut rhoncus gravida arcu.
+  -->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>de.kaiserpfalzEdv</groupId>
+        <artifactId>kp-parent-pom</artifactId>
+        <version>2014Q3</version>
+    </parent>
+
+    <groupId>de.kaiserpfalz-edv.office</groupId>
+    <artifactId>kp-office-root</artifactId>
+    <packaging>pom</packaging>
+    <version>0.1.0-SNAPSHOT</version>
+
+    <name>KP Office - Root POM</name>
+    <description>Kaiserpfalz EDV-Service Office - A central office management suite.</description>
+    <url>https://github.com/klenkes74/kp-office</url>
+
+
+    <modules>
+        <module>kp-office-api</module>
+        <module>kp-office-commons</module>
+        <module>kp-office-core</module>
+        <module>kp-office-modules</module>
+    </modules>
+
+
+    <properties>
+        <targetJdk>1.7</targetJdk>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>${project.build.sourceEncoding}</project.reporting.outputEncoding>
+
+        <project.root>${project.basedir}</project.root>
+
+        <skipTests>false</skipTests>
+        <skipUnitTests>${skipTests}</skipUnitTests>
+        <skipIntegrationTests>${skipTests}</skipIntegrationTests>
+        <skipAcceptanceTests>${skipTests}</skipAcceptanceTests>
+        <setupDatabase>${skipTests}</setupDatabase>
+        <dontSign>true</dontSign>
+
+        <kp-commons.version>2014Q3</kp-commons.version>
+
+        <database.changelog>
+            ${project.root}/kp-office-modules/kp-office-store/target/classes/ddl/db-changelog.xml
+        </database.changelog>
+
+        <h2.port>9070</h2.port>
+        <h2.dataSourceType>javax.sql.DataSource</h2.dataSourceType>
+        <h2.url>jdbc:h2:tcp://localhost:${h2.port}/testdb;AUTO_RECONNECT=TRUE;DB_CLOSE_DELAY=-1</h2.url>
+        <h2.file>jdbc:h2:./target/data/testdb;DB_CLOSE_ON_EXIT=TRUE</h2.file>
+        <h2.driver>org.h2.Driver</h2.driver>
+        <h2.user>sa</h2.user>
+        <h2.password/>
+        <db.schema>BASE</db.schema>
+        <db.schema.iam>KPOSTORE</db.schema.iam>
+        <db.schema.query>KPOQUERY</db.schema.query>
+    </properties>
+
+    <distributionManagement>
+        <repository>
+            <id>internal</id>
+            <url>http://repository.kaiserpfalz-edv.de/content/repositories/releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>snapshot</id>
+            <url>http://repository.kaiserpfalz-edv.de/content/repositories/snapshots/</url>
+        </snapshotRepository>
+        <site>
+            <id>kp-website</id>
+            <url>dav:http://dav.kaiserpfalz-edv.de:443/projects/kp-office/${project.version}</url>
+        </site>
+    </distributionManagement>
+
+    <issueManagement>
+        <system>jira</system>
+        <url>http://issues.kaiserpfalz-edv.de/BROWSE/KPO</url>
+    </issueManagement>
+
+    <scm>
+        <connection>scm:git:https://github.com/klenkes74/kp-office.git</connection>
+        <developerConnection>scm:git:https://github.com/klenkes74/kp-office.git</developerConnection>
+        <tag>HEAD</tag>
+    </scm>
+
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-scm-plugin</artifactId>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-site-plugin</artifactId>
+            </plugin>
+
+            <!-- ===[Testing]=============================================================================[BEGIN]=== -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>findbugs-maven-plugin</artifactId>
+            </plugin>
+
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-failsafe-plugin</artifactId>
+            </plugin>
+            <!-- ===[Testing]=============================================================================[END  ]=== -->
+        </plugins>
+    </build>
+
+    <inceptionYear>2014</inceptionYear>
+
+    <mailingLists>
+        <mailingList>
+            <name>Kaiserpfalz EDV-Service Information List</name>
+            <post>info@kaiserpfalz-edv.de</post>
+        </mailingList>
+    </mailingLists>
+
+    <developers>
+        <developer>
+            <id>klenkes</id>
+            <name>Roland Thomas Lichti</name>
+            <email>rlichti@kaiserpfalz-edv.de</email>
+            <organization>Kaiserpfalz EDV-Service</organization>
+            <roles>
+                <role>Developer</role>
+                <role>Administration</role>
+            </roles>
+            <timezone>Europe/Berlin</timezone>
+        </developer>
+    </developers>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>de.kaiserpfalzEdv</groupId>
+                <artifactId>kp-bom</artifactId>
+                <version>${kp-commons.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>de.kaiserpfalzEdv.commons</groupId>
+                <artifactId>kp-commons-bom</artifactId>
+                <version>${kp-commons.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>de.kaiserpfalzEdv</groupId>
+                <artifactId>kp-misc-bom</artifactId>
+                <version>${kp-commons.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>de.kaiserpfalzEdv</groupId>
+                <artifactId>kp-test-bom</artifactId>
+                <version>${kp-commons.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>de.kaiserpfalz-edv.office</groupId>
+                <artifactId>kp-office-api</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>de.kaiserpfalz-edv.office</groupId>
+                <artifactId>kp-office-commons</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>de.kaiserpfalz-edv.office</groupId>
+                <artifactId>kp-office-core</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+</project>
