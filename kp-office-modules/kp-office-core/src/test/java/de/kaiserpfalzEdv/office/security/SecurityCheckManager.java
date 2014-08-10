@@ -14,8 +14,32 @@
  * limitations under the License.
  */
 
+package de.kaiserpfalzEdv.office.security;
+
+import de.kaiserpfalzEdv.office.tenant.Tenant;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
- *
- *
-ddsdss */
-package de.kaiserpfalzEdv.office.tenant;
+ * @author klenkes
+ * @since 2014Q
+ */
+@Secured @NamedResource("scm")
+public class SecurityCheckManager {
+    private static final Logger LOG = LoggerFactory.getLogger(SecurityCheckManager.class);
+
+    private String info = "info";
+
+
+    public String getInfo() {
+        return info;
+    }
+
+    public void setInfo(final String info) {
+        this.info = info;
+    }
+
+    public void setInfo(@TenantMarker final Tenant tenant, final String info) {
+        this.info = info;
+    }
+}

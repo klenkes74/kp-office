@@ -28,6 +28,7 @@
     </parent>
 
     <artifactId>kp-office-api</artifactId>
+    <name>KP Office - API</name>
 
     <dependencies>
         <dependency>

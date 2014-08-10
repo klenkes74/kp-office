@@ -28,16 +28,13 @@
     </parent>
 
     <artifactId>kp-office-store</artifactId>
+    <name>KP Office - Modules - Data Store</name>
 
     <dependencies>
         <dependency>
             <groupId>de.kaiserpfalz-edv.office</groupId>
-            <artifactId>kp-office-api</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>de.kaiserpfalz-edv.office</groupId>
-            <artifactId>kp-office-commons</artifactId>
+            <artifactId>kp-office-core</artifactId>
+            <type>ejb-client</type>
         </dependency>
     </dependencies>
 </project>

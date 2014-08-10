@@ -28,16 +28,20 @@
     </parent>
 
     <artifactId>kp-office-projects</artifactId>
+    <name>KP Office - Modules - Project Folders</name>
+    <packaging>ejb</packaging>
 
     <dependencies>
         <dependency>
             <groupId>de.kaiserpfalz-edv.office</groupId>
-            <artifactId>kp-office-api</artifactId>
+            <artifactId>kp-office-store</artifactId>
+            <type>ejb-client</type>
         </dependency>
 
         <dependency>
             <groupId>de.kaiserpfalz-edv.office</groupId>
             <artifactId>kp-office-core</artifactId>
+            <type>ejb-client</type>
         </dependency>
     </dependencies>
 </project>

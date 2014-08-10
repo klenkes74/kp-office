@@ -19,7 +19,6 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <parent>
         <groupId>de.kaiserpfalz-edv.office</groupId>
         <artifactId>kp-office-root</artifactId>
@@ -27,31 +26,36 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>kp-office-modules</artifactId>
+    <artifactId>kp-office-interfaces</artifactId>
     <packaging>pom</packaging>
-    <name>KP Office - Modules - Parent</name>
+    <name>KP Office - Interfaces - Parent</name>
+
 
     <modules>
-        <module>kp-office-core</module>
-        <module>kp-office-store</module>
-        <module>kp-office-projects</module>
-        <module>kp-office-address</module>
+        <module>kp-office-service</module>
+        <module>kp-office-web</module>
     </modules>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-ejb-plugin</artifactId>
-                <version>2.3</version>
-                <configuration>
-                    <ejbVersion>3.1</ejbVersion>
-                    <generateClient>true</generateClient>
-                    <filterDeploymentDescriptor>true</filterDeploymentDescriptor>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
+
+    <properties>
+        <jersey.version>2.5</jersey.version>
+    </properties>
+
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.glassfish.jersey.core</groupId>
+                <artifactId>jersey-client</artifactId>
+                <version>${jersey.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.glassfish.jersey.media</groupId>
+                <artifactId>jersey-media-json-jackson</artifactId>
+                <version>${jersey.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <dependencies>
         <dependency>
@@ -60,14 +64,27 @@
         </dependency>
 
         <dependency>
-            <groupId>org.apache.shiro</groupId>
-            <artifactId>shiro-core</artifactId>
+            <groupId>de.kaiserpfalz-edv.office</groupId>
+            <artifactId>kp-office-core</artifactId>
+            <type>ejb-client</type>
         </dependency>
 
         <dependency>
+            <groupId>de.kaiserpfalz-edv.office</groupId>
+            <artifactId>kp-office-projects</artifactId>
+            <type>ejb-client</type>
+        </dependency>
+
+        <dependency>
+            <groupId>de.kaiserpfalz-edv.office</groupId>
+            <artifactId>kp-office-address</artifactId>
+            <type>ejb-client</type>
+        </dependency>
+
+
+        <dependency>
             <groupId>org.apache.shiro</groupId>
-            <artifactId>shiro-web</artifactId>
-            <scope>test</scope>
+            <artifactId>shiro-core</artifactId>
         </dependency>
     </dependencies>
 </project>

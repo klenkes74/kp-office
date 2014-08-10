@@ -31,7 +31,7 @@
     <packaging>pom</packaging>
     <version>0.1.0-SNAPSHOT</version>
 
-    <name>KP Office - Root POM</name>
+    <name>KP Office - Parent</name>
     <description>Kaiserpfalz EDV-Service Office - A central office management suite.</description>
     <url>https://github.com/klenkes74/kp-office</url>
 
@@ -39,8 +39,8 @@
     <modules>
         <module>kp-office-api</module>
         <module>kp-office-commons</module>
-        <module>kp-office-core</module>
         <module>kp-office-modules</module>
+        <module>kp-office-interfaces</module>
     </modules>
 
 
@@ -58,7 +58,7 @@
         <setupDatabase>${skipTests}</setupDatabase>
         <dontSign>true</dontSign>
 
-        <kp-commons.version>2014Q3</kp-commons.version>
+        <jboss.installation>/opt/servers/jboss-as-7.1.1.Final</jboss.installation>
 
         <database.changelog>
             ${project.root}/kp-office-modules/kp-office-store/target/classes/ddl/db-changelog.xml
@@ -74,6 +74,12 @@
         <db.schema>BASE</db.schema>
         <db.schema.iam>KPOSTORE</db.schema.iam>
         <db.schema.query>KPOQUERY</db.schema.query>
+
+        <kp-commons.version>2014Q3</kp-commons.version>
+        <shrinkwrap.version>2.1.0</shrinkwrap.version>
+        <shiro.version>1.2.3</shiro.version>
+        <arquillian.version>1.1.5.Final</arquillian.version>
+        <wildfly.version>8.1.0.Final</wildfly.version>
     </properties>
 
     <distributionManagement>
@@ -192,6 +198,55 @@
         </developer>
     </developers>
 
+    <dependencies>
+        <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-core</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- BEGIN Arquillian Testing -->
+        <dependency>
+            <groupId>org.jboss.shrinkwrap.resolver</groupId>
+            <artifactId>shrinkwrap-resolver-impl-maven</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.shrinkwrap.resolver</groupId>
+            <artifactId>shrinkwrap-resolver-api-maven</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.shrinkwrap.resolver</groupId>
+            <artifactId>shrinkwrap-resolver-spi-maven</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.shrinkwrap.resolver</groupId>
+            <artifactId>shrinkwrap-resolver-api</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <!-- END Arquillian Testing -->
+    </dependencies>
+
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -226,6 +281,23 @@
                 <scope>import</scope>
             </dependency>
 
+
+            <dependency>
+                <groupId>javax</groupId>
+                <artifactId>javaee-api</artifactId>
+                <version>7.0</version>
+                <scope>provided</scope>
+            </dependency>
+
+
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-core</artifactId>
+                <version>1.0.13</version>
+                <scope>test</scope>
+            </dependency>
+
+
             <dependency>
                 <groupId>de.kaiserpfalz-edv.office</groupId>
                 <artifactId>kp-office-api</artifactId>
@@ -240,7 +312,144 @@
                 <groupId>de.kaiserpfalz-edv.office</groupId>
                 <artifactId>kp-office-core</artifactId>
                 <version>${project.version}</version>
+                <type>ejb-client</type>
+            </dependency>
+            <dependency>
+                <groupId>de.kaiserpfalz-edv.office</groupId>
+                <artifactId>kp-office-store</artifactId>
+                <version>${project.version}</version>
+                <type>ejb-client</type>
+            </dependency>
+            <dependency>
+                <groupId>de.kaiserpfalz-edv.office</groupId>
+                <artifactId>kp-office-address</artifactId>
+                <version>${project.version}</version>
+                <type>ejb-client</type>
+            </dependency>
+            <dependency>
+                <groupId>de.kaiserpfalz-edv.office</groupId>
+                <artifactId>kp-office-projects</artifactId>
+                <version>${project.version}</version>
+                <type>ejb-client</type>
+            </dependency>
+            <dependency>
+                <groupId>de.kaiserpfalz-edv.office</groupId>
+                <artifactId>kp-office-service</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>de.kaiserpfalz-edv.office</groupId>
+                <artifactId>kp-office-web</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+
+            <dependency>
+                <groupId>org.apache.shiro</groupId>
+                <artifactId>shiro-core</artifactId>
+                <version>${shiro.version}</version>
+            </dependency>
+
+
+            <dependency>
+                <groupId>org.jboss.arquillian</groupId>
+                <artifactId>arquillian-bom</artifactId>
+                <version>${arquillian.version}</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jboss.shrinkwrap.resolver</groupId>
+                <artifactId>shrinkwrap-resolver-impl-maven</artifactId>
+                <version>${shrinkwrap.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.jboss.shrinkwrap.resolver</groupId>
+                <artifactId>shrinkwrap-resolver-api-maven</artifactId>
+                <version>${shrinkwrap.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.jboss.shrinkwrap.resolver</groupId>
+                <artifactId>shrinkwrap-resolver-spi-maven</artifactId>
+                <version>${shrinkwrap.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.jboss.shrinkwrap.resolver</groupId>
+                <artifactId>shrinkwrap-resolver-api</artifactId>
+                <version>${shrinkwrap.version}</version>
+                <scope>test</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>
+
+
+    <profiles>
+        <!-- BEGIN Arquillian Testing -->
+        <profile>
+            <id>wildfly-managed</id>
+            <dependencies>
+                <dependency>
+                    <groupId>org.wildfly</groupId>
+                    <artifactId>wildfly-arquillian-container-managed</artifactId>
+                    <version>${wildfly.version}</version>
+                    <scope>test</scope>
+                </dependency>
+                <dependency>
+                    <groupId>org.jboss.arquillian.protocol</groupId>
+                    <artifactId>arquillian-protocol-servlet</artifactId>
+                    <scope>test</scope>
+                </dependency>
+                <dependency>
+                    <groupId>org.jboss.arquillian.junit</groupId>
+                    <artifactId>arquillian-junit-container</artifactId>
+                </dependency>
+            </dependencies>
+            <build>
+                <plugins>
+                    <plugin>
+                        <artifactId>maven-dependency-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>unpack</id>
+                                <phase>process-test-classes</phase>
+                                <goals>
+                                    <goal>unpack</goal>
+                                </goals>
+                                <configuration>
+                                    <artifactItems>
+                                        <artifactItem>
+                                            <groupId>org.wildfly</groupId>
+                                            <artifactId>wildfly-dist</artifactId>
+                                            <version>${wildfly.version}</version>
+                                            <type>zip</type>
+                                            <overWrite>false</overWrite>
+                                            <outputDirectory>target</outputDirectory>
+                                        </artifactItem>
+                                    </artifactItems>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+
+                <testResources>
+                    <testResource>
+                        <directory>${project.basedir}/src/test/resources</directory>
+                        <filtering>true</filtering>
+                        <targetPath>${project.basedir}/target/test-classes</targetPath>
+                    </testResource>
+                    <testResource>
+                        <directory>${project.basedir}/src/test/resources-jboss-managed</directory>
+                        <filtering>true</filtering>
+                        <targetPath>${project.basedir}/target/test-classes</targetPath>
+                    </testResource>
+                </testResources>
+            </build>
+        </profile>
+        <!-- END Arquillian Testing -->
+    </profiles>
 </project>
