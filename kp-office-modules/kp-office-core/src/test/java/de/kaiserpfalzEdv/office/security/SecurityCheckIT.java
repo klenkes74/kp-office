@@ -45,8 +45,8 @@ import java.util.UUID;
  * @since 2014Q
  */
 @RunWith(Arquillian.class)
-public class SecurityCheckTest {
-    private static final Logger LOG = LoggerFactory.getLogger(SecurityCheckTest.class);
+public class SecurityCheckIT {
+    private static final Logger LOG = LoggerFactory.getLogger(SecurityCheckIT.class);
 
     @Inject SecurityCheckManager scm;
     @Inject Subject subject;

@@ -55,6 +55,7 @@
         <skipUnitTests>${skipTests}</skipUnitTests>
         <skipIntegrationTests>${skipTests}</skipIntegrationTests>
         <skipAcceptanceTests>${skipTests}</skipAcceptanceTests>
+        <jeeTestEnvironment>wildfly-managed</jeeTestEnvironment>
         <setupDatabase>${skipTests}</setupDatabase>
         <dontSign>true</dontSign>
 
@@ -391,6 +392,10 @@
         <!-- BEGIN Arquillian Testing -->
         <profile>
             <id>wildfly-managed</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+
             <dependencies>
                 <dependency>
                     <groupId>org.wildfly</groupId>
@@ -398,6 +403,19 @@
                     <version>${wildfly.version}</version>
                     <scope>test</scope>
                 </dependency>
+                <dependency><!-- just to get the possibility of excluding the sun.jdk:jconsole:jdk -->
+                    <groupId>org.wildfly</groupId>
+                    <artifactId>wildfly-cli</artifactId>
+                    <version>${wildfly.version}</version>
+                    <scope>test</scope>
+                    <exclusions>
+                        <exclusion>
+                            <groupId>sun.jdk</groupId>
+                            <artifactId>jconsole</artifactId>
+                        </exclusion>
+                    </exclusions>
+                </dependency>
+
                 <dependency>
                     <groupId>org.jboss.arquillian.protocol</groupId>
                     <artifactId>arquillian-protocol-servlet</artifactId>

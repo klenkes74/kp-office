@@ -33,4 +33,5 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @InterceptorBinding
 public @interface Secured {
+    String value() default "";
 }

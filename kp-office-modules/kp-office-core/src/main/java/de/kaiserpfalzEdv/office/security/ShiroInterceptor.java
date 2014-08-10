@@ -21,6 +21,7 @@ import de.kaiserpfalzEdv.office.tenant.Tenant;
 import org.apache.shiro.subject.Subject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.slf4j.MDC;
 
 import javax.inject.Inject;
 import javax.interceptor.AroundInvoke;
@@ -46,6 +47,7 @@ public class ShiroInterceptor {
 
     @AroundInvoke
     public Object interceptGet(InvocationContext ctx) throws Exception {
+        MDC.put("user", subject.getPrincipal().toString());
         LOG.trace("Securing {} {}", new Object[] { ctx.getMethod(), ctx.getParameters() });
         LOG.trace("Principal is: {}", subject.getPrincipal());
 
@@ -59,18 +61,21 @@ public class ShiroInterceptor {
         LOG.trace("Declaring annotations ({}): {}", declaringClass.getAnnotations().length, declaringClass.getAnnotations());
         String entityName;
         try {
-            NamedResource namedResource = runtimeClass.getAnnotation(NamedResource.class);
+            Secured namedResource = runtimeClass.getAnnotation(Secured.class);
             entityName = namedResource.value();
+            if ("".equals(entityName)) throw new NullPointerException();
+
             LOG.trace("Got @NamedResource={}", entityName);
         } catch (NullPointerException e) {
             entityName = declaringClass.getSimpleName().toLowerCase(); // TODO: should be lowerFirst camelCase
-            LOG.warn("@NamedResource not annotated, inferred from declaring classname: {} -> {}", declaringClass.getSimpleName(), entityName);
+            LOG.warn("@Secured not named, inferred from declaring classname: {} -> {}", declaringClass.getSimpleName(), entityName);
         }
 
         String action = getAction(ctx);
         Tenant tenant = getTenantParameter(ctx);
-
         String permission = String.format("%s:%s:%s", entityName, tenant.getDisplayNumber(), action);
+        MDC.put("permission", permission);
+
         LOG.debug("Checking permission '{}' for user '{}'", permission, subject.getPrincipal());
         try {
             subject.checkPermission(permission);
@@ -78,7 +83,14 @@ public class ShiroInterceptor {
             LOG.error("Access denied for {} - {}: {}", subject.getPrincipal(), e.getClass().getName(), e.getMessage());
             throw e;
         }
-        return ctx.proceed();
+
+        try {
+            return ctx.proceed();
+        } finally {
+            MDC.remove("permission");
+            MDC.remove("action");
+            MDC.remove("user");
+        }
     }
 
     private String getAction(InvocationContext ctx) {

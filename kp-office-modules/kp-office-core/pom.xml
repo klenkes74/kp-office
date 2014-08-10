@@ -29,4 +29,5 @@
 
     <artifactId>kp-office-core</artifactId>
     <name>KP Office - Modules - Core Server</name>
+    <packaging>ejb</packaging>
 </project>

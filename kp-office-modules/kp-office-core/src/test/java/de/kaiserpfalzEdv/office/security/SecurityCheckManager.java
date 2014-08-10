@@ -24,7 +24,7 @@ import org.slf4j.LoggerFactory;
  * @author klenkes
  * @since 2014Q
  */
-@Secured @NamedResource("scm")
+@Secured("scm")
 public class SecurityCheckManager {
     private static final Logger LOG = LoggerFactory.getLogger(SecurityCheckManager.class);
 
