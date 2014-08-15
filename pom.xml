@@ -311,6 +311,11 @@
             </dependency>
             <dependency>
                 <groupId>de.kaiserpfalz-edv.office</groupId>
+                <artifactId>kp-office-backend-utils</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>de.kaiserpfalz-edv.office</groupId>
                 <artifactId>kp-office-core</artifactId>
                 <version>${project.version}</version>
                 <type>ejb-client</type>

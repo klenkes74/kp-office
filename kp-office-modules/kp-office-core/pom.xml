@@ -30,4 +30,11 @@
     <artifactId>kp-office-core</artifactId>
     <name>KP Office - Modules - Core Server</name>
     <packaging>ejb</packaging>
+
+    <dependencies>
+        <dependency>
+            <groupId>de.kaiserpfalz-edv.office</groupId>
+            <artifactId>kp-office-backend-utils</artifactId>
+        </dependency>
+    </dependencies>
 </project>

@@ -40,8 +40,7 @@
 
         <dependency>
             <groupId>de.kaiserpfalz-edv.office</groupId>
-            <artifactId>kp-office-core</artifactId>
-            <type>ejb-client</type>
+            <artifactId>kp-office-backend-utils</artifactId>
         </dependency>
     </dependencies>
 </project>
