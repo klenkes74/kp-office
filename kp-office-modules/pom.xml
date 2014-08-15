@@ -32,6 +32,7 @@
     <name>KP Office - Modules - Parent</name>
 
     <modules>
+        <module>kp-office-backend-utils</module>
         <module>kp-office-core</module>
         <module>kp-office-store</module>
         <module>kp-office-projects</module>
@@ -57,6 +58,11 @@
         <dependency>
             <groupId>de.kaiserpfalz-edv.office</groupId>
             <artifactId>kp-office-api</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>de.kaiserpfalz-edv.office</groupId>
+            <artifactId>kp-office-commons</artifactId>
         </dependency>
 
         <dependency>
