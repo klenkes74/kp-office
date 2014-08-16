@@ -14,20 +14,11 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzEdv.office.security;
-
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Inherited;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
-
 /**
+ *
+ *
  * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;
+ * @version 0.1.0
  * @since 0.1.0
  */
-@Inherited
-@Target({ElementType.PARAMETER})
-@Retention(RetentionPolicy.RUNTIME)
-public @interface TenantMarker {
-}
+package de.kaiserpfalzEdv.office.core;

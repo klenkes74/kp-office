@@ -14,24 +14,11 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzEdv.office.security;
-
-import javax.interceptor.InterceptorBinding;
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Inherited;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
-
 /**
- * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;
+ *
+ *
+ * @author klenkes
+ * @version 0.1.0
  * @since 0.1.0
  */
-
-@Inherited
-@Target({ElementType.TYPE, ElementType.METHOD})
-@Retention(RetentionPolicy.RUNTIME)
-@InterceptorBinding
-public @interface Secured {
-    String value() default "";
-}
+package de.kaiserpfalzEdv.office.store;
