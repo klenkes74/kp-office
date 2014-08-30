@@ -22,36 +22,53 @@
 
     <parent>
         <groupId>de.kaiserpfalz-edv.office</groupId>
-        <artifactId>kp-office-modules</artifactId>
+        <artifactId>kp-office-store</artifactId>
         <version>0.1.0-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>kp-office-store</artifactId>
-    <name>KP Office - Data Store - Parent</name>
-    <packaging>pom</packaging>
-
-    <modules>
-        <module>kp-office-store-commands</module>
-        <module>kp-office-store-history</module>
-        <module>kp-office-store-query</module>
-    </modules>
+    <artifactId>kp-office-store-history</artifactId>
+    <name>KP Office - Data Store - History Data Base</name>
+    <packaging>ejb</packaging>
 
     <properties>
-        <project.root>../..</project.root>
+        <project.root>../../..</project.root>
+        <hibernate.version>4.3.6.Final</hibernate.version>
     </properties>
 
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>com.edugility</groupId>
+                <artifactId>h2-maven-plugin</artifactId>
+                <configuration>
+                    <allowOthers>true</allowOthers>
+                    <baseDirectory>${project.basedir}/target/data</baseDirectory>
+                    <shutdownAllServers>true</shutdownAllServers>
+                    <trace>true</trace>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.liquibase</groupId>
+                <artifactId>liquibase-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
     <dependencies>
         <dependency>
-            <groupId>de.kaiserpfalz-edv.office</groupId>
-            <artifactId>kp-office-backend-utils</artifactId>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>${hibernate.version}</version>
+            <scope>provided</scope>
         </dependency>
 
         <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-            <scope>test</scope>
+            <groupId>org.liquibase</groupId>
+            <artifactId>liquibase-cdi</artifactId>
+            <version>3.2.2</version>
         </dependency>
 
 
@@ -61,10 +78,9 @@
         </dependency>
 
         <dependency>
-            <groupId>commons-collections</groupId>
-            <artifactId>commons-collections</artifactId>
-            <version>3.2.1</version>
-            <scope>provided</scope>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 </project>

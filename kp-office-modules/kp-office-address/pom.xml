@@ -34,7 +34,12 @@
     <dependencies>
         <dependency>
             <groupId>de.kaiserpfalz-edv.office</groupId>
-            <artifactId>kp-office-store</artifactId>
+            <artifactId>kp-office-store-query</artifactId>
+            <type>ejb-client</type>
+        </dependency>
+        <dependency>
+            <groupId>de.kaiserpfalz-edv.office</groupId>
+            <artifactId>kp-office-store-commands</artifactId>
             <type>ejb-client</type>
         </dependency>
 

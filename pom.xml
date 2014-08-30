@@ -322,7 +322,19 @@
             </dependency>
             <dependency>
                 <groupId>de.kaiserpfalz-edv.office</groupId>
-                <artifactId>kp-office-store</artifactId>
+                <artifactId>kp-office-store-query</artifactId>
+                <version>${project.version}</version>
+                <type>ejb-client</type>
+            </dependency>
+            <dependency>
+                <groupId>de.kaiserpfalz-edv.office</groupId>
+                <artifactId>kp-office-store-history</artifactId>
+                <version>${project.version}</version>
+                <type>ejb-client</type>
+            </dependency>
+            <dependency>
+                <groupId>de.kaiserpfalz-edv.office</groupId>
+                <artifactId>kp-office-store-commands</artifactId>
                 <version>${project.version}</version>
                 <type>ejb-client</type>
             </dependency>
