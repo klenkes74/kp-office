@@ -112,14 +112,14 @@ public class SecurityCheckTest {
     public void hendyCantWriteTenant1() {
         subject.login(new UsernamePasswordToken("hendy", "hendy"));
 
-        scm.setInfo(new TenantDTO(UUID.randomUUID(), "1", "Test-Tenant"), "tenant1");
+        scm.setInfo(new TenantDTO("1", "Test-Tenant"), "tenant1");
     }
 
     @Test
     public void rtlCanWriteTenant1() {
         subject.login(new UsernamePasswordToken("rtl", "secret2"));
 
-        scm.setInfo(new TenantDTO(UUID.randomUUID(), "1", "Test-Tenant"), "tenant1");
+        scm.setInfo(new TenantDTO("1", "Test-Tenant"), "tenant1");
     }
 
     @Test

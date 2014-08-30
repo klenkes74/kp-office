@@ -14,24 +14,11 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzEdv.office.security;
-
-import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.subject.Subject;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import javax.enterprise.inject.Produces;
-
 /**
- * @author klenkes
- * @since 2014Q
+ *
+ *
+ * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;
+ * @version 0.1.0
+ * @since 0.1.0
  */
-public class SecurityProducer {
-    private static final Logger LOG = LoggerFactory.getLogger(SecurityProducer.class);
-
-    @Produces
-    public Subject getSubject() {
-        return SecurityUtils.getSubject();
-    }
-}
+package de.kaiserpfalzEdv.office.store.address;

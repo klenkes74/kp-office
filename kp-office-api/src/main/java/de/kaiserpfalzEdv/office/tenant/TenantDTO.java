@@ -18,9 +18,12 @@ package de.kaiserpfalzEdv.office.tenant;
 
 import java.util.UUID;
 
+import static com.google.common.base.Preconditions.checkArgument;
+import static org.apache.commons.lang3.StringUtils.isNotBlank;
+
 /**
- * @author klenkes
- * @since 2014Q
+ * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;
+ * @since 0.1.0
  */
 public class TenantDTO implements Tenant {
     private UUID id;
@@ -29,9 +32,31 @@ public class TenantDTO implements Tenant {
     private String displayName;
 
 
-    public TenantDTO(final UUID id, final String number, final String name) {
-        setId(id);
+    /**
+     * @deprecated Only for JPA!
+     */
+    @Deprecated
+    protected TenantDTO() {}
 
+
+    /**
+     * A copy-constructor.
+     * @param orig The original tenant to be copied.
+     */
+    public TenantDTO(final Tenant orig) {
+        checkArgument(orig != null, "An original tenant to copy is needed!");
+
+        setId(orig.getId());
+        setDisplayNumber(orig.getDisplayNumber());
+        setDisplayName(orig.getDisplayName());
+    }
+
+
+    public TenantDTO(final String number, final String name) {
+        checkArgument(isNotBlank(number), "The tenant has to have a unique code!");
+        checkArgument(isNotBlank(name), "The tenant has to have a unique name!");
+
+        setId(UUID.randomUUID());
         setDisplayNumber(number);
         setDisplayName(name);
     }
@@ -42,7 +67,9 @@ public class TenantDTO implements Tenant {
         return id;
     }
 
-    public void setId(final UUID id) {
+    private void setId(final UUID id) {
+        checkArgument(id != null, "Can't unset the id!");
+
         this.id = id;
     }
 
@@ -51,9 +78,10 @@ public class TenantDTO implements Tenant {
         return displayNumber;
     }
 
-    public void setDisplayNumber(final String displayNumber) {
+    private void setDisplayNumber(final String displayNumber) {
         this.displayNumber = displayNumber;
     }
+
 
     @Override
     public String getDisplayName() {

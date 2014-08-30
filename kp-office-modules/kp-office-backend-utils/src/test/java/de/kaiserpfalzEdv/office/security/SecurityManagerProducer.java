@@ -17,7 +17,6 @@
 package de.kaiserpfalzEdv.office.security;
 
 import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.subject.Subject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -27,11 +26,12 @@ import javax.enterprise.inject.Produces;
  * @author klenkes
  * @since 2014Q
  */
-public class SecurityProducer {
-    private static final Logger LOG = LoggerFactory.getLogger(SecurityProducer.class);
+public class SecurityManagerProducer {
+    private static final Logger LOG = LoggerFactory.getLogger(SecurityManagerProducer.class);
+
 
     @Produces
-    public Subject getSubject() {
-        return SecurityUtils.getSubject();
+    public org.apache.shiro.mgt.SecurityManager getSecurityManager() {
+        return SecurityUtils.getSecurityManager();
     }
 }

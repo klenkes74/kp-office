@@ -23,6 +23,10 @@
         <property name="deploymentExportPath">target/deployments</property>
     </engine>
 
+    <extension qualifier="transaction">
+        <property name="manager">java:jboss/UserTransaction</property>
+    </extension>
+
     <container qualifier="jboss7" default="true">
         <configuration>
             <property name="jbossHome">${project.basedir}/target/wildfly-${wildfly.version}</property>
