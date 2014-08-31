@@ -31,6 +31,62 @@
     <package>de.kaiserpfalzEdv.office.store</package>
 
 
+    <mapped-superclass class="de.kaiserpfalzEdv.office.commands.OfficeCommand" access="FIELD">
+        <description>
+            The base object for all commands.
+        </description>
+
+        <attributes>
+            <id name="commandId">
+                <column name="COMMAND_ID_" length="38" nullable="false" updatable="false" unique="true"/>
+            </id>
+
+            <basic name="commandTimestamp">
+                <column name="COMMAND_TIMESTAMP_" nullable="false" updatable="false"/>
+            </basic>
+
+            <basic name="handledTimestamp">
+                <column name="HANDLE_TIMESTAMP_" nullable="false" updatable="true"/>
+            </basic>
+        </attributes>
+    </mapped-superclass>
+
+    <entity class="de.kaiserpfalzEdv.office.tenants.api.commands.TenantStoreCommand" cacheable="true" access="FIELD">
+        <inheritance strategy="SINGLE_TABLE"/>
+        <discriminator-column name="COMMAND_TYPE_" discriminator-type="STRING" length="10"/>
+        
+        <attributes>
+            <basic name="tenantId">
+                <column name="TENANT_ID_" length="38" nullable="false" updatable="false"/>
+            </basic>
+        </attributes>
+    </entity>
+    
+    <entity class="de.kaiserpfalzEdv.office.tenants.api.commands.CreateTenantCommand" cacheable="true" access="FIELD">
+        <discriminator-value>create</discriminator-value>
+        <attributes>
+            <basic name="displayName"><column name="NAME_" length="200" nullable="false"/></basic>
+            <basic name="displayNumber"><column name="NUMBER_" length="50" nullable="false" unique="true"/></basic>
+        </attributes>
+    </entity>
+
+    <entity class="de.kaiserpfalzEdv.office.tenants.api.commands.RenameTenantCommand" cacheable="true" access="FIELD">
+        <discriminator-value>updateName</discriminator-value>
+        <attributes>
+            <basic name="displayName"><column name="NAME_" length="200" nullable="false"/></basic>
+        </attributes>
+    </entity>
+
+    <entity class="de.kaiserpfalzEdv.office.tenants.api.commands.RenumberTenantCommand" cacheable="true" access="FIELD">
+        <discriminator-value>updateNumber</discriminator-value>
+        <attributes>
+            <basic name="displayNumber"><column name="NUMBER_" length="50" nullable="false" unique="true"/></basic>
+        </attributes>
+    </entity>
+
+    <entity class="de.kaiserpfalzEdv.office.tenants.api.commands.DeleteTenantCommand" cacheable="true" access="FIELD">
+        <discriminator-value>delete</discriminator-value>
+    </entity>
 
 
     <entity class="de.kaiserpfalzEdv.office.tenant.TenantDTO">

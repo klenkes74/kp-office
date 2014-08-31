@@ -18,6 +18,8 @@ package de.kaiserpfalzEdv.office.tenants.api.commands;
 
 import de.kaiserpfalzEdv.office.commands.OfficeCommand;
 
+import java.util.UUID;
+
 /**
  * @author klenkes
  * @since 2014Q
@@ -25,5 +27,16 @@ import de.kaiserpfalzEdv.office.commands.OfficeCommand;
 public abstract class TenantStoreCommand extends OfficeCommand {
     public String getTarget() {
         return "Tenant";
+    }
+
+    private UUID tenantId = UUID.randomUUID();
+
+
+    public UUID getTenantId() {
+        return tenantId;
+    }
+
+    protected void setTenantId(final UUID tenantId) {
+        this.tenantId = tenantId;
     }
 }

@@ -16,13 +16,11 @@
 
 package de.kaiserpfalzEdv.office.tenants.api.commands;
 
-import de.kaiserpfalzEdv.office.commands.OfficeCommandHandler;
 import de.kaiserpfalzEdv.office.commands.OfficeCommandException;
+import de.kaiserpfalzEdv.office.commands.OfficeCommandHandler;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
-
-import java.util.UUID;
 
 import static com.google.common.base.Preconditions.checkArgument;
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
@@ -34,7 +32,6 @@ import static org.apache.commons.lang3.StringUtils.isNotBlank;
 public class CreateTenantCommand extends TenantStoreCommand {
     private static final long serialVersionUID = 1L;
 
-    private final UUID id = UUID.randomUUID();
     private String displayNumber;
     private String displayName;
 
@@ -80,10 +77,6 @@ public class CreateTenantCommand extends TenantStoreCommand {
     public void setDisplayName(String displayName) {
         checkArgument(isNotBlank(displayName), "A valid name is needed for a tenant!");
         this.displayName = displayName;
-    }
-
-    public UUID getId() {
-        return id;
     }
 
 

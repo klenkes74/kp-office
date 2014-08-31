@@ -36,6 +36,10 @@ public class DeleteTenantCommand extends TenantStoreCommand {
     private UUID id;
 
 
+    @Deprecated // Only for JPA
+    protected DeleteTenantCommand() {}
+
+
     /**
      * Changes the name of the tenant defined by the displayNumber.
      *
