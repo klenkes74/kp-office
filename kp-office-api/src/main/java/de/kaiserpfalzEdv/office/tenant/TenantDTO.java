@@ -46,6 +46,7 @@ public class TenantDTO implements Tenant {
     public TenantDTO(final Tenant orig) {
         checkArgument(orig != null, "An original tenant to copy is needed!");
 
+        //noinspection ConstantConditions
         setId(orig.getId());
         setDisplayNumber(orig.getDisplayNumber());
         setDisplayName(orig.getDisplayName());
@@ -53,10 +54,13 @@ public class TenantDTO implements Tenant {
 
 
     public TenantDTO(final String number, final String name) {
-        checkArgument(isNotBlank(number), "The tenant has to have a unique code!");
-        checkArgument(isNotBlank(name), "The tenant has to have a unique name!");
-
         setId(UUID.randomUUID());
+        setDisplayNumber(number);
+        setDisplayName(name);
+    }
+
+    public TenantDTO(final UUID id, final String number, final String name) {
+        setId(id);
         setDisplayNumber(number);
         setDisplayName(name);
     }
@@ -78,7 +82,9 @@ public class TenantDTO implements Tenant {
         return displayNumber;
     }
 
-    private void setDisplayNumber(final String displayNumber) {
+    public void setDisplayNumber(final String displayNumber) {
+        checkArgument(isNotBlank(displayNumber), "A tenant needs a unique display number!");
+
         this.displayNumber = displayNumber;
     }
 
@@ -89,6 +95,8 @@ public class TenantDTO implements Tenant {
     }
 
     public void setDisplayName(final String displayName) {
+        checkArgument(isNotBlank(displayNumber), "A tenant needs a unique display name!");
+
         this.displayName = displayName;
     }
 }

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  ~ Copyright (c) 2014 Kaiserpfalz EDV-Service, Roland T. Lichti
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<entity-mappings xmlns="http://xmlns.jcp.org/xml/ns/persistence/orm"
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence/orm http://xmlns.jcp.org/xml/ns/persistence/orm_2_1.xsd"
+                 version="2.1">
+    <persistence-unit-metadata>
+        <persistence-unit-defaults>
+            <schema>${db.schema}</schema>
+            <access>FIELD</access>
+            <cascade-persist/>
+        </persistence-unit-defaults>
+    </persistence-unit-metadata>
+
+    <package>de.kaiserpfalzEdv.office.store</package>
+
+
+
+
+    <entity class="de.kaiserpfalzEdv.office.tenant.TenantDTO">
+        <named-query name="Tenant.ById">
+            <query>select t from TenantDTO t where id=:id</query>
+        </named-query>
+        <named-query name="Tenant.ByCode">
+            <query>select t from TenantDTO t where displayNumber=:code</query>
+        </named-query>
+        <named-query name="Tenant.All">
+            <query>select t from TenantDTO t</query>
+        </named-query>
+        
+        <attributes>
+            <id name="id">
+                <column name="ID_" length="38" nullable="false" updatable="false" unique="true"/>
+            </id>
+
+            <basic name="displayNumber">
+                <column name="CODE_" length="10" nullable="false" updatable="false" unique="true"/>
+            </basic>
+
+            <basic name="displayName">
+                <column name="DISPLAY_" length="200" nullable="false" unique="true"/>
+            </basic>
+        </attributes>
+    </entity>
+</entity-mappings>

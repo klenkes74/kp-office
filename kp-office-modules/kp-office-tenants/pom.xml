@@ -22,59 +22,53 @@
 
     <parent>
         <groupId>de.kaiserpfalz-edv.office</groupId>
-        <artifactId>kp-office-root</artifactId>
+        <artifactId>kp-office-modules</artifactId>
         <version>0.1.0-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>kp-office-modules</artifactId>
+    <artifactId>kp-office-tenants</artifactId>
+    <name>KP Office - Tenants - Parent</name>
     <packaging>pom</packaging>
-    <name>KP Office - Modules - Parent</name>
 
     <modules>
-        <module>kp-office-backend-utils</module>
-        <module>kp-office-core</module>
-        <module>kp-office-store</module>
-        <module>kp-office-tenants</module>
-        <module>kp-office-projects</module>
-        <module>kp-office-address</module>
+        <module>kp-office-tenants-api</module>
+        <module>kp-office-tenants-handler</module>
+        <module>kp-office-tenants-query</module>
     </modules>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-ejb-plugin</artifactId>
-                <version>2.3</version>
-                <configuration>
-                    <ejbVersion>3.1</ejbVersion>
-                    <generateClient>true</generateClient>
-                    <filterDeploymentDescriptor>true</filterDeploymentDescriptor>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
+    <properties>
+        <project.root>../..</project.root>
+    </properties>
+
 
     <dependencies>
         <dependency>
             <groupId>de.kaiserpfalz-edv.office</groupId>
-            <artifactId>kp-office-api</artifactId>
+            <artifactId>kp-office-backend-utils</artifactId>
         </dependency>
-
         <dependency>
             <groupId>de.kaiserpfalz-edv.office</groupId>
             <artifactId>kp-office-commons</artifactId>
         </dependency>
 
         <dependency>
-            <groupId>org.apache.shiro</groupId>
-            <artifactId>shiro-core</artifactId>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-guava</artifactId>
         </dependency>
 
         <dependency>
-            <groupId>org.apache.shiro</groupId>
-            <artifactId>shiro-web</artifactId>
-            <scope>test</scope>
+            <groupId>commons-collections</groupId>
+            <artifactId>commons-collections</artifactId>
+            <version>3.2.1</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 </project>

@@ -22,35 +22,37 @@
 
     <parent>
         <groupId>de.kaiserpfalz-edv.office</groupId>
-        <artifactId>kp-office-root</artifactId>
+        <artifactId>kp-office-tenants</artifactId>
         <version>0.1.0-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>kp-office-modules</artifactId>
-    <packaging>pom</packaging>
-    <name>KP Office - Modules - Parent</name>
+    <artifactId>kp-office-tenants-handler</artifactId>
+    <name>KP Office - Tenants - Data Change Handler</name>
+    <packaging>ejb</packaging>
 
-    <modules>
-        <module>kp-office-backend-utils</module>
-        <module>kp-office-core</module>
-        <module>kp-office-store</module>
-        <module>kp-office-tenants</module>
-        <module>kp-office-projects</module>
-        <module>kp-office-address</module>
-    </modules>
+    <properties>
+        <project.root>../../..</project.root>
+        <hibernate.version>4.3.6.Final</hibernate.version>
+    </properties>
+
 
     <build>
         <plugins>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-ejb-plugin</artifactId>
-                <version>2.3</version>
+                <groupId>com.edugility</groupId>
+                <artifactId>h2-maven-plugin</artifactId>
                 <configuration>
-                    <ejbVersion>3.1</ejbVersion>
-                    <generateClient>true</generateClient>
-                    <filterDeploymentDescriptor>true</filterDeploymentDescriptor>
+                    <allowOthers>true</allowOthers>
+                    <baseDirectory>${project.basedir}/target/data</baseDirectory>
+                    <shutdownAllServers>true</shutdownAllServers>
+                    <trace>true</trace>
                 </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.liquibase</groupId>
+                <artifactId>liquibase-maven-plugin</artifactId>
             </plugin>
         </plugins>
     </build>
@@ -58,22 +60,26 @@
     <dependencies>
         <dependency>
             <groupId>de.kaiserpfalz-edv.office</groupId>
-            <artifactId>kp-office-api</artifactId>
+            <artifactId>kp-office-tenants-api</artifactId>
+            <type>ejb-client</type>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>${hibernate.version}</version>
+            <scope>provided</scope>
         </dependency>
 
         <dependency>
-            <groupId>de.kaiserpfalz-edv.office</groupId>
-            <artifactId>kp-office-commons</artifactId>
+            <groupId>org.liquibase</groupId>
+            <artifactId>liquibase-cdi</artifactId>
+            <version>3.2.2</version>
         </dependency>
 
-        <dependency>
-            <groupId>org.apache.shiro</groupId>
-            <artifactId>shiro-core</artifactId>
-        </dependency>
 
         <dependency>
-            <groupId>org.apache.shiro</groupId>
-            <artifactId>shiro-web</artifactId>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
             <scope>test</scope>
         </dependency>
     </dependencies>
