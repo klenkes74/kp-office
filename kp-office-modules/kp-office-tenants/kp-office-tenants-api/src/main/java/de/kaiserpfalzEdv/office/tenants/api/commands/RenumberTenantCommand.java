@@ -16,10 +16,8 @@
 
 package de.kaiserpfalzEdv.office.tenants.api.commands;
 
-import de.kaiserpfalzEdv.office.commands.OfficeCommandHandler;
 import de.kaiserpfalzEdv.office.commands.OfficeCommandException;
-import org.apache.commons.lang3.builder.EqualsBuilder;
-import org.apache.commons.lang3.builder.HashCodeBuilder;
+import de.kaiserpfalzEdv.office.commands.OfficeCommandHandler;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.util.UUID;
@@ -34,9 +32,11 @@ import static org.apache.commons.lang3.StringUtils.isNotBlank;
 public class RenumberTenantCommand extends TenantStoreCommand {
     private static final long serialVersionUID = 1L;
 
-    private UUID id;
     private String displayNumber;
 
+
+    @Deprecated // Only for JPA
+    protected RenumberTenantCommand() {}
 
     /**
      * Changes the name of the tenant defined by the displayNumber.
@@ -45,19 +45,8 @@ public class RenumberTenantCommand extends TenantStoreCommand {
      * @param displayNumber The display name for this tenant.
      */
     public RenumberTenantCommand(final UUID id, final String displayNumber) {
-        setId(id);
+        setTenantId(id);
         setDisplayNumber(displayNumber);
-    }
-
-
-    public UUID getId() {
-        return id;
-    }
-
-    public void setId(UUID id) {
-        checkArgument(id != null, "A valid id is needed!");
-
-        this.id = id;
     }
 
 
@@ -79,34 +68,9 @@ public class RenumberTenantCommand extends TenantStoreCommand {
 
 
     @Override
-    public boolean equals(Object obj) {
-        if (obj == null) {
-            return false;
-        }
-        if (obj == this) {
-            return true;
-        }
-        if (obj.getClass() != getClass()) {
-            return false;
-        }
-        RenumberTenantCommand rhs = (RenumberTenantCommand) obj;
-        return new EqualsBuilder()
-                .append(this.id, rhs.id)
-                .isEquals();
-    }
-
-    @Override
-    public int hashCode() {
-        return new HashCodeBuilder()
-                .append(id)
-                .toHashCode();
-    }
-
-
-    @Override
     public String toString() {
         return new ToStringBuilder(this)
-                .append("id", id)
+                .appendSuper(super.toString())
                 .append("displayNumber", displayNumber)
                 .toString();
     }

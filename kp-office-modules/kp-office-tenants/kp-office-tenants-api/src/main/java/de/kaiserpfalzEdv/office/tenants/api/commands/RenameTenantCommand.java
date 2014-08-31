@@ -16,10 +16,8 @@
 
 package de.kaiserpfalzEdv.office.tenants.api.commands;
 
-import de.kaiserpfalzEdv.office.commands.OfficeCommandHandler;
 import de.kaiserpfalzEdv.office.commands.OfficeCommandException;
-import org.apache.commons.lang3.builder.EqualsBuilder;
-import org.apache.commons.lang3.builder.HashCodeBuilder;
+import de.kaiserpfalzEdv.office.commands.OfficeCommandHandler;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.util.UUID;
@@ -34,8 +32,11 @@ import static org.apache.commons.lang3.StringUtils.isNotBlank;
 public class RenameTenantCommand extends TenantStoreCommand {
     private static final long serialVersionUID = 1L;
 
-    private UUID id;
     private String displayName;
+
+
+    @Deprecated // Only for JPA
+    protected RenameTenantCommand() {}
 
 
     /**
@@ -45,19 +46,8 @@ public class RenameTenantCommand extends TenantStoreCommand {
      * @param displayName The display name for this tenant.
      */
     public RenameTenantCommand(final UUID id, final String displayName) {
-        setId(id);
+        setTenantId(id);
         setDisplayName(displayName);
-    }
-
-
-    public UUID getId() {
-        return id;
-    }
-
-    public void setId(UUID id) {
-        checkArgument(id != null, "A valid id is needed!");
-
-        this.id = id;
     }
 
 
@@ -78,35 +68,12 @@ public class RenameTenantCommand extends TenantStoreCommand {
     }
 
 
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == null) {
-            return false;
-        }
-        if (obj == this) {
-            return true;
-        }
-        if (obj.getClass() != getClass()) {
-            return false;
-        }
-        RenameTenantCommand rhs = (RenameTenantCommand) obj;
-        return new EqualsBuilder()
-                .append(this.id, rhs.id)
-                .isEquals();
-    }
-
-    @Override
-    public int hashCode() {
-        return new HashCodeBuilder()
-                .append(id)
-                .toHashCode();
-    }
 
 
     @Override
     public String toString() {
         return new ToStringBuilder(this)
-                .append("id", id)
+                .appendSuper(super.toString())
                 .append("displayName", displayName)
                 .toString();
     }

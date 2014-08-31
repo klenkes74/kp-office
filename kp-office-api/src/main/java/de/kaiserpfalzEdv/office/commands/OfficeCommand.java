@@ -16,6 +16,10 @@
 
 package de.kaiserpfalzEdv.office.commands;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+
 import java.io.Serializable;
 import java.time.ZonedDateTime;
 import java.util.UUID;
@@ -25,7 +29,7 @@ import java.util.UUID;
  * @since 0.1.0
  */
 public abstract class OfficeCommand implements Serializable {
-    private static final long serialVersionUID = 2709709360542844294L;
+    private static final long serialVersionUID = -6212943148977377517L;
 
     /** The unique id of this command. */
     private UUID commandId = UUID.randomUUID();
@@ -79,5 +83,38 @@ public abstract class OfficeCommand implements Serializable {
      */
     public UUID getCommandId() {
         return commandId;
+    }
+
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (obj == this) {
+            return true;
+        }
+        if (obj.getClass() != getClass()) {
+            return false;
+        }
+        OfficeCommand rhs = (OfficeCommand) obj;
+        return new EqualsBuilder()
+                .append(this.commandId, rhs.commandId)
+                .isEquals();
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder()
+                .append(commandId)
+                .toHashCode();
+    }
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this)
+                .append("commandId", commandId)
+                .append("commandTimestamp", commandTimestamp)
+                .toString();
     }
 }

@@ -16,15 +16,10 @@
 
 package de.kaiserpfalzEdv.office.tenants.api.commands;
 
-import de.kaiserpfalzEdv.office.commands.OfficeCommandHandler;
 import de.kaiserpfalzEdv.office.commands.OfficeCommandException;
-import org.apache.commons.lang3.builder.EqualsBuilder;
-import org.apache.commons.lang3.builder.HashCodeBuilder;
-import org.apache.commons.lang3.builder.ToStringBuilder;
+import de.kaiserpfalzEdv.office.commands.OfficeCommandHandler;
 
 import java.util.UUID;
-
-import static com.google.common.base.Preconditions.checkArgument;
 
 /**
  * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;
@@ -32,9 +27,6 @@ import static com.google.common.base.Preconditions.checkArgument;
  */
 public class DeleteTenantCommand extends TenantStoreCommand {
     private static final long serialVersionUID = 1L;
-
-    private UUID id;
-
 
     @Deprecated // Only for JPA
     protected DeleteTenantCommand() {}
@@ -46,56 +38,12 @@ public class DeleteTenantCommand extends TenantStoreCommand {
      * @param id The tenant id of this tenant.
      */
     public DeleteTenantCommand(final UUID id) {
-        setId(id);
-    }
-
-
-    public UUID getId() {
-        return id;
-    }
-
-    public void setId(UUID id) {
-        checkArgument(id != null, "A valid id is needed!");
-
-        this.id = id;
+        setTenantId(id);
     }
 
 
     @Override
     public void execute(final OfficeCommandHandler context) throws OfficeCommandException {
         context.handle(this);
-    }
-
-
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == null) {
-            return false;
-        }
-        if (obj == this) {
-            return true;
-        }
-        if (obj.getClass() != getClass()) {
-            return false;
-        }
-        DeleteTenantCommand rhs = (DeleteTenantCommand) obj;
-        return new EqualsBuilder()
-                .append(this.id, rhs.id)
-                .isEquals();
-    }
-
-    @Override
-    public int hashCode() {
-        return new HashCodeBuilder()
-                .append(id)
-                .toHashCode();
-    }
-
-
-    @Override
-    public String toString() {
-        return new ToStringBuilder(this)
-                .append("id", id)
-                .toString();
     }
 }

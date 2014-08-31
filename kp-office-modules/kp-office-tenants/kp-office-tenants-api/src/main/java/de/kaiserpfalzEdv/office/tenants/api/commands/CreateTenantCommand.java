@@ -18,8 +18,6 @@ package de.kaiserpfalzEdv.office.tenants.api.commands;
 
 import de.kaiserpfalzEdv.office.commands.OfficeCommandException;
 import de.kaiserpfalzEdv.office.commands.OfficeCommandHandler;
-import org.apache.commons.lang3.builder.EqualsBuilder;
-import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import static com.google.common.base.Preconditions.checkArgument;
@@ -36,7 +34,8 @@ public class CreateTenantCommand extends TenantStoreCommand {
     private String displayName;
 
 
-    public CreateTenantCommand() {}
+    @Deprecated // Only for JPA!
+    protected CreateTenantCommand() {}
 
 
     /**
@@ -87,35 +86,9 @@ public class CreateTenantCommand extends TenantStoreCommand {
 
 
     @Override
-    public boolean equals(Object obj) {
-        if (obj == null) {
-            return false;
-        }
-        if (obj == this) {
-            return true;
-        }
-        if (obj.getClass() != getClass()) {
-            return false;
-        }
-        CreateTenantCommand rhs = (CreateTenantCommand) obj;
-        return new EqualsBuilder()
-                .append(this.displayNumber, rhs.displayNumber)
-                .append(this.displayName, rhs.displayName)
-                .isEquals();
-    }
-
-    @Override
-    public int hashCode() {
-        return new HashCodeBuilder()
-                .append(displayNumber)
-                .append(displayName)
-                .toHashCode();
-    }
-
-
-    @Override
     public String toString() {
         return new ToStringBuilder(this)
+                .appendSuper(super.toString())
                 .append("displayNumber", displayNumber)
                 .append("displayName", displayName)
                 .toString();

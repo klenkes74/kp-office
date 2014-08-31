@@ -17,6 +17,7 @@
 package de.kaiserpfalzEdv.office.tenants.api.commands;
 
 import de.kaiserpfalzEdv.office.commands.OfficeCommand;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.util.UUID;
 
@@ -38,5 +39,13 @@ public abstract class TenantStoreCommand extends OfficeCommand {
 
     protected void setTenantId(final UUID tenantId) {
         this.tenantId = tenantId;
+    }
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this)
+                .appendSuper(super.toString())
+                .append("tenantId", tenantId)
+                .toString();
     }
 }
