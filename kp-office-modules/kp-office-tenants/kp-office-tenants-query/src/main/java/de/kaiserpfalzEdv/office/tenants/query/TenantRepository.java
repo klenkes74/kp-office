@@ -14,9 +14,11 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzEdv.office.tenants.api.commands;
+package de.kaiserpfalzEdv.office.tenants.query;
 
-import de.kaiserpfalzEdv.office.tenants.api.TenantCommandException;
+import de.kaiserpfalzEdv.office.tenant.TenantDTO;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.UUID;
 
@@ -24,25 +26,8 @@ import java.util.UUID;
  * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;
  * @since 0.1.0
  */
-public class DeleteTenantCommand extends TenantStoreCommand {
-    private static final long serialVersionUID = 1L;
-
-    @Deprecated // Only for JPA
-    protected DeleteTenantCommand() {}
-
-
-    /**
-     * Changes the name of the tenant defined by the displayNumber.
-     *
-     * @param id The tenant id of this tenant.
-     */
-    public DeleteTenantCommand(final UUID id) {
-        setTenantId(id);
-    }
-
-
-    @Override
-    public void execute(TenantCommandHandler context) throws TenantCommandException {
-        context.handle(this);
-    }
+@Repository
+public interface TenantRepository extends JpaRepository<TenantDTO, UUID> {
+    public TenantDTO findByDisplayName(final String displayName);
+    public TenantDTO findByDisplayNumber(final String displayNumber);
 }

@@ -18,7 +18,9 @@ package de.kaiserpfalzEdv.office.tenants.api.commands;
 
 import de.kaiserpfalzEdv.office.commands.OfficeCommandException;
 import de.kaiserpfalzEdv.office.commands.OfficeCommandHandler;
+import de.kaiserpfalzEdv.office.tenants.api.TenantCommandException;
 import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
 
 import static com.google.common.base.Preconditions.checkArgument;
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
@@ -79,15 +81,19 @@ public class CreateTenantCommand extends TenantStoreCommand {
     }
 
 
-    @Override
-    public void execute(OfficeCommandHandler context) throws OfficeCommandException {
+    public void execute(TenantCommandHandler context) throws TenantCommandException {
         context.handle(this);
     }
 
 
     @Override
+    public void execute(OfficeCommandHandler context) throws OfficeCommandException {
+        execute((TenantCommandHandler) context);
+    }
+
+    @Override
     public String toString() {
-        return new ToStringBuilder(this)
+        return new ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE)
                 .appendSuper(super.toString())
                 .append("displayNumber", displayNumber)
                 .append("displayName", displayName)

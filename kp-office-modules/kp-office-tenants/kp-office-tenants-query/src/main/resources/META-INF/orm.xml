@@ -32,23 +32,17 @@
 
 
     <entity class="de.kaiserpfalzEdv.office.tenant.TenantDTO">
-        <named-query name="Tenant.ById">
-            <query>select t from TenantDTO t where id=:id</query>
-        </named-query>
-        <named-query name="Tenant.ByCode">
-            <query>select t from TenantDTO t where displayNumber=:code</query>
-        </named-query>
-        <named-query name="Tenant.All">
-            <query>select t from TenantDTO t</query>
-        </named-query>
-        
+        <description>The tenants for the multitenant system.</description>
+
+        <table name="TENANTS"/>
+
         <attributes>
             <id name="id">
-                <column name="ID_" length="38" nullable="false" updatable="false" unique="true"/>
+                <column name="ID_" length="50" nullable="false" updatable="false" unique="true"/>
             </id>
 
             <basic name="displayNumber">
-                <column name="CODE_" length="10" nullable="false" updatable="false" unique="true"/>
+                <column name="CODE_" length="50" nullable="false" updatable="false" unique="true"/>
             </basic>
 
             <basic name="displayName">

@@ -14,35 +14,11 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzEdv.office.tenants.api.commands;
-
-import de.kaiserpfalzEdv.office.tenants.api.TenantCommandException;
-
-import java.util.UUID;
-
 /**
+ *
+ *
  * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;
+ * @version 0.1.0
  * @since 0.1.0
  */
-public class DeleteTenantCommand extends TenantStoreCommand {
-    private static final long serialVersionUID = 1L;
-
-    @Deprecated // Only for JPA
-    protected DeleteTenantCommand() {}
-
-
-    /**
-     * Changes the name of the tenant defined by the displayNumber.
-     *
-     * @param id The tenant id of this tenant.
-     */
-    public DeleteTenantCommand(final UUID id) {
-        setTenantId(id);
-    }
-
-
-    @Override
-    public void execute(TenantCommandHandler context) throws TenantCommandException {
-        context.handle(this);
-    }
-}
+package de.kaiserpfalzEdv.commons.db;

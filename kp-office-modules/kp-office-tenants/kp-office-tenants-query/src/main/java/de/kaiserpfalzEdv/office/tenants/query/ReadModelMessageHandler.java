@@ -17,10 +17,10 @@
 package de.kaiserpfalzEdv.office.tenants.query;
 
 import de.kaiserpfalzEdv.office.OfficeSystemException;
+import de.kaiserpfalzEdv.office.commands.OfficeCommandException;
+import de.kaiserpfalzEdv.office.tenants.api.commands.TenantStoreCommand;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.amqp.core.Message;
-import org.springframework.amqp.core.MessageListener;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
@@ -33,7 +33,7 @@ import javax.persistence.PersistenceException;
  * @since 0.1.0
  */
 @Named
-public class ReadModelMessageHandler implements MessageListener {
+public class ReadModelMessageHandler {
     private static final Logger LOG = LoggerFactory.getLogger(ReadModelMessageHandler.class);
 
     @Inject
@@ -52,13 +52,12 @@ public class ReadModelMessageHandler implements MessageListener {
     }
 
 
-    @Override
-    public void onMessage(final Message message) {
+    public void onMessage(final TenantStoreCommand message) {
         try {
-            LOG.debug("Received message: {} - {}", message.getMessageProperties().getMessageId(), message);
+            LOG.debug("Received message: {}", message);
 
-
-        } catch (PersistenceException e) {
+            message.execute(handler);
+        } catch (PersistenceException | OfficeCommandException e) {
             LOG.error(e.getClass().getSimpleName() + " caught: " + e.getMessage(), e);
 
             throw new OfficeSystemException(e.getMessage());

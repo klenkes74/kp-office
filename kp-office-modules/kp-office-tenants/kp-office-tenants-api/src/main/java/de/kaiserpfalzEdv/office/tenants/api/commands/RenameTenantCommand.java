@@ -16,8 +16,7 @@
 
 package de.kaiserpfalzEdv.office.tenants.api.commands;
 
-import de.kaiserpfalzEdv.office.commands.OfficeCommandException;
-import de.kaiserpfalzEdv.office.commands.OfficeCommandHandler;
+import de.kaiserpfalzEdv.office.tenants.api.TenantCommandException;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.util.UUID;
@@ -63,7 +62,7 @@ public class RenameTenantCommand extends TenantStoreCommand {
 
 
     @Override
-    public void execute(final OfficeCommandHandler context) throws OfficeCommandException {
+    public void execute(TenantCommandHandler context) throws TenantCommandException {
         context.handle(this);
     }
 

@@ -24,14 +24,13 @@ import de.kaiserpfalzEdv.office.tenants.api.commands.DeleteTenantCommand;
 import de.kaiserpfalzEdv.office.tenants.api.commands.RenameTenantCommand;
 import de.kaiserpfalzEdv.office.tenants.api.commands.RenumberTenantCommand;
 import de.kaiserpfalzEdv.office.tenants.api.commands.TenantCommandHandler;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
+import javax.inject.Inject;
 import javax.inject.Named;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceUnit;
 
 /**
  * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;
@@ -42,12 +41,14 @@ public class ReadModelHandler implements TenantCommandHandler {
     private static final Logger LOG = LoggerFactory.getLogger(ReadModelHandler.class);
 
 
-    @PersistenceUnit(unitName = "KPO-TENANT-QUERY")
-    private EntityManager em;
+    private TenantRepository repository;
 
-    @PostConstruct
-    public void init() {
-        LOG.trace("***** Created: {}", this.toString());
+    @Inject
+    public ReadModelHandler(final TenantRepository repository) {
+        this.repository = repository;
+
+        LOG.trace("***** Created: {}", this);
+        LOG.trace("* * *   tenant repository: {}", this.repository);
     }
 
     @PreDestroy
@@ -58,25 +59,27 @@ public class ReadModelHandler implements TenantCommandHandler {
 
     @Override
     public void handle(OfficeCommand command) throws TenantCommandException {
-        LOG.error("Could not handle command: {}", command);
+        LOG.info("Working on: {} as {}", command, command.getClass());
     }
 
 
     @Override
     public void handle(CreateTenantCommand command) throws TenantCommandException {
+        if (StringUtils.isBlank(command.getDisplayNumber())) {
+            command.setDisplayNumber(command.getTenantId().toString());
+        }
+
         TenantDTO tenant = new TenantDTO(command.getTenantId(), command.getDisplayNumber(), command.getDisplayName());
 
-        em.persist(tenant);
+
+        tenant = repository.save(tenant);
 
         LOG.info("Created tenant: {}", tenant);
     }
 
     @Override
     public void handle(RenameTenantCommand command) throws TenantCommandException {
-        TenantDTO tenant = em
-                .createNamedQuery("Tenant.ById", TenantDTO.class)
-                .setParameter("id", command.getTenantId())
-                .getSingleResult();
+        TenantDTO tenant = repository.findOne(command.getTenantId());
 
         tenant.setDisplayName(command.getDisplayName());
 
@@ -85,10 +88,7 @@ public class ReadModelHandler implements TenantCommandHandler {
 
     @Override
     public void handle(RenumberTenantCommand command) throws TenantCommandException {
-        TenantDTO tenant = em
-                .createNamedQuery("Tenant.ById", TenantDTO.class)
-                .setParameter("id", command.getTenantId())
-                .getSingleResult();
+        TenantDTO tenant = repository.findOne(command.getTenantId());
 
         tenant.setDisplayNumber(command.getDisplayNumber());
 
@@ -97,13 +97,8 @@ public class ReadModelHandler implements TenantCommandHandler {
 
     @Override
     public void handle(DeleteTenantCommand command) throws TenantCommandException {
-        TenantDTO tenant = em
-                .createNamedQuery("Tenant.ById", TenantDTO.class)
-                .setParameter("id", command.getTenantId())
-                .getSingleResult();
+        repository.delete(command.getTenantId());
 
-        em.remove(tenant);
-
-        LOG.info("Deleted tenant: {}", tenant);
+        LOG.info("Deleted tenant: {}", command.getTenantId());
     }
 }

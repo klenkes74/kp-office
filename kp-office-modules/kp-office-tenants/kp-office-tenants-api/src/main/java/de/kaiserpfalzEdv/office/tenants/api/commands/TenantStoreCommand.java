@@ -17,6 +17,9 @@
 package de.kaiserpfalzEdv.office.tenants.api.commands;
 
 import de.kaiserpfalzEdv.office.commands.OfficeCommand;
+import de.kaiserpfalzEdv.office.commands.OfficeCommandException;
+import de.kaiserpfalzEdv.office.commands.OfficeCommandHandler;
+import de.kaiserpfalzEdv.office.tenants.api.TenantCommandException;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.util.UUID;
@@ -40,6 +43,15 @@ public abstract class TenantStoreCommand extends OfficeCommand {
     protected void setTenantId(final UUID tenantId) {
         this.tenantId = tenantId;
     }
+
+
+    public abstract void execute(TenantCommandHandler context) throws TenantCommandException;
+
+    @Override
+    public void execute(OfficeCommandHandler context) throws OfficeCommandException {
+        execute((TenantCommandHandler) context);
+    }
+
 
     @Override
     public String toString() {

@@ -31,44 +31,42 @@
 
         <sql>
             CREATE SCHEMA IF NOT EXISTS ${db.schema};
-            CREATE SCHEMA IF NOT EXISTS ${db.schema.query};
         </sql>
 
         <rollback>
             <sql>DROP SCHEMA ${db.schema};</sql>
-            <sql>DROP SHEMA ${db.schema.query};</sql>
         </rollback>
     </changeSet>
-
-
-    <changeSet id="kp-office-inititial" author="klenkes74">
+    <changeSet id="kpo-tenant-query-inititial" author="klenkes74">
         <comment>The initial tenant table.</comment>
 
         <createTable tableName="TENANTS" schemaName="${db.schema}">
-            <column name="id_" type="VARCHAR2(36)">
+            <column name="id_" type="VARCHAR2(50)">
                 <constraints primaryKey="true" primaryKeyName="TENANT_PK"/>
             </column>
 
-            <column name="code_" type="VARCHAR2(10)">
-                <constraints nullable="false"/>
+            <column name="code_" type="VARCHAR2(50)">
+                <constraints nullable="false" unique="true"/>
             </column>
             <column name="display_" type="VARCHAR2(100)">
-                <constraints nullable="false"/>
+                <constraints nullable="false" unique="true"/>
             </column>
         </createTable>
     </changeSet>
 
-    <changeSet id="kp-office-tag-initial" author="klenkes74">
+    <changeSet id="kpo-tenant-query-tag-initial" author="klenkes74">
         <tagDatabase tag="kp-office-initial"/>
     </changeSet>
 
-    <changeSet id="kp-office-load-initial" author="klenkes74">
+    <changeSet id="kpo-tenant-query-load-initial" author="klenkes74">
+        <comment>Load default tenant.</comment>
+
         <loadData schemaName="${db.schema}"
                   tableName="TENANTS"
                   file="data/TENANTS-initial.csv"/>
     </changeSet>
 
-    <changeSet id="kp-office-tag-initial-data" author="klenkes74">
+    <changeSet id="kpo-tenant-query-tag-initial-data" author="klenkes74">
         <tagDatabase tag="kp-office-data-loaded"/>
     </changeSet>
 </databaseChangeLog>

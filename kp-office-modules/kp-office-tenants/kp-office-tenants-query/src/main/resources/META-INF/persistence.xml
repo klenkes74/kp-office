@@ -18,9 +18,5 @@
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://www.oracle.com/webfolder/technetwork/jsc/xml/ns/persistence/persistence_2_1.xsd">
 
-    <persistence-unit name="KPO-TENANT-STORE" transaction-type="JTA">
-        <jta-data-source>jdbc/kp-office</jta-data-source>
-
-        <mapping-file>orm.xml</mapping-file>
-    </persistence-unit>
+    <persistence-unit name="KPO-TENTANT-QUERY" transaction-type="RESOURCE_LOCAL"/>
 </persistence>

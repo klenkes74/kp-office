@@ -20,63 +20,130 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:jee="http://www.springframework.org/schema/jee"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:jpa="http://www.springframework.org/schema/data/jpa"
        xmlns:rabbit="http://www.springframework.org/schema/rabbit"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-                           http://www.springframework.org/schema/tx http://www.springframework.org/schema/rabbit/spring-tx.xsd
+                           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+                           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+                           http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd
+                           http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+                           http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd
                            http://www.springframework.org/schema/rabbit http://www.springframework.org/schema/rabbit/spring-rabbit.xsd
-                           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+       ">
 
+    <jpa:repositories base-package="de.kaiserpfalzEdv.office.tenants.query"/>
     <context:component-scan base-package="de.kaiserpfalzEdv.office.tenants.query">
         <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Repository"/>
     </context:component-scan>
-    <context:load-time-weaver aspectj-weaving="on"/>
+
 
     <context:annotation-config />
     <tx:annotation-driven mode="proxy" transaction-manager="transactionManager"/>
 
+    <context:load-time-weaver weaver-class="org.springframework.instrument.classloading.InstrumentationLoadTimeWeaver"/>
+    <context:property-placeholder properties-ref="configuration" system-properties-mode="OVERRIDE" ignore-resource-not-found="false" ignore-unresolvable="false" local-override="true"/>
+
 
     <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
         <property name="entityManagerFactory" ref="entityManagerFactory" />
-        <property name="jpaDialect" ref="jpaDialect" />
+        <property name="jpaDialect">
+            <bean class="org.springframework.orm.jpa.vendor.HibernateJpaDialect" />
+        </property>
     </bean>
 
-    <bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />
-    <bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
+    <bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor"/>
+    <bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>
 
+    <bean id="dbInitializer" class="liquibase.integration.spring.SpringLiquibase" lazy-init="false" scope="singleton">
+        <property name="changeLog" value="classpath:/ddl/db-changelog.xml"/>
+        <property name="dataSource" ref="dataSource"/>
+        <property name="dropFirst" value="${dropDatabase}"/>
+        <property name="shouldRun" value="${initializeDatabase}"/>
+    </bean>
+
+    <bean id="entityManager" factory-bean="entityManagerFactory" factory-method="createEntityManager" destroy-method="close" scope="request"/>
     <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-        <property name="dataSource" ref="dataSource" />
-        <property name="jpaVendorAdapter" ref="jpaVendorAdapter" />
+        <property name="dataSource" ref="dataSource"/>
+        <property name="loadTimeWeaver" ref="loadTimeWeaver"/>
+        <property name="persistenceXmlLocation" value="classpath:/META-INF/persistence.xml"/>
+        <property name="jpaVendorAdapter">
+            <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+                <property name="database" value="${databaseType}" />
+                <property name="showSql" value="${showSql}"/>
+                <property name="generateDdl" value="${generateDdl}"/>
+                <property name="databasePlatform" value="${databasePlatform}"/>
+            </bean>
+        </property>
+        <property name="jpaProperties">
+            <bean factory-bean="jpaPropertiesGenerator" factory-method="getProperties" lazy-init="true"/>
+        </property>
+    </bean>
+    <bean id="jpaPropertiesGenerator" class="de.kaiserpfalzEdv.commons.jndi.MapProperties">
+        <constructor-arg>
+            <util:map scope="singleton" key-type="java.lang.String" value-type="java.lang.Object">
+                <entry key="hibernate.show_sql" value="false"/>
+                <entry key="hibernate.format_sql" value="true"/>
+                <entry key="hibernate.use_sql_comments" value="true"/>
+                <entry key="hibernate.generate_statistics" value="false"/>
+                <entry key="hibernate.cache.use_second_level_cache" value="${databaseCache}"/>
+                <entry key="hibernate.cache.use_query_cache" value="${databaseCache}"/>
+                <entry key="hibernate.cache.region.factory_class" value="org.hibernate.cache.ehcache.SingletonEhCacheRegionFactory"/>
+                <entry key="net.sf.ehcache.configurationResourceName" value="META-INF/database-cache.xml"/>
+            </util:map>
+        </constructor-arg>
     </bean>
 
-    <bean id="jpaVendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
-        <property name="database" value="HSQL" />
-        <property name="showSql" value="true"/>
-        <property name="generateDdl" value="false"/>
-        <property name="databasePlatform" value="org.hibernate.dialect.H2Dialect"/>
-    </bean>
-    <bean id="jpaDialect" class="org.springframework.orm.jpa.vendor.HibernateJpaDialect" />
 
-    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
-        <property name="driverClassName"    value="org.h2.Driver" />
-        <property name="url"                value="${h2.url}" />
-        <property name="username"           value="${h2.user}" />
-        <property name="password"           value="${h2.password}" />
-        <property name="initialSize"        value="5" />
-        <property name="maxActive"          value="10" />
+    <bean id="configuration" factory-bean="configGenerator" factory-method="getProperties" lazy-init="true"/>
+    <bean id="configGenerator" class="de.kaiserpfalzEdv.commons.jndi.MapProperties" init-method="init" destroy-method="close">
+        <constructor-arg>
+            <util:map scope="singleton" key-type="java.lang.String" value-type="java.lang.Object">
+                <entry key="databaseType"><jee:jndi-lookup jndi-name="databaseType" expected-type="java.lang.String" cache="true" lookup-on-startup="true"/></entry>
+                <entry key="databasePlatform"><jee:jndi-lookup jndi-name="databasePlatform" expected-type="java.lang.String" cache="true" lookup-on-startup="true"/></entry>
+                <entry key="showSql"><jee:jndi-lookup jndi-name="showSql" default-value="false" expected-type="java.lang.String" cache="true" lookup-on-startup="true"/></entry>
+                <entry key="generateDdl"><jee:jndi-lookup jndi-name="generateDdl" default-value="false" expected-type="java.lang.String" cache="true" lookup-on-startup="true"/></entry>
+                <entry key="dropDatabase"><jee:jndi-lookup jndi-name="dropDatabase" default-value="false" expected-type="java.lang.String" cache="true" lookup-on-startup="true"/></entry>
+                <entry key="initializeDatabase"><jee:jndi-lookup jndi-name="initializeDatabase" default-value="false" expected-type="java.lang.String" cache="true" lookup-on-startup="true"/></entry>
+                <entry key="databaseCache"><jee:jndi-lookup jndi-name="databaseCache" default-value="false" expected-type="java.lang.String" cache="true" lookup-on-startup="true"/></entry>
+            </util:map>
+        </constructor-arg>
     </bean>
+
+
+    <jee:jndi-lookup id="dataSource" jndi-name="db/kpotenant" lazy-init="true" expected-type="javax.sql.DataSource" cache="true"/>
+    <!--
+        <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+            <property name="driverClassName"    value="org.h2.Driver" />
+            <property name="url"                value="${h2.url}" />
+            <property name="username"           value="${h2.user}" />
+            <property name="password"           value="${h2.password}" />
+            <property name="initialSize"        value="5" />
+            <property name="maxActive"          value="10" />
+        </bean>
+    -->
 
 
 
     <rabbit:connection-factory id="connectionFactory" host="localhost" port="5672" virtual-host="/" username="test" password="test1234"/>
     <rabbit:admin connection-factory="connectionFactory"/>
-    <rabbit:topic-exchange id="tenants.modify" name="de.kaiserpfalz-edv.office.tenants.modify" durable="true"/>
 
-    <rabbit:template id="amqpTemplate" connection-factory="connectionFactory" message-converter="jsonConverterWithDefaultType"/>
+    <rabbit:template id="amqpTemplate" connection-factory="connectionFactory" exchange="de.kaiserpfalz-edv.office.tenants.modify">
+    </rabbit:template>
 
-    <rabbit:listener-container connection-factory="connectionFactory" message-converter="jsonConverterWithDefaultType">
-        <rabbit:listener queues="" ref="readModelMessageHandler"/>
+    <rabbit:listener-container connection-factory="connectionFactory">
+        <rabbit:listener queues="tenants.modify.query" ref="readModelMessageHandler" method="onMessage"/>
     </rabbit:listener-container>
 
+    <rabbit:queue id="tenants.modify.query" name="de.kaiserpfalz-edv.office.tenants.modify.query" durable="true">
+        <rabbit:queue-arguments>
+            <entry key="x-message-ttl" value="3600000" value-type="java.lang.Long"/>
+            <entry key="x-dead-letter-routing-key" value="tenants.modify.query" value-type="java.lang.String"/>
+        </rabbit:queue-arguments>
+    </rabbit:queue>
+
+    <!--
     <bean id="jsonConverterWithDefaultType" class="org.springframework.amqp.support.converter.JsonMessageConverter">
         <property name="classMapper">
             <bean class="org.springframework.amqp.support.converter.DefaultClassMapper">
@@ -84,4 +151,5 @@
             </bean>
         </property>
     </bean>
+    -->
 </beans>
