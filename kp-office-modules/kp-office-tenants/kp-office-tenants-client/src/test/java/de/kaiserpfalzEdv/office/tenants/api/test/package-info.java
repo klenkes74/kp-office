@@ -21,4 +21,4 @@
  * @version 0.1.0
  * @since 0.1.0
  */
-package de.kaiserpfalzEdv.office.store;
+package de.kaiserpfalzEdv.office.tenants.api.test;
