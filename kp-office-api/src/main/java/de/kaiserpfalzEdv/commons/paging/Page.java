@@ -16,6 +16,7 @@
 
 package de.kaiserpfalzEdv.commons.paging;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -24,76 +25,135 @@ import java.util.List;
 import static com.google.common.base.Preconditions.checkArgument;
 
 /**
+ * A page generic container with paging information.
+ *
  * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;
  * @since 0.1.0
  */
-public class Page<T> {
-    private long start = 0;
-    private long total = 0;
-    private long pageSize = 0;
+public class Page<T> implements Serializable {
+    private PagingInformation paging;
 
     private final ArrayList<T> data = new ArrayList<>();
 
 
-    public Page(final long start, final long total, final long pageSize, final List<T> data) {
-        setTotal(total);
-        setPageSize(pageSize);
-        setStart(start);
+    public Page(final long start, final long total, final long pageSize, final Collection<T> data) {
+        paging = new PagingInformation(start, pageSize, total);
+
+        checkArgument(paging.getPageElementsCount() <= data.size(),
+                "The page would be invalid. This page needs %s elements, but only %s elements are provided.",
+                paging.getPage(), data.size());
 
         setData(data);
     }
 
 
-    public long getStart() {
-        return start;
-    }
-
-    public void setStart(final long start) {
-        checkArgument(start % pageSize == 0,
-                "Sorry, the start does not match the pageSize. start has to be a multiple of pageSize!");
-        checkArgument(start <= total, "Sorry, the start has to be less than the total");
-
-        this.start = start;
+    /**
+     * @return The paging information of this page.
+     */
+    public PagingInformation getPaging() {
+        return paging;
     }
 
 
-    public long getPageSize() {
-        return pageSize;
-    }
+    /**
+     * @param paging The new paging information.
+     * @deprecated Only for JAX-B and JPA!
+     */
+    @Deprecated // Only for JAX-B and JPA!
+    public void setPaging(final PagingInformation paging) {
+        checkArgument(paging != null, "Can't set page paging to <null>!");
 
-    public void setPageSize(final long pageSize) {
-        checkArgument(start % pageSize == 0,
-                "Sorry, the start does not match the pageSize. start has to be a multiple of pageSize!");
-
-        this.pageSize = pageSize;
-    }
-
-
-    public long getPage() {
-        return (start - (start%pageSize)) / pageSize;
+        this.paging = paging;
     }
 
 
-    public long getTotal() {
-        return total;
-    }
-
-    public void setTotal(final long total) {
-        checkArgument(start <= total, "Sorry, the start has to be less than the total");
-
-        this.total = total;
-    }
-
-
+    /**
+     * @return An unmodifiable list of the data of this page.
+     */
     public List<T> getData() {
         return Collections.unmodifiableList(data);
     }
 
-    public void setData(Collection<T> data) {
-        this.data.clear();
+    /**
+     * Sets the data for the page.
+     * Only the first {@link #getPaging()}.{@link PagingInformation#getPageSize()} elements will be copied into
+     * this orig page.
+     *
+     * @param orig The orig to be copied into this page.
+     */
+    public void setData(Collection<T> orig) {
+        clearDataPage();
 
-        if (data != null) {
-            this.data.addAll(data);
+        long maxElements = getMaximumDataPageElements();
+
+        setDataToPage(orig, maxElements);
+    }
+
+    private void clearDataPage() {
+        this.data.clear();
+    }
+
+    private long getMaximumDataPageElements() {
+        return paging.getPageSize() < paging.getTotal() ? paging.getPageSize() : paging.getTotal();
+    }
+
+    private void setDataToPage(final Collection<T> orig, final long maxElements) {
+        if (orig != null) {
+            if (orig.size() <= maxElements) {
+                this.data.addAll(orig);
+            } else {
+                //noinspection Convert2MethodRef
+                orig.stream().limit(maxElements).forEach(t -> data.add(t));
+            }
         }
+    }
+
+
+    public long getStart() {
+        return paging.getStart();
+    }
+
+    public long getPageSize() {
+        return paging.getPageSize();
+    }
+
+    public long getTotal() {
+        return paging.getTotal();
+    }
+
+    public long getPage() {
+        return paging.getPage();
+    }
+
+    public long getTotalPages() {
+        return paging.getTotalPages();
+    }
+
+    public boolean hasPreviousPage() {
+        return paging.hasPreviousPage();
+    }
+
+    public boolean hasNextPage() {
+        return paging.hasNextPage();
+    }
+
+    public PagingRequest getCurrentPage() {
+        return paging.getCurrentPage();
+    }
+
+    public PagingRequest getFirstPage() {
+        return paging.getFirstPage();
+    }
+
+    public PagingRequest getPreviousPage() {
+        return paging.getPreviousPage();
+    }
+
+    public PagingRequest getNextPage() {
+        return paging.getNextPage();
+    }
+
+    public PagingRequest getLastPage() {
+        return paging.getLastPage();
     }
 }

@@ -45,7 +45,6 @@
 
 
     <properties>
-        <targetJdk>1.8</targetJdk>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>${project.build.sourceEncoding}</project.reporting.outputEncoding>
 
@@ -72,15 +71,14 @@
         <h2.driver>org.h2.Driver</h2.driver>
         <h2.user>sa</h2.user>
         <h2.password/>
+
         <db.schema>KPOSTORE</db.schema>
         <db.schema.query>KPOQUERY</db.schema.query>
 
+        <config.path>./config</config.path>
+
         <kp-commons.version>2014Q3</kp-commons.version>
-        <shrinkwrap.version>2.1.0</shrinkwrap.version>
         <shiro.version>1.2.3</shiro.version>
-        <arquillian.version>1.1.5.Final</arquillian.version>
-        <wildfly.version>8.1.0.Final</wildfly.version>
-        <assertj-guava.version>1.2.0</assertj-guava.version>
     </properties>
 
     <distributionManagement>
@@ -159,11 +157,6 @@
             </plugin>
 
             <plugin>
-                <groupId>org.jacoco</groupId>
-                <artifactId>jacoco-maven-plugin</artifactId>
-            </plugin>
-
-            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
             </plugin>
@@ -206,46 +199,27 @@
             <scope>provided</scope>
         </dependency>
 
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+        </dependency>
+
 
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <scope>test</scope>
         </dependency>
-
         <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <scope>provided</scope>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-core</artifactId>
+            <artifactId>logback-classic</artifactId>
             <scope>test</scope>
         </dependency>
-
-        <!-- BEGIN Arquillian Testing -->
-        <dependency>
-            <groupId>org.jboss.shrinkwrap.resolver</groupId>
-            <artifactId>shrinkwrap-resolver-impl-maven</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jboss.shrinkwrap.resolver</groupId>
-            <artifactId>shrinkwrap-resolver-api-maven</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jboss.shrinkwrap.resolver</groupId>
-            <artifactId>shrinkwrap-resolver-spi-maven</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jboss.shrinkwrap.resolver</groupId>
-            <artifactId>shrinkwrap-resolver-api</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <!-- END Arquillian Testing -->
     </dependencies>
 
     <dependencyManagement>
@@ -292,14 +266,6 @@
 
 
             <dependency>
-                <groupId>ch.qos.logback</groupId>
-                <artifactId>logback-core</artifactId>
-                <version>1.0.13</version>
-                <scope>test</scope>
-            </dependency>
-
-
-            <dependency>
                 <groupId>de.kaiserpfalz-edv.office</groupId>
                 <artifactId>kp-office-api</artifactId>
                 <version>${project.version}</version>
@@ -318,37 +284,36 @@
                 <groupId>de.kaiserpfalz-edv.office</groupId>
                 <artifactId>kp-office-core</artifactId>
                 <version>${project.version}</version>
-                <type>ejb-client</type>
             </dependency>
             <dependency>
                 <groupId>de.kaiserpfalz-edv.office</groupId>
                 <artifactId>kp-office-tenants-api</artifactId>
                 <version>${project.version}</version>
-                <type>ejb-client</type>
             </dependency>
             <dependency>
                 <groupId>de.kaiserpfalz-edv.office</groupId>
                 <artifactId>kp-office-tenants-handler</artifactId>
                 <version>${project.version}</version>
-                <type>ejb-client</type>
             </dependency>
             <dependency>
                 <groupId>de.kaiserpfalz-edv.office</groupId>
                 <artifactId>kp-office-tenants-query</artifactId>
                 <version>${project.version}</version>
-                <type>ejb-client</type>
+            </dependency>
+            <dependency>
+                <groupId>de.kaiserpfalz-edv.office</groupId>
+                <artifactId>kp-office-tenants-client</artifactId>
+                <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>de.kaiserpfalz-edv.office</groupId>
                 <artifactId>kp-office-address</artifactId>
                 <version>${project.version}</version>
-                <type>ejb-client</type>
             </dependency>
             <dependency>
                 <groupId>de.kaiserpfalz-edv.office</groupId>
                 <artifactId>kp-office-projects</artifactId>
                 <version>${project.version}</version>
-                <type>ejb-client</type>
             </dependency>
             <dependency>
                 <groupId>de.kaiserpfalz-edv.office</groupId>
@@ -360,139 +325,6 @@
                 <artifactId>kp-office-web</artifactId>
                 <version>${project.version}</version>
             </dependency>
-
-
-            <dependency>
-                <groupId>org.apache.shiro</groupId>
-                <artifactId>shiro-core</artifactId>
-                <version>${shiro.version}</version>
-            </dependency>
-
-
-            <dependency>
-                <groupId>org.jboss.arquillian</groupId>
-                <artifactId>arquillian-bom</artifactId>
-                <version>${arquillian.version}</version>
-                <scope>import</scope>
-                <type>pom</type>
-            </dependency>
-
-
-            <dependency>
-                <groupId>org.assertj</groupId>
-                <artifactId>assertj-guava</artifactId>
-                <version>${assertj-guava.version}</version>
-                <scope>test</scope>
-            </dependency>
-
-            <dependency>
-                <groupId>org.jboss.shrinkwrap.resolver</groupId>
-                <artifactId>shrinkwrap-resolver-impl-maven</artifactId>
-                <version>${shrinkwrap.version}</version>
-                <scope>test</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.jboss.shrinkwrap.resolver</groupId>
-                <artifactId>shrinkwrap-resolver-api-maven</artifactId>
-                <version>${shrinkwrap.version}</version>
-                <scope>test</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.jboss.shrinkwrap.resolver</groupId>
-                <artifactId>shrinkwrap-resolver-spi-maven</artifactId>
-                <version>${shrinkwrap.version}</version>
-                <scope>test</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.jboss.shrinkwrap.resolver</groupId>
-                <artifactId>shrinkwrap-resolver-api</artifactId>
-                <version>${shrinkwrap.version}</version>
-                <scope>test</scope>
-            </dependency>
         </dependencies>
     </dependencyManagement>
-
-
-    <profiles>
-        <!-- BEGIN Arquillian Testing -->
-        <profile>
-            <id>wildfly-managed</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-
-            <dependencies>
-                <dependency>
-                    <groupId>org.wildfly</groupId>
-                    <artifactId>wildfly-arquillian-container-managed</artifactId>
-                    <version>${wildfly.version}</version>
-                    <scope>test</scope>
-                </dependency>
-                <dependency><!-- just to get the possibility of excluding the sun.jdk:jconsole:jdk -->
-                    <groupId>org.wildfly</groupId>
-                    <artifactId>wildfly-cli</artifactId>
-                    <version>${wildfly.version}</version>
-                    <scope>test</scope>
-                    <exclusions>
-                        <exclusion>
-                            <groupId>sun.jdk</groupId>
-                            <artifactId>jconsole</artifactId>
-                        </exclusion>
-                    </exclusions>
-                </dependency>
-
-                <dependency>
-                    <groupId>org.jboss.arquillian.protocol</groupId>
-                    <artifactId>arquillian-protocol-servlet</artifactId>
-                    <scope>test</scope>
-                </dependency>
-                <dependency>
-                    <groupId>org.jboss.arquillian.junit</groupId>
-                    <artifactId>arquillian-junit-container</artifactId>
-                </dependency>
-            </dependencies>
-            <build>
-                <plugins>
-                    <plugin>
-                        <artifactId>maven-dependency-plugin</artifactId>
-                        <executions>
-                            <execution>
-                                <id>unpack</id>
-                                <phase>process-test-classes</phase>
-                                <goals>
-                                    <goal>unpack</goal>
-                                </goals>
-                                <configuration>
-                                    <artifactItems>
-                                        <artifactItem>
-                                            <groupId>org.wildfly</groupId>
-                                            <artifactId>wildfly-dist</artifactId>
-                                            <version>${wildfly.version}</version>
-                                            <type>zip</type>
-                                            <overWrite>false</overWrite>
-                                            <outputDirectory>target</outputDirectory>
-                                        </artifactItem>
-                                    </artifactItems>
-                                </configuration>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-
-                <testResources>
-                    <testResource>
-                        <directory>${project.basedir}/src/test/resources</directory>
-                        <filtering>true</filtering>
-                        <targetPath>${project.basedir}/target/test-classes</targetPath>
-                    </testResource>
-                    <testResource>
-                        <directory>${project.basedir}/src/test/resources-jboss-managed</directory>
-                        <filtering>true</filtering>
-                        <targetPath>${project.basedir}/target/test-classes</targetPath>
-                    </testResource>
-                </testResources>
-            </build>
-        </profile>
-        <!-- END Arquillian Testing -->
-    </profiles>
 </project>

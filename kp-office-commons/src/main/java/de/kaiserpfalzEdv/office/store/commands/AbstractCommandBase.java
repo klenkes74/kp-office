@@ -24,7 +24,7 @@ import org.slf4j.LoggerFactory;
  * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;
  * @since 0.1.0
  */
-public abstract class AbstractCommandBase implements OfficeCommand {
+public abstract class AbstractCommandBase extends OfficeCommand {
     private static final Logger LOG = LoggerFactory.getLogger(AbstractCommandBase.class);
 
 }

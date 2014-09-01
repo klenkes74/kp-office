@@ -17,42 +17,28 @@
 package de.kaiserpfalzEdv.office.tenants.query;
 
 import de.kaiserpfalzEdv.office.OfficeSystemException;
-import de.kaiserpfalzEdv.office.commands.OfficeCommandException;
-import de.kaiserpfalzEdv.office.tenants.api.commands.TenantStoreCommand;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.amqp.core.Message;
+import org.springframework.amqp.core.MessageListener;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
-import javax.annotation.Resource;
-import javax.ejb.ActivationConfigProperty;
-import javax.ejb.MessageDriven;
-import javax.ejb.MessageDrivenContext;
 import javax.inject.Inject;
-import javax.jms.JMSException;
-import javax.jms.Message;
-import javax.jms.MessageListener;
+import javax.inject.Named;
 import javax.persistence.PersistenceException;
 
 /**
  * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;
  * @since 0.1.0
  */
-@MessageDriven(
-        activationConfig = {
-                @ActivationConfigProperty(propertyName = "destinationType", propertyValue = "java.jms.Topic"),
-                @ActivationConfigProperty(propertyName = "destination", propertyValue = "de.kaiserpfalz-edv.office.tenants.modifications"),
-                @ActivationConfigProperty(propertyName = "subscriptionDurability", propertyValue = "Durable")
-        }
-)
+@Named
 public class ReadModelMessageHandler implements MessageListener {
     private static final Logger LOG = LoggerFactory.getLogger(ReadModelMessageHandler.class);
 
     @Inject
     private ReadModelHandler handler;
 
-    @Resource
-    private MessageDrivenContext context;
 
 
     @PostConstruct
@@ -69,15 +55,12 @@ public class ReadModelMessageHandler implements MessageListener {
     @Override
     public void onMessage(final Message message) {
         try {
-            LOG.debug("Received message: {}", message.getJMSMessageID());
+            LOG.debug("Received message: {} - {}", message.getMessageProperties().getMessageId(), message);
 
-            TenantStoreCommand command = message.getBody(TenantStoreCommand.class);
 
-            command.execute(handler);
-        } catch (JMSException | OfficeCommandException | PersistenceException e) {
+        } catch (PersistenceException e) {
             LOG.error(e.getClass().getSimpleName() + " caught: " + e.getMessage(), e);
 
-            context.setRollbackOnly();
             throw new OfficeSystemException(e.getMessage());
             // No exception chaining to remove dependency from base frameworks for caller.
         }

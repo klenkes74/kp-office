@@ -29,4 +29,23 @@
 
     <artifactId>kp-office-backend-utils</artifactId>
     <name>KP Office - Modules - Backend Utilities ("Core-Commons")</name>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>de.kaiserpfalzEdv</groupId>
+                <artifactId>kp-shiro-bom</artifactId>
+                <version>${kp-commons.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-core</artifactId>
+        </dependency>
+    </dependencies>
 </project>

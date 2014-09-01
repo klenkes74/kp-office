@@ -29,31 +29,16 @@
 
     <artifactId>kp-office-modules</artifactId>
     <packaging>pom</packaging>
-    <name>KP Office - Modules - Parent</name>
+    <name>KP Office - Modules</name>
 
     <modules>
+        <module>kp-office-tenants</module>
         <module>kp-office-backend-utils</module>
         <module>kp-office-core</module>
-        <module>kp-office-store</module>
-        <module>kp-office-tenants</module>
         <module>kp-office-projects</module>
         <module>kp-office-address</module>
     </modules>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-ejb-plugin</artifactId>
-                <version>2.3</version>
-                <configuration>
-                    <ejbVersion>3.1</ejbVersion>
-                    <generateClient>true</generateClient>
-                    <filterDeploymentDescriptor>true</filterDeploymentDescriptor>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
 
     <dependencies>
         <dependency>
@@ -64,17 +49,6 @@
         <dependency>
             <groupId>de.kaiserpfalz-edv.office</groupId>
             <artifactId>kp-office-commons</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.shiro</groupId>
-            <artifactId>shiro-core</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.shiro</groupId>
-            <artifactId>shiro-web</artifactId>
-            <scope>test</scope>
         </dependency>
     </dependencies>
 </project>

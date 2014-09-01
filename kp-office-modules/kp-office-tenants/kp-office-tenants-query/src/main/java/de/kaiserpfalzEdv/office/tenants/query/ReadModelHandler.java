@@ -29,7 +29,7 @@ import org.slf4j.LoggerFactory;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
-import javax.ejb.Stateless;
+import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceUnit;
 
@@ -37,7 +37,7 @@ import javax.persistence.PersistenceUnit;
  * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;
  * @since 0.1.0
  */
-@Stateless
+@Named
 public class ReadModelHandler implements TenantCommandHandler {
     private static final Logger LOG = LoggerFactory.getLogger(ReadModelHandler.class);
 
@@ -64,7 +64,7 @@ public class ReadModelHandler implements TenantCommandHandler {
 
     @Override
     public void handle(CreateTenantCommand command) throws TenantCommandException {
-        TenantDTO tenant = new TenantDTO(command.getId(), command.getDisplayNumber(), command.getDisplayName());
+        TenantDTO tenant = new TenantDTO(command.getTenantId(), command.getDisplayNumber(), command.getDisplayName());
 
         em.persist(tenant);
 
@@ -75,7 +75,7 @@ public class ReadModelHandler implements TenantCommandHandler {
     public void handle(RenameTenantCommand command) throws TenantCommandException {
         TenantDTO tenant = em
                 .createNamedQuery("Tenant.ById", TenantDTO.class)
-                .setParameter("id", command.getId())
+                .setParameter("id", command.getTenantId())
                 .getSingleResult();
 
         tenant.setDisplayName(command.getDisplayName());
@@ -87,7 +87,7 @@ public class ReadModelHandler implements TenantCommandHandler {
     public void handle(RenumberTenantCommand command) throws TenantCommandException {
         TenantDTO tenant = em
                 .createNamedQuery("Tenant.ById", TenantDTO.class)
-                .setParameter("id", command.getId())
+                .setParameter("id", command.getTenantId())
                 .getSingleResult();
 
         tenant.setDisplayNumber(command.getDisplayNumber());
@@ -99,7 +99,7 @@ public class ReadModelHandler implements TenantCommandHandler {
     public void handle(DeleteTenantCommand command) throws TenantCommandException {
         TenantDTO tenant = em
                 .createNamedQuery("Tenant.ById", TenantDTO.class)
-                .setParameter("id", command.getId())
+                .setParameter("id", command.getTenantId())
                 .getSingleResult();
 
         em.remove(tenant);

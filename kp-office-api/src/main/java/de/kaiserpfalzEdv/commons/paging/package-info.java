@@ -15,7 +15,7 @@
  */
 
 /**
- *
+ * Generic page with paging information for the data set.
  *
  * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;
  * @version 0.1.0

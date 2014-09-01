@@ -28,8 +28,7 @@
     </parent>
 
     <artifactId>kp-office-tenants-api</artifactId>
-    <name>KP Office - Tenants - Client API</name>
-    <packaging>ejb</packaging>
+    <name>KP Office - Modules - Tenants - API</name>
 
     <properties>
         <project.root>../../..</project.root>

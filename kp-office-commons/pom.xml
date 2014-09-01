@@ -30,6 +30,19 @@
     <artifactId>kp-office-commons</artifactId>
     <name>KP Office - Shared Modules</name>
 
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>de.kaiserpfalzEdv</groupId>
+                <artifactId>kp-jee-bom</artifactId>
+                <version>${kp-commons.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
     <dependencies>
         <dependency>
             <groupId>de.kaiserpfalz-edv.office</groupId>
@@ -37,15 +50,8 @@
         </dependency>
 
         <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-core</artifactId>
-            <version>1.0.13</version>
-            <scope>test</scope>
+            <groupId>simple-jndi</groupId>
+            <artifactId>simple-jndi</artifactId>
         </dependency>
     </dependencies>
 </project>

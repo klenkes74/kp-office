@@ -66,19 +66,16 @@
         <dependency>
             <groupId>de.kaiserpfalz-edv.office</groupId>
             <artifactId>kp-office-core</artifactId>
-            <type>ejb-client</type>
         </dependency>
 
         <dependency>
             <groupId>de.kaiserpfalz-edv.office</groupId>
             <artifactId>kp-office-projects</artifactId>
-            <type>ejb-client</type>
         </dependency>
 
         <dependency>
             <groupId>de.kaiserpfalz-edv.office</groupId>
             <artifactId>kp-office-address</artifactId>
-            <type>ejb-client</type>
         </dependency>
 
 

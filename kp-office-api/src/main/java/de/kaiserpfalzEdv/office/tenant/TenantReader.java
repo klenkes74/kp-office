@@ -17,7 +17,7 @@
 package de.kaiserpfalzEdv.office.tenant;
 
 import de.kaiserpfalzEdv.commons.paging.Page;
-import de.kaiserpfalzEdv.commons.paging.PageRequest;
+import de.kaiserpfalzEdv.commons.paging.PagingRequest;
 
 import java.util.Set;
 import java.util.UUID;
@@ -31,5 +31,5 @@ public interface TenantReader {
 
     public Set<Tenant> getTenants();
 
-    public Page<Tenant> getTenants(final PageRequest request);
+    public Page<Tenant> getTenants(final PagingRequest request);
 }
