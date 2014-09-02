@@ -17,9 +17,7 @@
 package de.kaiserpfalzEdv.office.tenants.api.commands;
 
 import de.kaiserpfalzEdv.office.commands.OfficeCommand;
-import de.kaiserpfalzEdv.office.commands.OfficeCommandException;
-import de.kaiserpfalzEdv.office.commands.OfficeCommandHandler;
-import de.kaiserpfalzEdv.office.tenants.api.TenantCommandException;
+import de.kaiserpfalzEdv.office.tenant.Tenant;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.util.UUID;
@@ -29,8 +27,12 @@ import java.util.UUID;
  * @since 2014Q
  */
 public abstract class TenantStoreCommand extends OfficeCommand {
+    private static final long serialVersionUID = 1L;
+
+    public static final String TARGET_ENTITY = "Tenant";
+
     public String getTarget() {
-        return "Tenant";
+        return TARGET_ENTITY;
     }
 
     private UUID tenantId = UUID.randomUUID();
@@ -45,11 +47,10 @@ public abstract class TenantStoreCommand extends OfficeCommand {
     }
 
 
-    public abstract void execute(TenantCommandHandler context) throws TenantCommandException;
+    public abstract Tenant updateTenant(Tenant tenant);
 
-    @Override
-    public void execute(OfficeCommandHandler context) throws OfficeCommandException {
-        execute((TenantCommandHandler) context);
+    public boolean validTenant(boolean current) {
+        return current;
     }
 
 

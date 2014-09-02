@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  ~ Copyright (c) 2014 Kaiserpfalz EDV-Service, Roland T. Lichti
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="
+            http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd
+        ">
+    <changeSet id="schema-create-store-h2" author="klenkes74">
+        <preConditions>
+            <dbms type="H2"/>
+        </preConditions>
+
+        <comment>Creates the base schema</comment>
+
+        <sql>
+            CREATE SCHEMA IF NOT EXISTS ${db.schema};
+        </sql>
+
+        <rollback>
+            <sql>DROP SCHEMA ${db.schema};</sql>
+        </rollback>
+    </changeSet>
+
+
+    <changeSet id="kpo-tenant-store-inititial" author="klenkes74">
+        <comment>The initial tenant table.</comment>
+
+        <createTable tableName="TENANTS" schemaName="${db.schema}">
+            <!-- OfficeCommand -->
+            <column name="COMMAND_ID_" type="VARCHAR2(50)">
+                <constraints primaryKey="true" primaryKeyName="TENANT_PK"/>
+            </column>
+            <column name="TIMESTAMP_COMMAND_" type="TIMESTAMP"><constraints nullable="false"/></column>
+            <column name="TIMESTAMP_HANDLING_" type="TIMESTAMP"><constraints nullable="false"/></column>
+
+            <!-- TenantStoreCommand -->
+            <column name="COMMAND_" type="VARCHAR2(10)"><constraints nullable="false"/></column>
+            <column name="TENANT_ID_" type="VARCHAR2(50)"><constraints nullable="false"/></column>
+
+            <!-- Single Commands -->
+            <column name="CODE_" type="VARCHAR2(50)" />
+            <column name="DISPLAY_" type="VARCHAR2(100)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="kpo-tenant-store-tag-initial" author="klenkes74">
+        <tagDatabase tag="kpo-tenant-store-initial"/>
+    </changeSet>
+
+    <changeSet id="kpo-tenant-store-load-initial" author="klenkes74">
+        <comment>Load default tenant.</comment>
+
+        <loadData schemaName="${db.schema}"
+                  tableName="TENANTS"
+                  file="data/TENANTS-initial.csv"/>
+    </changeSet>
+
+    <changeSet id="kpo-tenant-store-tag-initial-data" author="klenkes74">
+        <tagDatabase tag="kpo-tenant-store-data-loaded"/>
+    </changeSet>
+</databaseChangeLog>

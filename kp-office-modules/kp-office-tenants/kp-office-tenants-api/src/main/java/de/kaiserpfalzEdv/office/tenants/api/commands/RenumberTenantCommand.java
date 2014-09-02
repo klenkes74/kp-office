@@ -16,6 +16,8 @@
 
 package de.kaiserpfalzEdv.office.tenants.api.commands;
 
+import de.kaiserpfalzEdv.office.tenant.Tenant;
+import de.kaiserpfalzEdv.office.tenant.TenantDTO;
 import de.kaiserpfalzEdv.office.tenants.api.TenantCommandException;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
@@ -61,8 +63,8 @@ public class RenumberTenantCommand extends TenantStoreCommand {
 
 
     @Override
-    public void execute(TenantCommandHandler context) throws TenantCommandException {
-        context.handle(this);
+    public Tenant updateTenant(Tenant tenant) {
+        return new TenantDTO(tenant.getId(), displayNumber, tenant.getDisplayName());
     }
 
 

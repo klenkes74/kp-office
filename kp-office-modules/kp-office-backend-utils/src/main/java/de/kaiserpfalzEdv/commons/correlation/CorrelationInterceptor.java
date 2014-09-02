@@ -36,12 +36,12 @@ public abstract class CorrelationInterceptor {
         LOG.debug("Correlating {} {}", new Object[]{ctx.getMethod(), ctx.getParameters()});
 
         final Class<? extends Object> runtimeClass = ctx.getTarget().getClass();
-        LOG.trace("Runtime extended classes: {}", runtimeClass.getClasses());
-        LOG.trace("Runtime implemented interfaces: {}", runtimeClass.getInterfaces());
+        LOG.trace("Runtime extended classes: {}", (Object[]) runtimeClass.getClasses());
+        LOG.trace("Runtime implemented interfaces: {}", (Object[]) runtimeClass.getInterfaces());
         LOG.trace("Runtime annotations ({}): {}", runtimeClass.getAnnotations().length, runtimeClass.getAnnotations());
         final Class<?> declaringClass = ctx.getMethod().getDeclaringClass();
         LOG.trace("Declaring class: {}", declaringClass);
-        LOG.trace("Declaring extended classes: {}", declaringClass.getClasses());
+        LOG.trace("Declaring extended classes: {}", (Object[]) declaringClass.getClasses());
         LOG.trace("Declaring annotations ({}): {}", declaringClass.getAnnotations().length, declaringClass.getAnnotations());
         String entityName;
         try {

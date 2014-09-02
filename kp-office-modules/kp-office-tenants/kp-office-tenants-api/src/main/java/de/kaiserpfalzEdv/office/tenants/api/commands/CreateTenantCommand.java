@@ -16,9 +16,8 @@
 
 package de.kaiserpfalzEdv.office.tenants.api.commands;
 
-import de.kaiserpfalzEdv.office.commands.OfficeCommandException;
-import de.kaiserpfalzEdv.office.commands.OfficeCommandHandler;
-import de.kaiserpfalzEdv.office.tenants.api.TenantCommandException;
+import de.kaiserpfalzEdv.office.tenant.Tenant;
+import de.kaiserpfalzEdv.office.tenant.TenantDTO;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
@@ -30,7 +29,7 @@ import static org.apache.commons.lang3.StringUtils.isNotBlank;
  * @since 0.1.0
  */
 public class CreateTenantCommand extends TenantStoreCommand {
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = -8403467871995004894L;
 
     private String displayNumber;
     private String displayName;
@@ -38,15 +37,6 @@ public class CreateTenantCommand extends TenantStoreCommand {
 
     @Deprecated // Only for JPA!
     protected CreateTenantCommand() {}
-
-
-    /**
-     * Creates a tenant creation command.
-     * @param displayName The display name for this tenant.
-     */
-    public CreateTenantCommand(final String displayName) {
-        setDisplayName(displayName);
-    }
 
 
     /**
@@ -63,7 +53,7 @@ public class CreateTenantCommand extends TenantStoreCommand {
 
 
     public String getDisplayNumber() {
-        return displayNumber;
+        return isNotBlank(displayNumber) ? displayNumber : getTenantId().toString();
     }
 
     public void setDisplayNumber(String displayNumber) {
@@ -81,14 +71,14 @@ public class CreateTenantCommand extends TenantStoreCommand {
     }
 
 
-    public void execute(TenantCommandHandler context) throws TenantCommandException {
-        context.handle(this);
+    @Override
+    public Tenant updateTenant(Tenant tenant) {
+        return new TenantDTO(getTenantId(), getDisplayNumber(), getDisplayName());
     }
 
-
     @Override
-    public void execute(OfficeCommandHandler context) throws OfficeCommandException {
-        execute((TenantCommandHandler) context);
+    public boolean validTenant(boolean current) {
+        return true;
     }
 
     @Override

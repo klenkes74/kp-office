@@ -16,6 +16,11 @@
 
 package de.kaiserpfalzEdv.office.tenant;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+
 import java.util.UUID;
 
 import static com.google.common.base.Preconditions.checkArgument;
@@ -98,5 +103,40 @@ public class TenantDTO implements Tenant {
         checkArgument(isNotBlank(displayNumber), "A tenant needs a unique display name!");
 
         this.displayName = displayName;
+    }
+
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (obj == this) {
+            return true;
+        }
+        if (obj.getClass() != getClass()) {
+            return false;
+        }
+        TenantDTO rhs = (TenantDTO) obj;
+        return new EqualsBuilder()
+                .append(this.id, rhs.id)
+                .isEquals();
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder()
+                .append(id)
+                .toHashCode();
+    }
+
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE)
+                .append("id", id)
+                .append("displayNumber", displayNumber)
+                .append("displayName", displayName)
+                .toString();
     }
 }

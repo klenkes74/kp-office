@@ -17,6 +17,7 @@
 package de.kaiserpfalzEdv.office.tenants.query.test;
 
 import de.kaiserpfalzEdv.office.tenants.api.commands.CreateTenantCommand;
+import de.kaiserpfalzEdv.office.tenants.api.commands.DeleteTenantCommand;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.amqp.AmqpException;
@@ -45,7 +46,11 @@ public class ReadModelMessageHandlerIT extends AbstractTestNGSpringContextTests 
     private AmqpTemplate amqpSender;
 
     public void sendMessage() {
-        amqpSender.convertAndSend(new CreateTenantCommand("testTenant"), new Process());
+        CreateTenantCommand createCommand = new CreateTenantCommand("I'14-002", "Second Tenant");
+        DeleteTenantCommand deleteCommand = new DeleteTenantCommand(createCommand.getTenantId());
+
+        amqpSender.convertAndSend(createCommand, new Process());
+        amqpSender.convertAndSend(deleteCommand, new Process());
     }
 
     public class Process implements MessagePostProcessor {

@@ -16,16 +16,16 @@
 
 package de.kaiserpfalzEdv.office.tenants.api.commands;
 
-import de.kaiserpfalzEdv.office.commands.OfficeCommandHandler;
 import de.kaiserpfalzEdv.office.tenants.api.TenantCommandException;
 
 /**
  * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;
  * @since 0.1.0
  */
-public interface TenantCommandHandler extends OfficeCommandHandler {
+public interface TenantCommandHandler {
     void handle(CreateTenantCommand command) throws TenantCommandException;
     void handle(RenameTenantCommand command) throws TenantCommandException;
     void handle(RenumberTenantCommand command) throws TenantCommandException;
     void handle(DeleteTenantCommand command) throws TenantCommandException;
+    void handle(SyncTenantCommand command) throws TenantCommandException;
 }

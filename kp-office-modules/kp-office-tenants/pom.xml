@@ -33,7 +33,7 @@
 
     <modules>
         <module>kp-office-tenants-api</module>
-        <module>kp-office-tenants-handler</module>
+        <module>kp-office-tenants-history</module>
         <module>kp-office-tenants-query</module>
         <module>kp-office-tenants-client</module>
     </modules>
@@ -102,11 +102,6 @@
         </dependency>
 
 
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-            <scope>test</scope>
-        </dependency>
 <!--
         <dependency>
             <groupId>org.aspectj</groupId>

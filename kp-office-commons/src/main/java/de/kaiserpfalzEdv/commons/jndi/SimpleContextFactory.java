@@ -57,7 +57,7 @@ public class SimpleContextFactory implements InitialContextFactory {
             configPath = (String) env.get(SimpleContext.SIMPLE_ROOT);
         }
 
-        LOG.info("***** Loading configuration from: {}", configPath);
+        LOG.debug("***** Loading configuration from: {}", configPath);
 
         return new SimpleContext(env);
     }

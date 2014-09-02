@@ -16,7 +16,8 @@
 
 package de.kaiserpfalzEdv.office.tenants.api.commands;
 
-import de.kaiserpfalzEdv.office.tenants.api.TenantCommandException;
+import de.kaiserpfalzEdv.office.tenant.Tenant;
+import de.kaiserpfalzEdv.office.tenant.TenantDTO;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.util.UUID;
@@ -62,11 +63,9 @@ public class RenameTenantCommand extends TenantStoreCommand {
 
 
     @Override
-    public void execute(TenantCommandHandler context) throws TenantCommandException {
-        context.handle(this);
+    public Tenant updateTenant(Tenant tenant) {
+        return new TenantDTO(tenant.getId(), tenant.getDisplayNumber(), displayName);
     }
-
-
 
 
     @Override

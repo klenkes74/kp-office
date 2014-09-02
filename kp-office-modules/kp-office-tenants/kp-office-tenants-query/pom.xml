@@ -32,7 +32,7 @@
 
     <properties>
         <project.root>../../..</project.root>
-        <db.schema>tenantquery</db.schema>
+        <db.schema>KPODATA</db.schema>
 
         <database.changelog>${project.basedir}/target/classes/ddl/db-changelog.xml</database.changelog>
     </properties>
@@ -152,11 +152,6 @@
         </dependency>
 
 
-        <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-core</artifactId>
-            <version>1.9.5</version>
-        </dependency>
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>

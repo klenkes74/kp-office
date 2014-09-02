@@ -46,14 +46,6 @@ public abstract class OfficeCommand implements Serializable {
      */
     public abstract String getTarget();
 
-    /**
-     * Executes the command. Will be called by a handler and normally be implemented using a visitor pattern.
-     *
-     * @param context The handler for the visitor pattern.
-     * @throws OfficeCommandException The only allowed type of exception to be thrown.
-     */
-    public abstract void execute(final OfficeCommandHandler context) throws OfficeCommandException;
-
 
 
     /**

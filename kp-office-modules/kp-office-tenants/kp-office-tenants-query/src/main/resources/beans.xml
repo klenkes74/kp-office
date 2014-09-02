@@ -126,30 +126,43 @@
 
 
 
-    <rabbit:connection-factory id="connectionFactory" host="localhost" port="5672" virtual-host="/" username="test" password="test1234"/>
+    <rabbit:connection-factory id="connectionFactory" host="${amqp.host}" port="${amqp.port}" virtual-host="${amqp.virtual}" username="${amqp.user}" password="${amqp.password}"/>
     <rabbit:admin connection-factory="connectionFactory"/>
 
-    <rabbit:template id="amqpTemplate" connection-factory="connectionFactory" exchange="de.kaiserpfalz-edv.office.tenants.modify">
-    </rabbit:template>
 
+    <!-- Change notification configuration -->
     <rabbit:listener-container connection-factory="connectionFactory">
-        <rabbit:listener queues="tenants.modify.query" ref="readModelMessageHandler" method="onMessage"/>
+        <rabbit:listener queues="kpo.tenants.notification.writer" ref="queryModelHandler" method="handle"/>
     </rabbit:listener-container>
-
-    <rabbit:queue id="tenants.modify.query" name="de.kaiserpfalz-edv.office.tenants.modify.query" durable="true">
+    <rabbit:queue id="kpo.tenants.notification.writer" name="${amqp.domain}.office.tenants.notification.writer.${host}" durable="true">
         <rabbit:queue-arguments>
             <entry key="x-message-ttl" value="3600000" value-type="java.lang.Long"/>
-            <entry key="x-dead-letter-routing-key" value="tenants.modify.query" value-type="java.lang.String"/>
+            <entry key="x-expires" value="7200000" value-type="java.lang.Long"/>
+            <entry key="x-ha-policy" value="all"/>
+            <entry key="x-dead-letter-routing-key" value="tenants.notification.${host}"/>
         </rabbit:queue-arguments>
     </rabbit:queue>
 
-    <!--
-    <bean id="jsonConverterWithDefaultType" class="org.springframework.amqp.support.converter.JsonMessageConverter">
-        <property name="classMapper">
-            <bean class="org.springframework.amqp.support.converter.DefaultClassMapper">
-                <property name="defaultType" value="tenant.modifyCommmand"/>
-            </bean>
-        </property>
-    </bean>
-    -->
+
+    <!-- Query configuration -->
+    <rabbit:listener-container connection-factory="connectionFactory">
+        <rabbit:listener queues="kpo.tenants.query" ref="queryModelHandler" method="handle"/>
+    </rabbit:listener-container>
+    <rabbit:queue id="kpo.tenants.query" name="${amqp.domain}.office.tenants.query.reader" durable="true">
+        <rabbit:queue-arguments>
+            <entry key="x-message-ttl" value="5000" value-type="java.lang.Long"/>
+            <entry key="x-ha-policy" value="all"/>
+            <entry key="x-dead-letter-routing-key" value="tenants.query"/>
+        </rabbit:queue-arguments>
+    </rabbit:queue>
+
+
+    <rabbit:template id="modifyTenant" connection-factory="connectionFactory" exchange="${amqp.domain}.office.tenants.modify" />
+    <rabbit:topic-exchange id="kpo.tenants.modify" name="${amqp.domain}.office.tenants.modify" durable="true">
+        <rabbit:exchange-arguments>
+            <entry key="x-message-ttl" value="3600000" value-type="java.lang.Long"/>
+            <entry key="x-expires" value="7200000" value-type="java.lang.Long"/>
+            <entry key="x-ha-policy" value="all"/>
+        </rabbit:exchange-arguments>
+    </rabbit:topic-exchange>
 </beans>

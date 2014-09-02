@@ -16,38 +16,37 @@
 
 package de.kaiserpfalzEdv.office.tenants.query.test;
 
-import de.kaiserpfalzEdv.office.tenants.api.TenantCommandException;
+import de.kaiserpfalzEdv.office.tenants.api.TenantNotificationException;
 import de.kaiserpfalzEdv.office.tenants.api.commands.CreateTenantCommand;
-import de.kaiserpfalzEdv.office.tenants.api.commands.TenantCommandHandler;
-import de.kaiserpfalzEdv.office.tenants.query.ReadModelHandler;
+import de.kaiserpfalzEdv.office.tenants.api.notifications.CreateTenantNotification;
+import de.kaiserpfalzEdv.office.tenants.query.QueryModelHandler;
 import de.kaiserpfalzEdv.office.tenants.query.TenantRepository;
-import org.mockito.InjectMocks;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
 
 /**
  * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;
  * @since 0.1.0
  */
-@Test
 public class ReadModelHandlerTest {
     private static final Logger LOG = LoggerFactory.getLogger(ReadModelHandlerTest.class);
 
-    @InjectMocks
     private TenantRepository repository;
 
-    private TenantCommandHandler service;
+    private QueryModelHandler service;
 
 
-    public void createTenant() throws TenantCommandException {
-        service.handle(new CreateTenantCommand("testName"));
+    public void createTenant() throws TenantNotificationException {
+        CreateTenantCommand cmd = new CreateTenantCommand("I'14-002", "Tenant Test");
+        CreateTenantNotification notification = new CreateTenantNotification(cmd, cmd.updateTenant(null));
+
+        service.handle(notification);
     }
 
 
     @BeforeMethod
     protected void createService() {
-        service = new ReadModelHandler(repository);
+        service = new QueryModelHandler(repository);
     }
 }

@@ -16,7 +16,7 @@
 
 package de.kaiserpfalzEdv.office.tenants.api.commands;
 
-import de.kaiserpfalzEdv.office.tenants.api.TenantCommandException;
+import de.kaiserpfalzEdv.office.tenant.Tenant;
 
 import java.util.UUID;
 
@@ -42,7 +42,12 @@ public class DeleteTenantCommand extends TenantStoreCommand {
 
 
     @Override
-    public void execute(TenantCommandHandler context) throws TenantCommandException {
-        context.handle(this);
+    public Tenant updateTenant(Tenant tenant) {
+        return tenant;
+    }
+
+    @Override
+    public boolean validTenant(boolean current) {
+        return false;
     }
 }
