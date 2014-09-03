@@ -57,6 +57,14 @@
         <dependencies>
             <dependency>
                 <groupId>de.kaiserpfalzEdv</groupId>
+                <artifactId>kp-misc-bom</artifactId>
+                <version>${kp-commons.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>de.kaiserpfalzEdv</groupId>
                 <artifactId>kp-spring-data-bom</artifactId>
                 <version>${kp-commons.version}</version>
                 <type>pom</type>
@@ -149,6 +157,16 @@
             <groupId>org.aspectj</groupId>
             <artifactId>aspectjrt</artifactId>
             <version>1.6.12</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.codehaus.jackson</groupId>
+            <artifactId>jackson-mapper-asl</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.codehaus.jackson</groupId>
+            <artifactId>jackson-core-asl</artifactId>
         </dependency>
 
 

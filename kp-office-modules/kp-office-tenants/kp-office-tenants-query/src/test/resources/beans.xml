@@ -136,37 +136,55 @@
 
 
 
-    <rabbit:connection-factory id="connectionFactory" host="${amqp.host}" port="${amqp.port}" virtual-host="${amqp.virtual}" username="${amqp.user}" password="${amqp.password}"/>
-    <rabbit:admin connection-factory="connectionFactory"/>
+    <!-- Infrastructure -->
+    <rabbit:connection-factory id="amqp.cf" host="${amqp.host}" port="${amqp.port}" virtual-host="${amqp.virtual}" username="${amqp.user}" password="${amqp.password}"/>
+    <rabbit:admin id="amqp.adm" connection-factory="amqp.cf" auto-startup="true" ignore-declaration-exceptions="false"/>
 
 
-    <!-- Change notification configuration -->
-    <rabbit:listener-container connection-factory="connectionFactory">
+    <!-- Sender -->
+    <rabbit:template id="amqp.tenant.notification" exchange="${amqp.domain}.office.tenants.notification" connection-factory="amqp.cf"/>
+    <rabbit:template id="amqp.tenant.query" exchange="${amqp.domain}.office.tenants.query" connection-factory="amqp.cf" />
+
+
+    <!-- Change Notification Configuration -->
+    <rabbit:listener-container connection-factory="amqp.cf">
         <rabbit:listener queues="kpo.tenants.notification.writer" ref="queryMessageHandler" method="handle"/>
     </rabbit:listener-container>
     <rabbit:queue id="kpo.tenants.notification.writer" name="${amqp.domain}.office.tenants.notification.writer.${host}" durable="true">
         <rabbit:queue-arguments>
-            <entry key="x-message-ttl" value="3600000" value-type="java.lang.Long"/>
-            <entry key="x-expires" value="7200000" value-type="java.lang.Long"/>
             <entry key="x-dead-letter-exchange" value="de.kaiserpfalz-edv.office.dlq"/>
             <entry key="x-dead-letter-routing-key" value="tenants.notification.${host}"/>
-            <entry key="durable" value="true"/>
         </rabbit:queue-arguments>
     </rabbit:queue>
 
+    <rabbit:topic-exchange id="kpo.tenants.notification" name="${amqp.domain}.office.tenants.notification">
+        <rabbit:exchange-arguments>
+            <entry key="alternate-exchange" value="de.kaiserpfalz-edv.office.dlq"/>
+            <entry key="durable" value="true"/>
+        </rabbit:exchange-arguments>
 
-    <!-- Query configuration -->
-    <rabbit:listener-container connection-factory="connectionFactory">
+        <rabbit:bindings>
+            <rabbit:binding pattern="#" queue="${amqp.domain}.office.tenants.notification.writer.${host}" />
+        </rabbit:bindings>
+    </rabbit:topic-exchange>
+
+
+    <!-- Query Configuration -->
+    <rabbit:listener-container connection-factory="amqp.cf" acknowledge="manual" requeue-rejected="false">
         <rabbit:listener queues="kpo.tenants.query" ref="queryMessageHandler" method="handle"/>
     </rabbit:listener-container>
-    <rabbit:queue id="kpo.tenants.query" name="${amqp.domain}.office.tenants.query.reader" durable="true">
+
+    <rabbit:topic-exchange id="kpo.tenants.query" name="${amqp.domain}.office.tenants.query" durable="false">
+        <rabbit:bindings>
+            <rabbit:binding pattern="#" queue="${amqp.domain}.office.tenants.query.reader" />
+        </rabbit:bindings>
+    </rabbit:topic-exchange>
+    <rabbit:queue id="kpo.tenants.query" name="${amqp.domain}.office.tenants.query.reader" durable="false">
         <rabbit:queue-arguments>
             <entry key="x-dead-letter-exchange" value="de.kaiserpfalz-edv.office.dlq"/>
             <entry key="x-dead-letter-routing-key" value="tenants.query"/>
-            <entry key="policy" value="query-destinations"/>
-            <!--<entry key="x-message-ttl" value="10000" value-type="java.lang.Long"/>-->
-            <!--<entry key="x-ha-mode" value="all"/>-->
-            <!--<entry key="x-ha-sync-mode" value="automatic"/>-->
         </rabbit:queue-arguments>
     </rabbit:queue>
+
+    <!--<bean id="amqp.msg-converter" class="org.springframework.amqp.support.converter.JsonMessageConverter" />-->
 </beans>

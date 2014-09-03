@@ -16,8 +16,13 @@
 
 package de.kaiserpfalzEdv.office.tenants.query.test;
 
+import de.kaiserpfalzEdv.office.tenant.Tenant;
 import de.kaiserpfalzEdv.office.tenants.api.commands.CreateTenantCommand;
 import de.kaiserpfalzEdv.office.tenants.api.commands.DeleteTenantCommand;
+import de.kaiserpfalzEdv.office.tenants.api.commands.TenantQueryByNumber;
+import de.kaiserpfalzEdv.office.tenants.api.commands.TenantQueryCommand;
+import de.kaiserpfalzEdv.office.tenants.api.notifications.CreateTenantNotification;
+import de.kaiserpfalzEdv.office.tenants.api.notifications.DeleteTenantNotification;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.amqp.AmqpException;
@@ -31,6 +36,7 @@ import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.testng.annotations.Test;
 
 import javax.inject.Inject;
+import javax.inject.Named;
 import java.util.UUID;
 
 /**
@@ -39,18 +45,37 @@ import java.util.UUID;
  */
 @Test
 @ContextConfiguration("/beans.xml")
-public class ReadModelMessageHandlerIT extends AbstractTestNGSpringContextTests {
-    private static final Logger LOG = LoggerFactory.getLogger(ReadModelMessageHandlerIT.class);
+public class QueryHandlerIT extends AbstractTestNGSpringContextTests {
+    private static final Logger LOG = LoggerFactory.getLogger(QueryHandlerIT.class);
 
     @Inject
-    private AmqpTemplate amqpSender;
+    @Named("amqp.tenant.notification")
+    private AmqpTemplate amqpNotification;
 
-    public void sendMessage() {
-        CreateTenantCommand createCommand = new CreateTenantCommand("I'14-002", "Second Tenant");
-        DeleteTenantCommand deleteCommand = new DeleteTenantCommand(createCommand.getTenantId());
+    @Inject
+    @Named("amqp.tenant.query")
+    private AmqpTemplate amqpQuery;
 
-        amqpSender.convertAndSend(createCommand, new Process());
-        amqpSender.convertAndSend(deleteCommand, new Process());
+    @Test
+    public void createTenant() {
+        CreateTenantCommand command = new CreateTenantCommand("I'14-002", "Second Tenant");
+        CreateTenantNotification notification = new CreateTenantNotification(command, command.updateTenant(null));
+
+        amqpNotification.convertAndSend(notification, new Process());
+    }
+
+    @Test(dependsOnMethods = {"createTenant"})
+    public void deleteTenant() {
+        TenantQueryCommand query = new TenantQueryByNumber("I'14-002");
+
+        Tenant tenant = (Tenant) amqpQuery.convertSendAndReceive(query, new Process());
+        LOG.info("Queried for tenant: {}", tenant);
+
+        DeleteTenantCommand cmd = new DeleteTenantCommand(tenant.getId());
+        DeleteTenantNotification notification = new DeleteTenantNotification(cmd, tenant);
+
+        amqpNotification.convertAndSend(notification, new Process());
+        LOG.info("Deleted tenant: {}", tenant);
     }
 
     public class Process implements MessagePostProcessor {

@@ -220,6 +220,11 @@
             <artifactId>logback-classic</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>net.logstash.logback</groupId>
+            <artifactId>logstash-logback-encoder</artifactId>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <dependencyManagement>
@@ -292,7 +297,7 @@
             </dependency>
             <dependency>
                 <groupId>de.kaiserpfalz-edv.office</groupId>
-                <artifactId>kp-office-tenants-handler</artifactId>
+                <artifactId>kp-office-tenants-history</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>

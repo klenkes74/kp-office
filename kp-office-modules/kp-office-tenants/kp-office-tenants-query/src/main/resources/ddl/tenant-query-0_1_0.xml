@@ -55,7 +55,7 @@
     </changeSet>
 
     <changeSet id="kpo-tenant-query-tag-initial" author="klenkes74">
-        <tagDatabase tag="kp-office-initial"/>
+        <tagDatabase tag="kpo-tenants-query-initial"/>
     </changeSet>
 
     <changeSet id="kpo-tenant-query-load-initial" author="klenkes74">
@@ -67,6 +67,6 @@
     </changeSet>
 
     <changeSet id="kpo-tenant-query-tag-initial-data" author="klenkes74">
-        <tagDatabase tag="kp-office-data-loaded"/>
+        <tagDatabase tag="kpo-tenants-query-data-loaded"/>
     </changeSet>
 </databaseChangeLog>

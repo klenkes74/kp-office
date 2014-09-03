@@ -51,6 +51,17 @@
             <groupId>de.kaiserpfalz-edv.office</groupId>
             <artifactId>kp-office-tenants-api</artifactId>
         </dependency>
+        <dependency>
+            <groupId>de.kaiserpfalz-edv.office</groupId>
+            <artifactId>kp-office-tenants-history</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>de.kaiserpfalz-edv.office</groupId>
+            <artifactId>kp-office-tenants-query</artifactId>
+            <scope>test</scope>
+        </dependency>
+
 
         <dependency>
             <groupId>org.springframework</groupId>

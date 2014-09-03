@@ -19,7 +19,7 @@ package de.kaiserpfalzEdv.office.tenants.query.test;
 import de.kaiserpfalzEdv.office.tenants.api.TenantNotificationException;
 import de.kaiserpfalzEdv.office.tenants.api.commands.CreateTenantCommand;
 import de.kaiserpfalzEdv.office.tenants.api.notifications.CreateTenantNotification;
-import de.kaiserpfalzEdv.office.tenants.query.QueryModelHandler;
+import de.kaiserpfalzEdv.office.tenants.query.QueryMessageHandler;
 import de.kaiserpfalzEdv.office.tenants.query.TenantRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -34,7 +34,7 @@ public class ReadModelHandlerTest {
 
     private TenantRepository repository;
 
-    private QueryModelHandler service;
+    private QueryMessageHandler service;
 
 
     public void createTenant() throws TenantNotificationException {
@@ -47,6 +47,6 @@ public class ReadModelHandlerTest {
 
     @BeforeMethod
     protected void createService() {
-        service = new QueryModelHandler(repository);
+        service = null;
     }
 }
