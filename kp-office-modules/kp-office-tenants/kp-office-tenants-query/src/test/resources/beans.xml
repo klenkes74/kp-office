@@ -146,11 +146,13 @@
     <rabbit:template id="amqp.tenant.query" exchange="${amqp.domain}.office.tenants.query" connection-factory="amqp.cf" message-converter="amqp.msg-converter"/>
 
 
+    <!-- Message Handler -->
+    <bean id="tenantQueryHandler" class="de.kaiserpfalzEdv.office.tenants.query.QueryMessageHandlerImpl"/>
+
     <!-- Change Notification Configuration -->
     <rabbit:listener-container connection-factory="amqp.cf" acknowledge="manual" message-converter="amqp.msg-converter">
         <rabbit:listener queues="kpo.tenants.notification.writer" ref="tenantQueryHandler" method="handle"/>
     </rabbit:listener-container>
-    <bean id="tenantQueryHandler" class="de.kaiserpfalzEdv.office.tenants.query.QueryMessageHandlerImpl"/>
     <rabbit:queue id="kpo.tenants.notification.writer" name="${amqp.domain}.office.tenants.notification.writer.${host}" durable="true">
         <rabbit:queue-arguments>
             <entry key="x-dead-letter-exchange" value="de.kaiserpfalz-edv.office.dlq"/>
