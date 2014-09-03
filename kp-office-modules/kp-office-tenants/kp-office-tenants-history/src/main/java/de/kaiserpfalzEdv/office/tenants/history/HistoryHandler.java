@@ -16,21 +16,21 @@
 
 package de.kaiserpfalzEdv.office.tenants.history;
 
-import de.kaiserpfalzEdv.office.tenant.NoSuchTenantException;
-import de.kaiserpfalzEdv.office.tenant.OnlyInvalidTenantFoundException;
-import de.kaiserpfalzEdv.office.tenant.Tenant;
-import de.kaiserpfalzEdv.office.tenant.TenantDTO;
-import de.kaiserpfalzEdv.office.tenants.api.TenantCommandException;
-import de.kaiserpfalzEdv.office.tenants.api.commands.CreateTenantCommand;
-import de.kaiserpfalzEdv.office.tenants.api.commands.DeleteTenantCommand;
-import de.kaiserpfalzEdv.office.tenants.api.commands.RenameTenantCommand;
-import de.kaiserpfalzEdv.office.tenants.api.commands.RenumberTenantCommand;
-import de.kaiserpfalzEdv.office.tenants.api.commands.SyncTenantCommand;
-import de.kaiserpfalzEdv.office.tenants.api.commands.TenantStoreCommand;
-import de.kaiserpfalzEdv.office.tenants.api.notifications.CreateTenantNotification;
-import de.kaiserpfalzEdv.office.tenants.api.notifications.DeleteTenantNotification;
-import de.kaiserpfalzEdv.office.tenants.api.notifications.SyncTenantNotification;
-import de.kaiserpfalzEdv.office.tenants.api.notifications.UpdateTenantNotification;
+import de.kaiserpfalzEdv.office.tenants.NoSuchTenantException;
+import de.kaiserpfalzEdv.office.tenants.OnlyInvalidTenantFoundException;
+import de.kaiserpfalzEdv.office.tenants.Tenant;
+import de.kaiserpfalzEdv.office.tenants.TenantDTO;
+import de.kaiserpfalzEdv.office.tenants.TenantCommandException;
+import de.kaiserpfalzEdv.office.tenants.commands.CreateTenantCommand;
+import de.kaiserpfalzEdv.office.tenants.commands.DeleteTenantCommand;
+import de.kaiserpfalzEdv.office.tenants.commands.RenameTenantCommand;
+import de.kaiserpfalzEdv.office.tenants.commands.RenumberTenantCommand;
+import de.kaiserpfalzEdv.office.tenants.commands.SyncTenantCommand;
+import de.kaiserpfalzEdv.office.tenants.commands.TenantStoreCommand;
+import de.kaiserpfalzEdv.office.tenants.notifications.CreateTenantNotification;
+import de.kaiserpfalzEdv.office.tenants.notifications.DeleteTenantNotification;
+import de.kaiserpfalzEdv.office.tenants.notifications.SyncTenantNotification;
+import de.kaiserpfalzEdv.office.tenants.notifications.UpdateTenantNotification;
 import de.kaiserpfalzEdv.office.tenants.store.CreateTenantCommandRepository;
 import de.kaiserpfalzEdv.office.tenants.store.DeleteTenantCommandRepository;
 import de.kaiserpfalzEdv.office.tenants.store.RenameTenantCommandRepository;

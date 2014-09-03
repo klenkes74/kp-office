@@ -17,7 +17,7 @@
 package de.kaiserpfalzEdv.office.address;
 
 import de.kaiserpfalzEdv.office.projects.Project;
-import de.kaiserpfalzEdv.office.tenant.Tenant;
+import de.kaiserpfalzEdv.office.tenants.Tenant;
 
 import java.util.Collections;
 import java.util.HashSet;

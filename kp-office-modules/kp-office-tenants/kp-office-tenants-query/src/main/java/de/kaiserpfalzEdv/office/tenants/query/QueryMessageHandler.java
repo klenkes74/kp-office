@@ -16,125 +16,27 @@
 
 package de.kaiserpfalzEdv.office.tenants.query;
 
-import de.kaiserpfalzEdv.office.tenant.Tenant;
-import de.kaiserpfalzEdv.office.tenants.api.TenantCommandException;
-import de.kaiserpfalzEdv.office.tenants.api.TenantNotificationException;
-import de.kaiserpfalzEdv.office.tenants.api.commands.TenantQueryById;
-import de.kaiserpfalzEdv.office.tenants.api.commands.TenantQueryByName;
-import de.kaiserpfalzEdv.office.tenants.api.commands.TenantQueryByNumber;
-import de.kaiserpfalzEdv.office.tenants.api.notifications.CreateTenantNotification;
-import de.kaiserpfalzEdv.office.tenants.api.notifications.DeleteTenantNotification;
-import de.kaiserpfalzEdv.office.tenants.api.notifications.SyncTenantNotification;
-import de.kaiserpfalzEdv.office.tenants.api.notifications.TenantNotificationHandler;
-import de.kaiserpfalzEdv.office.tenants.api.notifications.UpdateTenantNotification;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.amqp.AmqpRejectAndDontRequeueException;
-
-import javax.annotation.PreDestroy;
-import javax.inject.Inject;
-import javax.inject.Named;
+import de.kaiserpfalzEdv.office.tenants.Tenant;
+import de.kaiserpfalzEdv.office.tenants.commands.TenantQueryById;
+import de.kaiserpfalzEdv.office.tenants.commands.TenantQueryByName;
+import de.kaiserpfalzEdv.office.tenants.commands.TenantQueryByNumber;
+import de.kaiserpfalzEdv.office.tenants.notifications.CreateTenantNotification;
+import de.kaiserpfalzEdv.office.tenants.notifications.DeleteTenantNotification;
+import de.kaiserpfalzEdv.office.tenants.notifications.SyncTenantNotification;
+import de.kaiserpfalzEdv.office.tenants.notifications.UpdateTenantNotification;
 
 /**
- * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;
- * @since 0.1.0
+ * @author klenkes
+ * @since 2014Q
  */
-@Named
-public class QueryMessageHandler implements TenantNotificationHandler {
-    private static final Logger LOG = LoggerFactory.getLogger(QueryMessageHandler.class);
+public interface QueryMessageHandler {
+    public void handle(CreateTenantNotification command);
+    public void handle(UpdateTenantNotification command);
+    public void handle(DeleteTenantNotification command);
+    public void handle(SyncTenantNotification command);
 
 
-    private QueryModelModifier modifier;
-    private QueryExecutor queryExecutor;
-
-    @Inject
-    public QueryMessageHandler(
-            final QueryModelModifier modifier,
-            final QueryExecutor queryExecutor
-    ) {
-        this.modifier = modifier;
-        this.queryExecutor = queryExecutor;
-
-        LOG.trace("Created: {}", this);
-    }
-
-    @PreDestroy
-    public void close() {
-        LOG.trace("Destroyed: {}", this.toString());
-    }
-
-
-    @Override
-    public void handle(CreateTenantNotification command)  {
-        try {
-            modifier.handle(command);
-        } catch (RuntimeException | TenantNotificationException e) {
-            LOG.error(e.getClass().getSimpleName() + " caught: " + e.getMessage(), e);
-
-            throw new AmqpRejectAndDontRequeueException(e);
-        }
-    }
-
-    @Override
-    public void handle(UpdateTenantNotification command)  {
-        try {
-            modifier.handle(command);
-        } catch (RuntimeException | TenantNotificationException e) {
-            LOG.error(e.getClass().getSimpleName() + " caught: " + e.getMessage(), e);
-
-            throw new AmqpRejectAndDontRequeueException(e);
-        }
-    }
-
-    @Override
-    public void handle(DeleteTenantNotification command) {
-        try {
-            modifier.handle(command);
-        } catch (RuntimeException | TenantNotificationException e) {
-            LOG.error(e.getClass().getSimpleName() + " caught: " + e.getMessage(), e);
-
-            throw new AmqpRejectAndDontRequeueException(e);
-        }
-    }
-
-    public void handle(SyncTenantNotification command) {
-        try {
-            modifier.handle(command);
-        } catch (RuntimeException | TenantNotificationException e) {
-            LOG.error(e.getClass().getSimpleName() + " caught: " + e.getMessage(), e);
-
-            throw new AmqpRejectAndDontRequeueException(e);
-        }
-    }
-
-
-    public Tenant handle(final TenantQueryById command) {
-        try {
-            return queryExecutor.handle(command);
-        } catch (RuntimeException | TenantCommandException  e) {
-            LOG.error(e.getClass().getSimpleName() + " caught: " + e.getMessage(), e);
-
-            throw new AmqpRejectAndDontRequeueException(e);
-        }
-    }
-
-    public Tenant handle(final TenantQueryByNumber command) {
-        try {
-            return queryExecutor.handle(command);
-        } catch (RuntimeException | TenantCommandException  e) {
-            LOG.error(e.getClass().getSimpleName() + " caught: " + e.getMessage(), e);
-
-            throw new AmqpRejectAndDontRequeueException(e);
-        }
-    }
-
-    public Tenant handle(final TenantQueryByName command) {
-        try {
-            return queryExecutor.handle(command);
-        } catch (RuntimeException | TenantCommandException  e) {
-            LOG.error(e.getClass().getSimpleName() + " caught: " + e.getMessage(), e);
-
-            throw new AmqpRejectAndDontRequeueException(e);
-        }
-    }
+    public Tenant handle(final TenantQueryById command);
+    public Tenant handle(final TenantQueryByNumber command);
+    public Tenant handle(final TenantQueryByName command);
 }

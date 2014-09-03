@@ -42,6 +42,8 @@ public abstract class OfficeNotification implements Serializable {
     /** The timestamp this notification has been created. */
     private ZonedDateTime notificationTimestamp = ZonedDateTime.now();
 
+    @Deprecated // Only for JAX-B, Jackson, JPA!
+    public OfficeNotification() {}
 
     public OfficeNotification(final UUID commandId) {
         setCommandId(commandId);

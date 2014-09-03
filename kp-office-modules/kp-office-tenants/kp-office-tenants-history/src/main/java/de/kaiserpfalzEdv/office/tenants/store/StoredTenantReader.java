@@ -16,10 +16,10 @@
 
 package de.kaiserpfalzEdv.office.tenants.store;
 
-import de.kaiserpfalzEdv.office.tenant.NoSuchTenantException;
-import de.kaiserpfalzEdv.office.tenant.OnlyInvalidTenantFoundException;
-import de.kaiserpfalzEdv.office.tenant.Tenant;
-import de.kaiserpfalzEdv.office.tenants.api.commands.TenantStoreCommand;
+import de.kaiserpfalzEdv.office.tenants.NoSuchTenantException;
+import de.kaiserpfalzEdv.office.tenants.OnlyInvalidTenantFoundException;
+import de.kaiserpfalzEdv.office.tenants.Tenant;
+import de.kaiserpfalzEdv.office.tenants.commands.TenantStoreCommand;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

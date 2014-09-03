@@ -16,7 +16,7 @@
 
 package de.kaiserpfalzEdv.office.tenants.store;
 
-import de.kaiserpfalzEdv.office.tenants.api.commands.DeleteTenantCommand;
+import de.kaiserpfalzEdv.office.tenants.commands.DeleteTenantCommand;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -16,7 +16,7 @@
 
 package de.kaiserpfalzEdv.office.tenants.store;
 
-import de.kaiserpfalzEdv.office.tenants.api.commands.TenantStoreCommand;
+import de.kaiserpfalzEdv.office.tenants.commands.TenantStoreCommand;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 

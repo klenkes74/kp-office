@@ -19,7 +19,7 @@ package de.kaiserpfalzEdv.office.projects;
 import de.kaiserpfalzEdv.office.KPOEntity;
 import de.kaiserpfalzEdv.office.Link;
 import de.kaiserpfalzEdv.office.address.Person;
-import de.kaiserpfalzEdv.office.tenant.TenantHolder;
+import de.kaiserpfalzEdv.office.tenants.TenantHolder;
 
 import java.util.List;
 import java.util.Map;

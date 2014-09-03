@@ -16,66 +16,20 @@
 
 package de.kaiserpfalzEdv.office.tenants.query;
 
-import de.kaiserpfalzEdv.office.tenant.Tenant;
-import de.kaiserpfalzEdv.office.tenants.api.TenantCommandException;
-import de.kaiserpfalzEdv.office.tenants.api.commands.TenantQueryById;
-import de.kaiserpfalzEdv.office.tenants.api.commands.TenantQueryByName;
-import de.kaiserpfalzEdv.office.tenants.api.commands.TenantQueryByNumber;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import javax.annotation.PreDestroy;
-import javax.inject.Inject;
-import javax.inject.Named;
+import de.kaiserpfalzEdv.office.tenants.Tenant;
+import de.kaiserpfalzEdv.office.tenants.TenantCommandException;
+import de.kaiserpfalzEdv.office.tenants.commands.TenantQueryById;
+import de.kaiserpfalzEdv.office.tenants.commands.TenantQueryByName;
+import de.kaiserpfalzEdv.office.tenants.commands.TenantQueryByNumber;
 
 /**
- * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;
- * @since 0.1.0
+ * @author klenkes
+ * @since 2014Q
  */
-@Named
-public class QueryExecutor {
-    private static final Logger LOG = LoggerFactory.getLogger(QueryExecutor.class);
+public interface QueryExecutor {
+    Tenant handle(TenantQueryById command) throws TenantCommandException;
 
+    Tenant handle(TenantQueryByNumber command) throws TenantCommandException;
 
-    private TenantRepository repository;
-
-    @Inject
-    public QueryExecutor(final TenantRepository repository) {
-        this.repository = repository;
-
-        LOG.trace("Created: {}", this);
-    }
-
-    @PreDestroy
-    public void close() {
-        LOG.trace("Destroyed: {}", this.toString());
-    }
-
-
-    public Tenant handle(final TenantQueryById command) throws TenantCommandException {
-        LOG.info("Query received: {}", command);
-
-        Tenant tenant = repository.findOne(command.getTenantId());
-
-        LOG.info("Queried tenant: {}", tenant);
-        return tenant;
-    }
-
-    public Tenant handle(final TenantQueryByNumber command) throws TenantCommandException {
-        LOG.info("Query received: {}", command);
-
-        Tenant tenant = repository.findByDisplayNumber(command.getDisplayNumber());
-
-        LOG.info("Queried tenant: {}", tenant);
-        return tenant;
-    }
-
-    public Tenant handle(final TenantQueryByName command) throws TenantCommandException {
-        LOG.info("Query received: {}", command);
-
-        Tenant tenant = repository.findByDisplayName(command.getDisplayName());
-
-        LOG.info("Queried tenant: {}", tenant);
-        return tenant;
-    }
+    Tenant handle(TenantQueryByName command) throws TenantCommandException;
 }

@@ -16,8 +16,8 @@
 
 package de.kaiserpfalzEdv.office.tenants.query;
 
-import de.kaiserpfalzEdv.office.tenant.Tenant;
-import de.kaiserpfalzEdv.office.tenant.TenantDTO;
+import de.kaiserpfalzEdv.office.tenants.Tenant;
+import de.kaiserpfalzEdv.office.tenants.TenantDTO;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 

@@ -16,7 +16,7 @@
 
 package de.kaiserpfalzEdv.office.tenants.store;
 
-import de.kaiserpfalzEdv.office.tenants.api.commands.CreateTenantCommand;
+import de.kaiserpfalzEdv.office.tenants.commands.CreateTenantCommand;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

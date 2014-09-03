@@ -142,14 +142,15 @@
 
 
     <!-- Sender -->
-    <rabbit:template id="amqp.tenant.notification" exchange="${amqp.domain}.office.tenants.notification" connection-factory="amqp.cf"/>
-    <rabbit:template id="amqp.tenant.query" exchange="${amqp.domain}.office.tenants.query" connection-factory="amqp.cf" />
+    <rabbit:template id="amqp.tenant.notification" exchange="${amqp.domain}.office.tenants.notification" connection-factory="amqp.cf" message-converter="amqp.msg-converter"/>
+    <rabbit:template id="amqp.tenant.query" exchange="${amqp.domain}.office.tenants.query" connection-factory="amqp.cf" message-converter="amqp.msg-converter"/>
 
 
     <!-- Change Notification Configuration -->
-    <rabbit:listener-container connection-factory="amqp.cf">
-        <rabbit:listener queues="kpo.tenants.notification.writer" ref="queryMessageHandler" method="handle"/>
+    <rabbit:listener-container connection-factory="amqp.cf" acknowledge="manual" message-converter="amqp.msg-converter">
+        <rabbit:listener queues="kpo.tenants.notification.writer" ref="tenantQueryHandler" method="handle"/>
     </rabbit:listener-container>
+    <bean id="tenantQueryHandler" class="de.kaiserpfalzEdv.office.tenants.query.QueryMessageHandlerImpl"/>
     <rabbit:queue id="kpo.tenants.notification.writer" name="${amqp.domain}.office.tenants.notification.writer.${host}" durable="true">
         <rabbit:queue-arguments>
             <entry key="x-dead-letter-exchange" value="de.kaiserpfalz-edv.office.dlq"/>
@@ -170,8 +171,8 @@
 
 
     <!-- Query Configuration -->
-    <rabbit:listener-container connection-factory="amqp.cf" acknowledge="manual" requeue-rejected="false">
-        <rabbit:listener queues="kpo.tenants.query" ref="queryMessageHandler" method="handle"/>
+    <rabbit:listener-container connection-factory="amqp.cf" acknowledge="manual" message-converter="amqp.msg-converter">
+        <rabbit:listener queues="kpo.tenants.query" ref="tenantQueryHandler" method="handle"/>
     </rabbit:listener-container>
 
     <rabbit:topic-exchange id="kpo.tenants.query" name="${amqp.domain}.office.tenants.query" durable="false">
@@ -186,5 +187,7 @@
         </rabbit:queue-arguments>
     </rabbit:queue>
 
-    <!--<bean id="amqp.msg-converter" class="org.springframework.amqp.support.converter.JsonMessageConverter" />-->
+    <bean id="amqp.msg-converter" class="org.springframework.amqp.support.converter.Jackson2JsonMessageConverter">
+        <property name="jsonObjectMapper"><bean class="de.kaiserpfalzEdv.commons.json.Jackson2ObjectMapper"/></property>
+    </bean>
 </beans>

@@ -16,8 +16,8 @@
 
 package de.kaiserpfalzEdv.office.security;
 
-import de.kaiserpfalzEdv.office.tenant.NullTenant;
-import de.kaiserpfalzEdv.office.tenant.Tenant;
+import de.kaiserpfalzEdv.office.tenants.NullTenant;
+import de.kaiserpfalzEdv.office.tenants.Tenant;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.subject.Subject;
 import org.slf4j.Logger;

@@ -31,7 +31,7 @@
     <package>de.kaiserpfalzEdv.office.store</package>
 
 
-    <entity class="de.kaiserpfalzEdv.office.tenant.TenantDTO">
+    <entity class="de.kaiserpfalzEdv.office.tenants.TenantDTO">
         <description>The tenants for the multitenant system.</description>
 
         <table name="TENANTS"/>

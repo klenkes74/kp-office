@@ -16,7 +16,7 @@
 
 package de.kaiserpfalzEdv.office.tenants.store;
 
-import de.kaiserpfalzEdv.office.tenants.api.commands.RenameTenantCommand;
+import de.kaiserpfalzEdv.office.tenants.commands.RenameTenantCommand;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

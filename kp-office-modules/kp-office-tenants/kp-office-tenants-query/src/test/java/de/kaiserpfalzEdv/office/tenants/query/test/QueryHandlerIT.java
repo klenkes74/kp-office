@@ -16,13 +16,13 @@
 
 package de.kaiserpfalzEdv.office.tenants.query.test;
 
-import de.kaiserpfalzEdv.office.tenant.Tenant;
-import de.kaiserpfalzEdv.office.tenants.api.commands.CreateTenantCommand;
-import de.kaiserpfalzEdv.office.tenants.api.commands.DeleteTenantCommand;
-import de.kaiserpfalzEdv.office.tenants.api.commands.TenantQueryByNumber;
-import de.kaiserpfalzEdv.office.tenants.api.commands.TenantQueryCommand;
-import de.kaiserpfalzEdv.office.tenants.api.notifications.CreateTenantNotification;
-import de.kaiserpfalzEdv.office.tenants.api.notifications.DeleteTenantNotification;
+import de.kaiserpfalzEdv.office.tenants.Tenant;
+import de.kaiserpfalzEdv.office.tenants.commands.CreateTenantCommand;
+import de.kaiserpfalzEdv.office.tenants.commands.DeleteTenantCommand;
+import de.kaiserpfalzEdv.office.tenants.commands.TenantQueryByNumber;
+import de.kaiserpfalzEdv.office.tenants.commands.TenantQueryCommand;
+import de.kaiserpfalzEdv.office.tenants.notifications.CreateTenantNotification;
+import de.kaiserpfalzEdv.office.tenants.notifications.DeleteTenantNotification;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.amqp.AmqpException;
