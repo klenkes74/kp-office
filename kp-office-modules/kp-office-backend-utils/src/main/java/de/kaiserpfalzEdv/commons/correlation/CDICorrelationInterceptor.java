@@ -27,8 +27,8 @@ import javax.interceptor.InvocationContext;
  * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;
  * @since 0.1.0
  */
-public abstract class CorrelationInterceptor {
-    private static final Logger LOG = LoggerFactory.getLogger(CorrelationInterceptor.class);
+public abstract class CDICorrelationInterceptor {
+    private static final Logger LOG = LoggerFactory.getLogger(CDICorrelationInterceptor.class);
 
 
     @AroundInvoke
@@ -56,7 +56,7 @@ public abstract class CorrelationInterceptor {
         }
 
         Correlation correlation = getCorrelation(ctx);
-        MDC.put("correlationId", correlation.getCorrelationID().toString());
+        MDC.put("correlationId", correlation.getId().toString());
 
         putCorrelationIntoMDC(correlation);
 

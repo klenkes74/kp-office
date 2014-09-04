@@ -14,19 +14,11 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzEdv.commons.correlation;
-
-import de.kaiserpfalzEdv.commons.security.*;
-
-import java.util.UUID;
-
 /**
- * @author klenkes
- * @since 2014Q
+ *
+ *
+ * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;
+ * @version 0.1.0
+ * @since 0.1.0
  */
-public interface RequestCorrelation extends Correlation {
-    public UUID getRequestId();
-
-    public Subject getRequester();
-    public ActingSystem getSystem();
-}
+package de.kaiserpfalzEdv.commons.rabbit;

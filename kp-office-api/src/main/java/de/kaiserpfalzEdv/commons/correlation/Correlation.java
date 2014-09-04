@@ -17,6 +17,7 @@
 package de.kaiserpfalzEdv.commons.correlation;
 
 import java.io.Serializable;
+import java.security.Principal;
 import java.util.UUID;
 
 /**
@@ -24,5 +25,7 @@ import java.util.UUID;
  * @since 2014Q
  */
 public interface Correlation extends Serializable {
-    UUID getCorrelationID();
+    public UUID getId();
+
+    public long getSequence();
 }

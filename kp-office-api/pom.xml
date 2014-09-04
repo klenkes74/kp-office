@@ -39,6 +39,14 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+
+            <dependency>
+                <groupId>de.kaiserpfalzEdv.commons</groupId>
+                <artifactId>kp-commons-bom</artifactId>
+                <version>${kp-commons.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -56,6 +64,12 @@
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-annotations</artifactId>
+        </dependency>
+
+
+        <dependency>
+            <groupId>de.kaiserpfalzEdv.commons</groupId>
+            <artifactId>kp-commons-test</artifactId>
         </dependency>
     </dependencies>
 </project>

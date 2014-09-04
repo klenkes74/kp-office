@@ -14,50 +14,50 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzEdv.commons.correlation;
+package de.kaiserpfalzEdv.commons.security;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
-import java.util.UUID;
+import java.io.Serializable;
+import java.security.Principal;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;
  * @since 0.1.0
  */
-public class CorrelationImpl implements RequestCorrelation, ResponseCorrelation {
-    private static final long serialVersionUID = -8036686329558154277L;
+public class SubjectDTO implements Subject, Serializable {
+    private static final long serialVersionUID = 7811761344743525287L;
 
-    private UUID correlationID;
-    private UUID requestID;
-    private UUID responseID;
 
-    public CorrelationImpl(final UUID correlationID, final UUID requestID, final UUID responseID) {
-        this.correlationID = correlationID;
-        this.requestID = requestID;
-        this.responseID = responseID;
+    private Set<Principal> principals = new HashSet<Principal>();
+
+
+    @Deprecated // Only for Jackson, JAX-P and JPA!
+    public SubjectDTO() {}
+
+    @SuppressWarnings("deprecation")
+    public SubjectDTO(final Collection<Principal> principals) {
+        setPrincipals(principals);
     }
 
-    @Override
-    public UUID getCorrelationID() {
-        return correlationID;
+
+    public Set<Principal> getPrincipals() {
+        return principals;
     }
 
-    @Override
-    public UUID getRequestID() {
-        return requestID;
-    }
+    @Deprecated // Only for Jackson, JAX-P and JPA!
+    public void setPrincipals(Collection<Principal> principals) {
+        this.principals.clear();
 
-    @Override
-    public UUID getResponseID() {
-        return responseID;
-    }
-
-    @Override
-    public UUID getInResponseTo() {
-        return requestID;
+        if (principals != null) {
+            this.principals.addAll(principals);
+        }
     }
 
 
@@ -72,29 +72,34 @@ public class CorrelationImpl implements RequestCorrelation, ResponseCorrelation 
         if (obj.getClass() != getClass()) {
             return false;
         }
-        CorrelationImpl rhs = (CorrelationImpl) obj;
+        SubjectDTO rhs = (SubjectDTO) obj;
         return new EqualsBuilder()
-                .append(this.correlationID, rhs.correlationID)
-                .append(this.requestID, rhs.requestID)
-                .append(this.responseID, rhs.responseID)
+                .append(this.getPrincipals(), rhs.getPrincipals())
                 .isEquals();
     }
 
     @Override
     public int hashCode() {
         return new HashCodeBuilder()
-                .append(correlationID)
-                .append(requestID)
-                .append(responseID)
+                .append(getPrincipals())
                 .toHashCode();
     }
+
 
     @Override
     public String toString() {
         return new ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE)
-                .append("correlationID", correlationID)
-                .append("requestID", requestID)
-                .append("responseID", responseID)
+                .append("principals", formatPrincipals())
                 .toString();
+    }
+
+    private String formatPrincipals() {
+        StringBuilder result = new StringBuilder("[");
+
+        for (Principal p : principals) {
+            result.append(p.getName()).append(",");
+        }
+
+        return result.append("]").toString();
     }
 }

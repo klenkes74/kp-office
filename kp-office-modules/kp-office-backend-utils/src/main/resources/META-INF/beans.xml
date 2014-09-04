@@ -21,8 +21,8 @@
        version="1.1" bean-discovery-mode="all" >
 
     <interceptors>
-        <class>de.kaiserpfalzEdv.commons.correlation.RequestInterceptor</class>
-        <class>de.kaiserpfalzEdv.commons.correlation.ResponseInterceptor</class>
+        <class>de.kaiserpfalzEdv.commons.correlation.CDIRequestInterceptor</class>
+        <class>de.kaiserpfalzEdv.commons.correlation.CDIResponseInterceptor</class>
         <!--
         -->
         <class>de.kaiserpfalzEdv.office.security.ShiroInterceptor</class>

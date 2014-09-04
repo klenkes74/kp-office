@@ -26,6 +26,8 @@
         </encoder>
     </appender>
 
+    <appender name="CENTRAL" class="net.logstash.logback.appender.LogstashSocketAppender"/>
+
     <appender name="SYSTEM" class="ch.qos.logback.core.FileAppender">
         <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
             <level>INFO</level>
@@ -35,7 +37,8 @@
         <encoder class="net.logstash.logback.encoder.LogstashEncoder" />
     </appender>
 
-    <root level="INFO">
+    <root level="DEBUG">
+        <appender-ref ref="CENTRAL"/>
         <appender-ref ref="STDOUT"/>
         <appender-ref ref="SYSTEM"/>
     </root>

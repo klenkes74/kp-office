@@ -14,19 +14,18 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzEdv.commons.correlation;
+package de.kaiserpfalzEdv.commons.security;
 
-import de.kaiserpfalzEdv.commons.security.*;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
-import java.util.UUID;
+import java.security.Principal;
+import java.util.Set;
 
 /**
- * @author klenkes
- * @since 2014Q
+ * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;
+ * @since 0.1.0
  */
-public interface RequestCorrelation extends Correlation {
-    public UUID getRequestId();
-
-    public Subject getRequester();
-    public ActingSystem getSystem();
+@JsonTypeInfo(use=JsonTypeInfo.Id.CLASS, include=JsonTypeInfo.As.PROPERTY, property="@class", defaultImpl = SubjectDTO.class)
+public interface Subject {
+    public Set<Principal> getPrincipals();
 }

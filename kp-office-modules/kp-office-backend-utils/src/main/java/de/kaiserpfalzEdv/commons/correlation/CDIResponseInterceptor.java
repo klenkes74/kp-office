@@ -27,10 +27,10 @@ import java.util.UUID;
  * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;
  * @since 0.1.0
  */
-@Interceptor @RequestCorrelated
-public class RequestInterceptor extends CorrelationInterceptor {
-    public RequestCorrelation getCorrelation(final InvocationContext ctx) {
-        CorrelationBuilder<RequestCorrelation> result = new CorrelationBuilder<>();
+@Interceptor @ResponseCorrelated
+public class CDIResponseInterceptor extends CDICorrelationInterceptor {
+    public ResponseCorrelation getCorrelation(final InvocationContext ctx) {
+        CorrelationBuilder<ResponseCorrelation> result = new CorrelationBuilder<>();
 
 
         Annotation[][] annotations = ctx.getMethod().getParameterAnnotations();
@@ -38,8 +38,8 @@ public class RequestInterceptor extends CorrelationInterceptor {
         for (int i = 0; i < annotations.length; i++) {
             for (Annotation a : annotations[i]) {
                 if (CorrelationId.class.isAssignableFrom(a.annotationType())
-                        && RequestCorrelation.class.isAssignableFrom(ctx.getParameters()[i].getClass())) {
-                    return (RequestCorrelation) ctx.getParameters()[i];
+                        && ResponseCorrelation.class.isAssignableFrom(ctx.getParameters()[i].getClass())) {
+                    return (ResponseCorrelation) ctx.getParameters()[i];
                 }
 
 
@@ -58,10 +58,11 @@ public class RequestInterceptor extends CorrelationInterceptor {
 
     @Override
     public <T extends Correlation> void putCorrelationIntoMDC(T correlation) {
-        RequestCorrelation c = (RequestCorrelation) correlation;
+        ResponseCorrelation c = (ResponseCorrelation) correlation;
 
-        MDC.put("correlationId", c.getCorrelationID().toString());
-        MDC.put("requestId", c.getRequestID().toString());
+        MDC.put("correlationId", c.getId().toString());
+        MDC.put("requestId", c.getInResponseTo().toString());
+        MDC.put("responseId", c.getInResponseTo().toString());
     }
 
 }

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  ~ Copyright (c) 2014 Kaiserpfalz EDV-Service, Roland T. Lichti
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:jee="http://www.springframework.org/schema/jee"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:rabbit="http://www.springframework.org/schema/rabbit"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+                           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+                           http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd
+                           http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+                           http://www.springframework.org/schema/rabbit http://www.springframework.org/schema/rabbit/spring-rabbit.xsd
+       ">
+
+    <context:component-scan base-package="de.kaiserpfalzEdv.office.tenants.query">
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Repository"/>
+    </context:component-scan>
+
+
+    <context:annotation-config />
+    <tx:annotation-driven mode="proxy" transaction-manager="transactionManager"/>
+    <bean id="transactionManager" class="org.springframework.amqp.rabbit.transaction.RabbitTransactionManager"/>
+
+    <context:load-time-weaver weaver-class="org.springframework.instrument.classloading.InstrumentationLoadTimeWeaver"/>
+
+    <context:property-placeholder properties-ref="configuration" system-properties-mode="OVERRIDE" ignore-resource-not-found="false" ignore-unresolvable="false" local-override="true"/>
+   <bean id="configuration" factory-bean="configGenerator" factory-method="getProperties" lazy-init="true"/>
+    <bean id="configGenerator" class="de.kaiserpfalzEdv.commons.jndi.MapProperties" init-method="init" destroy-method="close">
+        <constructor-arg>
+            <util:map scope="singleton" key-type="java.lang.String" value-type="java.lang.Object">
+                <entry key="host"><jee:jndi-lookup jndi-name="host" expected-type="java.lang.String" cache="true" lookup-on-startup="true"/></entry>
+                <entry key="host-id"><jee:jndi-lookup jndi-name="host-id" expected-type="java.lang.String" cache="true" lookup-on-startup="true"/></entry>
+
+                <entry key="amqp.domain"><jee:jndi-lookup jndi-name="amqp.domain" expected-type="java.lang.String" cache="true" lookup-on-startup="true"/></entry>
+                <entry key="amqp.host"><jee:jndi-lookup jndi-name="amqp.host" expected-type="java.lang.String" cache="true" lookup-on-startup="true"/></entry>
+                <entry key="amqp.port"><jee:jndi-lookup jndi-name="amqp.port" expected-type="java.lang.String" cache="true" lookup-on-startup="true"/></entry>
+                <entry key="amqp.virtual"><jee:jndi-lookup jndi-name="amqp.virtual" expected-type="java.lang.String" cache="true" lookup-on-startup="true"/></entry>
+                <entry key="amqp.user"><jee:jndi-lookup jndi-name="amqp.user" expected-type="java.lang.String" cache="true" lookup-on-startup="true"/></entry>
+                <entry key="amqp.password"><jee:jndi-lookup jndi-name="amqp.password" expected-type="java.lang.String" cache="true" lookup-on-startup="true"/></entry>
+            </util:map>
+        </constructor-arg>
+    </bean>
+
+
+
+    <!-- Infrastructure -->
+    <rabbit:connection-factory id="amqp.cf" host="${amqp.host}" port="${amqp.port}" virtual-host="${amqp.virtual}" username="${amqp.user}" password="${amqp.password}"/>
+    <rabbit:admin id="amqp.adm" connection-factory="amqp.cf" auto-startup="true" ignore-declaration-exceptions="false"/>
+
+
+    <!-- Sender -->
+    <rabbit:template id="amqp.sender" exchange="${amqp.domain}.tests" connection-factory="amqp.cf" message-converter="amqp.msg-converter"/>
+    <rabbit:template id="amqp.tenant.query" exchange="${amqp.domain}.office.tenants.query" connection-factory="amqp.cf" message-converter="amqp.msg-converter"/>
+
+
+    <!-- Message Handler -->
+    <!--<bean id="tenantQueryHandler" class="de.kaiserpfalzEdv.office.tenants.query.QueryMessageHandlerImpl"/>-->
+
+    <!-- Change Notification Configuration -->
+    <!--<rabbit:listener-container connection-factory="amqp.cf" acknowledge="manual" message-converter="amqp.msg-converter">-->
+        <!--<rabbit:listener queues="amqp.queue" ref="tenantQueryHandler" method="handle"/>-->
+    <!--</rabbit:listener-container>-->
+    <rabbit:queue id="amqp.queue" name="${amqp.domain}.tests.${host}" durable="true">
+        <rabbit:queue-arguments>
+            <entry key="x-dead-letter-exchange" value="de.kaiserpfalz-edv.office.dlq"/>
+            <entry key="x-dead-letter-routing-key" value="tenants.notification.${host}"/>
+        </rabbit:queue-arguments>
+    </rabbit:queue>
+
+    <rabbit:topic-exchange id="amqp.exchange" name="${amqp.domain}.tests">
+        <rabbit:exchange-arguments>
+            <entry key="alternate-exchange" value="de.kaiserpfalz-edv.office.dlq"/>
+            <entry key="durable" value="true"/>
+        </rabbit:exchange-arguments>
+
+        <rabbit:bindings>
+            <rabbit:binding pattern="#" queue="${amqp.domain}.tests.${host}" />
+        </rabbit:bindings>
+    </rabbit:topic-exchange>
+
+
+    <bean id="amqp.msg-converter" class="org.springframework.amqp.support.converter.Jackson2JsonMessageConverter">
+        <property name="jsonObjectMapper"><bean class="de.kaiserpfalzEdv.commons.json.Jackson2ObjectMapper"/></property>
+    </bean>
+</beans>

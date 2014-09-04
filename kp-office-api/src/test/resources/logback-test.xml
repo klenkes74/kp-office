@@ -19,18 +19,21 @@
 
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
-            <level>INFO</level>
+            <level>TRACE</level>
         </filter>
         <encoder>
-            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] [%X{test-class}/%X{test}/%X{id}] %-5level %logger{36} - %msg%n</pattern>
         </encoder>
     </appender>
 
     <appender name="DEVELOPMENT" class="ch.qos.logback.core.FileAppender">
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>TRACE</level>
+        </filter>
         <file>target/development.log</file>
-        <append>true</append>
+        <append>false</append>
         <encoder>
-            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] [%X{test-class}/%X{test}/%X{id}] %-5level %logger{36} - %msg%n</pattern>
         </encoder>
     </appender>
 
