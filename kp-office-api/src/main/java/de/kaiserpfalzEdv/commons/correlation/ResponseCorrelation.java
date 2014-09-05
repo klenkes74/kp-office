@@ -23,8 +23,7 @@ import java.util.UUID;
  * @since 2014Q
  */
 public interface ResponseCorrelation extends Correlation {
-    public UUID getResponseId();
     public UUID getInResponseTo();
-    public boolean hasMultipleResponses();
+    public boolean isInMessageSequence();
     public boolean hasNextResponse();
 }

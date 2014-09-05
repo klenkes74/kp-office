@@ -16,6 +16,9 @@
 
 package de.kaiserpfalzEdv.office.commands;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import de.kaiserpfalzEdv.office.core.IdentityHolder;
+import de.kaiserpfalzEdv.office.core.PermissionNameHolder;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
@@ -24,15 +27,17 @@ import java.io.Serializable;
 import java.time.ZonedDateTime;
 import java.util.UUID;
 
+import static com.google.common.base.Preconditions.checkArgument;
+
 /**
  * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;
  * @since 0.1.0
  */
-public abstract class OfficeCommand implements Serializable {
-    private static final long serialVersionUID = -6212943148977377517L;
+public abstract class OfficeCommand implements IdentityHolder,PermissionNameHolder,Serializable {
+    private static final long serialVersionUID = 8298856277742024129L;
 
     /** The unique id of this command. */
-    private UUID commandId = UUID.randomUUID();
+    private UUID id = UUID.randomUUID();
 
     /** The timestamp this command has been created. */
     private ZonedDateTime commandTimestamp = ZonedDateTime.now();
@@ -42,10 +47,28 @@ public abstract class OfficeCommand implements Serializable {
 
 
     /**
+     * @return The official unique id of this command.
+     */
+    public UUID getId() {
+        return id;
+    }
+
+    @Deprecated // Only for Jackson, JAX-B and JPA!
+    public void setId(final UUID id) {
+        this.id = id;
+    }
+
+
+    /**
      * @return The uniform name of the target entity for the given command.
      */
     public abstract String getTarget();
 
+    @JsonIgnore
+    @Override
+    public String getPermissionName() {
+        return getClass().getSimpleName();
+    }
 
 
     /**
@@ -53,6 +76,13 @@ public abstract class OfficeCommand implements Serializable {
      */
     public ZonedDateTime getCommandTimestamp() {
         return commandTimestamp;
+    }
+
+    @Deprecated // Only for Jackson, JAX-B and JPA!
+    public void setCommandTimestamp(final ZonedDateTime value) {
+        checkArgument(value != null, "Can't set <null> as command time stamp!");
+
+        this.commandTimestamp = value;
     }
 
 
@@ -70,13 +100,6 @@ public abstract class OfficeCommand implements Serializable {
         this.handledTimestamp = handledTimestamp;
     }
 
-    /**
-     * @return The official unique id of this command.
-     */
-    public UUID getCommandId() {
-        return commandId;
-    }
-
 
     @Override
     public boolean equals(Object obj) {
@@ -91,22 +114,22 @@ public abstract class OfficeCommand implements Serializable {
         }
         OfficeCommand rhs = (OfficeCommand) obj;
         return new EqualsBuilder()
-                .append(this.commandId, rhs.commandId)
+                .append(this.getId(), rhs.getId())
                 .isEquals();
     }
 
     @Override
     public int hashCode() {
         return new HashCodeBuilder()
-                .append(commandId)
+                .append(getId())
                 .toHashCode();
     }
 
     @Override
     public String toString() {
         return new ToStringBuilder(this)
-                .append("commandId", commandId)
-                .append("commandTimestamp", commandTimestamp)
+                .append("id", getId())
+                .append("commandTimestamp", getCommandTimestamp())
                 .toString();
     }
 }

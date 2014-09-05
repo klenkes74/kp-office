@@ -16,6 +16,8 @@
 
 package de.kaiserpfalzEdv.office;
 
+import de.kaiserpfalzEdv.office.core.KPOEntity;
+
 /**
  * @author klenkes
  * @since 2014Q

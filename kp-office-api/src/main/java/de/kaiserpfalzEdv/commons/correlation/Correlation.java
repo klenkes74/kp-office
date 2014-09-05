@@ -16,8 +16,10 @@
 
 package de.kaiserpfalzEdv.commons.correlation;
 
+import de.kaiserpfalzEdv.commons.security.ActingSystem;
+import de.kaiserpfalzEdv.office.security.OfficeSubject;
+
 import java.io.Serializable;
-import java.security.Principal;
 import java.util.UUID;
 
 /**
@@ -25,7 +27,14 @@ import java.util.UUID;
  * @since 2014Q
  */
 public interface Correlation extends Serializable {
+    public UUID getSessionId();
     public UUID getId();
 
     public long getSequence();
+
+    public OfficeSubject getRequester();
+    public ActingSystem getSystem();
+
+    public boolean isRequest();
+    public boolean isResponse();
 }

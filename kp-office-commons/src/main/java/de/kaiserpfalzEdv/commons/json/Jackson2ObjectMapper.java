@@ -27,6 +27,9 @@ import java.util.Collection;
 import java.util.HashSet;
 
 /**
+ * A small wrapper around the original Jackson {@link com.fasterxml.jackson.databind.ObjectMapper} to scan for
+ * modules, configure additional modules and set the correct timestamp representaiton (ISO-8660 style).
+ *
  * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;
  * @since 0.1.0
  */

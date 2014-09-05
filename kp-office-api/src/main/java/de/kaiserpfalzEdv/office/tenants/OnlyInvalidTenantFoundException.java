@@ -16,7 +16,7 @@
 
 package de.kaiserpfalzEdv.office.tenants;
 
-import de.kaiserpfalzEdv.office.KPOEntity;
+import de.kaiserpfalzEdv.office.core.KPOEntity;
 
 /**
  * @author klenkes

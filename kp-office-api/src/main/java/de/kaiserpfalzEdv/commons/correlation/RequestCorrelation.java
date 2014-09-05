@@ -16,17 +16,9 @@
 
 package de.kaiserpfalzEdv.commons.correlation;
 
-import de.kaiserpfalzEdv.commons.security.*;
-
-import java.util.UUID;
-
 /**
  * @author klenkes
  * @since 2014Q
  */
 public interface RequestCorrelation extends Correlation {
-    public UUID getRequestId();
-
-    public Subject getRequester();
-    public ActingSystem getSystem();
 }

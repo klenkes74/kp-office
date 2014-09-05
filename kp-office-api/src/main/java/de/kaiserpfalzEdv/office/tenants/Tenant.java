@@ -17,7 +17,7 @@
 package de.kaiserpfalzEdv.office.tenants;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import de.kaiserpfalzEdv.office.KPOEntity;
+import de.kaiserpfalzEdv.office.core.KPOEntity;
 
 /**
  * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;

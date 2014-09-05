@@ -16,8 +16,6 @@
 
 package de.kaiserpfalzEdv.commons.correlation;
 
-import org.apache.commons.lang3.builder.EqualsBuilder;
-import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
@@ -30,39 +28,25 @@ import static com.google.common.base.Preconditions.checkArgument;
  * @since 0.1.0
  */
 public class ResponseCorrelationImpl extends AbstractCorrelation implements ResponseCorrelation {
-    private static final long serialVersionUID = -107721607764025942L;
+    private static final long serialVersionUID = 9027321813336033390L;
 
     private UUID requestId;
-    private UUID responseId;
     private boolean multipleResponses = false;
     private boolean nextResponse = false;
+
 
     @SuppressWarnings({"UnusedDeclaration", "deprecation"})
     @Deprecated // Only for Jackson, JAX-B and JPA!
     public ResponseCorrelationImpl() {}
 
     @SuppressWarnings("deprecation")
-    public ResponseCorrelationImpl(final RequestCorrelation request, final UUID id, final long sequence,
+    public ResponseCorrelationImpl(final RequestCorrelation request, final UUID id, final long sequenceNumber,
                                    final boolean multipleResponses, final boolean nextResponse) {
-        super(request, sequence);
+        super(request.getSessionId(), id, sequenceNumber, request.getRequester(), request.getSystem());
 
-        setResponseId(id);
-        setInResponseTo(request.getRequestId());
-        setMultipleResponses(multipleResponses);
+        setInResponseTo(request.getId());
+        setInMessageSequence(multipleResponses);
         setNextResponse(nextResponse);
-    }
-
-
-    @Override
-    public UUID getResponseId() {
-        return responseId;
-    }
-
-    @Deprecated // Only for Jackson, JAX-B and JPA!
-    public void setResponseId(final UUID id) {
-        checkArgument(id != null, "Need a valid response id for a response!");
-
-        responseId = id;
     }
 
 
@@ -79,11 +63,11 @@ public class ResponseCorrelationImpl extends AbstractCorrelation implements Resp
     }
 
     @Override
-    public boolean hasMultipleResponses() {
+    public boolean isInMessageSequence() {
         return multipleResponses;
     }
 
-    private void setMultipleResponses(boolean multipleResponses) {
+    private void setInMessageSequence(boolean multipleResponses) {
         this.multipleResponses = multipleResponses;
     }
 
@@ -95,40 +79,20 @@ public class ResponseCorrelationImpl extends AbstractCorrelation implements Resp
         this.nextResponse = nextResponse;
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == null) {
-            return false;
-        }
-        if (obj == this) {
-            return true;
-        }
-        if (obj.getClass() != getClass()) {
-            return false;
-        }
-        ResponseCorrelationImpl rhs = (ResponseCorrelationImpl) obj;
-        return new EqualsBuilder()
-                .appendSuper(super.equals(rhs))
-                .append(this.getResponseId(), rhs.getResponseId())
-                .isEquals();
-    }
 
     @Override
-    public int hashCode() {
-        return new HashCodeBuilder()
-                .appendSuper(super.hashCode())
-                .append(getResponseId())
-                .toHashCode();
+    public boolean isRequest() {
+        return false;
     }
+
 
     @Override
     public String toString() {
         return new ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE)
                 .appendSuper(super.toString())
-                .append("response", getResponseId())
                 .append("request", getInResponseTo())
                 .append("hasNext", hasNextResponse())
-                .append("isInSequence", hasMultipleResponses())
+                .append("isInSequence", isInMessageSequence())
                 .toString();
     }
 }

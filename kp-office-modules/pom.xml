@@ -32,15 +32,13 @@
     <name>KP Office - Modules</name>
 
     <modules>
+        <module>kp-office-security</module>
         <module>kp-office-tenants</module>
-        <module>kp-office-backend-utils</module>
-        <module>kp-office-core</module>
-        <module>kp-office-projects</module>
-        <module>kp-office-address</module>
     </modules>
 
 
     <dependencies>
+        <!-- KP Office internal Dependencies -->
         <dependency>
             <groupId>de.kaiserpfalz-edv.office</groupId>
             <artifactId>kp-office-api</artifactId>
@@ -49,6 +47,17 @@
         <dependency>
             <groupId>de.kaiserpfalz-edv.office</groupId>
             <artifactId>kp-office-commons</artifactId>
+        </dependency>
+
+
+        <!-- Logging -->
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>net.logstash.logback</groupId>
+            <artifactId>logstash-logback-encoder</artifactId>
         </dependency>
     </dependencies>
 </project>

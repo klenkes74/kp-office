@@ -17,11 +17,13 @@
 package de.kaiserpfalzEdv.commons.security;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import de.kaiserpfalzEdv.office.security.OfficeSubject;
+import de.kaiserpfalzEdv.office.security.OfficeSubjectDTO;
 
 /**
  * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;
  * @since 0.1.0
  */
-@JsonTypeInfo(use=JsonTypeInfo.Id.CLASS, include=JsonTypeInfo.As.PROPERTY, property="@class", defaultImpl = SubjectDTO.class)
-public interface ActingSystem extends Subject {
+@JsonTypeInfo(use=JsonTypeInfo.Id.CLASS, include=JsonTypeInfo.As.PROPERTY, property="@class", defaultImpl = OfficeSubjectDTO.class)
+public interface ActingSystem extends OfficeSubject {
 }

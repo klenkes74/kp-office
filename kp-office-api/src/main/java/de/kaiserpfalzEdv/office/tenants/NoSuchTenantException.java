@@ -16,7 +16,7 @@
 
 package de.kaiserpfalzEdv.office.tenants;
 
-import de.kaiserpfalzEdv.office.KPOEntity;
+import de.kaiserpfalzEdv.office.core.KPOEntity;
 import de.kaiserpfalzEdv.office.NoSuchEntityException;
 
 import java.util.UUID;

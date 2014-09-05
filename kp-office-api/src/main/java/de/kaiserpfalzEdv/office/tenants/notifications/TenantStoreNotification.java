@@ -37,7 +37,7 @@ public class TenantStoreNotification extends OfficeNotification {
     public TenantStoreNotification() {}
 
     public TenantStoreNotification(final TenantStoreCommand command) {
-        super(command.getCommandId());
+        super(command.getId());
         setTenantId(command.getTenantId());
     }
 

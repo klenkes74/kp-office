@@ -34,7 +34,7 @@
         <description>Generic tenant command.</description>
 
         <attributes>
-            <id name="commandId">
+            <id name="id">
                 <column name="COMMAND_ID_" length="50" nullable="false" updatable="false" unique="true"/>
             </id>
 

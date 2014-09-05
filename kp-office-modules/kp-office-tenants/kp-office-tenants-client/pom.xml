@@ -49,10 +49,6 @@
     <dependencies>
         <dependency>
             <groupId>de.kaiserpfalz-edv.office</groupId>
-            <artifactId>kp-office-tenants-api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>de.kaiserpfalz-edv.office</groupId>
             <artifactId>kp-office-tenants-history</artifactId>
             <scope>test</scope>
         </dependency>

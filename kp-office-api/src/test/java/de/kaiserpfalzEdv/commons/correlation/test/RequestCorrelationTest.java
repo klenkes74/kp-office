@@ -18,16 +18,20 @@ package de.kaiserpfalzEdv.commons.correlation.test;
 
 import de.kaiserpfalzEdv.commons.correlation.CorrelationBuilder;
 import de.kaiserpfalzEdv.commons.correlation.RequestCorrelation;
+import de.kaiserpfalzEdv.commons.security.ActingSystem;
 import de.kaiserpfalzEdv.commons.test.CommonTestBase;
+import de.kaiserpfalzEdv.office.security.OfficeSubjectDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import java.security.Principal;
 import java.util.UUID;
 
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertFalse;
+import static org.testng.Assert.assertNull;
+import static org.testng.Assert.assertTrue;
 
 /**
  * @author klenkes
@@ -37,23 +41,12 @@ import static org.testng.Assert.assertEquals;
 public class RequestCorrelationTest extends CommonTestBase {
     private static final Logger LOG = LoggerFactory.getLogger(RequestCorrelationTest.class);
 
-    private static final UUID CORRELATION_ID = UUID.randomUUID();
+    private static final UUID SESSION_ID = UUID.randomUUID();
     private static final UUID REQUEST_ID = UUID.randomUUID();
     private static final long SEQUENCE_NO = 1L;
 
-    private static final Principal REQUESTER = new Principal() {
-        @Override
-        public String getName() {
-            return "requesting user";
-        }
-    };
-
-    private static final Principal SYSTEM = new Principal() {
-        @Override
-        public String getName() {
-            return "requesting system";
-        }
-    };
+    private static final OfficeSubjectDTO REQUESTER = new OfficeSubjectDTO(null, null, null);
+    private static final ActingSystem SYSTEM = new OfficeSubjectDTO(null, null, null);
 
 
     private RequestCorrelation service;
@@ -64,23 +57,46 @@ public class RequestCorrelationTest extends CommonTestBase {
     }
 
 
-    public void checkBasicRequestCorrelation() {
-        logMethod("basic-request", "Checking a basic request correlation.");
+    public void checkData() {
+        logMethod("data-check", "Checking full data set ...");
 
-        assertEquals(service.getId(), CORRELATION_ID, "Wrong correlation id");
-        assertEquals(service.getRequestId(), REQUEST_ID, "Wrong request id");
+        assertEquals(service.getId(), REQUEST_ID, "Wrong request id");
         assertEquals(service.getSequence(), SEQUENCE_NO, "Wrong sequence number");
         assertEquals(service.getRequester(), REQUESTER, "Wrong requesting user");
         assertEquals(service.getSystem(), SYSTEM, "Wrong requesting system");
     }
 
 
+    public void checkCorrelationType() {
+        logMethod("correlation-type", "Checking correlation type ...");
+
+        assertTrue(service.isRequest(), "Wrong correlation type. This should be a request.");
+        assertFalse(service.isResponse(), "Wrong correlation type. This should be no response.");
+    }
+
+
+    public void createRequestWithSession() {
+        logMethod("request-w/-session", "Checking a basic request correlation with session.");
+
+        assertEquals(service.getSessionId(), SESSION_ID, "Wrong session id");
+    }
+
+    public void createRequestWithoutSession() {
+        logMethod("request-w/o-session", "Checking a basic request correlation without session.");
+        service = new CorrelationBuilder<RequestCorrelation>()
+                .withRequestId(REQUEST_ID)
+                .build();
+
+        assertNull(service.getSessionId());
+    }
+
+
     @BeforeMethod
     protected void generateService() {
-        LOG.trace("Building service with correlationId={}, requestId={} and sequenceNo={}", CORRELATION_ID, REQUEST_ID, SEQUENCE_NO);
+        LOG.trace("Building service with correlationId={}, requestId={} and sequenceNo={}", SESSION_ID, REQUEST_ID, SEQUENCE_NO);
 
         service = new CorrelationBuilder<RequestCorrelation>()
-                .withCorrelationId(CORRELATION_ID)
+                .withSessionId(SESSION_ID)
                 .withRequestId(REQUEST_ID)
                 .withSequence(SEQUENCE_NO)
                 .withRequester(REQUESTER)

@@ -32,10 +32,9 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>kp-office-tenants-api</module>
         <module>kp-office-tenants-history</module>
         <module>kp-office-tenants-query</module>
-        <module>kp-office-tenants-client</module>
+        <!--<module>kp-office-tenants-client</module>-->
     </modules>
 
     <properties>
@@ -87,13 +86,6 @@
     -->
 
     <dependencies>
-        <dependency>
-            <groupId>de.kaiserpfalz-edv.office</groupId>
-            <artifactId>kp-office-backend-utils</artifactId>
-        </dependency>
-
-
-
         <dependency>
             <groupId>commons-collections</groupId>
             <artifactId>commons-collections</artifactId>

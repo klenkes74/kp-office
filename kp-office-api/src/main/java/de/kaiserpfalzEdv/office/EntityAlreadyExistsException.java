@@ -16,6 +16,8 @@
 
 package de.kaiserpfalzEdv.office;
 
+import de.kaiserpfalzEdv.office.core.KPOEntity;
+
 import static com.google.common.base.Preconditions.checkArgument;
 
 /**

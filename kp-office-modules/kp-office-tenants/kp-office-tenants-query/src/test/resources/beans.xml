@@ -23,6 +23,7 @@
        xmlns:jee="http://www.springframework.org/schema/jee"
        xmlns:util="http://www.springframework.org/schema/util"
        xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+       xmlns:aop="http://www.springframework.org/schema/aop"
        xmlns:rabbit="http://www.springframework.org/schema/rabbit"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
                            http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
@@ -30,6 +31,7 @@
                            http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd
                            http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
                            http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd
+                           http://www.springframework.org/schema/aop http://www.springframework.org/schema/util/spring-aop.xsd
                            http://www.springframework.org/schema/rabbit http://www.springframework.org/schema/rabbit/spring-rabbit.xsd
        ">
 
@@ -141,6 +143,10 @@
     <rabbit:admin id="amqp.adm" connection-factory="amqp.cf" auto-startup="true" ignore-declaration-exceptions="false"/>
 
 
+    <util:list id="rabbitAdvices" value-type="org.aopalliance.aop.Advice">
+        <bean class="de.kaiserpfalzEdv.commons.interceptors.LoggingInterceptor"/>
+    </util:list>
+
     <!-- Sender -->
     <rabbit:template id="amqp.tenant.notification" exchange="${amqp.domain}.office.tenants.notification" connection-factory="amqp.cf" message-converter="amqp.msg-converter"/>
     <rabbit:template id="amqp.tenant.query" exchange="${amqp.domain}.office.tenants.query" connection-factory="amqp.cf" message-converter="amqp.msg-converter"/>
@@ -148,11 +154,13 @@
 
     <!-- Message Handler -->
     <bean id="tenantQueryHandler" class="de.kaiserpfalzEdv.office.tenants.query.QueryMessageHandlerImpl"/>
+    <rabbit:listener-container connection-factory="amqp.cf" acknowledge="manual" message-converter="amqp.msg-converter" advice-chain="rabbitAdvices">
+        <rabbit:listener queues="kpo.tenants.notification.writer" ref="tenantQueryHandler" method="handle"/>
+        <rabbit:listener queues="kpo.tenants.query" ref="tenantQueryHandler" method="handle"/>
+    </rabbit:listener-container>
+
 
     <!-- Change Notification Configuration -->
-    <rabbit:listener-container connection-factory="amqp.cf" acknowledge="manual" message-converter="amqp.msg-converter">
-        <rabbit:listener queues="kpo.tenants.notification.writer" ref="tenantQueryHandler" method="handle"/>
-    </rabbit:listener-container>
     <rabbit:queue id="kpo.tenants.notification.writer" name="${amqp.domain}.office.tenants.notification.writer.${host}" durable="true">
         <rabbit:queue-arguments>
             <entry key="x-dead-letter-exchange" value="de.kaiserpfalz-edv.office.dlq"/>
@@ -173,10 +181,6 @@
 
 
     <!-- Query Configuration -->
-    <rabbit:listener-container connection-factory="amqp.cf" acknowledge="manual" message-converter="amqp.msg-converter">
-        <rabbit:listener queues="kpo.tenants.query" ref="tenantQueryHandler" method="handle"/>
-    </rabbit:listener-container>
-
     <rabbit:topic-exchange id="kpo.tenants.query" name="${amqp.domain}.office.tenants.query" durable="false">
         <rabbit:bindings>
             <rabbit:binding pattern="#" queue="${amqp.domain}.office.tenants.query.reader" />

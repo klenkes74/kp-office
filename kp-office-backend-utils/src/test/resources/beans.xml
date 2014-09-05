@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (c) 2014 Kaiserpfalz EDV-Service, Roland T. Lichti
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:jee="http://www.springframework.org/schema/jee"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+                           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+                           http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd
+                           http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+                           http://www.springframework.org/schema/aop http://www.springframework.org/schema/util/spring-aop.xsd
+       ">
+
+    <context:annotation-config/>
+    <context:component-scan base-package="de.kaiserpfalzEdv.office,de.kaiserpfalzEdv.commons">
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Repository"/>
+    </context:component-scan>
+    <tx:annotation-driven />
+
+
+    <bean id="securityManager" class="org.apache.shiro.mgt.DefaultSecurityManager">
+        <property name="realm" ref="officeShiroRealm"/>
+    </bean>
+    <bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"/>
+    <bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator" depends-on="lifecycleBeanPostProcessor"/>
+    <bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
+        <property name="securityManager" ref="securityManager"/>
+    </bean>
+
+    <bean id="configuredSubjects" class="de.kaiserpfalzEdv.office.security.test.MockSecurityClient">
+        <property name="configuredSubjects">
+            <util:set value-type="de.kaiserpfalzEdv.office.security.OfficeSubjectDTO">
+                <bean class="de.kaiserpfalzEdv.office.security.OfficeSubjectDTO">
+                    <constructor-arg index="0">
+                        <util:set value-type="de.kaiserpfalzEdv.office.security.OfficePrincipal">
+                            <bean class="de.kaiserpfalzEdv.office.security.OfficePrincipalDTO">
+                                <constructor-arg index="0" value="klenkes74"/>
+                                <constructor-arg index="1" value="test"/>
+                            </bean>
+                        </util:set>
+                    </constructor-arg>
+                    <constructor-arg index="1" ref="userPermissions"/>
+                    <constructor-arg index="2" ref="userRoles"/>
+                </bean>
+            </util:set>
+        </property>
+    </bean>
+
+    <util:set id="userPermissions" value-type="de.kaiserpfalzEdv.office.security.OfficePermissionDTO">
+        <bean class="de.kaiserpfalzEdv.office.security.OfficeStringPermission">
+            <constructor-arg index="0" value="Test:*:test"/>
+        </bean>
+    </util:set>
+    <util:set id="userRoles" value-type="java.lang.String">
+        <value>USER</value>
+    </util:set>
+
+</beans>

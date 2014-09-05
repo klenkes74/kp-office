@@ -16,6 +16,8 @@
 
 package de.kaiserpfalzEdv.commons.correlation;
 
+import de.kaiserpfalzEdv.commons.security.ActingSystem;
+import de.kaiserpfalzEdv.office.security.OfficeSubject;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
@@ -29,25 +31,37 @@ import static com.google.common.base.Preconditions.checkArgument;
  * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;
  * @since 0.1.0
  */
-public class AbstractCorrelation implements Correlation {
-    private static final long serialVersionUID = -7618633982740668486L;
+public abstract class AbstractCorrelation implements Correlation {
+    private static final long serialVersionUID = -5523430323208830143L;
 
     private UUID id;
+    private UUID sessionId;
+
     private long sequence = 0;
+    private OfficeSubject requester;
+    private ActingSystem system;
 
     @Deprecated // Only for Jackson, JAX-B and JPA!
     public AbstractCorrelation() {}
 
     @SuppressWarnings("deprecation")
     public AbstractCorrelation(final Correlation correlation, long sequence) {
+        setSessionId(correlation.getSessionId());
         setId(correlation.getId());
         setSequence(sequence);
+
+        setRequester(correlation.getRequester());
+        setSystem(correlation.getSystem());
     }
 
     @SuppressWarnings("deprecation")
-    public AbstractCorrelation(final UUID correlationId, long sequence) {
-        setId(correlationId);
+    public AbstractCorrelation(final UUID sessionId, final UUID id, final long sequence, final OfficeSubject requester, final ActingSystem system) {
+        setSessionId(sessionId);
+        setId(id);
         setSequence(sequence);
+
+        setRequester(requester);
+        setSystem(system);
     }
 
 
@@ -62,6 +76,17 @@ public class AbstractCorrelation implements Correlation {
 
 
     @Override
+    public UUID getSessionId() {
+        return sessionId;
+    }
+
+    @Deprecated // Only for Jackson, JAX-B and JPA!
+    public void setSessionId(UUID sessionId) {
+        this.sessionId = sessionId;
+    }
+
+
+    @Override
     public long getSequence() {
         return sequence;
     }
@@ -71,6 +96,33 @@ public class AbstractCorrelation implements Correlation {
         checkArgument(sequence >= 0, "The sequence has to be a positive number (current value: %s)", sequence);
 
         this.sequence = sequence;
+    }
+
+
+    @Override
+    public OfficeSubject getRequester() {
+        return requester;
+    }
+
+    @Deprecated // Only for Jackson, JAX-B and JPA!
+    public void setRequester(final OfficeSubject requester) {
+        this.requester = requester;
+    }
+
+
+    @Override
+    public ActingSystem getSystem() {
+        return system;
+    }
+
+    @Deprecated // Only for Jackson, JAX-B and JPA!
+    public void setSystem(final ActingSystem system) {
+        this.system = system;
+    }
+
+
+    public boolean isResponse() {
+        return !isRequest();
     }
 
 
@@ -101,9 +153,22 @@ public class AbstractCorrelation implements Correlation {
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE)
+        ToStringBuilder result = new ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE)
+                .appendSuper(super.toString());
+
+        if (sessionId != null)
+            result.append("session", getSessionId());
+
+        result
                 .append("id", getId())
-                .append("sequence", getSequence())
-                .toString();
+                .append("sequence", getSequence());
+
+        if (requester != null)
+            result.append("requester", getRequester());
+
+        if (system != null)
+            result.append("system", getSystem());
+
+        return result.toString();
     }
 }

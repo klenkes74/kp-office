@@ -39,6 +39,7 @@
     <modules>
         <module>kp-office-api</module>
         <module>kp-office-commons</module>
+        <module>kp-office-backend-utils</module>
         <module>kp-office-modules</module>
         <module>kp-office-interfaces</module>
     </modules>
@@ -151,18 +152,6 @@
                 <artifactId>maven-site-plugin</artifactId>
             </plugin>
 
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <configuration>
-                    <archive>
-                        <manifest>
-                            <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
-                            <addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>                        </manifest>
-                    </archive>
-                </configuration>
-            </plugin>
-
 
             <!-- ===[Testing]=============================================================================[BEGIN]=== -->
             <plugin>
@@ -219,6 +208,11 @@
         </dependency>
 
 
+        <dependency>
+            <groupId>de.kaiserpfalzEdv.commons</groupId>
+            <artifactId>kp-commons-test</artifactId>
+            <version>2014Q3</version>
+        </dependency>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -299,11 +293,13 @@
                 <artifactId>kp-office-backend-utils</artifactId>
                 <version>${project.version}</version>
             </dependency>
+
             <dependency>
                 <groupId>de.kaiserpfalz-edv.office</groupId>
                 <artifactId>kp-office-core</artifactId>
                 <version>${project.version}</version>
             </dependency>
+
             <dependency>
                 <groupId>de.kaiserpfalz-edv.office</groupId>
                 <artifactId>kp-office-tenants-history</artifactId>
@@ -319,21 +315,41 @@
                 <artifactId>kp-office-tenants-client</artifactId>
                 <version>${project.version}</version>
             </dependency>
+
+            <dependency>
+                <groupId>de.kaiserpfalz-edv.office</groupId>
+                <artifactId>kp-office-security-history</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>de.kaiserpfalz-edv.office</groupId>
+                <artifactId>kp-office-security-query</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>de.kaiserpfalz-edv.office</groupId>
+                <artifactId>kp-office-security-client</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
             <dependency>
                 <groupId>de.kaiserpfalz-edv.office</groupId>
                 <artifactId>kp-office-address</artifactId>
                 <version>${project.version}</version>
             </dependency>
+
             <dependency>
                 <groupId>de.kaiserpfalz-edv.office</groupId>
                 <artifactId>kp-office-projects</artifactId>
                 <version>${project.version}</version>
             </dependency>
+
             <dependency>
                 <groupId>de.kaiserpfalz-edv.office</groupId>
                 <artifactId>kp-office-service</artifactId>
                 <version>${project.version}</version>
             </dependency>
+
             <dependency>
                 <groupId>de.kaiserpfalz-edv.office</groupId>
                 <artifactId>kp-office-web</artifactId>

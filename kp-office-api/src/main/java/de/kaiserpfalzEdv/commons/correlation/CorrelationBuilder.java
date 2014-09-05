@@ -17,7 +17,7 @@
 package de.kaiserpfalzEdv.commons.correlation;
 
 import de.kaiserpfalzEdv.commons.security.ActingSystem;
-import de.kaiserpfalzEdv.commons.security.Subject;
+import de.kaiserpfalzEdv.office.security.OfficeSubject;
 import org.apache.commons.lang3.builder.Builder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -35,25 +35,22 @@ import static com.google.common.base.Preconditions.checkArgument;
 public class CorrelationBuilder<T extends Correlation> implements Builder<T> {
     private static final Logger LOG = LoggerFactory.getLogger(CorrelationBuilder.class);
 
-    private UUID correlationId;
+    private UUID sessionId;
     private UUID requestId;
     private UUID responseId;
     private long sequence = 0;
     private boolean multipleRepsonses = false;
     private boolean nextResponse = false;
 
-    private Subject requester;
+    private OfficeSubject requester;
     private ActingSystem system;
 
     @SuppressWarnings("unchecked") // The generic T needs this ...
     @Override
     public T build() {
-        T result;
-        if (correlationId == null)    generateCorrelationId();
-
-        result = (T) (
+        T result = (T) (
                 responseId == null
-                ? new RequestCorrelationImpl(correlationId, getRequestId(), sequence, requester, system)
+                ? new RequestCorrelationImpl(sessionId, getRequestId(), sequence, requester, system)
                 : new ResponseCorrelationImpl(getRequest(), getResponseId(), sequence, multipleRepsonses, nextResponse)
         );
 
@@ -62,7 +59,7 @@ public class CorrelationBuilder<T extends Correlation> implements Builder<T> {
     }
 
     private RequestCorrelation getRequest() {
-        return new RequestCorrelationImpl(correlationId, getRequestId(), sequence, requester, system);
+        return new RequestCorrelationImpl(sessionId, getRequestId(), sequence, requester, system);
     }
 
     private UUID getRequestId() {
@@ -74,8 +71,8 @@ public class CorrelationBuilder<T extends Correlation> implements Builder<T> {
     }
 
 
-    public CorrelationBuilder<T> withCorrelationId(final UUID id) {
-        this.correlationId = id;
+    public CorrelationBuilder<T> withSessionId(final UUID id) {
+        this.sessionId = id;
         return this;
     }
 
@@ -92,7 +89,7 @@ public class CorrelationBuilder<T extends Correlation> implements Builder<T> {
     }
 
 
-    public CorrelationBuilder<T> withRequester(final Subject principal) {
+    public CorrelationBuilder<T> withRequester(final OfficeSubject principal) {
         this.requester = principal;
         return this;
     }
@@ -136,17 +133,17 @@ public class CorrelationBuilder<T extends Correlation> implements Builder<T> {
         checkArgument(request != null, "Can't give <null> as request!");
 
         //noinspection ConstantConditions
-        this.correlationId = request.getId();
-        this.requestId = request.getRequestId();
+        this.sessionId = request.getSessionId();
+        this.requestId = request.getId();
 
         return this;
     }
 
 
     public CorrelationBuilder<T> withResponse(final ResponseCorrelation response) {
-        this.correlationId = response.getId();
+        this.sessionId = response.getSessionId();
         this.requestId = response.getInResponseTo();
-        this.responseId = response.getResponseId();
+        this.responseId = response.getId();
         this.sequence = response.getSequence();
 
         return this;
@@ -179,8 +176,8 @@ public class CorrelationBuilder<T extends Correlation> implements Builder<T> {
     }
 
 
-    public CorrelationBuilder<T> generateCorrelationId() {
-        this.correlationId = UUID.randomUUID();
+    public CorrelationBuilder<T> generateSessionId() {
+        this.sessionId = UUID.randomUUID();
 
         return this;
     }

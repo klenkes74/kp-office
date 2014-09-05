@@ -28,7 +28,7 @@
     </parent>
 
     <artifactId>kp-office-commons</artifactId>
-    <name>KP Office - Shared Modules</name>
+    <name>KP Office - Shared - Client and Server</name>
 
 
     <dependencyManagement>
@@ -71,6 +71,16 @@
         <dependency>
             <groupId>de.kaiserpfalz-edv.office</groupId>
             <artifactId>kp-office-api</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>de.kaiserpfalz-edv.office</groupId>
+            <artifactId>kp-office-commons</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
         </dependency>
 
         <dependency>

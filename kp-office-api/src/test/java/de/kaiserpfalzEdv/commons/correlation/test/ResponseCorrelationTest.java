@@ -27,6 +27,9 @@ import org.testng.annotations.Test;
 import java.util.UUID;
 
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertFalse;
+import static org.testng.Assert.assertNull;
+import static org.testng.Assert.assertTrue;
 
 /**
  * @author klenkes
@@ -36,7 +39,7 @@ import static org.testng.Assert.assertEquals;
 public class ResponseCorrelationTest extends CommonTestBase {
     private static final Logger LOG = LoggerFactory.getLogger(ResponseCorrelationTest.class);
 
-    private static final UUID CORRELATION_ID = UUID.randomUUID();
+    private static final UUID SESSION_ID = UUID.randomUUID();
     private static final UUID REQUEST_ID = UUID.randomUUID();
     private static final UUID RESPONSE_ID = UUID.randomUUID();
     private static final long SEQUENCE_NO = 1L;
@@ -52,25 +55,49 @@ public class ResponseCorrelationTest extends CommonTestBase {
     }
 
 
-    public void checkBasicRequestCorrelation() {
-        logMethod("basic-response", "Checking a basic response correlation.");
+    public void checkData() {
+        logMethod("data-check", "Checking full data set ...");
 
-        assertEquals(service.getId(), CORRELATION_ID, "Wrong correlation id");
-        assertEquals(service.getResponseId(), RESPONSE_ID, "Wrong response id");
+        assertEquals(service.getId(), RESPONSE_ID, "Wrong response id");
         assertEquals(service.getInResponseTo(), REQUEST_ID, "Wrong request id");
         assertEquals(service.getSequence(), SEQUENCE_NO, "Wrong sequence number");
-        assertEquals(service.hasMultipleResponses(), HAS_NEXT, "Response should be a single response");
+        assertEquals(service.isInMessageSequence(), HAS_NEXT, "Response should be a single response");
         assertEquals(service.hasNextResponse(), IS_IN_SEQUENCE, "Response should be the last response");
+    }
+
+    public void checkCorrelationType() {
+        logMethod("correlation-type", "Checking correlation type ...");
+
+        assertFalse(service.isRequest(), "Wrong correlation type. This should be no request.");
+        assertTrue(service.isResponse(), "Wrong correlation type. This should be a response.");
+    }
+
+
+    public void createResponseWithSession() {
+        logMethod("response-w/-session", "Checking a basic response correlation with session ...");
+
+        assertEquals(service.getSessionId(), SESSION_ID, "Wrong session id");
+    }
+
+    public void createResponseWithoutSession() {
+        logMethod("response-w/o-session", "Checking a basic response correlation without session.");
+
+        service = new CorrelationBuilder<ResponseCorrelation>()
+                .withRequestId(REQUEST_ID)
+                .withResponseId(RESPONSE_ID)
+                .build();
+
+        assertNull(service.getSessionId(), "Should have no session id");
     }
 
 
     @BeforeMethod
     protected void generateService() {
         LOG.debug("Building service with correlationId={}, requestId={}, repsonseId={} and sequenceNo={}",
-                CORRELATION_ID, REQUEST_ID, RESPONSE_ID, SEQUENCE_NO);
+                SESSION_ID, REQUEST_ID, RESPONSE_ID, SEQUENCE_NO);
 
         CorrelationBuilder<ResponseCorrelation> builder = new CorrelationBuilder<ResponseCorrelation>()
-                .withCorrelationId(CORRELATION_ID)
+                .withSessionId(SESSION_ID)
                 .withRequestId(REQUEST_ID)
                 .withResponseId(RESPONSE_ID)
                 .withSequence(SEQUENCE_NO);

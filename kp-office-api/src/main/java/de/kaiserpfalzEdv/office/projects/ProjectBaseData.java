@@ -16,7 +16,7 @@
 
 package de.kaiserpfalzEdv.office.projects;
 
-import de.kaiserpfalzEdv.office.Link;
+import de.kaiserpfalzEdv.office.core.Link;
 import de.kaiserpfalzEdv.office.tenants.Tenant;
 import de.kaiserpfalzEdv.office.address.Person;
 import de.kaiserpfalzEdv.office.address.PersonDTO;
