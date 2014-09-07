@@ -14,17 +14,11 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzEdv.office.security;
-
 /**
- * @author klenkes
- * @since 2014Q
+ *
+ *
+ * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;
+ * @version 0.1.0
+ * @since 0.1.0
  */
-public class OfficeStringPermission extends OfficePermissionDTO {
-    private static final long serialVersionUID = 3769391761332547751L;
-
-    @SuppressWarnings("deprecation")
-    public OfficeStringPermission(final String permission) {
-        super(new OfficePermissionConverter().doBackward(permission));
-    }
-}
+package de.kaiserpfalzEdv.office.security.cdi;

@@ -14,10 +14,12 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzEdv.office.security;
+package de.kaiserpfalzEdv.office.security.shiro;
 
 import com.google.common.collect.Sets;
-import de.kaiserpfalzEdv.office.security.shiro.OfficeShiroRealm;
+import de.kaiserpfalzEdv.office.security.OfficePrincipal;
+import de.kaiserpfalzEdv.office.security.OfficeSubject;
+import de.kaiserpfalzEdv.office.security.OfficeTicket;
 import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.PrincipalCollection;
@@ -31,28 +33,44 @@ import java.util.Set;
  */
 public class OfficeSubjectImpl extends DelegatingSubject implements OfficeSubject {
 
+    private String realm;
+    private OfficeTicket ticket;
 
-    public OfficeSubjectImpl(SecurityManager securityManager) {
+    public OfficeSubjectImpl(String realm, OfficeTicket ticket, SecurityManager securityManager) {
         super(securityManager);
+        this.realm = realm;
+        this.ticket = ticket;
     }
 
-    public OfficeSubjectImpl(PrincipalCollection principals, boolean authenticated, String host, Session session, SecurityManager securityManager) {
+    public OfficeSubjectImpl(String realm, OfficeTicket ticket, PrincipalCollection principals, boolean authenticated, String host, Session session, SecurityManager securityManager) {
         super(principals, authenticated, host, session, securityManager);
+        this.realm = realm;
+        this.ticket = ticket;
     }
 
-    public OfficeSubjectImpl(PrincipalCollection principals, boolean authenticated, String host, Session session, boolean sessionCreationEnabled, SecurityManager securityManager) {
+    public OfficeSubjectImpl(String realm, OfficeTicket ticket, PrincipalCollection principals, boolean authenticated, String host, Session session, boolean sessionCreationEnabled, SecurityManager securityManager) {
         super(principals, authenticated, host, session, sessionCreationEnabled, securityManager);
+        this.realm = realm;
+        this.ticket = ticket;
+    }
+
+    public String getRealmName() {
+        return realm;
+    }
+
+    public OfficeTicket getTicket() {
+        return ticket;
     }
 
 
     @Override
     public Set<OfficePrincipal> getAllPrincipal() {
         //noinspection unchecked
-        return Sets.newHashSet(getPrincipals().fromRealm(OfficeShiroRealm.class.getName()));
+        return Sets.newHashSet(getPrincipals().fromRealm(realm));
     }
 
     @Override
-    public Set<OfficePermission> getPermissions() {
+    public Set<String> getPermissions() {
         throw new UnsupportedOperationException("Sorry, this method is unsupported due to security reasons!");
     }
 

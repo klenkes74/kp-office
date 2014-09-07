@@ -20,9 +20,8 @@ import de.kaiserpfalzEdv.office.core.OfficeModule;
 import de.kaiserpfalzEdv.office.security.InvalidTicketException;
 import de.kaiserpfalzEdv.office.security.NoLongTermTicketAllowedException;
 import de.kaiserpfalzEdv.office.security.OfficeAuthenticationException;
-import de.kaiserpfalzEdv.office.security.OfficePermission;
 import de.kaiserpfalzEdv.office.security.OfficePrincipal;
-import de.kaiserpfalzEdv.office.security.OfficeSubjectDTO;
+import de.kaiserpfalzEdv.office.security.OfficeSubject;
 import de.kaiserpfalzEdv.office.security.OfficeTicket;
 import de.kaiserpfalzEdv.office.security.OfficeTicketDTO;
 import de.kaiserpfalzEdv.office.security.SecurityClient;
@@ -36,6 +35,7 @@ import java.time.ZonedDateTime;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
 
@@ -46,13 +46,27 @@ import java.util.UUID;
 public class MockSecurityClient implements SecurityClient {
     private static final Logger LOG = LoggerFactory.getLogger(MockSecurityClient.class);
 
-    private final Set<OfficeSubjectDTO> configuredSubjects = new HashSet<OfficeSubjectDTO>();
-    private final HashMap<OfficeTicketDTO, OfficeSubjectDTO> subjects = new HashMap<OfficeTicketDTO, OfficeSubjectDTO>();
+    private final Set<OfficeSubject> configuredSubjects = new HashSet<OfficeSubject>();
+    private final HashMap<OfficeTicket, OfficeSubject> subjects = new HashMap<OfficeTicket, OfficeSubject>();
+
+    public OfficeTicket getTicketForSubject(OfficeSubject subject) {
+        if (subjects.values().contains(subject)) {
+            for (Map.Entry<OfficeTicket, OfficeSubject> entry : subjects.entrySet()) {
+                if (entry.getValue().equals(subject))
+                    return entry.getKey();
+            }
+        }
+
+        OfficeTicket result = new OfficeTicketDTO(UUID.randomUUID(), ZonedDateTime.now().plusHours(1));
+        subjects.put(result, subject);
+
+        return result;
+    }
 
     @Override
-    public OfficeTicketDTO login(OfficePrincipal principal, OfficeModule application, Serializable credentials) throws OfficeAuthenticationException {
-        OfficeTicketDTO result = new OfficeTicketDTO(UUID.randomUUID(), ZonedDateTime.now().plusHours(1));
-        OfficeSubjectDTO subject = createSubject(principal);
+    public OfficeTicket login(OfficePrincipal principal, OfficeModule application, Serializable credentials) throws OfficeAuthenticationException {
+        OfficeTicket result = (OfficeTicketDTO) credentials;
+        OfficeSubject subject = createSubject(principal);
 
         subjects.put(result, subject);
         return result;
@@ -76,15 +90,15 @@ public class MockSecurityClient implements SecurityClient {
     }
 
     @Override
-    public OfficeSubjectDTO createSubject(OfficeTicket ticket) throws InvalidTicketException {
+    public OfficeSubject createSubject(OfficeTicket ticket) throws InvalidTicketException {
         if (! isValidTicket(ticket)) throw new InvalidTicketException(ticket);
 
         return subjects.get(ticket);
     }
 
     @Override
-    public OfficeSubjectDTO createSubject(OfficePrincipal principal) throws OfficeAuthenticationException {
-        for (OfficeSubjectDTO subject : configuredSubjects) {
+    public OfficeSubject createSubject(OfficePrincipal principal) throws OfficeAuthenticationException {
+        for (OfficeSubject subject : configuredSubjects) {
             if (subject.getAllPrincipal().contains(principal)) {
                 return subject;
             }
@@ -94,20 +108,20 @@ public class MockSecurityClient implements SecurityClient {
     }
 
     @Override
-    public OfficeTicket createLongLifeTicket(OfficeTicket ticket, Period period, Collection<OfficePermission> permissions) throws InvalidTicketException, TicketNotRefreshableException, NoLongTermTicketAllowedException {
+    public OfficeTicket createLongLifeTicket(OfficeTicket ticket, Period period, Collection<String> permissions) throws InvalidTicketException, TicketNotRefreshableException, NoLongTermTicketAllowedException {
         throw new NoLongTermTicketAllowedException(ticket);
     }
 
-    private Set<OfficeTicketDTO> getTickets() {
+    private Set<OfficeTicket> getTickets() {
         return subjects.keySet();
     }
 
 
-    public Set<OfficeSubjectDTO> getConfiguredSubjects() {
+    public Set<OfficeSubject> getConfiguredSubjects() {
         return configuredSubjects;
     }
 
-    public void setConfiguredSubjects(Collection<OfficeSubjectDTO> subjects) {
+    public void setConfiguredSubjects(Collection<? extends OfficeSubject> subjects) {
         this.configuredSubjects.clear();
 
         if (subjects != null) {

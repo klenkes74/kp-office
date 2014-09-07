@@ -39,6 +39,7 @@
 
     <bean id="securityManager" class="org.apache.shiro.mgt.DefaultSecurityManager">
         <property name="realm" ref="officeShiroRealm"/>
+        <property name="subjectFactory" ref="officeSubjectFactory"/>
     </bean>
     <bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"/>
     <bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator" depends-on="lifecycleBeanPostProcessor"/>

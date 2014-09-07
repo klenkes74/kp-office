@@ -16,9 +16,6 @@
 
 package de.kaiserpfalzEdv.commons.correlation;
 
-import de.kaiserpfalzEdv.commons.security.ActingSystem;
-import de.kaiserpfalzEdv.office.security.OfficeSubject;
-
 import java.io.Serializable;
 import java.util.UUID;
 
@@ -31,9 +28,6 @@ public interface Correlation extends Serializable {
     public UUID getId();
 
     public long getSequence();
-
-    public OfficeSubject getRequester();
-    public ActingSystem getSystem();
 
     public boolean isRequest();
     public boolean isResponse();

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzEdv.office.security;
+package de.kaiserpfalzEdv.office.security.cdi;
 
 import javax.enterprise.util.Nonbinding;
 import javax.interceptor.InterceptorBinding;

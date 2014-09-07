@@ -16,15 +16,11 @@
 
 package de.kaiserpfalzEdv.office.security.shiro;
 
-import com.google.common.base.Converter;
 import de.kaiserpfalzEdv.office.security.InvalidTicketException;
 import de.kaiserpfalzEdv.office.security.OfficeAuthenticationSystemException;
-import de.kaiserpfalzEdv.office.security.OfficePermission;
-import de.kaiserpfalzEdv.office.security.OfficePermissionConverter;
 import de.kaiserpfalzEdv.office.security.OfficePrincipal;
 import de.kaiserpfalzEdv.office.security.OfficeSubject;
 import de.kaiserpfalzEdv.office.security.OfficeTicket;
-import de.kaiserpfalzEdv.office.security.OfficeToken;
 import de.kaiserpfalzEdv.office.security.SecurityClient;
 import net.logstash.logback.marker.ObjectFieldsAppendingMarker;
 import org.apache.shiro.authc.AuthenticationException;
@@ -33,6 +29,7 @@ import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.authc.SimpleAuthenticationInfo;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
+import org.apache.shiro.cache.CacheManager;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.subject.SimplePrincipalCollection;
@@ -55,19 +52,21 @@ public class OfficeShiroRealm extends AuthorizingRealm {
 
 
     private SecurityClient verifier;
-    private Converter<OfficePermission, String> converter;
 
 
     @Inject
     public OfficeShiroRealm(
             final SecurityClient verifier,
-            final OfficePermissionConverter converter
+            final CacheManager cacheManger
     ) {
         this.verifier = verifier;
-        this.converter = converter;
+        setCacheManager(cacheManger);
+
+        setAuthenticationTokenClass(OfficeToken.class);
 
         LOG.trace("Created: {}", this);
     }
+
 
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken inToken) throws AuthenticationException {
@@ -94,7 +93,7 @@ public class OfficeShiroRealm extends AuthorizingRealm {
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection inPrincipals) {
         SimpleAuthorizationInfo result = new SimpleAuthorizationInfo();
 
-        for (Object p : inPrincipals.fromRealm(OfficeShiroRealm.class.getName())) {
+        for (Object p : inPrincipals.fromRealm(getName())) {
             OfficePrincipal principal = (OfficePrincipal)p;
 
             try {
@@ -112,29 +111,20 @@ public class OfficeShiroRealm extends AuthorizingRealm {
 
     private void addRoles(SimpleAuthorizationInfo result, OfficePrincipal principal, OfficeSubject subject) {
         Set<String> roles = subject.getRoles();
-        LOG.trace(roleMarker(principal, roles), "Adding roles from subject", roles);
+        LOG.trace(stringSetMarker("roles", principal, roles), "Adding roles from subject", roles);
         result.addRoles(subject.getRoles());
     }
-    private ObjectFieldsAppendingMarker roleMarker(OfficePrincipal principal, Set<String> roles) {
+    private ObjectFieldsAppendingMarker stringSetMarker(final String type, OfficePrincipal principal, Set<String> roles) {
         Map<String, Object> result = new HashMap<>(roles.size());
         result.put("principal", principal);
-        result.put("roles", roles);
+        result.put(type, roles);
 
         return new ObjectFieldsAppendingMarker(result);
     }
 
     private void addPermissions(SimpleAuthorizationInfo result, OfficePrincipal principal, OfficeSubject subject) {
-        Set<OfficePermission> permissions = subject.getPermissions();
-        LOG.trace(permissionMarker(principal, permissions), "Adding permissions from subject", permissions);
-        for (OfficePermission permission : permissions) {
-            result.addStringPermission(converter.convert(permission));
-        }
-    }
-    private ObjectFieldsAppendingMarker permissionMarker(OfficePrincipal principal, Set<OfficePermission> permissions) {
-        Map<String, Object> result = new HashMap<>(permissions.size());
-        result.put("principal", principal);
-        result.put("permissions", permissions);
-
-        return new ObjectFieldsAppendingMarker(result);
+        Set<String> permissions = subject.getPermissions();
+        LOG.trace(stringSetMarker("permissions", principal, permissions), "Adding permissions from subject", permissions);
+        result.addStringPermissions(permissions);
     }
 }

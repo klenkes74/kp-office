@@ -16,9 +16,11 @@
 
 package de.kaiserpfalzEdv.office.security.shiro;
 
-import de.kaiserpfalzEdv.office.security.OfficeToken;
+import de.kaiserpfalzEdv.office.security.OfficeTicket;
 import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.mgt.DefaultSubjectFactory;
+import org.apache.shiro.session.Session;
+import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.subject.Subject;
 import org.apache.shiro.subject.SubjectContext;
 import org.slf4j.Logger;
@@ -31,14 +33,17 @@ import org.slf4j.LoggerFactory;
 public class OfficeSubjectFactory extends DefaultSubjectFactory {
     private static final Logger LOG = LoggerFactory.getLogger(OfficeSubjectFactory.class);
 
+    private String realm;
+
+    public void setRealm(final String realm) {
+        this.realm = realm;
+    }
+
     @Override
     public Subject createSubject(SubjectContext context) {
 
-        //the authenticated flag is only set by the SecurityManager after a successful authentication attempt.
         boolean authenticated = context.isAuthenticated();
 
-        //although the SecurityManager 'sees' the submission as a successful authentication, in reality, the
-        //login might have been just a Office rememberMe login.  If so, set the authenticated flag appropriately:
         if (authenticated) {
 
             AuthenticationToken token = context.getAuthenticationToken();
@@ -53,6 +58,14 @@ public class OfficeSubjectFactory extends DefaultSubjectFactory {
             }
         }
 
-        return super.createSubject(context);
+        OfficeTicket ticket = ((OfficeToken)context.getAuthenticationToken()).getTicket();
+        org.apache.shiro.mgt.SecurityManager securityManager = context.resolveSecurityManager();
+        Session session = context.resolveSession();
+        boolean sessionCreationEnabled = context.isSessionCreationEnabled();
+        PrincipalCollection principals = context.resolvePrincipals();
+        authenticated = context.resolveAuthenticated();
+        String host = context.resolveHost();
+
+        return new OfficeSubjectImpl(realm, ticket,principals, authenticated, host, session, sessionCreationEnabled, securityManager);
     }
 }

@@ -28,21 +28,16 @@ import static com.google.common.base.Preconditions.checkArgument;
  * @since 0.1.0
  */
 public class ResponseCorrelationImpl extends AbstractCorrelation implements ResponseCorrelation {
-    private static final long serialVersionUID = 9027321813336033390L;
+    private static final long serialVersionUID = -5014065266416397628L;
 
     private UUID requestId;
     private boolean multipleResponses = false;
     private boolean nextResponse = false;
 
 
-    @SuppressWarnings({"UnusedDeclaration", "deprecation"})
-    @Deprecated // Only for Jackson, JAX-B and JPA!
-    public ResponseCorrelationImpl() {}
-
-    @SuppressWarnings("deprecation")
     public ResponseCorrelationImpl(final RequestCorrelation request, final UUID id, final long sequenceNumber,
                                    final boolean multipleResponses, final boolean nextResponse) {
-        super(request.getSessionId(), id, sequenceNumber, request.getRequester(), request.getSystem());
+        super(request.getSessionId(), id, sequenceNumber);
 
         setInResponseTo(request.getId());
         setInMessageSequence(multipleResponses);
@@ -55,8 +50,7 @@ public class ResponseCorrelationImpl extends AbstractCorrelation implements Resp
         return requestId;
     }
 
-    @Deprecated // Only for Jackson, JAX-B and JPA!
-    public void setInResponseTo(final UUID id) {
+    private void setInResponseTo(final UUID id) {
         checkArgument(id != null, "Need a valid original request id for a response!");
 
         requestId = id;
@@ -70,6 +64,7 @@ public class ResponseCorrelationImpl extends AbstractCorrelation implements Resp
     private void setInMessageSequence(boolean multipleResponses) {
         this.multipleResponses = multipleResponses;
     }
+
 
     public boolean hasNextResponse() {
         return nextResponse;

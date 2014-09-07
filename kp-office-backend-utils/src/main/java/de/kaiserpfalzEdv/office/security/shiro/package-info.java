@@ -14,20 +14,11 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzEdv.office.security;
-
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-
-import java.util.Set;
-
 /**
+ *
+ *
  * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;
+ * @version 0.1.0
  * @since 0.1.0
  */
-@JsonTypeInfo(use=JsonTypeInfo.Id.CLASS, include=JsonTypeInfo.As.PROPERTY, property="@class", defaultImpl = OfficeSubjectDTO.class)
-public interface OfficeSubject {
-    public Set<OfficePrincipal> getAllPrincipal();
-
-    public Set<String> getPermissions();
-    public Set<String> getRoles();
-}
+package de.kaiserpfalzEdv.office.security.shiro;

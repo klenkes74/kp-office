@@ -14,8 +14,11 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzEdv.office.security;
+package de.kaiserpfalzEdv.office.security.shiro;
 
+import de.kaiserpfalzEdv.office.security.OfficePrincipal;
+import de.kaiserpfalzEdv.office.security.OfficePrincipalDTO;
+import de.kaiserpfalzEdv.office.security.OfficeTicket;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;

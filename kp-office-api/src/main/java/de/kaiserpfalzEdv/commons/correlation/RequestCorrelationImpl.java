@@ -16,9 +16,6 @@
 
 package de.kaiserpfalzEdv.commons.correlation;
 
-import de.kaiserpfalzEdv.commons.security.ActingSystem;
-import de.kaiserpfalzEdv.office.security.OfficeSubject;
-
 import java.util.UUID;
 
 /**
@@ -26,20 +23,11 @@ import java.util.UUID;
  * @since 0.1.0
  */
 public class RequestCorrelationImpl extends AbstractCorrelation implements RequestCorrelation {
-    private static final long serialVersionUID = 8499437843915417296L;
+    private static final long serialVersionUID = 1020352481219481880L;
+                                                                     ^
 
-    @SuppressWarnings({"deprecation", "UnusedDeclaration"})
-    @Deprecated // Only for Jackson, JAX-B and JPA!
-    public RequestCorrelationImpl() {}
-
-    @SuppressWarnings("deprecation")
-    public RequestCorrelationImpl(
-            final UUID sessionId, final UUID id, final long sequenceNumber,
-            final OfficeSubject requester, final ActingSystem system) {
-        super(sessionId, id, sequenceNumber, requester, system);
-
-        setRequester(requester);
-        setSystem(system);
+    public RequestCorrelationImpl(final UUID sessionId, final UUID id, final long sequenceNumber) {
+        super(sessionId, id, sequenceNumber);
     }
 
 

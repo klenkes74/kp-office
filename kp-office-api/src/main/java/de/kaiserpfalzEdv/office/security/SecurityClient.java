@@ -45,5 +45,5 @@ public interface SecurityClient {
     public OfficeSubject createSubject(OfficeTicket ticket) throws InvalidTicketException;
     public OfficeSubject createSubject(OfficePrincipal principal) throws OfficeAuthenticationException;
 
-    public OfficeTicket createLongLifeTicket(OfficeTicket ticket, Period period, Collection<OfficePermission> permissions) throws InvalidTicketException, TicketNotRefreshableException, NoLongTermTicketAllowedException;
+    public OfficeTicket createLongLifeTicket(OfficeTicket ticket, Period period, Collection<String> permissions) throws InvalidTicketException, TicketNotRefreshableException, NoLongTermTicketAllowedException;
 }

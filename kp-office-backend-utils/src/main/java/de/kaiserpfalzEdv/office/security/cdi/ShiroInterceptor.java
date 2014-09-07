@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzEdv.office.security;
+package de.kaiserpfalzEdv.office.security.cdi;
 
 import de.kaiserpfalzEdv.office.tenants.NullTenant;
 import de.kaiserpfalzEdv.office.tenants.Tenant;

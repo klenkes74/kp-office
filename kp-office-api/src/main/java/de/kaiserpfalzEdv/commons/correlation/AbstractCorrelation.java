@@ -16,8 +16,6 @@
 
 package de.kaiserpfalzEdv.commons.correlation;
 
-import de.kaiserpfalzEdv.commons.security.ActingSystem;
-import de.kaiserpfalzEdv.office.security.OfficeSubject;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
@@ -32,36 +30,23 @@ import static com.google.common.base.Preconditions.checkArgument;
  * @since 0.1.0
  */
 public abstract class AbstractCorrelation implements Correlation {
-    private static final long serialVersionUID = -5523430323208830143L;
+    private static final long serialVersionUID = -4407586493428545064L;
 
     private UUID id;
     private UUID sessionId;
-
     private long sequence = 0;
-    private OfficeSubject requester;
-    private ActingSystem system;
 
-    @Deprecated // Only for Jackson, JAX-B and JPA!
-    public AbstractCorrelation() {}
 
-    @SuppressWarnings("deprecation")
     public AbstractCorrelation(final Correlation correlation, long sequence) {
         setSessionId(correlation.getSessionId());
         setId(correlation.getId());
         setSequence(sequence);
-
-        setRequester(correlation.getRequester());
-        setSystem(correlation.getSystem());
     }
 
-    @SuppressWarnings("deprecation")
-    public AbstractCorrelation(final UUID sessionId, final UUID id, final long sequence, final OfficeSubject requester, final ActingSystem system) {
+    public AbstractCorrelation(final UUID sessionId, final UUID id, final long sequence) {
         setSessionId(sessionId);
         setId(id);
         setSequence(sequence);
-
-        setRequester(requester);
-        setSystem(system);
     }
 
 
@@ -69,8 +54,7 @@ public abstract class AbstractCorrelation implements Correlation {
         return id;
     }
 
-    @Deprecated // Only for Jackson, JAX-B and JPA!
-    public void setId(final UUID id) {
+    private void setId(final UUID id) {
         this.id = id;
     }
 
@@ -80,8 +64,7 @@ public abstract class AbstractCorrelation implements Correlation {
         return sessionId;
     }
 
-    @Deprecated // Only for Jackson, JAX-B and JPA!
-    public void setSessionId(UUID sessionId) {
+    private void setSessionId(UUID sessionId) {
         this.sessionId = sessionId;
     }
 
@@ -91,33 +74,10 @@ public abstract class AbstractCorrelation implements Correlation {
         return sequence;
     }
 
-    @Deprecated // Only for Jackson, JAX-B and JPA!
-    public void setSequence(final long sequence) {
+    private void setSequence(final long sequence) {
         checkArgument(sequence >= 0, "The sequence has to be a positive number (current value: %s)", sequence);
 
         this.sequence = sequence;
-    }
-
-
-    @Override
-    public OfficeSubject getRequester() {
-        return requester;
-    }
-
-    @Deprecated // Only for Jackson, JAX-B and JPA!
-    public void setRequester(final OfficeSubject requester) {
-        this.requester = requester;
-    }
-
-
-    @Override
-    public ActingSystem getSystem() {
-        return system;
-    }
-
-    @Deprecated // Only for Jackson, JAX-B and JPA!
-    public void setSystem(final ActingSystem system) {
-        this.system = system;
     }
 
 
@@ -162,12 +122,6 @@ public abstract class AbstractCorrelation implements Correlation {
         result
                 .append("id", getId())
                 .append("sequence", getSequence());
-
-        if (requester != null)
-            result.append("requester", getRequester());
-
-        if (system != null)
-            result.append("system", getSystem());
 
         return result.toString();
     }

@@ -14,24 +14,19 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzEdv.office.security;
+package de.kaiserpfalzEdv.office.security.cdi;
 
-import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.subject.Subject;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import javax.enterprise.inject.Produces;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Inherited;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
 /**
- * @author klenkes
- * @since 2014Q
+ * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;
+ * @since 0.1.0
  */
-public class SecurityProducer {
-    private static final Logger LOG = LoggerFactory.getLogger(SecurityProducer.class);
-
-    @Produces
-    public Subject getSubject() {
-        return SecurityUtils.getSubject();
-    }
-}
+@Inherited
+@Target({ElementType.PARAMETER})
+@Retention(RetentionPolicy.RUNTIME)
+public @interface TenantMarker {}

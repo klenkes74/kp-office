@@ -14,35 +14,24 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzEdv.commons.session;
+package de.kaiserpfalzEdv.office.security.cdi;
 
-import de.kaiserpfalzEdv.commons.security.ActingSystem;
-import de.kaiserpfalzEdv.office.security.OfficeSubject;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.subject.Subject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.Serializable;
-import java.util.HashMap;
+import javax.enterprise.inject.Produces;
 
 /**
  * @author klenkes
  * @since 2014Q
  */
-public class SessionInformationStore implements Serializable {
-    private static final Logger LOG = LoggerFactory.getLogger(SessionInformationStore.class);
+public class SecurityProducer {
+    private static final Logger LOG = LoggerFactory.getLogger(SecurityProducer.class);
 
-    private final HashMap<String, Object> sessionInformation = new HashMap<>();
-
-    private OfficeSubject subject;
-    private ActingSystem system;
-
-
-    public void store(final String key, final Object data) {
-        sessionInformation.put(key, data);
-    }
-
-
-    public Object retrieve(final String key) {
-        return sessionInformation.get(key);
+    @Produces
+    public Subject getSubject() {
+        return SecurityUtils.getSubject();
     }
 }

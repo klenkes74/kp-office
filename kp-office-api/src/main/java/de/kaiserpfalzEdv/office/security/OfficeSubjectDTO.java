@@ -37,7 +37,7 @@ public final class OfficeSubjectDTO implements OfficeSubject, ActingSystem, Seri
 
 
     private Set<OfficePrincipal> principals = new HashSet<>();
-    private Set<OfficePermission> permissions = new HashSet<>();
+    private Set<String> permissions = new HashSet<>();
     private Set<String> roles = new HashSet<>();
 
 
@@ -47,7 +47,7 @@ public final class OfficeSubjectDTO implements OfficeSubject, ActingSystem, Seri
     @SuppressWarnings("deprecation")
     public OfficeSubjectDTO(
             final Collection<OfficePrincipal> principals,
-            final Collection<OfficePermission> permissions,
+            final Collection<String> permissions,
             final Collection<String> roles
     ) {
         setPrincipals(principals);
@@ -72,12 +72,12 @@ public final class OfficeSubjectDTO implements OfficeSubject, ActingSystem, Seri
 
 
     @Override
-    public Set<OfficePermission> getPermissions() {
+    public Set<String> getPermissions() {
         return permissions;
     }
 
     @Deprecated // Only for Jackson, JAX-P and JPA!
-    public void setPermissions(final Collection<OfficePermission> permissions) {
+    public void setPermissions(final Collection<String> permissions) {
         this.permissions.clear();
 
         if (permissions != null) {

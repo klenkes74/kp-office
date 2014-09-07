@@ -18,9 +18,7 @@ package de.kaiserpfalzEdv.commons.correlation.test;
 
 import de.kaiserpfalzEdv.commons.correlation.CorrelationBuilder;
 import de.kaiserpfalzEdv.commons.correlation.RequestCorrelation;
-import de.kaiserpfalzEdv.commons.security.ActingSystem;
 import de.kaiserpfalzEdv.commons.test.CommonTestBase;
-import de.kaiserpfalzEdv.office.security.OfficeSubjectDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.annotations.BeforeMethod;
@@ -45,9 +43,6 @@ public class RequestCorrelationTest extends CommonTestBase {
     private static final UUID REQUEST_ID = UUID.randomUUID();
     private static final long SEQUENCE_NO = 1L;
 
-    private static final OfficeSubjectDTO REQUESTER = new OfficeSubjectDTO(null, null, null);
-    private static final ActingSystem SYSTEM = new OfficeSubjectDTO(null, null, null);
-
 
     private RequestCorrelation service;
 
@@ -62,8 +57,6 @@ public class RequestCorrelationTest extends CommonTestBase {
 
         assertEquals(service.getId(), REQUEST_ID, "Wrong request id");
         assertEquals(service.getSequence(), SEQUENCE_NO, "Wrong sequence number");
-        assertEquals(service.getRequester(), REQUESTER, "Wrong requesting user");
-        assertEquals(service.getSystem(), SYSTEM, "Wrong requesting system");
     }
 
 
@@ -99,8 +92,6 @@ public class RequestCorrelationTest extends CommonTestBase {
                 .withSessionId(SESSION_ID)
                 .withRequestId(REQUEST_ID)
                 .withSequence(SEQUENCE_NO)
-                .withRequester(REQUESTER)
-                .withSystem(SYSTEM)
                 .build();
     }
 }

@@ -14,21 +14,11 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzEdv.commons.session;
-
-import de.kaiserpfalzEdv.commons.security.ActingSystem;
-import de.kaiserpfalzEdv.office.security.OfficeSubject;
-
-import java.io.Serializable;
-
 /**
- * @author klenkes
- * @since 2014Q
+ *
+ *
+ * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;
+ * @version 0.1.0
+ * @since 0.1.0
  */
-public interface Session {
-    public OfficeSubject getRequester();
-    public ActingSystem getSystem();
-
-    public void put(Serializable key, Serializable value);
-    public <T> T get(Serializable key, T sample);
-}
+package de.kaiserpfalzEdv.office.security.shiro.test;
