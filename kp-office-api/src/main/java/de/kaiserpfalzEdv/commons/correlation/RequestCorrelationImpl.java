@@ -24,7 +24,7 @@ import java.util.UUID;
  */
 public class RequestCorrelationImpl extends AbstractCorrelation implements RequestCorrelation {
     private static final long serialVersionUID = 1020352481219481880L;
-                                                                     ^
+
 
     public RequestCorrelationImpl(final UUID sessionId, final UUID id, final long sequenceNumber) {
         super(sessionId, id, sequenceNumber);

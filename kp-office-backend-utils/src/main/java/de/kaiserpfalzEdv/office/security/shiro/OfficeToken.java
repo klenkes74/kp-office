@@ -16,9 +16,6 @@
 
 package de.kaiserpfalzEdv.office.security.shiro;
 
-import de.kaiserpfalzEdv.office.security.OfficePrincipal;
-import de.kaiserpfalzEdv.office.security.OfficePrincipalDTO;
-import de.kaiserpfalzEdv.office.security.OfficeTicket;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
@@ -31,27 +28,11 @@ import java.io.Serializable;
  * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;
  * @since 0.1.0
  */
-public class OfficeToken implements RememberMeAuthenticationToken, Serializable {
-    private static final long serialVersionUID = -5961796175346838277L;
+public abstract class OfficeToken implements RememberMeAuthenticationToken, Serializable {
+    private static final long serialVersionUID = 2460388790132790628L;
 
     private boolean rememberMe = false;
-
-    private OfficePrincipal user;
-    private OfficePrincipal system;
-
-    private Serializable credentials;
-
-
-    public OfficeToken(final String userAccount, final String userRealm, final Serializable credentials) {
-        setPrincipal(new OfficePrincipalDTO(userAccount, userRealm));
-        setCredentials(credentials);
-    }
-
-    public OfficeToken(final String userAccount, final String userRealm, final String systemAccount, final String systemRealm, final Serializable credentials) {
-        setPrincipal(new OfficePrincipalDTO(userAccount, userRealm));
-        setSystem(new OfficePrincipalDTO(systemAccount, systemRealm));
-        setCredentials(credentials);
-    }
+    private boolean valid = false;
 
 
     @Override
@@ -63,41 +44,13 @@ public class OfficeToken implements RememberMeAuthenticationToken, Serializable 
         this.rememberMe = state;
     }
 
-    @Override
-    public Object getPrincipal() {
-        return user;
+
+    public boolean isValid() {
+        return valid;
     }
 
-    private void setPrincipal(final OfficePrincipal principal) {
-        this.user = principal;
-    }
-
-
-    public Object getSystem() {
-        return system;
-    }
-
-    private void setSystem(final OfficePrincipal principal) {
-        this.system = principal;
-    }
-
-
-    @Override
-    public Serializable getCredentials() {
-        return credentials;
-    }
-
-    private void setCredentials(Serializable credentials) {
-        this.credentials = credentials;
-    }
-
-
-    public OfficeTicket getTicket() {
-        try {
-            return (OfficeTicket) credentials;
-        } catch (ClassCastException e) {
-            throw new IllegalStateException("Sorry, the credentials were no valid ticket!");
-        }
+    public void setValid(boolean valid) {
+        this.valid = valid;
     }
 
 
@@ -115,7 +68,6 @@ public class OfficeToken implements RememberMeAuthenticationToken, Serializable 
         OfficeToken rhs = (OfficeToken) obj;
         return new EqualsBuilder()
                 .append(this.getPrincipal(), rhs.getPrincipal())
-                .append(this.getSystem(), rhs.getSystem())
                 .isEquals();
     }
 
@@ -123,22 +75,15 @@ public class OfficeToken implements RememberMeAuthenticationToken, Serializable 
     public int hashCode() {
         return new HashCodeBuilder()
                 .append(getPrincipal())
-                .append(getSystem())
                 .toHashCode();
     }
 
 
     @Override
     public String toString() {
-        ToStringBuilder result = new ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE)
-                .append("user", getPrincipal());
-
-        if (system != null)
-            result.append("system", getSystem());
-
-        return result
+        return new ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE)
                 .append("rememberMe", rememberMe)
-                .append("hasCredentials", credentials != null)
+                .append("valid", valid)
                 .toString();
     }
 }

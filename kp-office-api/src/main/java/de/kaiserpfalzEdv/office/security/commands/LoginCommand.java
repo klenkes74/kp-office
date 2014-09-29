@@ -16,8 +16,8 @@
 
 package de.kaiserpfalzEdv.office.security.commands;
 
-import de.kaiserpfalzEdv.office.core.OfficeModule;
 import de.kaiserpfalzEdv.office.security.OfficePrincipal;
+import de.kaiserpfalzEdv.office.security.OfficeTicket;
 
 /**
  * The login command to get the user logged in.
@@ -29,17 +29,18 @@ public class LoginCommand extends LoginBaseCommand {
     private static final long serialVersionUID = 1L;
 
     private OfficePrincipal user;
-    private OfficeModule application;
+    private OfficeTicket applicationTicket;
     private OfficeChallenge challange;
 
 
     @Deprecated // Only for Jackson, JAX-B and JPA!
-    public LoginCommand() {}
+    public LoginCommand() {
+    }
 
     @SuppressWarnings("deprecation")
-    public LoginCommand(final OfficePrincipal user, final OfficeModule application, final OfficeChallenge challenge) {
+    public LoginCommand(final OfficePrincipal user, final OfficeTicket applicationTicket, final OfficeChallenge challenge) {
         setUser(user);
-        setApplication(application);
+        setApplicationTicket(applicationTicket);
         setChallange(challenge);
     }
 
@@ -49,18 +50,18 @@ public class LoginCommand extends LoginBaseCommand {
     }
 
     @Deprecated // Only for Jackson, JAX-B and JPA!
-    public void setUser(OfficePrincipal user) {
+    public void setUser(final OfficePrincipal user) {
         this.user = user;
     }
 
 
-    public OfficeModule getApplication() {
-        return application;
+    public OfficeTicket getApplicationTicket() {
+        return applicationTicket;
     }
 
     @Deprecated // Only for Jackson, JAX-B and JPA!
-    public void setApplication(OfficeModule application) {
-        this.application = application;
+    public void setApplicationTicket(final OfficeTicket applicationTicket) {
+        this.applicationTicket = applicationTicket;
     }
 
 
@@ -69,7 +70,7 @@ public class LoginCommand extends LoginBaseCommand {
     }
 
     @Deprecated // Only for Jackson, JAX-B and JPA!
-    public void setChallange(OfficeChallenge challange) {
+    public void setChallange(final OfficeChallenge challange) {
         this.challange = challange;
     }
 }

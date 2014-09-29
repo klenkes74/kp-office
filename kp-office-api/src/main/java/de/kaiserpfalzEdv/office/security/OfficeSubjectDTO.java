@@ -23,7 +23,6 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
 import java.io.Serializable;
-import java.security.Principal;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
@@ -33,7 +32,7 @@ import java.util.Set;
  * @since 0.1.0
  */
 public final class OfficeSubjectDTO implements OfficeSubject, ActingSystem, Serializable {
-    private static final long serialVersionUID = 4747502267938569354L;
+    private static final long serialVersionUID = -5944250353391648123L;
 
 
     private Set<OfficePrincipal> principals = new HashSet<>();
@@ -129,17 +128,7 @@ public final class OfficeSubjectDTO implements OfficeSubject, ActingSystem, Seri
     @Override
     public String toString() {
         return new ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE)
-                .append("principals", formatPrincipals())
+                .append("principals", getAllPrincipal())
                 .toString();
-    }
-
-    private String formatPrincipals() {
-        StringBuilder result = new StringBuilder("[");
-
-        for (Principal p : principals) {
-            result.append(p.getName()).append(",");
-        }
-
-        return result.append("]").toString();
     }
 }

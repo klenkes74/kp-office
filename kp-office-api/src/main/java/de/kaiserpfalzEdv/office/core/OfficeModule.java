@@ -16,13 +16,10 @@
 
 package de.kaiserpfalzEdv.office.core;
 
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-
 /**
  * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;
  * @since 0.1.0
  */
-@JsonTypeInfo(use=JsonTypeInfo.Id.CLASS, include=JsonTypeInfo.As.PROPERTY, property="@class", defaultImpl = OfficeModuleDTO.class)
 public interface OfficeModule {
     public String getDisplayName();
 }

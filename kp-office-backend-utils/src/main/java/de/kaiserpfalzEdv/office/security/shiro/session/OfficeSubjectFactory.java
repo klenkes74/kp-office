@@ -14,9 +14,12 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzEdv.office.security.shiro;
+package de.kaiserpfalzEdv.office.security.shiro.session;
 
 import de.kaiserpfalzEdv.office.security.OfficeTicket;
+import de.kaiserpfalzEdv.office.security.shiro.OfficeToken;
+import de.kaiserpfalzEdv.office.security.shiro.loginAuthorization.OfficeLoginToken;
+import de.kaiserpfalzEdv.office.security.shiro.ticketAuthorization.OfficeTicketToken;
 import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.mgt.DefaultSubjectFactory;
 import org.apache.shiro.session.Session;
@@ -33,10 +36,15 @@ import org.slf4j.LoggerFactory;
 public class OfficeSubjectFactory extends DefaultSubjectFactory {
     private static final Logger LOG = LoggerFactory.getLogger(OfficeSubjectFactory.class);
 
-    private String realm;
+    private String loginRealm;
+    private String ticketRealm;
 
-    public void setRealm(final String realm) {
-        this.realm = realm;
+    public void setLoginRealm(final String realm) {
+        this.loginRealm = realm;
+    }
+
+    public void setTicketRealm(final String realm) {
+        this.ticketRealm = realm;
     }
 
     @Override
@@ -58,7 +66,6 @@ public class OfficeSubjectFactory extends DefaultSubjectFactory {
             }
         }
 
-        OfficeTicket ticket = ((OfficeToken)context.getAuthenticationToken()).getTicket();
         org.apache.shiro.mgt.SecurityManager securityManager = context.resolveSecurityManager();
         Session session = context.resolveSession();
         boolean sessionCreationEnabled = context.isSessionCreationEnabled();
@@ -66,6 +73,18 @@ public class OfficeSubjectFactory extends DefaultSubjectFactory {
         authenticated = context.resolveAuthenticated();
         String host = context.resolveHost();
 
-        return new OfficeSubjectImpl(realm, ticket,principals, authenticated, host, session, sessionCreationEnabled, securityManager);
+
+        OfficeToken token = (OfficeToken) context.getAuthenticationToken();
+
+        String realm;
+        OfficeTicket ticket = null;
+        if (token instanceof OfficeLoginToken) {
+            realm = loginRealm;
+        } else {
+            realm = ticketRealm;
+            ticket = ((OfficeTicketToken) token).getCredentials();
+        }
+
+        return new OfficeSubjectImpl(realm, ticket, principals, authenticated, host, session, sessionCreationEnabled, securityManager);
     }
 }

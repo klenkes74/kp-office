@@ -15,7 +15,10 @@
  */
 
 /**
- *
+ * The shiro integration falls into three parts: authorization by username and password using the Office Security
+ * Facilities, ticket authorization by the Office Security Facilities and the session handling ensuring, that the
+ * session keeps the same over the whole lifecycle of the login (first login per username and password and following
+ * logins via ticket).
  *
  * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;
  * @version 0.1.0

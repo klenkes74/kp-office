@@ -19,22 +19,17 @@ package de.kaiserpfalzEdv.office.security;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 import java.io.Serializable;
-import java.time.ZonedDateTime;
 import java.util.UUID;
 
 /**
  * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;
  * @since 0.1.0
  */
-@JsonTypeInfo(use=JsonTypeInfo.Id.CLASS, include=JsonTypeInfo.As.PROPERTY, property="@class", defaultImpl = OfficeTicketDTO.class)
-public interface OfficeTicket extends Serializable {
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS, include = JsonTypeInfo.As.PROPERTY, property = "@class", defaultImpl = OfficeTicketDTO.class)
+public interface OfficeTicket extends OfficePrincipal, Serializable {
     UUID getTicket();
 
-    @Deprecated // Only for Jackson, JAX-B and JPA!
+    @Deprecated
+        // Only for Jackson, JAX-B and JPA!
     void setTicket(UUID id);
-
-    ZonedDateTime getTtl();
-
-    @Deprecated // Only for Jackson, JAX-B and JPA!
-    void setTtl(ZonedDateTime ttl);
 }

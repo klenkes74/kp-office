@@ -16,13 +16,11 @@
 
 package de.kaiserpfalzEdv.office.security;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
-import java.time.ZonedDateTime;
 import java.util.UUID;
 
 import static com.google.common.base.Preconditions.checkArgument;
@@ -34,15 +32,12 @@ import static com.google.common.base.Preconditions.checkArgument;
 public class OfficeTicketDTO implements OfficeTicket {
     private UUID ticket;
 
-    private ZonedDateTime ttl;
-
 
     @Deprecated // Only for Jackson, JAX-B and JPA!
     public OfficeTicketDTO() {}
 
-    public OfficeTicketDTO(final UUID id, final ZonedDateTime ttl) {
+    public OfficeTicketDTO(final UUID id) {
         setTicket(id);
-        setTtl(ttl);
     }
 
 
@@ -59,23 +54,6 @@ public class OfficeTicketDTO implements OfficeTicket {
         this.ticket = id;
     }
 
-
-    @Override
-    @Deprecated // Only for Jackson, JAX-B and JPA!
-    public ZonedDateTime getTtl() {
-        return ttl;
-    }
-
-    @JsonIgnore
-    public boolean ttlReached() {
-        return ttl.isBefore(ZonedDateTime.now());
-    }
-
-    @Override
-    @Deprecated // Only for Jackson, JAX-B and JPA!
-    public void setTtl(ZonedDateTime ttl) {
-        this.ttl = ttl;
-    }
 
     @Override
     public boolean equals(Object obj) {
@@ -101,11 +79,26 @@ public class OfficeTicketDTO implements OfficeTicket {
                 .toHashCode();
     }
 
+    @Override
+    public String getName() {
+        return ticket.toString();
+    }
+
 
     @Override
     public String toString() {
         return new ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE)
                 .append(ticket)
                 .toString();
+    }
+
+    @Override
+    public String getUser() {
+        return ticket.toString();
+    }
+
+    @Override
+    public String getRealm() {
+        return ticket.toString();
     }
 }

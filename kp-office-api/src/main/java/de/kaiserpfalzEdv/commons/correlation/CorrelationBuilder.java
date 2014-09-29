@@ -16,8 +16,6 @@
 
 package de.kaiserpfalzEdv.commons.correlation;
 
-import de.kaiserpfalzEdv.commons.security.ActingSystem;
-import de.kaiserpfalzEdv.office.security.OfficeSubject;
 import org.apache.commons.lang3.builder.Builder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -42,16 +40,13 @@ public class CorrelationBuilder<T extends Correlation> implements Builder<T> {
     private boolean multipleRepsonses = false;
     private boolean nextResponse = false;
 
-    private OfficeSubject requester;
-    private ActingSystem system;
-
     @SuppressWarnings("unchecked") // The generic T needs this ...
     @Override
     public T build() {
         T result = (T) (
                 responseId == null
-                ? new RequestCorrelationImpl(sessionId, getRequestId(), sequence, requester, system)
-                : new ResponseCorrelationImpl(getRequest(), getResponseId(), sequence, multipleRepsonses, nextResponse)
+                        ? new RequestCorrelationImpl(sessionId, getRequestId(), sequence)
+                        : new ResponseCorrelationImpl(getRequest(), getResponseId(), sequence, multipleRepsonses, nextResponse)
         );
 
         LOG.trace("Created: {}", result);
@@ -59,7 +54,7 @@ public class CorrelationBuilder<T extends Correlation> implements Builder<T> {
     }
 
     private RequestCorrelation getRequest() {
-        return new RequestCorrelationImpl(sessionId, getRequestId(), sequence, requester, system);
+        return new RequestCorrelationImpl(sessionId, getRequestId(), sequence);
     }
 
     private UUID getRequestId() {
@@ -85,18 +80,6 @@ public class CorrelationBuilder<T extends Correlation> implements Builder<T> {
 
     public CorrelationBuilder<T> withResponseId(final UUID id) {
         this.responseId = id;
-        return this;
-    }
-
-
-    public CorrelationBuilder<T> withRequester(final OfficeSubject principal) {
-        this.requester = principal;
-        return this;
-    }
-
-
-    public CorrelationBuilder<T> withSystem(final ActingSystem principal) {
-        this.system = principal;
         return this;
     }
 

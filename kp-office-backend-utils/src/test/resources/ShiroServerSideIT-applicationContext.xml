@@ -15,65 +15,21 @@
   ~ limitations under the License.
   -->
 
-<beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:context="http://www.springframework.org/schema/context"
-       xmlns:tx="http://www.springframework.org/schema/tx"
-       xmlns:jee="http://www.springframework.org/schema/jee"
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:util="http://www.springframework.org/schema/util"
-       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns="http://www.springframework.org/schema/beans"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-                           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
-                           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
-                           http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd
-                           http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
-                           http://www.springframework.org/schema/aop http://www.springframework.org/schema/util/spring-aop.xsd
-       ">
-
-    <context:annotation-config/>
-    <context:component-scan base-package="de.kaiserpfalzEdv.office,de.kaiserpfalzEdv.commons">
-        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Repository"/>
-    </context:component-scan>
-    <tx:annotation-driven />
 
 
-    <bean id="securityManager" class="org.apache.shiro.mgt.DefaultSecurityManager">
-        <property name="realm" ref="officeShiroRealm"/>
-        <property name="subjectFactory" ref="officeSubjectFactory"/>
-        <property name="sessionManager" ref="shiroSessionManager"/>
-        <property name="cacheManager" ref="shiroCacheManager"/>
-    </bean>
-    <bean id="shiroSessionManager" class="org.apache.shiro.session.mgt.DefaultSessionManager">
-        <property name="cacheManager" ref="shiroCacheManager"/>
-        <property name="deleteInvalidSessions" value="true"/>
-        <property name="sessionValidationSchedulerEnabled" value="true"/>
-        <property name="sessionValidationInterval" value="3600000"/>
-        <property name="sessionDAO" ref="shiroSessionDAO"/>
-    </bean>
-    <bean id="shiroSessionDAO" class="org.apache.shiro.session.mgt.eis.EnterpriseCacheSessionDAO">
-        <property name="cacheManager" ref="shiroCacheManager"/>
-    </bean>
-    <bean id="shiroCacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager">
-        <property name="cacheManagerConfigFile" value="${basedir}/target/test-classes/shiro-cache.xml"/>
-    </bean>
 
-    <bean id="officeSubjectFactory" class="de.kaiserpfalzEdv.office.security.shiro.OfficeSubjectFactory">
-        <property name="realm"><bean class="java.lang.String" factory-bean="officeShiroRealm" factory-method="getName"/></property>
-    </bean>
+                           http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
 
-
-    <bean class="org.apache.shiro.spring.aop.SpringAnnotationResolver"/>
-    <bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"/>
-    <bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator" depends-on="lifecycleBeanPostProcessor"/>
-
-    <bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
-        <property name="securityManager" ref="securityManager"/>
-    </bean>
+    <import resource="beans.xml"/>
 
     <bean id="configuredSubjects" class="de.kaiserpfalzEdv.office.security.test.MockSecurityClient">
         <property name="configuredSubjects">
             <util:set value-type="de.kaiserpfalzEdv.office.security.OfficeSubjectDTO">
-                <bean parent="user-klenkes" />
+                <bean parent="user-klenkes"/>
             </util:set>
         </property>
     </bean>

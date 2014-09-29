@@ -24,10 +24,20 @@ import java.util.Set;
  * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;
  * @since 0.1.0
  */
-@JsonTypeInfo(use=JsonTypeInfo.Id.CLASS, include=JsonTypeInfo.As.PROPERTY, property="@class", defaultImpl = OfficeSubjectDTO.class)
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS, include = JsonTypeInfo.As.PROPERTY, property = "@class", defaultImpl = OfficeSubjectDTO.class)
 public interface OfficeSubject {
+    /**
+     * @return All principals assigned to this subject.
+     */
     public Set<OfficePrincipal> getAllPrincipal();
 
+    /**
+     * @return a set of all permissions of this subject.
+     */
     public Set<String> getPermissions();
+
+    /**
+     * @return a set of all roles of this subject.
+     */
     public Set<String> getRoles();
 }

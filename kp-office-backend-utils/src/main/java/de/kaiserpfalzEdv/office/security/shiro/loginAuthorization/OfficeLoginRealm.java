@@ -14,14 +14,14 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzEdv.office.security.shiro;
+package de.kaiserpfalzEdv.office.security.shiro.loginAuthorization;
 
-import de.kaiserpfalzEdv.office.security.InvalidTicketException;
 import de.kaiserpfalzEdv.office.security.OfficeAuthenticationSystemException;
 import de.kaiserpfalzEdv.office.security.OfficePrincipal;
 import de.kaiserpfalzEdv.office.security.OfficeSubject;
 import de.kaiserpfalzEdv.office.security.OfficeTicket;
 import de.kaiserpfalzEdv.office.security.SecurityClient;
+import de.kaiserpfalzEdv.office.security.shiro.OfficeAuthenticationException;
 import net.logstash.logback.marker.ObjectFieldsAppendingMarker;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
@@ -47,43 +47,48 @@ import java.util.Set;
  * @since 0.1.0
  */
 @Named
-public class OfficeShiroRealm extends AuthorizingRealm {
-    private static final Logger LOG = LoggerFactory.getLogger(OfficeShiroRealm.class);
+public class OfficeLoginRealm extends AuthorizingRealm {
+    private static final Logger LOG = LoggerFactory.getLogger(OfficeLoginRealm.class);
 
 
     private SecurityClient verifier;
 
 
     @Inject
-    public OfficeShiroRealm(
+    public OfficeLoginRealm(
             final SecurityClient verifier,
             final CacheManager cacheManger
     ) {
         this.verifier = verifier;
         setCacheManager(cacheManger);
 
-        setAuthenticationTokenClass(OfficeToken.class);
+        setAuthenticationTokenClass(OfficeLoginToken.class);
 
-        LOG.trace("Created: {}", this);
+        LOG.trace("Created: {} (Realm name: {}", this, getName());
     }
 
 
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken inToken) throws AuthenticationException {
+        LOG.debug("Trying to authenticate: {}", inToken);
+
         if (inToken == null) return null;
 
         try {
-            OfficeToken token = (OfficeToken) inToken;
+            OfficeLoginToken token = (OfficeLoginToken) inToken;
 
-            OfficeTicket ticket = token.getTicket();
+
+            OfficeTicket ticket = verifier.login(token.getPrincipal(), token.getCredentials());
             OfficeSubject subject = verifier.createSubject(ticket);
 
             Set<OfficePrincipal> principals = subject.getAllPrincipal();
             PrincipalCollection principalCollection = new SimplePrincipalCollection(principals, getName());
 
-            LOG.info("Authenticated: {}", subject.getAllPrincipal().iterator().next().getName());
-            return new SimpleAuthenticationInfo(principalCollection, ticket);
-        } catch (ClassCastException | IllegalStateException | InvalidTicketException e) {
+            SimpleAuthenticationInfo result = new SimpleAuthenticationInfo(principalCollection, token.getCredentials());
+            LOG.info("Authenticated by token {}: {}", token, result);
+            return result;
+        } catch (de.kaiserpfalzEdv.office.security.OfficeAuthenticationException | ClassCastException | IllegalStateException e) {
+            LOG.error(e.getClass().getSimpleName() + " caught while authenticating: " + e.getMessage(), e);
             throw new OfficeAuthenticationSystemException(e);
         }
     }
@@ -91,6 +96,7 @@ public class OfficeShiroRealm extends AuthorizingRealm {
 
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection inPrincipals) {
+        LOG.debug("Trying to authorize: {}", inPrincipals);
         SimpleAuthorizationInfo result = new SimpleAuthorizationInfo();
 
         for (Object p : inPrincipals.fromRealm(getName())) {

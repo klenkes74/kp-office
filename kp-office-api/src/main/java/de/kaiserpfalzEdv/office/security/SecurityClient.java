@@ -16,8 +16,6 @@
 
 package de.kaiserpfalzEdv.office.security;
 
-import de.kaiserpfalzEdv.office.core.OfficeModule;
-
 import java.io.Serializable;
 import java.time.Period;
 import java.util.Collection;
@@ -30,19 +28,19 @@ public interface SecurityClient {
     /**
      * Logs in a user.
      *
-     * @param principal The principal to be logged in.
-     * @param application The office application which tries to log in the user.
+     * @param principal   The principal to be logged in.
      * @param credentials The credentials to be logged in with.
      * @return The security ticket.
      * @throws OfficeAuthenticationException If the login was not possible.
      */
-    public OfficeTicket login(final OfficePrincipal principal, final OfficeModule application, final Serializable credentials) throws OfficeAuthenticationException;
+    public OfficeTicket login(final OfficePrincipal principal, final Serializable credentials) throws OfficeAuthenticationException;
 
     public boolean refreshTicket(OfficeTicket ticket) throws InvalidTicketException, TicketNotRefreshableException;
 
     public boolean isValidTicket(OfficeTicket ticket) throws InvalidTicketException;
 
     public OfficeSubject createSubject(OfficeTicket ticket) throws InvalidTicketException;
+
     public OfficeSubject createSubject(OfficePrincipal principal) throws OfficeAuthenticationException;
 
     public OfficeTicket createLongLifeTicket(OfficeTicket ticket, Period period, Collection<String> permissions) throws InvalidTicketException, TicketNotRefreshableException, NoLongTermTicketAllowedException;

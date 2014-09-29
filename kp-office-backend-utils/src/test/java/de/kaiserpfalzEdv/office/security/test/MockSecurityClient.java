@@ -16,7 +16,6 @@
 
 package de.kaiserpfalzEdv.office.security.test;
 
-import de.kaiserpfalzEdv.office.core.OfficeModule;
 import de.kaiserpfalzEdv.office.security.InvalidTicketException;
 import de.kaiserpfalzEdv.office.security.NoLongTermTicketAllowedException;
 import de.kaiserpfalzEdv.office.security.OfficeAuthenticationException;
@@ -31,7 +30,6 @@ import org.slf4j.LoggerFactory;
 
 import java.io.Serializable;
 import java.time.Period;
-import java.time.ZonedDateTime;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -50,26 +48,42 @@ public class MockSecurityClient implements SecurityClient {
     private final HashMap<OfficeTicket, OfficeSubject> subjects = new HashMap<OfficeTicket, OfficeSubject>();
 
     public OfficeTicket getTicketForSubject(OfficeSubject subject) {
-        if (subjects.values().contains(subject)) {
-            for (Map.Entry<OfficeTicket, OfficeSubject> entry : subjects.entrySet()) {
-                if (entry.getValue().equals(subject))
-                    return entry.getKey();
+        LOG.debug("Checking ticket for subject: {}", subject);
+
+        for (Map.Entry<OfficeTicket, OfficeSubject> e : subjects.entrySet()) {
+            for (OfficePrincipal p : subject.getAllPrincipal()) {
+                if (e.getValue().getAllPrincipal().contains(p))
+                    return e.getKey();
             }
         }
 
-        OfficeTicket result = new OfficeTicketDTO(UUID.randomUUID(), ZonedDateTime.now().plusHours(1));
+        OfficeTicket result = new OfficeTicketDTO(UUID.randomUUID());
         subjects.put(result, subject);
 
         return result;
     }
 
     @Override
-    public OfficeTicket login(OfficePrincipal principal, OfficeModule application, Serializable credentials) throws OfficeAuthenticationException {
-        OfficeTicket result = (OfficeTicketDTO) credentials;
+    public OfficeTicket login(OfficePrincipal principal, Serializable credentials) throws OfficeAuthenticationException {
+        LOG.debug("Checking principals: {}", principal);
+        LOG.debug("Checking credential: {}", credentials);
+
         OfficeSubject subject = createSubject(principal);
 
-        subjects.put(result, subject);
-        return result;
+        LOG.info("Logged in: {}", subject);
+        OfficeTicket ticket = null;
+        for (OfficePrincipal p : subject.getAllPrincipal()) {
+            if (p instanceof OfficeTicket) {
+                ticket = (OfficeTicket) p;
+            }
+        }
+        if (ticket == null) {
+            ticket = new OfficeTicketDTO(UUID.randomUUID());
+            subject.getAllPrincipal().add(ticket);
+        }
+
+        subjects.put(ticket, subject);
+        return ticket;
     }
 
     @SuppressWarnings("deprecation")
@@ -77,27 +91,40 @@ public class MockSecurityClient implements SecurityClient {
     public boolean refreshTicket(OfficeTicket ticket) throws InvalidTicketException, TicketNotRefreshableException {
         if (! isValidTicket(ticket)) throw new InvalidTicketException(ticket);
 
-        getTickets().remove(ticket);
-        ticket.setTtl(ZonedDateTime.now().plusHours(1));
-
-        LOG.debug("Refreshed ticket until: {}", ticket.getTtl());
         return true;
     }
 
     @Override
     public boolean isValidTicket(OfficeTicket ticket) throws InvalidTicketException {
-        return getTickets().contains(ticket) && !((OfficeTicketDTO)ticket).ttlReached();
+        return getTickets().contains(new OfficeTicketDTO(ticket.getTicket()));
     }
 
     @Override
     public OfficeSubject createSubject(OfficeTicket ticket) throws InvalidTicketException {
         if (! isValidTicket(ticket)) throw new InvalidTicketException(ticket);
 
-        return subjects.get(ticket);
+        OfficeSubject result = subjects.get(ticket);
+        if (!result.getAllPrincipal().contains(ticket)) {
+            LOG.info("Adding ticket {} to principal set ...", ticket);
+            result.getAllPrincipal().add(ticket);
+        }
+
+        LOG.info("Creating from ticket {}: {}", ticket, result);
+        return result;
     }
 
     @Override
     public OfficeSubject createSubject(OfficePrincipal principal) throws OfficeAuthenticationException {
+        LOG.debug("Checking {} configured subjects.", configuredSubjects.size());
+
+        for (OfficeSubject subject : subjects.values()) {
+            LOG.trace("Checking configured subject: {}", subject);
+
+            if (subject.getAllPrincipal().contains((principal))) {
+                return subject;
+            }
+        }
+
         for (OfficeSubject subject : configuredSubjects) {
             if (subject.getAllPrincipal().contains(principal)) {
                 return subject;
