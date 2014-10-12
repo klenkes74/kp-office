@@ -16,10 +16,13 @@
 
 package de.kaiserpfalzEdv.office.contacts.address.location;
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+
 /**
  * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;
  * @since 0.1.0
  */
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS, include = JsonTypeInfo.As.PROPERTY, property = "@class", defaultImpl = StreetAddressDTO.class)
 public interface StreetAddress extends PostalAddress {
     public String getContactOver();
 

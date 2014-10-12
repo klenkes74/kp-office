@@ -16,12 +16,14 @@
 
 package de.kaiserpfalzEdv.office.contacts.address.location;
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import de.kaiserpfalzEdv.office.core.KPOEntity;
 
 /**
  * @author klenkes
  * @since 2014Q
  */
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS, include = JsonTypeInfo.As.PROPERTY, property = "@class", defaultImpl = CountryDTO.class)
 public interface Country extends KPOEntity {
     String getIso2();
 

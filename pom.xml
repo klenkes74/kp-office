@@ -37,6 +37,7 @@
 
 
     <modules>
+        <module>kp-office-shared</module>
         <module>kp-office-core</module>
         <module>kp-office-modules</module>
         <module>kp-office-interfaces</module>
@@ -278,7 +279,7 @@
 
             <dependency>
                 <groupId>de.kaiserpfalz-edv.office</groupId>
-                <artifactId>kp-office-api</artifactId>
+                <artifactId>kp-office-shared-api</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
@@ -289,6 +290,12 @@
             <dependency>
                 <groupId>de.kaiserpfalz-edv.office</groupId>
                 <artifactId>kp-office-backend-utils</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>de.kaiserpfalz-edv.office</groupId>
+                <artifactId>kp-office-core-api</artifactId>
                 <version>${project.version}</version>
             </dependency>
 

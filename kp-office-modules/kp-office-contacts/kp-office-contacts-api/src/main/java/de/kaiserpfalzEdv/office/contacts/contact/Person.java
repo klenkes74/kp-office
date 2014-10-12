@@ -21,4 +21,5 @@ package de.kaiserpfalzEdv.office.contacts.contact;
  * @since 0.1.0
  */
 public interface Person extends Contact {
+    public PersonalName getName();
 }

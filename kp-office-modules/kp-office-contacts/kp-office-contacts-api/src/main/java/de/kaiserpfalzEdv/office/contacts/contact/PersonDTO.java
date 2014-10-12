@@ -17,65 +17,40 @@
 package de.kaiserpfalzEdv.office.contacts.contact;
 
 import de.kaiserpfalzEdv.office.contacts.address.Address;
-import de.kaiserpfalzEdv.office.projects.Project;
 import de.kaiserpfalzEdv.office.tenants.Tenant;
 
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Set;
+import javax.validation.constraints.NotNull;
+import java.util.Collection;
 import java.util.UUID;
 
 /**
  * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;
  * @since 0.1.0
  */
-public class PersonDTO implements Person {
-    private final HashSet<Address> addresses = new HashSet<>(5);
-    private final HashSet<Project> projects = new HashSet<>();
-    private final HashSet<Person> contacts = new HashSet<>();
-    private Tenant tenant;
-    private UUID id;
-    private String number;
-    private String name;
+public class PersonDTO extends ContactDTO implements Person {
+    private PersonalName name;
 
+    public PersonDTO(@NotNull final Tenant tenant,
+                     @NotNull final UUID id,
+                     @NotNull final String number,
+                     @NotNull final PersonalName name,
+                     @NotNull final ContactType type,
+                     @NotNull final Collection<Address> addresses,
+                     @NotNull final Collection<Contact> contacts) {
+        super(id, name.getDisplayName(), number, tenant, type, addresses, contacts);
 
-    public PersonDTO(final Tenant tenant, final UUID id, final String number, final String name) {
-        this.tenant = tenant;
-        this.id = id;
-        this.number = number;
-        this.name = name;
+        setName(name);
     }
 
-    public UUID getId() {
-        return id;
-    }
-
-    public String getDisplayNumber() {
-        return number;
-    }
-
-    public String getDisplayName() {
+    @Override
+    public PersonalName getName() {
         return name;
     }
 
+    public void setName(@NotNull final PersonalName name) {
+        //noinspection deprecation
+        setDisplayName(name);
 
-    @Override
-    public Set<Address> getAddresses() {
-        return Collections.unmodifiableSet(addresses);
-    }
-
-    @Override
-    public Set<Project> getProjects() {
-        return Collections.unmodifiableSet(projects);
-    }
-
-    @Override
-    public Set<Person> getContacts() {
-        return Collections.unmodifiableSet(contacts);
-    }
-
-    @Override
-    public Tenant getTenant() {
-        return tenant;
+        this.name = name;
     }
 }

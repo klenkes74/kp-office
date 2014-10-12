@@ -28,7 +28,7 @@
     </parent>
 
     <artifactId>kp-office-security-client</artifactId>
-    <name>KP Office - Modules - Security - Client</name>
+    <name>KP Office - Core - Security - Client</name>
 
     <properties>
         <project.root>../../..</project.root>

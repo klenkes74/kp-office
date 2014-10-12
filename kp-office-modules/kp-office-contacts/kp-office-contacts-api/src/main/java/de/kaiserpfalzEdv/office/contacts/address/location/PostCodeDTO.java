@@ -38,10 +38,10 @@ public class PostCodeDTO extends KPOEntityDTO implements PostCode {
     }
 
 
-    PostCodeDTO(@NotNull final UUID id,
-                @NotNull final String name,
-                @NotNull final String code,
-                @NotNull final Country country) {
+    public PostCodeDTO(@NotNull final UUID id,
+                       @NotNull final String name,
+                       @NotNull final String code,
+                       @NotNull final Country country) {
         super(id, name, code);
 
         setCountry(country);

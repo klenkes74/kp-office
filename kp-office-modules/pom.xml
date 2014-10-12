@@ -33,6 +33,7 @@
 
     <modules>
         <module>kp-office-contacts</module>
+        <module>kp-office-projects</module>
     </modules>
 
 
@@ -40,7 +41,12 @@
         <!-- KP Office internal Dependencies -->
         <dependency>
             <groupId>de.kaiserpfalz-edv.office</groupId>
-            <artifactId>kp-office-api</artifactId>
+            <artifactId>kp-office-shared-api</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>de.kaiserpfalz-edv.office</groupId>
+            <artifactId>kp-office-core-api</artifactId>
         </dependency>
 
         <dependency>

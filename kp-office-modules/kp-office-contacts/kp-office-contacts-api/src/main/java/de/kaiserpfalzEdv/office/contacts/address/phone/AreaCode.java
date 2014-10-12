@@ -16,6 +16,7 @@
 
 package de.kaiserpfalzEdv.office.contacts.address.phone;
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import de.kaiserpfalzEdv.office.contacts.address.location.Country;
 import de.kaiserpfalzEdv.office.core.KPOEntity;
 
@@ -23,6 +24,7 @@ import de.kaiserpfalzEdv.office.core.KPOEntity;
  * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;
  * @since 0.1.0
  */
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS, include = JsonTypeInfo.As.PROPERTY, property = "@class", defaultImpl = AreaCodeDTO.class)
 public interface AreaCode extends KPOEntity {
     String getCode();
 

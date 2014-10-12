@@ -16,6 +16,7 @@
 
 package de.kaiserpfalzEdv.office.contacts.address.location;
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import de.kaiserpfalzEdv.office.contacts.address.phone.AreaCode;
 import de.kaiserpfalzEdv.office.core.KPOEntity;
 
@@ -26,6 +27,7 @@ import java.util.Set;
  * @author klenkes
  * @since 2014Q
  */
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS, include = JsonTypeInfo.As.PROPERTY, property = "@class", defaultImpl = CityDTO.class)
 public interface City extends KPOEntity {
     Country getCountry();
 

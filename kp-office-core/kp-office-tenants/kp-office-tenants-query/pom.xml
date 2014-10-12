@@ -28,7 +28,7 @@
     </parent>
 
     <artifactId>kp-office-tenants-query</artifactId>
-    <name>KP Office - Modules - Tenants - Data Query Handler</name>
+    <name>KP Office - Core - Tenants - Data Query Handler</name>
 
     <properties>
         <project.root>../../..</project.root>

@@ -28,7 +28,7 @@
     </parent>
 
     <artifactId>kp-office-tenants-history</artifactId>
-    <name>KP Office - Modules - Tenants - History Data Handler</name>
+    <name>KP Office - Core - Tenants - History Data Handler</name>
 
     <properties>
         <project.root>../../..</project.root>

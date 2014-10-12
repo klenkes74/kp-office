@@ -16,12 +16,14 @@
 
 package de.kaiserpfalzEdv.office.contacts.address.location;
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import de.kaiserpfalzEdv.office.core.KPOEntity;
 
 /**
  * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;
  * @since 0.1.0
  */
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS, include = JsonTypeInfo.As.PROPERTY, property = "@class", defaultImpl = PostCodeDTO.class)
 public interface PostCode extends KPOEntity {
     public String getCode();
 
