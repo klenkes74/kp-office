@@ -307,6 +307,18 @@
 
             <dependency>
                 <groupId>de.kaiserpfalz-edv.office</groupId>
+                <artifactId>kp-office-core-server</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>de.kaiserpfalz-edv.office</groupId>
+                <artifactId>kp-office-core-client</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>de.kaiserpfalz-edv.office</groupId>
                 <artifactId>kp-office-tenants-history</artifactId>
                 <version>${project.version}</version>
             </dependency>
