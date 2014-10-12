@@ -17,7 +17,7 @@
 package de.kaiserpfalzEdv.office.service;
 
 import de.kaiserpfalzEdv.commons.paging.Page;
-import de.kaiserpfalzEdv.office.address.PersonDTO;
+import de.kaiserpfalzEdv.office.contacts.PersonDTO;
 import de.kaiserpfalzEdv.office.projects.ProjectBaseData;
 import de.kaiserpfalzEdv.office.projects.ProjectDetailData;
 import org.slf4j.Logger;
@@ -41,8 +41,8 @@ import java.util.UUID;
  * @since 0.1.0
  */
 @Path("/project")
-@Consumes({ "application/json" })
-@Produces({ "application/json" })
+@Consumes({"application/json"})
+@Produces({"application/json"})
 public class ProjectResource {
     private static final Logger LOG = LoggerFactory.getLogger(ProjectResource.class);
 
