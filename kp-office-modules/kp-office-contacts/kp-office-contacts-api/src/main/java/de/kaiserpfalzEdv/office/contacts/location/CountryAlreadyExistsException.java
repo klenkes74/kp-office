@@ -14,26 +14,25 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzEdv.office.contacts.contact;
+package de.kaiserpfalzEdv.office.contacts.location;
+
+import de.kaiserpfalzEdv.office.EntityAlreadyExistsException;
+
+import javax.validation.constraints.NotNull;
 
 /**
  * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;
  * @since 0.1.0
  */
-public enum ContactType {
-    /**
-     * Default contact type.
-     */
-    DEFAULT,
-    CEO,
-    CFO,
-    COO,
-    CIO,
-    BOARDMEMBER,
-    /**
-     * Billing contact
-     */
-    BILLING,
-    SALES,
-    OWNER
+public class CountryAlreadyExistsException extends EntityAlreadyExistsException {
+    private static final long serialVersionUID = 2588664768455739139L;
+
+
+    public CountryAlreadyExistsException(@NotNull final Country entity) {
+        super(entity);
+    }
+
+    public CountryAlreadyExistsException(@NotNull final Country entity, @NotNull final Throwable cause) {
+        super(entity, cause);
+    }
 }

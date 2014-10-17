@@ -14,26 +14,34 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzEdv.office.contacts.contact;
+package de.kaiserpfalzEdv.office.core;
+
+import java.io.Serializable;
 
 /**
- * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;
- * @since 0.1.0
+ * @author klenkes
+ * @since 2014Q
  */
-public enum ContactType {
-    /**
-     * Default contact type.
-     */
-    DEFAULT,
-    CEO,
-    CFO,
-    COO,
-    CIO,
-    BOARDMEMBER,
-    /**
-     * Billing contact
-     */
-    BILLING,
-    SALES,
-    OWNER
+public class KPOEntityQuery implements Serializable {
+    private static final long serialVersionUID = 4639487543561789091L;
+
+    private String number;
+    private String name;
+
+
+    public String getNumber() {
+        return number;
+    }
+
+    public void setNumber(String number) {
+        this.number = number;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }

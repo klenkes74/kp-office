@@ -16,24 +16,23 @@
 
 package de.kaiserpfalzEdv.office.contacts.contact;
 
+import de.kaiserpfalzEdv.office.InvalidEntityException;
+import de.kaiserpfalzEdv.office.core.KPOEntity;
+
+import javax.validation.constraints.NotNull;
+
 /**
  * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;
  * @since 0.1.0
  */
-public enum ContactType {
-    /**
-     * Default contact type.
-     */
-    DEFAULT,
-    CEO,
-    CFO,
-    COO,
-    CIO,
-    BOARDMEMBER,
-    /**
-     * Billing contact
-     */
-    BILLING,
-    SALES,
-    OWNER
+public class InvalidContactException extends InvalidEntityException {
+    private static final long serialVersionUID = -3604321217263332906L;
+
+    public InvalidContactException(@NotNull KPOEntity entity) {
+        super(entity);
+    }
+
+    public InvalidContactException(@NotNull KPOEntity entity, @NotNull Throwable cause) {
+        super(entity, cause);
+    }
 }

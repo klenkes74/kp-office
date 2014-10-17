@@ -16,24 +16,25 @@
 
 package de.kaiserpfalzEdv.office.contacts.contact;
 
+import de.kaiserpfalzEdv.office.NoSuchEntityException;
+import de.kaiserpfalzEdv.office.core.KPOEntity;
+
 /**
- * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;
- * @since 0.1.0
+ * @author klenkes
+ * @since 2014Q
  */
-public enum ContactType {
-    /**
-     * Default contact type.
-     */
-    DEFAULT,
-    CEO,
-    CFO,
-    COO,
-    CIO,
-    BOARDMEMBER,
-    /**
-     * Billing contact
-     */
-    BILLING,
-    SALES,
-    OWNER
+public class NoSuchContactException extends NoSuchEntityException {
+    private static final Class<? extends KPOEntity> clasz = Contact.class.asSubclass(KPOEntity.class);
+
+    public NoSuchContactException(String message) {
+        super(clasz, message);
+    }
+
+    public NoSuchContactException(Throwable cause) {
+        super(clasz, cause);
+    }
+
+    public NoSuchContactException(String message, Throwable cause) {
+        super(clasz, message, cause);
+    }
 }

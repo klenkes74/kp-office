@@ -16,24 +16,22 @@
 
 package de.kaiserpfalzEdv.office.contacts.contact;
 
+import de.kaiserpfalzEdv.office.EntityAlreadyExistsException;
+import de.kaiserpfalzEdv.office.core.KPOEntity;
+
 /**
  * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;
  * @since 0.1.0
  */
-public enum ContactType {
-    /**
-     * Default contact type.
-     */
-    DEFAULT,
-    CEO,
-    CFO,
-    COO,
-    CIO,
-    BOARDMEMBER,
-    /**
-     * Billing contact
-     */
-    BILLING,
-    SALES,
-    OWNER
+public class ContactAlreadyExistsException extends EntityAlreadyExistsException {
+    private static final long serialVersionUID = 3164424989613059796L;
+
+
+    public ContactAlreadyExistsException(KPOEntity entity) {
+        super(entity);
+    }
+
+    public ContactAlreadyExistsException(KPOEntity entity, Throwable cause) {
+        super(entity, cause);
+    }
 }

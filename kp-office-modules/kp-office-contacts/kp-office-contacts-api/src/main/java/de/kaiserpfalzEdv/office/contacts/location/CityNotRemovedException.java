@@ -14,26 +14,25 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzEdv.office.contacts.contact;
+package de.kaiserpfalzEdv.office.contacts.location;
+
+import de.kaiserpfalzEdv.office.EntityNotRemovedException;
+
+import javax.validation.constraints.NotNull;
 
 /**
  * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;
  * @since 0.1.0
  */
-public enum ContactType {
-    /**
-     * Default contact type.
-     */
-    DEFAULT,
-    CEO,
-    CFO,
-    COO,
-    CIO,
-    BOARDMEMBER,
-    /**
-     * Billing contact
-     */
-    BILLING,
-    SALES,
-    OWNER
+public class CityNotRemovedException extends EntityNotRemovedException {
+    private static final long serialVersionUID = 8382134730040730073L;
+
+
+    public CityNotRemovedException(@NotNull final City city) {
+        super(city);
+    }
+
+    public CityNotRemovedException(@NotNull final City city, @NotNull final Throwable cause) {
+        super(city, cause);
+    }
 }

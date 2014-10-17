@@ -16,24 +16,22 @@
 
 package de.kaiserpfalzEdv.office.contacts.contact;
 
+import de.kaiserpfalzEdv.office.EntityNotRemovedException;
+import de.kaiserpfalzEdv.office.core.KPOEntity;
+
 /**
  * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;
  * @since 0.1.0
  */
-public enum ContactType {
-    /**
-     * Default contact type.
-     */
-    DEFAULT,
-    CEO,
-    CFO,
-    COO,
-    CIO,
-    BOARDMEMBER,
-    /**
-     * Billing contact
-     */
-    BILLING,
-    SALES,
-    OWNER
+public class ContactNotRemovedException extends EntityNotRemovedException {
+    private static final long serialVersionUID = -9162836170316588751L;
+
+
+    public ContactNotRemovedException(KPOEntity entity) {
+        super(entity);
+    }
+
+    public ContactNotRemovedException(KPOEntity entity, Throwable cause) {
+        super(entity, cause);
+    }
 }

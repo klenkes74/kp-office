@@ -16,23 +16,27 @@
 
 package de.kaiserpfalzEdv.office.contacts.location;
 
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import de.kaiserpfalzEdv.office.contacts.address.phone.CountryCode;
+import de.kaiserpfalzEdv.office.NoSuchEntityException;
 import de.kaiserpfalzEdv.office.core.KPOEntity;
+
+import javax.validation.constraints.NotNull;
 
 /**
  * @author klenkes
  * @since 2014Q
  */
-@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS, include = JsonTypeInfo.As.PROPERTY, property = "@class", defaultImpl = CountryDTO.class)
-public interface Country extends KPOEntity {
-    public String getIso2();
+public class NoSuchCityException extends NoSuchEntityException {
+    private static final Class<? extends KPOEntity> clasz = City.class.asSubclass(KPOEntity.class);
 
-    public String getIso3();
+    public NoSuchCityException(@NotNull final String message) {
+        super(clasz, message);
+    }
 
-    public String getPhoneCountryCode();
+    public NoSuchCityException(@NotNull final Throwable cause) {
+        super(clasz, cause);
+    }
 
-    public CountryCode getCountryCode();
-
-    public String getPostalPrefix();
+    public NoSuchCityException(@NotNull final String message, @NotNull final Throwable cause) {
+        super(clasz, message, cause);
+    }
 }

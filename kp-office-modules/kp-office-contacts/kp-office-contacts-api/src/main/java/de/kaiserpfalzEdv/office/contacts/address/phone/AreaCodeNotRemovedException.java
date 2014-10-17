@@ -14,26 +14,25 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzEdv.office.contacts.contact;
+package de.kaiserpfalzEdv.office.contacts.address.phone;
+
+import de.kaiserpfalzEdv.office.EntityNotRemovedException;
+
+import javax.validation.constraints.NotNull;
 
 /**
  * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;
  * @since 0.1.0
  */
-public enum ContactType {
-    /**
-     * Default contact type.
-     */
-    DEFAULT,
-    CEO,
-    CFO,
-    COO,
-    CIO,
-    BOARDMEMBER,
-    /**
-     * Billing contact
-     */
-    BILLING,
-    SALES,
-    OWNER
+public class AreaCodeNotRemovedException extends EntityNotRemovedException {
+    private static final long serialVersionUID = -3604053098718058228L;
+
+
+    public AreaCodeNotRemovedException(@NotNull final AreaCode areaCode) {
+        super(areaCode);
+    }
+
+    public AreaCodeNotRemovedException(@NotNull final AreaCode areaCode, @NotNull final Throwable cause) {
+        super(areaCode, cause);
+    }
 }

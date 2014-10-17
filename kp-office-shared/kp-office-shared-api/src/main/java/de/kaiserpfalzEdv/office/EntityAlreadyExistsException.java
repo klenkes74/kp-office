@@ -18,44 +18,18 @@ package de.kaiserpfalzEdv.office;
 
 import de.kaiserpfalzEdv.office.core.KPOEntity;
 
-import static com.google.common.base.Preconditions.checkArgument;
-
 /**
  * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;
  * @since 0.1.0
  */
-public class EntityAlreadyExistsException extends OfficeBusinessException {
-    private static final long serialVersionUID = 7808554001104127951L;
-
-
-    private KPOEntity entity;
-
+public class EntityAlreadyExistsException extends EntityException {
+    private static final long serialVersionUID = -5160901718085257651L;
 
     public EntityAlreadyExistsException(KPOEntity entity) {
-        super(createMessage(entity));
-
-        setEntity(entity);
+        super(entity);
     }
 
     public EntityAlreadyExistsException(KPOEntity entity, Throwable cause) {
-        super(createMessage(entity), cause);
-
-        setEntity(entity);
-    }
-
-
-    private static String createMessage(KPOEntity entity) {
-        return new StringBuilder("Entity already exists: ").append(entity).toString();
-    }
-
-
-    public KPOEntity getEntity() {
-        return entity;
-    }
-
-    private void setEntity(final KPOEntity entity) {
-        checkArgument(entity != null, "Can't create an entity already exist exception without an entity!");
-
-        this.entity = entity;
+        super(entity, cause);
     }
 }
