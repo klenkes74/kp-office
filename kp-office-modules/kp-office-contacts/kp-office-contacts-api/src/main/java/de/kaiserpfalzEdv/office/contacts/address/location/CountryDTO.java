@@ -16,6 +16,8 @@
 
 package de.kaiserpfalzEdv.office.contacts.address.location;
 
+import de.kaiserpfalzEdv.office.contacts.address.phone.CountryCode;
+import de.kaiserpfalzEdv.office.contacts.address.phone.CountryCodeDTO;
 import de.kaiserpfalzEdv.office.core.KPOEntityDTO;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
@@ -79,6 +81,10 @@ public class CountryDTO extends KPOEntityDTO implements Country {
 
     void setPhoneCountryCode(@NotNull String phoneCountryCode) {
         this.phoneCountryCode = phoneCountryCode;
+    }
+
+    public CountryCode getCountryCode() {
+        return new CountryCodeDTO(this);
     }
 
     @Override

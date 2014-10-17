@@ -35,11 +35,23 @@ public class BuilderValidationException extends RuntimeException {
     private final HashSet<String> reasons = new HashSet<>();
 
     public BuilderValidationException(@NotNull final String message, @NotNull final Collection<String> reasons) {
-        super(message);
+        super(message + " " + formatReasons(reasons));
 
         this.reasons.addAll(reasons);
     }
 
+    private static String formatReasons(@NotNull final Collection<String> reasons) {
+        StringBuilder result = new StringBuilder("[");
+
+        int counter = 1;
+        for (String r : reasons) {
+            result.append(counter).append(": ").append(r).append(", ");
+
+            counter++;
+        }
+
+        return result.append("]").toString();
+    }
 
     public Set<String> getReasons() {
         return Collections.unmodifiableSet(reasons);

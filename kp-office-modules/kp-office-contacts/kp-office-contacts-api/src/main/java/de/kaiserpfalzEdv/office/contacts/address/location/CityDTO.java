@@ -34,7 +34,8 @@ import java.util.UUID;
  * @since 0.1.0
  */
 public class CityDTO extends KPOEntityDTO implements City {
-    private static final long serialVersionUID = 7424076027124950641L;
+    private static final long serialVersionUID = 8950214400682261887L;
+
     private final HashSet<PostCode> postCodes = new HashSet<>();
     private final HashSet<AreaCode> areaCodes = new HashSet<>();
     private Country country;

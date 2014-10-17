@@ -14,19 +14,11 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzEdv.office.contacts.address.phone;
-
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import de.kaiserpfalzEdv.office.core.DisplayNameHolder;
-import de.kaiserpfalzEdv.office.core.UniqueNumberIdentifierHolder;
-
-import java.io.Serializable;
-
 /**
+ *
+ *
  * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;
+ * @version 0.1.0
  * @since 0.1.0
  */
-@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS, include = JsonTypeInfo.As.PROPERTY, property = "@class", defaultImpl = CountryCodeDTO.class)
-public interface CountryCode extends UniqueNumberIdentifierHolder, DisplayNameHolder, Serializable {
-    String getCode();
-}
+package de.kaiserpfalzEdv.office.contacts.address.postal;

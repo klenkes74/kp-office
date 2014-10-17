@@ -17,19 +17,17 @@
 package de.kaiserpfalzEdv.office.contacts.address.phone;
 
 import de.kaiserpfalzEdv.office.contacts.address.location.Country;
-import de.kaiserpfalzEdv.office.core.KPOEntityDTO;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
 import javax.validation.constraints.NotNull;
-import java.util.UUID;
 
 /**
  * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;
  * @since 0.1.0
  */
-public class CountryCodeDTO extends KPOEntityDTO implements CountryCode {
-    private static final long serialVersionUID = -1432053393225028162L;
+public class CountryCodeDTO implements CountryCode {
+    private static final long serialVersionUID = -2475060911017585206L;
 
     private Country country;
 
@@ -39,16 +37,34 @@ public class CountryCodeDTO extends KPOEntityDTO implements CountryCode {
     }
 
 
-    public CountryCodeDTO(@NotNull final UUID id,
-                          @NotNull final String name,
-                          @NotNull final String number) {
-        super(id, name, number);
+    public CountryCodeDTO(@NotNull final Country country) {
+        setCountry(country);
+    }
+
+
+    public Country getCountry() {
+        return country;
+    }
+
+    public void setCountry(@NotNull final Country country) {
+        this.country = country;
+    }
+
+
+    public String getCode() {
+        return getDisplayNumber();
     }
 
 
     @Override
-    public String getCode() {
-        return getDisplayNumber();
+    public String getDisplayName() {
+        return country.getDisplayName();
+    }
+
+
+    @Override
+    public String getDisplayNumber() {
+        return country.getPhoneCountryCode();
     }
 
 
