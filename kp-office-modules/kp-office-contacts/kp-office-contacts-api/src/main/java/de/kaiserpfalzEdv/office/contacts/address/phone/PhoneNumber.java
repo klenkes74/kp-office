@@ -14,18 +14,25 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzEdv.office.contacts.address;
+package de.kaiserpfalzEdv.office.contacts.address.phone;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import de.kaiserpfalzEdv.office.core.KPOEntity;
+import de.kaiserpfalzEdv.office.contacts.address.Address;
+import de.kaiserpfalzEdv.office.core.UniqueNumberIdentifierHolder;
 
 /**
- * @author klenkes
- * @since 2014Q
+ * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;
+ * @since 0.1.0
  */
-@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS, include = JsonTypeInfo.As.PROPERTY, property = "@class", defaultImpl = AddressDTO.class)
-public interface Address extends KPOEntity {
-    public AddressType getType();
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS, include = JsonTypeInfo.As.PROPERTY, property = "@class", defaultImpl = PhoneNumberDTO.class)
+public interface PhoneNumber extends UniqueNumberIdentifierHolder, Address {
+    public CountryCode getCountryCode();
 
-    public AddressUsage getUsage();
+    public AreaCode getAreaCode();
+
+    public SubscriberNumber getSubscriberNumber();
+
+    public Extension getExtension();
+
+    public PhoneNumberType getKind();
 }

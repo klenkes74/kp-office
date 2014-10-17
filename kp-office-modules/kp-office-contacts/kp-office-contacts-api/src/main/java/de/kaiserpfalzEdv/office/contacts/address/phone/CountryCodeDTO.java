@@ -14,8 +14,9 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzEdv.office.contacts.address.location;
+package de.kaiserpfalzEdv.office.contacts.address.phone;
 
+import de.kaiserpfalzEdv.office.contacts.address.location.Country;
 import de.kaiserpfalzEdv.office.core.KPOEntityDTO;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
@@ -27,40 +28,27 @@ import java.util.UUID;
  * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;
  * @since 0.1.0
  */
-public class PostCodeDTO extends KPOEntityDTO implements PostCode {
-    private static final long serialVersionUID = 7259563519553303989L;
+public class CountryCodeDTO extends KPOEntityDTO implements CountryCode {
+    private static final long serialVersionUID = -1432053393225028162L;
 
     private Country country;
 
     @SuppressWarnings("deprecation")
-    @Deprecated // Only for Jackson, JAX-B and JPA!
-    public PostCodeDTO() {
+    @Deprecated // Only for Jackson, JAX-B, JPA
+    public CountryCodeDTO() {
     }
 
 
-    public PostCodeDTO(@NotNull final UUID id,
-                       @NotNull final String name,
-                       @NotNull final String code,
-                       @NotNull final Country country) {
-        super(id, name, code);
-
-        setCountry(country);
+    public CountryCodeDTO(@NotNull final UUID id,
+                          @NotNull final String name,
+                          @NotNull final String number) {
+        super(id, name, number);
     }
 
 
     @Override
     public String getCode() {
-        return (country != null ? country.getPostalPrefix() + "-" : "") + getDisplayNumber();
-    }
-
-
-    @Override
-    public Country getCountry() {
-        return country;
-    }
-
-    void setCountry(@NotNull final Country country) {
-        this.country = country;
+        return getDisplayNumber();
     }
 
 

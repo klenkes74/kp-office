@@ -14,11 +14,12 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzEdv.office.contacts.address.location;
+package de.kaiserpfalzEdv.office.contacts.address.postal;
 
 import de.kaiserpfalzEdv.commons.BuilderValidationException;
 import de.kaiserpfalzEdv.office.contacts.address.AddressType;
 import de.kaiserpfalzEdv.office.contacts.address.AddressUsage;
+import de.kaiserpfalzEdv.office.contacts.address.location.City;
 import org.apache.commons.lang3.builder.Builder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

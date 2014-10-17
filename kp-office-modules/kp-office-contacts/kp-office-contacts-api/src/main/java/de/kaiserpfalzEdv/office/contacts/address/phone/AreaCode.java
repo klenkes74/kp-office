@@ -17,7 +17,6 @@
 package de.kaiserpfalzEdv.office.contacts.address.phone;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import de.kaiserpfalzEdv.office.contacts.address.location.Country;
 import de.kaiserpfalzEdv.office.core.KPOEntity;
 
 /**
@@ -28,5 +27,5 @@ import de.kaiserpfalzEdv.office.core.KPOEntity;
 public interface AreaCode extends KPOEntity {
     String getCode();
 
-    Country getCountry();
+    CountryCode getCountryCode();
 }

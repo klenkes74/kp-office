@@ -18,6 +18,7 @@ package de.kaiserpfalzEdv.office.contacts.address.location;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import de.kaiserpfalzEdv.office.contacts.address.phone.AreaCode;
+import de.kaiserpfalzEdv.office.contacts.address.postal.PostCode;
 import de.kaiserpfalzEdv.office.core.KPOEntity;
 
 import java.util.Collection;

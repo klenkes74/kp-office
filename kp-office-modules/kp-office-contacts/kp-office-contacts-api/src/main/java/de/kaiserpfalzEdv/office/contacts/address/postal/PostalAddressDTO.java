@@ -14,10 +14,12 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzEdv.office.contacts.address.location;
+package de.kaiserpfalzEdv.office.contacts.address.postal;
 
 import de.kaiserpfalzEdv.office.contacts.address.AddressType;
 import de.kaiserpfalzEdv.office.contacts.address.AddressUsage;
+import de.kaiserpfalzEdv.office.contacts.address.location.City;
+import de.kaiserpfalzEdv.office.contacts.address.location.Country;
 import de.kaiserpfalzEdv.office.core.KPOEntityDTO;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;

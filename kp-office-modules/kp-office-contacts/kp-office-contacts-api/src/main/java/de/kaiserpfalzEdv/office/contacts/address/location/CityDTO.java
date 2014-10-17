@@ -17,6 +17,7 @@
 package de.kaiserpfalzEdv.office.contacts.address.location;
 
 import de.kaiserpfalzEdv.office.contacts.address.phone.AreaCode;
+import de.kaiserpfalzEdv.office.contacts.address.postal.PostCode;
 import de.kaiserpfalzEdv.office.core.KPOEntityDTO;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;

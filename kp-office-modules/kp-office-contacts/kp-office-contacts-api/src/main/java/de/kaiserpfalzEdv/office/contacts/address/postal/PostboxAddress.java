@@ -14,20 +14,15 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzEdv.office.contacts.address.location;
+package de.kaiserpfalzEdv.office.contacts.address.postal;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import de.kaiserpfalzEdv.office.contacts.address.Address;
 
 /**
  * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;
  * @since 0.1.0
  */
-@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS, include = JsonTypeInfo.As.PROPERTY, property = "@class", defaultImpl = PostalAddressDTO.class)
-public interface PostalAddress extends Address {
-    public PostCode getPostCode();
-
-    public Country getCountry();
-
-    public City getCity();
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS, include = JsonTypeInfo.As.PROPERTY, property = "@class", defaultImpl = PostboxAddressDTO.class)
+public interface PostboxAddress extends PostalAddress {
+    public String getPostboxId();
 }

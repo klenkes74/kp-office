@@ -14,10 +14,11 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzEdv.office.contacts.address.location;
+package de.kaiserpfalzEdv.office.contacts.address.postal;
 
 import de.kaiserpfalzEdv.office.contacts.address.AddressType;
 import de.kaiserpfalzEdv.office.contacts.address.AddressUsage;
+import de.kaiserpfalzEdv.office.contacts.address.location.City;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
@@ -34,14 +35,19 @@ public class PostboxAddressDTO extends PostalAddressDTO implements PostboxAddres
     private String postboxId;
 
 
-    public PostboxAddressDTO(@NotNull final UUID id,
-                             @NotNull final String name,
-                             @NotNull final String number,
-                             @NotNull final City city,
-                             @NotNull final PostCode postCode,
-                             @NotNull final AddressType type,
-                             @NotNull final AddressUsage usage,
-                             @NotNull final String postboxId) {
+    @SuppressWarnings("deprecation")
+    @Deprecated // Only for Jackson, JAX-B and JPA!
+    public PostboxAddressDTO() {
+    }
+
+    PostboxAddressDTO(@NotNull final UUID id,
+                      @NotNull final String name,
+                      @NotNull final String number,
+                      @NotNull final City city,
+                      @NotNull final PostCode postCode,
+                      @NotNull final AddressType type,
+                      @NotNull final AddressUsage usage,
+                      @NotNull final String postboxId) {
         super(id, name, number, city, postCode, type, usage);
 
         setPostboxId(postboxId);

@@ -14,8 +14,9 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzEdv.office.contacts.address.phone;
+package de.kaiserpfalzEdv.office.contacts.address.postal;
 
+import de.kaiserpfalzEdv.office.contacts.address.location.Country;
 import de.kaiserpfalzEdv.office.core.KPOEntityDTO;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
@@ -27,39 +28,39 @@ import java.util.UUID;
  * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;
  * @since 0.1.0
  */
-public class AreaCodeDTO extends KPOEntityDTO implements AreaCode {
-    private static final long serialVersionUID = -4020118387304180704L;
+public class PostCodeDTO extends KPOEntityDTO implements PostCode {
+    private static final long serialVersionUID = 7259563519553303989L;
 
-    private CountryCode country;
+    private Country country;
 
     @SuppressWarnings("deprecation")
-    @Deprecated // Only for Jackson, JAX-B, JPA
-    public AreaCodeDTO() {
+    @Deprecated // Only for Jackson, JAX-B and JPA!
+    public PostCodeDTO() {
     }
 
 
-    public AreaCodeDTO(@NotNull final UUID id,
+    public PostCodeDTO(@NotNull final UUID id,
                        @NotNull final String name,
-                       @NotNull final String number,
-                       @NotNull final CountryCode country) {
-        super(id, name, number);
+                       @NotNull final String code,
+                       @NotNull final Country country) {
+        super(id, name, code);
 
-        setCountryCode(country);
+        setCountry(country);
     }
 
 
     @Override
     public String getCode() {
-        return (country != null ? country.getCode() + "-" : "") + getDisplayNumber();
+        return (country != null ? country.getPostalPrefix() + "-" : "") + getDisplayNumber();
     }
 
 
     @Override
-    public CountryCode getCountryCode() {
+    public Country getCountry() {
         return country;
     }
 
-    void setCountryCode(@NotNull final CountryCode country) {
+    void setCountry(@NotNull final Country country) {
         this.country = country;
     }
 

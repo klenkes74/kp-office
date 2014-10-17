@@ -14,21 +14,15 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzEdv.office.contacts.address.location;
+package de.kaiserpfalzEdv.office.contacts.address.phone;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import de.kaiserpfalzEdv.office.core.UniqueNumberIdentifierHolder;
 
 /**
- * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;
- * @since 0.1.0
+ * @author klenkes
+ * @since 2014Q
  */
-@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS, include = JsonTypeInfo.As.PROPERTY, property = "@class", defaultImpl = StreetAddressDTO.class)
-public interface StreetAddress extends PostalAddress {
-    public String getContactOver();
-
-    public String getStreet();
-
-    public String getHouseNumber();
-
-    public String getHouseNumberAdd();
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS, include = JsonTypeInfo.As.PROPERTY, property = "@class", defaultImpl = NumberPartDTO.class)
+public interface SubscriberNumber extends UniqueNumberIdentifierHolder {
 }

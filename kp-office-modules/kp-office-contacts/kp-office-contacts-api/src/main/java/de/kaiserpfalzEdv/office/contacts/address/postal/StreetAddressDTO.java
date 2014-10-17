@@ -14,10 +14,11 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzEdv.office.contacts.address.location;
+package de.kaiserpfalzEdv.office.contacts.address.postal;
 
 import de.kaiserpfalzEdv.office.contacts.address.AddressType;
 import de.kaiserpfalzEdv.office.contacts.address.AddressUsage;
+import de.kaiserpfalzEdv.office.contacts.address.location.City;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 import org.slf4j.Logger;
@@ -38,18 +39,23 @@ public class StreetAddressDTO extends PostalAddressDTO implements StreetAddress 
     private String houseNumber;
     private String houseNumberAdd;
 
+    @SuppressWarnings("deprecation")
+    @Deprecated // Only for Jackson, JAX-B and JPA!
+    public StreetAddressDTO() {
+    }
 
-    public StreetAddressDTO(@NotNull final UUID id,
-                            @NotNull final String name,
-                            @NotNull final String number,
-                            @NotNull final City city,
-                            @NotNull final PostCode postCode,
-                            @NotNull final AddressType type,
-                            @NotNull final AddressUsage usage,
-                            final String co,
-                            @NotNull final String street,
-                            final String houseNumber,
-                            final String houseNumberAdd) {
+
+    StreetAddressDTO(@NotNull final UUID id,
+                     @NotNull final String name,
+                     @NotNull final String number,
+                     @NotNull final City city,
+                     @NotNull final PostCode postCode,
+                     @NotNull final AddressType type,
+                     @NotNull final AddressUsage usage,
+                     final String co,
+                     @NotNull final String street,
+                     final String houseNumber,
+                     final String houseNumberAdd) {
         super(id, name, number, city, postCode, type, usage);
 
         setContactOver(co);
