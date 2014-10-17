@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzEdv.office.tenants;
+package de.kaiserpfalzEdv.office.contacts.contact;
 
 /**
  * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;
  * @since 0.1.0
  */
-public interface TenantHolder {
-    public Tenant getTenant();
+public interface ContactPerson extends Contact {
+    public PersonalName getName();
 }

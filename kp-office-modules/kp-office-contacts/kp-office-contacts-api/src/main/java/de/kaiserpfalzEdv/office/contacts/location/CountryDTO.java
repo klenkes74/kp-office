@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzEdv.office.contacts.address.location;
+package de.kaiserpfalzEdv.office.contacts.location;
 
 import de.kaiserpfalzEdv.office.contacts.address.phone.CountryCode;
 import de.kaiserpfalzEdv.office.contacts.address.phone.CountryCodeDTO;

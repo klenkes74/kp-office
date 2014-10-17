@@ -14,12 +14,14 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzEdv.office.contacts.contact;
+package de.kaiserpfalzEdv.office.tenants;
+
+import java.util.UUID;
 
 /**
  * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;
  * @since 0.1.0
  */
-public interface Person extends Contact {
-    public PersonalName getName();
+public interface TenantIdHolder {
+    public UUID getTenantId();
 }

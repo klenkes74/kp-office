@@ -16,7 +16,7 @@
 
 package de.kaiserpfalzEdv.office.contacts.address.phone;
 
-import de.kaiserpfalzEdv.office.contacts.address.location.Country;
+import de.kaiserpfalzEdv.office.contacts.location.Country;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 

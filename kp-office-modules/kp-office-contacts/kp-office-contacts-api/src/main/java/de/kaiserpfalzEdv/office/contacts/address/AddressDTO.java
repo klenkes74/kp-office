@@ -16,7 +16,7 @@
 
 package de.kaiserpfalzEdv.office.contacts.address;
 
-import de.kaiserpfalzEdv.office.core.KPOEntityDTO;
+import de.kaiserpfalzEdv.office.core.KPOTenantHoldingEntityDTO;
 
 import javax.validation.constraints.NotNull;
 import java.util.UUID;
@@ -25,7 +25,7 @@ import java.util.UUID;
  * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;
  * @since 0.1.0
  */
-public abstract class AddressDTO extends KPOEntityDTO implements Address {
+public abstract class AddressDTO extends KPOTenantHoldingEntityDTO implements Address {
     private static final long serialVersionUID = -4342246351522549681L;
 
     private AddressType type;
@@ -41,8 +41,9 @@ public abstract class AddressDTO extends KPOEntityDTO implements Address {
                       @NotNull final String displayName,
                       @NotNull final String displayNumber,
                       @NotNull final AddressType type,
-                      @NotNull final AddressUsage usage) {
-        super(id, displayName, displayNumber);
+                      @NotNull final AddressUsage usage,
+                      @NotNull final UUID tenantId) {
+        super(id, displayName, displayNumber, tenantId);
 
         setType(type);
         setUsage(usage);

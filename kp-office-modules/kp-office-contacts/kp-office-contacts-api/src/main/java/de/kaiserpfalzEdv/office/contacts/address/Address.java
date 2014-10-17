@@ -17,14 +17,14 @@
 package de.kaiserpfalzEdv.office.contacts.address;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import de.kaiserpfalzEdv.office.core.KPOEntity;
+import de.kaiserpfalzEdv.office.core.KPOTenantHoldingEntity;
 
 /**
  * @author klenkes
  * @since 2014Q
  */
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS, include = JsonTypeInfo.As.PROPERTY, property = "@class", defaultImpl = AddressDTO.class)
-public interface Address extends KPOEntity {
+public interface Address extends KPOTenantHoldingEntity {
     public AddressType getType();
 
     public AddressUsage getUsage();

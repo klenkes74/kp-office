@@ -18,7 +18,7 @@ package de.kaiserpfalzEdv.office.contacts.address.postal;
 
 import de.kaiserpfalzEdv.office.contacts.address.AddressType;
 import de.kaiserpfalzEdv.office.contacts.address.AddressUsage;
-import de.kaiserpfalzEdv.office.contacts.address.location.City;
+import de.kaiserpfalzEdv.office.contacts.location.City;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
@@ -47,8 +47,9 @@ public class PostboxAddressDTO extends PostalAddressDTO implements PostboxAddres
                       @NotNull final PostCode postCode,
                       @NotNull final AddressType type,
                       @NotNull final AddressUsage usage,
-                      @NotNull final String postboxId) {
-        super(id, name, number, city, postCode, type, usage);
+                      @NotNull final String postboxId,
+                      @NotNull final UUID tenantId) {
+        super(id, name, number, city, postCode, type, usage, tenantId);
 
         setPostboxId(postboxId);
     }

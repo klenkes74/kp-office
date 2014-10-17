@@ -19,6 +19,8 @@ package de.kaiserpfalzEdv.office.contacts.address.phone;
 import de.kaiserpfalzEdv.commons.BuilderValidationException;
 import de.kaiserpfalzEdv.office.contacts.address.AddressType;
 import de.kaiserpfalzEdv.office.contacts.address.AddressUsage;
+import de.kaiserpfalzEdv.office.tenants.NullTenant;
+import de.kaiserpfalzEdv.office.tenants.Tenant;
 import org.apache.commons.lang3.builder.Builder;
 
 import javax.validation.constraints.NotNull;
@@ -32,6 +34,7 @@ import java.util.UUID;
  */
 public class PhoneNumberBuilder implements Builder<PhoneNumber> {
     private UUID id;
+    private UUID tenantId;
 
     private AreaCode areaCode;
     private SubscriberNumber subscriberNumber;
@@ -46,7 +49,7 @@ public class PhoneNumberBuilder implements Builder<PhoneNumber> {
         setDefaults();
         validate();
 
-        return new PhoneNumberDTO(id, areaCode, subscriberNumber, extension, kind, type, usage);
+        return new PhoneNumberDTO(id, areaCode, subscriberNumber, extension, kind, type, usage, tenantId);
     }
 
 
@@ -63,6 +66,8 @@ public class PhoneNumberBuilder implements Builder<PhoneNumber> {
 
     protected void setDefaults() {
         if (id == null) id = UUID.randomUUID();
+        if (tenantId == null) tenantId = new NullTenant().getId();
+
         if (kind == null) kind = PhoneNumberType.TELEPHONE;
         if (type == null) type = AddressType.DEFAULT;
         if (usage == null) usage = AddressUsage.DEFAULT;
@@ -103,6 +108,23 @@ public class PhoneNumberBuilder implements Builder<PhoneNumber> {
 
     public PhoneNumberBuilder clearId() {
         this.id = null;
+
+        return this;
+    }
+
+
+    public UUID getTenantId() {
+        return tenantId;
+    }
+
+    public PhoneNumberBuilder withTenant(@NotNull final UUID tenantId) {
+        this.tenantId = tenantId;
+
+        return this;
+    }
+
+    public PhoneNumberBuilder withTenant(@NotNull final Tenant tenant) {
+        this.tenantId = tenant.getId();
 
         return this;
     }

@@ -17,7 +17,6 @@
 package de.kaiserpfalzEdv.office.tenants.commands;
 
 import de.kaiserpfalzEdv.office.tenants.Tenant;
-import de.kaiserpfalzEdv.office.tenants.TenantDTO;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.util.UUID;
@@ -65,7 +64,7 @@ public class RenameTenantCommand extends TenantStoreCommand {
 
     @Override
     public Tenant updateTenant(Tenant tenant) {
-        return new TenantDTO(tenant.getId(), tenant.getDisplayNumber(), displayName);
+        return new Tenant.TenantDTO(tenant.getId(), tenant.getDisplayNumber(), displayName);
     }
 
 

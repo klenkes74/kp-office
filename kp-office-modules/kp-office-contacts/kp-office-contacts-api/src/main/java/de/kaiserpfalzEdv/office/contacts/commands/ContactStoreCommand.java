@@ -20,6 +20,7 @@ import de.kaiserpfalzEdv.office.commands.OfficeCommand;
 import de.kaiserpfalzEdv.office.contacts.contact.Contact;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
+import javax.validation.constraints.NotNull;
 import java.util.UUID;
 
 /**
@@ -29,17 +30,39 @@ import java.util.UUID;
 public abstract class ContactStoreCommand extends OfficeCommand {
     public static final String TARGET_ENTITY = "Contact";
     private static final long serialVersionUID = 1L;
-    private UUID contactId = UUID.randomUUID();
+
+    private UUID tenantId;
+    private UUID contactId;
+
+    @SuppressWarnings("deprecation")
+    @Deprecated // Only for Jackson, JAX-B and JPA!
+    public ContactStoreCommand() {
+    }
+
+    public ContactStoreCommand(@NotNull final UUID tenantId, @NotNull final UUID contactId) {
+        setTenantId(tenantId);
+        setContactId(contactId);
+    }
+
 
     public String getTarget() {
         return TARGET_ENTITY;
     }
 
     public UUID getTenantId() {
+        return tenantId;
+    }
+
+    protected void setTenantId(final UUID tenantId) {
+        this.tenantId = tenantId;
+    }
+
+
+    public UUID getContactId() {
         return contactId;
     }
 
-    protected void setTenantId(final UUID contactId) {
+    protected void setContactId(final UUID contactId) {
         this.contactId = contactId;
     }
 

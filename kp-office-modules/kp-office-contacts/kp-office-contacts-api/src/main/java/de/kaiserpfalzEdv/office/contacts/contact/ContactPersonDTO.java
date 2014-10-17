@@ -27,16 +27,16 @@ import java.util.UUID;
  * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;
  * @since 0.1.0
  */
-public class PersonDTO extends ContactDTO implements Person {
+public class ContactPersonDTO extends ContactDTO implements ContactPerson {
     private PersonalName name;
 
-    public PersonDTO(@NotNull final Tenant tenant,
-                     @NotNull final UUID id,
-                     @NotNull final String number,
-                     @NotNull final PersonalName name,
-                     @NotNull final ContactType type,
-                     @NotNull final Collection<Address> addresses,
-                     @NotNull final Collection<Contact> contacts) {
+    public ContactPersonDTO(@NotNull final Tenant tenant,
+                            @NotNull final UUID id,
+                            @NotNull final String number,
+                            @NotNull final PersonalName name,
+                            @NotNull final ContactType type,
+                            @NotNull final Collection<Address> addresses,
+                            @NotNull final Collection<Contact> contacts) {
         super(id, name.getDisplayName(), number, tenant, type, addresses, contacts);
 
         setName(name);

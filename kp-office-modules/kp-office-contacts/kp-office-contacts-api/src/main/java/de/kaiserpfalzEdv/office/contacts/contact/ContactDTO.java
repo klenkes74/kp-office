@@ -17,7 +17,7 @@
 package de.kaiserpfalzEdv.office.contacts.contact;
 
 import de.kaiserpfalzEdv.office.contacts.address.Address;
-import de.kaiserpfalzEdv.office.core.KPOEntityDTO;
+import de.kaiserpfalzEdv.office.core.KPOTenantHoldingEntityDTO;
 import de.kaiserpfalzEdv.office.tenants.Tenant;
 
 import javax.validation.constraints.NotNull;
@@ -31,14 +31,14 @@ import java.util.UUID;
  * @author klenkes
  * @since 2014Q
  */
-public class ContactDTO extends KPOEntityDTO implements Contact {
+public abstract class ContactDTO extends KPOTenantHoldingEntityDTO implements Contact {
     private static final long serialVersionUID = 7264252295359181362L;
     private final HashSet<Address> addresses = new HashSet<>();
     private final HashSet<Contact> contacts = new HashSet<>();
-    private Tenant tenant;
     private ContactType type;
 
 
+    @SuppressWarnings("deprecation")
     @Deprecated // Only for Jackson, JAX-B and JPA!
     public ContactDTO() {
     }
@@ -50,9 +50,8 @@ public class ContactDTO extends KPOEntityDTO implements Contact {
                       @NotNull final ContactType type,
                       @NotNull final Collection<Address> addresses,
                       @NotNull final Collection<Contact> contacts) {
-        super(id, name, number);
+        super(id, name, number, tenant.getId());
 
-        setTenant(tenant);
         setType(type);
 
         setAddresses(addresses);
@@ -117,14 +116,5 @@ public class ContactDTO extends KPOEntityDTO implements Contact {
         if (contacts.contains(contact)) {
             this.contacts.remove(contact);
         }
-    }
-
-    @Override
-    public Tenant getTenant() {
-        return tenant;
-    }
-
-    public void setTenant(@NotNull final Tenant tenant) {
-        this.tenant = tenant;
     }
 }

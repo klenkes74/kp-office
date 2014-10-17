@@ -14,23 +14,24 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzEdv.office.contacts.contact;
+package de.kaiserpfalzEdv.office.core;
 
-import de.kaiserpfalzEdv.office.contacts.address.Address;
-import de.kaiserpfalzEdv.office.core.KPOTenantHoldingEntity;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import de.kaiserpfalzEdv.office.tenants.TenantIdHolder;
 
-import java.util.Set;
+import java.io.Serializable;
 
 /**
+ * The base class to all entities.
+ *
  * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;
  * @since 0.1.0
  */
-public interface Contact extends KPOTenantHoldingEntity {
-    public ContactType getType();
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS, include = JsonTypeInfo.As.PROPERTY, property = "@class", defaultImpl = KPOEntityDTO.class)
+public interface KPOTenantHoldingEntity extends Serializable, IdentityHolder, UniqueNumberIdentifierHolder, DisplayNameHolder, TenantIdHolder {
 
-    public Name getName();
-
-    public Set<Address> getAddresses();
-
-    public Set<Contact> getSubContacts();
+    /**
+     * @return TRUE, if this entity is to be hidden.
+     */
+    public boolean isHidden();
 }

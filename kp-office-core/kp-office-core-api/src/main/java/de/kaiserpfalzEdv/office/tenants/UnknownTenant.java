@@ -24,7 +24,7 @@ import java.util.UUID;
  * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;
  * @since 0.1.0
  */
-public class UnknownTenant extends TenantDTO {
+public class UnknownTenant extends Tenant.TenantDTO {
     private static final long serialVersionUID = 1328458442491995686L;
 
 

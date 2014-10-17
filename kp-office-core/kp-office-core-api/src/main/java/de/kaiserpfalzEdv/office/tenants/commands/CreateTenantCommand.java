@@ -17,7 +17,6 @@
 package de.kaiserpfalzEdv.office.tenants.commands;
 
 import de.kaiserpfalzEdv.office.tenants.Tenant;
-import de.kaiserpfalzEdv.office.tenants.TenantDTO;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
@@ -75,7 +74,7 @@ public class CreateTenantCommand extends TenantStoreCommand {
 
     @Override
     public Tenant updateTenant(Tenant tenant) {
-        return new TenantDTO(getTenantId(), getDisplayNumber(), getDisplayName());
+        return new Tenant.TenantDTO(getTenantId(), getDisplayNumber(), getDisplayName());
     }
 
     @Override

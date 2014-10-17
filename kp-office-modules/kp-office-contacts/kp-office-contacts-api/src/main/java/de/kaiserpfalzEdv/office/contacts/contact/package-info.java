@@ -14,25 +14,11 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzEdv.office.contacts.address.location;
-
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import de.kaiserpfalzEdv.office.contacts.address.phone.CountryCode;
-import de.kaiserpfalzEdv.office.core.KPOEntity;
-
 /**
- * @author klenkes
- * @since 2014Q
+ *
+ *
+ * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;
+ * @version 0.1.0
+ * @since 0.1.0
  */
-@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS, include = JsonTypeInfo.As.PROPERTY, property = "@class", defaultImpl = CountryDTO.class)
-public interface Country extends KPOEntity {
-    String getIso2();
-
-    String getIso3();
-
-    String getPhoneCountryCode();
-
-    CountryCode getCountryCode();
-
-    String getPostalPrefix();
-}
+package de.kaiserpfalzEdv.office.contacts.contact;

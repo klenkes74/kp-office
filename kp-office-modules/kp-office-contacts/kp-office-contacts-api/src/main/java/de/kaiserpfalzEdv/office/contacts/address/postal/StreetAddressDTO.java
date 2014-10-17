@@ -18,7 +18,7 @@ package de.kaiserpfalzEdv.office.contacts.address.postal;
 
 import de.kaiserpfalzEdv.office.contacts.address.AddressType;
 import de.kaiserpfalzEdv.office.contacts.address.AddressUsage;
-import de.kaiserpfalzEdv.office.contacts.address.location.City;
+import de.kaiserpfalzEdv.office.contacts.location.City;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 import org.slf4j.Logger;
@@ -55,8 +55,9 @@ public class StreetAddressDTO extends PostalAddressDTO implements StreetAddress 
                      final String co,
                      @NotNull final String street,
                      final String houseNumber,
-                     final String houseNumberAdd) {
-        super(id, name, number, city, postCode, type, usage);
+                     final String houseNumberAdd,
+                     @NotNull final UUID tenantId) {
+        super(id, name, number, city, postCode, type, usage, tenantId);
 
         setContactOver(co);
         setStreet(street);

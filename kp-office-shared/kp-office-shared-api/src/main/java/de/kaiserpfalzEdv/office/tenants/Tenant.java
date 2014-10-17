@@ -18,6 +18,9 @@ package de.kaiserpfalzEdv.office.tenants;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import de.kaiserpfalzEdv.office.core.KPOEntity;
+import de.kaiserpfalzEdv.office.core.KPOEntityDTO;
+
+import java.util.UUID;
 
 /**
  * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;
@@ -25,4 +28,39 @@ import de.kaiserpfalzEdv.office.core.KPOEntity;
  */
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS, include = JsonTypeInfo.As.PROPERTY, property = "@class", defaultImpl = TenantDTO.class)
 public interface Tenant extends KPOEntity {
+    /**
+     * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;
+     * @since 0.1.0
+     */
+    class TenantDTO extends KPOEntityDTO implements Tenant {
+        private static final long serialVersionUID = -8050304486006253950L;
+
+
+        /**
+         * @deprecated Only for JPA!
+         */
+        @SuppressWarnings("deprecation")
+        @Deprecated
+        protected TenantDTO() {
+        }
+
+
+        /**
+         * A copy-constructor.
+         *
+         * @param orig The original tenant to be copied.
+         */
+        public TenantDTO(final Tenant orig) {
+            this(orig.getId(), orig.getDisplayName(), orig.getDisplayNumber());
+        }
+
+
+        public TenantDTO(final String number, final String name) {
+            this(UUID.randomUUID(), name, number);
+        }
+
+        public TenantDTO(final UUID id, final String number, final String name) {
+            super(id, name, number);
+        }
+    }
 }

@@ -16,7 +16,7 @@
 
 package de.kaiserpfalzEdv.office.tenants.query;
 
-import de.kaiserpfalzEdv.office.tenants.TenantDTO;
+import de.kaiserpfalzEdv.office.tenants.Tenant;
 import de.kaiserpfalzEdv.office.tenants.TenantNotificationException;
 import de.kaiserpfalzEdv.office.tenants.notifications.CreateTenantNotification;
 import de.kaiserpfalzEdv.office.tenants.notifications.DeleteTenantNotification;
@@ -55,7 +55,7 @@ public class QueryModelModifierImpl implements QueryModelModifier {
 
     @Override
     public void handle(CreateTenantNotification command) throws TenantNotificationException {
-        TenantDTO tenant = new TenantDTO(command.getTenantId(), command.getDisplayNumber(), command.getDisplayName());
+        Tenant.TenantDTO tenant = new Tenant.TenantDTO(command.getTenantId(), command.getDisplayNumber(), command.getDisplayName());
 
         tenant = repository.save(tenant);
 
@@ -64,7 +64,7 @@ public class QueryModelModifierImpl implements QueryModelModifier {
 
     @Override
     public void handle(UpdateTenantNotification command) throws TenantNotificationException {
-        TenantDTO tenant = repository.findOne(command.getTenantId());
+        Tenant.TenantDTO tenant = repository.findOne(command.getTenantId());
 
         tenant.setDisplayName(command.getDisplayName());
 
@@ -80,7 +80,7 @@ public class QueryModelModifierImpl implements QueryModelModifier {
 
     @Override
     public void handle(SyncTenantNotification notification) throws TenantNotificationException {
-        TenantDTO tenant = new TenantDTO(notification.getTenantId(), notification.getDisplayNumber(), notification.getDisplayName());
+        Tenant.TenantDTO tenant = new Tenant.TenantDTO(notification.getTenantId(), notification.getDisplayNumber(), notification.getDisplayName());
 
         tenant = repository.save(tenant);
 

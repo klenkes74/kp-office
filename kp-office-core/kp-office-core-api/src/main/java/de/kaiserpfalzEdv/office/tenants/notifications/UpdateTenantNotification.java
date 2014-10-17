@@ -18,7 +18,6 @@ package de.kaiserpfalzEdv.office.tenants.notifications;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import de.kaiserpfalzEdv.office.tenants.Tenant;
-import de.kaiserpfalzEdv.office.tenants.TenantDTO;
 import de.kaiserpfalzEdv.office.tenants.commands.TenantStoreCommand;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
@@ -32,7 +31,7 @@ import static com.google.common.base.Preconditions.checkArgument;
 public class UpdateTenantNotification extends TenantStoreNotification {
     private static final long serialVersionUID = 1L;
 
-    private TenantDTO tenant;
+    private Tenant.TenantDTO tenant;
 
     @Deprecated // Only for JAX-B, Jackson, JPA!
     public UpdateTenantNotification() {
@@ -62,7 +61,7 @@ public class UpdateTenantNotification extends TenantStoreNotification {
 
     private void setTenant(final Tenant tenant) {
         checkArgument(tenant != null, "A valid tenant is needed for a tenant notification!");
-        this.tenant = new TenantDTO(tenant);
+        this.tenant = new Tenant.TenantDTO(tenant);
     }
 
 

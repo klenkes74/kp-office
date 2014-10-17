@@ -18,8 +18,8 @@ package de.kaiserpfalzEdv.office.contacts.address.postal;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import de.kaiserpfalzEdv.office.contacts.address.Address;
-import de.kaiserpfalzEdv.office.contacts.address.location.City;
-import de.kaiserpfalzEdv.office.contacts.address.location.Country;
+import de.kaiserpfalzEdv.office.contacts.location.City;
+import de.kaiserpfalzEdv.office.contacts.location.Country;
 
 /**
  * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;

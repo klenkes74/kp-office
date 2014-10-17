@@ -20,7 +20,6 @@ import de.kaiserpfalzEdv.office.tenants.NoSuchTenantException;
 import de.kaiserpfalzEdv.office.tenants.OnlyInvalidTenantFoundException;
 import de.kaiserpfalzEdv.office.tenants.Tenant;
 import de.kaiserpfalzEdv.office.tenants.TenantCommandException;
-import de.kaiserpfalzEdv.office.tenants.TenantDTO;
 import de.kaiserpfalzEdv.office.tenants.commands.CreateTenantCommand;
 import de.kaiserpfalzEdv.office.tenants.commands.DeleteTenantCommand;
 import de.kaiserpfalzEdv.office.tenants.commands.RenameTenantCommand;
@@ -99,7 +98,7 @@ public class HistoryHandler {
         command = createRepository.save(command);
 
 
-        Tenant tenant = new TenantDTO(command.getTenantId(), command.getDisplayNumber(), command.getDisplayName());
+        Tenant tenant = new Tenant.TenantDTO(command.getTenantId(), command.getDisplayNumber(), command.getDisplayName());
         notifier.convertAndSend(new CreateTenantNotification(command, tenant));
         LOG.info("Created tenant: {}", tenant);
     }

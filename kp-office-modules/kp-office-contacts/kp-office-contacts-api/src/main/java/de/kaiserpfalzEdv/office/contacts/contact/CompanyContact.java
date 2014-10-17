@@ -16,21 +16,24 @@
 
 package de.kaiserpfalzEdv.office.contacts.contact;
 
-import de.kaiserpfalzEdv.office.contacts.address.Address;
-import de.kaiserpfalzEdv.office.core.KPOTenantHoldingEntity;
-
 import java.util.Set;
 
 /**
+ * A company contact.
+ *
  * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;
  * @since 0.1.0
  */
-public interface Contact extends KPOTenantHoldingEntity {
-    public ContactType getType();
+public interface CompanyContact extends Contact {
+    public CompanyName getName();
 
-    public Name getName();
+    /**
+     * @return The board of directors. Perhaps only a single CEO.
+     */
+    public Set<? extends ContactPerson> getBoard();
 
-    public Set<Address> getAddresses();
-
-    public Set<Contact> getSubContacts();
+    /**
+     * @return The owning persons or companies.
+     */
+    public Set<? extends Contact> getOwner();
 }

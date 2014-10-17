@@ -18,9 +18,9 @@ package de.kaiserpfalzEdv.office.contacts.address.postal;
 
 import de.kaiserpfalzEdv.office.contacts.address.AddressType;
 import de.kaiserpfalzEdv.office.contacts.address.AddressUsage;
-import de.kaiserpfalzEdv.office.contacts.address.location.City;
-import de.kaiserpfalzEdv.office.contacts.address.location.Country;
-import de.kaiserpfalzEdv.office.core.KPOEntityDTO;
+import de.kaiserpfalzEdv.office.contacts.location.City;
+import de.kaiserpfalzEdv.office.contacts.location.Country;
+import de.kaiserpfalzEdv.office.core.KPOTenantHoldingEntityDTO;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 import org.slf4j.Logger;
@@ -33,7 +33,7 @@ import java.util.UUID;
  * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;
  * @since 0.1.0
  */
-public abstract class PostalAddressDTO extends KPOEntityDTO implements PostalAddress {
+public abstract class PostalAddressDTO extends KPOTenantHoldingEntityDTO implements PostalAddress {
     private static final Logger LOG = LoggerFactory.getLogger(PostalAddressDTO.class);
 
     private City city;
@@ -54,8 +54,9 @@ public abstract class PostalAddressDTO extends KPOEntityDTO implements PostalAdd
                      @NotNull final String number,
                      @NotNull final City city,
                      @NotNull final PostCode postCode,
-                     @NotNull final AddressType type, @NotNull final AddressUsage usage) {
-        super(id, name, number);
+                     @NotNull final AddressType type, @NotNull final AddressUsage usage,
+                     @NotNull final UUID tenantId) {
+        super(id, name, number, tenantId);
 
         setCity(city);
         setPostCode(postCode);

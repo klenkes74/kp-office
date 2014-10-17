@@ -21,4 +21,4 @@
  * @version 0.1.0
  * @since 0.1.0
  */
-package de.kaiserpfalzEdv.office.contacts.address.location;
+package de.kaiserpfalzEdv.office.contacts.location;

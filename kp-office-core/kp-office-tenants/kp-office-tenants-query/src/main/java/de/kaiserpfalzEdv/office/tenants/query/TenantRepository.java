@@ -17,7 +17,6 @@
 package de.kaiserpfalzEdv.office.tenants.query;
 
 import de.kaiserpfalzEdv.office.tenants.Tenant;
-import de.kaiserpfalzEdv.office.tenants.TenantDTO;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 
@@ -28,7 +27,7 @@ import java.util.UUID;
  * @since 0.1.0
  */
 @Repository
-public interface TenantRepository extends PagingAndSortingRepository<TenantDTO, UUID> {
+public interface TenantRepository extends PagingAndSortingRepository<Tenant.TenantDTO, UUID> {
     public Tenant findByDisplayNumber(final String number);
 
     public Tenant findByDisplayName(final String name);

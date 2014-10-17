@@ -47,8 +47,9 @@ public class PhoneNumberDTO extends AddressDTO implements PhoneNumber {
                    final Extension extension,
                    @NotNull final PhoneNumberType kind,
                    @NotNull final AddressType type,
-                   @NotNull final AddressUsage usage) {
-        super(id, formatNumber(areaCode, subscriberNumber), formatNumber(areaCode, subscriberNumber), type, usage);
+                   @NotNull final AddressUsage usage,
+                   @NotNull final UUID tenantId) {
+        super(id, formatNumber(areaCode, subscriberNumber), formatNumber(areaCode, subscriberNumber), type, usage, tenantId);
 
         setExtension(extension);
         setKind(kind);

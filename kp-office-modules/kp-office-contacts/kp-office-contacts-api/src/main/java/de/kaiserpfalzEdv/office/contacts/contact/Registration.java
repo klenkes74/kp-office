@@ -16,21 +16,14 @@
 
 package de.kaiserpfalzEdv.office.contacts.contact;
 
-import de.kaiserpfalzEdv.office.contacts.address.Address;
 import de.kaiserpfalzEdv.office.core.KPOTenantHoldingEntity;
-
-import java.util.Set;
 
 /**
  * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;
  * @since 0.1.0
  */
-public interface Contact extends KPOTenantHoldingEntity {
-    public ContactType getType();
+public interface Registration extends KPOTenantHoldingEntity {
+    public CompanyContact getOffice();
 
-    public Name getName();
-
-    public Set<Address> getAddresses();
-
-    public Set<Contact> getSubContacts();
+    public String getRegistration();
 }

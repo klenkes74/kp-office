@@ -19,7 +19,9 @@ package de.kaiserpfalzEdv.office.contacts.address.postal;
 import de.kaiserpfalzEdv.commons.BuilderValidationException;
 import de.kaiserpfalzEdv.office.contacts.address.AddressType;
 import de.kaiserpfalzEdv.office.contacts.address.AddressUsage;
-import de.kaiserpfalzEdv.office.contacts.address.location.City;
+import de.kaiserpfalzEdv.office.contacts.location.City;
+import de.kaiserpfalzEdv.office.tenants.NullTenant;
+import de.kaiserpfalzEdv.office.tenants.Tenant;
 import org.apache.commons.lang3.builder.Builder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -42,6 +44,8 @@ public class PostalAddressBuilder implements Builder<PostalAddress> {
     private UUID id;
     private String name;
     private String number;
+    private UUID tenantId;
+
     private City city;
     private PostCode postCode;
     private AddressType type;
@@ -58,22 +62,37 @@ public class PostalAddressBuilder implements Builder<PostalAddress> {
 
     @Override
     public PostalAddress build() {
+        setDefaults();
         validate();
 
         PostalAddress result;
 
         if (isNotBlank(postBox)) {
             result = new PostboxAddressDTO(getId(), getName(), getNumber(), getCity(), getPostCode(), getType(), getUsage(),
-                    getPostBox());
+                    getPostBox(), getTenantId());
         } else {
             result = new StreetAddressDTO(getId(), getName(), getNumber(), getCity(), getPostCode(), getType(), getUsage(),
-                    getCo(), getStreet(), getHouseNumber(), getHouseNumberAdd());
+                    getCo(), getStreet(), getHouseNumber(), getHouseNumberAdd(), getTenantId());
         }
 
         LOG.trace("Created via {}: {}", this, result);
         return result;
     }
 
+
+    protected void setDefaults() {
+        if (id == null)
+            id = UUID.randomUUID();
+
+        if (tenantId == null)
+            id = new NullTenant().getId();
+
+        if (name == null)
+            name = number;
+
+        if (number == null)
+            number = name = id.toString();
+    }
 
     public void validate() {
         HashSet<String> reasons = new HashSet<>();
@@ -197,6 +216,20 @@ public class PostalAddressBuilder implements Builder<PostalAddress> {
     }
 
 
+    public PostalAddressBuilder withTenant(final UUID tenantId) {
+        this.tenantId = tenantId;
+
+        return this;
+    }
+
+
+    public PostalAddressBuilder withTenant(final Tenant tenant) {
+        this.tenantId = tenant.getId();
+
+        return this;
+    }
+
+
     public PostalAddressBuilder withCity(final City city) {
         this.city = city;
 
@@ -226,29 +259,19 @@ public class PostalAddressBuilder implements Builder<PostalAddress> {
 
 
     UUID getId() {
-        if (id == null) {
-            id = UUID.randomUUID();
-
-            LOG.debug("Generated uuid for postal address: {}", id.toString());
-        }
-
         return id;
     }
 
     String getName() {
-        if (isBlank(name)) {
-            name = getId().toString();
-        }
-
         return name;
     }
 
     String getNumber() {
-        if (isBlank(number)) {
-            number = getId().toString();
-        }
-
         return number;
+    }
+
+    UUID getTenantId() {
+        return tenantId;
     }
 
     City getCity() {
