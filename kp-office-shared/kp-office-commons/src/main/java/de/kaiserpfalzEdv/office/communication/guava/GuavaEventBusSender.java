@@ -14,9 +14,16 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzEdv.office.communication;
+package de.kaiserpfalzEdv.office.communication.guava;
 
 import de.kaiserpfalzEdv.office.commands.OfficeCommand;
+import de.kaiserpfalzEdv.office.communication.ChannelNotAvailableException;
+import de.kaiserpfalzEdv.office.communication.CommandAndNotificationSender;
+import de.kaiserpfalzEdv.office.communication.CommunicationChannel;
+import de.kaiserpfalzEdv.office.communication.InvalidCommunicationChannelTypeException;
+import de.kaiserpfalzEdv.office.communication.OfficeCommandNotSentException;
+import de.kaiserpfalzEdv.office.communication.OfficeNotificationNotSentException;
+import de.kaiserpfalzEdv.office.communication.ResponseObserver;
 import de.kaiserpfalzEdv.office.notifications.OfficeNotification;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

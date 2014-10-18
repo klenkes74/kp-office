@@ -14,10 +14,14 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzEdv.office.communication;
+package de.kaiserpfalzEdv.office.communication.guava;
 
 import com.google.common.eventbus.EventBus;
 import de.kaiserpfalzEdv.office.commands.OfficeCommand;
+import de.kaiserpfalzEdv.office.communication.ChannelNotAvailableException;
+import de.kaiserpfalzEdv.office.communication.CommunicationChannel;
+import de.kaiserpfalzEdv.office.communication.OfficeCommandNotSentException;
+import de.kaiserpfalzEdv.office.communication.OfficeNotificationNotSentException;
 import de.kaiserpfalzEdv.office.notifications.OfficeNotification;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
@@ -30,7 +34,7 @@ import javax.inject.Inject;
 import javax.validation.constraints.NotNull;
 
 /**
- * This channel is used by the {@link de.kaiserpfalzEdv.office.communication.GuavaEventBusSender} implementation for
+ * This channel is used by the {@link GuavaEventBusSender} implementation for
  * the office communications. One instance per used {@link com.google.common.eventbus.EventBus} is needed.
  *
  * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;
@@ -63,17 +67,17 @@ public class GuavaEventBusChannel implements CommunicationChannel {
      * Sends the command to the channel.
      *
      * @param command The command to be sent.
-     * @throws OfficeCommandNotSentException The command can not be sent. Check the cause!
+     * @throws de.kaiserpfalzEdv.office.communication.OfficeCommandNotSentException The command can not be sent. Check the cause!
      */
     public void send(@NotNull OfficeCommand command) throws OfficeCommandNotSentException {
         validate();
 
-        LOG.debug("Posting Command: {}", command);
+        LOG.debug("Posting Command: #{}", command.getId());
 
         try {
             bus.post(command);
 
-            LOG.trace("Posted Command to {}: {}", bus, command.getId());
+            LOG.debug("Posted Command to {}: #{}", bus, command.getId());
         } catch (RuntimeException e) {
             throw new OfficeCommandNotSentException(e.getMessage(), e);
         }
@@ -87,7 +91,7 @@ public class GuavaEventBusChannel implements CommunicationChannel {
         try {
             bus.post(notification);
 
-            LOG.trace("Posted Notification to {}: {}", bus, notification.getNotificationId());
+            LOG.debug("Posted Notification to {}: #{}", bus, notification.getNotificationId());
         } catch (RuntimeException e) {
             throw new OfficeCommandNotSentException(e.getMessage(), e);
         }

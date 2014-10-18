@@ -19,6 +19,8 @@ package de.kaiserpfalzEdv.office.communication;
 import com.google.common.eventbus.EventBus;
 import com.google.common.eventbus.Subscribe;
 import de.kaiserpfalzEdv.commons.test.CommonTestBase;
+import de.kaiserpfalzEdv.office.communication.guava.GuavaEventBusChannel;
+import de.kaiserpfalzEdv.office.communication.guava.GuavaEventBusSender;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.annotations.Test;

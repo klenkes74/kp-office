@@ -14,10 +14,13 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzEdv.office.communication;
+package de.kaiserpfalzEdv.office.communication.guava;
 
 import com.google.common.eventbus.Subscribe;
 import de.kaiserpfalzEdv.office.commands.OfficeCommand;
+import de.kaiserpfalzEdv.office.communication.CommunicationChannel;
+import de.kaiserpfalzEdv.office.communication.CommunicationException;
+import de.kaiserpfalzEdv.office.communication.ResponseObserver;
 import de.kaiserpfalzEdv.office.notifications.OfficeNotification;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -48,11 +51,11 @@ public class GuavaEventBusResponseObserver<R extends OfficeNotification> impleme
     @SuppressWarnings("UnusedDeclaration")
     @Subscribe
     public void setResponse(R notification) {
-        LOG.debug("Working on: {}", notification);
+        LOG.debug("Working on: #{}", notification.getNotificationId());
 
 
         if (notification.getCommandId().equals(id)) {
-            LOG.debug("Received notification for command {}: {}", id, notification);
+            LOG.debug("Received notification for command #{}: #{}", id, notification.getNotificationId());
 
             this.notification = notification;
         } else {
