@@ -16,6 +16,8 @@
 
 package de.kaiserpfalzEdv.office.contacts;
 
+import de.kaiserpfalzEdv.commons.paging.Page;
+import de.kaiserpfalzEdv.commons.paging.PagingRequest;
 import de.kaiserpfalzEdv.office.contacts.address.phone.AreaCode;
 import de.kaiserpfalzEdv.office.contacts.address.phone.AreaCodeAlreadyExistsException;
 import de.kaiserpfalzEdv.office.contacts.address.phone.AreaCodeNotRemovedException;
@@ -33,46 +35,46 @@ import java.util.UUID;
  */
 public interface AreaCodeService {
     /**
-     * Creates a new city.
+     * Creates a new area code.
      *
-     * @param city City to be saved.
-     * @throws de.kaiserpfalzEdv.office.contacts.location.CityAlreadyExistsException The city already exists.
-     * @throws de.kaiserpfalzEdv.office.contacts.location.InvalidCityException       The city data is inconsistent.
+     * @param areaCode Area code to be saved.
+     * @throws AreaCodeAlreadyExistsException The area code already exists.
+     * @throws InvalidAreaCodeException       The area code data is inconsistent.
      */
     public void createAreaCode(@NotNull final AreaCode areaCode) throws AreaCodeAlreadyExistsException, InvalidAreaCodeException;
 
     /**
-     * Retrieves a city.
+     * Retrieves an area code.
      *
-     * @param id Id of the city to be retrieved.
-     * @return The city with the given id.
-     * @throws de.kaiserpfalzEdv.office.contacts.location.NoSuchCityException There is no city with that ID.
+     * @param id Id of the area code to be retrieved.
+     * @return The area code with the given id.
+     * @throws NoSuchAreaCodeException There is no area code with that ID.
      */
     public City retrieveAreaCode(@NotNull final UUID id) throws NoSuchAreaCodeException;
 
     /**
-     * Retrieves a city.
+     * Retrieves an area code.
      *
-     * @param query The query to retrieve all cities for.
+     * @param query The query to retrieve all area codes for.
      * @return the cities matching the query.
      */
-    public Iterable<City> retrieveAreaCode(@NotNull final KPOEntityQuery query);
+    public Page<City> retrieveAreaCode(@NotNull final KPOEntityQuery query, @NotNull final PagingRequest paging);
 
     /**
-     * Updates the city data.
+     * Updates the area code data.
      *
-     * @param id   Id of the city which data is to be changed.
-     * @param city The new city data to be saved.
-     * @throws de.kaiserpfalzEdv.office.contacts.location.NoSuchCityException  There is no city with the given id.
-     * @throws de.kaiserpfalzEdv.office.contacts.location.InvalidCityException The city data is inconsistent.
+     * @param id       Id of the area code which data is to be changed.
+     * @param areaCode The new area code data to be saved.
+     * @throws NoSuchAreaCodeException  The area code already exists.
+     * @throws InvalidAreaCodeException The area code data is inconsistent.
      */
     public void updateAreaCode(@NotNull final UUID id, @NotNull final AreaCode areaCode) throws NoSuchAreaCodeException, InvalidAreaCodeException;
 
     /**
-     * Deletes the city.
+     * Deletes the area code.
      *
-     * @param id ID of the city to be removed.
-     * @throws de.kaiserpfalzEdv.office.contacts.location.CityNotRemovedException The city can not be removed.
+     * @param id ID of the area code to be removed.
+     * @throws AreaCodeNotRemovedException The area code can not be removed.
      */
     public void deleteAreaCode(@NotNull final UUID id) throws AreaCodeNotRemovedException;
 }

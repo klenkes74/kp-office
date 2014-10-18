@@ -16,6 +16,7 @@
 
 package de.kaiserpfalzEdv.office.notifications;
 
+import de.kaiserpfalzEdv.office.commands.OfficeCommand;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
@@ -50,6 +51,10 @@ public abstract class OfficeNotification implements Serializable {
 
     @Deprecated // Only for JAX-B, Jackson, JPA!
     public OfficeNotification() {
+    }
+
+    public OfficeNotification(final OfficeCommand command) {
+        setCommandId(command.getId());
     }
 
     public OfficeNotification(final UUID commandId) {

@@ -14,23 +14,13 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzEdv.office.projects;
-
-import de.kaiserpfalzEdv.office.contacts.contact.Contact;
-import de.kaiserpfalzEdv.office.core.KPOEntity;
-import de.kaiserpfalzEdv.office.core.Link;
-import de.kaiserpfalzEdv.office.tenants.TenantHolder;
-
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+package de.kaiserpfalzEdv.office.communication;
 
 /**
- * @author klenkes
- * @since 2014Q
+ * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;
+ * @version 0.1.0
+ * @since 0.1.0
  */
-public interface Project extends KPOEntity, TenantHolder {
-    public Set<Contact> getContacts(final String type);
-
-    Map<String, List<Link>> getLinks();
+public interface CommunicationChannel {
+    public void validate() throws ChannelNotAvailableException;
 }

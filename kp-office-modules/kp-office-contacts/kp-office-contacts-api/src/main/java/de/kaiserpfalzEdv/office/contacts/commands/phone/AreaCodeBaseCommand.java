@@ -14,23 +14,22 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzEdv.office.projects;
+package de.kaiserpfalzEdv.office.contacts.commands.phone;
 
-import de.kaiserpfalzEdv.office.contacts.PersonDTO;
-
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
+import de.kaiserpfalzEdv.office.commands.OfficeCommand;
 
 /**
- * @author klenkes
- * @since 2014Q
+ * Base class for all country modifying commands.
+ *
+ * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;
+ * @since 0.1.0
  */
-public class ProjectDetailData extends ProjectBaseData implements Project {
-    private final HashMap<String, List<PersonDTO>> contacts = new HashMap<>();
+public abstract class AreaCodeBaseCommand extends OfficeCommand {
+    private static final long serialVersionUID = 1L;
+    private static final String TARGET_ENTITY = "AreaCode";
 
-    public ProjectDetailData(final String baseUrl, final UUID id, final String number, final String title, final Map<String, List<PersonDTO>> contacts) {
-        super(baseUrl, id, number, title, contacts);
+    @Override
+    public String getTarget() {
+        return TARGET_ENTITY;
     }
 }

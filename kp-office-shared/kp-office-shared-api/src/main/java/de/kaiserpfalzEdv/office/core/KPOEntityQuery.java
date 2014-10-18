@@ -16,18 +16,31 @@
 
 package de.kaiserpfalzEdv.office.core;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+
 import java.io.Serializable;
+import java.util.UUID;
 
 /**
- * @author klenkes
- * @since 2014Q
+ * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;
+ * @since 0.1.0
  */
 public class KPOEntityQuery implements Serializable {
-    private static final long serialVersionUID = 4639487543561789091L;
+    private static final long serialVersionUID = 7828542593478475811L;
 
+    private UUID id;
     private String number;
     private String name;
 
+    public UUID getId() {
+        return id;
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
+    }
 
     public String getNumber() {
         return number;
@@ -43,5 +56,44 @@ public class KPOEntityQuery implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (obj == this) {
+            return true;
+        }
+        if (obj.getClass() != getClass()) {
+            return false;
+        }
+        KPOEntityQuery rhs = (KPOEntityQuery) obj;
+        return new EqualsBuilder()
+                .append(this.id, rhs.id)
+                .append(this.number, rhs.number)
+                .append(this.name, rhs.name)
+                .isEquals();
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder()
+                .append(id)
+                .append(number)
+                .append(name)
+                .toHashCode();
+    }
+
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this)
+                .append("id", id)
+                .append("number", number)
+                .append("name", name)
+                .toString();
     }
 }

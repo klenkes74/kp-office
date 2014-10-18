@@ -16,6 +16,8 @@
 
 package de.kaiserpfalzEdv.office.contacts;
 
+import de.kaiserpfalzEdv.commons.paging.Page;
+import de.kaiserpfalzEdv.commons.paging.PagingRequest;
 import de.kaiserpfalzEdv.office.contacts.location.Country;
 import de.kaiserpfalzEdv.office.contacts.location.CountryAlreadyExistsException;
 import de.kaiserpfalzEdv.office.contacts.location.CountryNotRemovedException;
@@ -55,7 +57,7 @@ public interface CountryService {
      * @param query The query to retrieve all countries for.
      * @return the cities matching the query.
      */
-    public Iterable<Country> retrieveCountry(@NotNull final KPOEntityQuery query);
+    public Page<Country> retrieveCountry(@NotNull final KPOEntityQuery query, @NotNull final PagingRequest paging);
 
     /**
      * Updates the country data.

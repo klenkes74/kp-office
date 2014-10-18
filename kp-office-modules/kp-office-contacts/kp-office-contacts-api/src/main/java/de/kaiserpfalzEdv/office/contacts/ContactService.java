@@ -105,6 +105,15 @@ public interface ContactService {
      */
     public void changeAddressUsage(@NotNull final Contact contact, @NotNull final Address address, @NotNull final AddressUsage usage) throws NoSuchContactException;
 
+    /**
+     * Changes the kind of phone number for this phone number address.
+     *
+     * @param contact Contact to be worked on.
+     * @param number  The phone number which is of another kind.
+     * @param kind    The new type of phone number.
+     * @throws NoSuchContactException There is no contact with this id in the database.
+     */
+    public void changePhoneNumberKind(@NotNull final Contact contact, @NotNull final PhoneNumber number, @NotNull final PhoneNumberType kind) throws NoSuchContactException;
 
     /**
      * Removes the address from this contact.
@@ -113,66 +122,7 @@ public interface ContactService {
      * @param address Address to be removed.
      * @throws NoSuchContactException There is no such contact in the database.
      */
-    public void removeAddress(@NotNull final Contact contact, @NotNull final Address address) throws NoSuchContactException;
-
-
-    /**
-     * Adds a new phone number to the contact.
-     *
-     * @param contact Contact to be worked on.
-     * @param number  The phone number to be added.
-     * @throws NoSuchContactException There is no such contact in the database.
-     */
-    public void addPhoneNumber(@NotNull final Contact contact, @NotNull final PhoneNumber number) throws NoSuchContactException;
-
-    /**
-     * Replaces the phone number of the contact.
-     *
-     * @param contact   Contact to be worked on.
-     * @param oldNumber old number to be replaced.
-     * @param newNumber new number to replace the old one.
-     * @throws NoSuchContactException There is no such contact in the database.
-     */
-    public void replacePhoneNumber(@NotNull final Contact contact, @NotNull final PhoneNumber oldNumber, @NotNull final PhoneNumber newNumber) throws NoSuchContactException;
-
-    /**
-     * Changes the kind of phone number.
-     *
-     * @param contact Contact to be worked on.
-     * @param number  Number which kind is to be changed.
-     * @param type    The new kind of phone.
-     * @throws NoSuchContactException There is no such contact in the database.
-     */
-    public void changePhoneKind(@NotNull final Contact contact, @NotNull final PhoneNumber number, @NotNull final PhoneNumberType type) throws NoSuchContactException;
-
-    /**
-     * Changes the type of phone number.
-     *
-     * @param contact Contact to be worked on.
-     * @param number  Number to be changed.
-     * @param type    Type of this phone number.
-     * @throws NoSuchContactException There is no such contact in the database.
-     */
-    public void changePhoneType(@NotNull final Contact contact, @NotNull final PhoneNumber number, @NotNull final AddressType type) throws NoSuchContactException;
-
-    /**
-     * Changes the usage of phone number.
-     *
-     * @param contact Contact to be worked on.
-     * @param number  Number to be changed.
-     * @param usage   Usage for this phone number.
-     * @throws NoSuchContactException There is no such contact in the database.
-     */
-    public void changePhoneUsage(@NotNull final Contact contact, @NotNull final PhoneNumber number, @NotNull final AddressUsage usage) throws NoSuchContactException;
-
-    /**
-     * Removes phone number from contact.
-     *
-     * @param contact Contact to be worked on.
-     * @param number  Phone number to be removed.
-     * @throws NoSuchContactException There is no such contact in the database.
-     */
-    public void removePhoneNumber(@NotNull final Contact contact, @NotNull final PhoneNumber number) throws NoSuchContactException;
+    public void deleteAddress(@NotNull final Contact contact, @NotNull final Address address) throws NoSuchContactException;
 
 
     /**
@@ -201,7 +151,7 @@ public interface ContactService {
      * @param subContact Sub contact to be removed from this contact.
      * @throws NoSuchContactException There is no such contact in the database.
      */
-    public void removeSubContact(@NotNull final Contact contact, @NotNull final Contact subContact) throws NoSuchContactException;
+    public void deleteSubContact(@NotNull final Contact contact, @NotNull final Contact subContact) throws NoSuchContactException;
 
 
     /**
@@ -210,5 +160,5 @@ public interface ContactService {
      * @param contact Contact to be removed from database.
      * @throws ContactNotRemovedException The contact can not be removed. Check the cause.
      */
-    public void removeContact(Contact contact) throws ContactNotRemovedException;
+    public void deleteContact(Contact contact) throws ContactNotRemovedException;
 }

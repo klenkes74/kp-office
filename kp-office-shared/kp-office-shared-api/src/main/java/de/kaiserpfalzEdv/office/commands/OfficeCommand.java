@@ -84,6 +84,7 @@ public abstract class OfficeCommand implements IdentityHolder, PermissionNameHol
         return commandTimestamp;
     }
 
+    @SuppressWarnings("UnusedDeclaration")
     @Deprecated // Only for Jackson, JAX-B and JPA!
     public void setCommandTimestamp(final ZonedDateTime value) {
         checkArgument(value != null, "Can't set <null> as command time stamp!");
@@ -104,6 +105,13 @@ public abstract class OfficeCommand implements IdentityHolder, PermissionNameHol
      */
     public void setHandledTimestamp(final ZonedDateTime handledTimestamp) {
         this.handledTimestamp = handledTimestamp;
+    }
+
+    /**
+     * Updates the handled timestamp with the current time.
+     */
+    public void handleCommand() {
+        setHandledTimestamp(ZonedDateTime.now());
     }
 
 
