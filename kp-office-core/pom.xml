@@ -39,7 +39,8 @@
         <module>kp-office-core-api</module>
         <module>kp-office-tenants</module>
         <module>kp-office-security</module>
-        <module>kp-office-core-server</module>
+        <module>kp-office-core-history</module>
+        <module>kp-office-core-query</module>
         <module>kp-office-core-client</module>
         <module>kp-office-backend-utils</module>
     </modules>

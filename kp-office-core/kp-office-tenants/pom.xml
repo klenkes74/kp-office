@@ -29,13 +29,6 @@
 
     <artifactId>kp-office-tenants</artifactId>
     <name>KP Office - Core - Tenants</name>
-    <packaging>pom</packaging>
-
-    <modules>
-        <module>kp-office-tenants-history</module>
-        <module>kp-office-tenants-query</module>
-        <!--<module>kp-office-tenants-client</module>-->
-    </modules>
 
     <properties>
         <project.root>../..</project.root>

@@ -14,26 +14,10 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzEdv.office.contacts.commands.contact;
-
-import javax.validation.constraints.NotNull;
-import java.util.UUID;
-
-/**
- * @author klenkes
- * @since 2014Q
+package de.kaiserpfalzEdv.office; /**
+ *
+ *
+ * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;
+ * @version 0.1.0
+ * @since 0.1.0
  */
-public abstract class UpdateContactCommand extends ContactBaseCommand {
-    private static final long serialVersionUID = 1L;
-
-
-    @SuppressWarnings("deprecation")
-    @Deprecated // Only for Jackson, JAX-B and JPA!
-    public UpdateContactCommand() {
-    }
-
-    @SuppressWarnings("deprecation")
-    public UpdateContactCommand(@NotNull final UUID id) {
-        super(id);
-    }
-}

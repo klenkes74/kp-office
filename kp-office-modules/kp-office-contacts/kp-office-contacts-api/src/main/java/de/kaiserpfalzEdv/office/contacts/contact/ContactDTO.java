@@ -33,6 +33,8 @@ import java.util.UUID;
  */
 public abstract class ContactDTO extends KPOTenantHoldingEntityDTO implements Contact {
     private static final long serialVersionUID = 7264252295359181362L;
+
+
     private final HashSet<Address> addresses = new HashSet<>();
     private final HashSet<Contact> contacts = new HashSet<>();
     private ContactType type;

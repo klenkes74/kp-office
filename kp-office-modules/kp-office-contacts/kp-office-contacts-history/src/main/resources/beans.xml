@@ -33,9 +33,9 @@
                            http://www.springframework.org/schema/rabbit http://www.springframework.org/schema/rabbit/spring-rabbit.xsd
        ">
 
-    <jpa:repositories base-package="de.kaiserpfalzEdv.office.tenants.store"/>
+    <jpa:repositories base-package="de.kaiserpfalzEdv.office.contacts.store"/>
     <context:component-scan
-            base-package="de.kaiserpfalzEdv.office.tenants.history,de.kaiserpfalzEdv.office.tenants.store">
+            base-package="de.kaiserpfalzEdv.office.contacts.history,de.kaiserpfalzEdv.office.contacts.store">
         <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Repository"/>
     </context:component-scan>
 
@@ -197,7 +197,7 @@
 
 
     <rabbit:listener-container connection-factory="connectionFactory">
-        <rabbit:listener queues="kpo.tenants.modify.writer" ref="historyHandler" method="handle"/>
+        <rabbit:listener queues="kpo.tenants.modify.writer" ref="guavaHandleContactCommands" method="handle"/>
     </rabbit:listener-container>
     <rabbit:queue id="kpo.tenants.modify.writer" name="${amqp.domain}.office.tenants.modify.writer.${host}"
                   durable="true">

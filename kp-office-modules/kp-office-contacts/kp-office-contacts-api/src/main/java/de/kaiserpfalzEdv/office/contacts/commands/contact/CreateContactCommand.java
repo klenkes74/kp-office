@@ -32,6 +32,7 @@ public class CreateContactCommand extends ContactBaseCommand {
     private Contact contact;
 
 
+    @SuppressWarnings("UnusedDeclaration")
     @Deprecated // Only for Jackson, JAX-B and JPA!
     public CreateContactCommand() {
     }

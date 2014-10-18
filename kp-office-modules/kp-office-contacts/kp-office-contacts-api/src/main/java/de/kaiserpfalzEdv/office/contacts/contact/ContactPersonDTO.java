@@ -30,6 +30,11 @@ import java.util.UUID;
 public class ContactPersonDTO extends ContactDTO implements ContactPerson {
     private PersonalName name;
 
+    @SuppressWarnings("deprecation")
+    @Deprecated // Only for Jackson, JAX-B and JPA!
+    public ContactPersonDTO() {
+    }
+
     public ContactPersonDTO(@NotNull final Tenant tenant,
                             @NotNull final UUID id,
                             @NotNull final String number,

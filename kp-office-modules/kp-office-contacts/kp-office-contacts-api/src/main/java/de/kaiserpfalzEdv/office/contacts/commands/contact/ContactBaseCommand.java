@@ -17,6 +17,10 @@
 package de.kaiserpfalzEdv.office.contacts.commands.contact;
 
 import de.kaiserpfalzEdv.office.commands.OfficeCommand;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+
+import javax.validation.constraints.NotNull;
+import java.util.UUID;
 
 /**
  * Base class for all country modifying commands.
@@ -28,8 +32,41 @@ public abstract class ContactBaseCommand extends OfficeCommand {
     private static final long serialVersionUID = 1L;
     private static final String TARGET_ENTITY = "Contact";
 
+
+    private UUID contactId;
+
+
+    @Deprecated // Only for Jackson, JAX-B and JPA!
+    public ContactBaseCommand() {
+    }
+
+    @SuppressWarnings("deprecation")
+    public ContactBaseCommand(@NotNull final UUID id) {
+        setContactId(id);
+    }
+
+
+    public UUID getContactId() {
+        return contactId;
+    }
+
+    @Deprecated // Only for Jackson JAX-B and JPA!
+    public void setContactId(@NotNull final UUID contactId) {
+        this.contactId = contactId;
+    }
+
+
     @Override
     public String getTarget() {
         return TARGET_ENTITY;
+    }
+
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this)
+                .appendSuper(super.toString())
+                .append("contactId", contactId)
+                .toString();
     }
 }

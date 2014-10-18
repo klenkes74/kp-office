@@ -28,13 +28,71 @@
         </persistence-unit-defaults>
     </persistence-unit-metadata>
 
-    <package>de.kaiserpfalzEdv.office.tenants.store</package>
+    <package>de.kaiserpfalzEdv.office.contacts.store</package>
+
+    <mapped-superclass class="de.kaiserpfalzEdv.office.core.KPOEntityDTO" access="FIELD">
+        <attributes>
+            <id name="id">
+                <column name="ID_" length="50" nullable="false" updatable="false" unique="true"/>
+            </id>
+
+            <basic name="displayName">
+                <column name="NAME_" length="100" nullable="false" updatable="true" unique="false"/>
+            </basic>
+            <basic name="displayNumber">
+                <column name="NUMBER_" length="100" nullable="false" updatable="true" unique="false"/>
+            </basic>
+
+            <basic name="hidden">
+                <column name="HIDDEN_"/>
+            </basic>
+        </attributes>
+    </mapped-superclass>
+
+    <mapped-superclass class="de.kaiserpfalzEdv.office.core.KPOTenantHoldingEntityDTO" access="FIELD">
+        <attributes>
+            <basic name="tenantId">
+                <column name="TENANT_" length="50" nullable="false" updatable="false" unique="false"/>
+            </basic>
+        </attributes>
+    </mapped-superclass>
+
+
+    <mapped-superclass class="de.kaiserpfalzEdv.office.contacts.contact.ContactDTO" access="FIELD">
+        <attributes>
+            <basic name="type">
+                <enumerated>STRING</enumerated>
+            </basic>
+
+            <one-to-many name="addresses" access="PROPERTY"/>
+            <one-to-many name="subContacts" access="PROPERTY"/>
+        </attributes>
+    </mapped-superclass>
+
+
+    <mapped-superclass class="de.kaiserpfalzEdv.office.contacts.address.AddressDTO" access="FIELD">
+        <attributes>
+            <basic name="type">
+                <enumerated>STRING</enumerated>
+            </basic>
+            <basic name="usage">
+                <enumerated>STRING</enumerated>
+            </basic>
+        </attributes>
+    </mapped-superclass>
+
+    <mapped-superclass class="de.kaiserpfalzEdv.office.contacts.address.postal.PostalAddressDTO" access="FIELD">
+        <attributes>
+            <embedded name="city" access="PROPERTY"/>
+        </attributes>
+    </mapped-superclass>
+
 
     <mapped-superclass class="de.kaiserpfalzEdv.office.commands.OfficeCommand" access="FIELD">
         <description>Generic tenant command.</description>
 
         <attributes>
-            <id name="commandId">
+            <id name="id">
                 <column name="COMMAND_ID_" length="50" nullable="false" updatable="false" unique="true"/>
             </id>
 
@@ -48,56 +106,78 @@
         </attributes>
     </mapped-superclass>
 
-    <entity class="de.kaiserpfalzEdv.office.tenants.commands.TenantStoreCommand" access="FIELD">
-        <table name="TENANTS"/>
-        <inheritance strategy="SINGLE_TABLE"/>
-        <discriminator-value>BASE</discriminator-value>
-        <discriminator-column name="COMMAND_" discriminator-type="STRING" length="10"/>
-
+    <mapped-superclass class="de.kaiserpfalzEdv.office.contacts.commands.contact.ContactBaseCommand" access="FIELD">
         <attributes>
-            <basic name="tenantId">
-                <column name="TENANT_ID_" length="50" nullable="false" updatable="false"/>
+            <basic name="contactId">
+                <column name="CONTACT_ID_" length="50" nullable="false" updatable="false"/>
             </basic>
+        </attributes>
+    </mapped-superclass>
+
+    <mapped-superclass class="de.kaiserpfalzEdv.office.contacts.commands.contact.UpdateContactCommand" access="FIELD"/>
+
+    <mapped-superclass class="de.kaiserpfalzEdv.office.contacts.contact.ContactDTO" access="FIELD">
+        <attributes>
+            <basic name="type">
+                <enumerated>STRING</enumerated>
+            </basic>
+        </attributes>
+    </mapped-superclass>
+
+
+    <entity class="de.kaiserpfalzEdv.office.contacts.commands.contact.CreateContactCommand" access="FIELD">
+        <attributes>
+            <embedded name="contact"/>
         </attributes>
     </entity>
 
+    <entity class="de.kaiserpfalzEdv.office.contacts.commands.contact.DeleteContactCommand" access="FIELD"/>
 
-    <entity class="de.kaiserpfalzEdv.office.tenants.commands.CreateTenantCommand" access="FIELD">
-        <discriminator-value>CREATE</discriminator-value>
+    <entity class="de.kaiserpfalzEdv.office.contacts.address.phone.AreaCode" access="FIELD"/>
 
+
+    <embeddable class="de.kaiserpfalzEdv.office.contacts.contact.ContactPersonDTO" access="FIELD">
         <attributes>
-            <basic name="displayNumber">
-                <column name="CODE_" length="50" nullable="false" updatable="false"/>
+            <embedded name="name" access="PROPERTY"/>
+        </attributes>
+    </embeddable>
+
+    <embeddable class="de.kaiserpfalzEdv.office.contacts.contact.PersonalName" access="FIELD">
+        <attributes>
+            <basic name="firstName">
+                <column name="FIRST_NAME_" length="100" nullable="true"/>
             </basic>
-            <basic name="displayName">
-                <column name="DISPLAY_" length="200" nullable="false" updatable="false"/>
+
+            <basic name="middleName">
+                <column name="MIDDLE_NAME_" length="100" nullable="true"/>
+            </basic>
+
+            <basic name="lastName">
+                <column name="LAST_NAME_" length="100" nullable="false"/>
             </basic>
         </attributes>
-    </entity>
+    </embeddable>
 
 
-    <entity class="de.kaiserpfalzEdv.office.tenants.commands.RenumberTenantCommand" access="FIELD">
-        <discriminator-value>RENUMBER</discriminator-value>
-
+    <embeddable class="de.kaiserpfalzEdv.office.contacts.contact.CompanyContactDTO" access="FIELD">
         <attributes>
-            <basic name="displayNumber">
-                <column name="CODE_" length="50" nullable="false" updatable="false"/>
+            <embedded name="name" access="PROPERTY"/>
+        </attributes>
+    </embeddable>
+
+    <embeddable class="de.kaiserpfalzEdv.office.contacts.contact.CompanyName" access="FIELD">
+        <attributes>
+            <basic name="fullName">
+                <column name="NAME_" length="200" nullable="false"/>
             </basic>
         </attributes>
-    </entity>
+    </embeddable>
 
 
-    <entity class="de.kaiserpfalzEdv.office.tenants.commands.RenameTenantCommand" access="FIELD">
-        <discriminator-value>RENAME</discriminator-value>
-
+    <embeddable class="de.kaiserpfalzEdv.office.contacts.location.CityDTO" access="PROPERTY">
         <attributes>
-            <basic name="displayName">
-                <column name="DISPLAY_" length="200" nullable="false" updatable="false"/>
-            </basic>
+            <one-to-many name="areaCodes"/>
+            <one-to-one name="postCode"/>
         </attributes>
-    </entity>
-
-    <entity class="de.kaiserpfalzEdv.office.tenants.commands.DeleteTenantCommand" access="FIELD">
-        <discriminator-value>DELETE</discriminator-value>
-    </entity>
+    </embeddable>
 </entity-mappings>

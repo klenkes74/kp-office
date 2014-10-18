@@ -29,13 +29,6 @@
 
     <artifactId>kp-office-security</artifactId>
     <name>KP Office - Core - Security</name>
-    <packaging>pom</packaging>
-
-    <modules>
-        <module>kp-office-security-history</module>
-        <module>kp-office-security-query</module>
-        <!--<module>kp-office-security-client</module>-->
-    </modules>
 
     <properties>
         <project.root>../..</project.root>
