@@ -17,59 +17,59 @@
 package de.kaiserpfalzEdv.office.contacts.commands.city;
 
 import de.kaiserpfalzEdv.office.contacts.location.City;
+import de.kaiserpfalzEdv.office.contacts.location.CityBuilder;
+import de.kaiserpfalzEdv.office.contacts.location.CityDTO;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import javax.validation.constraints.NotNull;
 import java.util.UUID;
 
 /**
- * @author klenkes
- * @since 2014Q
+ * Changes the city data for the given city.
+ *
+ * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;
+ * @version 0.1.0
+ * @since 0.1.0
  */
 public class UpdateCityCommand extends CityBaseCommand {
     private static final long serialVersionUID = 1L;
 
 
-    private UUID cityId;
-    private City city;
+    private CityDTO city;
 
 
+    @SuppressWarnings({"UnusedDeclaration", "deprecation"})
     @Deprecated // Only for Jackson, JAX-B and JPA!
     public UpdateCityCommand() {
     }
 
     @SuppressWarnings("deprecation")
     public UpdateCityCommand(@NotNull final UUID id, @NotNull final City city) {
-        setCityId(id);
+        super(id);
+
         setCity(city);
     }
 
 
-    public UUID getCityId() {
-        return cityId;
-    }
-
-    @Deprecated // Only for Jackson JAX-B and JPA!
-    public void setCityId(@NotNull final UUID cityId) {
-        this.cityId = cityId;
-    }
-
-
-    public City getCity() {
+    public CityDTO getCity() {
         return city;
     }
 
     @Deprecated // Only for Jackson JAX-B and JPA!
-    public void setCity(@NotNull final City city) {
+    public void setCity(@NotNull final CityDTO city) {
         this.city = city;
     }
 
+    @SuppressWarnings("deprecation")
+    @Deprecated
+    public void setCity(@NotNull final City city) {
+        setCity(new CityBuilder().withCity(city).build());
+    }
 
     @Override
     public String toString() {
         return new ToStringBuilder(this)
                 .appendSuper(super.toString())
-                .append("cityId", cityId)
                 .append(city)
                 .toString();
     }

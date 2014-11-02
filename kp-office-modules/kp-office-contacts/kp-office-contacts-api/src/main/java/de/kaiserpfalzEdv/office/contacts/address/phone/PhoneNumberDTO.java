@@ -28,15 +28,15 @@ import java.util.UUID;
  * @since 2014Q
  */
 public class PhoneNumberDTO extends AddressDTO implements PhoneNumber {
-    private static final long serialVersionUID = 415917619544354136L;
+    private static final long serialVersionUID = 3033773346196798937L;
 
-    private AreaCode areaCode;
-    private SubscriberNumber subscriberNumber;
-    private Extension extension;
+    private AreaCodeDTO areaCode;
+    private NumberPartDTO subscriberNumber;
+    private NumberPartDTO extension;
 
     private PhoneNumberType kind;
 
-    @SuppressWarnings("deprecation")
+    @SuppressWarnings({"deprecation", "UnusedDeclaration"})
     @Deprecated // Only for Jackson, JAX-B and JPA!
     public PhoneNumberDTO() {
     }
@@ -71,7 +71,7 @@ public class PhoneNumberDTO extends AddressDTO implements PhoneNumber {
     }
 
     public void setAreaCode(@NotNull final AreaCode areaCode) {
-        this.areaCode = areaCode;
+        this.areaCode = (AreaCodeDTO) areaCode;
 
         updateDisplayNumber();
     }
@@ -83,7 +83,7 @@ public class PhoneNumberDTO extends AddressDTO implements PhoneNumber {
     }
 
     public void setSubscriberNumber(@NotNull final SubscriberNumber subscriberNumber) {
-        this.subscriberNumber = subscriberNumber;
+        this.subscriberNumber = (NumberPartDTO) subscriberNumber;
 
         updateDisplayNumber();
     }
@@ -94,7 +94,7 @@ public class PhoneNumberDTO extends AddressDTO implements PhoneNumber {
     }
 
     public void setExtension(@NotNull final Extension extension) {
-        this.extension = extension;
+        this.extension = (NumberPartDTO) extension;
 
         updateDisplayNumber();
     }

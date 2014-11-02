@@ -17,8 +17,10 @@
 package de.kaiserpfalzEdv.office.contacts.contact;
 
 import de.kaiserpfalzEdv.office.contacts.address.Address;
+import de.kaiserpfalzEdv.office.contacts.address.AddressDTO;
 import de.kaiserpfalzEdv.office.core.KPOTenantHoldingEntityDTO;
 import de.kaiserpfalzEdv.office.tenants.Tenant;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import javax.validation.constraints.NotNull;
 import java.util.Collection;
@@ -35,8 +37,8 @@ public abstract class ContactDTO extends KPOTenantHoldingEntityDTO implements Co
     private static final long serialVersionUID = 7264252295359181362L;
 
 
-    private final HashSet<Address> addresses = new HashSet<>();
-    private final HashSet<Contact> contacts = new HashSet<>();
+    private final HashSet<AddressDTO> addresses = new HashSet<>();
+    private final HashSet<ContactDTO> contacts = new HashSet<>();
     private ContactType type;
 
 
@@ -70,12 +72,22 @@ public abstract class ContactDTO extends KPOTenantHoldingEntityDTO implements Co
         this.type = type;
     }
 
+
     @Override
-    public Set<Address> getAddresses() {
+    public Set<AddressDTO> getAddresses() {
         return Collections.unmodifiableSet(addresses);
     }
 
-    public void setAddresses(@NotNull final Collection<Address> addresses) {
+    @SuppressWarnings("deprecation")
+    public void setAddresses(@NotNull final Collection<? extends Address> addresses) {
+        HashSet<AddressDTO> addressDTOs = new HashSet<>(addresses.size());
+        addresses.parallelStream().forEach(a -> addressDTOs.add((AddressDTO) a));
+
+        setAddresses(addressDTOs);
+    }
+
+    @Deprecated // Only for Jackson, JAX-B and JPA!
+    public void setAddresses(@NotNull final Set<AddressDTO> addresses) {
         this.addresses.clear();
 
         if (addresses != null) {
@@ -83,24 +95,42 @@ public abstract class ContactDTO extends KPOTenantHoldingEntityDTO implements Co
         }
     }
 
-    public void addAddress(@NotNull final Address address) {
+    public void addAddress(@NotNull final AddressDTO address) {
         if (!addresses.contains(address)) {
             this.addresses.add(address);
         }
     }
 
-    public void removeAddress(@NotNull final Address address) {
+    public <A extends Address> void addAddress(@NotNull final A address) {
+        addAddress((AddressDTO) address);
+    }
+
+    public void removeAddress(@NotNull final AddressDTO address) {
         if (addresses.contains(address)) {
             this.addresses.remove(address);
         }
     }
 
+    public <A extends Address> void removeAddress(@NotNull final A address) {
+        removeAddress((AddressDTO) address);
+    }
+
+
     @Override
-    public Set<Contact> getSubContacts() {
+    public Set<ContactDTO> getSubContacts() {
         return Collections.unmodifiableSet(contacts);
     }
 
-    public void setSubContacts(@NotNull final Collection<Contact> contacts) {
+    @SuppressWarnings("deprecation")
+    public void setSubContacts(@NotNull final Collection<? extends Contact> contacts) {
+        HashSet<ContactDTO> contactDTOs = new HashSet<>(contacts.size());
+        contactDTOs.parallelStream().forEach(c -> contactDTOs.add((ContactDTO) c));
+
+        setSubContacts(contactDTOs);
+    }
+
+    @Deprecated // Only for Jackson, JAX-B and JPA!
+    public void setSubContacts(@NotNull final Set<ContactDTO> contacts) {
         this.contacts.clear();
 
         if (contacts != null) {
@@ -108,15 +138,32 @@ public abstract class ContactDTO extends KPOTenantHoldingEntityDTO implements Co
         }
     }
 
-    public void addSubContact(@NotNull final Contact contact) {
+    public void addSubContact(@NotNull final ContactDTO contact) {
         if (!contacts.contains(contact)) {
             this.contacts.add(contact);
         }
     }
 
-    public void removeSubContact(@NotNull final Contact contact) {
+    public <C extends Contact> void addSubContact(@NotNull final C contact) {
+        addSubContact((ContactDTO) contact);
+    }
+
+    public void removeSubContact(@NotNull final ContactDTO contact) {
         if (contacts.contains(contact)) {
             this.contacts.remove(contact);
         }
+    }
+
+    public <C extends Contact> void removeSubContact(@NotNull final C contact) {
+        removeSubContact((ContactDTO) contact);
+    }
+
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this)
+                .appendSuper(super.toString())
+                .append("type", type)
+                .toString();
     }
 }

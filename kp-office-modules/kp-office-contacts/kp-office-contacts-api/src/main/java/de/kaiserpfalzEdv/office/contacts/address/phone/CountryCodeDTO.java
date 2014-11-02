@@ -17,6 +17,7 @@
 package de.kaiserpfalzEdv.office.contacts.address.phone;
 
 import de.kaiserpfalzEdv.office.contacts.location.Country;
+import de.kaiserpfalzEdv.office.contacts.location.CountryDTO;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
@@ -29,7 +30,7 @@ import javax.validation.constraints.NotNull;
 public class CountryCodeDTO implements CountryCode {
     private static final long serialVersionUID = -2475060911017585206L;
 
-    private Country country;
+    private CountryDTO country;
 
     @SuppressWarnings("deprecation")
     @Deprecated // Only for Jackson, JAX-B, JPA
@@ -41,13 +42,17 @@ public class CountryCodeDTO implements CountryCode {
         setCountry(country);
     }
 
+    public CountryCodeDTO(@NotNull final CountryCode countryCode) {
+        country = (CountryDTO) countryCode.getCountry();
+    }
 
-    public Country getCountry() {
+
+    public CountryDTO getCountry() {
         return country;
     }
 
     public void setCountry(@NotNull final Country country) {
-        this.country = country;
+        this.country = (CountryDTO) country;
     }
 
 

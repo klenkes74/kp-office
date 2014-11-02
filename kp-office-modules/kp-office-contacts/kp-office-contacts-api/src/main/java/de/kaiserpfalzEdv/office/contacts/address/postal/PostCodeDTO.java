@@ -17,6 +17,7 @@
 package de.kaiserpfalzEdv.office.contacts.address.postal;
 
 import de.kaiserpfalzEdv.office.contacts.location.Country;
+import de.kaiserpfalzEdv.office.contacts.location.CountryDTO;
 import de.kaiserpfalzEdv.office.core.KPOEntityDTO;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
@@ -31,7 +32,7 @@ import java.util.UUID;
 public class PostCodeDTO extends KPOEntityDTO implements PostCode {
     private static final long serialVersionUID = 7259563519553303989L;
 
-    private Country country;
+    private CountryDTO country;
 
     @SuppressWarnings("deprecation")
     @Deprecated // Only for Jackson, JAX-B and JPA!
@@ -48,6 +49,12 @@ public class PostCodeDTO extends KPOEntityDTO implements PostCode {
         setCountry(country);
     }
 
+    public PostCodeDTO(@NotNull final PostCode code) {
+        super(code.getId(), code.getDisplayName(), code.getDisplayNumber());
+
+        setCountry(code.getCountry());
+    }
+
 
     @Override
     public String getCode() {
@@ -56,12 +63,12 @@ public class PostCodeDTO extends KPOEntityDTO implements PostCode {
 
 
     @Override
-    public Country getCountry() {
+    public CountryDTO getCountry() {
         return country;
     }
 
     void setCountry(@NotNull final Country country) {
-        this.country = country;
+        this.country = (CountryDTO) country;
     }
 
 

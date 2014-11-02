@@ -17,6 +17,7 @@
 package de.kaiserpfalzEdv.office.contacts.commands.phone;
 
 import de.kaiserpfalzEdv.office.contacts.address.phone.AreaCode;
+import de.kaiserpfalzEdv.office.contacts.address.phone.AreaCodeDTO;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import javax.validation.constraints.NotNull;
@@ -29,9 +30,10 @@ public class CreateAreaCodeCommand extends AreaCodeBaseCommand {
     private static final long serialVersionUID = 1L;
 
 
-    private AreaCode areaCode;
+    private AreaCodeDTO areaCode;
 
 
+    @SuppressWarnings("deprecation")
     @Deprecated // Only for Jackson, JAX-B and JPA!
     public CreateAreaCodeCommand() {
     }
@@ -41,16 +43,20 @@ public class CreateAreaCodeCommand extends AreaCodeBaseCommand {
         setAreaCode(areaCode);
     }
 
-    public AreaCode getAreaCode() {
+    public AreaCodeDTO getAreaCode() {
         return areaCode;
     }
 
-
+    @SuppressWarnings("deprecation")
     @Deprecated // Only for Jackson JAX-B and JPA!
     public void setAreaCode(@NotNull final AreaCode areaCode) {
-        this.areaCode = areaCode;
+        setAreaCode(new AreaCodeDTO(areaCode));
     }
 
+    @Deprecated // Only for Jackson JAX-B and JPA!
+    public void setAreaCode(@NotNull final AreaCodeDTO areaCode) {
+        this.areaCode = areaCode;
+    }
 
     @Override
     public String toString() {

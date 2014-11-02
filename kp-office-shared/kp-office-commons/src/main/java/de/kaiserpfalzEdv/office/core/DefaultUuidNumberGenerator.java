@@ -14,28 +14,27 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzEdv.office.contacts.commands.city;
+package de.kaiserpfalzEdv.office.core;
 
-import javax.validation.constraints.NotNull;
-import java.util.UUID;
+import de.kaiserpfalzEdv.office.NumberGenerationFailureException;
 
 /**
- * Event to delete a given city.
+ * The default display number generator. Will return the UUID of the object as string.
  *
  * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;
  * @version 0.1.0
  * @since 0.1.0
  */
-public class DeleteCityCommand extends CityBaseCommand {
-    private static final long serialVersionUID = 1L;
-
-
-    @SuppressWarnings({"UnusedDeclaration", "deprecation"})
-    @Deprecated // Only for Jackson, JAX-B and JPA!
-    public DeleteCityCommand() {
-    }
-
-    public DeleteCityCommand(@NotNull final UUID id) {
-        super(id);
+public class DefaultUuidNumberGenerator implements DisplayNumberGenerator {
+    /**
+     * returns the string representation of the UUID (given as first element of the data parameter).
+     *
+     * @param data parameter list. Only the first element is counted and returned as string.
+     * @return the UUID of the object.
+     * @throws NumberGenerationFailureException
+     */
+    @Override
+    public String generate(Object... data) throws NumberGenerationFailureException {
+        return data[0].toString();
     }
 }

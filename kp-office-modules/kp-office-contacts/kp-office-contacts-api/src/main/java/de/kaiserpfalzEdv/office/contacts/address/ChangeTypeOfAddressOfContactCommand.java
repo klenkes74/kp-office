@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzEdv.office.contacts.commands.contact;
+package de.kaiserpfalzEdv.office.contacts.address;
 
-import de.kaiserpfalzEdv.office.contacts.address.phone.PhoneNumberType;
+import de.kaiserpfalzEdv.office.contacts.commands.contact.UpdateContactCommand;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import javax.validation.constraints.NotNull;
@@ -26,45 +26,45 @@ import java.util.UUID;
  * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;
  * @since 0.1.0
  */
-public class ChangeKindOfPhoneNumberOfContactCommand extends UpdateContactCommand {
+public class ChangeTypeOfAddressOfContactCommand extends UpdateContactCommand {
     private static final long serialVersionUID = 1L;
 
 
-    private UUID phoneNumberId;
-    private PhoneNumberType phoneNumberType;
+    private UUID addressId;
+    private AddressType addressType;
 
 
     @SuppressWarnings({"deprecation", "UnusedDeclaration"})
     @Deprecated // Only for Jackson, JAX-B and JPA!
-    public ChangeKindOfPhoneNumberOfContactCommand() {
+    public ChangeTypeOfAddressOfContactCommand() {
     }
 
     @SuppressWarnings("deprecation")
-    public ChangeKindOfPhoneNumberOfContactCommand(@NotNull final UUID id, @NotNull final UUID phoneNumberId, @NotNull final PhoneNumberType phoneNumberType) {
+    public ChangeTypeOfAddressOfContactCommand(@NotNull final UUID id, @NotNull final UUID addressId, @NotNull final AddressType addressType) {
         super(id);
 
-        setPhoneNumberId(phoneNumberId);
-        setPhoneNumberType(phoneNumberType);
+        setAddressId(addressId);
+        setAddressType(addressType);
     }
 
 
-    public UUID getPhoneNumberId() {
-        return phoneNumberId;
-    }
-
-    @Deprecated // Only for Jackson, JAX-B and JPA!
-    public void setPhoneNumberId(@NotNull final UUID phoneNumberId) {
-        this.phoneNumberId = phoneNumberId;
-    }
-
-
-    public PhoneNumberType getPhoneNumberType() {
-        return phoneNumberType;
+    public UUID getAddressId() {
+        return addressId;
     }
 
     @Deprecated // Only for Jackson, JAX-B and JPA!
-    public void setPhoneNumberType(@NotNull final PhoneNumberType phoneNumberType) {
-        this.phoneNumberType = phoneNumberType;
+    public void setAddressId(@NotNull final UUID addressId) {
+        this.addressId = addressId;
+    }
+
+
+    public AddressType getAddressType() {
+        return addressType;
+    }
+
+    @Deprecated // Only for Jackson, JAX-B and JPA!
+    public void setAddressType(@NotNull final AddressType addressType) {
+        this.addressType = addressType;
     }
 
 
@@ -72,8 +72,8 @@ public class ChangeKindOfPhoneNumberOfContactCommand extends UpdateContactComman
     public String toString() {
         return new ToStringBuilder(this)
                 .appendSuper(super.toString())
-                .append("phoneNumberId", phoneNumberId)
-                .append(phoneNumberType)
+                .append("addressId", addressId)
+                .append(addressType)
                 .toString();
     }
 }

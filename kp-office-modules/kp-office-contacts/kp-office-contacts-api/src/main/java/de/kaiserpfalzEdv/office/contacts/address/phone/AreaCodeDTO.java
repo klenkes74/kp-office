@@ -28,11 +28,11 @@ import java.util.UUID;
  * @since 0.1.0
  */
 public class AreaCodeDTO extends KPOEntityDTO implements AreaCode {
-    private static final long serialVersionUID = -4020118387304180704L;
+    private static final long serialVersionUID = -7115742775238758512L;
 
-    private CountryCode country;
+    private CountryCodeDTO country;
 
-    @SuppressWarnings("deprecation")
+    @SuppressWarnings({"deprecation", "UnusedDeclaration"})
     @Deprecated // Only for Jackson, JAX-B, JPA
     public AreaCodeDTO() {
     }
@@ -45,6 +45,12 @@ public class AreaCodeDTO extends KPOEntityDTO implements AreaCode {
         super(id, name, number);
 
         setCountryCode(country);
+    }
+
+    public AreaCodeDTO(@NotNull final AreaCode areaCode) {
+        super(areaCode.getId(), areaCode.getDisplayName(), areaCode.getDisplayNumber());
+
+        setCountryCode(areaCode.getCountryCode());
     }
 
 
@@ -60,9 +66,12 @@ public class AreaCodeDTO extends KPOEntityDTO implements AreaCode {
     }
 
     void setCountryCode(@NotNull final CountryCode country) {
-        this.country = country;
+        setCountryCode(new CountryCodeDTO(country));
     }
 
+    void setCountryCode(@NotNull final CountryCodeDTO country) {
+        this.country = country;
+    }
 
     public String toString() {
         return new ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE)

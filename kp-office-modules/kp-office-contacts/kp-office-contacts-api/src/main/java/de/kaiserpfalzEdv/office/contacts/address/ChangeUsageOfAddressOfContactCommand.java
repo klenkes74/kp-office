@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzEdv.office.contacts.commands.contact;
+package de.kaiserpfalzEdv.office.contacts.address;
 
-import de.kaiserpfalzEdv.office.contacts.address.AddressType;
+import de.kaiserpfalzEdv.office.contacts.commands.contact.UpdateContactCommand;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import javax.validation.constraints.NotNull;
@@ -26,25 +26,25 @@ import java.util.UUID;
  * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;
  * @since 0.1.0
  */
-public class ChangeTypeOfAddressOfContactCommand extends UpdateContactCommand {
+public class ChangeUsageOfAddressOfContactCommand extends UpdateContactCommand {
     private static final long serialVersionUID = 1L;
 
 
     private UUID addressId;
-    private AddressType addressType;
+    private AddressUsage addressUsage;
 
 
     @SuppressWarnings({"deprecation", "UnusedDeclaration"})
     @Deprecated // Only for Jackson, JAX-B and JPA!
-    public ChangeTypeOfAddressOfContactCommand() {
+    public ChangeUsageOfAddressOfContactCommand() {
     }
 
     @SuppressWarnings("deprecation")
-    public ChangeTypeOfAddressOfContactCommand(@NotNull final UUID id, @NotNull final UUID addressId, @NotNull final AddressType addressType) {
+    public ChangeUsageOfAddressOfContactCommand(@NotNull final UUID id, @NotNull final UUID addressId, @NotNull final AddressUsage addressUsage) {
         super(id);
 
         setAddressId(addressId);
-        setAddressType(addressType);
+        setAddressUsage(addressUsage);
     }
 
 
@@ -58,13 +58,13 @@ public class ChangeTypeOfAddressOfContactCommand extends UpdateContactCommand {
     }
 
 
-    public AddressType getAddressType() {
-        return addressType;
+    public AddressUsage getAddressUsage() {
+        return addressUsage;
     }
 
     @Deprecated // Only for Jackson, JAX-B and JPA!
-    public void setAddressType(@NotNull final AddressType addressType) {
-        this.addressType = addressType;
+    public void setAddressUsage(@NotNull final AddressUsage addressUsage) {
+        this.addressUsage = addressUsage;
     }
 
 
@@ -73,7 +73,7 @@ public class ChangeTypeOfAddressOfContactCommand extends UpdateContactCommand {
         return new ToStringBuilder(this)
                 .appendSuper(super.toString())
                 .append("addressId", addressId)
-                .append(addressType)
+                .append(addressUsage)
                 .toString();
     }
 }

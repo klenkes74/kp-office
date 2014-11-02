@@ -26,7 +26,7 @@ import java.util.UUID;
  * @since 0.1.0
  */
 public abstract class AddressDTO extends KPOTenantHoldingEntityDTO implements Address {
-    private static final long serialVersionUID = -4342246351522549681L;
+    private static final long serialVersionUID = 6069535185329712041L;
 
     private AddressType type;
     private AddressUsage usage;

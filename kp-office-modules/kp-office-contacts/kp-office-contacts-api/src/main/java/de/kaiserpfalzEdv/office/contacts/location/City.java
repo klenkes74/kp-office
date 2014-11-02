@@ -21,7 +21,6 @@ import de.kaiserpfalzEdv.office.contacts.address.phone.AreaCode;
 import de.kaiserpfalzEdv.office.contacts.address.postal.PostCode;
 import de.kaiserpfalzEdv.office.core.KPOEntity;
 
-import java.util.Collection;
 import java.util.Set;
 
 /**
@@ -30,21 +29,17 @@ import java.util.Set;
  */
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS, include = JsonTypeInfo.As.PROPERTY, property = "@class", defaultImpl = CityDTO.class)
 public interface City extends KPOEntity {
-    Country getCountry();
+    public Country getCountry();
 
-    Set<PostCode> getPostCode();
+    public Set<? extends PostCode> getPostCodes();
 
-    void setPostCodes(Collection<? extends PostCode> postCode);
+    public void addPostCode(PostCode postCode);
 
-    void addPostCode(PostCode postCode);
+    public void removePostCode(PostCode postCode);
 
-    void removePostCode(PostCode postCode);
+    public Set<? extends AreaCode> getAreaCodes();
 
-    Set<AreaCode> getAreaCodes();
+    public void addAreaCode(AreaCode areaCode);
 
-    void setAreaCodes(Collection<? extends AreaCode> areaCodes);
-
-    void addAreaCode(AreaCode areaCode);
-
-    void removeAreaCode(AreaCode areaCode);
+    public void removeAreaCode(AreaCode areaCode);
 }

@@ -17,13 +17,14 @@
 package de.kaiserpfalzEdv.office.contacts.location;
 
 import de.kaiserpfalzEdv.office.contacts.address.phone.AreaCode;
+import de.kaiserpfalzEdv.office.contacts.address.phone.AreaCodeDTO;
 import de.kaiserpfalzEdv.office.contacts.address.postal.PostCode;
+import de.kaiserpfalzEdv.office.contacts.address.postal.PostCodeDTO;
 import de.kaiserpfalzEdv.office.core.KPOEntityDTO;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
 import javax.validation.constraints.NotNull;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
@@ -34,11 +35,11 @@ import java.util.UUID;
  * @since 0.1.0
  */
 public class CityDTO extends KPOEntityDTO implements City {
-    private static final long serialVersionUID = 8950214400682261887L;
+    private static final long serialVersionUID = -7228761864499189014L;
 
-    private final HashSet<PostCode> postCodes = new HashSet<>();
-    private final HashSet<AreaCode> areaCodes = new HashSet<>();
-    private Country country;
+    private final HashSet<PostCodeDTO> postCodes = new HashSet<>();
+    private final HashSet<AreaCodeDTO> areaCodes = new HashSet<>();
+    private CountryDTO country;
 
 
     @SuppressWarnings("deprecation")
@@ -50,8 +51,8 @@ public class CityDTO extends KPOEntityDTO implements City {
             @NotNull final String name,
             @NotNull final String number,
             @NotNull final Country country,
-            @NotNull final Collection<PostCode> postCodes,
-            @NotNull final Collection<AreaCode> areaCodes) {
+            @NotNull final Set<PostCodeDTO> postCodes,
+            @NotNull final Set<AreaCodeDTO> areaCodes) {
         super(id, name, number);
 
         setCountry(country);
@@ -61,50 +62,58 @@ public class CityDTO extends KPOEntityDTO implements City {
 
 
     @Override
-    public Country getCountry() {
+    public CountryDTO getCountry() {
         return country;
     }
 
     void setCountry(Country country) {
+        setCountry(new CountryBuilder().withCountry(country).build());
+    }
+
+    void setCountry(CountryDTO country) {
         this.country = country;
     }
 
     @Override
-    public Set<PostCode> getPostCode() {
+    public Set<PostCodeDTO> getPostCodes() {
         return Collections.unmodifiableSet(postCodes);
     }
 
-    @Override
-    public void setPostCodes(Collection<? extends PostCode> postCode) {
+    public void setPostCodes(Set<PostCodeDTO> postCodes) {
         this.postCodes.clear();
 
-        if (postCode != null) {
-            this.postCodes.addAll(postCode);
+        if (postCodes != null) {
+            this.postCodes.addAll(postCodes);
         }
     }
 
-    @Override
-    public void addPostCode(final PostCode postCode) {
+    public void addPostCode(final PostCodeDTO postCode) {
         if (!postCodes.contains(postCode)) {
             postCodes.add(postCode);
         }
     }
 
     @Override
+    public void addPostCode(final PostCode postCode) {
+        addPostCode(new PostCodeDTO(postCode));
+    }
+
+    public void removePostCode(final PostCodeDTO postCode) {
+        postCodes.remove(postCode);
+    }
+
+    @Override
     public void removePostCode(final PostCode postCode) {
-        if (postCodes.contains(postCode)) {
-            postCodes.remove(postCode);
-        }
+        removePostCode(new PostCodeDTO(postCode));
     }
 
 
     @Override
-    public Set<AreaCode> getAreaCodes() {
+    public Set<AreaCodeDTO> getAreaCodes() {
         return Collections.unmodifiableSet(areaCodes);
     }
 
-    @Override
-    public void setAreaCodes(Collection<? extends AreaCode> areaCodes) {
+    public void setAreaCodes(Set<AreaCodeDTO> areaCodes) {
         this.areaCodes.clear();
 
         if (areaCodes != null) {
@@ -112,18 +121,24 @@ public class CityDTO extends KPOEntityDTO implements City {
         }
     }
 
-    @Override
-    public void addAreaCode(final AreaCode areaCode) {
+    public void addAreaCode(final AreaCodeDTO areaCode) {
         if (!this.areaCodes.contains(areaCode)) {
             this.areaCodes.add(areaCode);
         }
     }
 
     @Override
+    public void addAreaCode(final AreaCode areaCode) {
+        addAreaCode(new AreaCodeDTO(areaCode));
+    }
+
+    public void removeAreaCode(final AreaCodeDTO areaCode) {
+        this.areaCodes.remove(areaCode);
+    }
+
+    @Override
     public void removeAreaCode(final AreaCode areaCode) {
-        if (this.areaCodes.contains(areaCode)) {
-            this.areaCodes.remove(areaCode);
-        }
+        removeAreaCode(new AreaCodeDTO(areaCode));
     }
 
 
@@ -131,7 +146,7 @@ public class CityDTO extends KPOEntityDTO implements City {
         return new ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE)
                 .appendSuper(super.toString())
                 .append("country", getCountry())
-                .append("postCodes", getPostCode())
+                .append("postCodes", getPostCodes())
                 .append("areaCodes", getAreaCodes())
                 .build();
     }

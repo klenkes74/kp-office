@@ -17,8 +17,13 @@
 package de.kaiserpfalzEdv.office.contacts.location;
 
 import de.kaiserpfalzEdv.commons.BuilderValidationException;
+import de.kaiserpfalzEdv.office.NumberGenerationFailureException;
 import de.kaiserpfalzEdv.office.contacts.address.phone.AreaCode;
+import de.kaiserpfalzEdv.office.contacts.address.phone.AreaCodeDTO;
 import de.kaiserpfalzEdv.office.contacts.address.postal.PostCode;
+import de.kaiserpfalzEdv.office.contacts.address.postal.PostCodeDTO;
+import de.kaiserpfalzEdv.office.core.DefaultUuidNumberGenerator;
+import de.kaiserpfalzEdv.office.core.DisplayNumberGenerator;
 import org.apache.commons.lang3.builder.Builder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -32,7 +37,7 @@ import java.util.UUID;
  * @author klenkes
  * @since 2014Q
  */
-public class CityBuilder implements Builder<City> {
+public class CityBuilder implements Builder<CityDTO> {
     private static final Logger LOG = LoggerFactory.getLogger(CityBuilder.class);
     private final HashSet<PostCode> postCodes = new HashSet<>();
     private final HashSet<AreaCode> areaCodes = new HashSet<>();
@@ -40,14 +45,30 @@ public class CityBuilder implements Builder<City> {
     private String displayName;
     private String displayNumber;
     private Country country;
+    private DisplayNumberGenerator displayNumberGenerator;
 
-    public City build() {
+
+    public CityDTO build() {
         setDefaults();
         validate();
 
-        return new CityDTO(id, displayName, displayNumber, country, postCodes, areaCodes);
+        return new CityDTO(
+                id, displayName, displayNumber,
+                country,
+                convertPostCodesToPostCodeDTOs(), convertAreaCodesToAreaCodeDTOs()
+        );
     }
 
+    protected void setDefaults() {
+        if (id == null) id = UUID.randomUUID();
+
+        if (displayNumberGenerator == null) displayNumberGenerator = new DefaultUuidNumberGenerator();
+        if (displayNumber == null) try {
+            displayNumber = displayNumberGenerator.generate(id, displayName, displayNumber, country);
+        } catch (NumberGenerationFailureException e) {
+            LOG.error("Can't generate display number for city!", e);
+        }
+    }
 
     public void validate() {
         HashSet<String> reasons = new HashSet<>();
@@ -59,19 +80,39 @@ public class CityBuilder implements Builder<City> {
         }
     }
 
+    protected void generateValidationErrorList(@NotNull Collection<String> reasons) {
+        if (displayName == null)
+            reasons.add("No valid name given!");
 
-    protected void setDefaults() {
-        if (id == null) id = UUID.randomUUID();
-        if (displayNumber == null) displayNumber = (country != null ? country.getIso2() + "-" : "") + displayName;
+        if (displayNumber == null)
+            reasons.add("No valid number given!");
+
+        if (country == null)
+            reasons.add("No valid country information given!");
     }
 
 
-    protected void generateValidationErrorList(@NotNull Collection<String> reasons) {
-        if (displayName == null)
-            reasons.add("Can't create a city without a name!");
+    protected HashSet<PostCodeDTO> convertPostCodesToPostCodeDTOs() {
+        HashSet<PostCodeDTO> result = new HashSet<>(postCodes.size());
+        postCodes.parallelStream().forEach(c -> result.add(new PostCodeDTO(c)));
+        return result;
+    }
 
-        if (country == null)
-            reasons.add("Can't create a city without country information!");
+    protected HashSet<AreaCodeDTO> convertAreaCodesToAreaCodeDTOs() {
+        HashSet<AreaCodeDTO> result = new HashSet<>(areaCodes.size());
+        areaCodes.parallelStream().forEach(c -> result.add(new AreaCodeDTO(c)));
+        return result;
+    }
+
+
+    public CityBuilder withCity(@NotNull final City orig) {
+        withCountry(orig.getCountry());
+        withName(orig.getDisplayName());
+        withNumber(orig.getDisplayNumber());
+        withAreaCodes(orig.getAreaCodes());
+        withPostCodes(orig.getPostCodes());
+
+        return this;
     }
 
 
@@ -95,7 +136,7 @@ public class CityBuilder implements Builder<City> {
     }
 
 
-    public CityBuilder withPostCodes(@NotNull final Collection<PostCode> postCodes) {
+    public CityBuilder withPostCodes(@NotNull final Collection<? extends PostCode> postCodes) {
         this.postCodes.clear();
 
         if (postCodes != null)
@@ -117,7 +158,7 @@ public class CityBuilder implements Builder<City> {
     }
 
 
-    public CityBuilder withAreaCodes(@NotNull final Collection<AreaCode> areaCodes) {
+    public CityBuilder withAreaCodes(@NotNull final Collection<? extends AreaCode> areaCodes) {
         this.areaCodes.clear();
 
         if (areaCodes != null)

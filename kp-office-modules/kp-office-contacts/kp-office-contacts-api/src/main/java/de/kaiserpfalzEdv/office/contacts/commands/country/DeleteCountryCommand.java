@@ -16,8 +16,6 @@
 
 package de.kaiserpfalzEdv.office.contacts.commands.country;
 
-import org.apache.commons.lang3.builder.ToStringBuilder;
-
 import javax.validation.constraints.NotNull;
 import java.util.UUID;
 
@@ -29,34 +27,12 @@ public class DeleteCountryCommand extends CountryBaseCommand {
     private static final long serialVersionUID = 1L;
 
 
-    private UUID countryId;
-
-
+    @SuppressWarnings({"UnusedDeclaration", "deprecation"})
     @Deprecated // Only for Jackson, JAX-B and JPA!
     public DeleteCountryCommand() {
     }
 
-    @SuppressWarnings("deprecation")
     public DeleteCountryCommand(@NotNull final UUID id) {
-        setCountryId(id);
-    }
-
-
-    public UUID getCountryId() {
-        return countryId;
-    }
-
-    @Deprecated // Only for Jackson JAX-B and JPA!
-    public void setCountryId(@NotNull final UUID countryId) {
-        this.countryId = countryId;
-    }
-
-
-    @Override
-    public String toString() {
-        return new ToStringBuilder(this)
-                .appendSuper(super.toString())
-                .append("country", countryId)
-                .toString();
+        super(id);
     }
 }

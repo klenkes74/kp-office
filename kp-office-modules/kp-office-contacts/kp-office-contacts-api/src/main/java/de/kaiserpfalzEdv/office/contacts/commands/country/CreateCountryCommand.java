@@ -17,6 +17,8 @@
 package de.kaiserpfalzEdv.office.contacts.commands.country;
 
 import de.kaiserpfalzEdv.office.contacts.location.Country;
+import de.kaiserpfalzEdv.office.contacts.location.CountryBuilder;
+import de.kaiserpfalzEdv.office.contacts.location.CountryDTO;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import javax.validation.constraints.NotNull;
@@ -29,7 +31,7 @@ public class CreateCountryCommand extends CountryBaseCommand {
     private static final long serialVersionUID = 1L;
 
 
-    private Country country;
+    private CountryDTO country;
 
 
     @Deprecated // Only for Jackson, JAX-B and JPA!
@@ -38,6 +40,8 @@ public class CreateCountryCommand extends CountryBaseCommand {
 
     @SuppressWarnings("deprecation")
     public CreateCountryCommand(@NotNull final Country country) {
+        super(country.getId());
+
         setCountry(country);
     }
 
@@ -45,12 +49,16 @@ public class CreateCountryCommand extends CountryBaseCommand {
         return country;
     }
 
-
+    @SuppressWarnings("deprecation")
     @Deprecated // Only for Jackson JAX-B and JPA!
     public void setCountry(@NotNull final Country country) {
-        this.country = country;
+        setCountry(new CountryBuilder().withCountry(country).build());
     }
 
+    @Deprecated // Only for Jackson JAX-B and JPA!
+    public void setCountry(@NotNull final CountryDTO country) {
+        this.country = country;
+    }
 
     @Override
     public String toString() {

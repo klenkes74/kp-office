@@ -30,7 +30,15 @@ public interface Contact extends KPOTenantHoldingEntity {
 
     public Name getName();
 
-    public Set<Address> getAddresses();
+    public Set<? extends Address> getAddresses();
 
-    public Set<Contact> getSubContacts();
+    public <A extends Address> void addAddress(A address);
+
+    public <A extends Address> void removeAddress(A address);
+
+    public Set<? extends Contact> getSubContacts();
+
+    public <C extends Contact> void addSubContact(C contact);
+
+    public <C extends Contact> void removeSubContact(C contact);
 }

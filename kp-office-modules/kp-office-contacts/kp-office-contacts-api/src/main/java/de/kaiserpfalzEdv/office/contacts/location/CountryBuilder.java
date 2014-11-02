@@ -30,7 +30,7 @@ import java.util.UUID;
  * @author klenkes
  * @since 2014Q
  */
-public class CountryBuilder implements Builder<Country> {
+public class CountryBuilder implements Builder<CountryDTO> {
     private static final Logger LOG = LoggerFactory.getLogger(CountryBuilder.class);
 
 
@@ -45,7 +45,7 @@ public class CountryBuilder implements Builder<Country> {
     private String postalPrefix;
 
 
-    public Country build() {
+    public CountryDTO build() {
         setDefaults();
         validate();
 

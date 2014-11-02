@@ -14,22 +14,25 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzEdv.office.contacts.address.phone;
+package de.kaiserpfalzEdv.office;
 
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import de.kaiserpfalzEdv.office.contacts.location.Country;
-import de.kaiserpfalzEdv.office.core.DisplayNameHolder;
-import de.kaiserpfalzEdv.office.core.UniqueNumberIdentifierHolder;
+import de.kaiserpfalzEdv.office.core.KPOEntity;
 
-import java.io.Serializable;
+import javax.validation.constraints.NotNull;
 
 /**
  * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;
  * @since 0.1.0
  */
-@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS, include = JsonTypeInfo.As.PROPERTY, property = "@class", defaultImpl = CountryCodeDTO.class)
-public interface CountryCode extends UniqueNumberIdentifierHolder, DisplayNameHolder, Serializable {
-    public String getCode();
+public class NumberGenerationFailureException extends EntityException {
+    private static final long serialVersionUID = 2869280697660160859L;
 
-    public Country getCountry();
+
+    public NumberGenerationFailureException(@NotNull final KPOEntity entity) {
+        super(entity);
+    }
+
+    public NumberGenerationFailureException(@NotNull final KPOEntity entity, @NotNull final Throwable cause) {
+        super(entity, cause);
+    }
 }

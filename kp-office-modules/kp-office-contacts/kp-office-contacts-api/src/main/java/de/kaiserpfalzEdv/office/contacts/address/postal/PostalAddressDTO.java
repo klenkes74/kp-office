@@ -19,6 +19,7 @@ package de.kaiserpfalzEdv.office.contacts.address.postal;
 import de.kaiserpfalzEdv.office.contacts.address.AddressType;
 import de.kaiserpfalzEdv.office.contacts.address.AddressUsage;
 import de.kaiserpfalzEdv.office.contacts.location.City;
+import de.kaiserpfalzEdv.office.contacts.location.CityDTO;
 import de.kaiserpfalzEdv.office.contacts.location.Country;
 import de.kaiserpfalzEdv.office.core.KPOTenantHoldingEntityDTO;
 import org.apache.commons.lang3.builder.ToStringBuilder;
@@ -36,8 +37,8 @@ import java.util.UUID;
 public abstract class PostalAddressDTO extends KPOTenantHoldingEntityDTO implements PostalAddress {
     private static final Logger LOG = LoggerFactory.getLogger(PostalAddressDTO.class);
 
-    private City city;
-    private PostCode postCode;
+    private CityDTO city;
+    private PostCodeDTO postCode;
 
     private AddressType type;
     private AddressUsage usage;
@@ -66,12 +67,12 @@ public abstract class PostalAddressDTO extends KPOTenantHoldingEntityDTO impleme
 
 
     @Override
-    public PostCode getPostCode() {
+    public PostCodeDTO getPostCode() {
         return postCode;
     }
 
     void setPostCode(final PostCode code) {
-        this.postCode = code;
+        this.postCode = (PostCodeDTO) code;
     }
 
 
@@ -82,12 +83,12 @@ public abstract class PostalAddressDTO extends KPOTenantHoldingEntityDTO impleme
 
 
     @Override
-    public City getCity() {
+    public CityDTO getCity() {
         return city;
     }
 
     void setCity(final City city) {
-        this.city = city;
+        this.city = (CityDTO) city;
     }
 
 

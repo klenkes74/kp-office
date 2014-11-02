@@ -17,6 +17,8 @@
 package de.kaiserpfalzEdv.office.contacts.commands.city;
 
 import de.kaiserpfalzEdv.office.contacts.location.City;
+import de.kaiserpfalzEdv.office.contacts.location.CityBuilder;
+import de.kaiserpfalzEdv.office.contacts.location.CityDTO;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import javax.validation.constraints.NotNull;
@@ -29,28 +31,35 @@ public class CreateCityCommand extends CityBaseCommand {
     private static final long serialVersionUID = 1L;
 
 
-    private City city;
+    private CityDTO city;
 
 
+    @SuppressWarnings("deprecation")
     @Deprecated // Only for Jackson, JAX-B and JPA!
     public CreateCityCommand() {
     }
 
     @SuppressWarnings("deprecation")
     public CreateCityCommand(@NotNull final City city) {
+        super(city.getId());
+
         setCity(city);
     }
 
-    public City getCity() {
+    public CityDTO getCity() {
         return city;
     }
 
-
+    @SuppressWarnings("deprecation")
     @Deprecated // Only for Jackson JAX-B and JPA!
     public void setCity(@NotNull final City city) {
-        this.city = city;
+        setCity(new CityBuilder().withCity(city).build());
     }
 
+    @Deprecated // Only for Jackson JAX-B and JPA!
+    public void setCity(@NotNull final CityDTO city) {
+        this.city = city;
+    }
 
     @Override
     public String toString() {

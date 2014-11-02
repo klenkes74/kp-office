@@ -17,6 +17,8 @@
 package de.kaiserpfalzEdv.office.contacts.commands.country;
 
 import de.kaiserpfalzEdv.office.contacts.location.Country;
+import de.kaiserpfalzEdv.office.contacts.location.CountryBuilder;
+import de.kaiserpfalzEdv.office.contacts.location.CountryDTO;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import javax.validation.constraints.NotNull;
@@ -30,8 +32,7 @@ public class UpdateCountryCommand extends CountryBaseCommand {
     private static final long serialVersionUID = 1L;
 
 
-    private UUID countryId;
-    private Country country;
+    private CountryDTO country;
 
 
     @Deprecated // Only for Jackson, JAX-B and JPA!
@@ -40,35 +41,30 @@ public class UpdateCountryCommand extends CountryBaseCommand {
 
     @SuppressWarnings("deprecation")
     public UpdateCountryCommand(@NotNull final UUID id, @NotNull final Country country) {
-        setCountryId(id);
+        super(id);
         setCountry(country);
     }
 
-
-    public UUID getCountryId() {
-        return countryId;
-    }
-
-    @Deprecated // Only for Jackson JAX-B and JPA!
-    public void setCountryId(@NotNull final UUID countryId) {
-        this.countryId = countryId;
-    }
 
     public Country getCountry() {
         return country;
     }
 
+    @SuppressWarnings("deprecation")
     @Deprecated // Only for Jackson JAX-B and JPA!
     public void setCountry(@NotNull final Country country) {
-        this.country = country;
+        setCountry(new CountryBuilder().withCountry(country).build());
     }
 
+    @Deprecated // Only for Jackson JAX-B and JPA!
+    public void setCountry(@NotNull final CountryDTO country) {
+        this.country = country;
+    }
 
     @Override
     public String toString() {
         return new ToStringBuilder(this)
                 .appendSuper(super.toString())
-                .append("countryId", countryId)
                 .append(country)
                 .toString();
     }
