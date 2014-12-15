@@ -101,7 +101,7 @@
 
 
     <!-- Message Handler -->
-    <!--<bean id="tenantQueryHandler" class="de.kaiserpfalzEdv.office.tenants.query.QueryMessageHandlerImpl"/>-->
+    <!--<bean id="tenantQueryHandler" class="QueryMessageHandlerImpl"/>-->
 
     <!-- Change Notification Configuration -->
     <!--<rabbit:listener-container connection-factory="amqp.cf" acknowledge="manual" message-converter="amqp.msg-converter">-->

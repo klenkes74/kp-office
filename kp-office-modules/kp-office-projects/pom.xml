@@ -33,8 +33,7 @@
 
     <modules>
         <module>kp-office-projects-api</module>
-        <module>kp-office-projects-history</module>
-        <module>kp-office-projects-query</module>
+        <module>kp-office-projects-server</module>
         <module>kp-office-projects-client</module>
     </modules>
 

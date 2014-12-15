@@ -33,8 +33,7 @@
 
     <modules>
         <module>kp-office-contacts-api</module>
-        <module>kp-office-contacts-history</module>
-        <module>kp-office-contacts-query</module>
+        <module>kp-office-contacts-server</module>
         <module>kp-office-contacts-client</module>
     </modules>
 
