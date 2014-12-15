@@ -86,4 +86,7 @@
         <property name="staticMethod" value="org.apache.shiro.SecurityUtils.setSecurityManager"/>
         <property name="arguments" ref="securityManager"/>
     </bean>
+
+
+    <bean id="eventBus" class="com.google.common.eventbus.EventBus" lazy-init="true"/>
 </beans>
