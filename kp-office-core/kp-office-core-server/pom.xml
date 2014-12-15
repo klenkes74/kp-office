@@ -141,20 +141,12 @@
     <dependencies>
         <dependency>
             <groupId>de.kaiserpfalz-edv.office</groupId>
-            <artifactId>kp-office-security-history</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>de.kaiserpfalz-edv.office</groupId>
-            <artifactId>kp-office-security-query</artifactId>
+            <artifactId>kp-office-security</artifactId>
         </dependency>
 
         <dependency>
             <groupId>de.kaiserpfalz-edv.office</groupId>
-            <artifactId>kp-office-tenants-history</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>de.kaiserpfalz-edv.office</groupId>
-            <artifactId>kp-office-tenants-query</artifactId>
+            <artifactId>kp-office-tenants</artifactId>
         </dependency>
 
 

@@ -49,12 +49,7 @@
     <dependencies>
         <dependency>
             <groupId>de.kaiserpfalz-edv.office</groupId>
-            <artifactId>kp-office-contacts-history</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>de.kaiserpfalz-edv.office</groupId>
-            <artifactId>kp-office-contacts-query</artifactId>
+            <artifactId>kp-office-contacts-api</artifactId>
             <scope>test</scope>
         </dependency>
 
