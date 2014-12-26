@@ -38,8 +38,6 @@
     <modules>
         <module>kp-office-core-api</module>
         <module>kp-office-backend-utils</module>
-        <module>kp-office-tenants</module>
-        <module>kp-office-security</module>
         <module>kp-office-core-server</module>
         <module>kp-office-core-client</module>
     </modules>
@@ -47,11 +45,6 @@
 
     <dependencies>
         <!-- KP Office internal Dependencies -->
-        <dependency>
-            <groupId>de.kaiserpfalz-edv.office</groupId>
-            <artifactId>kp-office-shared-api</artifactId>
-        </dependency>
-
         <dependency>
             <groupId>de.kaiserpfalz-edv.office</groupId>
             <artifactId>kp-office-commons</artifactId>

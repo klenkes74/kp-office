@@ -14,7 +14,9 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzEdv.office; /**
+package de.kaiserpfalzEdv.office;
+
+/**
  *
  *
  * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;

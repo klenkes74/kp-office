@@ -41,11 +41,6 @@
         <!-- KP Office internal Dependencies -->
         <dependency>
             <groupId>de.kaiserpfalz-edv.office</groupId>
-            <artifactId>kp-office-shared-api</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>de.kaiserpfalz-edv.office</groupId>
             <artifactId>kp-office-core-api</artifactId>
         </dependency>
 

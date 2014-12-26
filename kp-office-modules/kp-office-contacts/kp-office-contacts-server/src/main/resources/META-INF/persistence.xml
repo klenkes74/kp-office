@@ -18,21 +18,7 @@
              xmlns="http://xmlns.jcp.org/xml/ns/persistence"
              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://www.oracle.com/webfolder/technetwork/jsc/xml/ns/persistence/persistence_2_1.xsd">
 
-    <persistence-unit name="KPO-TENTANT-QUERY" transaction-type="RESOURCE_LOCAL">
-        <mapping-file>META-INF/orm-kpoentity.xml</mapping-file>
-
-        <mapping-file>META-INF/orm-addresses.xml</mapping-file>
-        <mapping-file>META-INF/orm-addresses-city-commands.xml</mapping-file>
-        <mapping-file>META-INF/orm-addresses-country-commands.xml</mapping-file>
-        <mapping-file>META-INF/orm-addresses-phone-commands.xml</mapping-file>
-        <mapping-file>META-INF/orm-addresses-city-notifications.xml</mapping-file>
-        <mapping-file>META-INF/orm-addresses-country-notifications.xml</mapping-file>
-        <mapping-file>META-INF/orm-addresses-phone-notifications.xml</mapping-file>
-
-        <mapping-file>META-INF/orm-contacts.xml</mapping-file>
-        <mapping-file>META-INF/orm-contacts-commands.xml</mapping-file>
-        <mapping-file>META-INF/orm-contacts-notifications.xml</mapping-file>
-
+    <persistence-unit name="KPOADDRESS" transaction-type="RESOURCE_LOCAL">
         <properties>
             <property name="hibernate.show_sql" value="true"/>
             <property name="hibernate.format_sql" value="true"/>

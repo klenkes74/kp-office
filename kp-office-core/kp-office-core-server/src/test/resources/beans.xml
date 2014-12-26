@@ -22,7 +22,6 @@
        xmlns:jee="http://www.springframework.org/schema/jee"
        xmlns:util="http://www.springframework.org/schema/util"
        xmlns:jpa="http://www.springframework.org/schema/data/jpa"
-       xmlns:rabbit="http://www.springframework.org/schema/rabbit"
        xmlns="http://www.springframework.org/schema/beans"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
                            http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
@@ -30,12 +29,13 @@
                            http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd
                            http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
                            http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd
-                           http://www.springframework.org/schema/rabbit http://www.springframework.org/schema/rabbit/spring-rabbit.xsd
        ">
 
-    <jpa:repositories base-package="de.kaiserpfalzEdv.office.tenants.store"/>
+    <jpa:repositories base-package="de.kaiserpfalzEdv.office.security,
+                                    de.kaiserpfalzEdv.office.tenants"/>
     <context:component-scan
-            base-package="de.kaiserpfalzEdv.office.tenants.history,de.kaiserpfalzEdv.office.tenants.store">
+            base-package="de.kaiserpfalzEdv.office.security,
+                          de.kaiserpfalzEdv.office.tenants">
         <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Repository"/>
     </context:component-scan>
 
@@ -43,7 +43,7 @@
     <context:annotation-config/>
     <tx:annotation-driven mode="proxy" transaction-manager="transactionManager"/>
 
-    <context:load-time-weaver weaver-class="org.springframework.instrument.classloading.InstrumentationLoadTimeWeaver"/>
+    <!--<context:load-time-weaver weaver-class="org.springframework.instrument.classloading.InstrumentationLoadTimeWeaver"/>-->
     <context:property-placeholder properties-ref="configuration" system-properties-mode="OVERRIDE"
                                   ignore-resource-not-found="false" ignore-unresolvable="false" local-override="true"/>
 
@@ -58,18 +58,18 @@
     <bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor"/>
     <bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>
 
-    <bean id="dbInitializer" class="liquibase.integration.spring.SpringLiquibase" lazy-init="false" scope="singleton">
-        <property name="changeLog" value="classpath:/ddl/db-changelog.xml"/>
-        <property name="dataSource" ref="dataSource"/>
-        <property name="dropFirst" value="${dropDatabase}"/>
-        <property name="shouldRun" value="${initializeDatabase}"/>
-    </bean>
+    <!--<bean id="dbInitializer" class="liquibase.integration.spring.SpringLiquibase" lazy-init="false">-->
+        <!--<property name="changeLog" value="classpath:/ddl/db-changelog.xml"/>-->
+        <!--<property name="dataSource" ref="dataSource"/>-->
+        <!--<property name="dropFirst" value="${dropDatabase}"/>-->
+        <!--<property name="shouldRun" value="${initializeDatabase}"/>-->
+    <!--</bean>-->
 
     <bean id="entityManager" factory-bean="entityManagerFactory" factory-method="createEntityManager"
-          destroy-method="close" scope="request"/>
+          destroy-method="close"/>
     <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
         <property name="dataSource" ref="dataSource"/>
-        <property name="loadTimeWeaver" ref="loadTimeWeaver"/>
+        <!--<property name="loadTimeWeaver" ref="loadTimeWeaver"/>-->
         <property name="persistenceXmlLocation" value="classpath:/META-INF/persistence.xml"/>
         <property name="persistenceUnitManager" ref="persistenceUnitManager"/>
         <property name="jpaVendorAdapter">
@@ -87,7 +87,7 @@
     <bean id="persistenceUnitManager" class="org.springframework.orm.jpa.persistenceunit.DefaultPersistenceUnitManager">
         <property name="validationMode" value="AUTO"/>
         <property name="defaultDataSource" ref="dataSource"/>
-        <property name="loadTimeWeaver" ref="loadTimeWeaver"/>
+        <!--<property name="loadTimeWeaver" ref="loadTimeWeaver"/>-->
         <property name="persistenceXmlLocation" value="classpath:/META-INF/persistence.xml"/>
     </bean>
     <bean id="jpaPropertiesGenerator" class="de.kaiserpfalzEdv.commons.jndi.MapProperties">
@@ -187,7 +187,7 @@
     </bean>
 
 
-    <jee:jndi-lookup id="dataSource" jndi-name="db/kpotenant" lazy-init="true" expected-type="javax.sql.DataSource"
+    <jee:jndi-lookup id="dataSource" jndi-name="db/kpo" lazy-init="true" expected-type="javax.sql.DataSource"
                      cache="true"/>
     <!--
         <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
@@ -200,63 +200,6 @@
         </bean>
     -->
 
-
-    <rabbit:connection-factory id="connectionFactory" host="${amqp.host}" port="${amqp.port}"
-                               virtual-host="${amqp.virtual}" username="${amqp.user}" password="${amqp.password}"/>
-    <rabbit:admin connection-factory="connectionFactory"/>
-
-
-    <rabbit:listener-container connection-factory="connectionFactory">
-        <rabbit:listener queues="kpo.tenants.modify.writer" ref="historyHandler" method="handle"/>
-    </rabbit:listener-container>
-    <rabbit:queue id="kpo.tenants.modify.writer" name="${amqp.domain}.office.tenants.modify.writer.${host}"
-                  durable="true">
-        <rabbit:queue-arguments>
-            <entry key="x-message-ttl" value="3600000" value-type="java.lang.Long"/>
-            <entry key="x-expires" value="7200000" value-type="java.lang.Long"/>
-            <entry key="x-ha-policy" value="all"/>
-            <entry key="x-dead-letter-routing-key" value="tenants.modify.${host}"/>
-        </rabbit:queue-arguments>
-    </rabbit:queue>
-
-    <rabbit:listener-container connection-factory="connectionFactory">
-        <rabbit:listener queues="kpo.tenants.notification.writer" ref="historyMessageHandlerIT"
-                         method="handleNotification"/>
-    </rabbit:listener-container>
-    <rabbit:queue id="kpo.tenants.notification.writer" name="${amqp.domain}.office.tenants.notification.writer.${host}"
-                  durable="true">
-        <rabbit:queue-arguments>
-            <entry key="x-message-ttl" value="3600000" value-type="java.lang.Long"/>
-            <entry key="x-expires" value="7200000" value-type="java.lang.Long"/>
-            <entry key="x-ha-policy" value="all"/>
-            <entry key="x-dead-letter-routing-key" value="tenants.notification.${host}"/>
-        </rabbit:queue-arguments>
-    </rabbit:queue>
-
-
-    <rabbit:template id="modifyTenant" connection-factory="connectionFactory"
-                     exchange="${amqp.domain}.office.tenants.modify"/>
-    <rabbit:topic-exchange id="kpo.tenants.modify" name="${amqp.domain}.office.tenants.modify" durable="true">
-        <rabbit:exchange-arguments>
-            <entry key="x-message-ttl" value="3600000" value-type="java.lang.Long"/>
-            <entry key="x-expires" value="7200000" value-type="java.lang.Long"/>
-            <entry key="x-ha-policy" value="all"/>
-        </rabbit:exchange-arguments>
-    </rabbit:topic-exchange>
-
-
-    <rabbit:template id="tenantNotification" connection-factory="connectionFactory"
-                     exchange="${amqp.domain}.office.tenants.notification"/>
-    <rabbit:topic-exchange id="kpo.tenants.notification" name="${amqp.domain}.office.tenants.notification"
-                           durable="true">
-        <rabbit:exchange-arguments>
-            <entry key="x-message-ttl" value="3600000" value-type="java.lang.Long"/>
-            <entry key="x-expires" value="7200000" value-type="java.lang.Long"/>
-            <entry key="x-ha-policy" value="all"/>
-        </rabbit:exchange-arguments>
-    </rabbit:topic-exchange>
-
-
     <!--
     <bean id="jsonConverterWithDefaultType" class="org.springframework.amqp.support.converter.JsonMessageConverter">
         <property name="classMapper">
@@ -266,4 +209,6 @@
         </property>
     </bean>
     -->
+
+    <bean id="eventBus" class="com.google.common.eventbus.EventBus" lazy-init="true"/>
 </beans>

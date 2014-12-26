@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  ~ Copyright (c) 2014 Kaiserpfalz EDV-Service, Roland T. Lichti
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="
+            http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd
+        ">
+    <changeSet id="schema-create-sh2" author="klenkes74">
+        <preConditions><dbms type="H2"/></preConditions>
+        <comment>Creates the base schema</comment>
+
+        <sql>CREATE SCHEMA IF NOT EXISTS SECURITY;</sql>
+    </changeSet>
+
+
+
+    <changeSet id="kpo-security-inititial" author="klenkes74">
+        <comment>The initial user tables.</comment>
+
+
+        <createTable tableName="IDENTITIES" schemaName="SECURITY">
+            <column name="ID_" type="VARCHAR2(50)">
+                <constraints primaryKey="true" primaryKeyName="IDENTITIES_USER_PK"/>
+            </column>
+
+            <column name="TENANT_" type="VARCHAR2(50)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="DISPLAY_NAME_" type="VARCHAR2(100)">
+                <constraints unique="true" uniqueConstraintName="USER_NAME_UK"/>
+            </column>
+
+            <column name="DISPLAY_NUMBER_" type="VARCHAR2(100)">
+                <constraints unique="true" uniqueConstraintName="USER_NUMBER_UK"/>
+            </column>
+
+            <column name="HIDDEN_" type="BOOLEAN" />
+        </createTable>
+
+
+        <createTable tableName="ACCOUNTS" schemaName="SECURITY">
+            <column name="DTYPE" type="VARCHAR2(20)"><constraints nullable="false"/></column>
+
+            <column name="ID_" type="VARCHAR2(50)">
+                <constraints primaryKey="true" primaryKeyName="ACCOUNTS_USER_PK"/>
+            </column>
+            <column name="TENANT_" type="VARCHAR2(50)"><constraints nullable="false"/></column>
+
+            <column name="DISPLAY_NAME_" type="VARCHAR2(100)">
+                <constraints unique="true" uniqueConstraintName="ACCOUNTS_NAME_UK"/>
+            </column>
+
+            <column name="DISPLAY_NUMBER_" type="VARCHAR2(100)">
+                <constraints unique="true" uniqueConstraintName="ACCOUNTS_NUMBER_UK"/>
+            </column>
+
+            <column name="HIDDEN_" type="BOOLEAN" />
+
+            <column name="IDENTITY_" type="VARCHAR2(50)">
+                <constraints nullable="false" deleteCascade="true"
+                             foreignKeyName="ACCOUNTS_IDENTITIES_FK" references="SECURITY.IDENTITIES(ID_)"/>
+            </column>
+
+            <column name="PASSWORD_" type="VARCHAR2(100)"><constraints nullable="false"/></column>
+            <column name="SALT_" type="VARCHAR2(20)"><constraints nullable="false"/></column>
+        </createTable>
+
+
+        <createTable tableName="ROLES" schemaName="SECURITY">
+            <column name="DTYPE" type="VARCHAR2(20)"><constraints nullable="false"/></column>
+
+            <column name="ID_" type="VARCHAR2(50)">
+                <constraints primaryKey="true" primaryKeyName="ROLES_USER_PK"/>
+            </column>
+            <column name="TENANT_" type="VARCHAR2(50)"><constraints nullable="false"/></column>
+
+            <column name="DISPLAY_NAME_" type="VARCHAR2(100)">
+                <constraints unique="true" uniqueConstraintName="ROLES_NAME_UK"/>
+            </column>
+
+            <column name="DISPLAY_NUMBER_" type="VARCHAR2(100)">
+                <constraints unique="true" uniqueConstraintName="ROLES_NUMBER_UK"/>
+            </column>
+
+            <column name="HIDDEN_" type="BOOLEAN" />
+        </createTable>
+
+        <createTable tableName="ACCOUNTS_ROLES" schemaName="SECURITY">
+            <column name="ACCOUNT_ID_" type="VARCHAR2(50)">
+                <constraints nullable="false" deleteCascade="true"
+                             foreignKeyName="ACCOUNTS_ROLES_ACCOUNTS_FK" references="SECURITY.ACCOUNTS(ID_)"/>
+            </column>
+            <column name="ROLE_ID_" type="VARCHAR2(50)">
+                <constraints nullable="false" deleteCascade="true"
+                             foreignKeyName="ACCOUNTS_ROLES_ROLES_FK" references="SECURITY.ROLES(ID_)"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="TICKETS" schemaName="SECURITY">
+            <column name="ID_" type="VARCHAR2(50)">
+                <constraints primaryKey="true" primaryKeyName="TICKETS_USER_PK"/>
+            </column>
+            <column name="ACCOUNT_ID_" type="VARCHAR2(50)"><constraints nullable="false"/></column>
+            <column name="CREATED_" type="TIMESTAMP" />
+            <column name="VALIDITY_" type="TIMESTAMP"><constraints nullable="false"/></column>
+        </createTable>
+
+
+        <createIndex tableName="IDENTITIES" indexName="IDENTITIES_USERS_UK" schemaName="SECURITY" unique="true">
+            <column name="TENANT_"></column>
+            <column name="DISPLAY_NUMBER_"></column>
+        </createIndex>
+
+        <createIndex tableName="ACCOUNTS" indexName="TENANTS_USERS_UK" schemaName="SECURITY" unique="true">
+            <column name="TENANT_"></column>
+            <column name="DISPLAY_NUMBER_"></column>
+        </createIndex>
+    </changeSet>
+
+
+
+    <changeSet id="kpo-security-tag-initial" author="klenkes74">
+        <tagDatabase tag="kpo-security-initial"/>
+    </changeSet>
+
+
+
+    <changeSet id="kpo-security-load-initial" author="klenkes74">
+        <comment>Load default tenant.</comment>
+
+        <loadData schemaName="SECURITY" tableName="IDENTITIES" file="data/IDENTITIES-initial.csv"/>
+        <loadData schemaName="SECURITY" tableName="ACCOUNTS" file="data/ACCOUNTS-initial.csv"/>
+        <loadData schemaName="SECURITY" tableName="ROLES" file="data/ROLES-initial.csv"/>
+        <loadData schemaName="SECURITY" tableName="ACCOUNTS_ROLES" file="data/ACCOUNTS_ROLES-initial.csv"/>
+    </changeSet>
+
+
+
+    <changeSet id="kpo-security-tag-initial-data" author="klenkes74">
+        <tagDatabase tag="kpo-security-data-loaded"/>
+    </changeSet>
+</databaseChangeLog>

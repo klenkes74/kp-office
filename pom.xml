@@ -23,7 +23,7 @@
     <parent>
         <groupId>de.kaiserpfalzEdv</groupId>
         <artifactId>kp-parent-pom</artifactId>
-        <version>2014Q3</version>
+        <version>2015Q1</version>
     </parent>
 
     <groupId>de.kaiserpfalz-edv.office</groupId>
@@ -37,7 +37,7 @@
 
 
     <modules>
-        <module>kp-office-shared</module>
+        <module>kp-office-commons</module>
         <module>kp-office-core</module>
         <module>kp-office-modules</module>
         <module>kp-office-interfaces</module>
@@ -77,7 +77,7 @@
 
         <config.path>./config</config.path>
 
-        <kp-commons.version>2014Q3</kp-commons.version>
+        <kp-commons.version>2015Q1</kp-commons.version>
         <shiro.version>1.2.3</shiro.version>
     </properties>
 
@@ -279,11 +279,6 @@
 
             <dependency>
                 <groupId>de.kaiserpfalz-edv.office</groupId>
-                <artifactId>kp-office-shared-api</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>de.kaiserpfalz-edv.office</groupId>
                 <artifactId>kp-office-commons</artifactId>
                 <version>${project.version}</version>
             </dependency>
@@ -314,18 +309,6 @@
             <dependency>
                 <groupId>de.kaiserpfalz-edv.office</groupId>
                 <artifactId>kp-office-core-client</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>de.kaiserpfalz-edv.office</groupId>
-                <artifactId>kp-office-tenants</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>de.kaiserpfalz-edv.office</groupId>
-                <artifactId>kp-office-security</artifactId>
                 <version>${project.version}</version>
             </dependency>
 
