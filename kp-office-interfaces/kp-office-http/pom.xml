@@ -19,29 +19,40 @@
          xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <parent>
         <groupId>de.kaiserpfalz-edv.office</groupId>
-        <artifactId>kp-office-core</artifactId>
+        <artifactId>kp-office-interfaces</artifactId>
         <version>0.1.0-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>kp-office-core-client</artifactId>
-    <name>KP Office - Core - Client</name>
+    <artifactId>kp-office-http</artifactId>
+    <packaging>pom</packaging>
+    <name>KP Office - Interfaces - HTTP Interfaces</name>
+
+
+    <modules>
+        <module>kp-office-service</module>
+        <module>kp-office-web</module>
+    </modules>
+
 
     <properties>
-        <project.root>../../..</project.root>
+        <jersey.version>2.5</jersey.version>
     </properties>
+
 
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>de.kaiserpfalzEdv</groupId>
-                <artifactId>kp-spring-bom</artifactId>
-                <version>2015Q1</version>
-                <type>pom</type>
-                <scope>import</scope>
+                <groupId>org.glassfish.jersey.core</groupId>
+                <artifactId>jersey-client</artifactId>
+                <version>${jersey.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.glassfish.jersey.media</groupId>
+                <artifactId>jersey-media-json-jackson</artifactId>
+                <version>${jersey.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -49,19 +60,7 @@
     <dependencies>
         <dependency>
             <groupId>de.kaiserpfalz-edv.office</groupId>
-            <artifactId>kp-office-core-api</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>de.kaiserpfalz-edv.office</groupId>
-            <artifactId>kp-office-core-server</artifactId>
-            <scope>test</scope>
-        </dependency>
-
-
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context-support</artifactId>
+            <artifactId>kp-office-commons</artifactId>
         </dependency>
     </dependencies>
 </project>

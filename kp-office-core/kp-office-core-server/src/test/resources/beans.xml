@@ -58,18 +58,10 @@
     <bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor"/>
     <bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>
 
-    <!--<bean id="dbInitializer" class="liquibase.integration.spring.SpringLiquibase" lazy-init="false">-->
-        <!--<property name="changeLog" value="classpath:/ddl/db-changelog.xml"/>-->
-        <!--<property name="dataSource" ref="dataSource"/>-->
-        <!--<property name="dropFirst" value="${dropDatabase}"/>-->
-        <!--<property name="shouldRun" value="${initializeDatabase}"/>-->
-    <!--</bean>-->
-
     <bean id="entityManager" factory-bean="entityManagerFactory" factory-method="createEntityManager"
           destroy-method="close"/>
     <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
         <property name="dataSource" ref="dataSource"/>
-        <!--<property name="loadTimeWeaver" ref="loadTimeWeaver"/>-->
         <property name="persistenceXmlLocation" value="classpath:/META-INF/persistence.xml"/>
         <property name="persistenceUnitManager" ref="persistenceUnitManager"/>
         <property name="jpaVendorAdapter">
@@ -87,7 +79,6 @@
     <bean id="persistenceUnitManager" class="org.springframework.orm.jpa.persistenceunit.DefaultPersistenceUnitManager">
         <property name="validationMode" value="AUTO"/>
         <property name="defaultDataSource" ref="dataSource"/>
-        <!--<property name="loadTimeWeaver" ref="loadTimeWeaver"/>-->
         <property name="persistenceXmlLocation" value="classpath:/META-INF/persistence.xml"/>
     </bean>
     <bean id="jpaPropertiesGenerator" class="de.kaiserpfalzEdv.commons.jndi.MapProperties">

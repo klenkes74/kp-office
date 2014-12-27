@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <option name="DEFAULT_COMPILER" value="Javac" />
+    <resourceExtensions />
+    <wildcardResourcePatterns>
+      <entry name="!?*.java" />
+      <entry name="!?*.form" />
+      <entry name="!?*.class" />
+      <entry name="!?*.groovy" />
+      <entry name="!?*.scala" />
+      <entry name="!?*.flex" />
+      <entry name="!?*.kt" />
+      <entry name="!?*.clj" />
+    </wildcardResourcePatterns>
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="false">
+        <processorPath useClasspath="true" />
+      </profile>
+      <profile default="false" name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="kp-office-backend-utils" />
+        <module name="kp-office-cli-kppasswd" />
+        <module name="kp-office-commons" />
+        <module name="kp-office-contacts-api" />
+        <module name="kp-office-contacts-client" />
+        <module name="kp-office-contacts-server" />
+        <module name="kp-office-core-api" />
+        <module name="kp-office-core-client" />
+        <module name="kp-office-core-server" />
+        <module name="kp-office-projects-api" />
+        <module name="kp-office-projects-client" />
+        <module name="kp-office-projects-server" />
+        <module name="kp-office-service" />
+        <module name="kp-office-web" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="kp-office-backend-utils" target="1.8" />
+      <module name="kp-office-cli" target="1.8" />
+      <module name="kp-office-cli-kppasswd" target="1.8" />
+      <module name="kp-office-commons" target="1.8" />
+      <module name="kp-office-contacts" target="1.8" />
+      <module name="kp-office-contacts-api" target="1.8" />
+      <module name="kp-office-contacts-client" target="1.8" />
+      <module name="kp-office-contacts-server" target="1.8" />
+      <module name="kp-office-core" target="1.8" />
+      <module name="kp-office-core-api" target="1.8" />
+      <module name="kp-office-core-client" target="1.8" />
+      <module name="kp-office-core-server" target="1.8" />
+      <module name="kp-office-http" target="1.8" />
+      <module name="kp-office-interfaces" target="1.8" />
+      <module name="kp-office-modules" target="1.8" />
+      <module name="kp-office-projects" target="1.8" />
+      <module name="kp-office-projects-api" target="1.8" />
+      <module name="kp-office-projects-client" target="1.8" />
+      <module name="kp-office-projects-server" target="1.8" />
+      <module name="kp-office-root" target="1.8" />
+      <module name="kp-office-service" target="1.8" />
+      <module name="kp-office-web" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

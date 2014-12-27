@@ -52,7 +52,6 @@
     <context:annotation-config/>
     <tx:annotation-driven mode="proxy" />
 
-    <context:load-time-weaver weaver-class="org.springframework.instrument.classloading.InstrumentationLoadTimeWeaver"/>
     <context:property-placeholder properties-ref="configuration" system-properties-mode="OVERRIDE"
                                   ignore-resource-not-found="false" ignore-unresolvable="false" local-override="true"/>
 
@@ -78,7 +77,6 @@
           destroy-method="close"/>
     <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
         <property name="dataSource" ref="dataSource"/>
-        <property name="loadTimeWeaver" ref="loadTimeWeaver"/>
         <property name="persistenceXmlLocation" value="classpath:/META-INF/persistence.xml"/>
         <property name="persistenceUnitManager" ref="persistenceUnitManager"/>
         <property name="jpaVendorAdapter">
@@ -96,7 +94,6 @@
     <bean id="persistenceUnitManager" class="org.springframework.orm.jpa.persistenceunit.DefaultPersistenceUnitManager">
         <property name="validationMode" value="AUTO"/>
         <property name="defaultDataSource" ref="dataSource"/>
-        <property name="loadTimeWeaver" ref="loadTimeWeaver"/>
         <property name="persistenceXmlLocation" value="classpath:/META-INF/persistence.xml"/>
     </bean>
     <bean id="jpaPropertiesGenerator" class="de.kaiserpfalzEdv.commons.jndi.MapProperties">

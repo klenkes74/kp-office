@@ -47,7 +47,7 @@ public class SimpleContextFactory implements InitialContextFactory {
             env.put(key, environment.get(key));
         }
 
-        String configPath = System.getProperty("de.kaiserpfalz-edv.office.config-path");
+        String configPath = System.getProperty(CONFIG_FILE_NAME_PROPERTY);
         if (isNotBlank(configPath)) {
             env.remove(SimpleContext.SIMPLE_ROOT);
             env.put(SimpleContext.SIMPLE_ROOT, configPath);
@@ -55,7 +55,7 @@ public class SimpleContextFactory implements InitialContextFactory {
             configPath = (String) env.get(SimpleContext.SIMPLE_ROOT);
         }
 
-        LOG.debug("***** Loading configuration from: {}", configPath);
+        LOG.trace("***** Loading configuration from: {}", configPath);
 
         return new SimpleContext(env);
     }

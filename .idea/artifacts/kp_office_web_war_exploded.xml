@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
   <artifact type="exploded-war" name="kp-office-web:war exploded">
-    <output-path>$PROJECT_DIR$/kp-office-interfaces/kp-office-web/target/kp-office</output-path>
+    <output-path>$PROJECT_DIR$/kp-office-interfaces/kp-office-http/kp-office-web/target/kp-office-webgui</output-path>
     <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
@@ -25,6 +25,8 @@
           <element id="library" level="project" name="Maven: org.codehaus.jackson:jackson-jaxrs:1.9.13" />
           <element id="library" level="project" name="Maven: org.codehaus.jackson:jackson-xc:1.9.13" />
           <element id="library" level="project" name="Maven: org.apache.shiro:shiro-web:1.2.3" />
+          <element id="library" level="project" name="Maven: org.apache.shiro:shiro-core:1.2.3" />
+          <element id="library" level="project" name="Maven: commons-beanutils:commons-beanutils:1.8.3" />
           <element id="archive" name="kp-office-commons-0.1.0-SNAPSHOT.jar">
             <element id="module-output" name="kp-office-commons" />
           </element>
@@ -36,13 +38,11 @@
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.4.2" />
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.4.2" />
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.4.2" />
-          <element id="library" level="project" name="Maven: org.apache.shiro:shiro-core:1.2.3" />
-          <element id="library" level="project" name="Maven: commons-beanutils:commons-beanutils:1.8.3" />
           <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.7.9" />
         </element>
       </element>
       <element id="directory" name="META-INF">
-        <element id="file-copy" path="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/target/MANIFEST.MF" />
+        <element id="file-copy" path="$PROJECT_DIR$/kp-office-interfaces/kp-office-http/kp-office-web/target/MANIFEST.MF" />
       </element>
       <element id="javaee-facet-resources" facet="kp-office-web/web/Web" />
     </root>

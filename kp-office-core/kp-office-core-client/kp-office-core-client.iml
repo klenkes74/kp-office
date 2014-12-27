@@ -17,11 +17,6 @@
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.4.2" level="project" />
     <orderEntry type="module" module-name="kp-office-core-server" scope="TEST" />
     <orderEntry type="module" module-name="kp-office-backend-utils" scope="TEST" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.apache.shiro:shiro-core:1.2.3" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: commons-beanutils:commons-beanutils:1.8.3" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.apache.shiro:shiro-spring:1.2.3" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.apache.shiro:shiro-web:1.2.3" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.apache.shiro:shiro-ehcache:1.2.3" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: com.h2database:h2:1.3.168" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: mysql:mysql-connector-java:5.1.17" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: postgresql:postgresql:9.0-801.jdbc4" level="project" />
@@ -48,6 +43,7 @@
     <orderEntry type="library" scope="TEST" name="Maven: javax.validation:validation-api:1.1.0.Final" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: com.fasterxml:classmate:1.0.0" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.springframework:spring-webmvc:4.1.3.RELEASE" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.springframework:spring-tx:4.1.3.RELEASE" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.springframework.data:spring-data-rest-webmvc:2.2.1.RELEASE" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.springframework.data:spring-data-rest-core:2.2.1.RELEASE" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.springframework.hateoas:spring-hateoas:0.16.0.RELEASE" level="project" />
@@ -132,12 +128,6 @@
     <orderEntry type="library" name="Maven: org.springframework:spring-beans:4.1.3.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-context:4.1.3.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-core:4.1.3.RELEASE" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework.amqp:spring-rabbit:1.4.1.RELEASE" level="project" />
-    <orderEntry type="library" name="Maven: com.rabbitmq:amqp-client:3.4.2" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework:spring-messaging:4.1.3.RELEASE" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework.retry:spring-retry:1.1.2.RELEASE" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework:spring-tx:4.1.3.RELEASE" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework.amqp:spring-amqp:1.4.1.RELEASE" level="project" />
     <orderEntry type="module" module-name="kp-office-commons" />
     <orderEntry type="library" name="Maven: org.slf4j:jcl-over-slf4j:1.7.9" level="project" />
     <orderEntry type="library" name="Maven: simple-jndi:simple-jndi:0.11.4.1" level="project" />
