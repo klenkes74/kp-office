@@ -1,10 +1,10 @@
 <component name="ArtifactManager">
-  <artifact type="exploded-war" name="kp-office-web:war exploded">
-    <output-path>$PROJECT_DIR$/kp-office-interfaces/kp-office-http/kp-office-web/target/kp-office-webgui</output-path>
+  <artifact type="exploded-war" name="kp-office-webgui:war exploded">
+    <output-path>$PROJECT_DIR$/kp-office-interfaces/kp-office-http/kp-office-webgui/target/kp-office-webgui</output-path>
     <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
-          <element id="module-output" name="kp-office-web" />
+          <element id="module-output" name="kp-office-webgui" />
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="Maven: org.glassfish.jersey.core:jersey-client:2.5" />

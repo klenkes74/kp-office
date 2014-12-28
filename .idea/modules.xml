@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/kp-office-core/kp-office-backend-utils/kp-office-backend-utils.iml" filepath="$PROJECT_DIR$/kp-office-core/kp-office-backend-utils/kp-office-backend-utils.iml" />
+      <module fileurl="file://$PROJECT_DIR$/kp-office-backend/kp-office-backend.iml" filepath="$PROJECT_DIR$/kp-office-backend/kp-office-backend.iml" />
+      <module fileurl="file://$PROJECT_DIR$/kp-office-backend/kp-office-backend-utils/kp-office-backend-utils.iml" filepath="$PROJECT_DIR$/kp-office-backend/kp-office-backend-utils/kp-office-backend-utils.iml" />
       <module fileurl="file://$PROJECT_DIR$/kp-office-interfaces/kp-office-cli/kp-office-cli.iml" filepath="$PROJECT_DIR$/kp-office-interfaces/kp-office-cli/kp-office-cli.iml" />
       <module fileurl="file://$PROJECT_DIR$/kp-office-interfaces/kp-office-cli/kp-office-cli-kppasswd/kp-office-cli-kppasswd.iml" filepath="$PROJECT_DIR$/kp-office-interfaces/kp-office-cli/kp-office-cli-kppasswd/kp-office-cli-kppasswd.iml" />
       <module fileurl="file://$PROJECT_DIR$/kp-office-commons/kp-office-commons.iml" filepath="$PROJECT_DIR$/kp-office-commons/kp-office-commons.iml" />
@@ -10,10 +11,8 @@
       <module fileurl="file://$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/kp-office-contacts-api.iml" filepath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/kp-office-contacts-api.iml" />
       <module fileurl="file://$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-client/kp-office-contacts-client.iml" filepath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-client/kp-office-contacts-client.iml" />
       <module fileurl="file://$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-server/kp-office-contacts-server.iml" filepath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-server/kp-office-contacts-server.iml" />
-      <module fileurl="file://$PROJECT_DIR$/kp-office-core/kp-office-core.iml" filepath="$PROJECT_DIR$/kp-office-core/kp-office-core.iml" />
-      <module fileurl="file://$PROJECT_DIR$/kp-office-core/kp-office-core-api/kp-office-core-api.iml" filepath="$PROJECT_DIR$/kp-office-core/kp-office-core-api/kp-office-core-api.iml" />
-      <module fileurl="file://$PROJECT_DIR$/kp-office-core/kp-office-core-client/kp-office-core-client.iml" filepath="$PROJECT_DIR$/kp-office-core/kp-office-core-client/kp-office-core-client.iml" />
-      <module fileurl="file://$PROJECT_DIR$/kp-office-core/kp-office-core-server/kp-office-core-server.iml" filepath="$PROJECT_DIR$/kp-office-core/kp-office-core-server/kp-office-core-server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/kp-office-backend/kp-office-core/kp-office-core.iml" filepath="$PROJECT_DIR$/kp-office-backend/kp-office-core/kp-office-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/kp-office-backend/kp-office-core-api/kp-office-core-api.iml" filepath="$PROJECT_DIR$/kp-office-backend/kp-office-core-api/kp-office-core-api.iml" />
       <module fileurl="file://$PROJECT_DIR$/kp-office-interfaces/kp-office-http/kp-office-http.iml" filepath="$PROJECT_DIR$/kp-office-interfaces/kp-office-http/kp-office-http.iml" />
       <module fileurl="file://$PROJECT_DIR$/kp-office-interfaces/kp-office-interfaces.iml" filepath="$PROJECT_DIR$/kp-office-interfaces/kp-office-interfaces.iml" />
       <module fileurl="file://$PROJECT_DIR$/kp-office-modules/kp-office-modules.iml" filepath="$PROJECT_DIR$/kp-office-modules/kp-office-modules.iml" />
@@ -22,8 +21,8 @@
       <module fileurl="file://$PROJECT_DIR$/kp-office-modules/kp-office-projects/kp-office-projects-client/kp-office-projects-client.iml" filepath="$PROJECT_DIR$/kp-office-modules/kp-office-projects/kp-office-projects-client/kp-office-projects-client.iml" />
       <module fileurl="file://$PROJECT_DIR$/kp-office-modules/kp-office-projects/kp-office-projects-server/kp-office-projects-server.iml" filepath="$PROJECT_DIR$/kp-office-modules/kp-office-projects/kp-office-projects-server/kp-office-projects-server.iml" />
       <module fileurl="file://$PROJECT_DIR$/kp-office-root.iml" filepath="$PROJECT_DIR$/kp-office-root.iml" />
-      <module fileurl="file://$PROJECT_DIR$/kp-office-interfaces/kp-office-http/kp-office-service/kp-office-service.iml" filepath="$PROJECT_DIR$/kp-office-interfaces/kp-office-http/kp-office-service/kp-office-service.iml" />
-      <module fileurl="file://$PROJECT_DIR$/kp-office-interfaces/kp-office-http/kp-office-web/kp-office-web.iml" filepath="$PROJECT_DIR$/kp-office-interfaces/kp-office-http/kp-office-web/kp-office-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/kp-office-interfaces/kp-office-http/kp-office-webgui/kp-office-webgui.iml" filepath="$PROJECT_DIR$/kp-office-interfaces/kp-office-http/kp-office-webgui/kp-office-webgui.iml" />
+      <module fileurl="file://$PROJECT_DIR$/kp-office-interfaces/kp-office-http/kp-office-webservice/kp-office-webservice.iml" filepath="$PROJECT_DIR$/kp-office-interfaces/kp-office-http/kp-office-webservice/kp-office-webservice.iml" />
     </modules>
   </component>
 </project>

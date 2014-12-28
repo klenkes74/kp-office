@@ -28,17 +28,20 @@
         <module name="kp-office-contacts-api" />
         <module name="kp-office-contacts-client" />
         <module name="kp-office-contacts-server" />
+        <module name="kp-office-core" />
         <module name="kp-office-core-api" />
-        <module name="kp-office-core-client" />
         <module name="kp-office-core-server" />
         <module name="kp-office-projects-api" />
         <module name="kp-office-projects-client" />
         <module name="kp-office-projects-server" />
         <module name="kp-office-service" />
         <module name="kp-office-web" />
+        <module name="kp-office-webgui" />
+        <module name="kp-office-webservice" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="kp-office-backend" target="1.8" />
       <module name="kp-office-backend-utils" target="1.8" />
       <module name="kp-office-cli" target="1.8" />
       <module name="kp-office-cli-kppasswd" target="1.8" />
@@ -61,6 +64,8 @@
       <module name="kp-office-root" target="1.8" />
       <module name="kp-office-service" target="1.8" />
       <module name="kp-office-web" target="1.8" />
+      <module name="kp-office-webgui" target="1.8" />
+      <module name="kp-office-webservice" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

@@ -31,8 +31,8 @@
     <entry_points version="2.0" />
   </component>
   <component name="FrameworkDetectionExcludesConfiguration">
-    <file type="web" url="file://$PROJECT_DIR$/kp-office-interfaces/kp-office-http/kp-office-service" />
-    <file type="web" url="file://$PROJECT_DIR$/kp-office-interfaces/kp-office-http/kp-office-web" />
+    <file type="web" url="file://$PROJECT_DIR$/kp-office-interfaces/kp-office-http/kp-office-webgui" />
+    <file type="web" url="file://$PROJECT_DIR$/kp-office-interfaces/kp-office-http/kp-office-webservice" />
     <file type="web" url="file://$PROJECT_DIR$/kp-office-interfaces/kp-office-service" />
     <file type="web" url="file://$PROJECT_DIR$/kp-office-interfaces/kp-office-web" />
   </component>
@@ -45,6 +45,7 @@
     </option>
     <option name="ignoredFiles">
       <set>
+        <option value="$PROJECT_DIR$/kp-office-core/kp-office-core-client/pom.xml" />
         <option value="$PROJECT_DIR$/kp-office-core/kp-office-security/pom.xml" />
         <option value="$PROJECT_DIR$/kp-office-core/kp-office-tenants/pom.xml" />
         <option value="$PROJECT_DIR$/kp-office-shared/kp-office-shared-api/pom.xml" />

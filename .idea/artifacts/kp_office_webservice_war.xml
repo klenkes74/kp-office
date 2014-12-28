@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="kp-office-webservice:war">
+    <output-path>$PROJECT_DIR$/kp-office-interfaces/kp-office-http/kp-office-webservice/target</output-path>
+    <root id="archive" name="kp-office-webservice.war">
+      <element id="artifact" artifact-name="kp-office-webservice:war exploded" />
+    </root>
+  </artifact>
+</component>

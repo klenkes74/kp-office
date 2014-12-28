@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: de.kaiserpfalz-edv.office:kp-office-backend-utils:0.1.0-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/kp-office-backend/kp-office-backend-utils/pom.xml!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$PROJECT_DIR$/kp-office-backend/kp-office-backend-utils/kp-office-backend-utils-0.1.0-SNAPSHOT-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/kp-office-backend/kp-office-backend-utils/kp-office-backend-utils-0.1.0-SNAPSHOT-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
