@@ -27,8 +27,11 @@
     </appender>
 
     <appender name="DEVELOPMENT" class="ch.qos.logback.core.FileAppender">
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>TRACE</level>
+        </filter>
         <file>target/development.log</file>
-        <append>true</append>
+        <append>false</append>
         <encoder>
             <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
         </encoder>
@@ -56,10 +59,18 @@
         <appender-ref ref="STDOUT"/>
         <appender-ref ref="DEVELOPMENT"/>
     </logger>
-    <logger name="org.hibernate.SQL" additivity="false" level="DEBUG">
+    <logger name="jdbc" additivity="false" level="ERROR">
+        <appender-ref ref="DEVELOPMENT"/>
+    </logger>
+    <logger name="jdbc.sqltiming" additivity="false" level="DEBUG">
         <appender-ref ref="STDOUT"/>
         <appender-ref ref="DEVELOPMENT"/>
     </logger>
+    <logger name="jdbc.resultset" additivity="false" level="ERROR">
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="DEVELOPMENT"/>
+    </logger>
+
     <logger name="liquibase" additivity="false" level="INFO">
         <appender-ref ref="STDOUT"/>
         <appender-ref ref="DEVELOPMENT"/>

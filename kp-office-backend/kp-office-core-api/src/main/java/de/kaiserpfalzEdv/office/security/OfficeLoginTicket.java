@@ -22,8 +22,11 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
 import javax.validation.constraints.NotNull;
+import java.time.OffsetDateTime;
 import java.time.ZoneId;
-import java.time.ZonedDateTime;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.UUID;
 
 /**
@@ -38,18 +41,35 @@ public class OfficeLoginTicket {
     private UUID ticket;
 
     /** The last valid timestamp this ticket is valid. */
-    private ZonedDateTime validity;
+    private OffsetDateTime validity;
 
     /** The last time this ticket has been checked with the issuing server. */
-    private ZonedDateTime lastCheck;
+    private OffsetDateTime lastCheck;
 
 
+    private String accountName;
+
+    private String displayName;
+
+    private final Set<String> roles = new HashSet<>();
+
+    private final Set<String> entitlements = new HashSet<>();
+
+
+    @SuppressWarnings("UnusedDeclaration")
     @Deprecated // Only for JPA, JAX-B, Jackson and other frameworks.
     public OfficeLoginTicket() {}
 
 
-    public OfficeLoginTicket(@NotNull final UUID ticketId, ZonedDateTime validity) {
+    public OfficeLoginTicket(@NotNull final UUID ticketId,
+                             @NotNull final String accountName,
+                             @NotNull final String displayName,
+                             @NotNull final OffsetDateTime validity) {
         this.ticket = ticketId;
+
+        this.accountName = accountName;
+        this.displayName = displayName;
+
         this.validity = validity;
         this.lastCheck = validity;
     }
@@ -64,27 +84,73 @@ public class OfficeLoginTicket {
     }
 
 
-    public ZonedDateTime getValidity() {
+    public String getAccountName() {
+        return accountName;
+    }
+
+    @Deprecated // Only for frameworks
+    public void setAccountName(@NotNull String accountName) {
+        this.accountName = accountName;
+    }
+
+
+    public String getDisplayName() {
+        return displayName;
+    }
+
+    @Deprecated // Only for frameworks
+    public void setDisplayName(@NotNull final String displayName) {
+        this.displayName = displayName;
+    }
+
+
+    public OffsetDateTime getValidity() {
         return validity;
     }
 
-    public void setValidity(@NotNull final ZonedDateTime validity) {
+    public void setValidity(@NotNull final OffsetDateTime validity) {
         this.validity = validity;
     }
 
 
-    public ZonedDateTime getLastCheck() {
+    public OffsetDateTime getLastCheck() {
         return lastCheck;
     }
 
     @Deprecated // please use only markCheck(). This is for JPA, JAX-B, Jackson and so on ...
-    public void setLastCheck(@NotNull final ZonedDateTime lastCheck) {
+    public void setLastCheck(@NotNull final OffsetDateTime lastCheck) {
         this.lastCheck = lastCheck;
     }
 
     @SuppressWarnings("deprecation")
     public void markCheck() {
-        setLastCheck(ZonedDateTime.now(ZoneId.of("UTC")));
+        setLastCheck(OffsetDateTime.now(ZoneId.of("UTC")));
+    }
+
+
+    public Set<String> getRoles() {
+        return Collections.unmodifiableSet(roles);
+    }
+
+
+    @Deprecated // Only for frameworks
+    public void setRoles(@NotNull final Set<String> roles) {
+        this.roles.clear();
+
+        this.roles.addAll(roles);
+    }
+
+
+    public Set<String> getEntitlements() {
+        return Collections.unmodifiableSet(entitlements);
+    }
+
+
+    @Deprecated // Only for frameworks
+    public void setEntitlements(@NotNull final Set<String> entitlements) {
+        this.entitlements.clear();
+
+        this.entitlements.addAll(entitlements);
     }
 
 
@@ -117,6 +183,7 @@ public class OfficeLoginTicket {
     public String toString() {
         return new ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE)
                 .append("ticket", ticket)
+                .append("accountName", accountName)
                 .append("validity", validity)
                 .append("lastCheck", lastCheck)
                 .toString();

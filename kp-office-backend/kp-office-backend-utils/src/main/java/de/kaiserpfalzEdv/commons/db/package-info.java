@@ -15,7 +15,7 @@
  */
 
 /**
- *
+ * Some utility classes helping to use JPA.
  *
  * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;
  * @version 0.1.0

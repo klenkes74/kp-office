@@ -30,8 +30,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+import java.time.OffsetDateTime;
 import java.time.ZoneId;
-import java.time.ZonedDateTime;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.UUID;
 
 /**
@@ -51,6 +54,7 @@ public class SecurityTicket implements Serializable {
 
     @Id @NotNull
     @Column(name = "ID_", length=50, nullable = false, updatable = false, unique = true)
+    @org.hibernate.annotations.Type(type="org.hibernate.type.UUIDCharType")
     private UUID id;
 
     @ManyToOne(fetch = FetchType.EAGER)
@@ -58,10 +62,10 @@ public class SecurityTicket implements Serializable {
     private Account account;
 
     @Column(name = "CREATED_", nullable = false, updatable = false)
-    private ZonedDateTime created;
+    private OffsetDateTime created;
 
     @Column(name = "VALIDITY_", nullable = false, updatable = false)
-    private ZonedDateTime validity;
+    private OffsetDateTime validity;
 
 
     @Deprecated
@@ -72,25 +76,45 @@ public class SecurityTicket implements Serializable {
     public SecurityTicket(@NotNull final Account account) {
         id = UUID.randomUUID();
         this.account = account;
-        created = ZonedDateTime.now(TIMEZONE);
+        created = OffsetDateTime.now(TIMEZONE);
         validity = created.plusSeconds(DEFAULT_TTL);
     }
 
 
     public void renew() {
-        validity = ZonedDateTime.now(TIMEZONE).plusSeconds(DEFAULT_RENEWAL);
+        validity = OffsetDateTime.now(TIMEZONE).plusSeconds(DEFAULT_RENEWAL);
     }
 
     public boolean isValid() {
-        return validity.isAfter(ZonedDateTime.now());
+        return validity.isAfter(OffsetDateTime.now(TIMEZONE));
     }
 
     public UUID getId() {
         return id;
     }
 
-    public ZonedDateTime getValidity() {
+    public OffsetDateTime getValidity() {
         return validity;
+    }
+
+    public String getAccountName() {
+        return account.getAccountName();
+    }
+
+    public String getDisplayName() {
+        return account.getDisplayName();
+    }
+
+    public Set<String> getRoles() {
+        HashSet<String> result = new HashSet<>();
+
+        account.getRoles().forEach(t -> result.add(t.getDisplayNumber()));
+
+        return Collections.unmodifiableSet(result);
+    }
+
+    public Set<String> getEntitlements() {
+        return Collections.unmodifiableSet(Collections.EMPTY_SET);
     }
 
 
@@ -124,7 +148,7 @@ public class SecurityTicket implements Serializable {
         return new ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE)
                 .append("id", id)
 
-                .append("account", account.getAccountName())
+                .append("account", account)
                 .append("validity", validity)
                 .toString();
     }

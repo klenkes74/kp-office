@@ -24,9 +24,9 @@ import javax.validation.constraints.NotNull;
  * @since 0.1.0
  */
 public interface SecurityService {
-    public OfficeLoginTicket login(@NotNull final String account, @NotNull final String password) throws InvalidLogin;
+    public OfficeLoginTicket login(@NotNull final String account, @NotNull final String password) throws InvalidLoginException, NoSuchAccountException;
 
-    public OfficeLoginTicket check(@NotNull final OfficeLoginTicket ticket) throws InvalidTicket;
+    public OfficeLoginTicket check(@NotNull final OfficeLoginTicket ticket) throws InvalidTicketException, NoSuchTicketException;
 
     public void logout(@NotNull final OfficeLoginTicket ticket);
 }

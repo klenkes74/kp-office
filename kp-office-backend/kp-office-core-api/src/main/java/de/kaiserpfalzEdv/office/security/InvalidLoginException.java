@@ -18,15 +18,17 @@ package de.kaiserpfalzEdv.office.security;
 
 import de.kaiserpfalzEdv.office.OfficeBusinessException;
 
+import javax.validation.constraints.NotNull;
+
 /**
  * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;
  * @version 0.1.0
  * @since 0.1.0
  */
-public class InvalidTicket extends OfficeBusinessException {
+public class InvalidLoginException extends OfficeBusinessException {
     private static final long serialVersionUID = -6669098752261680801L;
 
-    public InvalidTicket() {
-        super("The given ticket is not valid.");
+    public InvalidLoginException(@NotNull final String account) {
+        super("Account and password do not match for account: " + account);
     }
 }

@@ -50,17 +50,17 @@
         </createTable>
     </changeSet>
 
-    <changeSet id="kpo-tenant-store-tag-initial" author="klenkes74">
-        <tagDatabase tag="kpo-tenant-store-initial"/>
+    <changeSet id="kpo-tenant-tag-initial" author="klenkes74">
+        <tagDatabase tag="kpo-tenant-initial"/>
     </changeSet>
 
-    <changeSet id="kpo-tenant-store-load-initial" author="klenkes74">
+    <changeSet id="kpo-tenant-load-initial" author="klenkes74">
         <comment>Load default tenant.</comment>
 
         <loadData schemaName="TENANTS" tableName="TENANTS" file="data/TENANTS-initial.csv"/>
     </changeSet>
 
-    <changeSet id="kpo-tenant-store-tag-initial-data" author="klenkes74">
-        <tagDatabase tag="kpo-tenant-store-data-loaded"/>
+    <changeSet id="kpo-tenant-tag-initial-data" author="klenkes74">
+        <tagDatabase tag="kpo-tenant-data-loaded"/>
     </changeSet>
 </databaseChangeLog>

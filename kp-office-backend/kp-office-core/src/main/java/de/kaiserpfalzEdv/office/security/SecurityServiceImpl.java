@@ -39,19 +39,24 @@ public class SecurityServiceImpl implements SecurityService {
     }
 
 
+    @SuppressWarnings("deprecation")
     @Transactional
     @Override
-    public OfficeLoginTicket login(@NotNull final String accountName, @NotNull final String password) throws InvalidLogin {
+    public OfficeLoginTicket login(@NotNull final String accountName, @NotNull final String password) throws InvalidLoginException, NoSuchAccountException {
         Account account = accountRepository.findByAccountName(accountName);
 
         try {
-            if (account == null || ! account.checkPassword(password)) {
-                throw new InvalidLogin(accountName);
+            if (account == null) {
+                throw new NoSuchAccountException(accountName);
+            }
+
+            if (! account.checkPassword(password)) {
+                throw new InvalidLoginException(accountName);
             }
         } catch (InvalidKeySpecException | NoSuchAlgorithmException e) {
             LOG.error(e.getClass().getSimpleName() + " caught: " + e.getMessage(), e);
 
-            throw new InvalidLogin(accountName);
+            throw new InvalidLoginException(accountName);
         }
 
         SecurityTicket token = ticketRepository.findByAccount(account);
@@ -60,28 +65,46 @@ public class SecurityServiceImpl implements SecurityService {
             token = new SecurityTicket(account);
         }
 
+        LOG.trace("Token: {}", token);
+
         token.renew();
         token = ticketRepository.save(token);
 
-        OfficeLoginTicket ticket = new OfficeLoginTicket(token.getId(), token.getValidity());
+        OfficeLoginTicket ticket = new OfficeLoginTicket(token.getId(), token.getAccountName(), token.getDisplayName(),
+                token.getValidity());
+
+        ticket.setRoles(token.getRoles());
+        ticket.setEntitlements(token.getEntitlements());
 
         LOG.info("Created new ticket: {}", ticket);
         return ticket;
     }
 
+    @SuppressWarnings("deprecation")
     @Transactional
     @Override
-    public OfficeLoginTicket check(@NotNull OfficeLoginTicket ticket) throws InvalidTicket {
+    public OfficeLoginTicket check(@NotNull OfficeLoginTicket ticket)
+            throws InvalidTicketException, NoSuchTicketException {
+        LOG.debug("Checking ticket: {}", ticket);
+
         SecurityTicket token = ticketRepository.findOne(ticket.getTicketId());
 
-        if (token == null || !token.isValid()) {
-            throw new InvalidTicket();
+        if (token == null) {
+            throw new NoSuchTicketException();
+        }
+
+        if (!token.isValid()) {
+            throw new InvalidTicketException();
         }
 
         token.renew();
         token = ticketRepository.save(token);
 
-        ticket = new OfficeLoginTicket(token.getId(), token.getValidity());
+        ticket = new OfficeLoginTicket(token.getId(), token.getAccountName(), token.getDisplayName(),
+                token.getValidity());
+
+        ticket.setRoles(token.getRoles());
+        ticket.setEntitlements(token.getEntitlements());
 
         LOG.info("Checked and renewed ticket: {}", ticket);
         return ticket;

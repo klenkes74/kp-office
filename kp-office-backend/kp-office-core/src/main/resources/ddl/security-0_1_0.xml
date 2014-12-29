@@ -120,8 +120,8 @@
                 <constraints primaryKey="true" primaryKeyName="TICKETS_USER_PK"/>
             </column>
             <column name="ACCOUNT_ID_" type="VARCHAR2(50)"><constraints nullable="false"/></column>
-            <column name="CREATED_" type="TIMESTAMP" />
-            <column name="VALIDITY_" type="TIMESTAMP"><constraints nullable="false"/></column>
+            <column name="CREATED_" type="VARCHAR2(39)" />
+            <column name="VALIDITY_" type="VARCHAR2(39)"><constraints nullable="false"/></column>
         </createTable>
 
 

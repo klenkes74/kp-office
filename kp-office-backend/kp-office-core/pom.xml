@@ -34,7 +34,7 @@
         <project.root>../..</project.root>
         <db.schema>KPODATA</db.schema>
 
-        <database.changelog>${project.basedir}/target/classes/ddl/db-changelog.xml</database.changelog>
+        <database.changelog>${project.basedir}/target/test-classes/ddl/db-changelog-test.xml</database.changelog>
 
     </properties>
 
@@ -133,11 +133,19 @@
         <!-- Misc Integration -->
         <dependency>
             <groupId>de.kaiserpfalz-edv.office</groupId>
+            <artifactId>kp-office-core-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>de.kaiserpfalz-edv.office</groupId>
             <artifactId>kp-office-backend-utils</artifactId>
         </dependency>
 
 
         <!-- Data Persistence -->
+        <dependency>
+            <groupId>com.googlecode.log4jdbc</groupId>
+            <artifactId>log4jdbc</artifactId>
+        </dependency>
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
@@ -159,6 +167,8 @@
             <artifactId>derby</artifactId>
         </dependency>
 
+
+        <!-- Spring -->
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-web</artifactId>

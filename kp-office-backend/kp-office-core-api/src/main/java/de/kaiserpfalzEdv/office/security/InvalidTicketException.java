@@ -14,19 +14,19 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzEdv.commons.db;
+package de.kaiserpfalzEdv.office.security;
 
-import org.hibernate.metamodel.spi.TypeContributions;
-import org.hibernate.service.ServiceRegistry;
+import de.kaiserpfalzEdv.office.OfficeBusinessException;
 
 /**
- * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&lt;
+ * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;
+ * @version 0.1.0
  * @since 0.1.0
  */
-public class H2Dialect extends org.hibernate.dialect.H2Dialect {
-    @Override
-    public void contributeTypes(final TypeContributions typeContributions, final ServiceRegistry serviceRegistry) {
-        super.contributeTypes(typeContributions, serviceRegistry);
-        typeContributions.contributeType(new ZonedDateTimeType());
+public class InvalidTicketException extends OfficeBusinessException {
+    private static final long serialVersionUID = -6669098752261680801L;
+
+    public InvalidTicketException() {
+        super("The given ticket is not valid.");
     }
 }

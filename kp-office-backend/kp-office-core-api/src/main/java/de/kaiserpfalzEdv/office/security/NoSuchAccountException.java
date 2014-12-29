@@ -14,28 +14,21 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzEdv.commons.db.test;
+package de.kaiserpfalzEdv.office.security;
 
-import org.hibernate.jpa.HibernatePersistenceProvider;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.testng.annotations.Test;
+import de.kaiserpfalzEdv.office.OfficeBusinessException;
 
-import java.time.ZoneId;
-import java.util.UUID;
+import javax.validation.constraints.NotNull;
 
 /**
  * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;
+ * @version 0.1.0
  * @since 0.1.0
  */
-@Test
-public class ZonedDateTimeTypeTest {
-    private static final Logger LOG = LoggerFactory.getLogger(ZonedDateTimeTypeTest.class);
+public class NoSuchAccountException extends OfficeBusinessException {
+    private static final long serialVersionUID = -6669098752261680801L;
 
-
-    public void zone() {
-        LOG.info("Zone for UTC: {}", ZoneId.of("UTC"));
-        LOG.info("UUID: {}", UUID.randomUUID());
-        new HibernatePersistenceProvider();
+    public NoSuchAccountException(@NotNull final String account) {
+        super("Account and password do not match for account: " + account);
     }
 }

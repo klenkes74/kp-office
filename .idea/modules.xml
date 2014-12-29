@@ -21,6 +21,7 @@
       <module fileurl="file://$PROJECT_DIR$/kp-office-modules/kp-office-projects/kp-office-projects-client/kp-office-projects-client.iml" filepath="$PROJECT_DIR$/kp-office-modules/kp-office-projects/kp-office-projects-client/kp-office-projects-client.iml" />
       <module fileurl="file://$PROJECT_DIR$/kp-office-modules/kp-office-projects/kp-office-projects-server/kp-office-projects-server.iml" filepath="$PROJECT_DIR$/kp-office-modules/kp-office-projects/kp-office-projects-server/kp-office-projects-server.iml" />
       <module fileurl="file://$PROJECT_DIR$/kp-office-root.iml" filepath="$PROJECT_DIR$/kp-office-root.iml" />
+      <module fileurl="file://$PROJECT_DIR$/kp-office-root.iml" filepath="$PROJECT_DIR$/kp-office-root.iml" />
       <module fileurl="file://$PROJECT_DIR$/kp-office-interfaces/kp-office-http/kp-office-webgui/kp-office-webgui.iml" filepath="$PROJECT_DIR$/kp-office-interfaces/kp-office-http/kp-office-webgui/kp-office-webgui.iml" />
       <module fileurl="file://$PROJECT_DIR$/kp-office-interfaces/kp-office-http/kp-office-webservice/kp-office-webservice.iml" filepath="$PROJECT_DIR$/kp-office-interfaces/kp-office-http/kp-office-webservice/kp-office-webservice.iml" />
     </modules>

@@ -42,6 +42,7 @@ public abstract class KPOEntity {
 
     @Id @NotNull
     @Column(name = "ID_", length=50, unique = true, updatable = false)
+    @org.hibernate.annotations.Type(type="org.hibernate.type.UUIDCharType")
     private UUID id;
 
     @Column(name = "DISPLAY_NAME_", length=200, unique = true)
@@ -139,7 +140,7 @@ public abstract class KPOEntity {
         ToStringBuilder result = new ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE)
                 .append("id", getId());
 
-        if (!hidden) {
+        if (hidden != null && !hidden) {
             result.append("displayName", getDisplayName())
                     .append("displayNumber", getDisplayNumber());
         } else {

@@ -5,13 +5,15 @@ import org.slf4j.LoggerFactory;
 import org.springframework.scheduling.annotation.Scheduled;
 
 import javax.inject.Inject;
-import java.time.ZonedDateTime;
+import javax.inject.Named;
+import java.time.OffsetDateTime;
 
 /**
  * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;
  * @version 0.1.0
  * @since 0.1.0
  */
+@Named
 public class SecurityTicketHousekeeping {
     private static final Logger LOG = LoggerFactory.getLogger(SecurityTicketHousekeeping.class);
 
@@ -21,12 +23,22 @@ public class SecurityTicketHousekeeping {
 
     @Scheduled(fixedRate = 60000L, initialDelay = 60000L)
     public void deleteOldTickets() {
-        Iterable<SecurityTicket> tickets = ticketRepository.findByValidityLessThan(ZonedDateTime.now());
+        LOG.info("Removing invalid tickets.");
 
-        for (SecurityTicket t : tickets) {
-            ticketRepository.delete(t.getId());
-        }
+        Iterable<SecurityTicket> tickets = retrieveInvalideTickets();
 
-        LOG.debug("Removed invalid tickets: {}", tickets);
+        tickets.forEach(t -> removeInvalidTicket(t));
+    }
+
+    private Iterable<SecurityTicket> retrieveInvalideTickets() {
+        OffsetDateTime now = OffsetDateTime.now();
+        LOG.debug("Checking tickets before: {}", now);
+
+        return ticketRepository.findByValidityLessThan(now);
+    }
+
+    private void removeInvalidTicket(SecurityTicket ticket) {
+        ticketRepository.delete(ticket.getId());
+        LOG.trace("Removed invalid ticket: {}", ticket);
     }
 }

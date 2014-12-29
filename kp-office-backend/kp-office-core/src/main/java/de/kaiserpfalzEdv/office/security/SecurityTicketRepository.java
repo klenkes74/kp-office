@@ -20,7 +20,7 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 
 import javax.validation.constraints.NotNull;
-import java.time.ZonedDateTime;
+import java.time.OffsetDateTime;
 import java.util.UUID;
 
 /**
@@ -32,5 +32,5 @@ import java.util.UUID;
 public interface SecurityTicketRepository extends PagingAndSortingRepository<SecurityTicket, UUID> {
     public SecurityTicket findByAccount(@NotNull final Account account);
 
-    public Iterable<SecurityTicket> findByValidityLessThan(@NotNull ZonedDateTime timestamp);
+    public Iterable<SecurityTicket> findByValidityLessThan(@NotNull OffsetDateTime timestamp);
 }

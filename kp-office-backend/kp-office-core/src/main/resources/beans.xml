@@ -100,16 +100,8 @@
                 <entry key="hibernate.cache.region.factory_class"
                        value="org.hibernate.cache.ehcache.SingletonEhCacheRegionFactory"/>
                 <entry key="net.sf.ehcache.configurationResourceName" value="META-INF/database-cache.xml"/>
-                <entry key="hibernate.type_contributors" value-ref="customDataTypes"/>
             </util:map>
         </constructor-arg>
-    </bean>
-    <bean id="customDataTypes" class="de.kaiserpfalzEdv.commons.db.CustomHibernateTypes">
-        <property name="typeContributors">
-            <util:set value-type="org.hibernate.metamodel.spi.TypeContributor">
-                <bean class="de.kaiserpfalzEdv.commons.db.ZonedDateTimeType"/>
-            </util:set>
-        </property>
     </bean>
 
 

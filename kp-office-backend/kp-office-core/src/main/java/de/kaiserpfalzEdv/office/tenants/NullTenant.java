@@ -25,6 +25,11 @@ import java.util.UUID;
 public class NullTenant extends Tenant {
     public static final UUID nullTenantId = UUID.fromString("00000000-0000-0000-0000-000000000000");
 
+
+    @SuppressWarnings({"UnusedDeclaration", "deprecation"})
+    @Deprecated
+    public NullTenant() {}
+
     @Override
     public UUID getId() {
         return nullTenantId;
