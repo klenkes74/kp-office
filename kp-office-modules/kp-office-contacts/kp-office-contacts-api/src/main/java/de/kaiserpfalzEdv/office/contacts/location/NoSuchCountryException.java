@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014 Kaiserpfalz EDV-Service, Roland T. Lichti
+ * Copyright 2015 Kaiserpfalz EDV-Service, Roland T. Lichti
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,8 +16,8 @@
 
 package de.kaiserpfalzEdv.office.contacts.location;
 
-import de.kaiserpfalzEdv.office.NoSuchEntityException;
-import de.kaiserpfalzEdv.office.core.KPOEntity;
+import de.kaiserpfalzEdv.office.core.Entity;
+import de.kaiserpfalzEdv.office.core.NoSuchEntityException;
 
 import javax.validation.constraints.NotNull;
 
@@ -26,7 +26,7 @@ import javax.validation.constraints.NotNull;
  * @since 2014Q
  */
 public class NoSuchCountryException extends NoSuchEntityException {
-    private static final Class<? extends KPOEntity> clasz = Country.class.asSubclass(KPOEntity.class);
+    private static final Class<? extends Entity> clasz = Country.class.asSubclass(Entity.class);
 
     public NoSuchCountryException(@NotNull final String message) {
         super(clasz, message);

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014 Kaiserpfalz EDV-Service, Roland T. Lichti
+ * Copyright 2015 Kaiserpfalz EDV-Service, Roland T. Lichti
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +17,7 @@
 package de.kaiserpfalzEdv.office.contacts.contact;
 
 import de.kaiserpfalzEdv.office.contacts.address.Address;
-import de.kaiserpfalzEdv.office.core.KPOTenantHoldingEntity;
+import de.kaiserpfalzEdv.office.core.TenantHoldingEntity;
 
 import java.util.Set;
 
@@ -25,7 +25,7 @@ import java.util.Set;
  * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;
  * @since 0.1.0
  */
-public interface Contact extends KPOTenantHoldingEntity {
+public interface Contact extends TenantHoldingEntity {
     public ContactType getType();
 
     public Name getName();

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014 Kaiserpfalz EDV-Service, Roland T. Lichti
+ * Copyright 2015 Kaiserpfalz EDV-Service, Roland T. Lichti
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,22 +16,22 @@
 
 package de.kaiserpfalzEdv.office.contacts.contact;
 
-import de.kaiserpfalzEdv.office.EntityAlreadyExistsException;
-import de.kaiserpfalzEdv.office.core.KPOEntity;
+import de.kaiserpfalzEdv.office.core.Entity;
+import de.kaiserpfalzEdv.office.core.EntityAlreadyExistsException;
 
 /**
  * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;
  * @since 0.1.0
  */
 public class ContactAlreadyExistsException extends EntityAlreadyExistsException {
-    private static final long serialVersionUID = 3164424989613059796L;
+    private static final long serialVersionUID = -6262142048620128108L;
 
 
-    public ContactAlreadyExistsException(KPOEntity entity) {
+    public ContactAlreadyExistsException(Entity entity) {
         super(entity);
     }
 
-    public ContactAlreadyExistsException(KPOEntity entity, Throwable cause) {
+    public ContactAlreadyExistsException(Entity entity, Throwable cause) {
         super(entity, cause);
     }
 }

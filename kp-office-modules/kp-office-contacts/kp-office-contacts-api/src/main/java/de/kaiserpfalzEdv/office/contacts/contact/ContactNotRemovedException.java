@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014 Kaiserpfalz EDV-Service, Roland T. Lichti
+ * Copyright 2015 Kaiserpfalz EDV-Service, Roland T. Lichti
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,22 +16,22 @@
 
 package de.kaiserpfalzEdv.office.contacts.contact;
 
-import de.kaiserpfalzEdv.office.EntityNotRemovedException;
-import de.kaiserpfalzEdv.office.core.KPOEntity;
+import de.kaiserpfalzEdv.office.core.Entity;
+import de.kaiserpfalzEdv.office.core.EntityNotRemovedException;
 
 /**
  * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;
  * @since 0.1.0
  */
 public class ContactNotRemovedException extends EntityNotRemovedException {
-    private static final long serialVersionUID = -9162836170316588751L;
+    private static final long serialVersionUID = -23784189650430656L;
 
 
-    public ContactNotRemovedException(KPOEntity entity) {
+    public ContactNotRemovedException(Entity entity) {
         super(entity);
     }
 
-    public ContactNotRemovedException(KPOEntity entity, Throwable cause) {
+    public ContactNotRemovedException(Entity entity, Throwable cause) {
         super(entity, cause);
     }
 }

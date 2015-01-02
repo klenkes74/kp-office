@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014 Kaiserpfalz EDV-Service, Roland T. Lichti
+ * Copyright 2015 Kaiserpfalz EDV-Service, Roland T. Lichti
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,8 +16,8 @@
 
 package de.kaiserpfalzEdv.office.contacts.contact;
 
-import de.kaiserpfalzEdv.office.InvalidEntityException;
-import de.kaiserpfalzEdv.office.core.KPOEntity;
+import de.kaiserpfalzEdv.office.core.Entity;
+import de.kaiserpfalzEdv.office.core.InvalidEntityException;
 
 import javax.validation.constraints.NotNull;
 
@@ -26,13 +26,13 @@ import javax.validation.constraints.NotNull;
  * @since 0.1.0
  */
 public class InvalidContactException extends InvalidEntityException {
-    private static final long serialVersionUID = -3604321217263332906L;
+    private static final long serialVersionUID = 3180112276821011308L;
 
-    public InvalidContactException(@NotNull KPOEntity entity) {
+    public InvalidContactException(@NotNull Entity entity) {
         super(entity);
     }
 
-    public InvalidContactException(@NotNull KPOEntity entity, @NotNull Throwable cause) {
+    public InvalidContactException(@NotNull Entity entity, @NotNull Throwable cause) {
         super(entity, cause);
     }
 }

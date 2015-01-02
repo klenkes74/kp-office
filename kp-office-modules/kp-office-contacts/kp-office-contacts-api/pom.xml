@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  ~ Copyright (c) 2014 Kaiserpfalz EDV-Service, Roland T. Lichti
+  ~ Copyright 2015 Kaiserpfalz EDV-Service, Roland T. Lichti
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
   ~ you may not use this file except in compliance with the License.
@@ -28,7 +28,7 @@
     </parent>
 
     <artifactId>kp-office-contacts-api</artifactId>
-    <name>KP Office - Modules - Contacts - Common API</name>
+    <name>KP Office - Contacts - API</name>
 
     <properties>
         <project.root>../../..</project.root>

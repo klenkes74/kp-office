@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014 Kaiserpfalz EDV-Service, Roland T. Lichti
+ * Copyright 2015 Kaiserpfalz EDV-Service, Roland T. Lichti
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,20 +17,15 @@
 package de.kaiserpfalzEdv.office.projects;
 
 import de.kaiserpfalzEdv.office.contacts.contact.Contact;
-import de.kaiserpfalzEdv.office.core.KPOEntity;
-import de.kaiserpfalzEdv.office.core.Link;
-import de.kaiserpfalzEdv.office.tenants.TenantHolder;
+import de.kaiserpfalzEdv.office.core.TenantHoldingEntity;
 
-import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
 /**
- * @author klenkes
- * @since 2014Q
+ * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;
+ * @version 0.1.0
+ * @since 0.1.0
  */
-public interface Project extends KPOEntity, TenantHolder {
+public interface Project extends TenantHoldingEntity {
     public Set<Contact> getContacts(final String type);
-
-    Map<String, List<Link>> getLinks();
 }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  ~ Copyright (c) 2014 Kaiserpfalz EDV-Service, Roland T. Lichti
+  ~ Copyright 2015 Kaiserpfalz EDV-Service, Roland T. Lichti
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
   ~ you may not use this file except in compliance with the License.
@@ -41,6 +41,14 @@
             </dependency>
 
             <dependency>
+                <groupId>de.kaiserpfalzEdv</groupId>
+                <artifactId>kp-hibernate-bom</artifactId>
+                <version>${kp-commons.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
                 <groupId>de.kaiserpfalzEdv.commons</groupId>
                 <artifactId>kp-commons-bom</artifactId>
                 <version>${kp-commons.version}</version>
@@ -62,8 +70,15 @@
         </dependency>
 
         <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-annotations</artifactId>
+            <groupId>org.hibernate.common</groupId>
+            <artifactId>hibernate-commons-annotations</artifactId>
+        </dependency>
+
+
+        <dependency>
+            <groupId>com.verhas</groupId>
+            <artifactId>license3j</artifactId>
+            <version>1.0.4</version>
         </dependency>
 
 

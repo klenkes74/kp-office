@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  ~ Copyright (c) 2014 Kaiserpfalz EDV-Service, Roland T. Lichti
+  ~ Copyright 2015 Kaiserpfalz EDV-Service, Roland T. Lichti
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
   ~ you may not use this file except in compliance with the License.
@@ -28,24 +28,11 @@
 
     <artifactId>kp-office-interfaces</artifactId>
     <packaging>pom</packaging>
-    <name>KP Office - Interfaces - Parent</name>
+    <name>KP Office - Interfaces</name>
 
 
     <modules>
-        <module>kp-office-http</module>
+        <module>kp-office-web</module>
         <module>kp-office-cli</module>
     </modules>
-
-
-    <properties>
-        <jersey.version>2.5</jersey.version>
-    </properties>
-
-
-    <dependencies>
-        <dependency>
-            <groupId>de.kaiserpfalz-edv.office</groupId>
-            <artifactId>kp-office-commons</artifactId>
-        </dependency>
-    </dependencies>
 </project>

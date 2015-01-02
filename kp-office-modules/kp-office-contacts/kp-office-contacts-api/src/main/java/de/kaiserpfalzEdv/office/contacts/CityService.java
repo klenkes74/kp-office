@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014 Kaiserpfalz EDV-Service, Roland T. Lichti
+ * Copyright 2015 Kaiserpfalz EDV-Service, Roland T. Lichti
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,7 +21,7 @@ import de.kaiserpfalzEdv.office.contacts.location.CityAlreadyExistsException;
 import de.kaiserpfalzEdv.office.contacts.location.CityNotRemovedException;
 import de.kaiserpfalzEdv.office.contacts.location.InvalidCityException;
 import de.kaiserpfalzEdv.office.contacts.location.NoSuchCityException;
-import de.kaiserpfalzEdv.office.core.KPOEntityQuery;
+import de.kaiserpfalzEdv.office.core.EntityQueryBase;
 
 import javax.validation.constraints.NotNull;
 import java.util.UUID;
@@ -55,7 +55,7 @@ public interface CityService {
      * @param query The query to retrieve all cities for.
      * @return the cities matching the query.
      */
-    public Iterable<City> retrieveCity(@NotNull final KPOEntityQuery query);
+    public Iterable<City> retrieveCity(@NotNull final EntityQueryBase query);
 
     /**
      * Updates the city data.

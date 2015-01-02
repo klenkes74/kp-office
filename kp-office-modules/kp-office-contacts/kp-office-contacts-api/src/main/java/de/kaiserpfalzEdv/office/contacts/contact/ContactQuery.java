@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014 Kaiserpfalz EDV-Service, Roland T. Lichti
+ * Copyright 2015 Kaiserpfalz EDV-Service, Roland T. Lichti
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -34,6 +34,7 @@ import java.util.UUID;
 public class ContactQuery implements Serializable {
     private final HashSet<PostCode> postCodes = new HashSet<>();
     private final HashSet<AreaCode> areaCodes = new HashSet<>();
+
     private UUID id;
     private String name;
     private String number;

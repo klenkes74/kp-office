@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014 Kaiserpfalz EDV-Service, Roland T. Lichti
+ * Copyright 2015 Kaiserpfalz EDV-Service, Roland T. Lichti
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,7 +16,7 @@
 
 package de.kaiserpfalzEdv.office.contacts.location;
 
-import de.kaiserpfalzEdv.office.InvalidEntityException;
+import de.kaiserpfalzEdv.office.core.InvalidEntityException;
 
 import javax.validation.constraints.NotNull;
 

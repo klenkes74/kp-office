@@ -31,6 +31,11 @@
     <entry_points version="2.0" />
   </component>
   <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="gwt" url="file://$PROJECT_DIR$/kp-office-interfaces/kp-office-http/kp-office" />
+    <file type="gwt" url="file://$PROJECT_DIR$/kp-office-interfaces/kp-office-http/kp-office-webgui/kp-office-ui" />
+    <file type="gwt" url="file://$PROJECT_DIR$/kp-office-interfaces/kp-office-http/kp-office-webgui/kp-office-ui-widgetset" />
+    <file type="gwt" url="file://$PROJECT_DIR$/kp-office-interfaces/kp-office-http/kp-office-webgui/kp-office-webgui-ui" />
+    <file type="gwt" url="file://$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office-ui-widgetset" />
     <file type="web" url="file://$PROJECT_DIR$/kp-office-interfaces/kp-office-http/kp-office-webgui" />
     <file type="web" url="file://$PROJECT_DIR$/kp-office-interfaces/kp-office-http/kp-office-webservice" />
     <file type="web" url="file://$PROJECT_DIR$/kp-office-interfaces/kp-office-service" />
@@ -48,6 +53,10 @@
         <option value="$PROJECT_DIR$/kp-office-core/kp-office-core-client/pom.xml" />
         <option value="$PROJECT_DIR$/kp-office-core/kp-office-security/pom.xml" />
         <option value="$PROJECT_DIR$/kp-office-core/kp-office-tenants/pom.xml" />
+        <option value="$PROJECT_DIR$/kp-office-interfaces/kp-office-http/kp-office-webgui/kp-office-webgui-ui/pom.xml" />
+        <option value="$PROJECT_DIR$/kp-office-interfaces/kp-office-http/kp-office-webservice/pom.xml" />
+        <option value="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-client/pom.xml" />
+        <option value="$PROJECT_DIR$/kp-office-modules/kp-office-projects/kp-office-projects-client/pom.xml" />
         <option value="$PROJECT_DIR$/kp-office-shared/kp-office-shared-api/pom.xml" />
       </set>
     </option>

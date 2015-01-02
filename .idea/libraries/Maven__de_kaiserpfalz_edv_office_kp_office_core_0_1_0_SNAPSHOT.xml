@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: de.kaiserpfalz-edv.office:kp-office-core:0.1.0-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/kp-office-backend/kp-office-core/pom.xml!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$PROJECT_DIR$/kp-office-backend/kp-office-core/kp-office-core-0.1.0-SNAPSHOT-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/kp-office-backend/kp-office-core/kp-office-core-0.1.0-SNAPSHOT-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

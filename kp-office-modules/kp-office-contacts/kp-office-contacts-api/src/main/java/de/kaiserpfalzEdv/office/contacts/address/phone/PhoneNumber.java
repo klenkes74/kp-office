@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014 Kaiserpfalz EDV-Service, Roland T. Lichti
+ * Copyright 2015 Kaiserpfalz EDV-Service, Roland T. Lichti
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,16 +16,14 @@
 
 package de.kaiserpfalzEdv.office.contacts.address.phone;
 
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import de.kaiserpfalzEdv.office.contacts.address.Address;
-import de.kaiserpfalzEdv.office.core.UniqueNumberIdentifierHolder;
+import de.kaiserpfalzEdv.office.core.DisplayNumberHolder;
 
 /**
  * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;
  * @since 0.1.0
  */
-@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS, include = JsonTypeInfo.As.PROPERTY, property = "@class", defaultImpl = PhoneNumberDTO.class)
-public interface PhoneNumber extends UniqueNumberIdentifierHolder, Address {
+public interface PhoneNumber extends DisplayNumberHolder, Address {
     public CountryCode getCountryCode();
 
     public AreaCode getAreaCode();

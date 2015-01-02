@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="kp-office:war">
+    <output-path>$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office/target</output-path>
+    <root id="archive" name="kp-office-ui-0.1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="kp-office:war exploded" />
+    </root>
+  </artifact>
+</component>

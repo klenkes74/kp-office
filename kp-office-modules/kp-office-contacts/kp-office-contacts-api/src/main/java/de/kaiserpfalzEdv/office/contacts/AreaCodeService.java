@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014 Kaiserpfalz EDV-Service, Roland T. Lichti
+ * Copyright 2015 Kaiserpfalz EDV-Service, Roland T. Lichti
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,14 +17,14 @@
 package de.kaiserpfalzEdv.office.contacts;
 
 import de.kaiserpfalzEdv.commons.paging.Page;
-import de.kaiserpfalzEdv.commons.paging.PagingRequest;
+import de.kaiserpfalzEdv.commons.paging.Pageable;
 import de.kaiserpfalzEdv.office.contacts.address.phone.AreaCode;
 import de.kaiserpfalzEdv.office.contacts.address.phone.AreaCodeAlreadyExistsException;
 import de.kaiserpfalzEdv.office.contacts.address.phone.AreaCodeNotRemovedException;
 import de.kaiserpfalzEdv.office.contacts.address.phone.InvalidAreaCodeException;
 import de.kaiserpfalzEdv.office.contacts.address.phone.NoSuchAreaCodeException;
 import de.kaiserpfalzEdv.office.contacts.location.City;
-import de.kaiserpfalzEdv.office.core.KPOEntityQuery;
+import de.kaiserpfalzEdv.office.core.EntityQueryBase;
 
 import javax.validation.constraints.NotNull;
 import java.util.UUID;
@@ -56,9 +56,10 @@ public interface AreaCodeService {
      * Retrieves an area code.
      *
      * @param query The query to retrieve all area codes for.
+     * @param paging The page definition.
      * @return the cities matching the query.
      */
-    public Page<City> retrieveAreaCode(@NotNull final KPOEntityQuery query, @NotNull final PagingRequest paging);
+    public Page<City> retrieveAreaCode(@NotNull final EntityQueryBase query, @NotNull final Pageable paging);
 
     /**
      * Updates the area code data.

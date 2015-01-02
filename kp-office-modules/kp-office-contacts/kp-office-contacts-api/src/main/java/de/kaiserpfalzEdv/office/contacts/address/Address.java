@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014 Kaiserpfalz EDV-Service, Roland T. Lichti
+ * Copyright 2015 Kaiserpfalz EDV-Service, Roland T. Lichti
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,15 +16,14 @@
 
 package de.kaiserpfalzEdv.office.contacts.address;
 
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import de.kaiserpfalzEdv.office.core.KPOTenantHoldingEntity;
+import de.kaiserpfalzEdv.office.core.TenantHoldingEntity;
 
 /**
- * @author klenkes
- * @since 2014Q
+ * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;
+ * @version 0.1.0
+ * @since 0.1.0
  */
-@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS, include = JsonTypeInfo.As.PROPERTY, property = "@class", defaultImpl = AddressDTO.class)
-public interface Address extends KPOTenantHoldingEntity {
+public interface Address extends TenantHoldingEntity {
     public AddressType getType();
 
     public AddressUsage getUsage();

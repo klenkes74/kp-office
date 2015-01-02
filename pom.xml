@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  ~ Copyright (c) 2014 Kaiserpfalz EDV-Service, Roland T. Lichti
+  ~ Copyright 2015 Kaiserpfalz EDV-Service, Roland T. Lichti
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
   ~ you may not use this file except in compliance with the License.
@@ -296,7 +296,7 @@
 
             <dependency>
                 <groupId>de.kaiserpfalz-edv.office</groupId>
-                <artifactId>kp-office-core</artifactId>
+                <artifactId>kp-office-core-impl</artifactId>
                 <version>${project.version}</version>
             </dependency>
 
@@ -319,12 +319,7 @@
             </dependency>
             <dependency>
                 <groupId>de.kaiserpfalz-edv.office</groupId>
-                <artifactId>kp-office-contacts-server</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>de.kaiserpfalz-edv.office</groupId>
-                <artifactId>kp-office-contacts-client</artifactId>
+                <artifactId>kp-office-contacts-impl</artifactId>
                 <version>${project.version}</version>
             </dependency>
 
@@ -335,24 +330,52 @@
             </dependency>
             <dependency>
                 <groupId>de.kaiserpfalz-edv.office</groupId>
-                <artifactId>kp-office-projects-server</artifactId>
+                <artifactId>kp-office-projects-impl</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>de.kaiserpfalz-edv.office</groupId>
+                <artifactId>kp-office</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+
+            <dependency>
+                <groupId>de.kaiserpfalz-edv.office</groupId>
+                <artifactId>kp-office-cli</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>de.kaiserpfalz-edv.office</groupId>
-                <artifactId>kp-office-projects-client</artifactId>
+                <artifactId>kp-office-cli-kppasswd</artifactId>
                 <version>${project.version}</version>
             </dependency>
 
+
+            <dependency>
+                <groupId>de.kaiserpfalz-edv.office</groupId>
+                <artifactId>kp-office-http</artifactId>
+                <version>${project.version}</version>
+            </dependency>
             <dependency>
                 <groupId>de.kaiserpfalz-edv.office</groupId>
                 <artifactId>kp-office-webservice</artifactId>
                 <version>${project.version}</version>
             </dependency>
-
             <dependency>
                 <groupId>de.kaiserpfalz-edv.office</groupId>
                 <artifactId>kp-office-webgui</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>de.kaiserpfalz-edv.office</groupId>
+                <artifactId>kp-office-ui-widgetset</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>de.kaiserpfalz-edv.office</groupId>
+                <artifactId>kp-office-ui</artifactId>
                 <version>${project.version}</version>
             </dependency>
         </dependencies>

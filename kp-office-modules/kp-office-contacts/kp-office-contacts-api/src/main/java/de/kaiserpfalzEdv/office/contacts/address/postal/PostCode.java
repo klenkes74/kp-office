@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014 Kaiserpfalz EDV-Service, Roland T. Lichti
+ * Copyright 2015 Kaiserpfalz EDV-Service, Roland T. Lichti
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,16 +16,14 @@
 
 package de.kaiserpfalzEdv.office.contacts.address.postal;
 
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import de.kaiserpfalzEdv.office.contacts.location.Country;
-import de.kaiserpfalzEdv.office.core.KPOEntity;
+import de.kaiserpfalzEdv.office.core.Entity;
 
 /**
  * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;
  * @since 0.1.0
  */
-@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS, include = JsonTypeInfo.As.PROPERTY, property = "@class", defaultImpl = PostCodeDTO.class)
-public interface PostCode extends KPOEntity {
+public interface PostCode extends Entity {
     public String getCode();
 
     public Country getCountry();
