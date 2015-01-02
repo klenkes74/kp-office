@@ -120,18 +120,7 @@
     <favorites_list name="kp-office-root" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office-ui-widgetset/pom.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.70118845" vertical-offset="202" max-vertical-offset="2550">
-              <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -776,7 +765,7 @@
       <workItem from="1419731251534" duration="65656000" />
       <workItem from="1420092001596" duration="2855000" />
       <workItem from="1420105335592" duration="32760000" />
-      <workItem from="1420187613598" duration="1437000" />
+      <workItem from="1420187613598" duration="1493000" />
     </task>
     <task id="LOCAL-00001" summary="WIP&#10;- Removed some projects.&#10;- Removed XML jpa configuration.&#10;- Added Annotations to jpa entities.">
       <created>1419323988938</created>
@@ -826,11 +815,17 @@
       <option name="project" value="LOCAL" />
       <updated>1420187729860</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Finally, after switching back to javax.validation 1.0.0 instead of 1.1.0 the whole thing compiles ...">
+      <created>1420190913331</created>
+      <option name="number" value="00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1420190913332</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="193172000" />
+    <option name="totallyTimeSpent" value="193228000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -918,7 +913,8 @@
     <MESSAGE value="WIP&#10;- some additions to date/time handling for JPA 2.1 and java.time.*&#10;- some additions to OfficeTicket" />
     <MESSAGE value="WIP&#10;- Despite a small problem concerning validation-api 1.1.0 (Vaadin does not work with it) everything should compile now." />
     <MESSAGE value="WIP&#10;- After the big merging ..." />
-    <option name="LAST_COMMIT_MESSAGE" value="WIP&#10;- After the big merging ..." />
+    <MESSAGE value="Finally, after switching back to javax.validation 1.0.0 instead of 1.1.0 the whole thing compiles ..." />
+    <option name="LAST_COMMIT_MESSAGE" value="Finally, after switching back to javax.validation 1.0.0 instead of 1.1.0 the whole thing compiles ..." />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -1076,7 +1072,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office-ui-widgetset/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.70118845" vertical-offset="202" max-vertical-offset="2550">
+        <state vertical-scroll-proportion="0.4578714" vertical-offset="202" max-vertical-offset="2550">
           <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
           <folding />
         </state>
