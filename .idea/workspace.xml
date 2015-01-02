@@ -2,6 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2832b224-b737-451e-b6c2-5595d59effb5" name="Default" comment="WIP&#10;- After the big merging ...">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/kp-office-core-impl.iml" afterPath="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/kp-office-core-impl.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office-ui-widgetset/kp-office-ui-widgetset.iml" afterPath="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office-ui-widgetset/kp-office-ui-widgetset.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office/kp-office.iml" afterPath="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office/kp-office.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office-ui-widgetset/pom.xml" afterPath="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office-ui-widgetset/pom.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="kp-office-root.iws" />
@@ -65,6 +69,8 @@
     <ignored path="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-core/target/" />
     <ignored path="$PROJECT_DIR$/kp-office-modules/kp-office-projects/kp-office-projects-impl/target/" />
     <ignored path="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-impl/target/" />
+    <ignored path="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/target/classes/" />
+    <ignored path="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/target/test-classes/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -114,7 +120,18 @@
     <favorites_list name="kp-office-root" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office-ui-widgetset/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.70118845" vertical-offset="202" max-vertical-offset="2550">
+              <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -176,8 +193,8 @@
         <option value="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-impl/src/test/java/de/kaiserpfalzEdv/office/contacts/location/test/CityDOTest.java" />
         <option value="$PROJECT_DIR$/kp-office-modules/kp-office-projects/kp-office-projects-api/pom.xml" />
         <option value="$PROJECT_DIR$/kp-office-modules/kp-office-projects/kp-office-projects-api/src/main/java/de/kaiserpfalzEdv/office/projects/Project.java" />
-        <option value="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office-ui-widgetset/pom.xml" />
         <option value="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/pom.xml" />
+        <option value="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office-ui-widgetset/pom.xml" />
       </list>
     </option>
   </component>
@@ -264,7 +281,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="kp-office-modules" />
+              <option name="myItemId" value="kp-office-interfaces" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -279,6 +296,32 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="kp-office-interfaces" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kp-office-web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kp-office" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kp-office" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kp-office-interfaces" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kp-office-web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kp-office-ui-widgetset" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -733,7 +776,7 @@
       <workItem from="1419731251534" duration="65656000" />
       <workItem from="1420092001596" duration="2855000" />
       <workItem from="1420105335592" duration="32760000" />
-      <workItem from="1420187613598" duration="107000" />
+      <workItem from="1420187613598" duration="1437000" />
     </task>
     <task id="LOCAL-00001" summary="WIP&#10;- Removed some projects.&#10;- Removed XML jpa configuration.&#10;- Added Annotations to jpa entities.">
       <created>1419323988938</created>
@@ -777,11 +820,17 @@
       <option name="project" value="LOCAL" />
       <updated>1420187709405</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="WIP&#10;- After the big merging ...">
+      <created>1420187729860</created>
+      <option name="number" value="00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1420187729860</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="191842000" />
+    <option name="totallyTimeSpent" value="193172000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -820,16 +869,18 @@
       <window_info id="JSF" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2494759" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32809225" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39937106" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32809225" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32914045" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32809225" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32914045" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4811321" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32914045" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3021978" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2802198" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2802198" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32967034" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
@@ -837,9 +888,7 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39937106" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4811321" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32914045" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32914045" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
     </layout>
@@ -955,6 +1004,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33860046" vertical-offset="300" max-vertical-offset="990">
           <caret line="30" column="34" selection-start-line="30" selection-start-column="34" selection-end-line="30" selection-end-column="34" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -976,13 +1026,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$MAVEN_REPOSITORY$/de/kaiserpfalzEdv/kp-misc-bom/2015Q1/kp-misc-bom-2015Q1.pom">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.5688487" vertical-offset="460" max-vertical-offset="5205">
-          <caret line="77" column="12" selection-start-line="77" selection-start-column="12" selection-end-line="77" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/kp-office-backend/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.34634975" vertical-offset="231" max-vertical-offset="1035">
@@ -991,10 +1034,50 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-27.268251" vertical-offset="16061" max-vertical-offset="16650">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kp-office-modules/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.6876061" vertical-offset="405" max-vertical-offset="1035">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/kp-office-interfaces/kp-office-web/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.15959252" vertical-offset="326" max-vertical-offset="1470">
+        <state vertical-scroll-proportion="-0.78268254" vertical-offset="881" max-vertical-offset="1470">
           <caret line="28" column="16" selection-start-line="28" selection-start-column="16" selection-end-line="28" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$MAVEN_REPOSITORY$/de/kaiserpfalzEdv/kp-vaadin-bom/2015Q1/kp-vaadin-bom-2015Q1.pom">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="2.0993228" vertical-offset="210" max-vertical-offset="2685">
+          <caret line="76" column="12" selection-start-line="76" selection-start-column="12" selection-end-line="76" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$MAVEN_REPOSITORY$/de/kaiserpfalzEdv/kp-misc-bom/2015Q1/kp-misc-bom-2015Q1.pom">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.8961625" vertical-offset="315" max-vertical-offset="5205">
+          <caret line="77" column="12" selection-start-line="77" selection-start-column="12" selection-end-line="77" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office-ui-widgetset/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.70118845" vertical-offset="202" max-vertical-offset="2550">
+          <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
           <folding />
         </state>
       </provider>
