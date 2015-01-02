@@ -12,7 +12,6 @@
     <file url="file://$PROJECT_DIR$/kp-office-interfaces/kp-office-cli/kp-office-cli-kppasswd" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/kp-office-interfaces/kp-office-web" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office-ui-modules" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office-ui-modules/kp-office-ui-contacts" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office-ui-modules/kp-office-ui-core" charset="UTF-8" />
@@ -21,11 +20,9 @@
     <file url="file://$PROJECT_DIR$/kp-office-modules" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/kp-office-modules/kp-office-contacts" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-client" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-impl" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/kp-office-modules/kp-office-projects" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/kp-office-modules/kp-office-projects/kp-office-projects-api" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/kp-office-modules/kp-office-projects/kp-office-projects-client" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/kp-office-modules/kp-office-projects/kp-office-projects-impl" charset="UTF-8" />
   </component>
 </project>

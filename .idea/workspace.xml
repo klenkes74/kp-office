@@ -1,474 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2832b224-b737-451e-b6c2-5595d59effb5" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office/src/main/webapp/VAADIN/themes/mytheme/favicon.ico" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-impl/src/main/java/de/kaiserpfalzEdv/office/contacts/address/AddressDO.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/copyright/Apache_2_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office/src/main/java/de/kaiserpfalzEdv/office/ui/web/Application.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-impl/src/main/java/de/kaiserpfalzEdv/office/contacts/address/phone/AreaCodeDO.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-impl/src/main/java/de/kaiserpfalzEdv/office/contacts/location/CityBuilder.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-impl/src/main/java/de/kaiserpfalzEdv/office/contacts/location/CityDO.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-impl/src/test/java/de/kaiserpfalzEdv/office/contacts/location/test/CityDOTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-impl/src/main/java/de/kaiserpfalzEdv/office/contacts/contact/CompanyContactDO.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-impl/src/main/java/de/kaiserpfalzEdv/office/contacts/contact/ContactDO.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-impl/src/main/java/de/kaiserpfalzEdv/office/contacts/contact/ContactPersonDO.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-impl/src/main/java/de/kaiserpfalzEdv/office/contacts/location/CountryBuilder.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-impl/src/main/java/de/kaiserpfalzEdv/office/contacts/address/phone/CountryCodeDO.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-impl/src/main/java/de/kaiserpfalzEdv/office/contacts/location/CountryDO.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-impl/src/test/java/de/kaiserpfalzEdv/office/contacts/location/test/CountryDOTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-impl/src/main/java/de/kaiserpfalzEdv/office/contacts/location/DefaultCityNumberGenerator.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kp-office-commons/src/main/java/de/kaiserpfalzEdv/office/core/DisplayNumberHolder.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kp-office-commons/src/main/java/de/kaiserpfalzEdv/office/core/Entity.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kp-office-backend/kp-office-core-api/src/main/java/de/kaiserpfalzEdv/office/core/EntityAlreadyExistsException.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kp-office-backend/kp-office-core-api/src/main/java/de/kaiserpfalzEdv/office/core/EntityException.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kp-office-backend/kp-office-core-api/src/main/java/de/kaiserpfalzEdv/office/core/EntityNotRemovedException.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kp-office-backend/kp-office-core-api/src/main/java/de/kaiserpfalzEdv/office/core/EntityQueryBase.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kp-office-commons/src/main/java/de/kaiserpfalzEdv/office/core/HiddenStateHolder.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kp-office-backend/kp-office-core-api/src/main/java/de/kaiserpfalzEdv/office/core/InvalidEntityException.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/java/de/kaiserpfalzEdv/office/core/KPOEntity.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/java/de/kaiserpfalzEdv/office/core/KPOTenantHoldingEntity.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office/src/main/java/de/kaiserpfalzEdv/office/ui/web/KPOfficeModuleBar.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office/src/main/java/de/kaiserpfalzEdv/office/ui/web/KPOfficeUI.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office-ui-widgetset/src/main/resources/KPOfficeWidgetset.gwt.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kp-office-backend/kp-office-core-api/src/main/java/de/kaiserpfalzEdv/office/licence/LicenceEntry.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__ant_ant_1_6_5.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__ant_ant_launcher_1_6_5.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_gwt_google_apis_gwt_visualization_1_1_2.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_ibm_icu_icu4j_50_1_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_lexaden_components_breadcrumb_1_7_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_lexaden_components_breadcrumb_1_7_3.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_lexaden_components_flowprogressbar_1_7_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_lexaden_components_flowprogressbar_1_7_2.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_lexaden_components_organisationchart_1_7_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_vaadin_addon_vaadin_calendar_2_0_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_vaadin_external_atmosphere_atmosphere_runtime_2_1_2_vaadin6.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_vaadin_external_atmosphere_atmosphere_runtime_2_2_4_vaadin2.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_vaadin_external_flute_flute_1_3_0_gg2.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_vaadin_external_google_guava_16_0_1_vaadin1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_vaadin_external_json_json_0_0_20080701.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_vaadin_external_slf4j_vaadin_slf4j_jdk14_1_6_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_vaadin_external_streamhtmlparser_streamhtmlparser_jsilver_0_0_10_vaadin1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_vaadin_vaadin_6_7_5.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_vaadin_vaadin_client_7_3_7.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_vaadin_vaadin_client_7_4_0_beta1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_vaadin_vaadin_client_compiled_7_0_5.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_vaadin_vaadin_client_compiled_7_3_7.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_vaadin_vaadin_client_compiled_7_4_0_beta1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_vaadin_vaadin_client_compiler_7_3_7.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_vaadin_vaadin_client_compiler_7_4_0_beta1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_vaadin_vaadin_client_compiler_deps_1_1_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_vaadin_vaadin_client_compiler_deps_1_2_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_vaadin_vaadin_push_7_3_7.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_vaadin_vaadin_push_7_4_0_beta1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_vaadin_vaadin_sass_compiler_0_9_10.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_vaadin_vaadin_server_7_0_5.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_vaadin_vaadin_server_7_3_7.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_vaadin_vaadin_server_7_4_0_beta1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_vaadin_vaadin_shared_7_0_5.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_vaadin_vaadin_shared_7_3_7.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_vaadin_vaadin_shared_7_4_0_beta1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_vaadin_vaadin_shared_deps_1_0_2.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_vaadin_vaadin_theme_compiler_7_0_5.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_vaadin_vaadin_themes_7_3_7.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_vaadin_vaadin_themes_7_4_0_beta1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_verhas_license3j_1_0_4.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_wcs_vaadin_addons_userinactivity_1_0_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_cli_commons_cli_1_2.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_collections_commons_collections_3_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_io_commons_io_2_4.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_logging_commons_logging_1_1_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__de_kaiserpfalz_edv_office_kp_office_core_0_1_0_SNAPSHOT.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__de_kaiserpfalz_edv_office_kp_office_ui_widgetset_0_1_0_SNAPSHOT.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__de_kaiserpfalz_edv_office_kp_office_widgetset_0_1_0_SNAPSHOT.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_servlet_javax_servlet_api_3_0_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_validation_validation_api_1_0_0_GA.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_validation_validation_api_sources_1_0_0_GA.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_validation_validation_api_sources_1_1_0_Final.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_sourceforge_cssparser_cssparser_0_9_11.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_sourceforge_cssparser_cssparser_0_9_5.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_sourceforge_nekohtml_nekohtml_1_9_19.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__nz_net_ultraq_thymeleaf_thymeleaf_layout_dialect_1_2_7.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__ognl_ognl_3_0_6.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_jexl_2_1_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_httpcomponents_httpclient_4_3_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_httpcomponents_httpcore_4_3.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_httpcomponents_httpmime_4_3_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_james_apache_mime4j_0_6.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_bouncycastle_bcpg_jdk16_1_46.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_bouncycastle_bcprov_jdk16_1_46.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_jetty_jetty_annotations_8_1_12_v20130726.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_jetty_jetty_client_8_1_12_v20130726.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_jetty_jetty_continuation_8_1_12_v20130726.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_jetty_jetty_http_8_1_12_v20130726.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_jetty_jetty_io_8_1_12_v20130726.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_jetty_jetty_jndi_8_1_12_v20130726.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_jetty_jetty_plus_8_1_12_v20130726.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_jetty_jetty_security_8_1_12_v20130726.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_jetty_jetty_server_8_1_12_v20130726.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_jetty_jetty_servlet_8_1_12_v20130726.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_jetty_jetty_servlets_8_1_12_v20130726.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_jetty_jetty_util_8_1_12_v20130726.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_jetty_jetty_webapp_8_1_12_v20130726.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_jetty_jetty_xml_8_1_12_v20130726.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_jetty_orbit_javax_activation_1_1_0_v201105071233.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_jetty_orbit_javax_annotation_1_1_0_v201108011116.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_jetty_orbit_javax_mail_glassfish_1_4_1_v201005082020.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_jetty_orbit_javax_servlet_3_0_0_v201112011016.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_jetty_orbit_javax_transaction_1_1_1_v201105210645.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_jetty_orbit_org_objectweb_asm_3_1_0_v200803061910.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_library_1_3.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_hibernate_validator_4_3_2_Final.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_hibernate_validator_5_1_0_CR1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jboss_logging_jboss_logging_3_1_0_CR2.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jdesktop_swing_worker_1_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jsoup_jsoup_1_6_3.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jsoup_jsoup_1_8_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mockito_mockito_core_1_10_8.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_ow2_asm_asm_5_0_3.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_ow2_asm_asm_commons_5_0_3.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_ow2_asm_asm_tree_5_0_3.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_ow2_asm_asm_util_5_0_3.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_test_1_2_0_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_thymeleaf_1_2_0_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_thymeleaf_thymeleaf_2_1_3_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_thymeleaf_thymeleaf_spring4_2_1_3_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_unbescape_unbescape_1_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_vaadin_addon_confirmdialog_2_1_2.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_vaadin_addons_contextmenu_4_5.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_vaadin_addons_countdownclock_2_0_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_vaadin_addons_customfield_1_0_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_vaadin_addons_delayedbutton_2_0_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_vaadin_addons_maskedtextfield_0_1_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_vaadin_addons_multibutton_3_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_vaadin_addons_qrcode_2_0_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_vaadin_addons_stepper_2_2_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_vaadin_addons_wizards_for_vaadin_1_1_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_vaadin_artur_KeyActions_0_1_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_vaadin_spring_spring_boot_vaadin_0_0_3.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_vaadin_spring_spring_vaadin_0_0_3.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_vaadin_teemu_switch_2_0_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_w3c_css_sac_1_3.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__xalan_serializer_2_7_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__xerces_xercesImpl_2_11_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__xml_apis_xml_apis_1_4_01.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kp-office-backend/kp-office-core-api/src/main/java/de/kaiserpfalzEdv/office/core/NoSuchEntityException.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kp-office-backend/kp-office-core-api/src/main/java/de/kaiserpfalzEdv/office/tenants/NoSuchTenantException.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kp-office-backend/kp-office-core-api/src/main/java/de/kaiserpfalzEdv/office/tenants/NullTenant.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-impl/src/main/java/de/kaiserpfalzEdv/office/contacts/address/phone/NumberPartDTO.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kp-office-backend/kp-office-core-api/src/main/java/de/kaiserpfalzEdv/office/licence/OfficeModule.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kp-office-backend/kp-office-core-api/src/main/java/de/kaiserpfalzEdv/office/tenants/OnlyInvalidTenantFoundException.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kp-office-backend/kp-office-core-api/src/main/java/de/kaiserpfalzEdv/commons/paging/Page.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kp-office-backend/kp-office-backend-utils/src/main/java/de/kaiserpfalzEdv/commons/paging/PageDO.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kp-office-backend/kp-office-core-api/src/main/java/de/kaiserpfalzEdv/commons/paging/Pageable.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kp-office-backend/kp-office-backend-utils/src/main/java/de/kaiserpfalzEdv/commons/paging/PageableDO.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kp-office-backend/kp-office-core-api/src/main/java/de/kaiserpfalzEdv/office/security/PermissionNameHolder.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kp-office-backend/kp-office-core-api/src/main/java/de/kaiserpfalzEdv/office/security/PermissionNameHolderDTO.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-impl/src/main/java/de/kaiserpfalzEdv/office/contacts/address/phone/PhoneNumberBuilder.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-impl/src/main/java/de/kaiserpfalzEdv/office/contacts/address/phone/PhoneNumberDO.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-impl/src/main/java/de/kaiserpfalzEdv/office/contacts/address/postal/PostCodeDO.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-impl/src/main/java/de/kaiserpfalzEdv/office/contacts/address/postal/PostalAddressBuilder.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-impl/src/main/java/de/kaiserpfalzEdv/office/contacts/address/postal/PostalAddressDTO.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-impl/src/main/java/de/kaiserpfalzEdv/office/contacts/address/postal/PostboxAddressDTO.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/README.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kp-office-backend/kp-office-core-api/src/main/java/de/kaiserpfalzEdv/commons/paging/Sort.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kp-office-backend/kp-office-backend-utils/src/main/java/de/kaiserpfalzEdv/commons/paging/SortDO.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-impl/src/main/java/de/kaiserpfalzEdv/office/contacts/address/postal/StreetAddressDTO.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kp-office-backend/kp-office-core-api/src/main/java/de/kaiserpfalzEdv/office/tenants/Tenant.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kp-office-backend/kp-office-core-api/src/main/java/de/kaiserpfalzEdv/office/tenants/TenantAlreadyExistsException.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/java/de/kaiserpfalzEdv/office/tenants/TenantDO.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kp-office-commons/src/main/java/de/kaiserpfalzEdv/office/core/TenantHolder.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kp-office-commons/src/main/java/de/kaiserpfalzEdv/office/core/TenantHoldingEntity.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/java/de/kaiserpfalzEdv/office/tenants/TenantRepository.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kp-office-backend/kp-office-core-api/src/main/java/de/kaiserpfalzEdv/office/tenants/UnknownTenant.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office/src/main/webapp/VAADIN/themes/mytheme/addons.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office/src/main/resources/application.properties" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-impl/kp-office-contacts-impl.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/kp-office-core-impl.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kp-office-modules/kp-office-projects/kp-office-projects-impl/kp-office-projects-impl.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office-ui-modules/kp-office-ui-contacts/kp-office-ui-contacts.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office-ui-modules/kp-office-ui-core/kp-office-ui-core.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office-ui-modules/kp-office-ui-modules.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office-ui-modules/kp-office-ui-projects/kp-office-ui-projects.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office-ui-widgetset/kp-office-ui-widgetset.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office-web.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office/kp-office.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/artifacts/kp_office_GWT.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/artifacts/kp_office_ui_GWT.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/artifacts/kp_office_ui_war.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/artifacts/kp_office_ui_war_exploded.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/artifacts/kp_office_ui_widgetset_GWT.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/artifacts/kp_office_war.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/artifacts/kp_office_war_exploded.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/artifacts/kp_office_webgui_ui_war.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/artifacts/kp_office_webgui_ui_war_exploded.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/artifacts/kp_office_webgui_widgetset_GWT.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/artifacts/kp_office_widgetset_GWT.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office/src/main/webapp/VAADIN/themes/mytheme/mytheme.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kp-office-backend/kp-office-core-api/src/main/java/de/kaiserpfalzEdv/office/licence/package-info.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-impl/src/test/java/de/kaiserpfalzEdv/office/contacts/package-info.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-impl/src/test/java/de/kaiserpfalzEdv/office/contacts/address/phone/test/package-info.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-impl/src/test/java/de/kaiserpfalzEdv/office/contacts/address/postal/test/package-info.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-impl/src/test/java/de/kaiserpfalzEdv/office/contacts/location/test/package-info.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/pom.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/pom.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office/pom.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office-ui-modules/pom.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office-ui-modules/kp-office-ui-contacts/pom.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office-ui-modules/kp-office-ui-core/pom.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office-ui-modules/kp-office-ui-projects/pom.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office-ui-widgetset/pom.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-impl/pom.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kp-office-modules/kp-office-projects/kp-office-projects-impl/pom.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office/src/main/webapp/VAADIN/themes/mytheme/styles.scss" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-backend/kp-office-core-api/src/main/java/de/kaiserpfalzEdv/office/core/OfficeModule.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-backend/kp-office-core-api/src/main/java/de/kaiserpfalzEdv/office/core/PermissionNameHolder.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-backend/kp-office-core-api/src/main/java/de/kaiserpfalzEdv/office/core/UniqueNumberIdentifierHolder.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-backend/kp-office-core/kp-office-core.iml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-backend/kp-office-core/pom.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-backend/kp-office-core/src/main/java/de/kaiserpfalzEdv/office/core/EntityAlreadyExistsException.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-backend/kp-office-core/src/main/java/de/kaiserpfalzEdv/office/core/EntityException.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-backend/kp-office-core/src/main/java/de/kaiserpfalzEdv/office/core/EntityNotRemovedException.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-backend/kp-office-core/src/main/java/de/kaiserpfalzEdv/office/core/InvalidEntityException.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-backend/kp-office-core/src/main/java/de/kaiserpfalzEdv/office/core/KPOEntity.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-backend/kp-office-core/src/main/java/de/kaiserpfalzEdv/office/core/KPOEntityQuery.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-backend/kp-office-core/src/main/java/de/kaiserpfalzEdv/office/core/KPOTenantHoldingEntity.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-backend/kp-office-core/src/main/java/de/kaiserpfalzEdv/office/core/NoSuchEntityException.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-backend/kp-office-core/src/main/java/de/kaiserpfalzEdv/office/core/PermissionNameHolderDTO.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-backend/kp-office-core/src/main/java/de/kaiserpfalzEdv/office/tenants/NoSuchTenantException.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-backend/kp-office-core/src/main/java/de/kaiserpfalzEdv/office/tenants/NullTenant.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-backend/kp-office-core/src/main/java/de/kaiserpfalzEdv/office/tenants/OnlyInvalidTenantFoundException.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-backend/kp-office-core/src/main/java/de/kaiserpfalzEdv/office/tenants/Tenant.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-backend/kp-office-core/src/main/java/de/kaiserpfalzEdv/office/tenants/TenantAlreadyExistsException.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-backend/kp-office-core/src/main/java/de/kaiserpfalzEdv/office/tenants/TenantRepository.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-backend/kp-office-core/src/main/java/de/kaiserpfalzEdv/office/tenants/UnknownTenant.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-commons/src/main/java/de/kaiserpfalzEdv/commons/json/Jackson2ObjectMapper.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-commons/src/main/java/de/kaiserpfalzEdv/commons/json/package-info.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-commons/src/test/resources/test-beans-rabbitmq.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-interfaces/kp-office-http/kp-office-http.iml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-interfaces/kp-office-http/kp-office-webgui/docs/Projects.ep" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-interfaces/kp-office-http/kp-office-webgui/kp-office-webgui.iml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-interfaces/kp-office-http/kp-office-webgui/pom.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-interfaces/kp-office-http/kp-office-webservice/kp-office-webservice.iml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-interfaces/kp-office-http/kp-office-webservice/pom.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-interfaces/kp-office-http/kp-office-webservice/src/main/java/de/kaiserpfalzEdv/office/CoreServer.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-interfaces/kp-office-http/kp-office/src/main/resources/application.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-interfaces/kp-office-http/kp-office/src/main/resources/jndi.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-interfaces/kp-office-http/kp-office/src/main/webapp/web.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-interfaces/kp-office-http/pom.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/address/AddressDTO.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/address/ChangeTypeOfAddressOfContactCommand.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/address/ChangeUsageOfAddressOfContactCommand.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/address/phone/AreaCodeDTO.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/address/phone/ChangeKindOfPhoneNumberOfContactCommand.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/address/phone/CountryCodeDTO.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/address/phone/NumberPartDTO.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/address/phone/PhoneNumberBuilder.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/address/phone/PhoneNumberDTO.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/address/postal/PostCodeDTO.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/address/postal/PostalAddressBuilder.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/address/postal/PostalAddressDTO.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/address/postal/PostboxAddressDTO.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/address/postal/StreetAddressDTO.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/commands/ContactStoreCommand.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/commands/city/CityBaseCommand.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/commands/city/CreateCityCommand.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/commands/city/DeleteCityCommand.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/commands/city/RetrieveCityCommand.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/commands/city/UpdateCityCommand.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/commands/city/package-info.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/commands/contact/AddAddressToContactCommand.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/commands/contact/AddSubContactCommand.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/commands/contact/CompanyContactData.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/commands/contact/ContactBaseCommand.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/commands/contact/CreateContactCommand.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/commands/contact/DeleteAddressFromContactCommand.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/commands/contact/DeleteContactCommand.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/commands/contact/DeleteSubContactCommand.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/commands/contact/PersonalContactData.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/commands/contact/ReplaceAddressOfContactCommand.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/commands/contact/ReplaceSubContactCommand.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/commands/contact/RetrieveContactCommand.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/commands/contact/UpdateContactCommand.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/commands/contact/package-info.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/commands/country/CountryBaseCommand.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/commands/country/CreateCountryCommand.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/commands/country/DeleteCountryCommand.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/commands/country/RetrieveCountryCommand.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/commands/country/UpdateCountryCommand.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/commands/country/package-info.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/commands/package-info.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/commands/phone/AreaCodeBaseCommand.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/commands/phone/CreateAreaCodeCommand.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/commands/phone/DeleteAreaCodeCommand.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/commands/phone/RetrieveAreaCodeCommand.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/commands/phone/UpdateAreaCodeCommand.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/commands/phone/package-info.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/contact/CompanyContactDTO.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/contact/ContactDTO.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/contact/ContactPersonDTO.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/location/CityBuilder.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/location/CityDTO.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/location/CountryBuilder.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/location/CountryDTO.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/notifications/package-info.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/test/java/de/kaiserpfalzEdv/office/contacts/address/package-info.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/test/java/de/kaiserpfalzEdv/office/contacts/address/phone/package-info.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/test/java/de/kaiserpfalzEdv/office/contacts/address/postal/package-info.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/test/java/de/kaiserpfalzEdv/office/contacts/location/CityDTOTest.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/test/java/de/kaiserpfalzEdv/office/contacts/location/CountryDTOTest.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/test/java/de/kaiserpfalzEdv/office/contacts/location/package-info.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/test/java/de/kaiserpfalzEdv/office/contacts/package-info.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-client/kp-office-contacts-client.iml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-client/pom.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-server/kp-office-contacts-server.iml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-server/pom.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-server/src/main/java/de/kaiserpfalzEdv/office/contacts/history/GuavaHandleContactCommands.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-server/src/main/java/de/kaiserpfalzEdv/office/contacts/store/CreateContactCommandRepository.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-projects/kp-office-projects-client/kp-office-projects-client.iml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-projects/kp-office-projects-client/pom.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-projects/kp-office-projects-server/kp-office-projects-server.iml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-projects/kp-office-projects-server/pom.xml" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-backend/kp-office-core-api/src/main/java/de/kaiserpfalzEdv/office/core/DisplayNameHolder.java" afterPath="$PROJECT_DIR$/kp-office-commons/src/main/java/de/kaiserpfalzEdv/office/core/DisplayNameHolder.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-backend/kp-office-core-api/src/main/java/de/kaiserpfalzEdv/office/core/DisplayNumberGenerator.java" afterPath="$PROJECT_DIR$/kp-office-commons/src/main/java/de/kaiserpfalzEdv/office/core/DisplayNumberGenerator.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-backend/kp-office-core-api/src/main/java/de/kaiserpfalzEdv/office/core/IdentityHolder.java" afterPath="$PROJECT_DIR$/kp-office-commons/src/main/java/de/kaiserpfalzEdv/office/core/IdentityHolder.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-backend/kp-office-core-api/src/main/java/de/kaiserpfalzEdv/office/core/NumberGenerationFailureException.java" afterPath="$PROJECT_DIR$/kp-office-commons/src/main/java/de/kaiserpfalzEdv/office/core/NumberGenerationFailureException.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-backend/kp-office-core/src/main/java/de/kaiserpfalzEdv/office/core/DefaultUuidNumberGenerator.java" afterPath="$PROJECT_DIR$/kp-office-backend/kp-office-core-api/src/main/java/de/kaiserpfalzEdv/office/core/DefaultUuidNumberGenerator.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-backend/kp-office-core/src/main/java/de/kaiserpfalzEdv/office/core/DisplayNameHolderDTO.java" afterPath="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/java/de/kaiserpfalzEdv/office/core/DisplayNameHolderDTO.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-backend/kp-office-core/src/main/java/de/kaiserpfalzEdv/office/core/Link.java" afterPath="$PROJECT_DIR$/kp-office-backend/kp-office-core-api/src/main/java/de/kaiserpfalzEdv/office/core/Link.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-backend/kp-office-core/src/main/java/de/kaiserpfalzEdv/office/package-info.java" afterPath="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/java/de/kaiserpfalzEdv/office/package-info.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-backend/kp-office-core/src/main/java/de/kaiserpfalzEdv/office/security/Account.java" afterPath="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/java/de/kaiserpfalzEdv/office/security/Account.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-backend/kp-office-core/src/main/java/de/kaiserpfalzEdv/office/security/AccountRepository.java" afterPath="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/java/de/kaiserpfalzEdv/office/security/AccountRepository.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-backend/kp-office-core/src/main/java/de/kaiserpfalzEdv/office/security/Identity.java" afterPath="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/java/de/kaiserpfalzEdv/office/security/Identity.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-backend/kp-office-core/src/main/java/de/kaiserpfalzEdv/office/security/IdentityRepository.java" afterPath="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/java/de/kaiserpfalzEdv/office/security/IdentityRepository.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-backend/kp-office-core/src/main/java/de/kaiserpfalzEdv/office/security/Role.java" afterPath="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/java/de/kaiserpfalzEdv/office/security/Role.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-backend/kp-office-core/src/main/java/de/kaiserpfalzEdv/office/security/RoleRepository.java" afterPath="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/java/de/kaiserpfalzEdv/office/security/RoleRepository.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-backend/kp-office-core/src/main/java/de/kaiserpfalzEdv/office/security/SecurityServiceImpl.java" afterPath="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/java/de/kaiserpfalzEdv/office/security/SecurityServiceImpl.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-backend/kp-office-core/src/main/java/de/kaiserpfalzEdv/office/security/SecurityTicket.java" afterPath="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/java/de/kaiserpfalzEdv/office/security/SecurityTicket.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-backend/kp-office-core/src/main/java/de/kaiserpfalzEdv/office/security/SecurityTicketHousekeeping.java" afterPath="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/java/de/kaiserpfalzEdv/office/security/SecurityTicketHousekeeping.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-backend/kp-office-core/src/main/java/de/kaiserpfalzEdv/office/security/SecurityTicketRepository.java" afterPath="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/java/de/kaiserpfalzEdv/office/security/SecurityTicketRepository.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-backend/kp-office-core/src/main/java/de/kaiserpfalzEdv/office/security/SystemAccount.java" afterPath="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/java/de/kaiserpfalzEdv/office/security/SystemAccount.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-backend/kp-office-core/src/main/java/de/kaiserpfalzEdv/office/security/UserAccount.java" afterPath="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/java/de/kaiserpfalzEdv/office/security/UserAccount.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-backend/kp-office-core/src/main/java/de/kaiserpfalzEdv/office/security/package-info.java" afterPath="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/java/de/kaiserpfalzEdv/office/security/package-info.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-backend/kp-office-core/src/main/java/de/kaiserpfalzEdv/office/tenants/TenantHolder.java" afterPath="$PROJECT_DIR$/kp-office-backend/kp-office-core-api/src/main/java/de/kaiserpfalzEdv/office/tenants/TenantHolder.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-backend/kp-office-core/src/main/java/de/kaiserpfalzEdv/office/tenants/TenantIdHolder.java" afterPath="$PROJECT_DIR$/kp-office-backend/kp-office-core-api/src/main/java/de/kaiserpfalzEdv/office/tenants/TenantIdHolder.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-backend/kp-office-core/src/main/java/de/kaiserpfalzEdv/office/tenants/package-info.java" afterPath="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/java/de/kaiserpfalzEdv/office/tenants/package-info.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-backend/kp-office-core/src/main/resources/META-INF/database-cache.xml" afterPath="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/resources/META-INF/database-cache.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-backend/kp-office-core/src/main/resources/META-INF/persistence.xml" afterPath="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/resources/META-INF/persistence.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-backend/kp-office-core/src/main/resources/beans.xml" afterPath="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/resources/beans.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-backend/kp-office-core/src/main/resources/data/ACCOUNTS-initial.csv" afterPath="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/resources/data/ACCOUNTS-initial.csv" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-backend/kp-office-core/src/main/resources/data/ACCOUNTS_ROLES-initial.csv" afterPath="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/resources/data/ACCOUNTS_ROLES-initial.csv" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-backend/kp-office-core/src/main/resources/data/IDENTITIES-initial.csv" afterPath="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/resources/data/IDENTITIES-initial.csv" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-backend/kp-office-core/src/main/resources/data/ROLES-initial.csv" afterPath="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/resources/data/ROLES-initial.csv" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-backend/kp-office-core/src/main/resources/data/TENANTS-initial.csv" afterPath="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/resources/data/TENANTS-initial.csv" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-backend/kp-office-core/src/main/resources/ddl/db-changelog.xml" afterPath="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/resources/ddl/db-changelog.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-backend/kp-office-core/src/main/resources/ddl/security-0_1_0.xml" afterPath="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/resources/ddl/security-0_1_0.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-backend/kp-office-core/src/main/resources/ddl/tenant-0_1_0.xml" afterPath="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/resources/ddl/tenant-0_1_0.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-backend/kp-office-core/src/main/resources/jndi.properties" afterPath="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/resources/jndi.properties" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-backend/kp-office-core/src/test/java/de/kaiserpfalzEdv/office/package-info.java" afterPath="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/test/java/de/kaiserpfalzEdv/office/package-info.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-backend/kp-office-core/src/test/java/de/kaiserpfalzEdv/office/security/test/SecurityTicketHandlingIT.java" afterPath="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/test/java/de/kaiserpfalzEdv/office/security/test/SecurityTicketHandlingIT.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-backend/kp-office-core/src/test/java/de/kaiserpfalzEdv/office/security/test/package-info.java" afterPath="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/test/java/de/kaiserpfalzEdv/office/security/test/package-info.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-backend/kp-office-core/src/test/resources/config/db.properties" afterPath="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/test/resources/config/db.properties" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-backend/kp-office-core/src/test/resources/config/default.properties" afterPath="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/test/resources/config/default.properties" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-backend/kp-office-core/src/test/resources/data/ACCOUNTS-test.csv" afterPath="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/test/resources/data/ACCOUNTS-test.csv" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-backend/kp-office-core/src/test/resources/data/ACCOUNTS_ROLES-test.csv" afterPath="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/test/resources/data/ACCOUNTS_ROLES-test.csv" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-backend/kp-office-core/src/test/resources/data/IDENTITIES-test.csv" afterPath="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/test/resources/data/IDENTITIES-test.csv" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-backend/kp-office-core/src/test/resources/data/ROLES-test.csv" afterPath="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/test/resources/data/ROLES-test.csv" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-backend/kp-office-core/src/test/resources/data/TENANTS-test.csv" afterPath="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/test/resources/data/TENANTS-test.csv" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-backend/kp-office-core/src/test/resources/data/TICETS-test.csv" afterPath="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/test/resources/data/TICETS-test.csv" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-backend/kp-office-core/src/test/resources/ddl/db-changelog-test.xml" afterPath="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/test/resources/ddl/db-changelog-test.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-backend/kp-office-core/src/test/resources/ddl/load-testdata.xml" afterPath="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/test/resources/ddl/load-testdata.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-backend/kp-office-core/src/test/resources/jndi.properties" afterPath="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/test/resources/jndi.properties" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-backend/kp-office-core/src/test/resources/logback-test.xml" afterPath="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/test/resources/logback-test.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-server/src/main/resources/META-INF/database-cache.xml" afterPath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-impl/src/main/resources/META-INF/database-cache.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-server/src/main/resources/META-INF/persistence.xml" afterPath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-impl/src/main/resources/META-INF/persistence.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-server/src/main/resources/beans.xml" afterPath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-impl/src/main/resources/beans.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-server/src/main/resources/data/TENANTS-initial.csv" afterPath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-impl/src/main/resources/data/TENANTS-initial.csv" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-server/src/main/resources/ddl/contacts-history-0_1_0.xml" afterPath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-impl/src/main/resources/ddl/contacts-history-0_1_0.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-server/src/main/resources/ddl/db-changelog.xml" afterPath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-impl/src/main/resources/ddl/db-changelog.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-server/src/main/resources/jndi.properties" afterPath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-impl/src/main/resources/jndi.properties" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-server/src/test/resources/beans.xml" afterPath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-impl/src/test/resources/beans.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-server/src/test/resources/config/db.properties" afterPath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-impl/src/test/resources/config/db.properties" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-server/src/test/resources/config/default.properties" afterPath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-impl/src/test/resources/config/default.properties" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-server/src/test/resources/jndi.properties" afterPath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-impl/src/test/resources/jndi.properties" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-server/src/test/resources/logback-test.xml" afterPath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-impl/src/test/resources/logback-test.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-server/src/test/resources/shiro.ini" afterPath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-impl/src/test/resources/shiro.ini" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-projects/kp-office-projects-server/src/main/resources/META-INF/database-cache.xml" afterPath="$PROJECT_DIR$/kp-office-modules/kp-office-projects/kp-office-projects-impl/src/main/resources/META-INF/database-cache.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-projects/kp-office-projects-server/src/main/resources/META-INF/orm.xml" afterPath="$PROJECT_DIR$/kp-office-modules/kp-office-projects/kp-office-projects-impl/src/main/resources/META-INF/orm.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-projects/kp-office-projects-server/src/main/resources/META-INF/persistence.xml" afterPath="$PROJECT_DIR$/kp-office-modules/kp-office-projects/kp-office-projects-impl/src/main/resources/META-INF/persistence.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-projects/kp-office-projects-server/src/main/resources/beans.xml" afterPath="$PROJECT_DIR$/kp-office-modules/kp-office-projects/kp-office-projects-impl/src/main/resources/beans.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-projects/kp-office-projects-server/src/main/resources/data/TENANTS-initial.csv" afterPath="$PROJECT_DIR$/kp-office-modules/kp-office-projects/kp-office-projects-impl/src/main/resources/data/TENANTS-initial.csv" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-projects/kp-office-projects-server/src/main/resources/ddl/contacts-history-0_1_0.xml" afterPath="$PROJECT_DIR$/kp-office-modules/kp-office-projects/kp-office-projects-impl/src/main/resources/ddl/contacts-history-0_1_0.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-projects/kp-office-projects-server/src/main/resources/ddl/db-changelog.xml" afterPath="$PROJECT_DIR$/kp-office-modules/kp-office-projects/kp-office-projects-impl/src/main/resources/ddl/db-changelog.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-projects/kp-office-projects-server/src/main/resources/jndi.properties" afterPath="$PROJECT_DIR$/kp-office-modules/kp-office-projects/kp-office-projects-impl/src/main/resources/jndi.properties" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-projects/kp-office-projects-server/src/test/resources/beans.xml" afterPath="$PROJECT_DIR$/kp-office-modules/kp-office-projects/kp-office-projects-impl/src/test/resources/beans.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-projects/kp-office-projects-server/src/test/resources/config/db.properties" afterPath="$PROJECT_DIR$/kp-office-modules/kp-office-projects/kp-office-projects-impl/src/test/resources/config/db.properties" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-projects/kp-office-projects-server/src/test/resources/config/default.properties" afterPath="$PROJECT_DIR$/kp-office-modules/kp-office-projects/kp-office-projects-impl/src/test/resources/config/default.properties" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-projects/kp-office-projects-server/src/test/resources/jndi.properties" afterPath="$PROJECT_DIR$/kp-office-modules/kp-office-projects/kp-office-projects-impl/src/test/resources/jndi.properties" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-projects/kp-office-projects-server/src/test/resources/logback-test.xml" afterPath="$PROJECT_DIR$/kp-office-modules/kp-office-projects/kp-office-projects-impl/src/test/resources/logback-test.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-projects/kp-office-projects-server/src/test/resources/shiro.ini" afterPath="$PROJECT_DIR$/kp-office-modules/kp-office-projects/kp-office-projects-impl/src/test/resources/shiro.ini" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/address/Address.java" afterPath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/address/Address.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/address/phone/AreaCode.java" afterPath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/address/phone/AreaCode.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/address/phone/AreaCodeAlreadyExistsException.java" afterPath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/address/phone/AreaCodeAlreadyExistsException.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/address/phone/AreaCodeNotRemovedException.java" afterPath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/address/phone/AreaCodeNotRemovedException.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/AreaCodeService.java" afterPath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/AreaCodeService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/location/City.java" afterPath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/location/City.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/location/CityAlreadyExistsException.java" afterPath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/location/CityAlreadyExistsException.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/location/CityNotRemovedException.java" afterPath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/location/CityNotRemovedException.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/CityService.java" afterPath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/CityService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/contact/Contact.java" afterPath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/contact/Contact.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/contact/ContactAlreadyExistsException.java" afterPath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/contact/ContactAlreadyExistsException.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/contact/ContactNotRemovedException.java" afterPath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/contact/ContactNotRemovedException.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/contact/ContactQuery.java" afterPath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/contact/ContactQuery.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/location/Country.java" afterPath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/location/Country.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/location/CountryAlreadyExistsException.java" afterPath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/location/CountryAlreadyExistsException.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/address/phone/CountryCode.java" afterPath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/address/phone/CountryCode.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/location/CountryNotRemovedException.java" afterPath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/location/CountryNotRemovedException.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/CountryService.java" afterPath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/CountryService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/address/phone/Extension.java" afterPath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/address/phone/Extension.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/address/phone/InvalidAreaCodeException.java" afterPath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/address/phone/InvalidAreaCodeException.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/location/InvalidCityException.java" afterPath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/location/InvalidCityException.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/contact/InvalidContactException.java" afterPath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/contact/InvalidContactException.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/location/InvalidCountryException.java" afterPath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/location/InvalidCountryException.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/address/phone/NoSuchAreaCodeException.java" afterPath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/address/phone/NoSuchAreaCodeException.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/location/NoSuchCityException.java" afterPath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/location/NoSuchCityException.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/contact/NoSuchContactException.java" afterPath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/contact/NoSuchContactException.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/location/NoSuchCountryException.java" afterPath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/location/NoSuchCountryException.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/address/phone/PhoneNumber.java" afterPath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/address/phone/PhoneNumber.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/address/postal/PostCode.java" afterPath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/address/postal/PostCode.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/address/postal/PostalAddress.java" afterPath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/address/postal/PostalAddress.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/address/postal/PostboxAddress.java" afterPath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/address/postal/PostboxAddress.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-projects/kp-office-projects-api/src/main/java/de/kaiserpfalzEdv/office/projects/Project.java" afterPath="$PROJECT_DIR$/kp-office-modules/kp-office-projects/kp-office-projects-api/src/main/java/de/kaiserpfalzEdv/office/projects/Project.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/contact/Registration.java" afterPath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/contact/Registration.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/address/postal/StreetAddress.java" afterPath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/address/postal/StreetAddress.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/address/phone/SubscriberNumber.java" afterPath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/address/phone/SubscriberNumber.java" />
+    <list default="true" id="2832b224-b737-451e-b6c2-5595d59effb5" name="Default" comment="WIP&#10;- Despite a small problem concerning validation-api 1.1.0 (Vaadin does not work with it) everything should compile now.">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-interfaces/kp-office-http/kp-office-webservice/src/main/resources/application.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-interfaces/kp-office-http/kp-office-webservice/src/main/resources/jndi.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-interfaces/kp-office-http/kp-office-webservice/src/main/webapp/web.xml" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/encodings.xml" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kp-office-backend/kp-office-backend-utils/kp-office-backend-utils.iml" afterPath="$PROJECT_DIR$/kp-office-backend/kp-office-backend-utils/kp-office-backend-utils.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kp-office-backend/kp-office-backend.iml" afterPath="$PROJECT_DIR$/kp-office-backend/kp-office-backend.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kp-office-interfaces/kp-office-cli/kp-office-cli-kppasswd/kp-office-cli-kppasswd.iml" afterPath="$PROJECT_DIR$/kp-office-interfaces/kp-office-cli/kp-office-cli-kppasswd/kp-office-cli-kppasswd.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kp-office-interfaces/kp-office-cli/kp-office-cli.iml" afterPath="$PROJECT_DIR$/kp-office-interfaces/kp-office-cli/kp-office-cli.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kp-office-commons/kp-office-commons.iml" afterPath="$PROJECT_DIR$/kp-office-commons/kp-office-commons.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/kp-office-contacts-api.iml" afterPath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/kp-office-contacts-api.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts.iml" afterPath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kp-office-backend/kp-office-core-api/kp-office-core-api.iml" afterPath="$PROJECT_DIR$/kp-office-backend/kp-office-core-api/kp-office-core-api.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kp-office-interfaces/kp-office-interfaces.iml" afterPath="$PROJECT_DIR$/kp-office-interfaces/kp-office-interfaces.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-modules.iml" afterPath="$PROJECT_DIR$/kp-office-modules/kp-office-modules.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-projects/kp-office-projects-api/kp-office-projects-api.iml" afterPath="$PROJECT_DIR$/kp-office-modules/kp-office-projects/kp-office-projects-api/kp-office-projects-api.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-projects/kp-office-projects.iml" afterPath="$PROJECT_DIR$/kp-office-modules/kp-office-projects/kp-office-projects.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kp-office-backend/pom.xml" afterPath="$PROJECT_DIR$/kp-office-backend/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kp-office-backend/kp-office-backend-utils/pom.xml" afterPath="$PROJECT_DIR$/kp-office-backend/kp-office-backend-utils/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kp-office-backend/kp-office-core-api/pom.xml" afterPath="$PROJECT_DIR$/kp-office-backend/kp-office-core-api/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kp-office-commons/pom.xml" afterPath="$PROJECT_DIR$/kp-office-commons/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kp-office-interfaces/pom.xml" afterPath="$PROJECT_DIR$/kp-office-interfaces/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/pom.xml" afterPath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/pom.xml" afterPath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-projects/pom.xml" afterPath="$PROJECT_DIR$/kp-office-modules/kp-office-projects/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-projects/kp-office-projects-api/pom.xml" afterPath="$PROJECT_DIR$/kp-office-modules/kp-office-projects/kp-office-projects-api/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" afterPath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office-ui-modules/kp-office-ui-contacts/kp-office-ui-contacts.iml" afterPath="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office-ui-modules/kp-office-ui-contacts/kp-office-ui-contacts.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office-ui-modules/kp-office-ui-core/kp-office-ui-core.iml" afterPath="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office-ui-modules/kp-office-ui-core/kp-office-ui-core.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office-ui-modules/kp-office-ui-modules.iml" afterPath="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office-ui-modules/kp-office-ui-modules.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office-ui-modules/kp-office-ui-projects/kp-office-ui-projects.iml" afterPath="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office-ui-modules/kp-office-ui-projects/kp-office-ui-projects.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/kp_office_ui_widgetset_GWT.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/kp_office_ui_widgetset_GWT.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="kp-office-root.iws" />
@@ -581,34 +124,13 @@
     <favorites_list name="kp-office-root" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/kp-office-interfaces/kp-office-web/pom.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="3.125" vertical-offset="255" max-vertical-offset="1230">
-              <caret line="12" column="16" selection-start-line="12" selection-start-column="16" selection-end-line="12" selection-end-column="16" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office-ui-widgetset/pom.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.23702031" vertical-offset="390" max-vertical-offset="2370">
-              <caret line="33" column="46" selection-start-line="33" selection-start-column="46" selection-end-line="33" selection-end-column="46" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="simple-services" />
       </map>
     </option>
   </component>
@@ -659,13 +181,13 @@
         <option value="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/AreaCodeService.java" />
         <option value="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/src/main/java/de/kaiserpfalzEdv/office/contacts/CountryService.java" />
         <option value="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/java/de/kaiserpfalzEdv/office/core/KPOEntity.java" />
-        <option value="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/pom.xml" />
         <option value="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-impl/src/main/java/de/kaiserpfalzEdv/office/contacts/location/CityBuilder.java" />
         <option value="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-impl/src/main/java/de/kaiserpfalzEdv/office/contacts/location/DefaultCityNumberGenerator.java" />
         <option value="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-impl/src/test/java/de/kaiserpfalzEdv/office/contacts/location/test/CityDOTest.java" />
         <option value="$PROJECT_DIR$/kp-office-modules/kp-office-projects/kp-office-projects-api/pom.xml" />
         <option value="$PROJECT_DIR$/kp-office-modules/kp-office-projects/kp-office-projects-api/src/main/java/de/kaiserpfalzEdv/office/projects/Project.java" />
         <option value="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office-ui-widgetset/pom.xml" />
+        <option value="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/pom.xml" />
       </list>
     </option>
   </component>
@@ -686,44 +208,6 @@
   </component>
   <component name="MavenProjectNavigator">
     <treeState>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RootNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="KP Office - Web UI - Vaadin Widgetset" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="Dependencies" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$DependenciesNode" />
-        </PATH_ELEMENT>
-      </PATH>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RootNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="KP Office - Web UI - Vaadin Widgetset" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
-        </PATH_ELEMENT>
-      </PATH>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RootNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="KP Office - Web UI - Vaadin Widgetset" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="Lifecycle" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$LifecycleNode" />
-        </PATH_ELEMENT>
-      </PATH>
       <PATH>
         <PATH_ELEMENT>
           <option name="myItemId" value="" />
@@ -760,6 +244,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
@@ -803,11 +288,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="kp-office-modules" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kp-office-projects" />
+              <option name="myItemId" value="kp-office-interfaces" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -821,133 +302,12 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="kp-office-modules" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kp-office-projects" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kp-office-projects-api" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kp-office" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kp-office" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kp-office-modules" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kp-office-projects" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kp-office-projects-api" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kp-office" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kp-office" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kp-office-modules" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kp-office-projects" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kp-office-projects-api" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kp-office" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kp-office" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kp-office-modules" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kp-office-projects" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kp-office-projects-api" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="projects" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kp-office" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kp-office" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kp-office-modules" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kp-office-contacts" />
+              <option name="myItemId" value="kp-office-backend" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1382,7 +742,8 @@
       <workItem from="1419605593339" duration="27401000" />
       <workItem from="1419731251534" duration="65656000" />
       <workItem from="1420092001596" duration="2855000" />
-      <workItem from="1420105335592" duration="32046000" />
+      <workItem from="1420105335592" duration="32760000" />
+      <workItem from="1420187613598" duration="70000" />
     </task>
     <task id="LOCAL-00001" summary="WIP&#10;- Removed some projects.&#10;- Removed XML jpa configuration.&#10;- Added Annotations to jpa entities.">
       <created>1419323988938</created>
@@ -1414,11 +775,17 @@
       <option name="project" value="LOCAL" />
       <updated>1419875409904</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="WIP&#10;- Despite a small problem concerning validation-api 1.1.0 (Vaadin does not work with it) everything should compile now.">
+      <created>1420186994229</created>
+      <option name="number" value="00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1420186994229</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="191021000" />
+    <option name="totallyTimeSpent" value="191805000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -1441,7 +808,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
+    <frame x="0" y="0" width="1680" height="1050" extended-state="6" />
     <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -1457,29 +824,32 @@
       <window_info id="JSF" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2494759" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39937106" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32809225" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32809225" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32914045" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32809225" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32914045" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.4811321" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32914045" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3021978" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2802198" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2802198" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32967034" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32914045" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39937106" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32809225" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4811321" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32914045" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32914045" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
     </layout>
+  </component>
+  <component name="UpdateCopyrightCheckinHandler">
+    <option name="UPDATE_COPYRIGHT" value="true" />
   </component>
   <component name="Vcs.Log.UiProperties">
     <option name="RECENTLY_FILTERED_USER_GROUPS">
@@ -1493,6 +863,7 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
@@ -1500,7 +871,9 @@
     <MESSAGE value="WIP&#10;- Removed some old code (SHIRO security)&#10;- Added user/account/role handling" />
     <MESSAGE value="WIP&#10;- removed more SHIRO&#10;- reorganized interfaces." />
     <MESSAGE value="WIP&#10;- some additions to date/time handling for JPA 2.1 and java.time.*&#10;- some additions to OfficeTicket" />
-    <option name="LAST_COMMIT_MESSAGE" value="WIP&#10;- some additions to date/time handling for JPA 2.1 and java.time.*&#10;- some additions to OfficeTicket" />
+    <MESSAGE value="WIP&#10;- Despite a small problem concerning validation-api 1.1.0 (Vaadin does not work with it) everything should compile now." />
+    <option name="LAST_COMMIT_MESSAGE" value="WIP&#10;- Despite a small problem concerning validation-api 1.1.0 (Vaadin does not work with it) everything should compile now." />
+    <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1518,7 +891,7 @@
         <state vertical-scroll-proportion="0.6745182" vertical-offset="0" max-vertical-offset="467">
           <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
           <folding>
-            <element signature="e#0#856#0" expanded="false" />
+            <element signature="e#0#852#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1527,18 +900,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-14.407408" vertical-offset="826" max-vertical-offset="4530">
           <caret line="144" column="27" selection-start-line="144" selection-start-column="27" selection-end-line="144" selection-end-column="27" />
-          <folding>
-            <element signature="docComment;method#Sort#0;class#Sort#0" expanded="false" />
-            <element signature="method#Sort#1;class#Sort#0" expanded="false" />
-            <element signature="docComment;method#Sort#2;class#Sort#0" expanded="false" />
-            <element signature="e#4046#4047#0" expanded="false" />
-            <element signature="e#4082#4083#0" expanded="false" />
-            <element signature="class#Direction#0;class#Sort#0" expanded="false" />
-            <element signature="class#NullHandling#0;class#Sort#0" expanded="false" />
-            <element signature="class#Order#0;class#Sort#0" expanded="false" />
-            <element signature="e#9130#9131#0" expanded="false" />
-            <element signature="e#9155#9156#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1546,291 +907,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.32397407" vertical-offset="0" max-vertical-offset="926">
           <caret line="100" column="66" selection-start-line="100" selection-start-column="8" selection-end-line="100" selection-end-column="66" />
-          <folding>
-            <element signature="e#2712#2713#0" expanded="false" />
-            <element signature="e#2785#2786#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kp-office-backend/kp-office-core-api/src/main/java/de/kaiserpfalzEdv/commons/paging/Sort.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.45356372" vertical-offset="0" max-vertical-offset="1920">
-          <caret line="28" column="43" selection-start-line="28" selection-start-column="43" selection-end-line="28" selection-end-column="43" />
-          <folding>
-            <element signature="e#0#3335#0" expanded="true" />
-            <element signature="imports" expanded="true" />
-            <element signature="docComment;class#Sort#0" expanded="true" />
-            <element signature="class#Direction#0;class#Sort#0" expanded="true" />
-            <element signature="class#NullHandling#0;class#Sort#0" expanded="true" />
-            <element signature="docComment;field#NATIVE#0;class#NullHandling#0;class#Sort#0" expanded="true" />
-            <element signature="docComment;field#NULLS_FIRST#0;class#NullHandling#0;class#Sort#0" expanded="true" />
-            <element signature="docComment;field#NULLS_LAST#0;class#NullHandling#0;class#Sort#0" expanded="true" />
-            <element signature="docComment;class#Order#0;class#Sort#0" expanded="true" />
-            <element signature="class#Order#0;class#Sort#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kp-office-backend/kp-office-core-api/src/main/java/de/kaiserpfalzEdv/commons/paging/Pageable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.11339093" vertical-offset="0" max-vertical-offset="926">
-          <caret line="25" column="47" selection-start-line="25" selection-start-column="47" selection-end-line="25" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kp-office-backend/kp-office-core-api/src/main/java/de/kaiserpfalzEdv/commons/paging/Page.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.11339093" vertical-offset="0" max-vertical-offset="926">
-          <caret line="29" column="46" selection-start-line="29" selection-start-column="46" selection-end-line="29" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kp-office-backend/kp-office-backend-utils/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.27494457" vertical-offset="667" max-vertical-offset="2040">
-          <caret line="61" column="42" selection-start-line="61" selection-start-column="42" selection-end-line="61" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kp-office-backend/kp-office-backend-utils/src/main/java/de/kaiserpfalzEdv/commons/paging/SortDO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.16198704" vertical-offset="0" max-vertical-offset="1485">
-          <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1168#1169#0" expanded="true" />
-            <element signature="e#1195#1196#0" expanded="true" />
-            <element signature="class#OrderDO#0;class#SortDO#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kp-office-backend/kp-office-backend-utils/src/main/java/de/kaiserpfalzEdv/commons/paging/PageableDO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.24298055" vertical-offset="0" max-vertical-offset="926">
-          <caret line="35" column="4" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
-          <folding>
-            <element signature="e#1058#1059#0" expanded="true" />
-            <element signature="e#1089#1090#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kp-office-backend/kp-office-backend-utils/src/main/java/de/kaiserpfalzEdv/commons/paging/PageDO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5464363" vertical-offset="139" max-vertical-offset="1560">
-          <caret line="43" column="0" selection-start-line="40" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#2897#0" expanded="true" />
-            <element signature="imports" expanded="true" />
-            <element signature="docComment;class#PageDO#0" expanded="true" />
-            <element signature="e#1186#1187#0" expanded="true" />
-            <element signature="e#1218#1219#0" expanded="true" />
-            <element signature="e#1310#1311#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-impl/src/main/java/de/kaiserpfalzEdv/office/contacts/address/phone/CountryCodeDO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.32119915" vertical-offset="0" max-vertical-offset="780">
-          <caret line="32" column="20" selection-start-line="32" selection-start-column="20" selection-end-line="32" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-impl/src/main/java/de/kaiserpfalzEdv/office/contacts/address/phone/AreaCodeDO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.77087796" vertical-offset="0" max-vertical-offset="1080">
-          <caret line="32" column="12" selection-start-line="32" selection-start-column="12" selection-end-line="32" selection-end-column="12" />
-          <folding>
-            <element signature="e#0#2469#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-impl/src/main/java/de/kaiserpfalzEdv/office/contacts/contact/ContactDO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8029979" vertical-offset="0" max-vertical-offset="2205">
-          <caret line="39" column="26" selection-start-line="39" selection-start-column="26" selection-end-line="39" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#5116#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-impl/src/main/java/de/kaiserpfalzEdv/office/contacts/location/CityDO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.738758" vertical-offset="0" max-vertical-offset="1830">
-          <caret line="38" column="44" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#4423#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-impl/src/main/java/de/kaiserpfalzEdv/office/contacts/address/postal/PostCodeDO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.61027837" vertical-offset="60" max-vertical-offset="1065">
-          <caret line="33" column="35" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#2410#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-impl/src/main/java/de/kaiserpfalzEdv/office/contacts/contact/ContactPersonDO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6788009" vertical-offset="373" max-vertical-offset="855">
-          <caret line="56" column="19" selection-start-line="56" selection-start-column="19" selection-end-line="56" selection-end-column="19" />
-          <folding>
-            <element signature="e#0#1991#0" expanded="true" />
-            <element signature="e#1833#1865#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-impl/src/main/java/de/kaiserpfalzEdv/office/contacts/address/postal/PostalAddressDTO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3961456" vertical-offset="175" max-vertical-offset="1455">
-          <caret line="37" column="0" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#3343#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-impl/src/main/java/de/kaiserpfalzEdv/office/contacts/address/postal/PostboxAddressDTO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.83511776" vertical-offset="0" max-vertical-offset="975">
-          <caret line="36" column="40" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#2414#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-impl/src/main/java/de/kaiserpfalzEdv/office/contacts/address/postal/StreetAddressDTO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.42184153" vertical-offset="163" max-vertical-offset="1560">
-          <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#3628#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/java/de/kaiserpfalzEdv/office/tenants/TenantDO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.22678186" vertical-offset="0" max-vertical-offset="926">
-          <caret line="42" column="23" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kp-office-commons/src/main/java/de/kaiserpfalzEdv/office/core/HiddenStateHolder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.08099352" vertical-offset="0" max-vertical-offset="926">
-          <caret line="23" column="28" selection-start-line="23" selection-start-column="28" selection-end-line="23" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kp-office-commons/src/main/java/de/kaiserpfalzEdv/office/core/Entity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.11339093" vertical-offset="0" max-vertical-offset="926">
-          <caret line="25" column="119" selection-start-line="25" selection-start-column="119" selection-end-line="25" selection-end-column="119" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-impl/src/main/java/de/kaiserpfalzEdv/office/contacts/address/postal/PostalAddressBuilder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.29157668" vertical-offset="750" max-vertical-offset="3975">
-          <caret line="87" column="33" selection-start-line="87" selection-start-column="33" selection-end-line="87" selection-end-column="33" />
-          <folding>
-            <element signature="e#0#7152#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kp-office-commons/src/main/java/de/kaiserpfalzEdv/office/core/IdentityHolder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.11339093" vertical-offset="0" max-vertical-offset="926">
-          <caret line="24" column="17" selection-start-line="24" selection-start-column="17" selection-end-line="24" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kp-office-backend/kp-office-core-api/src/main/java/de/kaiserpfalzEdv/office/tenants/UnknownTenant.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4211663" vertical-offset="0" max-vertical-offset="926">
-          <caret line="50" column="24" selection-start-line="50" selection-start-column="24" selection-end-line="50" selection-end-column="24" />
-          <folding>
-            <element signature="e#996#1028#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kp-office-backend/kp-office-core-api/src/main/java/de/kaiserpfalzEdv/office/tenants/NullTenant.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.16198704" vertical-offset="0" max-vertical-offset="926">
-          <caret line="27" column="20" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/java/de/kaiserpfalzEdv/office/tenants/TenantRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.016198704" vertical-offset="0" max-vertical-offset="926">
-          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kp-office-backend/kp-office-core-api/src/main/java/de/kaiserpfalzEdv/office/tenants/Tenant.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.096359745" vertical-offset="0" max-vertical-offset="467">
-          <caret line="17" column="39" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kp-office-backend/kp-office-core-api/src/main/java/de/kaiserpfalzEdv/office/tenants/TenantHolder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6423983" vertical-offset="0" max-vertical-offset="467">
-          <caret line="23" column="17" selection-start-line="23" selection-start-column="17" selection-end-line="23" selection-end-column="17" />
-          <folding>
-            <element signature="e#0#839#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kp-office-backend/kp-office-core-api/src/main/java/de/kaiserpfalzEdv/office/tenants/NoSuchTenantException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="645">
-          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kp-office-backend/kp-office-core-api/src/main/java/de/kaiserpfalzEdv/office/tenants/TenantAlreadyExistsException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="585">
-          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kp-office-backend/kp-office-core-api/src/main/java/de/kaiserpfalzEdv/office/tenants/OnlyInvalidTenantFoundException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.032119915" vertical-offset="0" max-vertical-offset="675">
-          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1839,7 +915,7 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="341" max-vertical-offset="900">
           <caret line="59" column="0" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
           <folding>
-            <element signature="e#0#3244#0" expanded="false" />
+            <element signature="e#0#3240#0" expanded="false" />
             <element signature="imports" expanded="false" />
           </folding>
         </state>
@@ -1850,16 +926,8 @@
         <state vertical-scroll-proportion="0.48608136" vertical-offset="268" max-vertical-offset="735">
           <caret line="58" column="0" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
           <folding>
-            <element signature="e#0#3140#0" expanded="false" />
+            <element signature="e#0#3136#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-impl/src/main/java/de/kaiserpfalzEdv/office/contacts/address/phone/PhoneNumberBuilder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.3768736" vertical-offset="658" max-vertical-offset="2430">
-          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1871,40 +939,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-impl/kp-office-contacts-impl.iml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2085">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/java/de/kaiserpfalzEdv/office/core/KPOEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.38543898" vertical-offset="0" max-vertical-offset="1695">
-          <caret line="42" column="49" selection-start-line="42" selection-start-column="16" selection-end-line="42" selection-end-column="16" />
-          <folding>
-            <element signature="e#3283#3284#0" expanded="true" />
-            <element signature="e#3319#3320#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-impl/src/main/java/de/kaiserpfalzEdv/office/contacts/location/CountryDO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1305">
-          <caret line="31" column="37" selection-start-line="31" selection-start-column="37" selection-end-line="31" selection-end-column="37" />
-          <folding>
-            <element signature="e#0#3141#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-impl/target/development.log">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="467">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1916,43 +954,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/kp-office-commons/src/main/java/de/kaiserpfalzEdv/office/core/DisplayNumberGenerator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2248394" vertical-offset="0" max-vertical-offset="467">
-          <caret line="38" column="18" selection-start-line="38" selection-start-column="18" selection-end-line="38" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-impl/src/main/java/de/kaiserpfalzEdv/office/contacts/location/CityBuilder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.0278373" vertical-offset="0" max-vertical-offset="2325">
-          <caret line="63" column="102" selection-start-line="63" selection-start-column="102" selection-end-line="63" selection-end-column="102" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-impl/src/main/java/de/kaiserpfalzEdv/office/contacts/location/DefaultCityNumberGenerator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="375">
-          <caret line="36" column="38" selection-start-line="36" selection-start-column="38" selection-end-line="36" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-impl/src/test/java/de/kaiserpfalzEdv/office/contacts/location/test/CityDOTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4282655" vertical-offset="670" max-vertical-offset="1605">
-          <caret line="95" column="65" selection-start-line="95" selection-start-column="65" selection-end-line="95" selection-end-column="65" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/kp-office-modules/kp-office-projects/kp-office-projects-api/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33860046" vertical-offset="300" max-vertical-offset="990">
           <caret line="30" column="34" selection-start-line="30" selection-start-column="34" selection-end-line="30" selection-end-column="34" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1969,17 +974,8 @@
         <state vertical-scroll-proportion="0.7751606" vertical-offset="28" max-vertical-offset="495">
           <caret line="29" column="19" selection-start-line="29" selection-start-column="19" selection-end-line="29" selection-end-column="19" />
           <folding>
-            <element signature="e#0#1022#0" expanded="false" />
-            <element signature="docComment;class#Project#0" expanded="false" />
+            <element signature="e#0#1018#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kp-office-interfaces/kp-office-web/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="3.125" vertical-offset="255" max-vertical-offset="1230">
-          <caret line="12" column="16" selection-start-line="12" selection-start-column="16" selection-end-line="12" selection-end-column="16" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1987,14 +983,21 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="1.5688487" vertical-offset="460" max-vertical-offset="5205">
           <caret line="77" column="12" selection-start-line="77" selection-start-column="12" selection-end-line="77" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kp-office-backend/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.34634975" vertical-offset="231" max-vertical-offset="1035">
+          <caret line="29" column="16" selection-start-line="29" selection-start-column="16" selection-end-line="29" selection-end-column="16" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office-ui-widgetset/pom.xml">
+    <entry file="file://$PROJECT_DIR$/kp-office-interfaces/kp-office-web/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.23702031" vertical-offset="390" max-vertical-offset="2370">
-          <caret line="33" column="46" selection-start-line="33" selection-start-column="46" selection-end-line="33" selection-end-column="46" />
+        <state vertical-scroll-proportion="0.15959252" vertical-offset="326" max-vertical-offset="1470">
+          <caret line="28" column="16" selection-start-line="28" selection-start-column="16" selection-end-line="28" selection-end-column="16" />
           <folding />
         </state>
       </provider>

@@ -5,7 +5,6 @@
       <element id="directory" name="VAADIN">
         <element id="directory" name="widgetsets">
           <element id="gwt-compiler-output" facet="kp-office-ui-widgetset/gwt/GWT" />
-          <element id="gwt-compiler-output" facet="kp-office-ui-widgetset/gwt/GWT" />
         </element>
       </element>
     </root>

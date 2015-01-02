@@ -30,10 +30,8 @@
         <module name="kp-office-contacts-core" />
         <module name="kp-office-contacts-impl" />
         <module name="kp-office-contacts-server" />
-        <module name="kp-office-core" />
         <module name="kp-office-core-api" />
         <module name="kp-office-core-impl" />
-        <module name="kp-office-core-server" />
         <module name="kp-office-projects-api" />
         <module name="kp-office-projects-core" />
         <module name="kp-office-projects-impl" />
@@ -50,6 +48,30 @@
         <module name="kp-office-webgui-ui" />
         <module name="kp-office-webgui-widgetset" />
         <module name="kp-office-widgetset" />
+      </profile>
+      <profile default="false" name="Annotation profile for kp-office-core" enabled="true">
+        <sourceOutputDir name="kp-office-core/target/generated-sources/annotations" />
+        <sourceTestOutputDir name="kp-office-core/target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+      </profile>
+      <profile default="false" name="Annotation profile for kp-office-core-api (1)" enabled="true">
+        <sourceOutputDir name="kp-office-core-api/target/generated-sources/annotations" />
+        <sourceTestOutputDir name="kp-office-core-api/target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+      </profile>
+      <profile default="false" name="Annotation profile for kp-office-backend-utils (1)" enabled="true">
+        <sourceOutputDir name="kp-office-backend-utils/target/generated-sources/annotations" />
+        <sourceTestOutputDir name="kp-office-backend-utils/target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+      </profile>
+      <profile default="false" name="Annotation profile for kp-office-core-server" enabled="true">
+        <sourceOutputDir name="kp-office-core-server/target/generated-sources/annotations" />
+        <sourceTestOutputDir name="kp-office-core-server/target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
