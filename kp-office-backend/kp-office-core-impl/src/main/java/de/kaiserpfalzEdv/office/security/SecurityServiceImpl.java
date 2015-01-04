@@ -16,6 +16,7 @@
 
 package de.kaiserpfalzEdv.office.security;
 
+import de.kaiserpfalzEdv.commons.service.BackendService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -34,6 +35,7 @@ import java.util.UUID;
  * @since 0.1.0
  */
 @Named
+@BackendService
 public class SecurityServiceImpl implements SecurityService {
     private static final Logger LOG = LoggerFactory.getLogger(SecurityServiceImpl.class);
 
@@ -110,6 +112,8 @@ public class SecurityServiceImpl implements SecurityService {
         }
 
         if (!token.isValid()) {
+            ticketRepository.delete(ticket.getTicketId());
+            
             throw new InvalidTicketException();
         }
 

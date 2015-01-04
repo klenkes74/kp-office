@@ -16,12 +16,14 @@
 
 package de.kaiserpfalzEdv.office.security;
 
+import de.kaiserpfalzEdv.commons.db.OffsetDateTimeJPAConverter;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
 import javax.persistence.Column;
+import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
@@ -61,9 +63,11 @@ public class SecurityTicket implements Serializable {
     @JoinColumn(name = "ACCOUNT_ID_", nullable = false, updatable = false, unique = true)
     private Account account;
 
+    @Convert(converter = OffsetDateTimeJPAConverter.class)
     @Column(name = "CREATED_", nullable = false, updatable = false)
     private OffsetDateTime created;
 
+    @Convert(converter = OffsetDateTimeJPAConverter.class)
     @Column(name = "VALIDITY_", nullable = false, updatable = false)
     private OffsetDateTime validity;
 
@@ -86,7 +90,11 @@ public class SecurityTicket implements Serializable {
     }
 
     public boolean isValid() {
-        return validity.isAfter(OffsetDateTime.now(TIMEZONE));
+        OffsetDateTime now = OffsetDateTime.now(TIMEZONE);
+        
+        System.out.println(validity.toString() + " is hopefully after " + now.toString());
+        
+        return validity.isAfter(now);
     }
 
     public UUID getId() {
@@ -114,7 +122,7 @@ public class SecurityTicket implements Serializable {
     }
 
     public Set<String> getEntitlements() {
-        return Collections.unmodifiableSet(Collections.EMPTY_SET);
+        return Collections.unmodifiableSet(new HashSet<>());
     }
 
 

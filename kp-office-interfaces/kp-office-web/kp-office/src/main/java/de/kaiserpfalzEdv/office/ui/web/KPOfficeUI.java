@@ -16,12 +16,14 @@
 
 package de.kaiserpfalzEdv.office.ui.web;
 
+import com.vaadin.annotations.Push;
 import com.vaadin.annotations.Theme;
-import com.vaadin.annotations.VaadinServletConfiguration;
+import com.vaadin.annotations.Title;
 import com.vaadin.annotations.Widgetset;
+import com.vaadin.navigator.View;
+import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.server.VaadinRequest;
-import com.vaadin.server.VaadinServlet;
-import com.vaadin.ui.Component;
+import com.vaadin.shared.ui.ui.Transport;
 import com.vaadin.ui.HorizontalSplitPanel;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.UI;
@@ -30,27 +32,37 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.vaadin.spring.UIScope;
 import org.vaadin.spring.VaadinUI;
+import org.vaadin.spring.navigator.VaadinView;
 
+import javax.annotation.PreDestroy;
 import javax.inject.Inject;
-import javax.servlet.annotation.WebServlet;
 
 /**
  *
  */
 @Theme("valo")
+@Title("Kaiserpfalz Office")
 @Widgetset("KPOfficeWidgetset")
-@VaadinUI(path = "/")
-public class KPOfficeUI extends UI {
+@VaadinUI
+@VaadinView(name = Views.HOME, ui=KPOfficeUI.class)
+@Push(transport = Transport.LONG_POLLING)
+public class KPOfficeUI extends UI implements View {
     private static final long serialVersionUID = 1L;
 
     private static final Logger LOG = LoggerFactory.getLogger(KPOfficeUI.class);
 
 
     @Inject
-    private Component mainWindow;
+    private KPOfficeMainWindow mainWindow;
 
 
     public KPOfficeUI() {
+        LOG.trace("Created: {}", this);
+    }
+    
+    @PreDestroy
+    public void close() {
+        LOG.trace("Destroyed: {}", this);
     }
 
 
@@ -61,10 +73,18 @@ public class KPOfficeUI extends UI {
         setContent(mainWindow);
     }
 
-    @WebServlet(urlPatterns = "/*", name = "KPOfficeServlet", asyncSupported = true)
+    @Override
+    public void enter(ViewChangeListener.ViewChangeEvent event) {
+        LOG.debug("Received event: {}", event);
+    }
+
+
+/*
+    @WebServlet(urlPatterns = "/ui", name = "KPOfficeServlet", asyncSupported = true)
     @VaadinServletConfiguration(ui = KPOfficeUI.class, productionMode = false)
     public static class MyUIServlet extends VaadinServlet {
     }
+*/
 }
 
 
@@ -72,7 +92,10 @@ public class KPOfficeUI extends UI {
 
 @UIScope
 class KPOfficeMainWindow extends VerticalLayout {
+    @Inject
     private KPOfficeModuleBar moduleBar;
+    
+    @Inject
     private KPOfficeMain mainView;
 
     private HorizontalSplitPanel content;
@@ -84,6 +107,7 @@ class KPOfficeMainWindow extends VerticalLayout {
     }
 
 
+/*
     public KPOfficeMainWindow(KPOfficeModuleBar moduleBar, KPOfficeMain mainView) {
         this.moduleBar = moduleBar;
         this.mainView = mainView;
@@ -97,6 +121,7 @@ class KPOfficeMainWindow extends VerticalLayout {
 
         content.setCaption("KP Office");
     }
+*/
 }
 
 

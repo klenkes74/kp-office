@@ -19,6 +19,7 @@ package de.kaiserpfalzEdv.commons.paging;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Spliterator;
@@ -29,18 +30,18 @@ import java.util.function.Consumer;
  * @version 0.1.0
  * @since 0.1.0
  */
-public class PageDO<T> implements Page<T> {
+public class PageDO<T,I extends T> implements Page<T> {
     private static final Logger LOG = LoggerFactory.getLogger(PageDO.class);
 
-    private org.springframework.data.domain.Page<T> page;
+    private org.springframework.data.domain.Page<I> page;
 
 
-    public PageDO(org.springframework.data.domain.Page<T> page) {
+    public PageDO(org.springframework.data.domain.Page<I> page) {
         this.page = page;
     }
 
 
-    public org.springframework.data.domain.Page<T> getPage() {
+    public org.springframework.data.domain.Page<I> getPage() {
         return page;
     }
 
@@ -62,7 +63,7 @@ public class PageDO<T> implements Page<T> {
 
     @Override
     public Iterator<T> iterator() {
-        return page.iterator();
+        return getContent().iterator();
     }
 
     @Override
@@ -87,7 +88,7 @@ public class PageDO<T> implements Page<T> {
 
     @Override
     public Spliterator<T> spliterator() {
-        return page.spliterator();
+        return getContent().spliterator();
     }
 
     @Override
@@ -107,7 +108,11 @@ public class PageDO<T> implements Page<T> {
 
     @Override
     public List<T> getContent() {
-        return page.getContent();
+        ArrayList<T> result = new ArrayList<>(page.getSize());
+        
+        page.getContent().forEach(t -> result.add(t));
+        
+        return result;
     }
 
     @Override

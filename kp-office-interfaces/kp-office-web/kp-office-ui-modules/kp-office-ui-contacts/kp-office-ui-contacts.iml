@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" version="4">
+<module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4">
   <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8" inherit-compiler-output="false">
     <output url="file://$MODULE_DIR$/target/classes" />
     <output-test url="file://$MODULE_DIR$/target/test-classes" />
@@ -13,18 +13,18 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: javax.servlet:javax.servlet-api:3.0.1" level="project" />
-    <orderEntry type="library" name="Maven: com.vaadin:vaadin-server:7.4.0.beta1" level="project" />
+    <orderEntry type="library" name="Maven: com.vaadin:vaadin-server:7.3.7" level="project" />
     <orderEntry type="library" name="Maven: com.vaadin:vaadin-sass-compiler:0.9.10" level="project" />
     <orderEntry type="library" name="Maven: org.w3c.css:sac:1.3" level="project" />
     <orderEntry type="library" name="Maven: com.vaadin.external.flute:flute:1.3.0.gg2" level="project" />
-    <orderEntry type="library" name="Maven: com.vaadin:vaadin-shared:7.4.0.beta1" level="project" />
+    <orderEntry type="library" name="Maven: com.vaadin:vaadin-shared:7.3.7" level="project" />
     <orderEntry type="library" name="Maven: com.vaadin.external.streamhtmlparser:streamhtmlparser-jsilver:0.0.10.vaadin1" level="project" />
-    <orderEntry type="library" name="Maven: com.vaadin.external.google:guava:16.0.1.vaadin1" level="project" />
-    <orderEntry type="library" name="Maven: org.jsoup:jsoup:1.8.1" level="project" />
-    <orderEntry type="library" name="Maven: com.vaadin:vaadin-push:7.4.0.beta1" level="project" />
-    <orderEntry type="library" name="Maven: com.vaadin.external.atmosphere:atmosphere-runtime:2.2.4.vaadin2" level="project" />
+    <orderEntry type="library" name="Maven: com.vaadin.external.json:json:0.0.20080701" level="project" />
+    <orderEntry type="library" name="Maven: org.jsoup:jsoup:1.6.3" level="project" />
+    <orderEntry type="library" name="Maven: com.vaadin:vaadin-push:7.3.7" level="project" />
+    <orderEntry type="library" name="Maven: com.vaadin.external.atmosphere:atmosphere-runtime:2.1.2.vaadin6" level="project" />
     <orderEntry type="library" name="Maven: com.vaadin.external.slf4j:vaadin-slf4j-jdk14:1.6.1" level="project" />
-    <orderEntry type="library" name="Maven: com.vaadin:vaadin-themes:7.4.0.beta1" level="project" />
+    <orderEntry type="library" name="Maven: com.vaadin:vaadin-themes:7.3.7" level="project" />
     <orderEntry type="library" name="Maven: org.vaadin.spring:spring-vaadin:0.0.3" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-web:4.1.3.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-aop:4.1.3.RELEASE" level="project" />
@@ -42,7 +42,7 @@
     <orderEntry type="library" name="Maven: org.vaadin.addons:qrcode:2.0.1" level="project" />
     <orderEntry type="library" name="Maven: com.lexaden.components:flowprogressbar:1.7.1" level="project" />
     <orderEntry type="library" name="Maven: com.lexaden.components:breadcrumb:1.7.1" level="project" />
-    <orderEntry type="library" name="Maven: com.vaadin:vaadin-client-compiled:7.4.0.beta1" level="project" />
+    <orderEntry type="library" name="Maven: com.vaadin:vaadin-client-compiled:7.3.7" level="project" />
     <orderEntry type="library" name="Maven: com.lexaden.components:organisationchart:1.7.1" level="project" />
     <orderEntry type="library" name="Maven: com.google.gwt.google-apis:gwt-visualization:1.1.2" level="project" />
     <orderEntry type="library" name="Maven: com.vaadin.addon:vaadin-calendar:2.0.0" level="project" />
@@ -50,7 +50,7 @@
     <orderEntry type="library" name="Maven: org.vaadin.addons:countdownclock:2.0.1" level="project" />
     <orderEntry type="library" name="Maven: com.wcs.vaadin.addons:userinactivity:1.0.0" level="project" />
     <orderEntry type="library" name="Maven: org.hibernate:hibernate-validator:5.1.0.CR1" level="project" />
-    <orderEntry type="library" name="Maven: javax.validation:validation-api:1.1.0.Final" level="project" />
+    <orderEntry type="library" name="Maven: javax.validation:validation-api:1.0.0.GA" level="project" />
     <orderEntry type="library" name="Maven: org.jboss.logging:jboss-logging:3.1.3.GA" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml:classmate:1.0.0" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: junit:junit:4.11" level="project" />

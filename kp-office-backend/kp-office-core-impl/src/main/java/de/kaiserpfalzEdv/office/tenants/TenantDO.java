@@ -38,8 +38,8 @@ import java.util.UUID;
         schema = "TENANTS",
         name = "TENANTS"
 )
-public class TenantDO extends KPOEntity {
-    private static final long serialVersionUID = -8176009820957052173L;
+public class TenantDO extends KPOEntity implements Tenant {
+    private static final long serialVersionUID = -2760375921006048562L;
 
 
     @SuppressWarnings("deprecation")

@@ -16,26 +16,38 @@
 
 package de.kaiserpfalzEdv.office.ui.web;
 
+import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.orm.jpa.EntityScan;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.FilterType;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.stereotype.Repository;
+import org.vaadin.spring.EnableVaadin;
 
 /**
  * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;
  * @version 0.1.0
  * @since 0.1.0
  */
-@Configuration
-@ComponentScan(basePackages="de.kaiserpfalzEdv.office.ui.web")
+@EnableVaadin
 @EnableAutoConfiguration
+@ComponentScan(
+        basePackages = {
+                "de.kaiserpfalzEdv.office",
+                "org.vaadin.spring"
+        },
+        excludeFilters = {@ComponentScan.Filter(value = Repository.class,type = FilterType.ANNOTATION)}
+)
+@EnableJpaRepositories(basePackages = "de.kaiserpfalzEdv.office")
+@EntityScan(basePackages = "de.kaiserpfalzEdv.office")
 public class Application {
     public static void main(String[] args) {
-        new SpringApplicationBuilder()
-                .sources(Application.class)
-                .web(true)
-                .logStartupInfo(true)
-                .showBanner(true)
-                .run(args);
+        SpringApplication.run(Application.class, args);
     }
 }
+
+
+
+
+

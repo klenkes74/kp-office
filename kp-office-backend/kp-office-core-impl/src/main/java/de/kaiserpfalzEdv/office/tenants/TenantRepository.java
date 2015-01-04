@@ -30,7 +30,7 @@ import java.util.UUID;
  * @version 0.1.0
  * @since 0.1.0
  */
-@PreAuthorize(value = "hasAuthority('TENANT_READER')")
+@PreAuthorize("hasAuthority('TENANT_READER')")
 @RepositoryRestResource(
         collectionResourceRel = "tenants",
         itemResourceRel = "tenant",
@@ -39,5 +39,5 @@ public interface TenantRepository extends PagingAndSortingRepository<TenantDO, U
 
     Page<TenantDO> findByDisplayName(@Param("name") String name, Pageable page);
 
-    Page<TenantDO> findByDisplayNumber(@Param("number") String number, Pageable page);
+    TenantDO findByDisplayNumber(@Param("number") String number);
 }
