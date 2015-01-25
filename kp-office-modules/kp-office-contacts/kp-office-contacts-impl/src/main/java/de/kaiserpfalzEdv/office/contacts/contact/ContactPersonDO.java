@@ -17,7 +17,7 @@
 package de.kaiserpfalzEdv.office.contacts.contact;
 
 import de.kaiserpfalzEdv.office.contacts.address.Address;
-import de.kaiserpfalzEdv.office.tenants.TenantDO;
+import de.kaiserpfalzEdv.office.core.tenants.TenantDO;
 
 import javax.validation.constraints.NotNull;
 import java.util.Collection;

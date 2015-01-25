@@ -16,6 +16,9 @@
 
 package de.kaiserpfalzEdv.office.core;
 
+import de.kaiserpfalzEdv.office.commons.DisplayNumberGenerator;
+import de.kaiserpfalzEdv.office.commons.NumberGenerationFailureException;
+
 /**
  * The default display number generator. Will return the UUID of the object as string.
  *
@@ -29,7 +32,7 @@ public class DefaultUuidNumberGenerator implements DisplayNumberGenerator {
      *
      * @param data parameter list. Only the first element is counted and returned as string.
      * @return the UUID of the object.
-     * @throws NumberGenerationFailureException If the number can not be generated.
+     * @throws de.kaiserpfalzEdv.office.commons.NumberGenerationFailureException If the number can not be generated.
      */
     @Override
     public String generate(Object... data) throws NumberGenerationFailureException {

@@ -16,8 +16,8 @@
 
 package de.kaiserpfalzEdv.office.projects;
 
+import de.kaiserpfalzEdv.office.commons.TenantHoldingEntity;
 import de.kaiserpfalzEdv.office.contacts.contact.Contact;
-import de.kaiserpfalzEdv.office.core.TenantHoldingEntity;
 
 import java.util.Set;
 

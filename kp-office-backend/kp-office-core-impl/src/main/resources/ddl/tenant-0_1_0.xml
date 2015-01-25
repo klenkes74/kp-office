@@ -23,7 +23,7 @@
             http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd
         ">
     <changeSet id="schema-create-store-h2" author="klenkes74">
-        <preConditions><dbms type="H2"/></preConditions>
+        <preConditions onFail="WARN"><dbms type="H2"/></preConditions>
         <comment>Creates the base schema</comment>
 
         <sql>CREATE SCHEMA IF NOT EXISTS TENANTS;</sql>

@@ -19,7 +19,7 @@ package de.kaiserpfalzEdv.office.contacts.contact;
 import de.kaiserpfalzEdv.office.contacts.address.Address;
 import de.kaiserpfalzEdv.office.contacts.address.AddressDO;
 import de.kaiserpfalzEdv.office.core.KPOTenantHoldingEntity;
-import de.kaiserpfalzEdv.office.tenants.TenantDO;
+import de.kaiserpfalzEdv.office.core.tenants.TenantDO;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import javax.validation.constraints.NotNull;

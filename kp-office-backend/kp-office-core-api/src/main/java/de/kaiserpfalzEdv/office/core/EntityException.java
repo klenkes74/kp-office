@@ -16,7 +16,8 @@
 
 package de.kaiserpfalzEdv.office.core;
 
-import de.kaiserpfalzEdv.office.OfficeBusinessException;
+import de.kaiserpfalzEdv.office.commons.Entity;
+import de.kaiserpfalzEdv.office.commons.OfficeBusinessException;
 
 import javax.validation.constraints.NotNull;
 

@@ -46,26 +46,26 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Inject
     private ApplicationContext context;
-    
+
     @Inject
     private KPOfficeAuthenticationProvider authenticationProvider;
 
-    
+
     @PostConstruct
     public void init() {
         LOG.trace("Created: {}", this);
     }
-    
+
     @PreDestroy
     public void close() {
         LOG.trace("Destroyed: {}", this);
     }
-    
+
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         LOG.debug("Configuring HTTP Security: {}", http);
-        
+
         // all requests are authenticated
         http.authorizeRequests().anyRequest().authenticated();
 
@@ -81,7 +81,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         LOG.debug("Adding authentication provider: {}", authenticationProvider);
-        
+
         auth.authenticationProvider(authenticationProvider);
     }
 }

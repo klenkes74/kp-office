@@ -84,6 +84,14 @@
         <appender-ref ref="STDOUT"/>
         <appender-ref ref="DEVELOPMENT"/>
     </logger>
+    <logger name="org.vaadin" additivity="false" level="INFO">
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="DEVELOPMENT"/>
+    </logger>
+    <logger name="com.vaadin" additivity="false" level="INFO">
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="DEVELOPMENT"/>
+    </logger>
 
     <root level="INFO">
         <appender-ref ref="STDOUT"/>

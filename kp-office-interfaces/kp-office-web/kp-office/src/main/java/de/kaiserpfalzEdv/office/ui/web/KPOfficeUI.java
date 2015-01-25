@@ -16,47 +16,42 @@
 
 package de.kaiserpfalzEdv.office.ui.web;
 
-import com.vaadin.annotations.Push;
 import com.vaadin.annotations.Theme;
-import com.vaadin.annotations.Title;
 import com.vaadin.annotations.Widgetset;
-import com.vaadin.navigator.View;
-import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.server.VaadinRequest;
-import com.vaadin.shared.ui.ui.Transport;
-import com.vaadin.ui.HorizontalSplitPanel;
-import com.vaadin.ui.Label;
 import com.vaadin.ui.UI;
-import com.vaadin.ui.VerticalLayout;
+import de.kaiserpfalzEdv.office.ui.web.presenter.Action;
+import de.kaiserpfalzEdv.office.ui.web.presenter.MainPresenter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.vaadin.spring.UIScope;
 import org.vaadin.spring.VaadinUI;
-import org.vaadin.spring.navigator.VaadinView;
+import org.vaadin.spring.events.EventBus;
+import org.vaadin.spring.events.EventScope;
 
+import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.inject.Inject;
 
 /**
- *
+ * The main UI of the application
  */
 @Theme("valo")
-@Title("Kaiserpfalz Office")
 @Widgetset("KPOfficeWidgetset")
 @VaadinUI
-@VaadinView(name = Views.HOME, ui=KPOfficeUI.class)
-@Push(transport = Transport.LONG_POLLING)
-public class KPOfficeUI extends UI implements View {
-    private static final long serialVersionUID = 1L;
-
+public class KPOfficeUI extends UI {
+    private static final long serialVersionUID = -8687618756473432618L;
     private static final Logger LOG = LoggerFactory.getLogger(KPOfficeUI.class);
 
 
     @Inject
-    private KPOfficeMainWindow mainWindow;
+    EventBus eventBus;
+
+    @Inject
+    MainPresenter presenter;
 
 
-    public KPOfficeUI() {
+    @PostConstruct
+    public void init() {
         LOG.trace("Created: {}", this);
     }
     
@@ -65,71 +60,10 @@ public class KPOfficeUI extends UI implements View {
         LOG.trace("Destroyed: {}", this);
     }
 
-
+    
     @Override
     protected void init(VaadinRequest vaadinRequest) {
-        LOG.info("Starting for request: {}", vaadinRequest);
-
-        setContent(mainWindow);
-    }
-
-    @Override
-    public void enter(ViewChangeListener.ViewChangeEvent event) {
-        LOG.debug("Received event: {}", event);
-    }
-
-
-/*
-    @WebServlet(urlPatterns = "/ui", name = "KPOfficeServlet", asyncSupported = true)
-    @VaadinServletConfiguration(ui = KPOfficeUI.class, productionMode = false)
-    public static class MyUIServlet extends VaadinServlet {
-    }
-*/
-}
-
-
-
-
-@UIScope
-class KPOfficeMainWindow extends VerticalLayout {
-    @Inject
-    private KPOfficeModuleBar moduleBar;
-    
-    @Inject
-    private KPOfficeMain mainView;
-
-    private HorizontalSplitPanel content;
-
-
-    public KPOfficeMainWindow() {
-        setSizeFull();
-        addComponent(new Label("test"));
-    }
-
-
-/*
-    public KPOfficeMainWindow(KPOfficeModuleBar moduleBar, KPOfficeMain mainView) {
-        this.moduleBar = moduleBar;
-        this.mainView = mainView;
-
-        addComponent(content);
-        setSizeFull();
-
-        content = new HorizontalSplitPanel(moduleBar, mainView);
-        content.setMinSplitPosition(2.0f, Unit.CM);
-        content.setMaxSplitPosition(10.0f, Unit.CM);
-
-        content.setCaption("KP Office");
-    }
-*/
-}
-
-
-@UIScope
-class KPOfficeMain extends VerticalLayout {
-    public KPOfficeMain() {
-        setCaption("Main Window");
-
-        setSizeFull();
+        eventBus.publish(EventScope.SESSION, this, Action.START);
+        setContent(presenter.getView());
     }
 }

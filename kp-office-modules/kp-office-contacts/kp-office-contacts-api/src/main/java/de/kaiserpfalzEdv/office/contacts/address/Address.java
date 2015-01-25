@@ -16,7 +16,7 @@
 
 package de.kaiserpfalzEdv.office.contacts.address;
 
-import de.kaiserpfalzEdv.office.core.TenantHoldingEntity;
+import de.kaiserpfalzEdv.office.commons.TenantHoldingEntity;
 
 /**
  * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;

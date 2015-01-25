@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  ~ Copyright (c) 2014 Kaiserpfalz EDV-Service, Roland T. Lichti
+  ~ Copyright 2015 Kaiserpfalz EDV-Service, Roland T. Lichti
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
   ~ you may not use this file except in compliance with the License.
@@ -23,17 +23,17 @@
 
     <import resource="beans.xml"/>
 
-    <bean id="configuredSubjects" class="de.kaiserpfalzEdv.office.security.test.MockSecurityClient">
+    <bean id="configuredSubjects" class="de.kaiserpfalzEdv.office.core.security.test.MockSecurityClient">
         <property name="configuredSubjects">
-            <util:set value-type="de.kaiserpfalzEdv.office.security.OfficeSubjectDTO">
+            <util:set value-type="de.kaiserpfalzEdv.office.core.security.OfficeSubjectDTO">
                 <bean parent="user-klenkes"/>
             </util:set>
         </property>
     </bean>
-    <bean id="user-klenkes" class="de.kaiserpfalzEdv.office.security.OfficeSubjectDTO">
+    <bean id="user-klenkes" class="de.kaiserpfalzEdv.office.core.security.OfficeSubjectDTO">
         <constructor-arg index="0">
-            <util:set value-type="de.kaiserpfalzEdv.office.security.OfficePrincipal">
-                <bean class="de.kaiserpfalzEdv.office.security.OfficePrincipalDTO">
+            <util:set value-type="de.kaiserpfalzEdv.office.core.security.OfficePrincipal">
+                <bean class="de.kaiserpfalzEdv.office.core.security.OfficePrincipalDTO">
                     <constructor-arg index="0" value="klenkes74"/>
                     <constructor-arg index="1" value="test"/>
                 </bean>

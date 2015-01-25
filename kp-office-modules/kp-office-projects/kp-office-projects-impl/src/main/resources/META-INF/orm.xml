@@ -28,7 +28,7 @@
         </persistence-unit-defaults>
     </persistence-unit-metadata>
 
-    <package>de.kaiserpfalzEdv.office.tenants.store</package>
+    <package>de.kaiserpfalzEdv.office.core.tenants.store</package>
 
     <mapped-superclass class="de.kaiserpfalzEdv.office.commands.OfficeCommand" access="FIELD">
         <description>Generic tenant command.</description>
@@ -48,7 +48,7 @@
         </attributes>
     </mapped-superclass>
 
-    <entity class="de.kaiserpfalzEdv.office.tenants.commands.TenantStoreCommand" access="FIELD">
+    <entity class="de.kaiserpfalzEdv.office.core.tenants.commands.TenantStoreCommand" access="FIELD">
         <table name="TENANTS"/>
         <inheritance strategy="SINGLE_TABLE"/>
         <discriminator-value>BASE</discriminator-value>
@@ -62,7 +62,7 @@
     </entity>
 
 
-    <entity class="de.kaiserpfalzEdv.office.tenants.commands.CreateTenantCommand" access="FIELD">
+    <entity class="de.kaiserpfalzEdv.office.core.tenants.commands.CreateTenantCommand" access="FIELD">
         <discriminator-value>CREATE</discriminator-value>
 
         <attributes>
@@ -76,7 +76,7 @@
     </entity>
 
 
-    <entity class="de.kaiserpfalzEdv.office.tenants.commands.RenumberTenantCommand" access="FIELD">
+    <entity class="de.kaiserpfalzEdv.office.core.tenants.commands.RenumberTenantCommand" access="FIELD">
         <discriminator-value>RENUMBER</discriminator-value>
 
         <attributes>
@@ -87,7 +87,7 @@
     </entity>
 
 
-    <entity class="de.kaiserpfalzEdv.office.tenants.commands.RenameTenantCommand" access="FIELD">
+    <entity class="de.kaiserpfalzEdv.office.core.tenants.commands.RenameTenantCommand" access="FIELD">
         <discriminator-value>RENAME</discriminator-value>
 
         <attributes>
@@ -97,7 +97,7 @@
         </attributes>
     </entity>
 
-    <entity class="de.kaiserpfalzEdv.office.tenants.commands.DeleteTenantCommand" access="FIELD">
+    <entity class="de.kaiserpfalzEdv.office.core.tenants.commands.DeleteTenantCommand" access="FIELD">
         <discriminator-value>DELETE</discriminator-value>
     </entity>
 </entity-mappings>

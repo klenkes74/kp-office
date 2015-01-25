@@ -16,9 +16,9 @@
 
 package de.kaiserpfalzEdv.office.contacts.address.phone;
 
+import de.kaiserpfalzEdv.office.commons.DisplayNameHolder;
+import de.kaiserpfalzEdv.office.commons.DisplayNumberHolder;
 import de.kaiserpfalzEdv.office.contacts.location.Country;
-import de.kaiserpfalzEdv.office.core.DisplayNameHolder;
-import de.kaiserpfalzEdv.office.core.DisplayNumberHolder;
 
 import java.io.Serializable;
 

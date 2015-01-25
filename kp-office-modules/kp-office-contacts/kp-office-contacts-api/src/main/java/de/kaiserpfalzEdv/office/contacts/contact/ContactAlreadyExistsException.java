@@ -16,7 +16,7 @@
 
 package de.kaiserpfalzEdv.office.contacts.contact;
 
-import de.kaiserpfalzEdv.office.core.Entity;
+import de.kaiserpfalzEdv.office.commons.Entity;
 import de.kaiserpfalzEdv.office.core.EntityAlreadyExistsException;
 
 /**

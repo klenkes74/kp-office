@@ -23,6 +23,6 @@
             http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd
         ">
 
-    <include file="tenant-0_1_0.xml" relativeToChangelogFile="true"/>
-    <include file="security-0_1_0.xml" relativeToChangelogFile="true"/>
+    <!--<include file="initialize-database.xml" relativeToChangelogFile="true"/>-->
+    <include file="version-0_1_0.xml" relativeToChangelogFile="true"/>
 </databaseChangeLog>

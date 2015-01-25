@@ -17,12 +17,12 @@
 package de.kaiserpfalzEdv.office.contacts.location;
 
 import de.kaiserpfalzEdv.commons.BuilderValidationException;
+import de.kaiserpfalzEdv.office.commons.DisplayNumberGenerator;
+import de.kaiserpfalzEdv.office.commons.NumberGenerationFailureException;
 import de.kaiserpfalzEdv.office.contacts.address.phone.AreaCode;
 import de.kaiserpfalzEdv.office.contacts.address.phone.AreaCodeDO;
 import de.kaiserpfalzEdv.office.contacts.address.postal.PostCode;
 import de.kaiserpfalzEdv.office.contacts.address.postal.PostCodeDO;
-import de.kaiserpfalzEdv.office.core.DisplayNumberGenerator;
-import de.kaiserpfalzEdv.office.core.NumberGenerationFailureException;
 import org.apache.commons.lang3.builder.Builder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

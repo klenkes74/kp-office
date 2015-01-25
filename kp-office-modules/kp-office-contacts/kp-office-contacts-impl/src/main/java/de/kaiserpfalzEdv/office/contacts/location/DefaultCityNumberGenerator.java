@@ -16,8 +16,8 @@
 
 package de.kaiserpfalzEdv.office.contacts.location;
 
-import de.kaiserpfalzEdv.office.core.DisplayNumberGenerator;
-import de.kaiserpfalzEdv.office.core.NumberGenerationFailureException;
+import de.kaiserpfalzEdv.office.commons.DisplayNumberGenerator;
+import de.kaiserpfalzEdv.office.commons.NumberGenerationFailureException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

@@ -16,10 +16,11 @@
 
 package de.kaiserpfalzEdv.office.ui.web.security;
 
-import de.kaiserpfalzEdv.office.security.OfficeLoginTicket;
+import de.kaiserpfalzEdv.office.core.security.OfficeLoginTicket;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -116,7 +117,7 @@ public class KPOfficeUserDetail implements UserDetails {
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this)
+        return new ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE)
                 .append("ticket", ticket.getTicketId())
                 .append("account", ticket.getAccountName())
                 .toString();

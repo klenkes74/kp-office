@@ -24,6 +24,8 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
 import javax.validation.constraints.NotNull;
 import java.util.UUID;
 
@@ -31,6 +33,8 @@ import java.util.UUID;
  * @author klenkes
  * @since 2014Q
  */
+@Entity
+@DiscriminatorValue("STREET")
 public class StreetAddressDTO extends PostalAddressDTO implements StreetAddress {
     private static final long serialVersionUID = -4265964191255501773L;
 

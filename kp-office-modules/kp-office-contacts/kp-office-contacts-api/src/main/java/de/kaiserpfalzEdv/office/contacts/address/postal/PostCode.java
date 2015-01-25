@@ -16,8 +16,8 @@
 
 package de.kaiserpfalzEdv.office.contacts.address.postal;
 
+import de.kaiserpfalzEdv.office.commons.Entity;
 import de.kaiserpfalzEdv.office.contacts.location.Country;
-import de.kaiserpfalzEdv.office.core.Entity;
 
 /**
  * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;

@@ -19,8 +19,8 @@ package de.kaiserpfalzEdv.office.contacts.address.phone;
 import de.kaiserpfalzEdv.commons.BuilderValidationException;
 import de.kaiserpfalzEdv.office.contacts.address.AddressType;
 import de.kaiserpfalzEdv.office.contacts.address.AddressUsage;
-import de.kaiserpfalzEdv.office.tenants.NullTenant;
-import de.kaiserpfalzEdv.office.tenants.TenantDO;
+import de.kaiserpfalzEdv.office.core.tenants.NullTenant;
+import de.kaiserpfalzEdv.office.core.tenants.TenantDO;
 import org.apache.commons.lang3.builder.Builder;
 
 import javax.validation.constraints.NotNull;

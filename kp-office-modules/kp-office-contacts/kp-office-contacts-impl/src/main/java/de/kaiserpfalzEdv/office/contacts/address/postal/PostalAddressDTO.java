@@ -25,6 +25,9 @@ import de.kaiserpfalzEdv.office.core.KPOTenantHoldingEntity;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.MappedSuperclass;
 import javax.validation.constraints.NotNull;
 import java.util.UUID;
 
@@ -32,6 +35,8 @@ import java.util.UUID;
  * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;
  * @since 0.1.0
  */
+@MappedSuperclass
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public abstract class PostalAddressDTO extends KPOTenantHoldingEntity implements PostalAddress {
     private static final long serialVersionUID = 1562893753666023063L;
 

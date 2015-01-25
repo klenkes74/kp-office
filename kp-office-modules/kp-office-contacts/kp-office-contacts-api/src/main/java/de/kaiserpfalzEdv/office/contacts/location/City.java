@@ -16,9 +16,9 @@
 
 package de.kaiserpfalzEdv.office.contacts.location;
 
+import de.kaiserpfalzEdv.office.commons.Entity;
 import de.kaiserpfalzEdv.office.contacts.address.phone.AreaCode;
 import de.kaiserpfalzEdv.office.contacts.address.postal.PostCode;
-import de.kaiserpfalzEdv.office.core.Entity;
 
 import java.util.Set;
 

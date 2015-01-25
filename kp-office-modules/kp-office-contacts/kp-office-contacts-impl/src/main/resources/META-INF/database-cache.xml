@@ -18,7 +18,7 @@
 
 <ehcache>
     <cache
-            name="de.kaiserpfalzEdv.office.tenants.query"
+            name="de.kaiserpfalzEdv.office.core.tenants.query"
             maxElementsInMemory="10000"
             eternal="false"
             timeToIdleSeconds="300"

@@ -18,7 +18,7 @@
 
 <ehcache>
     <cache
-            name="de.kaiserpfalzEdv.office.tenants.store"
+            name="de.kaiserpfalzEdv.office.core.tenants.store"
             maxElementsInMemory="10000"
             eternal="false"
             timeToIdleSeconds="300"
@@ -27,7 +27,7 @@
     </cache>
 
     <cache
-            name="de.kaiserpfalzEdv.office.security.history"
+            name="de.kaiserpfalzEdv.office.core.security.history"
             maxElementsInMemory="10000"
             eternal="false"
             timeToIdleSeconds="300"
@@ -36,7 +36,7 @@
     </cache>
 
     <cache
-            name="de.kaiserpfalzEdv.office.tenants.query"
+            name="de.kaiserpfalzEdv.office.core.tenants.query"
             maxElementsInMemory="10000"
             eternal="false"
             timeToIdleSeconds="300"
@@ -45,7 +45,7 @@
     </cache>
 
     <cache
-            name="de.kaiserpfalzEdv.office.security.query"
+            name="de.kaiserpfalzEdv.office.core.security.query"
             maxElementsInMemory="10000"
             eternal="false"
             timeToIdleSeconds="300"

@@ -16,6 +16,7 @@
 
 package de.kaiserpfalzEdv.office.core;
 
+import de.kaiserpfalzEdv.office.commons.DisplayNameHolder;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;

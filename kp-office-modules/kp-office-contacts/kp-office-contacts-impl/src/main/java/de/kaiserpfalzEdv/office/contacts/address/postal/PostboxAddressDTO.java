@@ -22,6 +22,8 @@ import de.kaiserpfalzEdv.office.contacts.location.City;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
 import javax.validation.constraints.NotNull;
 import java.util.UUID;
 
@@ -29,6 +31,8 @@ import java.util.UUID;
  * @author klenkes
  * @since 2014Q
  */
+@Entity
+@DiscriminatorValue("POSTBOX")
 public class PostboxAddressDTO extends PostalAddressDTO implements PostboxAddress {
     private static final long serialVersionUID = 2370903484590437001L;
 

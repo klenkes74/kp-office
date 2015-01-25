@@ -16,7 +16,7 @@
 
 package de.kaiserpfalzEdv.office.contacts.address.phone;
 
-import de.kaiserpfalzEdv.office.core.DisplayNumberHolder;
+import de.kaiserpfalzEdv.office.commons.DisplayNumberHolder;
 
 /**
  * @author klenkes

@@ -16,8 +16,8 @@
 
 package de.kaiserpfalzEdv.office.contacts.location;
 
+import de.kaiserpfalzEdv.office.commons.Entity;
 import de.kaiserpfalzEdv.office.contacts.address.phone.CountryCode;
-import de.kaiserpfalzEdv.office.core.Entity;
 
 /**
  * @author klenkes

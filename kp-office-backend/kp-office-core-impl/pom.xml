@@ -34,7 +34,10 @@
         <project.root>../..</project.root>
 
         <database.changelog>${project.basedir}/target/test-classes/ddl/db-changelog-test.xml</database.changelog>
-
+        <jdbc.driver>com.mysql.jdbc.Driver</jdbc.driver>
+        <jdbc.url>jdbc:mysql://192.168.59.103:49162/${jdbc.user}?profileSQL=true&amp;connectTimeout=6000&amp;socketTimeout=4000&amp;autoReconnect=true</jdbc.url>
+        <jdbc.user>kpoffice</jdbc.user>
+        <jdbc.password>kptest</jdbc.password>
     </properties>
 
     <dependencyManagement>
@@ -93,13 +96,13 @@
                     <trace>true</trace>
                 </configuration>
             </plugin>
-
+            
             <plugin>
                 <groupId>org.liquibase</groupId>
                 <artifactId>liquibase-maven-plugin</artifactId>
             </plugin>
-
-
+            
+            
             <plugin>
                 <groupId>com.mysema.maven</groupId>
                 <artifactId>maven-apt-plugin</artifactId>
@@ -181,10 +184,10 @@
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-rest-core</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.data</groupId>
-            <artifactId>spring-data-rest-webmvc</artifactId>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.springframework.data</groupId>-->
+            <!--<artifactId>spring-data-rest-webmvc</artifactId>-->
+        <!--</dependency>-->
         <dependency>
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-jpa</artifactId>

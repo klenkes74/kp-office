@@ -33,9 +33,9 @@
                            http://www.springframework.org/schema/rabbit http://www.springframework.org/schema/rabbit/spring-rabbit.xsd
        ">
 
-    <jpa:repositories base-package="de.kaiserpfalzEdv.office.tenants.store"/>
+    <jpa:repositories base-package="de.kaiserpfalzEdv.office.core.tenants.store"/>
     <context:component-scan
-            base-package="de.kaiserpfalzEdv.office.tenants.store,de.kaiserpfalzEdv.office.tenants.store">
+            base-package="de.kaiserpfalzEdv.office.core.tenants.store,de.kaiserpfalzEdv.office.core.tenants.store">
         <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Repository"/>
     </context:component-scan>
 

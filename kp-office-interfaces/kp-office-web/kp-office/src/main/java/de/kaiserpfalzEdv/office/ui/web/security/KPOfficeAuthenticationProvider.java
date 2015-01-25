@@ -17,12 +17,12 @@
 package de.kaiserpfalzEdv.office.ui.web.security;
 
 import de.kaiserpfalzEdv.commons.service.FrontendService;
-import de.kaiserpfalzEdv.office.security.InvalidLoginException;
-import de.kaiserpfalzEdv.office.security.InvalidTicketException;
-import de.kaiserpfalzEdv.office.security.NoSuchAccountException;
-import de.kaiserpfalzEdv.office.security.NoSuchTicketException;
-import de.kaiserpfalzEdv.office.security.OfficeLoginTicket;
-import de.kaiserpfalzEdv.office.security.SecurityService;
+import de.kaiserpfalzEdv.office.core.security.InvalidLoginException;
+import de.kaiserpfalzEdv.office.core.security.InvalidTicketException;
+import de.kaiserpfalzEdv.office.core.security.NoSuchAccountException;
+import de.kaiserpfalzEdv.office.core.security.NoSuchTicketException;
+import de.kaiserpfalzEdv.office.core.security.OfficeLoginTicket;
+import de.kaiserpfalzEdv.office.core.security.SecurityService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -32,6 +32,7 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
+import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -45,14 +46,15 @@ import javax.inject.Named;
 public class KPOfficeAuthenticationProvider extends AbstractUserDetailsAuthenticationProvider {
     private static final Logger LOG = LoggerFactory.getLogger(KPOfficeAuthenticationProvider.class);
     
-    
     private SecurityService service;
-    
     
     @Inject
     public KPOfficeAuthenticationProvider(@FrontendService SecurityService service) {
         this.service = service;
-        
+    }
+    
+    @PostConstruct
+    public void init() {
         LOG.trace("Created: {}", this);
     }
     
@@ -62,7 +64,7 @@ public class KPOfficeAuthenticationProvider extends AbstractUserDetailsAuthentic
         
     }
     
-
+    
     @Override
     protected void additionalAuthenticationChecks(UserDetails userDetails, UsernamePasswordAuthenticationToken authentication) throws AuthenticationException {
         if (KPOfficeUserDetail.class.isAssignableFrom(userDetails.getClass())) {

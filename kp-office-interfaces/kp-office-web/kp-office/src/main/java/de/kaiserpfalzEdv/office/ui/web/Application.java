@@ -16,14 +16,21 @@
 
 package de.kaiserpfalzEdv.office.ui.web;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.boot.orm.jpa.EntityScan;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.FilterType;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.context.request.RequestContextListener;
 import org.vaadin.spring.EnableVaadin;
+
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 
 /**
  * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;
@@ -33,21 +40,38 @@ import org.vaadin.spring.EnableVaadin;
 @EnableVaadin
 @EnableAutoConfiguration
 @ComponentScan(
-        basePackages = {
-                "de.kaiserpfalzEdv.office",
-                "org.vaadin.spring"
-        },
-        excludeFilters = {@ComponentScan.Filter(value = Repository.class,type = FilterType.ANNOTATION)}
+        value = {"de.kaiserpfalzEdv.office"},
+        excludeFilters = {@ComponentScan.Filter(type = FilterType.ANNOTATION, value = Repository.class)}
 )
-@EnableJpaRepositories(basePackages = "de.kaiserpfalzEdv.office")
-@EntityScan(basePackages = "de.kaiserpfalzEdv.office")
+@EnableJpaRepositories(
+        value = {"de.kaiserpfalzEdv.office"},
+        includeFilters = {@ComponentScan.Filter(type = FilterType.ANNOTATION, value = Repository.class)}
+)
 public class Application {
+    private static Logger LOG = LoggerFactory.getLogger(Application.class);
+    
+
+    @PostConstruct
+    public void init() {
+        LOG.trace("Created: {}", this);
+    }
+    
+    @PreDestroy
+    public void close() {
+        LOG.trace("Destroyed: {}", this);
+    }
+    
+    
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
     }
+
+
+    @Bean
+    @ConditionalOnMissingBean(RequestContextListener.class)
+    public RequestContextListener requestContextListener() {
+        LOG.debug("Loading RequestContextListener.");
+        
+        return new RequestContextListener();
+    }
 }
-
-
-
-
-

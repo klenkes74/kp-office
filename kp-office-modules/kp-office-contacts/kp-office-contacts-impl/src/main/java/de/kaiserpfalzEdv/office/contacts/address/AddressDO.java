@@ -18,6 +18,7 @@ package de.kaiserpfalzEdv.office.contacts.address;
 
 import de.kaiserpfalzEdv.office.core.KPOTenantHoldingEntity;
 
+import javax.persistence.MappedSuperclass;
 import javax.validation.constraints.NotNull;
 import java.util.UUID;
 
@@ -25,6 +26,7 @@ import java.util.UUID;
  * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;
  * @since 0.1.0
  */
+@MappedSuperclass
 public abstract class AddressDO extends KPOTenantHoldingEntity implements Address {
     private static final long serialVersionUID = 6069535185329712041L;
 

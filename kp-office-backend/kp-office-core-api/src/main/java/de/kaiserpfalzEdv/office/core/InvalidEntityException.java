@@ -16,6 +16,8 @@
 
 package de.kaiserpfalzEdv.office.core;
 
+import de.kaiserpfalzEdv.office.commons.Entity;
+
 import javax.validation.constraints.NotNull;
 
 /**

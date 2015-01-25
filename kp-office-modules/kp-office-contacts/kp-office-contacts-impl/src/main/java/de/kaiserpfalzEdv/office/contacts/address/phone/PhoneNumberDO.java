@@ -20,6 +20,9 @@ import de.kaiserpfalzEdv.office.contacts.address.AddressDO;
 import de.kaiserpfalzEdv.office.contacts.address.AddressType;
 import de.kaiserpfalzEdv.office.contacts.address.AddressUsage;
 
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import java.util.UUID;
 
@@ -27,12 +30,16 @@ import java.util.UUID;
  * @author klenkes
  * @since 2014Q
  */
+@Entity
+@Table(name = "PHONES", schema = "CONTACTS")
+@DiscriminatorValue("PHONE")
 public class PhoneNumberDO extends AddressDO implements PhoneNumber {
     private static final long serialVersionUID = 3033773346196798937L;
 
     private AreaCodeDO areaCode;
-    private NumberPartDTO subscriberNumber;
-    private NumberPartDTO extension;
+
+    private NumberPartDO subscriberNumber;
+    private NumberPartDO extension;
 
     private PhoneNumberType kind;
 
@@ -83,7 +90,7 @@ public class PhoneNumberDO extends AddressDO implements PhoneNumber {
     }
 
     public void setSubscriberNumber(@NotNull final SubscriberNumber subscriberNumber) {
-        this.subscriberNumber = (NumberPartDTO) subscriberNumber;
+        this.subscriberNumber = (NumberPartDO) subscriberNumber;
 
         updateDisplayNumber();
     }
@@ -94,7 +101,7 @@ public class PhoneNumberDO extends AddressDO implements PhoneNumber {
     }
 
     public void setExtension(@NotNull final Extension extension) {
-        this.extension = (NumberPartDTO) extension;
+        this.extension = (NumberPartDO) extension;
 
         updateDisplayNumber();
     }

@@ -16,8 +16,8 @@
 
 package de.kaiserpfalzEdv.office.contacts.address.phone;
 
+import de.kaiserpfalzEdv.office.commons.DisplayNumberHolder;
 import de.kaiserpfalzEdv.office.contacts.address.Address;
-import de.kaiserpfalzEdv.office.core.DisplayNumberHolder;
 
 /**
  * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;

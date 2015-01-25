@@ -16,6 +16,8 @@
 
 package de.kaiserpfalzEdv.office.core;
 
+import de.kaiserpfalzEdv.office.commons.Entity;
+
 /**
  * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;
  * @since 0.1.0

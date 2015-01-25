@@ -31,14 +31,11 @@
                            http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd
        ">
 
-    <context:component-scan
-            base-package="de.kaiserpfalzEdv.office.tenants,
-                          de.kaiserpfalzEdv.office.security">
+    <context:component-scan base-package="de.kaiserpfalzEdv.office.core">
         <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Repository"/>
     </context:component-scan>
 
-    <jpa:repositories base-package="de.kaiserpfalzEdv.office.tenants,
-                                    de.kaiserpfalzEdv.office.security"/>
+    <jpa:repositories base-package="de.kaiserpfalzEdv.office.core"/>
 
 
     <context:annotation-config/>
@@ -105,7 +102,7 @@
     </bean>
 
 
-    <bean id="configuration" factory-bean="configGenerator" factory-method="getProperties" lazy-init="true"/>
+    <bean id="configuration" factory-bean="configGenerator" factory-method="getProperties" lazy-init="false"/>
     <bean id="configGenerator" class="de.kaiserpfalzEdv.commons.jndi.MapProperties" init-method="init"
           destroy-method="close">
         <constructor-arg>
@@ -152,6 +149,6 @@
     </bean>
 
 
-    <jee:jndi-lookup id="dataSource" jndi-name="db/kpoffice" lazy-init="true" expected-type="javax.sql.DataSource"
+    <jee:jndi-lookup id="dataSource" jndi-name="db/kpocore" lazy-init="true" expected-type="javax.sql.DataSource"
                      cache="true"/>
 </beans>
