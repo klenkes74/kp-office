@@ -39,6 +39,10 @@
     <orderEntry type="module" module-name="kp-office-contacts-api" />
     <orderEntry type="library" name="Maven: com.googlecode.libphonenumber:libphonenumber:6.3" level="project" />
     <orderEntry type="module" module-name="kp-office-core-impl" />
+    <orderEntry type="library" name="Maven: de.kaiserpfalz-edv.commons:kp-commons-jee:2015Q1" level="project" />
+    <orderEntry type="library" name="Maven: de.kaiserpfalz-edv.commons:kp-commons-core:2015Q1" level="project" />
+    <orderEntry type="library" name="Maven: de.kaiserpfalz-edv.commons:kp-commons-api:2015Q1" level="project" />
+    <orderEntry type="library" name="Maven: javax.validation:validation-api:1.0.0.GA" level="project" />
     <orderEntry type="library" name="Maven: com.googlecode.log4jdbc:log4jdbc:1.2" level="project" />
     <orderEntry type="library" name="Maven: mysql:mysql-connector-java:5.1.17" level="project" />
     <orderEntry type="library" name="Maven: postgresql:postgresql:9.0-801.jdbc4" level="project" />
