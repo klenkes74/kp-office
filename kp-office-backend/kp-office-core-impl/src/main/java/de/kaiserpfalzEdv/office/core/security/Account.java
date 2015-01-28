@@ -52,7 +52,6 @@ import java.util.UUID;
  */
 @Entity
 @Table(
-        catalog = "SECURITY",
         name = "ACCOUNTS",
         indexes = {
                 @Index(name = "TENANTS_USERS_UK", columnList = "TENANT_,DISPLAY_NUMBER_", unique = true),

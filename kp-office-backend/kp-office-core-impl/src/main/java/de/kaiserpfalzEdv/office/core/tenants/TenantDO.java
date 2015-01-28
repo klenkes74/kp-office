@@ -35,7 +35,6 @@ import java.util.UUID;
  */
 @Entity
 @Table(
-        catalog = "TENANTS",
         name = "TENANTS"
 )
 public class TenantDO extends KPOEntity implements Tenant {

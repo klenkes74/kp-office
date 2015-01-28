@@ -33,7 +33,6 @@ import java.util.UUID;
  */
 @Entity
 @Table(
-        catalog = "SECURITY",
         name = "ROLES",
         indexes = {
                 @Index(name = "ROLES_TENANTS_UK", columnList="TENANT_,DISPLAY_NUMBER_")
