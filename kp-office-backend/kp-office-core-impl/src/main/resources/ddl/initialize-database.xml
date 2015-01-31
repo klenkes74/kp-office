@@ -27,9 +27,9 @@
         <comment>Creates the initial base.</comment>
 
         <sql>
-            CREATE USER '${h2.user}' IDENTIFIED BY '${h2.password}';
-            CREATE SCHEMA IF NOT EXISTS ${h2.user} CHARACTER SET=utf8 COLLATE=utf8_general_ci;
-            GRANT ALL ON ${h2.user}.* TO '${h2.user}';
+            CREATE USER '${jdbc.user}' IDENTIFIED BY '${jdbc.password}';
+            CREATE SCHEMA IF NOT EXISTS ${jdbc.user} CHARACTER SET=utf8 COLLATE=utf8_general_ci;
+            GRANT ALL ON ${jdbc.user}.* TO '${jdbc.user}';
         </sql>
     </changeSet>
 </databaseChangeLog>

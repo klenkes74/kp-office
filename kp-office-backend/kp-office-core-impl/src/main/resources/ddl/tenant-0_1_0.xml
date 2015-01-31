@@ -22,18 +22,10 @@
         xsi:schemaLocation="
             http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd
         ">
-    <changeSet id="schema-create-store-h2" author="klenkes74">
-        <preConditions onFail="WARN"><dbms type="H2"/></preConditions>
-        <comment>Creates the base schema</comment>
-
-        <sql>CREATE SCHEMA IF NOT EXISTS TENANTS;</sql>
-    </changeSet>
-
-
     <changeSet id="kpo-tenant-store-inititial" author="klenkes74">
         <comment>The initial tenant table.</comment>
 
-        <createTable tableName="TENANTS" schemaName="TENANTS">
+        <createTable tableName="TENANTS" >
             <column name="ID_" type="VARCHAR2(50)">
                 <constraints primaryKey="true" primaryKeyName="TENANT_PK"/>
             </column>
@@ -57,7 +49,7 @@
     <changeSet id="kpo-tenant-load-initial" author="klenkes74">
         <comment>Load default tenant.</comment>
 
-        <loadData schemaName="TENANTS" tableName="TENANTS" file="data/TENANTS-initial.csv"/>
+        <loadData  tableName="TENANTS" file="data/TENANTS-initial.csv"/>
     </changeSet>
 
     <changeSet id="kpo-tenant-tag-initial-data" author="klenkes74">

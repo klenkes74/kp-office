@@ -16,8 +16,8 @@
 
 package de.kaiserpfalzEdv.office.core.tenants;
 
-import de.kaiserpfalzEdv.commons.paging.Page;
-import de.kaiserpfalzEdv.commons.paging.Pageable;
+import de.kaiserpfalzEdv.commons.jee.paging.Page;
+import de.kaiserpfalzEdv.commons.jee.paging.Pageable;
 
 import javax.validation.constraints.NotNull;
 import java.util.UUID;

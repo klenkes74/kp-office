@@ -21,7 +21,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>de.kaiserpfalzEdv</groupId>
+        <groupId>de.kaiserpfalz-edv</groupId>
         <artifactId>kp-parent-pom</artifactId>
         <version>2015Q1</version>
     </parent>
@@ -39,8 +39,10 @@
     <modules>
         <module>kp-office-commons</module>
         <module>kp-office-backend</module>
+        <!--
         <module>kp-office-modules</module>
         <module>kp-office-interfaces</module>
+        -->
     </modules>
 
 
@@ -207,24 +209,8 @@
 
 
         <dependency>
-            <groupId>de.kaiserpfalzEdv.commons</groupId>
+            <groupId>de.kaiserpfalz-edv.commons</groupId>
             <artifactId>kp-commons-test</artifactId>
-            <version>2014Q3</version>
-        </dependency>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.testng</groupId>
-            <artifactId>testng</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>net.logstash.logback</groupId>
@@ -236,15 +222,7 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>de.kaiserpfalzEdv</groupId>
-                <artifactId>kp-bom</artifactId>
-                <version>${kp-commons.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-
-            <dependency>
-                <groupId>de.kaiserpfalzEdv.commons</groupId>
+                <groupId>de.kaiserpfalz-edv.commons</groupId>
                 <artifactId>kp-commons-bom</artifactId>
                 <version>${kp-commons.version}</version>
                 <type>pom</type>
@@ -252,7 +230,7 @@
             </dependency>
 
             <dependency>
-                <groupId>de.kaiserpfalzEdv</groupId>
+                <groupId>de.kaiserpfalz-edv.base</groupId>
                 <artifactId>kp-misc-bom</artifactId>
                 <version>${kp-commons.version}</version>
                 <type>pom</type>
@@ -260,7 +238,7 @@
             </dependency>
 
             <dependency>
-                <groupId>de.kaiserpfalzEdv</groupId>
+                <groupId>de.kaiserpfalz-edv.base</groupId>
                 <artifactId>kp-test-bom</artifactId>
                 <version>${kp-commons.version}</version>
                 <type>pom</type>

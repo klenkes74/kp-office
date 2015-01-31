@@ -85,7 +85,7 @@
         <property name="defaultDataSource" ref="dataSource"/>
         <property name="persistenceXmlLocation" value="classpath:/META-INF/persistence.xml"/>
     </bean>
-    <bean id="jpaPropertiesGenerator" class="de.kaiserpfalzEdv.commons.jndi.MapProperties">
+    <bean id="jpaPropertiesGenerator" class="de.kaiserpfalzEdv.commons.jee.jndi.MapProperties">
         <constructor-arg>
             <util:map scope="singleton" key-type="java.lang.String" value-type="java.lang.Object">
                 <entry key="hibernate.show_sql" value="false"/>
@@ -103,7 +103,7 @@
 
 
     <bean id="configuration" factory-bean="configGenerator" factory-method="getProperties" lazy-init="false"/>
-    <bean id="configGenerator" class="de.kaiserpfalzEdv.commons.jndi.MapProperties" init-method="init"
+    <bean id="configGenerator" class="de.kaiserpfalzEdv.commons.jee.jndi.MapProperties" init-method="init"
           destroy-method="close">
         <constructor-arg>
             <util:map scope="singleton" key-type="java.lang.String" value-type="java.lang.Object">
@@ -149,6 +149,6 @@
     </bean>
 
 
-    <jee:jndi-lookup id="dataSource" jndi-name="db/kpocore" lazy-init="true" expected-type="javax.sql.DataSource"
+    <jee:jndi-lookup id="dataSource" jndi-name="db/kpo" lazy-init="true" expected-type="javax.sql.DataSource"
                      cache="true"/>
 </beans>

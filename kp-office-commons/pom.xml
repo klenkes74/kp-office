@@ -35,7 +35,7 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>de.kaiserpfalzEdv</groupId>
+                <groupId>de.kaiserpfalz-edv.base</groupId>
                 <artifactId>kp-misc-bom</artifactId>
                 <version>${kp-commons.version}</version>
                 <type>pom</type>
@@ -43,7 +43,7 @@
             </dependency>
 
             <dependency>
-                <groupId>de.kaiserpfalzEdv</groupId>
+                <groupId>de.kaiserpfalz-edv.base</groupId>
                 <artifactId>kp-jee-bom</artifactId>
                 <version>${kp-commons.version}</version>
                 <type>pom</type>
@@ -51,7 +51,7 @@
             </dependency>
 
             <dependency>
-                <groupId>de.kaiserpfalzEdv</groupId>
+                <groupId>de.kaiserpfalz-edv.base</groupId>
                 <artifactId>kp-hibernate-bom</artifactId>
                 <version>${kp-commons.version}</version>
                 <type>pom</type>
@@ -59,15 +59,22 @@
             </dependency>
 
             <dependency>
-                <groupId>de.kaiserpfalzEdv</groupId>
+                <groupId>de.kaiserpfalz-edv.base</groupId>
                 <artifactId>kp-spring-bom</artifactId>
                 <version>${kp-commons.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
             <dependency>
-                <groupId>de.kaiserpfalzEdv</groupId>
+                <groupId>de.kaiserpfalz-edv.base</groupId>
                 <artifactId>kp-spring-data-bom</artifactId>
+                <version>${kp-commons.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>de.kaiserpfalz-edv.commons</groupId>
+                <artifactId>kp-commons-bom</artifactId>
                 <version>${kp-commons.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
@@ -77,8 +84,8 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
+            <groupId>de.kaiserpfalz-edv.commons</groupId>
+            <artifactId>kp-commons-core</artifactId>
         </dependency>
 
         <dependency>

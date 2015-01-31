@@ -33,7 +33,7 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>de.kaiserpfalzEdv</groupId>
+                <groupId>de.kaiserpfalz-edv.base</groupId>
                 <artifactId>kp-misc-bom</artifactId>
                 <version>${kp-commons.version}</version>
                 <type>pom</type>
@@ -41,7 +41,7 @@
             </dependency>
 
             <dependency>
-                <groupId>de.kaiserpfalzEdv</groupId>
+                <groupId>de.kaiserpfalz-edv.base</groupId>
                 <artifactId>kp-hibernate-bom</artifactId>
                 <version>${kp-commons.version}</version>
                 <type>pom</type>
@@ -49,7 +49,7 @@
             </dependency>
 
             <dependency>
-                <groupId>de.kaiserpfalzEdv.commons</groupId>
+                <groupId>de.kaiserpfalz-edv.commons</groupId>
                 <artifactId>kp-commons-bom</artifactId>
                 <version>${kp-commons.version}</version>
                 <type>pom</type>
@@ -59,6 +59,11 @@
     </dependencyManagement>
 
     <dependencies>
+        <dependency>
+            <groupId>de.kaiserpfalz-edv.commons</groupId>
+            <artifactId>kp-commons-api</artifactId>
+        </dependency>
+        
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
@@ -79,12 +84,6 @@
             <groupId>com.verhas</groupId>
             <artifactId>license3j</artifactId>
             <version>1.0.4</version>
-        </dependency>
-
-
-        <dependency>
-            <groupId>de.kaiserpfalzEdv.commons</groupId>
-            <artifactId>kp-commons-test</artifactId>
         </dependency>
     </dependencies>
 </project>

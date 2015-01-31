@@ -16,10 +16,10 @@
 
 package de.kaiserpfalzEdv.office.core.tenants;
 
-import de.kaiserpfalzEdv.commons.paging.Page;
-import de.kaiserpfalzEdv.commons.paging.PageDO;
-import de.kaiserpfalzEdv.commons.paging.Pageable;
-import de.kaiserpfalzEdv.commons.paging.PageableDO;
+import de.kaiserpfalzEdv.commons.jee.paging.Page;
+import de.kaiserpfalzEdv.commons.jee.paging.PageDO;
+import de.kaiserpfalzEdv.commons.jee.paging.Pageable;
+import de.kaiserpfalzEdv.commons.jee.paging.PageableDO;
 import de.kaiserpfalzEdv.commons.service.BackendService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -45,7 +45,7 @@ public class TenantServiceImpl implements TenantService {
     
     
     @Inject
-    public TenantServiceImpl(@NotNull final TenantRepository repository) {
+    public TenantServiceImpl(final TenantRepository repository) {
         this.repository = repository;
         
         LOG.trace("Created: {}", this);

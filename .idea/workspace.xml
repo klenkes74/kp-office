@@ -1,12 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2832b224-b737-451e-b6c2-5595d59effb5" name="Default" comment="WIP&#10;- Need to rework the UI">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/kp-office-core-impl.iml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office-ui-modules/kp-office-ui-core/kp-office-ui-core.iml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office/kp-office.iml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-impl/kp-office-contacts-impl.iml" afterPath="" />
+    <list default="true" id="2832b224-b737-451e-b6c2-5595d59effb5" name="Default" comment="WIP&#10;- removing IDEA files">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-impl/src/main/resources/ddl/version-0_1_0.xml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-impl/src/main/resources/ddl/contacts-history-0_1_0.xml" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kp-office-backend/kp-office-core-api/src/main/java/de/kaiserpfalzEdv/office/core/tenants/TenantService.java" afterPath="$PROJECT_DIR$/kp-office-backend/kp-office-core-api/src/main/java/de/kaiserpfalzEdv/office/core/tenants/TenantService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/java/de/kaiserpfalzEdv/office/core/tenants/TenantServiceImpl.java" afterPath="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/java/de/kaiserpfalzEdv/office/core/tenants/TenantServiceImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/resources/beans.xml" afterPath="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/resources/beans.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-impl/src/main/resources/ddl/db-changelog.xml" afterPath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-impl/src/main/resources/ddl/db-changelog.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/test/resources/config/db.properties" afterPath="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/test/resources/config/db.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/resources/ddl/initialize-database.xml" afterPath="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/resources/ddl/initialize-database.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kp-office-backend/kp-office-backend-utils/kp-office-backend-utils.iml" afterPath="$PROJECT_DIR$/kp-office-backend/kp-office-backend-utils/kp-office-backend-utils.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kp-office-backend/kp-office-backend.iml" afterPath="$PROJECT_DIR$/kp-office-backend/kp-office-backend.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kp-office-interfaces/kp-office-cli/kp-office-cli-kppasswd/kp-office-cli-kppasswd.iml" afterPath="$PROJECT_DIR$/kp-office-interfaces/kp-office-cli/kp-office-cli-kppasswd/kp-office-cli-kppasswd.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kp-office-interfaces/kp-office-cli/kp-office-cli.iml" afterPath="$PROJECT_DIR$/kp-office-interfaces/kp-office-cli/kp-office-cli.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kp-office-commons/kp-office-commons.iml" afterPath="$PROJECT_DIR$/kp-office-commons/kp-office-commons.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/kp-office-contacts-api.iml" afterPath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/kp-office-contacts-api.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-impl/kp-office-contacts-impl.iml" afterPath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-impl/kp-office-contacts-impl.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts.iml" afterPath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kp-office-backend/kp-office-core-api/kp-office-core-api.iml" afterPath="$PROJECT_DIR$/kp-office-backend/kp-office-core-api/kp-office-core-api.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/kp-office-core-impl.iml" afterPath="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/kp-office-core-impl.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-projects/kp-office-projects-api/kp-office-projects-api.iml" afterPath="$PROJECT_DIR$/kp-office-modules/kp-office-projects/kp-office-projects-api/kp-office-projects-api.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-projects/kp-office-projects-impl/kp-office-projects-impl.iml" afterPath="$PROJECT_DIR$/kp-office-modules/kp-office-projects/kp-office-projects-impl/kp-office-projects-impl.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-projects/kp-office-projects.iml" afterPath="$PROJECT_DIR$/kp-office-modules/kp-office-projects/kp-office-projects.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office-ui-modules/kp-office-ui-core/kp-office-ui-core.iml" afterPath="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office-ui-modules/kp-office-ui-core/kp-office-ui-core.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office/kp-office.iml" afterPath="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office/kp-office.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kp-office-backend/kp-office-backend-utils/pom.xml" afterPath="$PROJECT_DIR$/kp-office-backend/kp-office-backend-utils/pom.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kp-office-backend/kp-office-core-api/pom.xml" afterPath="$PROJECT_DIR$/kp-office-backend/kp-office-core-api/pom.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kp-office-commons/pom.xml" afterPath="$PROJECT_DIR$/kp-office-commons/pom.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/resources/ddl/security-0_1_0.xml" afterPath="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/resources/ddl/security-0_1_0.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/resources/ddl/tenant-0_1_0.xml" afterPath="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/resources/ddl/tenant-0_1_0.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="kp-office-root.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -165,21 +192,11 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office/src/main/java/de/kaiserpfalzEdv/office/ui/web/TabPanelPresenter.java" />
-        <option value="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office/src/main/java/de/kaiserpfalzEdv/office/ui/web/TabPanelView.java" />
-        <option value="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office/src/main/java/de/kaiserpfalzEdv/office/ui/web/MainPresenter.java" />
-        <option value="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office/src/main/java/de/kaiserpfalzEdv/office/ui/web/HeaderPresenter.java" />
-        <option value="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office/src/main/java/de/kaiserpfalzEdv/office/ui/web/ControlContext.java" />
-        <option value="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office/src/main/java/de/kaiserpfalzEdv/office/ui/web/ControlsContext.java" />
-        <option value="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office/src/main/java/de/kaiserpfalzEdv/office/ui/web/LayoutIntegrator.java" />
-        <option value="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office/src/main/java/de/kaiserpfalzEdv/office/ui/web/HeaderView.java" />
         <option value="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office/src/main/java/de/kaiserpfalzEdv/office/ui/web/KPOfficeUI.java" />
         <option value="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office/pom.xml" />
         <option value="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office/src/main/java/de/kaiserpfalzEdv/office/ui/web/view/NavigationPanelView.java" />
         <option value="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office/src/main/webapp/META-INF/context.xml" />
         <option value="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office/src/main/java/de/kaiserpfalzEdv/office/ui/web/ServletInitializer.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/resources/ddl/initialize-database.xml" />
         <option value="db-console:/e0406405/4d211c0a-cdf6-411e-8628-b5c814796e6b/" />
         <option value="dbtable:/e0406405/4d211c0a-cdf6-411e-8628-b5c814796e6b/mysql..DATABASECHANGELOG" />
         <option value="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-impl/src/main/java/de/kaiserpfalzEdv/office/contacts/address/AddressDO.java" />
@@ -189,8 +206,6 @@
         <option value="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-impl/src/main/java/de/kaiserpfalzEdv/office/contacts/address/phone/NumberPartDTO.java" />
         <option value="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-impl/src/main/java/de/kaiserpfalzEdv/office/contacts/address/phone/PhoneNumberDO.java" />
         <option value="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-impl/src/main/java/de/kaiserpfalzEdv/office/contacts/address/phone/NumberPartDO.java" />
-        <option value="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/resources/ddl/security-0_1_0.xml" />
-        <option value="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/resources/ddl/tenant-0_1_0.xml" />
         <option value="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/java/de/kaiserpfalzEdv/office/tenants/TenantRepository.java" />
         <option value="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/resources/ddl/db-changelog.xml" />
         <option value="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/test/resources/ddl/db-changelog-test.xml" />
@@ -206,9 +221,7 @@
         <option value="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/java/de/kaiserpfalzEdv/office/security/Account.java" />
         <option value="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/java/de/kaiserpfalzEdv/office/security/AccountRepository.java" />
         <option value="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/resources/META-INF/persistence.xml" />
-        <option value="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/test/resources/config/db.properties" />
         <option value="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/test/resources/config/default.properties" />
-        <option value="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/resources/beans.xml" />
         <option value="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/java/de/kaiserpfalzEdv/office/core/security/Account.java" />
         <option value="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/java/de/kaiserpfalzEdv/office/core/security/Identity.java" />
         <option value="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/java/de/kaiserpfalzEdv/office/core/security/Role.java" />
@@ -216,6 +229,20 @@
         <option value="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/java/de/kaiserpfalzEdv/office/core/security/SecurityTicket.java" />
         <option value="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/java/de/kaiserpfalzEdv/office/core/tenants/TenantDO.java" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/resources/ddl/initialize-database.xml" />
+        <option value="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/resources/ddl/security-0_1_0.xml" />
+        <option value="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/resources/ddl/tenant-0_1_0.xml" />
+        <option value="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-impl/src/main/resources/ddl/db-changelog.xml" />
+        <option value="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-impl/src/main/resources/ddl/contacts-history-0_1_0.xml" />
+        <option value="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-impl/src/main/resources/ddl/version-0_1_0.xml" />
+        <option value="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/resources/beans.xml" />
+        <option value="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/test/resources/config/db.properties" />
+        <option value="$PROJECT_DIR$/kp-office-backend/kp-office-core-api/src/main/java/de/kaiserpfalzEdv/office/core/tenants/TenantService.java" />
+        <option value="$PROJECT_DIR$/kp-office-backend/kp-office-backend-utils/pom.xml" />
+        <option value="$PROJECT_DIR$/kp-office-commons/pom.xml" />
+        <option value="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/java/de/kaiserpfalzEdv/office/core/tenants/TenantServiceImpl.java" />
+        <option value="$PROJECT_DIR$/kp-office-backend/kp-office-core-api/pom.xml" />
+        <option value="$PROJECT_DIR$/pom.xml" />
       </list>
     </option>
   </component>
@@ -228,9 +255,17 @@
         <option name="mavenHome" value="/opt/maven" />
       </MavenGeneralSettings>
     </option>
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
     <option name="enabledProfiles">
       <list>
+        <option value="with-db" />
+        <option value="integration-tests" />
         <option value="repositories" />
+        <option value="release" />
       </list>
     </option>
   </component>
@@ -240,124 +275,6 @@
         <PATH_ELEMENT>
           <option name="myItemId" value="" />
           <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RootNode" />
-        </PATH_ELEMENT>
-      </PATH>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RootNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="KP Office - Web UI - Modules" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
-        </PATH_ELEMENT>
-      </PATH>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RootNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="KP Office - Web UI - Modules" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="Lifecycle" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$LifecycleNode" />
-        </PATH_ELEMENT>
-      </PATH>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RootNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="KP Office - Web UI - Application" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
-        </PATH_ELEMENT>
-      </PATH>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RootNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="KP Office - Web UI - Application" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="Run Configurations" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RunConfigurationsNode" />
-        </PATH_ELEMENT>
-      </PATH>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RootNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="KP Office - Web UI - Application" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="Plugins" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$PluginsNode" />
-        </PATH_ELEMENT>
-      </PATH>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RootNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="KP Office - Web UI - Application" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="Plugins" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$PluginsNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="spring-boot" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$PluginNode" />
-        </PATH_ELEMENT>
-      </PATH>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RootNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="KP Office - Web UI - Application" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="Lifecycle" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$LifecycleNode" />
-        </PATH_ELEMENT>
-      </PATH>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RootNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="KP Office - Core - Implementation" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
-        </PATH_ELEMENT>
-      </PATH>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RootNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="KP Office - Core - Implementation" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="Lifecycle" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$LifecycleNode" />
         </PATH_ELEMENT>
       </PATH>
     </treeState>
@@ -391,6 +308,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
@@ -399,15 +317,9 @@
               <option name="myItemId" value="kp-office" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
-          </PATH>
-          <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="kp-office" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kp-office" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -416,25 +328,15 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="kp-office" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="kp-office-modules" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kp-office" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+              <option name="myItemId" value="Maven: de.kaiserpfalz-edv.commons:kp-commons-api:2015Q1" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="kp-office" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kp-office-interfaces" />
+              <option name="myItemId" value="kp-commons-api-2015Q1.jar" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -444,17 +346,90 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="kp-office" />
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Maven: de.kaiserpfalz-edv.commons:kp-commons-api:2015Q1" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kp-commons-api-2015Q1.jar" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="kp-office-commons" />
+              <option name="myItemId" value="commons" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kp-office" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Maven: de.kaiserpfalz-edv.commons:kp-commons-api:2015Q1" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kp-commons-api-2015Q1.jar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="commons" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jee" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kp-office" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Maven: de.kaiserpfalz-edv.commons:kp-commons-api:2015Q1" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kp-commons-api-2015Q1.jar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="commons" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jee" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="paging" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kp-office" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kp-office" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -484,14 +459,30 @@
     <property name="extract.method.default.visibility" value="private" />
     <property name="SearchEverywhereHistoryKey" value="java.time.Period&#9;PSI&#9;JAVA://java.time.Period" />
     <property name="full.screen.before.presentation.mode" value="true" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="189" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="206" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="209" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder2" value="2" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="1004" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder3" value="3" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="200" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder0" value="0" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="202" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder1" value="1" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="206" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="1000" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-impl/src/main/resources/ddl" />
       <recent name="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/resources/ddl" />
       <recent name="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office/src/main/webapp/META-INF" />
       <recent name="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office/src/main/resources" />
       <recent name="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office/src/main/java/de/kaiserpfalzEdv/office/ui/web/security" />
-      <recent name="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office-ui/src/main/java/de/kaiserpfalzEdv/office/ui/web" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/java/de/kaiserpfalzEdv/office/core" />
@@ -908,7 +899,8 @@
       <workItem from="1422000433987" duration="7863000" />
       <workItem from="1422183362725" duration="1973000" />
       <workItem from="1422276088253" duration="2930000" />
-      <workItem from="1422488380155" duration="289000" />
+      <workItem from="1422488380155" duration="3591000" />
+      <workItem from="1422734112720" duration="410000" />
     </task>
     <task id="LOCAL-00001" summary="WIP&#10;- Removed some projects.&#10;- Removed XML jpa configuration.&#10;- Added Annotations to jpa entities.">
       <created>1419323988938</created>
@@ -988,11 +980,17 @@
       <option name="project" value="LOCAL" />
       <updated>1422488649948</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="WIP&#10;- removing IDEA files">
+      <created>1422488929598</created>
+      <option name="number" value="00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1422488929598</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="292516000" />
+    <option name="totallyTimeSpent" value="296228000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -1023,7 +1021,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39845476" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22100122" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22100122" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="CDI" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.15201466" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1033,25 +1031,25 @@
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32781458" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32914045" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32809225" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3289183" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3289183" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32914045" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32914045" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24358974" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24358974" sideWeight="0.49889624" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32967034" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24358974" sideWeight="0.50082374" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32781458" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39937106" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32809225" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.36313465" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3289183" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24358974" sideWeight="0.50082374" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3289183" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -1121,7 +1119,8 @@
     <MESSAGE value="Finally, it compiles. Needed to switch back to validation-api 1.0.0 instead of 1.1.0. GWT within Vaadin does not like the new one ..." />
     <MESSAGE value="WIP&#10;- Need to rework the UI" />
     <MESSAGE value="WIP&#10;- remove IDEA files" />
-    <option name="LAST_COMMIT_MESSAGE" value="WIP&#10;- remove IDEA files" />
+    <MESSAGE value="WIP&#10;- removing IDEA files" />
+    <option name="LAST_COMMIT_MESSAGE" value="WIP&#10;- removing IDEA files" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -1143,154 +1142,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$MAVEN_REPOSITORY$/de/kaiserpfalzEdv/kp-parent-pom/2015Q1/kp-parent-pom-2015Q1.pom">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.40107915" vertical-offset="8777" max-vertical-offset="12315">
-          <caret line="600" column="29" selection-start-line="600" selection-start-column="29" selection-end-line="600" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/resources/ddl/tenant-0_1_0.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4857143" vertical-offset="210" max-vertical-offset="1080">
-          <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/resources/ddl/security-0_1_0.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.51428574" vertical-offset="195" max-vertical-offset="2475">
-          <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-impl/src/main/java/de/kaiserpfalzEdv/office/contacts/address/phone/CountryCodeDO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.27322406" vertical-offset="0" max-vertical-offset="780">
-          <caret line="32" column="18" selection-start-line="32" selection-start-column="18" selection-end-line="32" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-impl/src/main/java/de/kaiserpfalzEdv/office/contacts/address/phone/NumberPartDO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.21857923" vertical-offset="0" max-vertical-offset="1020">
-          <caret line="32" column="13" selection-start-line="32" selection-start-column="13" selection-end-line="32" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="dbDummy://dbtable:/e0406405/829e5284-8428-4d3b-99d4-cfad332a3bf8/TENANTS..TENANTS">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="90">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="dbDummy://dbtable:/e0406405/829e5284-8428-4d3b-99d4-cfad332a3bf8/kpoffice..DATABASECHANGELOG">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="90">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/java/de/kaiserpfalzEdv/office/core/security/IdentityRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.13667426" vertical-offset="0" max-vertical-offset="878">
-          <caret line="31" column="17" selection-start-line="31" selection-start-column="17" selection-end-line="31" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/java/de/kaiserpfalzEdv/office/core/security/RoleRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.13667426" vertical-offset="0" max-vertical-offset="878">
-          <caret line="31" column="17" selection-start-line="31" selection-start-column="17" selection-end-line="31" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/java/de/kaiserpfalzEdv/office/core/security/SecurityTicketRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.13667426" vertical-offset="0" max-vertical-offset="878">
-          <caret line="31" column="17" selection-start-line="31" selection-start-column="17" selection-end-line="31" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-impl/src/main/java/de/kaiserpfalzEdv/office/contacts/address/phone/PhoneNumberDO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="225" max-vertical-offset="1395">
-          <caret line="40" column="17" selection-start-line="40" selection-start-column="17" selection-end-line="40" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-impl/src/main/java/de/kaiserpfalzEdv/office/contacts/address/postal/StreetAddressDTO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1380">
-          <caret line="36" column="29" selection-start-line="36" selection-start-column="29" selection-end-line="36" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/test/resources/ddl/db-changelog-test.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.74285716" vertical-offset="0" max-vertical-offset="540">
-          <caret line="26" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/resources/ddl/db-changelog.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6" vertical-offset="0" max-vertical-offset="525">
-          <caret line="21" column="28" selection-start-line="21" selection-start-column="28" selection-end-line="21" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/resources/ddl/initialize-database.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.9047619" vertical-offset="35" max-vertical-offset="615">
-          <caret line="34" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/java/de/kaiserpfalzEdv/office/core/tenants/TenantRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.43715847" vertical-offset="0" max-vertical-offset="549">
-          <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
-          <folding>
-            <element signature="docComment;class#TenantRepository#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office/src/main/resources/application.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="546" max-vertical-offset="1125">
-          <caret line="52" column="33" selection-start-line="52" selection-start-column="33" selection-end-line="52" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office/src/main/resources/logback.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="40.0" vertical-offset="960" max-vertical-offset="1590">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office/src/main/java/de/kaiserpfalzEdv/office/ui/web/ServletInitializer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="315">
-          <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office/src/main/java/de/kaiserpfalzEdv/office/ui/web/StartupFilter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="405">
@@ -1302,14 +1153,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1" max-vertical-offset="975">
           <caret line="47" column="0" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/java/de/kaiserpfalzEdv/office/core/security/SecurityServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6010929" vertical-offset="0" max-vertical-offset="2385">
-          <caret line="51" column="31" selection-start-line="51" selection-start-column="31" selection-end-line="51" selection-end-column="31" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1365,21 +1208,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/resources/beans.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.74185765" vertical-offset="0" max-vertical-offset="2385">
-          <caret line="41" column="41" selection-start-line="41" selection-start-column="41" selection-end-line="41" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/test/resources/config/db.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.32460135" vertical-offset="0" max-vertical-offset="878">
-          <caret line="19" column="32" selection-start-line="19" selection-start-column="32" selection-end-line="19" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office/src/main/java/de/kaiserpfalzEdv/office/ui/web/WebSecurityConfig.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.2733485" vertical-offset="0" max-vertical-offset="878">
@@ -1395,44 +1223,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/kp-office-backend/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.21194379" vertical-offset="181" max-vertical-offset="1035">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kp-office-commons/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8770492" vertical-offset="706" max-vertical-offset="1560">
-          <caret line="97" column="0" selection-start-line="93" selection-start-column="0" selection-end-line="97" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kp-office-backend/kp-office-backend-utils/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="721" max-vertical-offset="2040">
-          <caret line="63" column="32" selection-start-line="63" selection-start-column="32" selection-end-line="63" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/test/resources/config/default.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="615">
-          <caret line="17" column="10" selection-start-line="17" selection-start-column="10" selection-end-line="17" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/test/resources/jndi.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="878">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/target/test-classes/jndi.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="878">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -1471,7 +1262,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="990">
           <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1479,7 +1269,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="45" max-vertical-offset="1935">
           <caret line="54" column="0" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1487,7 +1276,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="630">
           <caret line="38" column="0" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1495,15 +1283,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="420">
           <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5421903" vertical-offset="1993" max-vertical-offset="4230">
-          <caret line="153" column="29" selection-start-line="153" selection-start-column="29" selection-end-line="153" selection-end-column="29" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1518,7 +1297,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.23235801" vertical-offset="0" max-vertical-offset="581">
           <caret line="30" column="13" selection-start-line="30" selection-start-column="13" selection-end-line="30" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1526,7 +1304,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.23235801" vertical-offset="0" max-vertical-offset="581">
           <caret line="30" column="13" selection-start-line="30" selection-start-column="13" selection-end-line="30" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1542,7 +1319,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1755">
           <caret line="59" column="0" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1550,20 +1326,230 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5645439" vertical-offset="797" max-vertical-offset="2160">
           <caret line="124" column="4" selection-start-line="124" selection-start-column="4" selection-end-line="124" selection-end-column="4" />
-          <folding>
-            <element signature="e#3391#3392#0" expanded="true" />
-            <element signature="e#3433#3434#0" expanded="true" />
-            <element signature="e#3440#3472#0" expanded="true" />
-            <element signature="e#3501#3502#0" expanded="true" />
-            <element signature="e#3567#3568#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.07745267" vertical-offset="0" max-vertical-offset="581">
-          <caret line="3" column="5" selection-start-line="3" selection-start-column="5" selection-end-line="3" selection-end-column="5" />
+        <state vertical-scroll-proportion="0.12931034" vertical-offset="0" max-vertical-offset="580">
+          <caret line="5" column="14" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="550">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+      <provider editor-type-id="MarkdownPreviewEditor">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/resources/data/TENANTS-initial.csv">
+      <provider editor-type-id="com.intellij.database.editor.CsvTableFileEditorProvider">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="550">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/resources/ddl/version-0_1_0.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="580">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/resources/ddl/tenant-0_1_0.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.8111511" vertical-offset="314" max-vertical-offset="960">
+          <caret line="51" column="38" selection-start-line="51" selection-start-column="38" selection-end-line="51" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/resources/ddl/security-0_1_0.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.13772455" vertical-offset="1869" max-vertical-offset="2370">
+          <caret line="120" column="34" selection-start-line="120" selection-start-column="34" selection-end-line="120" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/resources/ddl/db-changelog.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.56654674" vertical-offset="0" max-vertical-offset="556">
+          <caret line="21" column="28" selection-start-line="21" selection-start-column="28" selection-end-line="21" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/test/resources/ddl/db-changelog-test.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.70143884" vertical-offset="0" max-vertical-offset="556">
+          <caret line="26" column="34" selection-start-line="26" selection-start-column="34" selection-end-line="26" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/resources/ddl/initialize-database.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.74640286" vertical-offset="35" max-vertical-offset="615">
+          <caret line="30" column="46" selection-start-line="30" selection-start-column="46" selection-end-line="30" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/de/kaiserpfalz-edv/commons/kp-commons-jee/2015Q1/kp-commons-jee-2015Q1-sources.jar!/de/kaiserpfalzEdv/commons/jee/jndi/MapProperties.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.18792711" vertical-offset="0" max-vertical-offset="878">
+          <caret line="25" column="27" selection-start-line="25" selection-start-column="7" selection-end-line="25" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/test/resources/config/default.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="615">
+          <caret line="17" column="10" selection-start-line="17" selection-start-column="10" selection-end-line="17" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/test/resources/data/ACCOUNTS-test.csv">
+      <provider editor-type-id="com.intellij.database.editor.CsvTableFileEditorProvider">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="848">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/resources/data/ACCOUNTS-initial.csv">
+      <provider editor-type-id="com.intellij.database.editor.CsvTableFileEditorProvider">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="848">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/test/resources/config/db.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2904328" vertical-offset="0" max-vertical-offset="878">
+          <caret line="17" column="4" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-impl/src/main/resources/ddl/version-0_1_0.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.96487117" vertical-offset="211" max-vertical-offset="1125">
+          <caret line="69" column="0" selection-start-line="69" selection-start-column="0" selection-end-line="69" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-impl/src/main/resources/ddl/db-changelog.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.43911007" vertical-offset="0" max-vertical-offset="854">
+          <caret line="25" column="26" selection-start-line="25" selection-start-column="26" selection-end-line="25" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/test/java/de/kaiserpfalzEdv/office/core/security/test/SecurityTicketHandlingIT.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2175">
+          <caret line="56" column="13" selection-start-line="56" selection-start-column="13" selection-end-line="56" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/java/de/kaiserpfalzEdv/office/core/security/IdentityRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.35519126" vertical-offset="0" max-vertical-offset="549">
+          <caret line="31" column="17" selection-start-line="31" selection-start-column="17" selection-end-line="31" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/java/de/kaiserpfalzEdv/office/core/security/SecurityServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.24590164" vertical-offset="0" max-vertical-offset="2385">
+          <caret line="38" column="13" selection-start-line="38" selection-start-column="13" selection-end-line="38" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kp-office-backend/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.875" vertical-offset="480" max-vertical-offset="1035">
+          <caret line="29" column="16" selection-start-line="29" selection-start-column="16" selection-end-line="29" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/java/de/kaiserpfalzEdv/office/core/tenants/TenantServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2115">
+          <caret line="46" column="32" selection-start-line="46" selection-start-column="11" selection-end-line="46" selection-end-column="11" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kp-office-backend/kp-office-core-api/src/main/java/de/kaiserpfalzEdv/office/core/tenants/TenantService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.2021858" vertical-offset="381" max-vertical-offset="1020">
+          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kp-office-backend/kp-office-backend-utils/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.41904762" vertical-offset="860" max-vertical-offset="2040">
+          <caret line="72" column="40" selection-start-line="72" selection-start-column="40" selection-end-line="72" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kp-office-commons/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33333334" vertical-offset="80" max-vertical-offset="1665">
+          <caret line="17" column="1" selection-start-line="17" selection-start-column="1" selection-end-line="17" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.19392523" vertical-offset="89" max-vertical-offset="5490">
+          <caret line="17" column="1" selection-start-line="17" selection-start-column="1" selection-end-line="17" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/java/de/kaiserpfalzEdv/office/core/tenants/TenantRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.20454545" vertical-offset="0" max-vertical-offset="880">
+          <caret line="36" column="9" selection-start-line="36" selection-start-column="9" selection-end-line="36" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kp-office-backend/kp-office-core-api/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.8598131" vertical-offset="569" max-vertical-offset="1425">
+          <caret line="87" column="0" selection-start-line="87" selection-start-column="0" selection-end-line="87" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/resources/beans.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2838785" vertical-offset="372" max-vertical-offset="2385">
+          <caret line="41" column="2" selection-start-line="41" selection-start-column="2" selection-end-line="41" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.35362998" vertical-offset="973" max-vertical-offset="4230">
+          <caret line="85" column="46" selection-start-line="85" selection-start-column="46" selection-end-line="85" selection-end-column="46" />
           <folding />
         </state>
       </provider>

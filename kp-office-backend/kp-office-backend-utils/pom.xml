@@ -35,7 +35,7 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>de.kaiserpfalzEdv</groupId>
+                <groupId>de.kaiserpfalz-edv.base</groupId>
                 <artifactId>kp-database-bom</artifactId>
                 <version>${kp-commons.version}</version>
                 <type>pom</type>
@@ -43,7 +43,7 @@
             </dependency>
 
             <dependency>
-                <groupId>de.kaiserpfalzEdv</groupId>
+                <groupId>de.kaiserpfalz-edv.base</groupId>
                 <artifactId>kp-hibernate-bom</artifactId>
                 <version>${kp-commons.version}</version>
                 <type>pom</type>
@@ -51,14 +51,14 @@
             </dependency>
 
             <dependency>
-                <groupId>de.kaiserpfalzEdv</groupId>
+                <groupId>de.kaiserpfalz-edv.base</groupId>
                 <artifactId>kp-spring-bom</artifactId>
                 <version>${kp-commons.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
             <dependency>
-                <groupId>de.kaiserpfalzEdv</groupId>
+                <groupId>de.kaiserpfalz-edv.base</groupId>
                 <artifactId>kp-spring-data-bom</artifactId>
                 <version>${kp-commons.version}</version>
                 <type>pom</type>

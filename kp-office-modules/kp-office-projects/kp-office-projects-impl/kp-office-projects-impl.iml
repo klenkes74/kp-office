@@ -81,11 +81,15 @@
     <orderEntry type="library" scope="TEST" name="Maven: com.beust:jcommander:1.27" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.springframework:spring-test:4.1.3.RELEASE" level="project" />
     <orderEntry type="module" module-name="kp-office-core-api" />
+    <orderEntry type="library" name="Maven: de.kaiserpfalz-edv.commons:kp-commons-api:2015Q1" level="project" />
+    <orderEntry type="library" name="Maven: javax.inject:javax.inject:1" level="project" />
+    <orderEntry type="library" name="Maven: javax.validation:validation-api:1.0.0.GA" level="project" />
     <orderEntry type="library" name="Maven: org.apache.commons:commons-lang3:3.1" level="project" />
     <orderEntry type="library" name="Maven: com.verhas:license3j:1.0.4" level="project" />
     <orderEntry type="library" name="Maven: org.bouncycastle:bcpg-jdk16:1.46" level="project" />
     <orderEntry type="library" name="Maven: org.bouncycastle:bcprov-jdk16:1.46" level="project" />
     <orderEntry type="module" module-name="kp-office-commons" />
+    <orderEntry type="library" name="Maven: de.kaiserpfalz-edv.commons:kp-commons-core:2015Q1" level="project" />
     <orderEntry type="library" name="Maven: simple-jndi:simple-jndi:0.11.4.1" level="project" />
     <orderEntry type="library" name="Maven: ch.qos.logback:logback-classic:1.1.2" level="project" />
     <orderEntry type="library" name="Maven: ch.qos.logback:logback-core:1.1.2" level="project" />

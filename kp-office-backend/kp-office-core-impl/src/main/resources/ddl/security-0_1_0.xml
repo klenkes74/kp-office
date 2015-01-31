@@ -22,18 +22,11 @@
         xsi:schemaLocation="
             http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd
         ">
-    <changeSet id="schema-create-sh2" author="klenkes74">
-        <preConditions onFail="WARN"><dbms type="H2"/></preConditions>
-        <comment>Creates the security schema for H2.</comment>
-
-        <sql>CREATE SCHEMA IF NOT EXISTS SECURITY;</sql>
-    </changeSet>
-
     <changeSet id="kpo-security-inititial" author="klenkes74">
         <comment>The initial user tables.</comment>
 
 
-        <createTable tableName="IDENTITIES" schemaName="SECURITY">
+        <createTable tableName="IDENTITIES" >
             <column name="ID_" type="VARCHAR2(50)">
                 <constraints primaryKey="true" primaryKeyName="IDENTITIES_USER_PK"/>
             </column>
@@ -54,7 +47,7 @@
         </createTable>
 
 
-        <createTable tableName="ACCOUNTS" schemaName="SECURITY">
+        <createTable tableName="ACCOUNTS" >
             <column name="DTYPE" type="VARCHAR2(20)"><constraints nullable="false"/></column>
 
             <column name="ID_" type="VARCHAR2(50)">
@@ -82,7 +75,7 @@
         </createTable>
 
 
-        <createTable tableName="ROLES" schemaName="SECURITY">
+        <createTable tableName="ROLES" >
             <column name="DTYPE" type="VARCHAR2(20)"><constraints nullable="false"/></column>
 
             <column name="ID_" type="VARCHAR2(50)">
@@ -101,7 +94,7 @@
             <column name="HIDDEN_" type="BOOLEAN" />
         </createTable>
 
-        <createTable tableName="ACCOUNTS_ROLES" schemaName="SECURITY">
+        <createTable tableName="ACCOUNTS_ROLES" >
             <column name="ACCOUNT_ID_" type="VARCHAR2(50)">
                 <constraints nullable="false" deleteCascade="true"
                              foreignKeyName="ACCOUNTS_ROLES_ACCOUNTS_FK" references="SECURITY.ACCOUNTS(ID_)"/>
@@ -113,7 +106,7 @@
         </createTable>
 
 
-        <createTable tableName="TICKETS" schemaName="SECURITY">
+        <createTable tableName="TICKETS" >
             <column name="ID_" type="VARCHAR2(50)">
                 <constraints primaryKey="true" primaryKeyName="TICKETS_USER_PK"/>
             </column>
@@ -123,14 +116,14 @@
         </createTable>
 
 
-        <createIndex tableName="IDENTITIES" indexName="IDENTITIES_USERS_UK" schemaName="SECURITY" unique="true">
-            <column name="TENANT_"></column>
-            <column name="DISPLAY_NUMBER_"></column>
+        <createIndex tableName="IDENTITIES" indexName="IDENTITIES_USERS_UK"  unique="true">
+            <column name="TENANT_"/>
+            <column name="DISPLAY_NUMBER_"/>
         </createIndex>
 
-        <createIndex tableName="ACCOUNTS" indexName="TENANTS_USERS_UK" schemaName="SECURITY" unique="true">
-            <column name="TENANT_"></column>
-            <column name="DISPLAY_NUMBER_"></column>
+        <createIndex tableName="ACCOUNTS" indexName="TENANTS_USERS_UK"  unique="true">
+            <column name="TENANT_"/>
+            <column name="DISPLAY_NUMBER_"/>
         </createIndex>
     </changeSet>
 
@@ -145,10 +138,10 @@
     <changeSet id="kpo-security-load-initial" author="klenkes74">
         <comment>Load default tenant.</comment>
 
-        <loadData schemaName="SECURITY" tableName="IDENTITIES" file="data/IDENTITIES-initial.csv"/>
-        <loadData schemaName="SECURITY" tableName="ACCOUNTS" file="data/ACCOUNTS-initial.csv"/>
-        <loadData schemaName="SECURITY" tableName="ROLES" file="data/ROLES-initial.csv"/>
-        <loadData schemaName="SECURITY" tableName="ACCOUNTS_ROLES" file="data/ACCOUNTS_ROLES-initial.csv"/>
+        <loadData  tableName="IDENTITIES" file="data/IDENTITIES-initial.csv"/>
+        <loadData  tableName="ACCOUNTS" file="data/ACCOUNTS-initial.csv"/>
+        <loadData  tableName="ROLES" file="data/ROLES-initial.csv"/>
+        <loadData  tableName="ACCOUNTS_ROLES" file="data/ACCOUNTS_ROLES-initial.csv"/>
     </changeSet>
 
 
