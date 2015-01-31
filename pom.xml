@@ -174,12 +174,28 @@
 
     <inceptionYear>2014</inceptionYear>
 
+
     <mailingLists>
         <mailingList>
-            <name>Kaiserpfalz EDV-Service Information List</name>
-            <post>info@kaiserpfalz-edv.de</post>
+            <name>kpoffice-announce</name>
+            <post>kpoffice-announce@kaiserpfalz-edv.de</post>
+            <subscribe>kpoffice-announce+subscribe@kaiserpfalz-edv.de</subscribe>
+            <unsubscribe>kpoffice-announce+unsubscribe@kaiserpfalz-edv.de</unsubscribe>
+        </mailingList>
+        <mailingList>
+            <name>kpoffice-user</name>
+            <post>kpoffice-user@kaiserpfalz-edv.de</post>
+            <subscribe>kpoffice-user+subscribe@kaiserpfalz-edv.de</subscribe>
+            <unsubscribe>kpoffice-user+unsubscribe@kaiserpfalz-edv.de</unsubscribe>
+        </mailingList>
+        <mailingList>
+            <name>kpoffice-developer</name>
+            <post>kpoffice-developer@kaiserpfalz-edv.de</post>
+            <subscribe>kpoffice-developer+subscribe@kaiserpfalz-edv.de</subscribe>
+            <unsubscribe>kpoffice-developer+unsubscribe@kaiserpfalz-edv.de</unsubscribe>
         </mailingList>
     </mailingLists>
+
 
     <developers>
         <developer>
