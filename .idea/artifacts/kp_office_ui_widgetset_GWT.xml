@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
   <artifact name="kp-office-ui-widgetset:GWT">
-    <output-path>$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office-ui-widgetset/target/classes/VAADIN/widgetsets</output-path>
+    <output-path>$PROJECT_DIR$/kp-office-interfaces/kp-office-webui/kp-office-ui-widgetset/target/classes/VAADIN/widgetsets</output-path>
     <root id="root">
       <element id="directory" name="VAADIN">
         <element id="directory" name="widgetsets">

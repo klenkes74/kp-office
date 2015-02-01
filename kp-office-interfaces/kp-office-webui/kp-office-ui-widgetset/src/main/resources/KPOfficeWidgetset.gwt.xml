@@ -28,17 +28,17 @@
 
     <inherits name="org.vaadin.teemu.switchui.SwitchComponentWidgetset" />
 
-    <inherits name="com.lexaden.breadcrumb.gwt.BreadcrumbWidgetset" />
+    
 
     <inherits name="com.wcs.vaadin.userinactivity.WidgetSet" />
 
     <inherits name="org.vaadin.peter.contextmenu.ContextmenuWidgetset" />
 
-    <inherits name="com.lexaden.business.chart.widgetset.OrganisationWidgetset" />
+    
 
     <inherits name="fi.jasoft.qrcode.QrcodeWidgetset" />
 
-    <inherits name="com.lexaden.business.flows.FlowProgressBarWidgetset" />
+    
 
     <inherits name="com.vaadin.addon.calendar.gwt.CalendarWidgetset" />
 </module>

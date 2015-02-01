@@ -35,11 +35,11 @@
     <file type="gwt" url="file://$PROJECT_DIR$/kp-office-interfaces/kp-office-http/kp-office-webgui/kp-office-ui" />
     <file type="gwt" url="file://$PROJECT_DIR$/kp-office-interfaces/kp-office-http/kp-office-webgui/kp-office-ui-widgetset" />
     <file type="gwt" url="file://$PROJECT_DIR$/kp-office-interfaces/kp-office-http/kp-office-webgui/kp-office-webgui-ui" />
-    <file type="gwt" url="file://$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office-ui-widgetset" />
+    <file type="gwt" url="file://$PROJECT_DIR$/kp-office-interfaces/kp-office-webui/kp-office-ui-widgetset" />
     <file type="web" url="file://$PROJECT_DIR$/kp-office-interfaces/kp-office-http/kp-office-webgui" />
     <file type="web" url="file://$PROJECT_DIR$/kp-office-interfaces/kp-office-http/kp-office-webservice" />
     <file type="web" url="file://$PROJECT_DIR$/kp-office-interfaces/kp-office-service" />
-    <file type="web" url="file://$PROJECT_DIR$/kp-office-interfaces/kp-office-web" />
+    <file type="web" url="file://$PROJECT_DIR$/kp-office-interfaces/kp-office-webui" />
   </component>
   <component name="IdProvider" IDEtalkID="AF50A80F91C94C51287FEB2AE91FF6F9" />
   <component name="MavenProjectsManager">

@@ -16,8 +16,8 @@
 
 package de.kaiserpfalzEdv.office.ui.core;
 
-import de.kaiserpfalzEdv.commons.paging.Page;
-import de.kaiserpfalzEdv.commons.paging.Pageable;
+import de.kaiserpfalzEdv.commons.jee.paging.Page;
+import de.kaiserpfalzEdv.commons.jee.paging.Pageable;
 import de.kaiserpfalzEdv.commons.service.BackendService;
 import de.kaiserpfalzEdv.commons.service.FrontendService;
 import de.kaiserpfalzEdv.office.core.tenants.NoSuchTenantException;
@@ -88,6 +88,7 @@ public class TenantClient implements TenantService {
     public void delete(@NotNull UUID id) {
         service.delete(id);
     }
+
 
     @Override
     public Page<Tenant> listTenants(Pageable pageable) {

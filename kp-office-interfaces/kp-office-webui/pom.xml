@@ -26,9 +26,17 @@
     </parent>
 
 
-    <artifactId>kp-office-web</artifactId>
+    <artifactId>kp-office-webui</artifactId>
     <packaging>pom</packaging>
     <name>KP Office - Web UI</name>
+
+    
+    <modules>
+        <module>kp-office-ui-widgetset</module>
+        <module>kp-office-ui-modules</module>
+        <module>kp-office</module>
+    </modules>
+
 
     <properties>
         <vaadin.version>7.3.7</vaadin.version>
@@ -93,14 +101,14 @@
 
             
             <dependency>
-                <groupId>de.kaiserpfalzEdv</groupId>
+                <groupId>de.kaiserpfalz-edv.base</groupId>
                 <artifactId>kp-spring-bom</artifactId>
                 <version>${kp-commons.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
             <dependency>
-                <groupId>de.kaiserpfalzEdv</groupId>
+                <groupId>de.kaiserpfalz-edv.base</groupId>
                 <artifactId>kp-vaadin-bom</artifactId>
                 <version>${kp-commons.version}</version>
                 <type>pom</type>
@@ -116,9 +124,16 @@
         </dependencies>
     </dependencyManagement>
 
-    <modules>
-        <module>kp-office-ui-widgetset</module>
-        <module>kp-office-ui-modules</module>
-        <module>kp-office</module>
-    </modules>
+    <repositories>
+        <repository>
+            <id>vaadin-addons</id>
+            <name>Vaadin Addon Repository</name>
+            <url>http://maven.vaadin.com/vaadin-addons</url>
+        </repository>
+
+        <repository>
+            <id>lexaden</id>
+            <url>http://www.lexaden.com/maven2/repo</url>
+        </repository>
+    </repositories>
 </project>

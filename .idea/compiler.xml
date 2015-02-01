@@ -22,7 +22,9 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
+        <module name="kp-office" />
         <module name="kp-office-backend-utils" />
+        <module name="kp-office-cli-kppasswd" />
         <module name="kp-office-commons" />
         <module name="kp-office-contacts-core" />
         <module name="kp-office-contacts-server" />
@@ -32,11 +34,14 @@
         <module name="kp-office-projects-server" />
         <module name="kp-office-service" />
         <module name="kp-office-ui" />
+        <module name="kp-office-ui-core" />
         <module name="kp-office-ui-modules (1)" />
         <module name="kp-office-ui-modules (2)" />
         <module name="kp-office-ui-modules (3)" />
+        <module name="kp-office-ui-widgetset" />
         <module name="kp-office-webgui-ui" />
         <module name="kp-office-webgui-widgetset" />
+        <module name="kp-office-webservices" />
         <module name="kp-office-widgetset" />
       </profile>
       <profile default="false" name="Annotation profile for kp-office-core" enabled="true">
@@ -105,6 +110,8 @@
       <module name="kp-office-webgui-ui" target="1.8" />
       <module name="kp-office-webgui-widgetset" target="1.8" />
       <module name="kp-office-webservice" target="1.8" />
+      <module name="kp-office-webservices" target="1.8" />
+      <module name="kp-office-webui" target="1.8" />
       <module name="kp-office-widgetset" target="1.8" />
     </bytecodeTargetLevel>
   </component>

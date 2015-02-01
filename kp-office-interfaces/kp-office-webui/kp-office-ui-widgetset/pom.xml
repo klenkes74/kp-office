@@ -19,7 +19,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <artifactId>kp-office-web</artifactId>
+        <artifactId>kp-office-webui</artifactId>
         <groupId>de.kaiserpfalz-edv.office</groupId>
         <version>0.1.0-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
@@ -78,6 +78,8 @@
             <groupId>org.vaadin.addons</groupId>
             <artifactId>qrcode</artifactId>
         </dependency>
+<!--
+        TODO 2015-02-01 klenkes Add the lexaden repository ....
         <dependency>
             <groupId>com.lexaden.components</groupId>
             <artifactId>flowprogressbar</artifactId>
@@ -90,6 +92,7 @@
             <groupId>com.lexaden.components</groupId>
             <artifactId>organisationchart</artifactId>
         </dependency>
+-->
         <dependency>
             <groupId>com.vaadin.addon</groupId>
             <artifactId>vaadin-calendar</artifactId>

@@ -32,7 +32,10 @@
 
 
     <modules>
-        <module>kp-office-web</module>
+        <module>kp-office-webui</module>
         <module>kp-office-cli</module>
+<!--
+        <module>kp-office-webservices</module>
+-->
     </modules>
 </project>
