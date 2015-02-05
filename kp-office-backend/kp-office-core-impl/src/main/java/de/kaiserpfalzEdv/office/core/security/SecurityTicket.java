@@ -17,6 +17,7 @@
 package de.kaiserpfalzEdv.office.core.security;
 
 import de.kaiserpfalzEdv.commons.jee.db.OffsetDateTimeJPAConverter;
+import de.kaiserpfalzEdv.commons.jee.db.UUIDJPAConverter;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
@@ -46,7 +47,7 @@ import java.util.UUID;
  */
 @Entity
 @Table(
-        name = "TICKETS"
+        name = "tickets"
 )
 public class SecurityTicket implements Serializable {
     private final static ZoneId TIMEZONE = ZoneId.of("UTC");
@@ -54,19 +55,20 @@ public class SecurityTicket implements Serializable {
     private final static long DEFAULT_RENEWAL = 600L;
 
     @Id @NotNull
-    @Column(name = "ID_", length=50, nullable = false, updatable = false, unique = true)
+    @Column(name = "id_", length=50, nullable = false, updatable = false, unique = true)
+    @Convert(converter = UUIDJPAConverter.class)
     private UUID id;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "ACCOUNT_ID_", nullable = false, updatable = false, unique = true)
+    @JoinColumn(name = "account_id_", nullable = false, updatable = false, unique = true)
     private Account account;
 
     @Convert(converter = OffsetDateTimeJPAConverter.class)
-    @Column(name = "CREATED_", nullable = false, updatable = false)
+    @Column(name = "created_", nullable = false, updatable = false)
     private OffsetDateTime created;
 
     @Convert(converter = OffsetDateTimeJPAConverter.class)
-    @Column(name = "VALIDITY_", nullable = false, updatable = false)
+    @Column(name = "validity_", nullable = false, updatable = false)
     private OffsetDateTime validity;
 
 
@@ -89,9 +91,9 @@ public class SecurityTicket implements Serializable {
 
     public boolean isValid() {
         OffsetDateTime now = OffsetDateTime.now(TIMEZONE);
-        
+
         System.out.println(validity.toString() + " is hopefully after " + now.toString());
-        
+
         return validity.isAfter(now);
     }
 
