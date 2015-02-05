@@ -17,7 +17,6 @@
 package de.kaiserpfalzEdv.office.core.security;
 
 import de.kaiserpfalzEdv.commons.jee.db.OffsetDateTimeJPAConverter;
-import de.kaiserpfalzEdv.commons.jee.db.UUIDJPAConverter;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
@@ -55,7 +54,6 @@ public class SecurityTicket implements Serializable {
     private final static long DEFAULT_RENEWAL = 600L;
 
     @Id @NotNull
-    @Convert(converter = UUIDJPAConverter.class)
     @Column(name = "ID_", length=50, nullable = false, updatable = false, unique = true)
     private UUID id;
 

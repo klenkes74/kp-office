@@ -73,7 +73,7 @@ public abstract class Account extends KPOTenantHoldingEntity {
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(
-            catalog = "SECURITY", name = "ACCOUNTS_ROLES",
+            name = "ACCOUNTS_ROLES",
             joinColumns = {@JoinColumn(name = "ACCOUNT_ID_", referencedColumnName = "ID_")},
             inverseJoinColumns = { @JoinColumn(name = "ROLE_ID_", referencedColumnName = "ID_")},
             indexes = {

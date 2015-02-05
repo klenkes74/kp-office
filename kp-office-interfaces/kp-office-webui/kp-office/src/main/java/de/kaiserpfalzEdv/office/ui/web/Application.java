@@ -21,6 +21,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
+import org.springframework.boot.orm.jpa.EntityScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.FilterType;
@@ -46,6 +47,9 @@ import javax.annotation.PreDestroy;
 @EnableJpaRepositories(
         value = {"de.kaiserpfalzEdv.office"},
         includeFilters = {@ComponentScan.Filter(type = FilterType.ANNOTATION, value = Repository.class)}
+)
+@EntityScan(
+        basePackages = {"de.kaiserpfalzEdv.office", "de.kaiserpfalzEdv.commons.jee.db"}
 )
 public class Application {
     private static Logger LOG = LoggerFactory.getLogger(Application.class);

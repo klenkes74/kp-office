@@ -32,7 +32,6 @@ public class KPOTenantHoldingEntity extends KPOEntity implements TenantHoldingEn
     private static final long serialVersionUID = 4102545731581586298L;
 
     @Column(name = "TENANT_", unique = false)
-    @org.hibernate.annotations.Type(type="org.hibernate.type.UUIDCharType")
     private UUID tenantId;
 
 

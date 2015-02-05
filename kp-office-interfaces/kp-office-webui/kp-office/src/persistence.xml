@@ -1,0 +1,53 @@
+<!--
+  ~ Copyright 2015 Kaiserpfalz EDV-Service, Roland T. Lichti
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<persistence xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1"
+             xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://www.oracle.com/webfolder/technetwork/jsc/xml/ns/persistence/persistence_2_1.xsd">
+
+    <persistence-unit name="KPO" transaction-type="RESOURCE_LOCAL">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+
+        <class>de.kaiserpfalzEdv.commons.jee.db.ZonedDateTimeJPAConverter</class>
+        <class>de.kaiserpfalzEdv.commons.jee.db.LocalDateJPAConverter</class>
+        <class>de.kaiserpfalzEdv.commons.jee.db.LocalTimeJPAConverter</class>
+        <class>de.kaiserpfalzEdv.commons.jee.db.LocalDateTimeJPAConverter</class>
+        <class>de.kaiserpfalzEdv.commons.jee.db.OffsetDateTimeJPAConverter</class>
+        <class>de.kaiserpfalzEdv.commons.jee.db.OffsetTimeJPAConverter</class>
+        <class>de.kaiserpfalzEdv.commons.jee.db.PeriodJPAConverter</class>
+        <class>de.kaiserpfalzEdv.commons.jee.db.DurationJPAConverter</class>
+        
+        
+        <class>de.kaiserpfalzEdv.office.core.KPOEntity</class>
+        <class>de.kaiserpfalzEdv.office.core.KPOTenantHoldingEntity</class>
+
+        <class>de.kaiserpfalzEdv.office.core.security.Identity</class>
+        <class>de.kaiserpfalzEdv.office.core.security.Account</class>
+        <class>de.kaiserpfalzEdv.office.core.security.UserAccount</class>
+        <class>de.kaiserpfalzEdv.office.core.security.SystemAccount</class>
+        <class>de.kaiserpfalzEdv.office.core.security.Role</class>
+        <class>de.kaiserpfalzEdv.office.core.security.SecurityTicket</class>
+        
+        <class>de.kaiserpfalzEdv.office.core.tenants.TenantDO</class>
+
+        <properties>
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.format_sql" value="true"/>
+            <property name="hibernate.use_sql_comments" value="true"/>
+            <property name="hibernate.generate_statistics" value="true"/>
+        </properties>
+    </persistence-unit>
+</persistence>

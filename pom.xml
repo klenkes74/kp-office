@@ -33,7 +33,7 @@
 
     <name>KP Office - Parent</name>
     <description>Kaiserpfalz EDV-Service Office - A central office management suite.</description>
-    <url>https://github.com/klenkes74/kp-office</url>
+    <url>https://devzone.kaiserpfalz-edv.de/kp-office/</url>
 
 
     <modules>
@@ -67,12 +67,12 @@
         </database.changelog>
 
         <h2.port>9070</h2.port>
-        <h2.dataSourceType>javax.sql.DataSource</h2.dataSourceType>
-        <h2.url>jdbc:mysql://192.168.59.103:49162/kpoffice?profileSQL=true&amp;connectTimeout=6000&amp;socketTimeout=4000&amp;autoReconnect=true</h2.url>
-        <h2.file>jdbc:h2:./target/data/testdb;DB_CLOSE_ON_EXIT=TRUE</h2.file>
-        <h2.driver>com.mysql.jdbc.Driver</h2.driver>
-        <h2.user>kpoffice</h2.user>
-        <h2.password>kptest</h2.password>
+        <jdbc.dataSourceType>javax.sql.DataSource</jdbc.dataSourceType>
+        <jdbc.url>jdbc:mysql://192.168.59.103:49162/kpoffice?profileSQL=true&amp;connectTimeout=6000&amp;socketTimeout=4000&amp;autoReconnect=true</jdbc.url>
+        <jdbc.file>jdbc:jdbc:./target/data/testdb;DB_CLOSE_ON_EXIT=TRUE</jdbc.file>
+        <jdbc.driver>com.mysql.jdbc.Driver</jdbc.driver>
+        <jdbc.user>kpoffice</jdbc.user>
+        <jdbc.password>kptest</jdbc.password>
 
         <db.schema>KPOSTORE</db.schema>
 
@@ -85,27 +85,27 @@
     <distributionManagement>
         <repository>
             <id>internal</id>
-            <url>http://repository.kaiserpfalz-edv.de/content/repositories/releases/</url>
+            <url>https://devzone.kaiserpfalz-edv.de/ci/plugin/repository/everything/</url>
         </repository>
         <snapshotRepository>
             <id>snapshot</id>
-            <url>http://repository.kaiserpfalz-edv.de/content/repositories/snapshots/</url>
+            <url>https://devzone.kaiserpfalz-edv.de/ci/plugin/repository/everything/</url>
         </snapshotRepository>
         <site>
             <id>kp-website</id>
-            <url>dav:http://dav.kaiserpfalz-edv.de:443/projects/kp-office/${project.version}</url>
+            <url>file://home/docu/kp-office/${project.version}</url>
         </site>
     </distributionManagement>
 
     <issueManagement>
         <system>jira</system>
-        <url>http://issues.kaiserpfalz-edv.de/BROWSE/KPO</url>
+        <url>https://devzone.kaiserpfalz-edv.de/issues/BROWSE/KPO</url>
     </issueManagement>
 
     <scm>
-        <url>http://github.com/klenkes74/kp-office</url>
-        <connection>scm:git:git://github.com/klenkes74/kp-office.git</connection>
-        <developerConnection>scm:git:ssh://git@github.com/klenkes74/kp-office.git</developerConnection>
+        <url>http://github.com/KaiserpfalzEdv/kp-office</url>
+        <connection>scm:git:git://github.com/KaiserpfalzEdv/kp-office.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com/KaiserpfalzEdv/kp-office.git</developerConnection>
         <tag>HEAD</tag>
     </scm>
 
@@ -127,32 +127,6 @@
                 <artifactId>maven-resources-plugin</artifactId>
             </plugin>
 
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-source-plugin</artifactId>
-            </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-gpg-plugin</artifactId>
-            </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-release-plugin</artifactId>
-            </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-javadoc-plugin</artifactId>
-            </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-site-plugin</artifactId>
-            </plugin>
-
-
             <!-- ===[Testing]=============================================================================[BEGIN]=== -->
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
@@ -162,11 +136,6 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-            </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-failsafe-plugin</artifactId>
             </plugin>
             <!-- ===[Testing]=============================================================================[END  ]=== -->
         </plugins>

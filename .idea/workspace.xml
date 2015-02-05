@@ -1,82 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2832b224-b737-451e-b6c2-5595d59effb5" name="Default" comment="Added the correct mailing lists.">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kp-office-interfaces/kp-office-webservices/pom.xml" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-interfaces/kp-office-cli/kp-office-cli-kppasswd/kp-office-cli-kppasswd.iml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-interfaces/kp-office-cli/kp-office-cli.iml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-interfaces/kp-office-interfaces.iml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office-ui-modules/kp-office-ui-contacts/kp-office-ui-contacts.iml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office-ui-modules/kp-office-ui-core/kp-office-ui-core.iml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office-ui-modules/kp-office-ui-modules.iml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office-ui-modules/kp-office-ui-projects/kp-office-ui-projects.iml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office-ui-widgetset/kp-office-ui-widgetset.iml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office-web.iml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office/kp-office.iml" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/README.md" afterPath="$PROJECT_DIR$/kp-office-interfaces/kp-office-webui/README.md" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office-ui-modules/kp-office-ui-contacts/pom.xml" afterPath="$PROJECT_DIR$/kp-office-interfaces/kp-office-webui/kp-office-ui-modules/kp-office-ui-contacts/pom.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office-ui-modules/kp-office-ui-core/pom.xml" afterPath="$PROJECT_DIR$/kp-office-interfaces/kp-office-webui/kp-office-ui-modules/kp-office-ui-core/pom.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office-ui-modules/kp-office-ui-core/src/main/java/de/kaiserpfalzEdv/office/ui/core/SecurityClient.java" afterPath="$PROJECT_DIR$/kp-office-interfaces/kp-office-webui/kp-office-ui-modules/kp-office-ui-core/src/main/java/de/kaiserpfalzEdv/office/ui/core/SecurityClient.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office-ui-modules/kp-office-ui-core/src/main/java/de/kaiserpfalzEdv/office/ui/core/TenantClient.java" afterPath="$PROJECT_DIR$/kp-office-interfaces/kp-office-webui/kp-office-ui-modules/kp-office-ui-core/src/main/java/de/kaiserpfalzEdv/office/ui/core/TenantClient.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office-ui-modules/kp-office-ui-projects/pom.xml" afterPath="$PROJECT_DIR$/kp-office-interfaces/kp-office-webui/kp-office-ui-modules/kp-office-ui-projects/pom.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office-ui-modules/pom.xml" afterPath="$PROJECT_DIR$/kp-office-interfaces/kp-office-webui/kp-office-ui-modules/pom.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office-ui-widgetset/pom.xml" afterPath="$PROJECT_DIR$/kp-office-interfaces/kp-office-webui/kp-office-ui-widgetset/pom.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office-ui-widgetset/src/main/resources/KPOfficeWidgetset.gwt.xml" afterPath="$PROJECT_DIR$/kp-office-interfaces/kp-office-webui/kp-office-ui-widgetset/src/main/resources/KPOfficeWidgetset.gwt.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office/pom.xml" afterPath="$PROJECT_DIR$/kp-office-interfaces/kp-office-webui/kp-office/pom.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office/src/main/java/de/kaiserpfalzEdv/office/ui/web/Application.java" afterPath="$PROJECT_DIR$/kp-office-interfaces/kp-office-webui/kp-office/src/main/java/de/kaiserpfalzEdv/office/ui/web/Application.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office/src/main/java/de/kaiserpfalzEdv/office/ui/web/KPOfficeUI.java" afterPath="$PROJECT_DIR$/kp-office-interfaces/kp-office-webui/kp-office/src/main/java/de/kaiserpfalzEdv/office/ui/web/KPOfficeUI.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office/src/main/java/de/kaiserpfalzEdv/office/ui/web/ServletInitializer.java" afterPath="$PROJECT_DIR$/kp-office-interfaces/kp-office-webui/kp-office/src/main/java/de/kaiserpfalzEdv/office/ui/web/ServletInitializer.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office/src/main/java/de/kaiserpfalzEdv/office/ui/web/StartupFilter.java" afterPath="$PROJECT_DIR$/kp-office-interfaces/kp-office-webui/kp-office/src/main/java/de/kaiserpfalzEdv/office/ui/web/StartupFilter.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office/src/main/java/de/kaiserpfalzEdv/office/ui/web/WebSecurityConfig.java" afterPath="$PROJECT_DIR$/kp-office-interfaces/kp-office-webui/kp-office/src/main/java/de/kaiserpfalzEdv/office/ui/web/WebSecurityConfig.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office/src/main/java/de/kaiserpfalzEdv/office/ui/web/presenter/Action.java" afterPath="$PROJECT_DIR$/kp-office-interfaces/kp-office-webui/kp-office/src/main/java/de/kaiserpfalzEdv/office/ui/web/presenter/Action.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office/src/main/java/de/kaiserpfalzEdv/office/ui/web/presenter/BannerPresenter.java" afterPath="$PROJECT_DIR$/kp-office-interfaces/kp-office-webui/kp-office/src/main/java/de/kaiserpfalzEdv/office/ui/web/presenter/BannerPresenter.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office/src/main/java/de/kaiserpfalzEdv/office/ui/web/presenter/BodyPresenter.java" afterPath="$PROJECT_DIR$/kp-office-interfaces/kp-office-webui/kp-office/src/main/java/de/kaiserpfalzEdv/office/ui/web/presenter/BodyPresenter.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office/src/main/java/de/kaiserpfalzEdv/office/ui/web/presenter/ControlsContext.java" afterPath="$PROJECT_DIR$/kp-office-interfaces/kp-office-webui/kp-office/src/main/java/de/kaiserpfalzEdv/office/ui/web/presenter/ControlsContext.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office/src/main/java/de/kaiserpfalzEdv/office/ui/web/presenter/HeaderPresenter.java" afterPath="$PROJECT_DIR$/kp-office-interfaces/kp-office-webui/kp-office/src/main/java/de/kaiserpfalzEdv/office/ui/web/presenter/HeaderPresenter.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office/src/main/java/de/kaiserpfalzEdv/office/ui/web/presenter/LogoutLinkListener.java" afterPath="$PROJECT_DIR$/kp-office-interfaces/kp-office-webui/kp-office/src/main/java/de/kaiserpfalzEdv/office/ui/web/presenter/LogoutLinkListener.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office/src/main/java/de/kaiserpfalzEdv/office/ui/web/presenter/MainPresenter.java" afterPath="$PROJECT_DIR$/kp-office-interfaces/kp-office-webui/kp-office/src/main/java/de/kaiserpfalzEdv/office/ui/web/presenter/MainPresenter.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office/src/main/java/de/kaiserpfalzEdv/office/ui/web/presenter/NavigationPanelPresenter.java" afterPath="$PROJECT_DIR$/kp-office-interfaces/kp-office-webui/kp-office/src/main/java/de/kaiserpfalzEdv/office/ui/web/presenter/NavigationPanelPresenter.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office/src/main/java/de/kaiserpfalzEdv/office/ui/web/presenter/TabPanelPresenter.java" afterPath="$PROJECT_DIR$/kp-office-interfaces/kp-office-webui/kp-office/src/main/java/de/kaiserpfalzEdv/office/ui/web/presenter/TabPanelPresenter.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office/src/main/java/de/kaiserpfalzEdv/office/ui/web/security/KPOfficeAuthenticationProvider.java" afterPath="$PROJECT_DIR$/kp-office-interfaces/kp-office-webui/kp-office/src/main/java/de/kaiserpfalzEdv/office/ui/web/security/KPOfficeAuthenticationProvider.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office/src/main/java/de/kaiserpfalzEdv/office/ui/web/security/KPOfficeGrantedAuthority.java" afterPath="$PROJECT_DIR$/kp-office-interfaces/kp-office-webui/kp-office/src/main/java/de/kaiserpfalzEdv/office/ui/web/security/KPOfficeGrantedAuthority.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office/src/main/java/de/kaiserpfalzEdv/office/ui/web/security/KPOfficeUserDetail.java" afterPath="$PROJECT_DIR$/kp-office-interfaces/kp-office-webui/kp-office/src/main/java/de/kaiserpfalzEdv/office/ui/web/security/KPOfficeUserDetail.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office/src/main/java/de/kaiserpfalzEdv/office/ui/web/view/BannerView.java" afterPath="$PROJECT_DIR$/kp-office-interfaces/kp-office-webui/kp-office/src/main/java/de/kaiserpfalzEdv/office/ui/web/view/BannerView.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office/src/main/java/de/kaiserpfalzEdv/office/ui/web/view/BodyView.java" afterPath="$PROJECT_DIR$/kp-office-interfaces/kp-office-webui/kp-office/src/main/java/de/kaiserpfalzEdv/office/ui/web/view/BodyView.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office/src/main/java/de/kaiserpfalzEdv/office/ui/web/view/FooterView.java" afterPath="$PROJECT_DIR$/kp-office-interfaces/kp-office-webui/kp-office/src/main/java/de/kaiserpfalzEdv/office/ui/web/view/FooterView.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office/src/main/java/de/kaiserpfalzEdv/office/ui/web/view/HeaderView.java" afterPath="$PROJECT_DIR$/kp-office-interfaces/kp-office-webui/kp-office/src/main/java/de/kaiserpfalzEdv/office/ui/web/view/HeaderView.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office/src/main/java/de/kaiserpfalzEdv/office/ui/web/view/LayoutIntegrator.java" afterPath="$PROJECT_DIR$/kp-office-interfaces/kp-office-webui/kp-office/src/main/java/de/kaiserpfalzEdv/office/ui/web/view/LayoutIntegrator.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office/src/main/java/de/kaiserpfalzEdv/office/ui/web/view/MainView.java" afterPath="$PROJECT_DIR$/kp-office-interfaces/kp-office-webui/kp-office/src/main/java/de/kaiserpfalzEdv/office/ui/web/view/MainView.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office/src/main/java/de/kaiserpfalzEdv/office/ui/web/view/NavigationPanelView.java" afterPath="$PROJECT_DIR$/kp-office-interfaces/kp-office-webui/kp-office/src/main/java/de/kaiserpfalzEdv/office/ui/web/view/NavigationPanelView.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office/src/main/java/de/kaiserpfalzEdv/office/ui/web/view/Styles.java" afterPath="$PROJECT_DIR$/kp-office-interfaces/kp-office-webui/kp-office/src/main/java/de/kaiserpfalzEdv/office/ui/web/view/Styles.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office/src/main/java/de/kaiserpfalzEdv/office/ui/web/view/TabPanelView.java" afterPath="$PROJECT_DIR$/kp-office-interfaces/kp-office-webui/kp-office/src/main/java/de/kaiserpfalzEdv/office/ui/web/view/TabPanelView.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office/src/main/resources/application.properties" afterPath="$PROJECT_DIR$/kp-office-interfaces/kp-office-webui/kp-office/src/main/resources/application.properties" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office/src/main/resources/banner.txt" afterPath="$PROJECT_DIR$/kp-office-interfaces/kp-office-webui/kp-office/src/main/resources/banner.txt" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office/src/main/resources/logback.xml" afterPath="$PROJECT_DIR$/kp-office-interfaces/kp-office-webui/kp-office/src/main/resources/logback.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office/src/main/webapp/META-INF/context.xml" afterPath="$PROJECT_DIR$/kp-office-interfaces/kp-office-webui/kp-office/src/main/webapp/META-INF/context.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office/src/main/webapp/VAADIN/themes/mytheme/addons.scss" afterPath="$PROJECT_DIR$/kp-office-interfaces/kp-office-webui/kp-office/src/main/webapp/VAADIN/themes/mytheme/addons.scss" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office/src/main/webapp/VAADIN/themes/mytheme/favicon.ico" afterPath="$PROJECT_DIR$/kp-office-interfaces/kp-office-webui/kp-office/src/main/webapp/VAADIN/themes/mytheme/favicon.ico" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office/src/main/webapp/VAADIN/themes/mytheme/mytheme.scss" afterPath="$PROJECT_DIR$/kp-office-interfaces/kp-office-webui/kp-office/src/main/webapp/VAADIN/themes/mytheme/mytheme.scss" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office/src/main/webapp/VAADIN/themes/mytheme/styles.scss" afterPath="$PROJECT_DIR$/kp-office-interfaces/kp-office-webui/kp-office/src/main/webapp/VAADIN/themes/mytheme/styles.scss" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/pom.xml" afterPath="$PROJECT_DIR$/kp-office-interfaces/kp-office-webui/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/encodings.xml" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
+    <list default="true" id="2832b224-b737-451e-b6c2-5595d59effb5" name="Default" comment="Removed currently deactivated modules contacts and projects.">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kp-office-interfaces/kp-office-webui/kp-office/src/persistence.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.ids" afterPath="$PROJECT_DIR$/.idea/dataSources.ids" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/java/de/kaiserpfalzEdv/office/core/security/Account.java" afterPath="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/java/de/kaiserpfalzEdv/office/core/security/Account.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kp-office-interfaces/kp-office-webui/kp-office/src/main/java/de/kaiserpfalzEdv/office/ui/web/Application.java" afterPath="$PROJECT_DIR$/kp-office-interfaces/kp-office-webui/kp-office/src/main/java/de/kaiserpfalzEdv/office/ui/web/Application.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/java/de/kaiserpfalzEdv/office/core/KPOTenantHoldingEntity.java" afterPath="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/java/de/kaiserpfalzEdv/office/core/KPOTenantHoldingEntity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/java/de/kaiserpfalzEdv/office/core/security/SecurityTicket.java" afterPath="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/java/de/kaiserpfalzEdv/office/core/security/SecurityTicket.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kp-office-backend/kp-office-backend-utils/kp-office-backend-utils.iml" afterPath="$PROJECT_DIR$/kp-office-backend/kp-office-backend-utils/kp-office-backend-utils.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kp-office-backend/kp-office-backend.iml" afterPath="$PROJECT_DIR$/kp-office-backend/kp-office-backend.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kp-office-interfaces/kp-office-cli/kp-office-cli-kppasswd/kp-office-cli-kppasswd.iml" afterPath="$PROJECT_DIR$/kp-office-interfaces/kp-office-cli/kp-office-cli-kppasswd/kp-office-cli-kppasswd.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kp-office-interfaces/kp-office-cli/kp-office-cli.iml" afterPath="$PROJECT_DIR$/kp-office-interfaces/kp-office-cli/kp-office-cli.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kp-office-commons/kp-office-commons.iml" afterPath="$PROJECT_DIR$/kp-office-commons/kp-office-commons.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kp-office-backend/kp-office-core-api/kp-office-core-api.iml" afterPath="$PROJECT_DIR$/kp-office-backend/kp-office-core-api/kp-office-core-api.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/kp-office-core-impl.iml" afterPath="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/kp-office-core-impl.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kp-office-interfaces/kp-office-interfaces.iml" afterPath="$PROJECT_DIR$/kp-office-interfaces/kp-office-interfaces.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kp-office-root.iml" afterPath="$PROJECT_DIR$/kp-office-root.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/kp_office_ui_war_exploded.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/kp_office_ui_war_exploded.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/kp_office_ui_widgetset_GWT.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/kp_office_ui_widgetset_GWT.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/kp_office_war_exploded.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/kp_office_war_exploded.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kp-office-interfaces/pom.xml" afterPath="$PROJECT_DIR$/kp-office-interfaces/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/pom.xml" afterPath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-api/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-impl/pom.xml" afterPath="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-impl/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-projects/kp-office-projects-api/pom.xml" afterPath="$PROJECT_DIR$/kp-office-modules/kp-office-projects/kp-office-projects-api/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kp-office-modules/kp-office-projects/kp-office-projects-impl/pom.xml" afterPath="$PROJECT_DIR$/kp-office-modules/kp-office-projects/kp-office-projects-impl/pom.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/pom.xml" afterPath="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/pom.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kp-office-interfaces/kp-office-webui/kp-office/pom.xml" afterPath="$PROJECT_DIR$/kp-office-interfaces/kp-office-webui/kp-office/pom.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="kp-office-root.iws" />
@@ -189,8 +133,18 @@
         <option name="myItemId" value="MySQL - kpoffice@192.168.59.103" />
         <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
       </PATH_ELEMENT>
+    </PATH>
+    <PATH>
       <PATH_ELEMENT>
-        <option name="myItemId" value="TENANTS" />
+        <option name="myItemId" />
+        <option name="myItemType" value="com.intellij.database.view.DbRootNodeDescriptor" />
+      </PATH_ELEMENT>
+      <PATH_ELEMENT>
+        <option name="myItemId" value="MySQL - kpoffice@192.168.59.103" />
+        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
+      </PATH_ELEMENT>
+      <PATH_ELEMENT>
+        <option name="myItemId" value="kpoffice" />
         <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
       </PATH_ELEMENT>
     </PATH>
@@ -204,17 +158,11 @@
         <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
       </PATH_ELEMENT>
       <PATH_ELEMENT>
-        <option name="myItemId" value="SECURITY" />
+        <option name="myItemId" value="kpoffice" />
         <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
       </PATH_ELEMENT>
-    </PATH>
-    <PATH>
       <PATH_ELEMENT>
-        <option name="myItemId" />
-        <option name="myItemType" value="com.intellij.database.view.DbRootNodeDescriptor" />
-      </PATH_ELEMENT>
-      <PATH_ELEMENT>
-        <option name="myItemId" value="MySQL - kpoffice@192.168.59.103" />
+        <option name="myItemId" value="roles" />
         <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
       </PATH_ELEMENT>
     </PATH>
@@ -230,7 +178,125 @@
     <favorites_list name="kp-office-root" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file leaf-file-name="Application.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/kp-office-interfaces/kp-office-webui/kp-office/src/main/java/de/kaiserpfalzEdv/office/ui/web/Application.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="705">
+              <caret line="51" column="85" selection-start-line="51" selection-start-column="85" selection-end-line="51" selection-end-column="85" />
+              <folding>
+                <element signature="e#0#2709#0" expanded="false" />
+                <element signature="imports" expanded="false" />
+                <element signature="docComment;class#Application#0" expanded="false" />
+                <element signature="e#2201#2202#0" expanded="false" />
+                <element signature="e#2247#2248#0" expanded="false" />
+                <element signature="e#2294#2295#0" expanded="false" />
+                <element signature="e#2342#2343#0" expanded="false" />
+                <element signature="e#2397#2398#0" expanded="false" />
+                <element signature="e#2459#2460#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SecurityTicket.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/java/de/kaiserpfalzEdv/office/core/security/SecurityTicket.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1800">
+              <caret line="56" column="21" selection-start-line="56" selection-start-column="21" selection-end-line="56" selection-end-column="21" />
+              <folding>
+                <element signature="e#0#4572#0" expanded="false" />
+                <element signature="imports" expanded="false" />
+                <element signature="e#2761#2762#0" expanded="false" />
+                <element signature="e#2845#2846#0" expanded="false" />
+                <element signature="e#3116#3117#0" expanded="false" />
+                <element signature="e#3141#3142#0" expanded="false" />
+                <element signature="e#3184#3185#0" expanded="false" />
+                <element signature="e#3215#3216#0" expanded="false" />
+                <element signature="e#3253#3254#0" expanded="false" />
+                <element signature="e#3300#3301#0" expanded="false" />
+                <element signature="e#3338#3339#0" expanded="false" />
+                <element signature="e#3385#3386#0" expanded="false" />
+                <element signature="e#3651#3652#0" expanded="false" />
+                <element signature="e#3718#3719#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Account.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/java/de/kaiserpfalzEdv/office/core/security/Account.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="422" max-vertical-offset="1935">
+              <caret line="62" column="22" selection-start-line="62" selection-start-column="22" selection-end-line="62" selection-end-column="22" />
+              <folding>
+                <element signature="e#0#5728#0" expanded="false" />
+                <element signature="imports" expanded="false" />
+                <element signature="docComment;class#Account#0" expanded="false" />
+                <element signature="e#3950#3951#0" expanded="false" />
+                <element signature="e#3991#3992#0" expanded="false" />
+                <element signature="e#4027#4028#0" expanded="false" />
+                <element signature="e#4084#4085#0" expanded="false" />
+                <element signature="e#4291#4292#0" expanded="false" />
+                <element signature="e#4327#4328#0" expanded="false" />
+                <element signature="e#4374#4375#0" expanded="false" />
+                <element signature="e#4413#4414#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Role.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/java/de/kaiserpfalzEdv/office/core/security/Role.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="260" max-vertical-offset="840">
+              <caret line="42" column="13" selection-start-line="42" selection-start-column="13" selection-end-line="42" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="mysql-create.sql" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/resources/ddl/mysql-create.sql">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="410" max-vertical-offset="1080">
+              <caret line="66" column="0" selection-start-line="66" selection-start-column="0" selection-end-line="66" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Identity.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/java/de/kaiserpfalzEdv/office/core/security/Identity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.83993113" vertical-offset="247" max-vertical-offset="1125">
+              <caret line="49" column="18" selection-start-line="49" selection-start-column="18" selection-end-line="49" selection-end-column="18" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="application.properties" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/kp-office-interfaces/kp-office-webui/kp-office/src/main/resources/application.properties">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="480" max-vertical-offset="1125">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="development.log" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/kp-office-interfaces/kp-office-webui/kp-office/target/development.log">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="5226" max-vertical-offset="5805">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -243,25 +309,13 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/test/resources/ddl/db-changelog-test.xml" />
-        <option value="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office/src/main/resources/application.properties" />
-        <option value="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office-ui-modules/kp-office-ui-core/src/main/java/de/kaiserpfalzEdv/office/ui/core/SecurityClient.java" />
-        <option value="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office/src/main/java/de/kaiserpfalzEdv/office/ui/web/security/KPOfficeAuthenticationProvider.java" />
-        <option value="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/java/de/kaiserpfalzEdv/office/security/SecurityServiceImpl.java" />
-        <option value="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/java/de/kaiserpfalzEdv/office/security/Identity.java" />
-        <option value="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/java/de/kaiserpfalzEdv/office/security/Role.java" />
-        <option value="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/java/de/kaiserpfalzEdv/office/security/SecurityTicket.java" />
         <option value="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/java/de/kaiserpfalzEdv/office/tenants/TenantDO.java" />
         <option value="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office/src/main/java/de/kaiserpfalzEdv/office/ui/web/Application.java" />
         <option value="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/java/de/kaiserpfalzEdv/office/security/Account.java" />
         <option value="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/java/de/kaiserpfalzEdv/office/security/AccountRepository.java" />
         <option value="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/resources/META-INF/persistence.xml" />
         <option value="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/test/resources/config/default.properties" />
-        <option value="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/java/de/kaiserpfalzEdv/office/core/security/Account.java" />
-        <option value="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/java/de/kaiserpfalzEdv/office/core/security/Identity.java" />
         <option value="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/java/de/kaiserpfalzEdv/office/core/security/Role.java" />
-        <option value="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/pom.xml" />
-        <option value="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/java/de/kaiserpfalzEdv/office/core/security/SecurityTicket.java" />
         <option value="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/java/de/kaiserpfalzEdv/office/core/tenants/TenantDO.java" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/resources/ddl/initialize-database.xml" />
@@ -279,7 +333,6 @@
         <option value="$PROJECT_DIR$/kp-office-backend/kp-office-core-api/pom.xml" />
         <option value="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office-ui-widgetset/pom.xml" />
         <option value="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office/pom.xml" />
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/pom.xml" />
         <option value="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office-ui-modules/pom.xml" />
         <option value="$PROJECT_DIR$/kp-office-interfaces/kp-office-webui/kp-office-ui-widgetset/pom.xml" />
@@ -292,8 +345,21 @@
         <option value="$PROJECT_DIR$/kp-office-interfaces/kp-office-webui/kp-office-ui-modules/pom.xml" />
         <option value="$PROJECT_DIR$/kp-office-interfaces/kp-office-webservices/pom.xml" />
         <option value="$PROJECT_DIR$/kp-office-interfaces/kp-office-webui/kp-office-ui-modules/kp-office-ui-core/src/main/java/de/kaiserpfalzEdv/office/ui/core/TenantClient.java" />
-        <option value="$PROJECT_DIR$/kp-office-interfaces/kp-office-webui/kp-office/pom.xml" />
         <option value="$PROJECT_DIR$/kp-office-interfaces/pom.xml" />
+        <option value="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/pom.xml" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/kp-office-interfaces/kp-office-webui/kp-office/src/main/webapp/META-INF/persistence.xml" />
+        <option value="$PROJECT_DIR$/kp-office-interfaces/kp-office-webui/kp-office/target/classes/persistence.xml" />
+        <option value="$PROJECT_DIR$/kp-office-interfaces/kp-office-webui/kp-office/src/main/resources/persistence.xml" />
+        <option value="$PROJECT_DIR$/kp-office-interfaces/kp-office-webui/kp-office/src/main/resources/META-INF/persistence.xml" />
+        <option value="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/java/de/kaiserpfalzEdv/office/core/security/Account.java" />
+        <option value="$PROJECT_DIR$/kp-office-interfaces/kp-office-webui/kp-office/pom.xml" />
+        <option value="$PROJECT_DIR$/kp-office-interfaces/kp-office-webui/kp-office/src/main/java/de/kaiserpfalzEdv/office/ui/web/Application.java" />
+        <option value="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/java/de/kaiserpfalzEdv/office/core/KPOTenantHoldingEntity.java" />
+        <option value="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/java/de/kaiserpfalzEdv/office/core/security/SecurityTicket.java" />
+        <option value="db-console:/e0406405/829e5284-8428-4d3b-99d4-cfad332a3bf8/" />
+        <option value="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/resources/ddl/mysql-create.sql" />
+        <option value="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/java/de/kaiserpfalzEdv/office/core/security/Identity.java" />
       </list>
     </option>
   </component>
@@ -316,7 +382,6 @@
         <option value="with-db" />
         <option value="integration-tests" />
         <option value="repositories" />
-        <option value="with-jaxb" />
         <option value="release" />
       </list>
     </option>
@@ -327,6 +392,122 @@
         <PATH_ELEMENT>
           <option name="myItemId" value="" />
           <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RootNode" />
+        </PATH_ELEMENT>
+      </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RootNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="KP Office - Web UI - Application" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="Dependencies" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$DependenciesNode" />
+        </PATH_ELEMENT>
+      </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RootNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="KP Office - Web UI - Application" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="Dependencies" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$DependenciesNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="de.kaiserpfalz-edv.office:kp-office-core-impl:0.1.0-SNAPSHOT" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$DependencyNode" />
+        </PATH_ELEMENT>
+      </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RootNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="KP Office - Web UI - Application" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="Plugins" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$PluginsNode" />
+        </PATH_ELEMENT>
+      </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RootNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="KP Office - Web UI - Application" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="Plugins" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$PluginsNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="spring-boot" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$PluginNode" />
+        </PATH_ELEMENT>
+      </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RootNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="KP Office - Web UI - Application" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="Plugins" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$PluginsNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="resources" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$PluginNode" />
+        </PATH_ELEMENT>
+      </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RootNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="KP Office - Web UI - Application" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
+        </PATH_ELEMENT>
+      </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RootNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="KP Office - Core - Implementation" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
+        </PATH_ELEMENT>
+      </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RootNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="KP Office - Core - Implementation" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="Lifecycle" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$LifecycleNode" />
         </PATH_ELEMENT>
       </PATH>
       <PATH>
@@ -398,47 +579,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="kp-office-modules" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kp-office" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kp-office" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kp-office-modules" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kp-office-contacts" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kp-office" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kp-office" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kp-office-modules" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kp-office-contacts" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kp-office-contacts-impl" />
+              <option name="myItemId" value="kp-office-interfaces" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -453,6 +594,626 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="kp-office-interfaces" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kp-office-webui" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kp-office" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kp-office" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kp-office-interfaces" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kp-office-webui" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kp-office-ui-modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kp-office" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kp-office" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kp-office-interfaces" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kp-office-webui" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kp-office-ui-modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kp-office-ui-core" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kp-office" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kp-office" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kp-office-interfaces" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kp-office-webui" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kp-office-ui-modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kp-office-ui-core" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kp-office" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kp-office" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kp-office-interfaces" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kp-office-webui" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kp-office-ui-modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kp-office-ui-core" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kp-office" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kp-office" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kp-office-interfaces" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kp-office-webui" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kp-office-ui-modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kp-office-ui-core" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kp-office" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kp-office" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kp-office-interfaces" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kp-office-webui" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kp-office-ui-modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kp-office-ui-core" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="core" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kp-office" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kp-office" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kp-office-interfaces" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kp-office-webui" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kp-office" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kp-office" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kp-office" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kp-office-interfaces" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kp-office-webui" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kp-office" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kp-office" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kp-office" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kp-office-interfaces" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kp-office-webui" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kp-office" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kp-office" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kp-office" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kp-office-interfaces" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kp-office-webui" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kp-office" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="META-INF" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kp-office" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kp-office" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kp-office-interfaces" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kp-office-webui" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kp-office" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kp-office" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kp-office" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kp-office-interfaces" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kp-office-webui" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kp-office" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kp-office" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kp-office" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kp-office-backend" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kp-office" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kp-office" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kp-office-backend" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kp-office-core-impl" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kp-office" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kp-office" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kp-office-backend" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kp-office-core-impl" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kp-office" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kp-office" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kp-office-backend" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kp-office-core-impl" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kp-office" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kp-office" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kp-office-backend" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kp-office-core-impl" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ddl" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kp-office" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kp-office" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kp-office-backend" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kp-office-core-impl" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="core" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kp-office" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kp-office" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kp-office-backend" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kp-office-core-impl" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="core" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tenants" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kp-office" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kp-office" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kp-office-backend" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kp-office-core-impl" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="core" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="security" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -508,18 +1269,18 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/kp-office-interfaces/kp-office-webui/kp-office/src/main/webapp/META-INF" />
       <recent name="$PROJECT_DIR$/kp-office-interfaces/kp-office-webservices/src/test/main" />
       <recent name="$PROJECT_DIR$/kp-office-interfaces/kp-office-webservices" />
       <recent name="$PROJECT_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-impl/src/main/resources/ddl" />
       <recent name="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/resources/ddl" />
-      <recent name="$PROJECT_DIR$/kp-office-interfaces/kp-office-web/kp-office/src/main/webapp/META-INF" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/kp-office-interfaces/kp-office-webui/kp-office/src" />
+      <recent name="$PROJECT_DIR$/kp-office-interfaces/kp-office-webui/kp-office/src/main/resources/META-INF" />
+      <recent name="$PROJECT_DIR$/kp-office-interfaces/kp-office-webui/kp-office/src/main/resources" />
       <recent name="$PROJECT_DIR$/kp-office-interfaces" />
       <recent name="$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/java/de/kaiserpfalzEdv/office/core" />
-      <recent name="$PROJECT_DIR$/kp-office-commons/src/test/java/de/kaiserpfalzEdv/office/commons" />
-      <recent name="$PROJECT_DIR$/kp-office-commons/src/test/java/de/kaiserpfalzEdv/commons" />
-      <recent name="$PROJECT_DIR$/kp-office-commons/src/main/java/de/kaiserpfalzEdv/office/commons" />
     </key>
     <key name="ExtractSuperBase.RECENT_KEYS">
       <recent name="de.kaiserpfalzEdv.office.core" />
@@ -601,7 +1362,9 @@
         <option name="TRANSPORT" value="0" />
         <option name="LOCAL" value="true" />
       </RunnerSettings>
+      <RunnerSettings RunnerId="Run" />
       <ConfigurationWrapper RunnerId="Debug" />
+      <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
     <configuration default="false" name="CityDOTest" type="TestNG" factoryName="TestNG" temporary="true" nameIsGenerated="true">
@@ -932,7 +1695,7 @@
       <workItem from="1422488380155" duration="3591000" />
       <workItem from="1422734112720" duration="410000" />
       <workItem from="1422735930467" duration="1797000" />
-      <workItem from="1422796086219" duration="6797000" />
+      <workItem from="1422796086219" duration="14797000" />
     </task>
     <task id="LOCAL-00001" summary="WIP&#10;- Removed some projects.&#10;- Removed XML jpa configuration.&#10;- Added Annotations to jpa entities.">
       <created>1419323988938</created>
@@ -1030,11 +1793,23 @@
       <option name="project" value="LOCAL" />
       <updated>1422740713303</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Reactivated some modules and get the project compilable again.">
+      <created>1422808500677</created>
+      <option name="number" value="00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1422808500677</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Removed currently deactivated modules contacts and projects.">
+      <created>1422813669429</created>
+      <option name="number" value="00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1422813669429</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="304944000" />
+    <option name="totallyTimeSpent" value="312944000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -1063,24 +1838,28 @@
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20757021" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39845476" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3289183" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22100122" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3858364" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="CDI" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.15201466" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22893773" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24969475" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="JSF" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2494759" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32781458" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39937106" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32781458" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32914045" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32809225" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3289183" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3289183" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.36313465" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32914045" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.39072847" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39072847" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24358974" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
+      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3289183" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24358974" sideWeight="0.49889624" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32967034" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32781458" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
@@ -1088,11 +1867,7 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39937106" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32809225" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.36313465" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3289183" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24358974" sideWeight="0.50082374" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3289183" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
     </layout>
@@ -1166,7 +1941,9 @@
     <MESSAGE value="WIP&#10;- removing IDEA files" />
     <MESSAGE value="WIP&#10;- still changing the structure." />
     <MESSAGE value="Added the correct mailing lists." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added the correct mailing lists." />
+    <MESSAGE value="Reactivated some modules and get the project compilable again." />
+    <MESSAGE value="Removed currently deactivated modules contacts and projects." />
+    <option name="LAST_COMMIT_MESSAGE" value="Removed currently deactivated modules contacts and projects." />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -1188,117 +1965,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$MAVEN_REPOSITORY$/de/kaiserpfalz-edv/commons/kp-commons-jee/2015Q1/kp-commons-jee-2015Q1-sources.jar!/de/kaiserpfalzEdv/commons/jee/db/UUIDJPAConverter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33562824" vertical-offset="0" max-vertical-offset="581">
-          <caret line="37" column="0" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/java/de/kaiserpfalzEdv/office/core/security/SystemAccount.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.23235801" vertical-offset="0" max-vertical-offset="581">
-          <caret line="30" column="13" selection-start-line="30" selection-start-column="13" selection-end-line="30" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/java/de/kaiserpfalzEdv/office/core/security/UserAccount.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.23235801" vertical-offset="0" max-vertical-offset="581">
-          <caret line="30" column="13" selection-start-line="30" selection-start-column="13" selection-end-line="30" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/java/de/kaiserpfalzEdv/office/core/tenants/TenantDO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.23235801" vertical-offset="0" max-vertical-offset="581">
-          <caret line="37" column="0" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/java/de/kaiserpfalzEdv/office/core/security/SecurityTicket.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1755">
-          <caret line="59" column="0" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kp-office-backend/kp-office-core-api/src/main/java/de/kaiserpfalzEdv/office/core/security/OfficeLoginTicket.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5645439" vertical-offset="797" max-vertical-offset="2160">
-          <caret line="124" column="4" selection-start-line="124" selection-start-column="4" selection-end-line="124" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.12931034" vertical-offset="0" max-vertical-offset="580">
-          <caret line="5" column="14" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="550">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-      <provider editor-type-id="MarkdownPreviewEditor">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/resources/data/TENANTS-initial.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="550">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-      <provider editor-type-id="com.intellij.database.editor.CsvTableFileEditorProvider">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/resources/ddl/version-0_1_0.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="580">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/resources/ddl/tenant-0_1_0.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8111511" vertical-offset="314" max-vertical-offset="960">
-          <caret line="51" column="38" selection-start-line="51" selection-start-column="38" selection-end-line="51" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/resources/ddl/security-0_1_0.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.13772455" vertical-offset="1869" max-vertical-offset="2370">
-          <caret line="120" column="34" selection-start-line="120" selection-start-column="34" selection-end-line="120" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/resources/ddl/db-changelog.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.56654674" vertical-offset="0" max-vertical-offset="556">
-          <caret line="21" column="28" selection-start-line="21" selection-start-column="28" selection-end-line="21" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/test/resources/ddl/db-changelog-test.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.70143884" vertical-offset="0" max-vertical-offset="556">
-          <caret line="26" column="34" selection-start-line="26" selection-start-column="34" selection-end-line="26" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/resources/ddl/initialize-database.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.74640286" vertical-offset="35" max-vertical-offset="615">
-          <caret line="30" column="46" selection-start-line="30" selection-start-column="46" selection-end-line="30" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/de/kaiserpfalz-edv/commons/kp-commons-jee/2015Q1/kp-commons-jee-2015Q1-sources.jar!/de/kaiserpfalzEdv/commons/jee/jndi/MapProperties.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.18792711" vertical-offset="0" max-vertical-offset="878">
@@ -1435,22 +2101,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.35362998" vertical-offset="973" max-vertical-offset="4230">
-          <caret line="85" column="46" selection-start-line="85" selection-start-column="46" selection-end-line="85" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3327338" vertical-offset="250" max-vertical-offset="5730">
-          <caret line="29" column="16" selection-start-line="29" selection-start-column="16" selection-end-line="29" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/kp-office-interfaces/kp-office-webui/kp-office-ui-modules/kp-office-ui-contacts/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.03" vertical-offset="0" max-vertical-offset="540">
@@ -1503,14 +2153,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3319239" vertical-offset="1298" max-vertical-offset="2175">
           <caret line="97" column="50" selection-start-line="97" selection-start-column="41" selection-end-line="97" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kp-office-interfaces/kp-office-webui/kp-office-ui-modules/kp-office-ui-core/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.568" vertical-offset="121" max-vertical-offset="645">
-          <caret line="27" column="16" selection-start-line="27" selection-start-column="16" selection-end-line="27" selection-end-column="16" />
           <folding />
         </state>
       </provider>
@@ -1711,26 +2353,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/kp-office-interfaces/kp-office-webui/kp-office-ui-modules/kp-office-ui-core/src/main/java/de/kaiserpfalzEdv/office/ui/core/SecurityClient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.48854962" vertical-offset="391" max-vertical-offset="915">
-          <caret line="43" column="13" selection-start-line="43" selection-start-column="13" selection-end-line="43" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/kp-office-interfaces/kp-office-webui/kp-office-ui-modules/kp-office-ui-core/src/main/java/de/kaiserpfalzEdv/office/ui/core/TenantClient.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.54198474" vertical-offset="496" max-vertical-offset="1020">
           <caret line="91" column="0" selection-start-line="91" selection-start-column="0" selection-end-line="91" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kp-office-interfaces/kp-office-webui/kp-office/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.26849896" vertical-offset="1088" max-vertical-offset="3225">
-          <caret line="81" column="0" selection-start-line="81" selection-start-column="0" selection-end-line="81" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1755,6 +2381,203 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.808" vertical-offset="166" max-vertical-offset="705">
           <caret line="38" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$MAVEN_REPOSITORY$/de/kaiserpfalz-edv/kp-parent-pom/2015Q1/kp-parent-pom-2015Q1.pom">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-10.485714" vertical-offset="8595" max-vertical-offset="12285">
+          <caret line="206" column="16" selection-start-line="206" selection-start-column="16" selection-end-line="206" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kp-office-interfaces/kp-office-webui/kp-office-ui-modules/kp-office-ui-core/src/main/java/de/kaiserpfalzEdv/office/ui/core/SecurityClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.18032786" vertical-offset="36" max-vertical-offset="915">
+          <caret line="43" column="13" selection-start-line="43" selection-start-column="13" selection-end-line="43" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.36761904" vertical-offset="332" max-vertical-offset="5265">
+          <caret line="35" column="54" selection-start-line="35" selection-start-column="54" selection-end-line="35" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kp-office-interfaces/kp-office-webui/kp-office-ui-modules/kp-office-ui-core/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-12.875" vertical-offset="96" max-vertical-offset="645">
+          <caret line="27" column="16" selection-start-line="27" selection-start-column="16" selection-end-line="27" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-14.5" vertical-offset="1722" max-vertical-offset="3975">
+          <caret line="138" column="21" selection-start-line="135" selection-start-column="8" selection-end-line="138" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kp-office-interfaces/kp-office-webui/kp-office/src/main/webapp/META-INF/context.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="549">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kp-office-interfaces/kp-office-webui/kp-office/src/persistence.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.37" vertical-offset="115" max-vertical-offset="885">
+          <caret line="20" column="31" selection-start-line="20" selection-start-column="31" selection-end-line="20" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kp-office-interfaces/kp-office-webui/kp-office/target/development.log">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="5775">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kp-office-interfaces/kp-office-webui/kp-office/src/main/resources/application.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="480" max-vertical-offset="1125">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kp-office-interfaces/kp-office-webui/kp-office/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.92" vertical-offset="1032" max-vertical-offset="3495">
+          <caret line="136" column="0" selection-start-line="136" selection-start-column="0" selection-end-line="136" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/de/kaiserpfalz-edv/commons/kp-commons-jee/2015Q1/kp-commons-jee-2015Q1-sources.jar!/de/kaiserpfalzEdv/commons/jee/db/UUIDJPAConverter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.21857923" vertical-offset="0" max-vertical-offset="549">
+          <caret line="30" column="13" selection-start-line="30" selection-start-column="13" selection-end-line="30" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/java/de/kaiserpfalzEdv/office/core/tenants/TenantDO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="510">
+          <caret line="39" column="13" selection-start-line="39" selection-start-column="13" selection-end-line="39" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/java/de/kaiserpfalzEdv/office/core/KPOTenantHoldingEntity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.32786885" vertical-offset="0" max-vertical-offset="630">
+          <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kp-office-interfaces/kp-office-webui/kp-office/src/main/java/de/kaiserpfalzEdv/office/ui/web/Application.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="705">
+          <caret line="51" column="85" selection-start-line="51" selection-start-column="85" selection-end-line="51" selection-end-column="85" />
+          <folding>
+            <element signature="e#0#2709#0" expanded="false" />
+            <element signature="imports" expanded="false" />
+            <element signature="docComment;class#Application#0" expanded="false" />
+            <element signature="e#2201#2202#0" expanded="false" />
+            <element signature="e#2247#2248#0" expanded="false" />
+            <element signature="e#2294#2295#0" expanded="false" />
+            <element signature="e#2342#2343#0" expanded="false" />
+            <element signature="e#2397#2398#0" expanded="false" />
+            <element signature="e#2459#2460#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://db-console:/e0406405/829e5284-8428-4d3b-99d4-cfad332a3bf8/">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.3363637" vertical-offset="0" max-vertical-offset="1080">
+          <caret line="49" column="20" selection-start-line="0" selection-start-column="0" selection-end-line="66" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/java/de/kaiserpfalzEdv/office/core/security/SecurityTicket.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="120" max-vertical-offset="1800">
+          <caret line="56" column="21" selection-start-line="56" selection-start-column="21" selection-end-line="56" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#4572#0" expanded="false" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#2761#2762#0" expanded="false" />
+            <element signature="e#2845#2846#0" expanded="false" />
+            <element signature="e#3116#3117#0" expanded="false" />
+            <element signature="e#3141#3142#0" expanded="false" />
+            <element signature="e#3184#3185#0" expanded="false" />
+            <element signature="e#3215#3216#0" expanded="false" />
+            <element signature="e#3253#3254#0" expanded="false" />
+            <element signature="e#3300#3301#0" expanded="false" />
+            <element signature="e#3338#3339#0" expanded="false" />
+            <element signature="e#3385#3386#0" expanded="false" />
+            <element signature="e#3651#3652#0" expanded="false" />
+            <element signature="e#3718#3719#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/java/de/kaiserpfalzEdv/office/core/security/Account.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="62" max-vertical-offset="1935">
+          <caret line="62" column="22" selection-start-line="62" selection-start-column="22" selection-end-line="62" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#5728#0" expanded="false" />
+            <element signature="imports" expanded="false" />
+            <element signature="docComment;class#Account#0" expanded="false" />
+            <element signature="e#3950#3951#0" expanded="false" />
+            <element signature="e#3991#3992#0" expanded="false" />
+            <element signature="e#4027#4028#0" expanded="false" />
+            <element signature="e#4084#4085#0" expanded="false" />
+            <element signature="e#4291#4292#0" expanded="false" />
+            <element signature="e#4327#4328#0" expanded="false" />
+            <element signature="e#4374#4375#0" expanded="false" />
+            <element signature="e#4413#4414#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/java/de/kaiserpfalzEdv/office/core/security/Role.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="420">
+          <caret line="42" column="13" selection-start-line="42" selection-start-column="13" selection-end-line="42" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/resources/ddl/mysql-create.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="410" max-vertical-offset="1080">
+          <caret line="66" column="0" selection-start-line="66" selection-start-column="0" selection-end-line="66" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kp-office-backend/kp-office-core-impl/src/main/java/de/kaiserpfalzEdv/office/core/security/Identity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.83993113" vertical-offset="247" max-vertical-offset="1125">
+          <caret line="49" column="18" selection-start-line="49" selection-start-column="18" selection-end-line="49" selection-end-column="18" />
           <folding />
         </state>
       </provider>

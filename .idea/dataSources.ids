@@ -2844,25 +2844,71 @@
       <column name="CHARACTER_SET_CLIENT" sqlType="VARCHAR" precision="32" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
       <column name="COLLATION_CONNECTION" sqlType="VARCHAR" precision="32" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
     </table>
-    <table name="DATABASECHANGELOG" schema="" catalog="kpoffice" type="TABLE">
-      <column name="ID" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
-      <column name="AUTHOR" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
-      <column name="FILENAME" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
-      <column name="DATEEXECUTED" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
-      <column name="ORDEREXECUTED" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
-      <column name="EXECTYPE" sqlType="VARCHAR" precision="10" scale="0" nullable="false" jdbcType="12"/>
-      <column name="MD5SUM" sqlType="VARCHAR" precision="35" scale="0" nullable="true" jdbcType="12"/>
-      <column name="DESCRIPTION" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
-      <column name="COMMENTS" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
-      <column name="TAG" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
-      <column name="LIQUIBASE" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
+    <table name="accounts" schema="" catalog="kpoffice" type="TABLE">
+      <column name="dtype" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="id_" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="tenant_" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="display_name_" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
+      <column name="display_number_" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
+      <column name="hidden_" sqlType="BIT" precision="1" scale="0" nullable="true" jdbcType="-7"/>
+      <column name="identity_" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="password_" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
+      <column name="salt_" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id_"/>
+      <foreign-key name="accounts_ibfk_1" columns="identity_" ref-table="identities" ref-schema="" ref-catalog="kpoffice" ref-columns="id_" update-rule="3" delete-rule="0" deferrability="2"/>
+      <exported-key name="accounts_roles_ibfk_1" table="accounts_roles" schema="" catalog="kpoffice" columns="account_id_"/>
+      <index name="accounts_name_uk" unique="true" columns="display_name_"/>
+      <index name="accounts_number_uk" unique="true" columns="display_number_"/>
+      <index name="tenants_users_uk" unique="true" columns="tenant_,display_number_"/>
+      <index name="accounts_identities_uk" unique="false" columns="identity_"/>
     </table>
-    <table name="DATABASECHANGELOGLOCK" schema="" catalog="kpoffice" type="TABLE">
-      <column name="ID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
-      <column name="LOCKED" sqlType="BIT" precision="1" scale="0" nullable="false" jdbcType="-7"/>
-      <column name="LOCKGRANTED" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
-      <column name="LOCKEDBY" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
-      <primary-key name="PRIMARY" columns="ID"/>
+    <table name="accounts_roles" schema="" catalog="kpoffice" type="TABLE">
+      <column name="account_id_" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="role_id_" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <foreign-key name="accounts_roles_ibfk_1" columns="account_id_" ref-table="accounts" ref-schema="" ref-catalog="kpoffice" ref-columns="id_" update-rule="3" delete-rule="0" deferrability="2"/>
+      <foreign-key name="accounts_roles_ibfk_2" columns="role_id_" ref-table="roles" ref-schema="" ref-catalog="kpoffice" ref-columns="id_" update-rule="3" delete-rule="0" deferrability="2"/>
+      <index name="acc_rol_account_fk" unique="false" columns="account_id_"/>
+      <index name="acc_rol_role_fk" unique="false" columns="role_id_"/>
+    </table>
+    <table name="identities" schema="" catalog="kpoffice" type="TABLE">
+      <column name="id_" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="tenant_" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="display_name_" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
+      <column name="display_number_" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
+      <column name="hidden_" sqlType="BIT" precision="1" scale="0" nullable="true" jdbcType="-7"/>
+      <primary-key name="PRIMARY" columns="id_"/>
+      <exported-key name="accounts_ibfk_1" table="accounts" schema="" catalog="kpoffice" columns="identity_"/>
+      <index name="identities_users_uk" unique="true" columns="tenant_,display_number_"/>
+      <index name="user_name_uk" unique="true" columns="display_name_"/>
+      <index name="user_number_uk" unique="true" columns="display_number_"/>
+    </table>
+    <table name="roles" schema="" catalog="kpoffice" type="TABLE">
+      <column name="dtype" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="id_" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="tenant_" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="display_name_" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
+      <column name="display_number_" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
+      <column name="hidden_" sqlType="BIT" precision="1" scale="0" nullable="true" jdbcType="-7"/>
+      <primary-key name="PRIMARY" columns="id_"/>
+      <exported-key name="accounts_roles_ibfk_2" table="accounts_roles" schema="" catalog="kpoffice" columns="role_id_"/>
+      <index name="roles_name_uk" unique="true" columns="display_name_"/>
+      <index name="roles_number_uk" unique="true" columns="display_number_"/>
+    </table>
+    <table name="tenants" schema="" catalog="kpoffice" type="TABLE">
+      <column name="id_" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="display_name_" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
+      <column name="display_number_" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
+      <column name="hidden_" sqlType="BIT" precision="1" scale="0" nullable="true" jdbcType="-7"/>
+      <primary-key name="PRIMARY" columns="id_"/>
+      <index name="tenant_name_uk" unique="true" columns="display_name_"/>
+      <index name="tenant_number_uk" unique="true" columns="display_number_"/>
+    </table>
+    <table name="tickets" schema="" catalog="kpoffice" type="TABLE">
+      <column name="id_" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="account_id_" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="created_" sqlType="VARCHAR" precision="39" scale="0" nullable="true" jdbcType="12"/>
+      <column name="validity_" sqlType="VARCHAR" precision="39" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id_"/>
     </table>
   </data-source>
 </component>

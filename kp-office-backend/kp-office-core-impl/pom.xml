@@ -95,23 +95,6 @@
     <build>
         <plugins>
             <plugin>
-                <groupId>com.edugility</groupId>
-                <artifactId>h2-maven-plugin</artifactId>
-                <configuration>
-                    <allowOthers>true</allowOthers>
-                    <baseDirectory>${project.basedir}/target/data</baseDirectory>
-                    <shutdownAllServers>true</shutdownAllServers>
-                    <trace>true</trace>
-                </configuration>
-            </plugin>
-            
-            <plugin>
-                <groupId>org.liquibase</groupId>
-                <artifactId>liquibase-maven-plugin</artifactId>
-            </plugin>
-            
-            
-            <plugin>
                 <groupId>com.mysema.maven</groupId>
                 <artifactId>maven-apt-plugin</artifactId>
                 <version>1.0.4</version>
