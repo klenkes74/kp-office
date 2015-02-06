@@ -16,13 +16,13 @@
 
 package de.kaiserpfalzEdv.office.ui.web.security;
 
-import de.kaiserpfalzEdv.commons.service.FrontendService;
 import de.kaiserpfalzEdv.office.core.security.InvalidLoginException;
 import de.kaiserpfalzEdv.office.core.security.InvalidTicketException;
 import de.kaiserpfalzEdv.office.core.security.NoSuchAccountException;
 import de.kaiserpfalzEdv.office.core.security.NoSuchTicketException;
 import de.kaiserpfalzEdv.office.core.security.OfficeLoginTicket;
 import de.kaiserpfalzEdv.office.core.security.SecurityService;
+import de.kaiserpfalzEdv.office.ui.core.SecurityClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -49,7 +49,7 @@ public class KPOfficeAuthenticationProvider extends AbstractUserDetailsAuthentic
     private SecurityService service;
     
     @Inject
-    public KPOfficeAuthenticationProvider(@FrontendService SecurityService service) {
+    public KPOfficeAuthenticationProvider(SecurityClient service) {
         this.service = service;
     }
     

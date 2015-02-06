@@ -24,6 +24,7 @@ import de.kaiserpfalzEdv.office.core.security.NoSuchAccountException;
 import de.kaiserpfalzEdv.office.core.security.NoSuchTicketException;
 import de.kaiserpfalzEdv.office.core.security.OfficeLoginTicket;
 import de.kaiserpfalzEdv.office.core.security.SecurityService;
+import de.kaiserpfalzEdv.office.core.security.SecurityServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -48,7 +49,7 @@ public class SecurityClient implements SecurityService {
     
     
     @Inject
-    public SecurityClient(@BackendService SecurityService service) {
+    public SecurityClient(@BackendService SecurityServiceImpl service) {
         this.service = service;
         
         LOG.trace("Created: {}", this);

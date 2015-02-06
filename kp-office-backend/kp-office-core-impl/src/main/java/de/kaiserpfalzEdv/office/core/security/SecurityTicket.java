@@ -17,7 +17,6 @@
 package de.kaiserpfalzEdv.office.core.security;
 
 import de.kaiserpfalzEdv.commons.jee.db.OffsetDateTimeJPAConverter;
-import de.kaiserpfalzEdv.commons.jee.db.UUIDJPAConverter;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
@@ -56,8 +55,7 @@ public class SecurityTicket implements Serializable {
 
     @Id @NotNull
     @Column(name = "id_", length=50, nullable = false, updatable = false, unique = true)
-    @Convert(converter = UUIDJPAConverter.class)
-    private UUID id;
+    private String id;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "account_id_", nullable = false, updatable = false, unique = true)
@@ -78,7 +76,7 @@ public class SecurityTicket implements Serializable {
 
 
     public SecurityTicket(@NotNull final Account account) {
-        id = UUID.randomUUID();
+        id = UUID.randomUUID().toString();
         this.account = account;
         created = OffsetDateTime.now(TIMEZONE);
         validity = created.plusSeconds(DEFAULT_TTL);
@@ -98,7 +96,7 @@ public class SecurityTicket implements Serializable {
     }
 
     public UUID getId() {
-        return id;
+        return UUID.fromString(id);
     }
 
     public OffsetDateTime getValidity() {

@@ -44,12 +44,13 @@ public abstract class KPOEntity implements Entity {
 
     @Id @NotNull
     @Column(name = "ID_", length=50, unique = true, updatable = false)
-    @org.hibernate.annotations.Type(type="org.hibernate.type.UUIDCharType")
-    private UUID id;
+    private String id;
 
+    @NotNull
     @Column(name = "DISPLAY_NAME_", length=200, unique = true)
     private String displayName;
 
+    @NotNull
     @Column(name = "DISPLAY_NUMBER_", length=100, unique = true)
     private String displayNumber;
 
@@ -68,12 +69,12 @@ public abstract class KPOEntity implements Entity {
     }
 
     public UUID getId() {
-        return id;
+        return UUID.fromString(id);
     }
 
     @Deprecated // Only for Jackson, JAX-B and JPA!
     public void setId(UUID id) {
-        this.id = id;
+        this.id = id.toString();
     }
 
 
