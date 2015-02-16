@@ -16,8 +16,6 @@
 
 package de.kaiserpfalzEdv.office.core.security;
 
-import de.kaiserpfalzEdv.office.commons.OfficeBusinessException;
-
 import javax.validation.constraints.NotNull;
 
 /**
@@ -25,10 +23,10 @@ import javax.validation.constraints.NotNull;
  * @version 0.1.0
  * @since 0.1.0
  */
-public class InvalidLoginException extends OfficeBusinessException {
-    private static final long serialVersionUID = -6669098752261680801L;
+public class InvalidLoginException extends OfficeAccountException {
+    private static final long         serialVersionUID = -6825044392107722779L;
 
     public InvalidLoginException(@NotNull final String account) {
-        super("Account and password do not match for account: " + account);
+        super(ErrorMessage.INVALID_LOGIN, account);
     }
 }

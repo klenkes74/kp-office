@@ -39,9 +39,11 @@ public class LogoutLinkListener implements ClickListener {
     @Inject
     private Environment env;
 
+    
     @Override
     public void buttonClick(ClickEvent event) {
         SecurityContextHolder.clearContext();
+        
         BannerView banner = (BannerView) event.getComponent().getParent();
         String contextPath = VaadinServlet.getCurrent().getServletContext().getContextPath();
         String urlMapping = env.getProperty("vaadin.servlet.urlMapping");

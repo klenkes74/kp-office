@@ -18,10 +18,10 @@ package de.kaiserpfalzEdv.office.core.tenants.test;
 
 import de.kaiserpfalzEdv.commons.test.CommonTestBase;
 import de.kaiserpfalzEdv.office.core.tenants.TenantAlreadyExistsException;
-import de.kaiserpfalzEdv.office.core.tenants.TenantDO;
-import de.kaiserpfalzEdv.office.core.tenants.TenantRepository;
 import de.kaiserpfalzEdv.office.core.tenants.TenantService;
-import de.kaiserpfalzEdv.office.core.tenants.TenantServiceImpl;
+import de.kaiserpfalzEdv.office.core.tenants.impl.TenantDO;
+import de.kaiserpfalzEdv.office.core.tenants.impl.TenantRepository;
+import de.kaiserpfalzEdv.office.core.tenants.impl.TenantServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.dao.DataIntegrityViolationException;

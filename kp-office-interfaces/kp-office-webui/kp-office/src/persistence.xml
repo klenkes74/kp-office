@@ -31,17 +31,17 @@
         <class>de.kaiserpfalzEdv.commons.jee.db.DurationJPAConverter</class>
         
         
-        <class>de.kaiserpfalzEdv.office.core.KPOEntity</class>
-        <class>de.kaiserpfalzEdv.office.core.KPOTenantHoldingEntity</class>
+        <class>de.kaiserpfalzEdv.office.core.impl.KPOEntity</class>
+        <class>de.kaiserpfalzEdv.office.core.impl.KPOTenantHoldingEntity</class>
 
-        <class>de.kaiserpfalzEdv.office.core.security.Identity</class>
-        <class>de.kaiserpfalzEdv.office.core.security.Account</class>
-        <class>de.kaiserpfalzEdv.office.core.security.UserAccount</class>
-        <class>de.kaiserpfalzEdv.office.core.security.SystemAccount</class>
-        <class>de.kaiserpfalzEdv.office.core.security.Role</class>
-        <class>de.kaiserpfalzEdv.office.core.security.SecurityTicket</class>
+        <class>de.kaiserpfalzEdv.office.core.security.impl.Identity</class>
+        <class>de.kaiserpfalzEdv.office.core.security.impl.Account</class>
+        <class>de.kaiserpfalzEdv.office.core.security.impl.UserAccount</class>
+        <class>de.kaiserpfalzEdv.office.core.security.impl.SystemAccount</class>
+        <class>de.kaiserpfalzEdv.office.core.security.impl.Role</class>
+        <class>de.kaiserpfalzEdv.office.core.security.impl.SecurityTicket</class>
         
-        <class>de.kaiserpfalzEdv.office.core.tenants.TenantDO</class>
+        <class>de.kaiserpfalzEdv.office.core.tenants.impl.TenantDO</class>
 
         <properties>
             <property name="hibernate.show_sql" value="true"/>

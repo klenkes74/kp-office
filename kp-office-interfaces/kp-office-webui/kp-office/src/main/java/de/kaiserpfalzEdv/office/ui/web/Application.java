@@ -16,6 +16,10 @@
 
 package de.kaiserpfalzEdv.office.ui.web;
 
+import ch.qos.logback.classic.selector.servlet.LoggerContextFilter;
+import com.google.common.eventbus.EventBus;
+import de.kaiserpfalzEdv.commons.jee.servlet.filter.ContextLogInjector;
+import de.kaiserpfalzEdv.commons.jee.servlet.filter.HttpApplicationDataEnricher;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
@@ -24,37 +28,49 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean
 import org.springframework.boot.orm.jpa.EntityScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.FilterType;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.context.request.RequestContextListener;
 import org.vaadin.spring.EnableVaadin;
+import org.vaadin.spring.servlet.SpringAwareVaadinServlet;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
+import javax.inject.Named;
 
 /**
  * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;
  * @version 0.1.0
  * @since 0.1.0
  */
+@Named
 @EnableVaadin
 @EnableAutoConfiguration
 @ComponentScan(
         value = {"de.kaiserpfalzEdv.office"},
-        excludeFilters = {@ComponentScan.Filter(type = FilterType.ANNOTATION, value = Repository.class)}
+        excludeFilters = {
+                @ComponentScan.Filter(type = FilterType.ANNOTATION, value = Repository.class)
+        }
 )
 @EnableJpaRepositories(
         value = {"de.kaiserpfalzEdv.office"},
-        includeFilters = {@ComponentScan.Filter(type = FilterType.ANNOTATION, value = Repository.class)}
+        includeFilters = {
+                @ComponentScan.Filter(type = FilterType.ANNOTATION, value = Repository.class)
+        }
 )
 @EntityScan(
         basePackages = {"de.kaiserpfalzEdv.office", "de.kaiserpfalzEdv.commons.jee.db"}
 )
+@EnableWebSecurity
+@Configuration
 public class Application {
     private static Logger LOG = LoggerFactory.getLogger(Application.class);
     
 
+    
     @PostConstruct
     public void init() {
         LOG.trace("Created: {}", this);
@@ -77,5 +93,41 @@ public class Application {
         LOG.debug("Loading RequestContextListener.");
         
         return new RequestContextListener();
+    }
+    
+    @Bean
+    @ConditionalOnMissingBean(LoggerContextFilter.class)
+    public LoggerContextFilter loggerContextFilter() {
+        return new LoggerContextFilter();
+    }
+    
+    @Bean
+    @ConditionalOnMissingBean(HttpApplicationDataEnricher.class)
+    public HttpApplicationDataEnricher httpApplicationDataEnricher() {
+        return new HttpApplicationDataEnricher();
+        
+    }
+    
+    @Bean
+    @ConditionalOnMissingBean(ContextLogInjector.class)
+    public ContextLogInjector contextLogInjector() {
+        return new ContextLogInjector();
+    }
+    
+    @Bean
+    public StartupFilter startupFilter() {
+        return new StartupFilter();
+    }
+
+
+    @Bean
+    public SpringAwareVaadinServlet uiServlet() {
+        return new SpringAwareVaadinServlet();
+    }
+
+    
+    @Bean
+    public EventBus vaadinApplicationEventBus() {
+        return new EventBus("ApplicationEventBus");
     }
 }

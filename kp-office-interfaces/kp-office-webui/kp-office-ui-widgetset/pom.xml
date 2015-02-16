@@ -80,6 +80,7 @@
         </dependency>
 <!--
         TODO 2015-02-01 klenkes Add the lexaden repository ....
+-->
         <dependency>
             <groupId>com.lexaden.components</groupId>
             <artifactId>flowprogressbar</artifactId>
@@ -92,7 +93,6 @@
             <groupId>com.lexaden.components</groupId>
             <artifactId>organisationchart</artifactId>
         </dependency>
--->
         <dependency>
             <groupId>com.vaadin.addon</groupId>
             <artifactId>vaadin-calendar</artifactId>

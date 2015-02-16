@@ -41,4 +41,10 @@
     
 
     <inherits name="com.vaadin.addon.calendar.gwt.CalendarWidgetset" />
+
+    <inherits name="com.lexaden.breadcrumb.gwt.BreadcrumbWidgetset" />
+
+    <inherits name="com.lexaden.business.chart.widgetset.OrganisationWidgetset" />
+
+    <inherits name="com.lexaden.business.flows.FlowProgressBarWidgetset" />
 </module>

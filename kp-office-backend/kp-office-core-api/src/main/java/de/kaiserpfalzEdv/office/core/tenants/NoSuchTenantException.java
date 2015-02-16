@@ -17,7 +17,7 @@
 package de.kaiserpfalzEdv.office.core.tenants;
 
 import de.kaiserpfalzEdv.office.commons.Entity;
-import de.kaiserpfalzEdv.office.core.NoSuchEntityException;
+import de.kaiserpfalzEdv.office.core.data.NoSuchEntityException;
 
 import java.util.UUID;
 

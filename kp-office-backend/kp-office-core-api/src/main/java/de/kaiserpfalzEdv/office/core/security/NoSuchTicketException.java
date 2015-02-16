@@ -16,17 +16,18 @@
 
 package de.kaiserpfalzEdv.office.core.security;
 
-import de.kaiserpfalzEdv.office.commons.OfficeBusinessException;
+import javax.validation.constraints.NotNull;
+import java.util.UUID;
 
 /**
  * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;
  * @version 0.1.0
  * @since 0.1.0
  */
-public class NoSuchTicketException extends OfficeBusinessException {
-    private static final long serialVersionUID = -6669098752261680801L;
+public class NoSuchTicketException extends OfficeTicketException {
+    private static final long         serialVersionUID = 3586002468279982145L;
 
-    public NoSuchTicketException() {
-        super("Ticket not found!");
+    public NoSuchTicketException(@NotNull final UUID ticketId) {
+        super(ErrorMessage.NO_SUCH_TICKET, ticketId);
     }
 }

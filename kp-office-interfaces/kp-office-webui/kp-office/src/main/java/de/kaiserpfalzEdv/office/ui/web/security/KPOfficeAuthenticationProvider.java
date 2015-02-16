@@ -46,6 +46,7 @@ import javax.inject.Named;
 public class KPOfficeAuthenticationProvider extends AbstractUserDetailsAuthenticationProvider {
     private static final Logger LOG = LoggerFactory.getLogger(KPOfficeAuthenticationProvider.class);
     
+    
     private SecurityService service;
     
     @Inject

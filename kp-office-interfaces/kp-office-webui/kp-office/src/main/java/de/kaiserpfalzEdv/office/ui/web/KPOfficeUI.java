@@ -19,7 +19,9 @@ package de.kaiserpfalzEdv.office.ui.web;
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.Widgetset;
 import com.vaadin.server.VaadinRequest;
+import com.vaadin.ui.Alignment;
 import com.vaadin.ui.UI;
+import com.vaadin.ui.VerticalLayout;
 import de.kaiserpfalzEdv.office.ui.web.presenter.Action;
 import de.kaiserpfalzEdv.office.ui.web.presenter.MainPresenter;
 import org.slf4j.Logger;
@@ -44,10 +46,17 @@ public class KPOfficeUI extends UI {
 
 
     @Inject
-    EventBus eventBus;
-
+    private EventBus eventBus;
+    
     @Inject
-    MainPresenter presenter;
+    private MainPresenter presenter;
+
+
+    /**
+     * root window. Since the main content may not be changed this is the main content. Then everything may be changed
+     * within this layout.
+     */
+    private VerticalLayout mainLayout;
 
 
     @PostConstruct
@@ -63,7 +72,14 @@ public class KPOfficeUI extends UI {
     
     @Override
     protected void init(VaadinRequest vaadinRequest) {
+        mainLayout = new VerticalLayout();
+        mainLayout.setSizeFull();
+        mainLayout.setMargin(true);
+        mainLayout.setDefaultComponentAlignment(Alignment.MIDDLE_CENTER);
+        setContent(mainLayout);
+
+        mainLayout.addComponent(presenter.getView());
         eventBus.publish(EventScope.SESSION, this, Action.START);
-        setContent(presenter.getView());
+
     }
 }

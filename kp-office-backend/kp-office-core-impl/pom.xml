@@ -32,6 +32,12 @@
 
     <properties>
         <project.root>../..</project.root>
+        
+        <spring.version>4.1.3.RELEASE</spring.version>
+        <maven.test.jvmargs>
+            -Djava.awt.headless=true -Djava.net.preferIPv4Stack=true -Xmx512m
+            -javaagent:${settings.localRepository}/org/springframework/spring-instrument/${spring.version}/spring-instrument-${spring.version}.jar
+        </maven.test.jvmargs>
 
         <database.changelog>${project.basedir}/target/test-classes/ddl/db-changelog-test.xml</database.changelog>
         <jdbc.driver>com.mysql.jdbc.Driver</jdbc.driver>
@@ -113,6 +119,50 @@
                     </execution>
                 </executions>
             </plugin>
+
+<!--
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>aspectj-maven-plugin</artifactId>
+                <version>1.7</version>
+                <configuration>
+                    <complianceLevel>${targetJdk}</complianceLevel>
+                    <source>${targetJdk}</source>
+                    <target>${targetJdk}</target>
+                    <outxml>true</outxml>
+                    <verbose>true</verbose>
+                    <showWeaveInfo>true</showWeaveInfo>
+                    <detail>true</detail>
+                    <Xlint>warning</Xlint>
+                    <aspectLibraries>
+                        <aspectLibrary>
+                            <groupId>org.springframework</groupId>
+                            <artifactId>spring-aspects</artifactId>
+                        </aspectLibrary>
+                    </aspectLibraries>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>compile</goal>
+                            <goal>test-compile</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.aspectj</groupId>
+                        <artifactId>aspectjrt</artifactId>
+                        <version>1.8.4</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.aspectj</groupId>
+                        <artifactId>aspectjtools</artifactId>
+                        <version>1.8.4</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+-->
         </plugins>
     </build>
 
@@ -138,6 +188,40 @@
             <artifactId>kp-commons-jee</artifactId>
         </dependency>
 
+
+        <!-- License Management -->
+        <dependency>
+            <groupId>com.verhas</groupId>
+            <artifactId>license3j</artifactId>
+            <version>1.0.4</version>
+        </dependency>
+        <dependency>
+            <groupId>org.bouncycastle</groupId>
+            <artifactId>bcprov-jdk15on</artifactId>
+            <version>1.46</version>
+        </dependency>
+        <dependency>
+            <groupId>org.bouncycastle</groupId>
+            <artifactId>bcprov-ext-jdk15on</artifactId>
+            <version>1.46</version>
+        </dependency>
+        <dependency>
+            <groupId>org.bouncycastle</groupId>
+            <artifactId>bcpg-jdk15on</artifactId>
+            <version>1.46</version>
+        </dependency>
+<!-- exists only in 1.51+
+        <dependency>
+            <groupId>org.bouncycastle</groupId>
+            <artifactId>bcpkix-jdk15on</artifactId>
+            <version>1.46</version>
+        </dependency>
+-->
+        <dependency>
+            <groupId>org.bouncycastle</groupId>
+            <artifactId>bcmail-jdk15on</artifactId>
+            <version>1.46</version>
+        </dependency>
 
         <!-- Data Persistence -->
         <dependency>
@@ -181,8 +265,8 @@
             <artifactId>spring-data-rest-core</artifactId>
         </dependency>
         <!--<dependency>-->
-            <!--<groupId>org.springframework.data</groupId>-->
-            <!--<artifactId>spring-data-rest-webmvc</artifactId>-->
+        <!--<groupId>org.springframework.data</groupId>-->
+        <!--<artifactId>spring-data-rest-webmvc</artifactId>-->
         <!--</dependency>-->
         <dependency>
             <groupId>org.springframework.data</groupId>
@@ -232,13 +316,28 @@
 
         <!-- AOP -->
         <dependency>
+            <groupId>aopalliance</groupId>
+            <artifactId>aopalliance</artifactId>
+            <version>1.0</version>
+        </dependency>
+        <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-instrument</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-aspects</artifactId>
         </dependency>
         <dependency>
             <groupId>org.aspectj</groupId>
             <artifactId>aspectjrt</artifactId>
-            <version>1.6.12</version>
+            <version>1.8.4</version>
+        </dependency>
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjtools</artifactId>
+            <version>1.8.4</version>
         </dependency>
 
 

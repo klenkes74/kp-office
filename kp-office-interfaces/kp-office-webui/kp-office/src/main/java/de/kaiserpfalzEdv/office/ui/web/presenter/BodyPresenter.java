@@ -16,6 +16,7 @@
 
 package de.kaiserpfalzEdv.office.ui.web.presenter;
 
+import com.vaadin.ui.Label;
 import de.kaiserpfalzEdv.office.ui.web.StartupFilter;
 import de.kaiserpfalzEdv.office.ui.web.view.BodyView;
 import org.slf4j.Logger;
@@ -26,7 +27,7 @@ import org.vaadin.spring.events.EventScope;
 import org.vaadin.spring.navigator.Presenter;
 import org.vaadin.spring.navigator.VaadinPresenter;
 
-import javax.inject.Inject;
+import javax.annotation.PreDestroy;
 
 /**
  * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;
@@ -37,17 +38,23 @@ import javax.inject.Inject;
 public class BodyPresenter extends Presenter<BodyView> {
     private static final Logger LOG = LoggerFactory.getLogger(BodyPresenter.class);
 
-    @Inject
-    NavigationPanelPresenter nav;
 
-    @Inject
-    TabPanelPresenter tab;
+
+    public BodyPresenter() {
+        super();
+
+        LOG.trace("Created: {}", this);
+    }
+
+    @PreDestroy
+    public void close() {
+        LOG.trace("Destroyed: {}", this);
+    }
+
 
     @EventBusListenerMethod(scope= EventScope.SESSION, filter=StartupFilter.class)
     public void onStartup(Event<Action> event) {
-        LOG.trace("Startup: {}", event);
-        
-        getView().setNavigationPanel(nav.getView());
-        getView().setTabbedPanel(tab.getView());
+        getView().removeAllComponents();
+        getView().addComponent(new Label("Body"));
     }
 }

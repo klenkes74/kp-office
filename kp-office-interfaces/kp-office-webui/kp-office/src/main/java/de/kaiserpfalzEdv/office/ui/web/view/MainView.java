@@ -19,7 +19,8 @@ package de.kaiserpfalzEdv.office.ui.web.view;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.ui.Component;
-import com.vaadin.ui.VerticalLayout;
+import com.vaadin.ui.GridLayout;
+import com.vaadin.ui.HorizontalSplitPanel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.vaadin.spring.UIScope;
@@ -35,18 +36,47 @@ import javax.annotation.PreDestroy;
  */
 @UIScope
 @VaadinView(name = MainView.NAME)
-public class MainView extends VerticalLayout implements View {
+public class MainView extends HorizontalSplitPanel implements View {
     private static final long serialVersionUID = 2969812303192236717L;
     private final Logger LOG = LoggerFactory.getLogger(MainView.class);
     public static final String NAME = "main";
 
 
+    /**
+     * +-------+--------------------------------+
+     * | TITLE | TABS                           |
+     * |       +--------------------------------+
+     * +-------+ BODY                           |
+     * | NAV   |                                |
+     * |       |                                |
+     * |       |                                |
+     * |       |                                |
+     * +-------+                                |
+     * | COPY  |                                |
+     * +-------+--------------------------------+
+     */
+
+    private GridLayout titleAndNavigation;
+    private GridLayout tabsAndBody;
+
+
+    public MainView() {
+        super();
+    }
+
+
     @PostConstruct
     private void init() {
-        setMargin(true);
-        setSpacing(true);
         setSizeFull();
+        setSplitPosition(20f, Unit.PERCENTAGE);
+        setStyleName(Styles.SPLITPANEL_SMALL);
         
+        titleAndNavigation = new GridLayout(1, 3);
+        tabsAndBody = new GridLayout(1, 2);
+        
+        setFirstComponent(titleAndNavigation);
+        setSecondComponent(tabsAndBody);
+
         LOG.trace("Created: {}", this);
     }
     
@@ -56,31 +86,44 @@ public class MainView extends VerticalLayout implements View {
        
    }
 
-
-    public void setBanner(Component banner) {
-        LOG.debug("Setting banner: {}", banner);
-        addComponent(banner);
-    }
-
-    public void setHeader(Component header) {
-        LOG.debug("Setting header: {}", header);
+    
+    public void setTitle(Component title) {
+        LOG.debug("Setting title: {}", title);
         
-        addComponent(header);
-        setExpandRatio(header, 1);
+        titleAndNavigation.removeComponent(0, 0);
+        titleAndNavigation.addComponent(title, 0, 0);
     }
 
+    public void setNavigation(Component navigation) {
+        LOG.debug("Setting navivation: {}", navigation);
+        
+        titleAndNavigation.removeComponent(0, 1);
+        titleAndNavigation.addComponent(navigation, 0, 1);
+    }
+    
+    public void setCopyright(Component copyright) {
+        LOG.debug("Setting copyright: {}", copyright);
+        
+        titleAndNavigation.removeComponent(0, 2);
+        titleAndNavigation.addComponent(copyright, 0, 2);
+        
+    }
+
+    
+    public void setTabs(Component tabs) {
+        LOG.debug("Setting tabs: {}", tabs);
+        
+        tabsAndBody.removeComponent(0, 0);
+        tabsAndBody.addComponent(tabs, 0, 0);
+    }
+    
     public void setBody(Component body) {
         LOG.debug("Setting body: {}", body);
-        
-        addComponent(body);
-        setExpandRatio(body, 10);
-    }
 
-    public void setFooter(Component footer) {
-        LOG.debug("Setting footer: {}", footer);
-        
-        addComponent(footer);
+        tabsAndBody.removeComponent(0, 1);
+        tabsAndBody.addComponent(body, 0, 1);
     }
+    
 
     @Override
     public void enter(ViewChangeListener.ViewChangeEvent event) {

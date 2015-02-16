@@ -18,8 +18,7 @@ package de.kaiserpfalzEdv.office.ui.web.view;
 
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
-import com.vaadin.ui.Component;
-import com.vaadin.ui.HorizontalSplitPanel;
+import com.vaadin.ui.VerticalLayout;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.vaadin.spring.UIScope;
@@ -34,24 +33,16 @@ import javax.annotation.PostConstruct;
  */
 @UIScope
 @VaadinView(name = BodyView.NAME)
-public class BodyView extends HorizontalSplitPanel implements View {
+public class BodyView extends VerticalLayout implements View {
     private final Logger LOG = LoggerFactory.getLogger(BodyView.class);
     public static final String NAME = "body";
 
 
     @PostConstruct
     private void init() {
-        setSplitPosition(20f, Unit.PERCENTAGE);
-        setStyleName(Styles.SPLITPANEL_SMALL);
+        setSizeFull();
     }
 
-    public void setNavigationPanel(Component navigationPanel) {
-        setFirstComponent(navigationPanel);
-    }
-
-    public void setTabbedPanel(Component tabPanel) {
-        setSecondComponent(tabPanel);
-    }
 
     @Override
     public void enter(ViewChangeListener.ViewChangeEvent event) {

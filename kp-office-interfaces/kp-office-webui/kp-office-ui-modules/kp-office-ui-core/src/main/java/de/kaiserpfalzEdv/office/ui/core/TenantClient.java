@@ -18,12 +18,12 @@ package de.kaiserpfalzEdv.office.ui.core;
 
 import de.kaiserpfalzEdv.commons.jee.paging.Page;
 import de.kaiserpfalzEdv.commons.jee.paging.Pageable;
-import de.kaiserpfalzEdv.commons.service.BackendService;
 import de.kaiserpfalzEdv.commons.service.FrontendService;
 import de.kaiserpfalzEdv.office.core.tenants.NoSuchTenantException;
 import de.kaiserpfalzEdv.office.core.tenants.Tenant;
 import de.kaiserpfalzEdv.office.core.tenants.TenantAlreadyExistsException;
 import de.kaiserpfalzEdv.office.core.tenants.TenantService;
+import de.kaiserpfalzEdv.office.core.tenants.impl.TenantServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -47,7 +47,7 @@ public class TenantClient implements TenantService {
     
     
     @Inject
-    public TenantClient(@BackendService TenantService service) {
+    public TenantClient(TenantServiceImpl service) {
         this.service = service;
         
         LOG.trace("Created: {}", this);

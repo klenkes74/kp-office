@@ -71,12 +71,8 @@
             <artifactId>vaadin-themes</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.vaadin</groupId>
-            <artifactId>vaadin-client-compiled</artifactId>
-        </dependency>
-        <dependency>
             <groupId>org.vaadin.spring</groupId>
-            <artifactId>spring-vaadin</artifactId>
+            <artifactId>spring-boot-vaadin</artifactId>
         </dependency>
         <dependency>
             <groupId>org.vaadin.spring</groupId>

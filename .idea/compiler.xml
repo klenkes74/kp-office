@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AjcSettings">
+    <option name="ajcPath" value="$MAVEN_REPOSITORY$/org/aspectj/aspectjtools/1.8.4/aspectjtools-1.8.4.jar" />
+    <option name="cmdLineParams" value="-showWeaveInfo -Xlint:warning" />
+    <option name="delegateToJavac" value="true" />
+  </component>
   <component name="CompilerConfiguration">
-    <option name="DEFAULT_COMPILER" value="Javac" />
+    <option name="DEFAULT_COMPILER" value="ajc" />
     <resourceExtensions />
     <wildcardResourcePatterns>
       <entry name="!?*.java" />
@@ -76,43 +81,14 @@
       <module name="kp-office-cli" target="1.8" />
       <module name="kp-office-cli-kppasswd" target="1.8" />
       <module name="kp-office-commons" target="1.8" />
-      <module name="kp-office-contacts" target="1.8" />
-      <module name="kp-office-contacts-api" target="1.8" />
-      <module name="kp-office-contacts-client" target="1.8" />
-      <module name="kp-office-contacts-core" target="1.8" />
-      <module name="kp-office-contacts-impl" target="1.8" />
-      <module name="kp-office-contacts-server" target="1.8" />
-      <module name="kp-office-core" target="1.8" />
       <module name="kp-office-core-api" target="1.8" />
-      <module name="kp-office-core-client" target="1.8" />
       <module name="kp-office-core-impl" target="1.8" />
-      <module name="kp-office-core-server" target="1.8" />
-      <module name="kp-office-http" target="1.8" />
       <module name="kp-office-interfaces" target="1.8" />
-      <module name="kp-office-modules" target="1.8" />
-      <module name="kp-office-projects" target="1.8" />
-      <module name="kp-office-projects-api" target="1.8" />
-      <module name="kp-office-projects-client" target="1.8" />
-      <module name="kp-office-projects-core" target="1.8" />
-      <module name="kp-office-projects-impl" target="1.8" />
-      <module name="kp-office-projects-server" target="1.8" />
       <module name="kp-office-root" target="1.8" />
-      <module name="kp-office-service" target="1.8" />
-      <module name="kp-office-ui" target="1.8" />
-      <module name="kp-office-ui-contacts" target="1.8" />
       <module name="kp-office-ui-core" target="1.8" />
       <module name="kp-office-ui-modules" target="1.8" />
-      <module name="kp-office-ui-modules (4)" target="1.8" />
-      <module name="kp-office-ui-projects" target="1.8" />
       <module name="kp-office-ui-widgetset" target="1.8" />
-      <module name="kp-office-web" target="1.8" />
-      <module name="kp-office-webgui" target="1.8" />
-      <module name="kp-office-webgui-ui" target="1.8" />
-      <module name="kp-office-webgui-widgetset" target="1.8" />
-      <module name="kp-office-webservice" target="1.8" />
-      <module name="kp-office-webservices" target="1.8" />
       <module name="kp-office-webui" target="1.8" />
-      <module name="kp-office-widgetset" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

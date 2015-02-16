@@ -16,7 +16,7 @@
 
 package de.kaiserpfalzEdv.office.core.tenants;
 
-import de.kaiserpfalzEdv.office.core.EntityAlreadyExistsException;
+import de.kaiserpfalzEdv.office.core.data.EntityAlreadyExistsException;
 
 /**
  * @author klenkes

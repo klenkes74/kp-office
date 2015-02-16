@@ -24,18 +24,18 @@ public class NumberGenerationFailureException extends OfficeSystemException {
     private static final long serialVersionUID = 2869280697660160859L;
 
     public NumberGenerationFailureException() {
-        super("Can't generate unique number!");
+        super(ErrorMessage.CANT_GENERATE_UNIQUE_NUMBER);
     }
 
     public NumberGenerationFailureException(String message) {
-        super(message);
+        super(ErrorMessage.CANT_GENERATE_UNIQUE_NUMBER, message);
     }
 
     public NumberGenerationFailureException(Throwable cause) {
-        super(cause);
+        super(ErrorMessage.CANT_GENERATE_UNIQUE_NUMBER, cause);
     }
 
     public NumberGenerationFailureException(String message, Throwable cause) {
-        super(message, cause);
+        super(ErrorMessage.CANT_GENERATE_UNIQUE_NUMBER, message, cause);
     }
 }

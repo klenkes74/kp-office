@@ -16,17 +16,17 @@
 
 package de.kaiserpfalzEdv.office.core.security.test;
 
-import de.kaiserpfalzEdv.office.core.security.Account;
-import de.kaiserpfalzEdv.office.core.security.AccountRepository;
 import de.kaiserpfalzEdv.office.core.security.InvalidLoginException;
 import de.kaiserpfalzEdv.office.core.security.InvalidTicketException;
 import de.kaiserpfalzEdv.office.core.security.NoSuchAccountException;
 import de.kaiserpfalzEdv.office.core.security.NoSuchTicketException;
 import de.kaiserpfalzEdv.office.core.security.OfficeLoginTicket;
 import de.kaiserpfalzEdv.office.core.security.SecurityService;
-import de.kaiserpfalzEdv.office.core.security.SecurityTicket;
-import de.kaiserpfalzEdv.office.core.security.SecurityTicketHousekeeping;
-import de.kaiserpfalzEdv.office.core.security.SecurityTicketRepository;
+import de.kaiserpfalzEdv.office.core.security.impl.Account;
+import de.kaiserpfalzEdv.office.core.security.impl.AccountRepository;
+import de.kaiserpfalzEdv.office.core.security.impl.SecurityTicket;
+import de.kaiserpfalzEdv.office.core.security.impl.SecurityTicketHousekeeping;
+import de.kaiserpfalzEdv.office.core.security.impl.SecurityTicketRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.MDC;

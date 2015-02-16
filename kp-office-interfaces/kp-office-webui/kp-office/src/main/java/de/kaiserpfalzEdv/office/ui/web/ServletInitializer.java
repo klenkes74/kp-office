@@ -22,12 +22,13 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.context.web.SpringBootServletInitializer;
 
 /**
- * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;
- * @version 0.1.0
- * @since 0.1.0
+ * @author klenkes
+ * @version 2015Q1
+ * @since 07.02.15 14:31
  */
 public class ServletInitializer extends SpringBootServletInitializer {
     private static final Logger LOG = LoggerFactory.getLogger(ServletInitializer.class);
+
 
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {

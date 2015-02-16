@@ -14,4 +14,12 @@
  * limitations under the License.
  */
 
+/**
+ * The core package. An absolute base of all services. The services bundled here are needed to get everything else
+ * running.
+ * 
+ * @author klenkes
+ * @version 0.1.0
+ * @since 0.1.0
+ */
 package de.kaiserpfalzEdv.office.core;
