@@ -14,40 +14,32 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzEdv.office.ui.web.mainScreen;
+package de.kaiserpfalzEdv.office.ui.web.widgets;
 
+import de.kaiserpfalzEdv.office.ui.web.widgets.content.AbstractMainTabEvent;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.UUID;
 
 /**
  * @author klenkes
  * @version 2015Q1
- * @since 18.02.15 07:10
+ * @since 18.02.15 09:28
  */
-public class AbstractMainTabEvent {
-    private UUID id;
-    private UUID tabId;
+public class AbstractWidgetEvent {
+    private static final Logger LOG = LoggerFactory.getLogger(AbstractWidgetEvent.class);
+    protected UUID id;
 
-
-    public AbstractMainTabEvent(final UUID eventId, final UUID tabId) {
-        this.id = eventId;
-        this.tabId = tabId;
-    }
-
+    public AbstractWidgetEvent(final UUID eventId) {this.id = eventId;}
 
     public UUID getId() {
         return id;
     }
-
-
-    public UUID getTabId() {
-        return tabId;
-    }
-
 
     @Override
     public boolean equals(Object obj) {
@@ -78,7 +70,6 @@ public class AbstractMainTabEvent {
     public String toString() {
         return new ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE)
                 .append("id", id)
-                .append("tab", tabId)
                 .toString();
     }
 }

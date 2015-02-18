@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzEdv.office.ui.web.mainScreen;
+package de.kaiserpfalzEdv.office.ui.web.widgets.content;
 
-import com.vaadin.ui.Component;
+import de.kaiserpfalzEdv.office.ui.web.widgets.AbstractWidgetEvent;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.util.UUID;
@@ -24,20 +24,20 @@ import java.util.UUID;
 /**
  * @author klenkes
  * @version 2015Q1
- * @since 18.02.15 07:08
+ * @since 18.02.15 07:10
  */
-public class ReplaceMainTabEvent extends AbstractMainTabEvent {
-    private Component component;
+public class AbstractMainTabEvent extends AbstractWidgetEvent {
+    private UUID tabId;
 
 
-    public ReplaceMainTabEvent(final UUID id, final Component component) {
-        super(UUID.randomUUID(), id);
-        this.component = component;
+    public AbstractMainTabEvent(final UUID eventId, final UUID tabId) {
+        super(eventId);
+        this.tabId = tabId;
     }
 
 
-    public Component getComponent() {
-        return component;
+    public UUID getTabId() {
+        return tabId;
     }
 
 
@@ -45,7 +45,7 @@ public class ReplaceMainTabEvent extends AbstractMainTabEvent {
     public String toString() {
         return new ToStringBuilder(this)
                 .appendSuper(super.toString())
-                .append("component", component.getId())
+                .append("tabId", tabId)
                 .toString();
     }
 }

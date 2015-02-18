@@ -14,10 +14,10 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzEdv.office.ui.web.mainScreen;
+package de.kaiserpfalzEdv.office.ui.web.widgets.content;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import com.vaadin.ui.Component;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.util.UUID;
 
@@ -26,11 +26,26 @@ import java.util.UUID;
  * @version 2015Q1
  * @since 18.02.15 07:08
  */
-public class RemoveMainTabEvent extends AbstractMainTabEvent {
-    private static final Logger LOG = LoggerFactory.getLogger(RemoveMainTabEvent.class);
+public class ReplaceMainTabEvent extends AbstractMainTabEvent {
+    private Component component;
 
-    
-    public RemoveMainTabEvent(final UUID id) {
+
+    public ReplaceMainTabEvent(final UUID id, final Component component) {
         super(UUID.randomUUID(), id);
+        this.component = component;
+    }
+
+
+    public Component getComponent() {
+        return component;
+    }
+
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this)
+                .appendSuper(super.toString())
+                .append("component", component.getId())
+                .toString();
     }
 }

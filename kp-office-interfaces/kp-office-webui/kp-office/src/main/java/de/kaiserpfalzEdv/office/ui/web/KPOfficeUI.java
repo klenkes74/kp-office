@@ -38,7 +38,7 @@ import javax.inject.Inject;
  */
 @Theme("valo")
 @Widgetset("KPOfficeWidgetset")
-@VaadinUI()
+@VaadinUI
 public class KPOfficeUI extends UI {
     private static final long   serialVersionUID = -8687618756473432618L;
     private static final Logger LOG              = LoggerFactory.getLogger(KPOfficeUI.class);

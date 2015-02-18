@@ -14,15 +14,14 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzEdv.office.ui.web.mainScreen;
+package de.kaiserpfalzEdv.office.ui.web.widgets.menu;
 
 import com.vaadin.ui.Label;
-import de.kaiserpfalzEdv.office.ui.web.Action;
+import de.kaiserpfalzEdv.office.ui.web.widgets.about.AboutPanel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.vaadin.spring.annotation.VaadinSessionScope;
 import org.vaadin.spring.events.Event;
-import org.vaadin.spring.events.EventBus;
 import org.vaadin.spring.events.EventScope;
 import org.vaadin.spring.events.annotation.EventBusListenerMethod;
 import org.vaadin.spring.navigator.Presenter;
@@ -36,66 +35,70 @@ import java.util.UUID;
 /**
  * @author klenkes
  * @version 2015Q1
- * @since 17.02.15 20:38
+ * @since 17.02.15 20:57
  */
 @VaadinSessionScope
-@VaadinPresenter(viewName = ContentView.NAME)
-public class ContentPresenter extends Presenter<ContentView> {
-    private static final Logger LOG = LoggerFactory.getLogger(ContentPresenter.class);
+@VaadinPresenter(viewName = NavigationView.NAME)
+public class NavigationPresenter extends Presenter<NavigationView> {
+    private static final Logger LOG = LoggerFactory.getLogger(NavigationPresenter.class);
 
     @Inject
-    private EventBus eventBus;
+    private AboutPanel about;
 
-    private UUID splashScreenTabId = UUID.randomUUID();
-
-    public ContentPresenter() {
+    private UUID adminId = UUID.randomUUID();
+    private UUID aboutId = UUID.randomUUID();
+    
+    
+    public NavigationPresenter() {
         LOG.trace("Created: {}", this);
     }
 
     @PostConstruct
     public void init() {
+        super.init();
+
+        getView().addEntry(adminId, "Admin", new Label("Just for fun"));
+        getView().addEntry(aboutId, "About", about);
+        
         LOG.trace("Initialized: {}", this);
-        LOG.trace("  View: {}", getView());
-        LOG.trace("  splash screen tab id: {}", splashScreenTabId);
     }
 
 
     @PreDestroy
     public void close() {
-        RemoveMainTabEvent tabEvent = new RemoveMainTabEvent(splashScreenTabId);
-        eventBus.publish(EventScope.SESSION, this, tabEvent);
-        
         LOG.trace("Destroyed: {}", this);
     }
 
 
     @SuppressWarnings("UnusedDeclaration") // called via BUS
-    @EventBusListenerMethod(scope= EventScope.SESSION, filter=StartupFilter.class)
-    public void onStartup(org.vaadin.spring.events.Event<Action> event) {
-        LOG.debug("{} received: {}", this, event);
-
-        getView().addTab(splashScreenTabId, "About", new Label("Hallo"));
-    }
-
-
-    @SuppressWarnings("UnusedDeclaration") // called via BUS
     @EventBusListenerMethod(scope = EventScope.SESSION)
-    public void addTab(Event<AddMainTabEvent> event) {
+    public void addMenu(Event<AddMenuEvent> event) {
         LOG.debug("{} received: {}", this, event);
 
-        AddMainTabEvent tab = event.getPayload();
+        AddMenuEvent menu = event.getPayload();
 
-        getView().addTab(tab.getTabId(), tab.getTitle(), tab.getComponent());
+        getView().addEntry(menu.getMenuId(), menu.getTitle(), menu.getMenu());
     }
 
     @SuppressWarnings("UnusedDeclaration") // called via BUS
     @EventBusListenerMethod(scope = EventScope.SESSION)
-    public void removeTab(Event<RemoveMainTabEvent> event) {
+    public void removeMenu(Event<RemoveMenuEvent> event) {
         LOG.debug("{} received: {}", this, event);
 
-        RemoveMainTabEvent tab = event.getPayload();
+        RemoveMenuEvent menu = event.getPayload();
 
-        getView().removeTab(tab.getTabId());
+        getView().removeEntry(menu.getMenuId());
+
+    }
+
+    @SuppressWarnings("UnusedDeclaration") // called via BUS
+    @EventBusListenerMethod(scope = EventScope.SESSION)
+    public void replaceMenu(Event<ReplaceMenuEvent> event) {
+        LOG.debug("{} received: {}", this, event);
+
+        ReplaceMenuEvent menu = event.getPayload();
+
+        getView().replaceEntry(menu.getMenuId(), menu.getMenu());
 
     }
 }

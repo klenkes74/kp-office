@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzEdv.office.ui.web.mainScreen;
+package de.kaiserpfalzEdv.office.ui.web.widgets.content;
 
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
@@ -38,10 +38,9 @@ import java.util.UUID;
 @VaadinSessionScope
 @VaadinView(name = ContentView.NAME)
 public class ContentView extends TabSheet implements View {
+    static final String NAME = "MAIN.CONTENT";
     private static final long   serialVersionUID = 1722734766184991100L;
     private static final Logger LOG              = LoggerFactory.getLogger(ContentView.class);
-    static final         String NAME             = "MAIN.CONTENT";
-
     /**
      * Contains the currently displayed components.
      */

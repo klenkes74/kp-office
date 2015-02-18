@@ -16,8 +16,9 @@
 
 package de.kaiserpfalzEdv.office.ui.web.mainScreen;
 
-import com.vaadin.ui.Label;
 import de.kaiserpfalzEdv.office.ui.web.Action;
+import de.kaiserpfalzEdv.office.ui.web.widgets.content.ContentPresenter;
+import de.kaiserpfalzEdv.office.ui.web.widgets.menu.NavigationPresenter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.vaadin.spring.annotation.VaadinSessionScope;
@@ -40,22 +41,19 @@ public class MainScreenPresenter extends Presenter<MainScreenView> {
 
 
     @Inject
-    private NavigationBarPresenter navigation;
+    private NavigationPresenter navigation;
 
     @Inject
     private ContentPresenter content;
-    
+
 
     @SuppressWarnings("UnusedDeclaration") // called via BUS
-    @EventBusListenerMethod(scope= EventScope.SESSION, filter=StartupFilter.class)
+    @EventBusListenerMethod(scope = EventScope.SESSION, filter = StartupFilter.class)
     public void onStartup(org.vaadin.spring.events.Event<Action> event) {
         LOG.debug("{} received: {}", this, event);
 
         LOG.info("Setting up main screen.");
-//        getView().setFirstComponent(navigation.getView());
+        getView().setFirstComponent(navigation.getView());
         getView().setSecondComponent(content.getView());
-
-        getView().setFirstComponent(new Label("Navigation"));
     }
-
 }

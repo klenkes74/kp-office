@@ -17,20 +17,15 @@
 package de.kaiserpfalzEdv.office.ui.web.widgets.about;
 
 import com.vaadin.ui.Button;
-import com.vaadin.ui.HorizontalLayout;
-import com.vaadin.ui.Label;
+import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.Window;
-import de.kaiserpfalzEdv.office.core.license.OfficeLicense;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Value;
 import org.vaadin.spring.annotation.VaadinUIScope;
 import org.vaadin.spring.navigator.annotation.VaadinView;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
-import java.time.format.DateTimeFormatter;
-import java.util.Locale;
 
 /**
  * @author klenkes
@@ -42,33 +37,24 @@ import java.util.Locale;
 public class AboutBox extends Window {
     private static final Logger LOG = LoggerFactory.getLogger(AboutBox.class);
 
-    private HorizontalLayout layout;
-    
-    @Value("${info.app.name")
-    private String appName;
-    
-    @Value("${info.app.version")
-    private String appVersion;
-    
     @Inject
-    private OfficeLicense license;
-    
+    private AboutContent about;
+
+    private VerticalLayout layout;
+
     public AboutBox() {
         super("About");
-        
-        layout = new HorizontalLayout();
+
+        layout = new VerticalLayout();
         
         LOG.trace("Created: {}", this);
     }
     
     @PostConstruct
     public void init() {
-        layout.addComponent(new Label(appName));
-        layout.addComponent(new Label(appVersion));
-        layout.addComponent(new Label(license.getIssuer()));
-        layout.addComponent(new Label(license.getLicensee()));
-        layout.addComponent(new Label(license.getId().toString()));
-        layout.addComponent(new Label(license.getExpiry().format(DateTimeFormatter.ofPattern("dd.MM.yyyy", Locale.GERMANY))));
+        setContent(layout);
+
+        layout.addComponent(about);
 
         layout.addComponent(new Button("Close", event -> {
             LOG.debug("Clicked on: {}", event.getButton().getId());

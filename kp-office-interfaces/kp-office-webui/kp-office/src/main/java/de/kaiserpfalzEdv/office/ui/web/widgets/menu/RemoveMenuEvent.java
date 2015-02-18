@@ -14,22 +14,17 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzEdv.office.ui.web.mainScreen;
+package de.kaiserpfalzEdv.office.ui.web.widgets.menu;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.vaadin.spring.annotation.VaadinSessionScope;
-import org.vaadin.spring.navigator.Presenter;
-import org.vaadin.spring.navigator.annotation.VaadinPresenter;
+import java.util.UUID;
 
 /**
  * @author klenkes
  * @version 2015Q1
- * @since 17.02.15 21:01
+ * @since 18.02.15 07:08
  */
-@VaadinSessionScope
-@VaadinPresenter(viewName = NavBarFooterView.NAME)
-public class NavBarFooterPresenter extends Presenter<NavBarLogoView> {
-    private static final Logger LOG = LoggerFactory.getLogger(NavBarFooterPresenter.class);
-
+public class RemoveMenuEvent extends AbstractMenuEvent {
+    public RemoveMenuEvent(final UUID id) {
+        super(id);
+    }
 }

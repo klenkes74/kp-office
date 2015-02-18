@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzEdv.office.ui.web.mainScreen;
+package de.kaiserpfalzEdv.office.ui.web.widgets.admin;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.vaadin.spring.annotation.VaadinSessionScope;
+import org.vaadin.spring.events.Event;
 import org.vaadin.spring.navigator.Presenter;
 import org.vaadin.spring.navigator.annotation.VaadinPresenter;
 
@@ -28,26 +28,30 @@ import javax.annotation.PreDestroy;
 /**
  * @author klenkes
  * @version 2015Q1
- * @since 17.02.15 20:57
+ * @since 18.02.15 08:45
  */
-@VaadinSessionScope
-@VaadinPresenter(viewName = NavigationView.NAME)
-public class NavigationPresenter extends Presenter<NavigationView> {
-    private static final Logger LOG = LoggerFactory.getLogger(NavigationPresenter.class);
+@VaadinPresenter(viewName = EventLoggingView.NAME)
+public class EventLoggingPresenter extends Presenter<EventLoggingView> {
+    private static final Logger LOG = LoggerFactory.getLogger(EventLoggingPresenter.class);
 
-    
-    public NavigationPresenter() {
+    public EventLoggingPresenter() {
         LOG.trace("Created: {}", this);
     }
 
     @PostConstruct
     public void init() {
+        super.init();
         LOG.trace("Initialized: {}", this);
     }
-
 
     @PreDestroy
     public void close() {
         LOG.trace("Destroyed: {}", this);
+    }
+
+    public void onStartup(Event<?> event) {
+        LOG.debug("{} received: {}", this, event);
+
+        getView().addEvent(event);
     }
 }
