@@ -19,6 +19,7 @@ package de.kaiserpfalzEdv.office.ui.web;
 import com.google.common.eventbus.EventBus;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.slf4j.bridge.SLF4JBridgeHandler;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.orm.jpa.EntityScan;
@@ -35,6 +36,7 @@ import org.vaadin.spring.annotation.EnableVaadin;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.inject.Named;
+import java.util.logging.Level;
 
 /**
  * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;
@@ -64,23 +66,29 @@ import javax.inject.Named;
 public class Application {
     private static Logger LOG = LoggerFactory.getLogger(Application.class);
 
+    public static void main(String[] args) {
+        if (!SLF4JBridgeHandler.isInstalled()) {
+            LOG.info("Redirecting java.util.logging to SLF4J ...");
 
+            java.util.logging.LogManager.getLogManager().reset();
+            SLF4JBridgeHandler.install();
+            java.util.logging.Logger.getLogger("global").setLevel(Level.FINEST);
+        }
+
+        SpringApplication.run(Application.class, args);
+    }
+    
     @PostConstruct
     public void init() {
         LOG.trace("Created: {}", this);
+
     }
     
     @PreDestroy
     public void close() {
         LOG.trace("Destroyed: {}", this);
     }
-    
-    
-    public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
-    }
 
-    
     @Bean
     @Scope("singleton")
     public EventBus guavaEventBus() {

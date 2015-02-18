@@ -69,6 +69,10 @@ public class NavigationView extends Accordion implements View {
     }
 
 
+    Component getMenu(final UUID id) {
+        return entries.get(id);
+    }
+
     void addEntry(final UUID id, final String title, final Component menu) {
         if (entries.containsKey(id)) {
             replaceEntry(id, menu);

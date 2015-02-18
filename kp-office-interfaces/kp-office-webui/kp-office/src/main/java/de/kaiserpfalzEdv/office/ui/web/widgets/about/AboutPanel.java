@@ -18,6 +18,10 @@ package de.kaiserpfalzEdv.office.ui.web.widgets.about;
 
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
+import com.vaadin.server.ThemeResource;
+import com.vaadin.shared.ui.label.ContentMode;
+import com.vaadin.ui.Alignment;
+import com.vaadin.ui.Image;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.VerticalLayout;
 import de.kaiserpfalzEdv.commons.jee.servlet.model.ApplicationMetaData;
@@ -54,8 +58,27 @@ public class AboutPanel extends VerticalLayout implements View {
 
     @PostConstruct
     public void init() {
-        addComponent(new Label(application.get(ApplicationMetaData.APPLICATION_NAME)));
-        addComponent(new Label("Version " + application.get(ApplicationMetaData.APPLICATION_VERSION)));
+        Image logo = new Image(null, new ThemeResource("../images/lichti-wappen.png"));
+        logo.setId("about-logo");
+        logo.setAlternateText("Logo: Kaiserpfalz EDV-Service");
+        logo.setWidth(150f, Unit.PIXELS);
+        logo.setHeight(170f, Unit.PIXELS);
+        logo.setCaption("Kaiserpfalz EDV-Service");
+
+        addComponent(logo);
+        setComponentAlignment(logo, Alignment.MIDDLE_CENTER);
+
+        Label name = new Label(
+                "<div style='text-align: center;'><b>" + application.get(ApplicationMetaData.APPLICATION_NAME) + "</b>"
+                        + "<br/>"
+                        + "<i><small>Version " + application.get(ApplicationMetaData.APPLICATION_VERSION) + "</small></i></div>",
+                ContentMode.HTML
+        );
+        name.setWidth(200f, Unit.PIXELS);
+        addComponent(name);
+        setComponentAlignment(name, Alignment.MIDDLE_CENTER);
+        
+        
         addComponent(new Label(""));
         addComponent(new Label("License: " + license.getId()));
         addComponent(new Label("Licensee: " + license.getLicensee()));

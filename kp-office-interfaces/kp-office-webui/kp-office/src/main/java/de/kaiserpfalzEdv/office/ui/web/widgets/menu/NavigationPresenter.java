@@ -16,6 +16,7 @@
 
 package de.kaiserpfalzEdv.office.ui.web.widgets.menu;
 
+import com.vaadin.ui.Component;
 import com.vaadin.ui.Label;
 import de.kaiserpfalzEdv.office.ui.web.widgets.about.AboutPanel;
 import org.slf4j.Logger;
@@ -39,7 +40,7 @@ import java.util.UUID;
  */
 @VaadinSessionScope
 @VaadinPresenter(viewName = NavigationView.NAME)
-public class NavigationPresenter extends Presenter<NavigationView> {
+public class NavigationPresenter extends Presenter<NavigationView> implements Component.Listener {
     private static final Logger LOG = LoggerFactory.getLogger(NavigationPresenter.class);
 
     @Inject
@@ -58,6 +59,8 @@ public class NavigationPresenter extends Presenter<NavigationView> {
         super.init();
 
         getView().addEntry(adminId, "Admin", new Label("Just for fun"));
+
+        about.addListener(this);
         getView().addEntry(aboutId, "About", about);
         
         LOG.trace("Initialized: {}", this);
@@ -76,6 +79,7 @@ public class NavigationPresenter extends Presenter<NavigationView> {
         LOG.debug("{} received: {}", this, event);
 
         AddMenuEvent menu = event.getPayload();
+        menu.getMenu().addListener(this);
 
         getView().addEntry(menu.getMenuId(), menu.getTitle(), menu.getMenu());
     }
@@ -86,8 +90,11 @@ public class NavigationPresenter extends Presenter<NavigationView> {
         LOG.debug("{} received: {}", this, event);
 
         RemoveMenuEvent menu = event.getPayload();
+        Component removed = getView().getMenu(menu.getMenuId());
 
         getView().removeEntry(menu.getMenuId());
+
+        removed.removeListener(this);
 
     }
 
@@ -97,8 +104,16 @@ public class NavigationPresenter extends Presenter<NavigationView> {
         LOG.debug("{} received: {}", this, event);
 
         ReplaceMenuEvent menu = event.getPayload();
+        menu.getMenu().addListener(this);
 
         getView().replaceEntry(menu.getMenuId(), menu.getMenu());
 
+    }
+
+    @Override
+    public void componentEvent(Component.Event event) {
+        LOG.debug("{} received for {}: {}", this, event.getComponent(), event);
+
+        getEventBus().publish(event.getComponent(), event);
     }
 }
