@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014 Kaiserpfalz EDV-Service, Roland T. Lichti
+ * Copyright 2015 Kaiserpfalz EDV-Service, Roland T. Lichti
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -32,7 +32,7 @@ import javax.validation.constraints.NotNull;
 import java.util.UUID;
 
 /**
- * This service handles contacts and all changes to them.
+ * This service handles accounting and all changes to them.
  *
  * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;
  * @since 0.1.0
@@ -57,8 +57,8 @@ public interface ContactService {
 
 
     /**
-     * @param query The query to load all contacts for.
-     * @return An iterable of all contacts matching the query. May be empty.
+     * @param query The query to load all accounting for.
+     * @return An iterable of all accounting matching the query. May be empty.
      */
     public Iterable<Contact> retrieveContacts(@NotNull final ContactQuery query);
 

@@ -26,13 +26,6 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>kp-office-ui-core</artifactId>
-    <name>KP Office - Web UI - Modules - Core</name>
-
-    <dependencies>
-        <dependency>
-            <groupId>de.kaiserpfalz-edv.office</groupId>
-            <artifactId>kp-office-core-impl</artifactId>
-        </dependency>
-    </dependencies>
+    <artifactId>kp-office-ui-accounting</artifactId>
+    <name>KP Office - Web UI - Modules - Accounting</name>
 </project>
