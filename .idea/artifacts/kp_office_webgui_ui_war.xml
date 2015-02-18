@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" name="kp-office-webgui-ui:war">
-    <output-path>$PROJECT_DIR$/kp-office-interfaces/kp-office-http/kp-office-webgui/kp-office-webgui-ui/target</output-path>
-    <root id="archive" name="kp-office-webgui-ui-0.1.0-SNAPSHOT.war">
-      <element id="artifact" artifact-name="kp-office-webgui-ui:war exploded" />
-    </root>
-  </artifact>
-</component>
