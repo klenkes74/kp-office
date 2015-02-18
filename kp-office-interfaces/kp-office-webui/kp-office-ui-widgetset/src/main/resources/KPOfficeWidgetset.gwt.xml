@@ -47,4 +47,10 @@
     <inherits name="com.lexaden.business.chart.widgetset.OrganisationWidgetset" />
 
     <inherits name="com.lexaden.business.flows.FlowProgressBarWidgetset" />
+
+    <inherits name="com.ejt.vaadin.loginform.WidgetSet" />
+
+    <inherits name="org.vaadin.suggestfield.WidgetSet" />
+
+    <inherits name="de.steinwedel.messagebox.WidgetSet" />
 </module>

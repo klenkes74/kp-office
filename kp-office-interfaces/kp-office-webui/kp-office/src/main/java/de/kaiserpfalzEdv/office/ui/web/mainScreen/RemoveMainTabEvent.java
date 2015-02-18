@@ -14,32 +14,23 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzEdv.office.ui.web.presenter;
+package de.kaiserpfalzEdv.office.ui.web.mainScreen;
 
-import com.vaadin.ui.Component;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.UUID;
 
 /**
- * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;
- * @version 0.1.0
- * @since 0.1.0
+ * @author klenkes
+ * @version 2015Q1
+ * @since 18.02.15 07:08
  */
-public class ControlsContext {
-    private static final Logger LOG = LoggerFactory.getLogger(ControlsContext.class);
+public class RemoveMainTabEvent extends AbstractMainTabEvent {
+    private static final Logger LOG = LoggerFactory.getLogger(RemoveMainTabEvent.class);
 
-
-    private final List<Component> controls = new ArrayList<>();
-
-    public List<Component> getControls() {
-        return controls;
+    
+    public RemoveMainTabEvent(final UUID id) {
+        super(UUID.randomUUID(), id);
     }
-
-    public static ControlsContext empty() {
-        return new ControlsContext();
-    }
-
 }

@@ -120,7 +120,6 @@
                 </executions>
             </plugin>
 
-<!--
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>aspectj-maven-plugin</artifactId>
@@ -162,7 +161,6 @@
                     </dependency>
                 </dependencies>
             </plugin>
--->
         </plugins>
     </build>
 
@@ -194,32 +192,16 @@
             <groupId>com.verhas</groupId>
             <artifactId>license3j</artifactId>
             <version>1.0.4</version>
-        </dependency>
-        <dependency>
-            <groupId>org.bouncycastle</groupId>
-            <artifactId>bcprov-jdk15on</artifactId>
-            <version>1.46</version>
-        </dependency>
-        <dependency>
-            <groupId>org.bouncycastle</groupId>
-            <artifactId>bcprov-ext-jdk15on</artifactId>
-            <version>1.46</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.bouncycastle</groupId>
+                    <artifactId>bcpg-jdk16</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.bouncycastle</groupId>
             <artifactId>bcpg-jdk15on</artifactId>
-            <version>1.46</version>
-        </dependency>
-<!-- exists only in 1.51+
-        <dependency>
-            <groupId>org.bouncycastle</groupId>
-            <artifactId>bcpkix-jdk15on</artifactId>
-            <version>1.46</version>
-        </dependency>
--->
-        <dependency>
-            <groupId>org.bouncycastle</groupId>
-            <artifactId>bcmail-jdk15on</artifactId>
             <version>1.46</version>
         </dependency>
 

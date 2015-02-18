@@ -14,17 +14,22 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzEdv.office.ui.web.view;
+package de.kaiserpfalzEdv.office.ui.web.mainScreen;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.vaadin.spring.annotation.VaadinSessionScope;
+import org.vaadin.spring.navigator.Presenter;
+import org.vaadin.spring.navigator.annotation.VaadinPresenter;
 
 /**
- * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;
- * @version 0.1.0
- * @since 0.1.0
+ * @author klenkes
+ * @version 2015Q1
+ * @since 17.02.15 21:01
  */
-public interface Styles {
-
-    public static final String NUMERIC = "numeric";
-
-    public static final String SPLITPANEL_SMALL = "small";
+@VaadinSessionScope
+@VaadinPresenter(viewName = NavBarFooterView.NAME)
+public class NavBarFooterPresenter extends Presenter<NavBarLogoView> {
+    private static final Logger LOG = LoggerFactory.getLogger(NavBarFooterPresenter.class);
 
 }

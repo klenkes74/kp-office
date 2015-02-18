@@ -14,25 +14,14 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzEdv.office.ui.web.presenter;
-
-import de.kaiserpfalzEdv.office.ui.web.view.TabPanelView;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.vaadin.spring.navigator.Presenter;
-import org.vaadin.spring.navigator.VaadinPresenter;
+package de.kaiserpfalzEdv.office.ui.web;
 
 /**
  * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;
  * @version 0.1.0
  * @since 0.1.0
  */
-@VaadinPresenter(viewName = TabPanelView.NAME)
-public class TabPanelPresenter extends Presenter<TabPanelView> {
-    private static final Logger LOG = LoggerFactory.getLogger(TabPanelPresenter.class);
-
-//    @EventBusListenerMethod
-//    public void onPopulateTabCaptions(NavElement element) {
-//        getView().setOrigin(element);
-//    }
+public enum Action {
+    START,
+    GET_DATA
 }

@@ -14,14 +14,31 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzEdv.office.ui.web.presenter;
+package de.kaiserpfalzEdv.office.ui.web.mainScreen;
+
+import de.kaiserpfalzEdv.office.ui.web.Action;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.vaadin.spring.events.EventBusListenerMethodFilter;
 
 /**
  * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;
  * @version 0.1.0
  * @since 0.1.0
  */
-public enum Action {
-    START,
-    GET_DATA
+public class StartupFilter implements EventBusListenerMethodFilter {
+    private static final Logger LOG = LoggerFactory.getLogger(StartupFilter.class);
+    
+    
+    @Override
+    public boolean filter(Object payload) {
+        boolean result = false;
+        if (Action.class.isAssignableFrom(payload.getClass())) {
+            Action action = (Action) payload;
+            if (action.equals(Action.START)) {
+                result = true;
+            }
+        }
+        return result;
+    }
 }

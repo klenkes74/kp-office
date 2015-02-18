@@ -1,0 +1,15 @@
+id=00000000-0000-0000-0000-000000000000
+issued=2015-02-17
+
+issuer=Kaiserpfalz EDV-Service
+licensee=Kaiserpfalz EDV-Service
+
+starts=2015-02-01
+expires=2020-12-31
+
+
+software=KP Office
+version=0.0.0
+lastVersion=1.0.0
+
+features=core,contacts,projects,accounting,documents

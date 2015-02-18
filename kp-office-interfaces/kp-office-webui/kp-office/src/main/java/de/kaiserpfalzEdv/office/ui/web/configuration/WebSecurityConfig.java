@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzEdv.office.ui.web;
+package de.kaiserpfalzEdv.office.ui.web.configuration;
 
 import de.kaiserpfalzEdv.office.ui.web.security.KPOfficeAuthenticationProvider;
 import org.slf4j.Logger;
@@ -50,10 +50,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Inject
     private KPOfficeAuthenticationProvider authenticationProvider;
 
+    
+    public WebSecurityConfig() {
+        LOG.trace("Created: {}", this);
+        
+    }
 
     @PostConstruct
     public void init() {
-        LOG.trace("Created: {}", this);
+        LOG.trace("Initialized: {}", this);
+        LOG.trace("  application context: {}", context);
+        LOG.trace("  authentication provider: {}", authenticationProvider);
     }
 
     @PreDestroy

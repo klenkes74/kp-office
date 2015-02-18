@@ -14,38 +14,35 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzEdv.office.ui.web.view;
+package de.kaiserpfalzEdv.office.ui.web.mainScreen;
 
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
-import com.vaadin.ui.VerticalLayout;
+import com.vaadin.ui.GridLayout;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.vaadin.spring.UIScope;
-import org.vaadin.spring.navigator.VaadinView;
-
-import javax.annotation.PostConstruct;
+import org.vaadin.spring.annotation.VaadinSessionScope;
+import org.vaadin.spring.navigator.annotation.VaadinView;
 
 /**
- * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;
- * @version 0.1.0
- * @since 0.1.0
+ * @author klenkes
+ * @version 2015Q1
+ * @since 17.02.15 20:34
  */
-@UIScope
-@VaadinView(name = BodyView.NAME)
-public class BodyView extends VerticalLayout implements View {
-    private final Logger LOG = LoggerFactory.getLogger(BodyView.class);
-    public static final String NAME = "body";
+@VaadinSessionScope
+@VaadinView(name = NavigationBarView.NAME)
+public class NavigationBarView extends GridLayout implements View {
+    private static final Logger LOG = LoggerFactory.getLogger(NavigationBarView.class);
+    static final String NAME = "MAIN.NAVIGATION";
 
-
-    @PostConstruct
-    private void init() {
-        setSizeFull();
+    
+    public NavigationBarView() {
+        super(1, 3);
     }
 
-
+    
     @Override
     public void enter(ViewChangeListener.ViewChangeEvent event) {
-        LOG.trace("ViewChangeEvent: {}", event);
+        LOG.debug("{} received: {}", this, event);
     }
 }

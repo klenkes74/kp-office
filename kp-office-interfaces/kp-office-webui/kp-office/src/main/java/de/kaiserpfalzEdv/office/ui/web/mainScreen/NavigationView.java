@@ -14,35 +14,29 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzEdv.office.ui.web.view;
+package de.kaiserpfalzEdv.office.ui.web.mainScreen;
 
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
-import com.vaadin.ui.CustomLayout;
+import com.vaadin.ui.VerticalLayout;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.vaadin.spring.UIScope;
-import org.vaadin.spring.navigator.VaadinView;
+import org.vaadin.spring.annotation.VaadinSessionScope;
+import org.vaadin.spring.navigator.annotation.VaadinView;
 
 /**
- * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;
- * @version 0.1.0
- * @since 0.1.0
+ * @author klenkes
+ * @version 2015Q1
+ * @since 17.02.15 21:02
  */
-@UIScope
-@VaadinView(name = FooterView.NAME)
-public class FooterView extends CustomLayout implements View {
-    private final Logger LOG = LoggerFactory.getLogger(FooterView.class);
+@VaadinSessionScope
+@VaadinView(name = NavigationView.NAME)
+public class NavigationView extends VerticalLayout implements View {
+    private static final Logger LOG  = LoggerFactory.getLogger(NavigationView.class);
+    static final         String NAME = "MAIN.NAVIGATION";
 
-    private static final long serialVersionUID = 1L;
-    public static final String NAME = "footer";
-
-    public FooterView() {
-        this.setHeight("20px");
-    }
-
-
+    @Override
     public void enter(ViewChangeListener.ViewChangeEvent event) {
-        LOG.trace("ChangeEvent: {}", event);
+        LOG.trace("{} received: {}", this, event);
     }
 }

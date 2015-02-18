@@ -22,11 +22,10 @@ import com.vaadin.server.VaadinRequest;
 import com.vaadin.ui.Alignment;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
-import de.kaiserpfalzEdv.office.ui.web.presenter.Action;
-import de.kaiserpfalzEdv.office.ui.web.presenter.MainPresenter;
+import de.kaiserpfalzEdv.office.ui.web.mainScreen.MainScreenPresenter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.vaadin.spring.VaadinUI;
+import org.vaadin.spring.annotation.VaadinUI;
 import org.vaadin.spring.events.EventBus;
 import org.vaadin.spring.events.EventScope;
 
@@ -39,17 +38,17 @@ import javax.inject.Inject;
  */
 @Theme("valo")
 @Widgetset("KPOfficeWidgetset")
-@VaadinUI
+@VaadinUI()
 public class KPOfficeUI extends UI {
-    private static final long serialVersionUID = -8687618756473432618L;
-    private static final Logger LOG = LoggerFactory.getLogger(KPOfficeUI.class);
+    private static final long   serialVersionUID = -8687618756473432618L;
+    private static final Logger LOG              = LoggerFactory.getLogger(KPOfficeUI.class);
 
 
     @Inject
     private EventBus eventBus;
-    
+
     @Inject
-    private MainPresenter presenter;
+    private MainScreenPresenter presenter;
 
 
     /**
@@ -63,23 +62,24 @@ public class KPOfficeUI extends UI {
     public void init() {
         LOG.trace("Created: {}", this);
     }
-    
+
     @PreDestroy
     public void close() {
         LOG.trace("Destroyed: {}", this);
     }
 
-    
+
     @Override
     protected void init(VaadinRequest vaadinRequest) {
         mainLayout = new VerticalLayout();
         mainLayout.setSizeFull();
-        mainLayout.setMargin(true);
+        mainLayout.setHeight(100f, Unit.PERCENTAGE);
+        mainLayout.setWidth(100f, Unit.PERCENTAGE);
+        mainLayout.setMargin(false);
         mainLayout.setDefaultComponentAlignment(Alignment.MIDDLE_CENTER);
         setContent(mainLayout);
 
-        mainLayout.addComponent(presenter.getView());
         eventBus.publish(EventScope.SESSION, this, Action.START);
-
+        mainLayout.addComponent(presenter.getView());
     }
 }
