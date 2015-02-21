@@ -15,36 +15,30 @@
   ~ limitations under the License.
   -->
 
-<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>de.kaiserpfalz-edv.office.webui</groupId>
-        <artifactId>kp-office-ui-modules</artifactId>
+        <groupId>de.kaiserpfalz-edv.office</groupId>
+        <artifactId>kp-office-modules</artifactId>
         <version>0.2.0-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>kp-office-ui-accounting</artifactId>
-    <name>KP Office - Web UI - Modules - Accounting</name>
+    <artifactId>kp-office-finance</artifactId>
+    <name>KP Office - Modules - Finance</name>
+    <packaging>pom</packaging>
 
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>de.kaiserpfalz-edv.commons</groupId>
-                <artifactId>kp-commons-bom</artifactId>
-                <version>${kp-commons.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
+    <modules>
+        <module>kp-office-finance-api</module>
+        <module>kp-office-finance-impl</module>
+        <module>kp-office-finance-money-online</module>
+        <module>kp-office-finance-money-offline</module>
+    </modules>
 
-    <dependencies>
-        <dependency>
-            <groupId>de.kaiserpfalz-edv.office</groupId>
-            <artifactId>kp-office-accounting-impl</artifactId>
-        </dependency>
-    </dependencies>
+    <properties>
+        <project.root>../..</project.root>
+    </properties>
 </project>
