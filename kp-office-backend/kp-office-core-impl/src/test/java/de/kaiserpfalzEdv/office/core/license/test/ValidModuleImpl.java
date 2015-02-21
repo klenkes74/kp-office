@@ -16,7 +16,7 @@
 
 package de.kaiserpfalzEdv.office.core.license.test;
 
-import de.kaiserpfalzEdv.office.core.license.OfficeModule;
+import de.kaiserpfalzEdv.office.core.license.ModuleInformation;
 
 import javax.inject.Named;
 
@@ -26,7 +26,7 @@ import javax.inject.Named;
  * @since 11.02.15 21:13
  */
 @Named
-@OfficeModule(name = "Contact Module", needsLicence = true, featureName = "contacts")
+@ModuleInformation(name = "Contact Module", needsLicence = true, featureName = "contacts")
 public class ValidModuleImpl implements TestModuleService {
     @Override
     public boolean serviceCall() { return true; }

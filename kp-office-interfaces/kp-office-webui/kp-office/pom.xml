@@ -21,7 +21,7 @@
 
     <parent>
         <artifactId>kp-office-webui</artifactId>
-        <groupId>de.kaiserpfalz-edv.office</groupId>
+        <groupId>de.kaiserpfalz-edv.office.webui</groupId>
         <version>0.2.0-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
@@ -44,18 +44,22 @@
         
         <dependency>
             <groupId>${project.groupId}</groupId>
+            <artifactId>kp-office-ui-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
             <artifactId>kp-office-ui-core</artifactId>
         </dependency>
-<!--
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>kp-office-ui-accounting</artifactId>
         </dependency>
-        <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>kp-office-ui-projects</artifactId>
-        </dependency>
--->
+        <!--
+                <dependency>
+                    <groupId>${project.groupId}</groupId>
+                    <artifactId>kp-office-ui-projects</artifactId>
+                </dependency>
+        -->
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>kp-office-ui-widgetset</artifactId>

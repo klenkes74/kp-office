@@ -29,14 +29,14 @@ package de.kaiserpfalzEdv.office.core.license.impl;
  *
  * <p>The license check is annotated per aspect {@link de.kaiserpfalzEdv.office.core.license.impl.LicenseManager} to
  * every method within every class named like <code>...ModuleImpl</code> and annotated with
- * {@link de.kaiserpfalzEdv.office.core.license.OfficeModule}. If the parameter
- * {@link de.kaiserpfalzEdv.office.core.license.OfficeModule#needsLicence()} is set to <code>true</code>, then the
- * feature {@link de.kaiserpfalzEdv.office.core.license.OfficeModule#featureName()} is checked within the license.
+ * {@link de.kaiserpfalzEdv.office.core.license.ModuleInformation}. If the parameter
+ * {@link de.kaiserpfalzEdv.office.core.license.ModuleInformation#needsLicence()} is set to <code>true</code>, then the
+ * feature {@link de.kaiserpfalzEdv.office.core.license.ModuleInformation#featureName()} is checked within the license.
  * If there is no license or the license is invalid, an
  * {@link de.kaiserpfalzEdv.office.core.license.LicensingException} or one of its subclasses is thrown.</p>
  *
  * <p>The check is also applied to method calls within classes named like <code>...ModuleImpl</code> if they are
- * annotated with {@link de.kaiserpfalzEdv.office.core.license.OfficeModule}. This may be useful with a
+ * annotated with {@link de.kaiserpfalzEdv.office.core.license.ModuleInformation}. This may be useful with a
  * <a href="http://en.wikipedia.org/wiki/Service_locator_pattern">Service Locator</a>.</p>
  *
  * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;

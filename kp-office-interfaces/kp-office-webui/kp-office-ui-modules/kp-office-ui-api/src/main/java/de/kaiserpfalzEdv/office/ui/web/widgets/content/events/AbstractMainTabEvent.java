@@ -14,17 +14,38 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzEdv.office.ui.web.widgets.content;
+package de.kaiserpfalzEdv.office.ui.web.widgets.content.events;
+
+import de.kaiserpfalzEdv.office.ui.web.widgets.events.AbstractWidgetEvent;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.util.UUID;
 
 /**
  * @author klenkes
  * @version 2015Q1
- * @since 18.02.15 07:08
+ * @since 18.02.15 07:10
  */
-public class RemoveMainTabEvent extends AbstractMainTabEvent {
-    public RemoveMainTabEvent(final UUID id) {
-        super(UUID.randomUUID(), id);
+public class AbstractMainTabEvent extends AbstractWidgetEvent {
+    private UUID tabId;
+
+
+    public AbstractMainTabEvent(final UUID tabId) {
+        super(UUID.randomUUID());
+        
+        this.tabId = tabId;
+    }
+
+
+    public UUID getTabId() {
+        return tabId;
+    }
+
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this)
+                .appendSuper(super.toString())
+                .toString();
     }
 }

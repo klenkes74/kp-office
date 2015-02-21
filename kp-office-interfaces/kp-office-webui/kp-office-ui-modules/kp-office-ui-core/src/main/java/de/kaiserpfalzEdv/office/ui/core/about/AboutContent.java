@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzEdv.office.ui.web.widgets.about;
+package de.kaiserpfalzEdv.office.ui.core.about;
 
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
@@ -27,11 +27,14 @@ import de.kaiserpfalzEdv.office.core.license.OfficeLicense;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.vaadin.spring.annotation.VaadinUIScope;
+import org.vaadin.spring.events.EventBus;
+import org.vaadin.spring.navigator.annotation.VaadinView;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.validation.constraints.NotNull;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 
@@ -42,14 +45,17 @@ import java.util.Locale;
  */
 @Named
 @VaadinUIScope
+@VaadinView(name = AboutContent.NAME)
 public class AboutContent extends VerticalLayout implements View {
+    public static final String NAME = "core.about.content";
     private static final Logger LOG = LoggerFactory.getLogger(AboutContent.class);
-
     @Inject
     private OfficeLicense license;
 
     @Inject
     private ApplicationMetaData application;
+
+    private EventBus bus;
 
 
     public AboutContent() {
@@ -95,6 +101,10 @@ public class AboutContent extends VerticalLayout implements View {
         LOG.trace("Destroyed: {}", this);
     }
 
+
+    public void setBus(@NotNull EventBus bus) {
+        this.bus = bus;
+    }
 
     @Override
     public void enter(ViewChangeListener.ViewChangeEvent event) {

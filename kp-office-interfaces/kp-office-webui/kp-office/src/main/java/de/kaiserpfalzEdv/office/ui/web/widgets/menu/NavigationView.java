@@ -19,7 +19,7 @@ package de.kaiserpfalzEdv.office.ui.web.widgets.menu;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.ui.Accordion;
-import com.vaadin.ui.Component;
+import de.kaiserpfalzEdv.office.ui.menu.Menu;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.vaadin.spring.annotation.VaadinSessionScope;
@@ -38,9 +38,10 @@ import java.util.UUID;
 @VaadinSessionScope
 @VaadinView(name = NavigationView.NAME)
 public class NavigationView extends Accordion implements View {
-    static final         String                   NAME    = "MAIN.NAVIGATION";
-    private static final Logger                   LOG     = LoggerFactory.getLogger(NavigationView.class);
-    final                HashMap<UUID, Component> entries = new HashMap<>(10);
+    static final         String NAME = "MAIN.NAVIGATION";
+    private static final Logger LOG  = LoggerFactory.getLogger(NavigationView.class);
+
+    final HashMap<UUID, Menu> entries = new HashMap<>(10);
 
 
     public NavigationView() {
@@ -69,42 +70,55 @@ public class NavigationView extends Accordion implements View {
     }
 
 
-    Component getMenu(final UUID id) {
+    Menu getMenu(final UUID id) {
         return entries.get(id);
     }
 
-    void addEntry(final UUID id, final String title, final Component menu) {
-        if (entries.containsKey(id)) {
-            replaceEntry(id, menu);
+    void addEntry(final Menu menu) {
+        if (entries.containsKey(menu.getId())) {
+            replaceEntry(menu);
             return;
         }
 
-        entries.put(id, menu);
-        addTab(menu, title);
+        entries.put(menu.getId(), menu);
 
-        LOG.debug("Added menu {} ({}): {}", title, id, menu);
+        int index = Integer.MAX_VALUE;
+        for (Menu e : entries.values()) {
+            if (menu.getSortOrder() < e.getSortOrder()) {
+                int newIndex = getTabPosition(getTab(e.getComponent()));
+                index = newIndex < index ? newIndex : index;
+            }
+        }
+
+        if (index != Integer.MAX_VALUE) {
+            addTab(menu.getComponent(), menu.getTitle(), null, index);
+        } else {
+            addTab(menu.getComponent(), menu.getTitle());
+        }
+
+        LOG.debug("Added menu: {}", menu);
     }
 
-    void replaceEntry(final UUID id, final Component menu) {
+    void replaceEntry(final Menu menu) {
+        if (!entries.containsKey(menu.getId())) {
+            addEntry(menu);
+            return;
+        }
+
+        replaceComponent(entries.get(menu.getId()).getComponent(), menu.getComponent());
+        entries.remove(menu.getId());
+        entries.put(menu.getId(), menu);
+
+        LOG.debug("Replaced menu {} with: {}", menu.getId(), menu);
+    }
+
+    void removeEntry(final UUID id) {
         if (!entries.containsKey(id)) {
             LOG.warn("Menu does not contain sub menu with id: {}", id);
             return;
         }
 
-        replaceComponent(entries.get(id), menu);
-        entries.remove(id);
-        entries.put(id, menu);
-
-        LOG.debug("Replaces menu {} with: {}", id, menu);
-    }
-
-    void removeEntry(final UUID id) {
-        if (!entries.containsKey(id)) {
-            LOG.warn("Menu doesn ot contain sub menu with id: {}", id);
-            return;
-        }
-
-        removeComponent(entries.get(id));
+        removeComponent(entries.get(id).getComponent());
         entries.remove(id);
 
         LOG.debug("Removed menu {}", id);

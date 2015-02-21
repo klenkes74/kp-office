@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzEdv.office.ui.web.widgets.about;
+package de.kaiserpfalzEdv.office.ui.core.about;
 
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
@@ -29,22 +29,22 @@ import de.kaiserpfalzEdv.office.core.license.OfficeLicense;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.vaadin.spring.annotation.VaadinUIScope;
+import org.vaadin.spring.navigator.annotation.VaadinView;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.inject.Inject;
-import javax.inject.Named;
 
 /**
  * @author klenkes
  * @version 2015Q1
  * @since 18.02.15 08:23
  */
-@Named
+@VaadinView(name = AboutPanel.NAME)
 @VaadinUIScope
 public class AboutPanel extends VerticalLayout implements View {
+    public static final String NAME = "core.about.panel";
     private static final Logger LOG = LoggerFactory.getLogger(AboutPanel.class);
-
     @Inject
     private OfficeLicense license;
 

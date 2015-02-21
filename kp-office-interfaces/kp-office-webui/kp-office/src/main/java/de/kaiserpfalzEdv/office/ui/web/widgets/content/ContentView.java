@@ -18,8 +18,8 @@ package de.kaiserpfalzEdv.office.ui.web.widgets.content;
 
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
-import com.vaadin.ui.Component;
 import com.vaadin.ui.TabSheet;
+import de.kaiserpfalzEdv.office.ui.content.ContentTab;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.vaadin.spring.annotation.VaadinSessionScope;
@@ -27,6 +27,7 @@ import org.vaadin.spring.navigator.annotation.VaadinView;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
+import javax.validation.constraints.NotNull;
 import java.util.HashMap;
 import java.util.UUID;
 
@@ -38,13 +39,13 @@ import java.util.UUID;
 @VaadinSessionScope
 @VaadinView(name = ContentView.NAME)
 public class ContentView extends TabSheet implements View {
-    static final String NAME = "MAIN.CONTENT";
+    static final         String NAME             = "MAIN.CONTENT";
     private static final long   serialVersionUID = 1722734766184991100L;
     private static final Logger LOG              = LoggerFactory.getLogger(ContentView.class);
     /**
      * Contains the currently displayed components.
      */
-    private final HashMap<UUID, Component> tabs = new HashMap<>(10);
+    private final        HashMap<UUID, ContentTab> tabs             = new HashMap<>(10);
 
 
     public ContentView() {
@@ -62,24 +63,23 @@ public class ContentView extends TabSheet implements View {
     }
 
 
-    public void addTab(UUID id, final String title, final Component component) {
-        if (tabs.containsKey(id)) {
-            replaceComponent(tabs.get(id), component);
-            
-            tabs.remove(id);
-            tabs.put(id, component);
-        } else {
-            addTab(component, title);
+    public void addTab(@NotNull final ContentTab tab) {
+        if (tabs.containsKey(tab.getId())) {
+            replaceComponent(tabs.get(tab.getId()).getComponent(), tab.getComponent());
 
-            tabs.put(id, component);
+            tabs.remove(tab.getId());
+        } else {
+            addTab(tab.getComponent(), tab.getTitle());
         }
+
+        tabs.put(tab.getId(), tab);
     }
-    
+
     public void removeTab(UUID id) {
         if (tabs.containsKey(id)) {
-            removeComponent(tabs.get(id));
+            removeComponent(tabs.get(id).getComponent());
             tabs.remove(id);
-            
+
             LOG.debug("Removed content tab: {}", id);
         } else {
             LOG.warn("Content tab '{}' could not be removed: no such tab existed.", id);

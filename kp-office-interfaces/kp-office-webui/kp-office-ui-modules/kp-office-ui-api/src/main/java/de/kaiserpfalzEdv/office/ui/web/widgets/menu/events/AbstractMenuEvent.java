@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzEdv.office.ui.web.widgets.content;
+package de.kaiserpfalzEdv.office.ui.web.widgets.menu.events;
 
-import de.kaiserpfalzEdv.office.ui.web.widgets.AbstractWidgetEvent;
+import de.kaiserpfalzEdv.office.ui.web.widgets.events.AbstractWidgetEvent;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.util.UUID;
@@ -24,20 +24,19 @@ import java.util.UUID;
 /**
  * @author klenkes
  * @version 2015Q1
- * @since 18.02.15 07:10
+ * @since 18.02.15 09:29
  */
-public class AbstractMainTabEvent extends AbstractWidgetEvent {
-    private UUID tabId;
+public class AbstractMenuEvent extends AbstractWidgetEvent {
+    private UUID menuId;
 
 
-    public AbstractMainTabEvent(final UUID eventId, final UUID tabId) {
-        super(eventId);
-        this.tabId = tabId;
+    public AbstractMenuEvent(final UUID id) {
+        super(UUID.randomUUID());
     }
 
 
-    public UUID getTabId() {
-        return tabId;
+    public UUID getMenuId() {
+        return menuId;
     }
 
 
@@ -45,7 +44,7 @@ public class AbstractMainTabEvent extends AbstractWidgetEvent {
     public String toString() {
         return new ToStringBuilder(this)
                 .appendSuper(super.toString())
-                .append("tabId", tabId)
+                .append("menuId", menuId)
                 .toString();
     }
 }

@@ -28,7 +28,7 @@
 
     <artifactId>kp-office-cli</artifactId>
     <packaging>pom</packaging>
-    <name>KP Office - Interfaces - Command Line</name>
+    <name>KP Office - Interfaces - Command Line (CLI)</name>
 
 
     <modules>

@@ -14,32 +14,67 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzEdv.office.ui.web.widgets;
+package de.kaiserpfalzEdv.office.ui.menu;
 
-import de.kaiserpfalzEdv.office.ui.web.widgets.content.AbstractMainTabEvent;
+import com.vaadin.ui.Component;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
-import org.apache.commons.lang3.builder.ToStringStyle;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
+import javax.validation.constraints.NotNull;
 import java.util.UUID;
 
 /**
  * @author klenkes
  * @version 2015Q1
- * @since 18.02.15 09:28
+ * @since 19.02.15 12:46
  */
-public class AbstractWidgetEvent {
-    private static final Logger LOG = LoggerFactory.getLogger(AbstractWidgetEvent.class);
-    protected UUID id;
+class MenuImpl implements Menu {
+    private UUID      id;
+    private String    title;
+    private int       sortOrder;
+    private Component component;
 
-    public AbstractWidgetEvent(final UUID eventId) {this.id = eventId;}
 
+    public MenuImpl(
+            @NotNull final UUID id,
+            @NotNull final String title,
+            final int sortOrder,
+            @NotNull final Component component
+    ) {
+        this.id = id;
+        this.title = title;
+        this.sortOrder = sortOrder;
+        this.component = component;
+    }
+
+
+    @Override
     public UUID getId() {
         return id;
     }
+
+    @Override
+    public String getTitle() {
+        return title;
+    }
+
+    @Override
+    public int getSortOrder() {
+        return sortOrder;
+    }
+
+    @Override
+    public Component getComponent() {
+        return component;
+    }
+
+
+    @Override
+    public int compareTo(MenuImpl o) {
+        return sortOrder - o.sortOrder;
+    }
+
 
     @Override
     public boolean equals(Object obj) {
@@ -49,11 +84,10 @@ public class AbstractWidgetEvent {
         if (obj == this) {
             return true;
         }
-        if (!AbstractMainTabEvent.class.isAssignableFrom(obj.getClass())) {
+        if (obj.getClass() != getClass()) {
             return false;
         }
-
-        AbstractMainTabEvent rhs = (AbstractMainTabEvent) obj;
+        MenuImpl rhs = (MenuImpl) obj;
         return new EqualsBuilder()
                 .append(this.id, rhs.id)
                 .isEquals();
@@ -66,10 +100,13 @@ public class AbstractWidgetEvent {
                 .toHashCode();
     }
 
+
     @Override
     public String toString() {
-        return new ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE)
+        return new ToStringBuilder(this)
                 .append("id", id)
+                .append("title", title)
+                .append("sortOrder", sortOrder)
                 .toString();
     }
 }

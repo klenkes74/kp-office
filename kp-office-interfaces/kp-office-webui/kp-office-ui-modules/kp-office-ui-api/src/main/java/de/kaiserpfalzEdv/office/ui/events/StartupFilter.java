@@ -14,11 +14,8 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzEdv.office.ui.web.mainScreen;
+package de.kaiserpfalzEdv.office.ui.events;
 
-import de.kaiserpfalzEdv.office.ui.web.Action;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.vaadin.spring.events.EventBusListenerMethodFilter;
 
 /**
@@ -27,9 +24,6 @@ import org.vaadin.spring.events.EventBusListenerMethodFilter;
  * @since 0.1.0
  */
 public class StartupFilter implements EventBusListenerMethodFilter {
-    private static final Logger LOG = LoggerFactory.getLogger(StartupFilter.class);
-    
-    
     @Override
     public boolean filter(Object payload) {
         boolean result = false;

@@ -14,17 +14,22 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzEdv.office.ui.web.widgets.menu;
+package de.kaiserpfalzEdv.office.ui.content;
 
+import com.vaadin.ui.Component;
+
+import java.io.Serializable;
 import java.util.UUID;
 
 /**
  * @author klenkes
  * @version 2015Q1
- * @since 18.02.15 07:08
+ * @since 19.02.15 14:27
  */
-public class RemoveMenuEvent extends AbstractMenuEvent {
-    public RemoveMenuEvent(final UUID id) {
-        super(id);
-    }
+public interface ContentTab extends Serializable {
+    UUID getId();
+
+    String getTitle();
+
+    Component getComponent();
 }

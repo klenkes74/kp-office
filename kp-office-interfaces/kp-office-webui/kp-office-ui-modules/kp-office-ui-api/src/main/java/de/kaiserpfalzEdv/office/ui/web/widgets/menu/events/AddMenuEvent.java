@@ -14,9 +14,11 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzEdv.office.ui.web.widgets.content;
+package de.kaiserpfalzEdv.office.ui.web.widgets.menu.events;
 
 import com.vaadin.ui.Component;
+import de.kaiserpfalzEdv.office.ui.menu.Menu;
+import de.kaiserpfalzEdv.office.ui.menu.MenuBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.util.UUID;
@@ -24,35 +26,39 @@ import java.util.UUID;
 /**
  * @author klenkes
  * @version 2015Q1
- * @since 18.02.15 07:08
+ * @since 18.02.15 09:30
  */
-public class AddMainTabEvent extends AbstractMainTabEvent {
-    private String title;
-    private Component component;
+public class AddMenuEvent extends AbstractMenuEvent {
+    private Menu menu;
 
-    
-    public AddMainTabEvent(final UUID id, final String title, final Component component) {
-        super(UUID.randomUUID(), id);
-        this.title = title;
-        this.component = component;
+
+    @Deprecated
+    public AddMenuEvent(final UUID menuId, final String title, final Component menu) {
+        super(menuId);
+
+        this.menu = new MenuBuilder().withId(menuId).withTitle(title).withComponent(menu).build();
     }
 
-
-    public String getTitle() {
-        return title;
+    public AddMenuEvent(final Menu menu) {
+        super(menu.getId());
+        
+        this.menu = menu;
     }
 
-    public Component getComponent() {
-        return component;
+    public Menu getMenu() {
+        return menu;
+
     }
 
+    public UUID getMenuId() {
+        return menu.getId();
+    }
 
     @Override
     public String toString() {
         return new ToStringBuilder(this)
                 .appendSuper(super.toString())
-                .append("title", title)
-                .append("component", component.getId())
+                .append(menu)
                 .toString();
     }
 }

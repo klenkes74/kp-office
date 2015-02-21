@@ -14,14 +14,15 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzEdv.office.ui.web;
+package de.kaiserpfalzEdv.office.ui;
+
+import de.kaiserpfalzEdv.commons.service.Service;
 
 /**
- * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;
- * @version 0.1.0
- * @since 0.1.0
+ * @author klenkes
+ * @version 2015Q1
+ * @since 19.02.15 17:33
  */
-public enum Action {
-    START,
-    GET_DATA
+public interface OfficeModule extends Service {
+    void startModule();
 }

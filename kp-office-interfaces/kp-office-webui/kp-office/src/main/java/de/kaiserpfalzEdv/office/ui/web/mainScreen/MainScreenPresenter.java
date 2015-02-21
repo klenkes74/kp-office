@@ -16,7 +16,8 @@
 
 package de.kaiserpfalzEdv.office.ui.web.mainScreen;
 
-import de.kaiserpfalzEdv.office.ui.web.Action;
+import de.kaiserpfalzEdv.office.ui.events.Action;
+import de.kaiserpfalzEdv.office.ui.events.StartupFilter;
 import de.kaiserpfalzEdv.office.ui.web.widgets.content.ContentPresenter;
 import de.kaiserpfalzEdv.office.ui.web.widgets.menu.NavigationPresenter;
 import org.slf4j.Logger;

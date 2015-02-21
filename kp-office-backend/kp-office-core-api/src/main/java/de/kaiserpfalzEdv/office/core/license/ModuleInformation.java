@@ -38,7 +38,7 @@ import java.lang.annotation.Target;
 @Inherited
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.TYPE, ElementType.METHOD})
-public @interface OfficeModule {
+public @interface ModuleInformation {
     /**
      * @return The ID of the license needed.
      */

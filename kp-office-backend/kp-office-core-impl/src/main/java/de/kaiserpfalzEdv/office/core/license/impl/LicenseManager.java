@@ -18,8 +18,8 @@ package de.kaiserpfalzEdv.office.core.license.impl;
 
 import de.kaiserpfalzEdv.office.core.license.FeatureNotLicensedException;
 import de.kaiserpfalzEdv.office.core.license.LicenseService;
+import de.kaiserpfalzEdv.office.core.license.ModuleInformation;
 import de.kaiserpfalzEdv.office.core.license.OfficeLicense;
-import de.kaiserpfalzEdv.office.core.license.OfficeModule;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
@@ -34,13 +34,13 @@ import javax.annotation.PreDestroy;
 import javax.inject.Inject;
 
 /**
- * <p>Aspect to check the license of {@link de.kaiserpfalzEdv.office.core.license.OfficeModule} annotated classes or
+ * <p>Aspect to check the license of {@link de.kaiserpfalzEdv.office.core.license.ModuleInformation} annotated classes or
  * methods.</p>
  * * 
  * <p>The licensing interceptor intercepts calls to</p>
  * <ol>
- *     <li>classes annotated with {@link de.kaiserpfalzEdv.office.core.license.OfficeModule}.</li>    
- *     <li>methods annotated with {@link de.kaiserpfalzEdv.office.core.license.OfficeModule}.</li> 
+ *     <li>classes annotated with {@link de.kaiserpfalzEdv.office.core.license.ModuleInformation}.</li>
+ *     <li>methods annotated with {@link de.kaiserpfalzEdv.office.core.license.ModuleInformation}.</li>
  * </ol>
  * 
  * <p>as long as they are in or on classes with their name ending on <code>...ModuleImpl</code>. That restriction is
@@ -84,12 +84,12 @@ public class LicenseManager {
     public void close() {
         LOG.trace("Destroyed: {}", this);
     }
-    
-    
-    @Pointcut("@within(de.kaiserpfalzEdv.office.core.license.OfficeModule)")
+
+
+    @Pointcut("@within(de.kaiserpfalzEdv.office.core.license.ModuleInformation)")
     public void classAnnotatedWithOfficeModule() {}
-    
-    @Pointcut("@annotation(de.kaiserpfalzEdv.office.core.license.OfficeModule)")
+
+    @Pointcut("@annotation(de.kaiserpfalzEdv.office.core.license.ModuleInformation)")
     public void methodAnnotatedWithOfficeModule() {}
     
     @Pointcut("execution(* de.kaiserpfalzEdv.office..*(..))")
@@ -100,12 +100,12 @@ public class LicenseManager {
     public void checkLicenseOfClass(final JoinPoint invocation) throws FeatureNotLicensedException {
         LOG.trace("Checking licensing for {} ...", invocation.getTarget().getClass().getName());
 
-        OfficeModule module = getOfficeModuleAnnotationFromClass(invocation);
+        ModuleInformation module = getOfficeModuleAnnotationFromClass(invocation);
         checkLicenseOfModule(module);
     }
 
-    private OfficeModule getOfficeModuleAnnotationFromClass(final JoinPoint invocation) {
-        return invocation.getTarget().getClass().getAnnotation(OfficeModule.class);
+    private ModuleInformation getOfficeModuleAnnotationFromClass(final JoinPoint invocation) {
+        return invocation.getTarget().getClass().getAnnotation(ModuleInformation.class);
     }
 
 
@@ -113,13 +113,13 @@ public class LicenseManager {
     public void checkLicenseOfMethod(final JoinPoint invocation) throws FeatureNotLicensedException {
         LOG.trace("Checking licensing for {} ...", invocation.getSignature().getName());
 
-        OfficeModule module = getOfficeModuleFromMethodAnnotation(invocation);
+        ModuleInformation module = getOfficeModuleFromMethodAnnotation(invocation);
         checkLicenseOfModule(module);
     }
 
-    private OfficeModule getOfficeModuleFromMethodAnnotation(final JoinPoint invocation) {
+    private ModuleInformation getOfficeModuleFromMethodAnnotation(final JoinPoint invocation) {
         MethodSignature signature = (MethodSignature) invocation.getSignature();
-        return signature.getMethod().getAnnotation(OfficeModule.class);
+        return signature.getMethod().getAnnotation(ModuleInformation.class);
     }
 
 
@@ -130,7 +130,7 @@ public class LicenseManager {
      * @param module The OfficeModule annoatation to check the data for. 
      * @throws FeatureNotLicensedException If there is a problem with the licensing of the module.
      */
-    private void checkLicenseOfModule(final OfficeModule module) throws FeatureNotLicensedException {
+    private void checkLicenseOfModule(final ModuleInformation module) throws FeatureNotLicensedException {
         if (module.needsLicence()) {
             OfficeLicense license = licenseService.getLicense();
             
