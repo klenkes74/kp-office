@@ -29,7 +29,7 @@
 
 
     <artifactId>kp-office-backend-utils</artifactId>
-    <name>KP Office - Backend - Backend Utilities</name>
+    <name>KP Office - Core - Backend Utilities</name>
 
 
     <dependencyManagement>

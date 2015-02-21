@@ -17,6 +17,7 @@
 package de.kaiserpfalzEdv.office.core.impl;
 
 import de.kaiserpfalzEdv.office.commons.TenantHoldingEntity;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
@@ -29,7 +30,7 @@ import java.util.UUID;
  */
 @MappedSuperclass
 public class KPOTenantHoldingEntity extends KPOEntity implements TenantHoldingEntity {
-    private static final long serialVersionUID = 4102545731581586298L;
+    private static final long serialVersionUID = 3706937080258806740L;
 
     @Column(name = "TENANT_", unique = false)
     private UUID tenantId;
@@ -58,5 +59,14 @@ public class KPOTenantHoldingEntity extends KPOEntity implements TenantHoldingEn
 
     protected void setTenantId(@NotNull final UUID tenantId) {
         this.tenantId = tenantId;
+    }
+
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this)
+                .appendSuper(super.toString())
+                .append("tenantId", tenantId)
+                .toString();
     }
 }

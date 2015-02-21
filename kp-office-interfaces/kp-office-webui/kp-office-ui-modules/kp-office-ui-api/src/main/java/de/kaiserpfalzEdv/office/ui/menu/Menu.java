@@ -14,38 +14,23 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzEdv.office.ui.web.widgets.content;
+package de.kaiserpfalzEdv.office.ui.menu;
 
 import com.vaadin.ui.Component;
-import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.util.UUID;
 
 /**
  * @author klenkes
  * @version 2015Q1
- * @since 18.02.15 07:08
+ * @since 19.02.15 13:08
  */
-public class ReplaceMainTabEvent extends AbstractMainTabEvent {
-    private Component component;
+public interface Menu extends Comparable<MenuImpl> {
+    UUID getId();
 
+    String getTitle();
 
-    public ReplaceMainTabEvent(final UUID id, final Component component) {
-        super(UUID.randomUUID(), id);
-        this.component = component;
-    }
+    int getSortOrder();
 
-
-    public Component getComponent() {
-        return component;
-    }
-
-
-    @Override
-    public String toString() {
-        return new ToStringBuilder(this)
-                .appendSuper(super.toString())
-                .append("component", component.getId())
-                .toString();
-    }
+    Component getComponent();
 }

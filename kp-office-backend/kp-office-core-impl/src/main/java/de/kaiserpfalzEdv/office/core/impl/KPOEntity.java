@@ -37,7 +37,7 @@ import java.util.UUID;
  */
 @MappedSuperclass
 public abstract class KPOEntity implements Entity {
-    private static final long serialVersionUID = -7483140057836177386L;
+    private static final long serialVersionUID = -6143928839834376900L;
 
     @Id @NotNull
     @Column(name = "ID_", length=50, unique = true, updatable = false)
@@ -84,13 +84,13 @@ public abstract class KPOEntity implements Entity {
     }
 
     @Deprecated // Only for Jackson, JAX-B and JPA!
-    public void setDisplayName(@NotNull DisplayNameHolder nameHolder) {
-        this.displayName = nameHolder.getDisplayName();
+    public void setDisplayName(@NotNull String displayName) {
+        this.displayName = displayName;
     }
 
     @Deprecated // Only for Jackson, JAX-B and JPA!
-    public void setDisplayName(@NotNull String displayName) {
-        this.displayName = displayName;
+    public void setDisplayName(@NotNull DisplayNameHolder nameHolder) {
+        this.displayName = nameHolder.getDisplayName();
     }
 
     public String getDisplayNumber() {
@@ -126,25 +126,25 @@ public abstract class KPOEntity implements Entity {
 
         KPOEntity rhs = (KPOEntity) obj;
         return new EqualsBuilder()
-                .append(this.getId(), rhs.getId())
+                .append(this.id, rhs.id)
                 .isEquals();
     }
 
     @Override
     public int hashCode() {
         return new HashCodeBuilder()
-                .append(getId())
+                .append(id)
                 .toHashCode();
     }
 
     @Override
     public String toString() {
         ToStringBuilder result = new ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE)
-                .append("id", getId());
+                .append("id", id);
 
         if (hidden != null && !hidden) {
-            result.append("displayName", getDisplayName())
-                    .append("displayNumber", getDisplayNumber());
+            result.append("displayName", displayName)
+                  .append("displayNumber", displayNumber);
         } else {
             result.append("hidden", true);
         }

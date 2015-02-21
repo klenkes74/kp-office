@@ -14,11 +14,14 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzEdv.office.ui.web.widgets.menu;
+package de.kaiserpfalzEdv.office.ui.web.widgets.content.events;
 
 import com.vaadin.ui.Component;
+import de.kaiserpfalzEdv.office.ui.content.ContentTab;
+import de.kaiserpfalzEdv.office.ui.content.ContentTabBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
+import javax.validation.constraints.NotNull;
 import java.util.UUID;
 
 /**
@@ -26,18 +29,39 @@ import java.util.UUID;
  * @version 2015Q1
  * @since 18.02.15 07:08
  */
-public class ReplaceMenuEvent extends AbstractMenuEvent {
-    private Component component;
+public class AddMainTabEvent extends AbstractMainTabEvent {
+    private ContentTab tab;
 
 
-    public ReplaceMenuEvent(final UUID id, final Component component) {
-        super(id);
-        this.component = component;
+    @Deprecated
+    public AddMainTabEvent(final UUID id, final String title, final Component component) {
+        super(UUID.randomUUID());
+
+        tab = new ContentTabBuilder()
+                .withId(id)
+                .withTitle(title)
+                .withComponent(component)
+                .build();
+    }
+
+    public AddMainTabEvent(@NotNull final ContentTab tab) {
+        super(UUID.randomUUID());
+
+        this.tab = tab;
     }
 
 
-    public Component getMenu() {
-        return component;
+    public ContentTab getTab() {
+        return tab;
+    }
+
+
+    public String getTitle() {
+        return tab.getTitle();
+    }
+
+    public Component getComponent() {
+        return tab.getComponent();
     }
 
 
@@ -45,7 +69,7 @@ public class ReplaceMenuEvent extends AbstractMenuEvent {
     public String toString() {
         return new ToStringBuilder(this)
                 .appendSuper(super.toString())
-                .append("component", component.getId())
+                .append(tab)
                 .toString();
     }
 }

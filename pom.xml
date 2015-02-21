@@ -40,9 +40,7 @@
         <module>kp-office-commons</module>
         <module>kp-office-backend</module>
         <module>kp-office-interfaces</module>
-        <!--
         <module>kp-office-modules</module>
-        -->
     </modules>
 
 
@@ -264,18 +262,6 @@
 
             <dependency>
                 <groupId>de.kaiserpfalz-edv.office</groupId>
-                <artifactId>kp-office-core-server</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>de.kaiserpfalz-edv.office</groupId>
-                <artifactId>kp-office-core-client</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>de.kaiserpfalz-edv.office</groupId>
                 <artifactId>kp-office-contacts-api</artifactId>
                 <version>${project.version}</version>
             </dependency>
@@ -298,7 +284,38 @@
 
             <dependency>
                 <groupId>de.kaiserpfalz-edv.office</groupId>
-                <artifactId>kp-office</artifactId>
+                <artifactId>kp-office-accounting-api</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>de.kaiserpfalz-edv.office</groupId>
+                <artifactId>kp-office-accounting-impl</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>de.kaiserpfalz-edv.office</groupId>
+                <artifactId>kp-office-accounting-gdpdu</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>de.kaiserpfalz-edv.office</groupId>
+                <artifactId>kp-office-finance-api</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>de.kaiserpfalz-edv.office</groupId>
+                <artifactId>kp-office-finance-impl</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>de.kaiserpfalz-edv.office</groupId>
+                <artifactId>kp-office-finance-money-online</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>de.kaiserpfalz-edv.office</groupId>
+                <artifactId>kp-office-finance-money-offline</artifactId>
                 <version>${project.version}</version>
             </dependency>
 
@@ -311,33 +328,6 @@
             <dependency>
                 <groupId>de.kaiserpfalz-edv.office</groupId>
                 <artifactId>kp-office-cli-kppasswd</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-
-
-            <dependency>
-                <groupId>de.kaiserpfalz-edv.office</groupId>
-                <artifactId>kp-office-http</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>de.kaiserpfalz-edv.office</groupId>
-                <artifactId>kp-office-webservice</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>de.kaiserpfalz-edv.office</groupId>
-                <artifactId>kp-office-webgui</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>de.kaiserpfalz-edv.office</groupId>
-                <artifactId>kp-office-ui-widgetset</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>de.kaiserpfalz-edv.office</groupId>
-                <artifactId>kp-office-ui</artifactId>
                 <version>${project.version}</version>
             </dependency>
         </dependencies>

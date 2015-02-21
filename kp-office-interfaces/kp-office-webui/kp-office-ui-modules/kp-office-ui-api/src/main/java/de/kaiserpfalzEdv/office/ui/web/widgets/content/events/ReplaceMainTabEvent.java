@@ -14,36 +14,50 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzEdv.office.ui.web.widgets.menu;
+package de.kaiserpfalzEdv.office.ui.web.widgets.content.events;
 
 import com.vaadin.ui.Component;
+import de.kaiserpfalzEdv.office.ui.content.ContentTab;
+import de.kaiserpfalzEdv.office.ui.content.ContentTabBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
+import javax.validation.constraints.NotNull;
 import java.util.UUID;
 
 /**
  * @author klenkes
  * @version 2015Q1
- * @since 18.02.15 09:30
+ * @since 18.02.15 07:08
  */
-public class AddMenuEvent extends AbstractMenuEvent {
-    private String    title;
-    private Component menu;
+public class ReplaceMainTabEvent extends AbstractMainTabEvent {
+    private ContentTab tab;
 
 
-    public AddMenuEvent(final UUID menuId, final String title, final Component menu) {
-        super(menuId);
+    @Deprecated
+    public ReplaceMainTabEvent(final UUID id, final Component component) {
+        super(id);
 
-        this.title = title;
-        this.menu = menu;
+        tab = new ContentTabBuilder()
+                .withId(id)
+                .withComponent(component)
+                .withTitle("old title")
+                .build();
     }
 
-    public String getTitle() {
-        return title;
+    public ReplaceMainTabEvent(@NotNull final ContentTab tab) {
+        super(tab.getId());
+
+        this.tab = tab;
     }
 
-    public Component getMenu() {
-        return menu;
+
+    public ContentTab getTab() {
+        return tab;
+    }
+
+
+    public Component getComponent() {
+        return tab.getComponent();
     }
 
 
@@ -51,8 +65,7 @@ public class AddMenuEvent extends AbstractMenuEvent {
     public String toString() {
         return new ToStringBuilder(this)
                 .appendSuper(super.toString())
-                .append("title", title)
-                .append("menu", menu)
+                .append(tab)
                 .toString();
     }
 }

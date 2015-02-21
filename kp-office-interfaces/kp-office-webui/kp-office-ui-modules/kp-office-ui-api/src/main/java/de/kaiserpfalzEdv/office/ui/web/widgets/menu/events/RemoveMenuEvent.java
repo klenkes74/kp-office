@@ -14,37 +14,17 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzEdv.office.ui.web.widgets.menu;
-
-import de.kaiserpfalzEdv.office.ui.web.widgets.AbstractWidgetEvent;
-import org.apache.commons.lang3.builder.ToStringBuilder;
+package de.kaiserpfalzEdv.office.ui.web.widgets.menu.events;
 
 import java.util.UUID;
 
 /**
  * @author klenkes
  * @version 2015Q1
- * @since 18.02.15 09:29
+ * @since 18.02.15 07:08
  */
-public class AbstractMenuEvent extends AbstractWidgetEvent {
-    private UUID menuId;
-
-
-    public AbstractMenuEvent(final UUID id) {
-        super(UUID.randomUUID());
-    }
-
-
-    public UUID getMenuId() {
-        return menuId;
-    }
-
-
-    @Override
-    public String toString() {
-        return new ToStringBuilder(this)
-                .appendSuper(super.toString())
-                .append("menuId", menuId)
-                .toString();
+public class RemoveMenuEvent extends AbstractMenuEvent {
+    public RemoveMenuEvent(final UUID id) {
+        super(id);
     }
 }

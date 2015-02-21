@@ -21,8 +21,8 @@
 
     <parent>
         <artifactId>kp-office-webui</artifactId>
-        <groupId>de.kaiserpfalz-edv.office</groupId>
-        <version>0.1.0</version>
+        <groupId>de.kaiserpfalz-edv.office.webui</groupId>
+        <version>0.2.0-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 

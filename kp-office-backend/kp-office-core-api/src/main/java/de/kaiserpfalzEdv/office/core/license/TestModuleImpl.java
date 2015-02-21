@@ -24,7 +24,7 @@ import org.slf4j.LoggerFactory;
  * @version 2015Q1
  * @since 15.02.15 13:53
  */
-@OfficeModule(needsLicence = true)
+@ModuleInformation(needsLicence = true)
 public class TestModuleImpl {
     private static final Logger LOG = LoggerFactory.getLogger(TestModuleImpl.class);
 

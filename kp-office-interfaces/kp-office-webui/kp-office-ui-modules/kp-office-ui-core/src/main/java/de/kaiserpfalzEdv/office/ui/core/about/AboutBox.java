@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzEdv.office.ui.web.widgets.about;
+package de.kaiserpfalzEdv.office.ui.core.about;
 
 import com.vaadin.ui.Button;
 import com.vaadin.ui.VerticalLayout;

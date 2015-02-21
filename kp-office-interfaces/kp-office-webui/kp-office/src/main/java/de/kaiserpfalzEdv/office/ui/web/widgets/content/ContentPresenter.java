@@ -16,10 +16,13 @@
 
 package de.kaiserpfalzEdv.office.ui.web.widgets.content;
 
-import de.kaiserpfalzEdv.office.ui.web.Action;
-import de.kaiserpfalzEdv.office.ui.web.mainScreen.StartupFilter;
-import de.kaiserpfalzEdv.office.ui.web.widgets.about.AboutContent;
+import de.kaiserpfalzEdv.office.ui.content.ContentTab;
+import de.kaiserpfalzEdv.office.ui.core.about.AboutContent;
+import de.kaiserpfalzEdv.office.ui.events.Action;
+import de.kaiserpfalzEdv.office.ui.events.StartupFilter;
 import de.kaiserpfalzEdv.office.ui.web.widgets.admin.EventLoggingPresenter;
+import de.kaiserpfalzEdv.office.ui.web.widgets.content.events.AddMainTabEvent;
+import de.kaiserpfalzEdv.office.ui.web.widgets.content.events.RemoveMainTabEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.vaadin.spring.annotation.VaadinSessionScope;
@@ -85,9 +88,6 @@ public class ContentPresenter extends Presenter<ContentView> {
     @EventBusListenerMethod(scope= EventScope.SESSION, filter=StartupFilter.class)
     public void onStartup(org.vaadin.spring.events.Event<Action> event) {
         LOG.debug("{} received: {}", this, event);
-
-        getView().addTab(splashScreenTabId, "Info", about);
-        getView().addTab(loggingTabId, "Events", eventLogger.getView());
     }
 
 
@@ -96,9 +96,9 @@ public class ContentPresenter extends Presenter<ContentView> {
     public void addTab(Event<AddMainTabEvent> event) {
         LOG.debug("{} received: {}", this, event);
 
-        AddMainTabEvent tab = event.getPayload();
+        ContentTab tab = event.getPayload().getTab();
 
-        getView().addTab(tab.getTabId(), tab.getTitle(), tab.getComponent());
+        getView().addTab(tab);
     }
 
     @SuppressWarnings("UnusedDeclaration") // called via BUS
