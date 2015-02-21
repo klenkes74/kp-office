@@ -20,17 +20,17 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>de.kaiserpfalz-edv.office</groupId>
+        <groupId>de.kaiserpfalz-edv.office.ui</groupId>
         <artifactId>kp-office-interfaces</artifactId>
         <version>0.2.0-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
 
-    <groupId>de.kaiserpfalz-edv.office.webui</groupId>
+    <groupId>de.kaiserpfalz-edv.office.ui.web</groupId>
     <artifactId>kp-office-webui</artifactId>
     <packaging>pom</packaging>
-    <name>KP Office - Interfaces - Web UI</name>
+    <name>KP Office - UI - Web</name>
 
     
     <modules>

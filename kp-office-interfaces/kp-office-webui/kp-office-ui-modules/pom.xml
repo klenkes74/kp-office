@@ -20,7 +20,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>de.kaiserpfalz-edv.office.webui</groupId>
+        <groupId>de.kaiserpfalz-edv.office.ui.web</groupId>
         <artifactId>kp-office-webui</artifactId>
         <version>0.2.0-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
@@ -28,7 +28,7 @@
 
     <artifactId>kp-office-ui-modules</artifactId>
     <packaging>pom</packaging>
-    <name>KP Office - Web UI - Modules</name>
+    <name>KP Office - UI - Web - Modules</name>
 
     <modules>
         <module>kp-office-ui-core</module>
@@ -86,7 +86,7 @@
             <artifactId>kp-office-ui-widgetset</artifactId>
         </dependency>
         <dependency>
-            <groupId>de.kaiserpfalz-edv.office</groupId>
+            <groupId>de.kaiserpfalz-edv.office.core</groupId>
             <artifactId>kp-office-core-api</artifactId>
         </dependency>
 

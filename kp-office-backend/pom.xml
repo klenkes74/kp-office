@@ -27,16 +27,16 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>kp-office-backend</artifactId>
+    <groupId>de.kaiserpfalz-edv.office.core</groupId>
+    <artifactId>kp-office-core</artifactId>
     <packaging>pom</packaging>
-    <name>KP Office - Backend</name>
+    <name>KP Office - Core</name>
     <description>
         The core components of the system. The smallest sample of modules providing infrastructure needed for the
         office system to function.
     </description>
 
     <modules>
-        <module>kp-office-backend-utils</module>
         <module>kp-office-core-api</module>
         <module>kp-office-core-impl</module>
     </modules>

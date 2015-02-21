@@ -21,22 +21,27 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>de.kaiserpfalz-edv.office</groupId>
-        <artifactId>kp-office-backend</artifactId>
+        <groupId>de.kaiserpfalz-edv.office.modules.files</groupId>
+        <artifactId>kp-office-projects</artifactId>
         <version>0.2.0-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
+    <artifactId>kp-office-files-impl</artifactId>
+    <name>KP Office - Modules - Files - Implementation</name>
 
-    <artifactId>kp-office-backend-utils</artifactId>
-    <name>KP Office - Core - Backend Utilities</name>
+    <properties>
+        <project.root>../../..</project.root>
+
+        <database.changelog>${project.basedir}/target/classes/ddl/db-changelog.xml</database.changelog>
+    </properties>
 
 
     <dependencyManagement>
         <dependencies>
             <dependency>
                 <groupId>de.kaiserpfalz-edv.base</groupId>
-                <artifactId>kp-database-bom</artifactId>
+                <artifactId>kp-spring-data-bom</artifactId>
                 <version>${kp-commons.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
@@ -52,14 +57,23 @@
 
             <dependency>
                 <groupId>de.kaiserpfalz-edv.base</groupId>
+                <artifactId>kp-database-bom</artifactId>
+                <version>${kp-commons.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>de.kaiserpfalz-edv.base</groupId>
                 <artifactId>kp-spring-bom</artifactId>
                 <version>${kp-commons.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+
             <dependency>
                 <groupId>de.kaiserpfalz-edv.base</groupId>
-                <artifactId>kp-spring-data-bom</artifactId>
+                <artifactId>kp-shiro-bom</artifactId>
                 <version>${kp-commons.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
@@ -69,62 +83,71 @@
 
     <dependencies>
         <dependency>
-            <groupId>de.kaiserpfalz-edv.office</groupId>
-            <artifactId>kp-office-core-api</artifactId>
+            <groupId>de.kaiserpfalz-edv.office.modules.contacts</groupId>
+            <artifactId>kp-office-contacts-api</artifactId>
         </dependency>
 
+
         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context-support</artifactId>
+            <groupId>org.springframework.amqp</groupId>
+            <artifactId>spring-rabbit</artifactId>
         </dependency>
+
+
         <dependency>
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-jpa</artifactId>
         </dependency>
-
-
-        <!-- Hibernate -->
+        <dependency>
+            <groupId>commons-dbcp</groupId>
+            <artifactId>commons-dbcp</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-entitymanager</artifactId>
-            <optional>true</optional>
         </dependency>
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-ehcache</artifactId>
-            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.liquibase</groupId>
+            <artifactId>liquibase-core</artifactId>
         </dependency>
         <dependency>
             <groupId>net.sf.ehcache</groupId>
             <artifactId>ehcache-core</artifactId>
-            <optional>true</optional>
         </dependency>
         <dependency>
             <groupId>com.googlecode.ehcache-spring-annotations</groupId>
             <artifactId>ehcache-spring-annotations</artifactId>
-            <optional>true</optional>
         </dependency>
 
 
-        <!-- Liquibase -->
         <dependency>
-            <groupId>org.liquibase</groupId>
-            <artifactId>liquibase-core</artifactId>
-            <optional>true</optional>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-instrument</artifactId>
+            <version>4.0.6.RELEASE</version>
         </dependency>
         <dependency>
-            <groupId>com.mattbertolini</groupId>
-            <artifactId>liquibase-slf4j</artifactId>
-            <optional>true</optional>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjrt</artifactId>
+            <version>1.6.12</version>
         </dependency>
 
 
-
-        <!-- Test -->
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
-            <scope>test</scope>
         </dependency>
     </dependencies>
 </project>

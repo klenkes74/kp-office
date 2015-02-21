@@ -64,7 +64,6 @@
     <orderEntry type="library" name="Maven: org.apache.commons:commons-lang3:3.1" level="project" />
     <orderEntry type="library" name="Maven: com.google.guava:guava:18.0" level="project" />
     <orderEntry type="library" name="Maven: org.hibernate.common:hibernate-commons-annotations:4.0.5.Final" level="project" />
-    <orderEntry type="module" module-name="kp-office-backend-utils" />
     <orderEntry type="library" name="Maven: de.kaiserpfalz-edv.commons:kp-commons-jee:2015Q1" level="project" />
     <orderEntry type="library" name="Maven: de.kaiserpfalz-edv.commons:kp-commons-core:2015Q1" level="project" />
     <orderEntry type="library" name="Maven: com.verhas:license3j:1.0.4" level="project" />

@@ -27,7 +27,7 @@
     </parent>
 
     <artifactId>kp-office</artifactId>
-    <name>KP Office - Web UI - Application</name>
+    <name>KP Office - UI - Web - Application</name>
 
 
     <properties>

@@ -21,13 +21,13 @@
 
     <parent>
         <artifactId>kp-office-webui</artifactId>
-        <groupId>de.kaiserpfalz-edv.office.webui</groupId>
+        <groupId>de.kaiserpfalz-edv.office.ui.web</groupId>
         <version>0.2.0-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
     <artifactId>kp-office-ui-widgetset</artifactId>
-    <name>KP Office - Web UI - Vaadin Widgetset</name>
+    <name>KP Office - UI - Web - Vaadin Widgetset</name>
 
     <dependencies>
         <dependency>

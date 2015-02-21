@@ -21,14 +21,14 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>de.kaiserpfalz-edv.office</groupId>
+        <groupId>de.kaiserpfalz-edv.office.modules.finance</groupId>
         <artifactId>kp-office-finance</artifactId>
         <version>0.2.0-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>kp-office-finance-money-external</artifactId>
-    <name>KP Office - Modules - Finance - Currency Services (External)</name>
+    <artifactId>kp-office-finance-money-online</artifactId>
+    <name>KP Office - Modules - Finance - Currency Services (Online)</name>
 
     <properties>
         <project.root>../../..</project.root>
@@ -36,21 +36,6 @@
         <database.changelog>${project.basedir}/target/classes/ddl/db-changelog.xml</database.changelog>
     </properties>
 
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>com.edugility</groupId>
-                <artifactId>h2-maven-plugin</artifactId>
-                <configuration>
-                    <allowOthers>true</allowOthers>
-                    <baseDirectory>${project.basedir}/target/data</baseDirectory>
-                    <shutdownAllServers>true</shutdownAllServers>
-                    <trace>true</trace>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
 
     <dependencyManagement>
         <dependencies>
@@ -98,17 +83,12 @@
 
     <dependencies>
         <dependency>
-            <groupId>de.kaiserpfalz-edv.office</groupId>
+            <groupId>de.kaiserpfalz-edv.office.modules.finance</groupId>
             <artifactId>kp-office-finance-api</artifactId>
         </dependency>
 
         <dependency>
-            <groupId>de.kaiserpfalz-edv.office</groupId>
-            <artifactId>kp-office-backend-utils</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>de.kaiserpfalz-edv.office</groupId>
+            <groupId>de.kaiserpfalz-edv.office.core</groupId>
             <artifactId>kp-office-core-impl</artifactId>
         </dependency>
 

@@ -26,9 +26,10 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
+    <groupId>de.kaiserpfalz-edv.office.ui</groupId>
     <artifactId>kp-office-interfaces</artifactId>
     <packaging>pom</packaging>
-    <name>KP Office - Interfaces</name>
+    <name>KP Office - UI</name>
 
 
     <modules>
@@ -38,4 +39,5 @@
         <module>kp-office-webservices</module>
 -->
     </modules>
+
 </project>

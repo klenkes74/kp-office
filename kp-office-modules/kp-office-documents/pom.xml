@@ -21,21 +21,20 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>de.kaiserpfalz-edv.office</groupId>
+        <groupId>de.kaiserpfalz-edv.office.modules</groupId>
         <artifactId>kp-office-modules</artifactId>
         <version>0.2.0-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>kp-office-projects</artifactId>
-    <name>KP Office - Modules - Projects</name>
+    <groupId>de.kaiserpfalz-edv.office.modules.documents</groupId>
+    <artifactId>kp-office-documents</artifactId>
+    <name>KP Office - Modules - Documents</name>
     <packaging>pom</packaging>
 
     <modules>
-        <module>kp-office-projects-api</module>
-        <!--
-                <module>kp-office-projects-impl</module>
-        -->
+        <module>kp-office-documents-api</module>
+        <module>kp-office-documents-impl</module>
     </modules>
 
     <properties>
