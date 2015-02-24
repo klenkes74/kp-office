@@ -38,9 +38,9 @@
 
     <modules>
         <module>kp-office-commons</module>
-        <module>kp-office-backend</module>
-        <module>kp-office-interfaces</module>
+        <module>kp-office-core</module>
         <module>kp-office-modules</module>
+        <module>kp-office-interfaces</module>
     </modules>
 
 

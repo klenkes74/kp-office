@@ -22,7 +22,7 @@
 
     <parent>
         <groupId>de.kaiserpfalz-edv.office.modules.files</groupId>
-        <artifactId>kp-office-projects</artifactId>
+        <artifactId>kp-office-files</artifactId>
         <version>0.2.0-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>

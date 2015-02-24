@@ -32,6 +32,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.stereotype.Repository;
 import org.vaadin.spring.annotation.EnableVaadin;
+import org.vaadin.spring.i18n.annotation.EnableVaadinI18N;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
@@ -45,6 +46,7 @@ import java.util.logging.Level;
  */
 @Named
 @EnableVaadin
+@EnableVaadinI18N
 @EnableAutoConfiguration
 @ComponentScan(
         value = {"de.kaiserpfalzEdv.office"},

@@ -21,7 +21,7 @@
 
     <parent>
         <artifactId>kp-office-webui</artifactId>
-        <groupId>de.kaiserpfalz-edv.office.webui</groupId>
+        <groupId>de.kaiserpfalz-edv.office.ui.web</groupId>
         <version>0.2.0-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
@@ -57,7 +57,7 @@
         <!--
                 <dependency>
                     <groupId>${project.groupId}</groupId>
-                    <artifactId>kp-office-ui-projects</artifactId>
+                    <artifactId>kp-office-ui-files</artifactId>
                 </dependency>
         -->
         <dependency>

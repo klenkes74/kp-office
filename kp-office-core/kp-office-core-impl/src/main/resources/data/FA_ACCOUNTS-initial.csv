@@ -1,0 +1,120 @@
+ID_,TENANT_,DISPLAY_NUMBER_,DISPLAY_NAME_
+00f20060-ba6b-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0050,Ausstehende Einlagen auf das Komplementär-Kapital\, nicht eingefordert
+00f2043e-ba6b-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0060,Ausstehende Einlagen auf das Komplementär-Kapital\, eingefordert
+00f205ce-ba6b-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0070,Ausstehende Einlagen auf das Kommandit-Kapital\, nicht eingefordert
+00f2070e-ba6b-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0080,Ausstehende Einlagen auf das Kommandit-Kapital\, eingefordert
+00f20af6-ba6b-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0090,Rückständige fällige Einzahlungen auf Geschäftsanteile
+00f20c4a-ba6b-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0095,Aufwendungen für die Ingangsetzung und Erweiterung des Geschäftsbetriebs
+00f20d76-ba6b-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0100,Entgeltlich erworbene Konzessionen\, gewerbliche Schutzrechte und ähnliche Rechte und Werte sowie Lizenzen an solchen Rechten und Werten
+00f20e98-ba6b-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0110,Konzessionen
+00f20fc4-ba6b-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0120,Gewerbliche Schutzrechte
+00f210e6-ba6b-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0130,Ähnliche Rechte und Werte
+a229f58c-ba6b-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0135,EDV-Software
+a229f906-ba6b-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0140,Lizenzen an gewerblichen Schutzrechten und ähnlichen Rechten und Werten
+a229fb90-ba6b-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0143,Selbst geschaffene immaterielle Vermögensgegenstände
+a229fdfc-ba6b-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0144,EDV-Software
+a22a005e-ba6b-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0145,Lizenzen und Franchiseverträge
+a22a02ac-ba6b-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0146,Konzessionen und gewerbliche Schutzrechte
+a22a07b6-ba6b-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0147,Rezepte, Verfahren, Prototypen
+a22a0a18-ba6b-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0148,Immaterielle Vermögensgegenstände in Entwicklung
+a22a0c84-ba6b-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0150,Geschäfts- oder Firmenwert
+a22a0ee6-ba6b-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0160,Verschmelzungsmehrwert
+e562b906-ba6b-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0170,Geleistete Anzahlungen auf immaterielle Vermögensgegenstände
+e562c07c-ba6b-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0179,Anzahlungen auf Geschäfts- oder Firmenwert
+e562c306-ba6b-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0200,Grundstücke\, grundstücksgleiche Rechte und Bauten einschließlich der Bauten auf fremden Grundstücken
+e562c5ae-ba6b-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0210,Grundstücksgleiche Rechte ohne Bauten
+e562c810-ba6b-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0215,Unbebaute Grundstücke
+e562cc0c-ba6b-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0220,Grundstücksgleiche Rechte (Erbbaurecht\, Dauerwohnrecht\, unbebaute Grundstücke)
+e562ce78-ba6b-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0225,Grundstücke mit Substanzverzehr
+e562d0e4-ba6b-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0229,Grundstücksanteile des häuslichen Arbeitszimmers
+e562d31e-ba6b-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0230,Bauten auf eigenen Grundstücken und grundstücksgleichen Rechten
+4a51befc-ba6c-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0235,Grundstückswerte eigener bebauter Grundstücke
+4a51c244-ba6c-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0240,Geschäftsbauten
+4a51c3ac-ba6c-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0250,Fabrikbauten
+4a51c4d8-ba6c-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0260,Andere Bauten
+4a51c7bc-ba6c-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0270,Garagen
+4a51c9a6-ba6c-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0280,Außenanlagen für Geschäfts-\, Fabrik- und andere Bauten
+4a51cadc-ba6c-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0285,Hof- und Wegebefestigungen
+4a51ccc6-ba6c-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0290,Einrichtungen für Geschäfts-\, Fabrik- und andere Bauten
+4a51ce06-ba6c-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0300,Wohnbauten
+4a51cf28-ba6c-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0305,Garagen
+8b8b462c-ba6c-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0310,Außenanlagen
+8b8b48de-ba6c-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0315,Hof- und Wegebefestigungen
+8b8b4bcc-ba6c-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0320,Einrichtungen für Wohnbauten
+8b8b4d3e-ba6c-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0329,Gebäudeteil des häuslichen Arbeitszimmers
+8b8b4e6a-ba6c-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0330,Bauten auf fremden Grundstücken
+8b8b4f96-ba6c-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0340,Geschäftsbauten
+8b8b51b2-ba6c-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0350,Fabrikbauten
+8b8b52f2-ba6c-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0360,Wohnbauten
+8b8b5504-ba6c-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0370,Andere Bauten
+8b8b5644-ba6c-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0380,Garagen
+d2a59404-ba6c-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0390,Außenanlagen
+d2a59738-ba6c-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0395,Hof- und Wegebefestigungen
+d2a598a0-ba6c-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0398,Einrichtung für Geschäfts-\, Fabrik-\, Wohn- und andere Bauten
+d2a599d6-ba6c-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0400,Technische Anlagen und Maschinen
+d2a59b0c-ba6c-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0420,Technische Anlagen
+d2a59db4-ba6c-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0440,Maschinen
+d2a59efe-ba6c-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0450,Transportanlagen und Ähnliches
+d2a5a02a-ba6c-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0460,Maschinengebundene Werkzeuge
+d2a5a318-ba6c-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0470,Betriebsvorrichtungen
+d2a5a55c-ba6c-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0500,Andere Anlagen\, Betriebs- und Gechäftsausstattung
+d2a59404-ba6c-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0510,Andere Anlagen
+d2a59738-ba6c-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0520,Pkw
+d2a598a0-ba6c-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0540,Lkw
+d2a599d6-ba6c-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0560,Sonstige Transportmittel
+d2a59b0c-ba6c-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0620,Werkzeuge
+d2a59db4-ba6c-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0630,Betriebsausstattung
+d2a59efe-ba6c-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0635,Geschäftsausstattung
+d2a5a02a-ba6c-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0640,Ladeneinrichtung
+d2a5a318-ba6c-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0650,Büroeinrichtung
+d2a5a55c-ba6c-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0660,Gerüst- und Schalungsmaterial
+d2a59404-ba6c-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0670,Geringwertige Wirtschaftsgüter
+d2a59738-ba6c-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0675,Wirtschaftsgüter größer als 150 bis 1000 Euro (Sammelposten)
+d2a598a0-ba6c-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0680,Einbauten in fremde Grundstücke
+d2a599d6-ba6c-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0690,Sonstige Betriebs- und Geschäftsausstattung
+d2a59b0c-ba6c-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0700,Geleiste Anzahlungen und Anlagen im Bau
+d2a59db4-ba6c-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0705,Anzahlungen auf Grundstücke und grundstücksgleiche Rechte ohne Bauten
+d2a59efe-ba6c-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0710,Geschäfts-\, Fabrik- und andere Bauten im Bau auf eigenen Grundstücken
+d2a5a02a-ba6c-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0720,Anzahlungen auf Geschäfts-\, Fabrik- und andere Bauten auf eigenen Grundstücken und grundstücksgleichen Rechten
+d2a5a318-ba6c-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0725,Wohnbauten im Bau auf eigenen Grundstücken
+d2a5a55c-ba6c-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0735,Anzahlungen auf Wohnbauten auf eigenen Grundstücken und grundstücksgleichen Rechten
+af4e72c2-ba6d-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0740,Geschäfts-\, Fabrik- und andere Bauten im Bau auf fremden Grundstücken
+af4e75ec-ba6d-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0750,Anzahlungen auf Geschäfts-\, Fabrik- und andere Bauten auf fremden Grundstücken
+af4e7a10-ba6d-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0755,Wohnbauten im Bau auf fremden Grundstücken
+af4e7cf4-ba6d-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0765,Anzahlungen auf Wohnbauten auf fremden Grundstücken
+af4e808c-ba6d-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0770,Technische Anlagen und Maschinen im Bau
+af4e8424-ba6d-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0780,Anzahlungen auf technische Anlagen und Maschinen
+af4e86ea-ba6d-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0785,Andere Anlagen\, Betriebs- und Geschäftsausstattungen im Bauu
+af4e8b72-ba6d-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0795,Anzahlungen auf andere Anlagen\, Betriebs- und Geschäftsausstattung
+af4e8e38-ba6d-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0800,Anteile an verbundenen Unternehmen (Anlagevermögen)
+1c0f22ee-ba6e-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0803,Anteile an verbundenen Unternehmen\, Personengesellschaften
+1c0f2640-ba6e-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0804,Anteile an verbunden Unternehmen\, Kapitalgesellschaften
+1c0f27ee-ba6e-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0805,Anteile an herrschender oder mehrheitlich beteiligter Gesellschaft\, Personengesellschaften
+1c0f29c4-ba6e-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0808,Anteile an herrschender oder mehrheitlich beteiligter Gesellschaft\, Kapitalgesellschaften
+1c0f2b90-ba6e-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0809,Anteile an herrschender oder mehrheitlich beteiligter Gesellschaft
+1c0f2da2-ba6e-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0810,Ausleihungen an verbundene Unternehmen
+1c0fa200-ba6e-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0813,Ausleihungen an verbundene Unternehmen\, Personengesellschaften
+1c0fa444-ba6e-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0814,Ausleihungen an verbundene Unternehmen\, Kapitalgesellschaften
+1c0fa5a2-ba6e-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0815,Ausleihungen an verbundene Unternehmen\, Einzelunternehmen
+1c0fa7f0-ba6e-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0820,Beteiligungen
+8fa9a198-ba6e-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0829,Beteiligung einer Gmbh & Co. KG an einer Komplementär Gmbh
+8fa9a3e6-ba6e-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0830,Typisch stille Beteiligungen
+8fa9a53a-ba6e-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0840,Atypisch stille Beteiligungen
+8fa9a8be-ba6e-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0850,Beteiligungen an Kapitalgesellschaften
+8fa9aa1c-ba6e-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0860,Beteiligungen an Personengesellschaften
+8fa9ab48-ba6e-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0880,Ausleihungen an Unternehmen\, mit denen ein Beteiligungsverhältnis besteht
+8fa9ac6a-ba6e-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0883,Ausleihungen an Unternehmen\, mit denen ein Beteiligungsverhältnis besteht\, Personengesellschaften
+8fa9ad8c-ba6e-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0885,Ausleihungen an Unternehmen\, mit denen ein Beteiligungsverhältnis besteht\, Kapitalgesellschaften
+8fa9aeb8-ba6e-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0900,Wertpapiere des Anlagevermögens
+8fa9b174-ba6e-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0910,Wertpapiere mit Gewinnbeteiligungsansprüchen\, die dem Teileinkünfteverfahren unterliegen
+f009d4cc-ba6e-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0920,Festverzinsliche Wertpapiere
+f009d724-ba6e-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0930,Sonstige Ausleihungen
+f009d990-ba6e-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0940,Darlehen
+f009dada-ba6e-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0960,Ausleihungen an Gesellschafter
+f009dc10-ba6e-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0961,Ausleihungen an GmbH-Gesellschafter
+f009dd32-ba6e-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0962,Ausleihungen an persönlich haftende Gesellschafter
+f009de5e-ba6e-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0963,Ausleihungen an Kommanditisten
+f009e12e-ba6e-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0964,Ausleihungen an stille Gesellschafter
+f009e26e-ba6e-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0970,Ausleihungen an nahe stehende Personen
+f009e4ee-ba6e-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0980,Genossenschaftsanteile zum langfristigen Verbleib
+3a600690-ba6f-11e4-8dfc-aa07a5b093db,00000000-0000-0000-0000-000000000000,0990,Rückdeckungsansprüche aus Lebensversicherungen zum langfristigen Verbleib

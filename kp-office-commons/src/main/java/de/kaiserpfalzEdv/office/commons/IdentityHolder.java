@@ -23,5 +23,8 @@ import java.util.UUID;
  * @since 2014Q
  */
 public interface IdentityHolder {
+    /**
+     * @return The internal id of this IdentityHolder.
+     */
     UUID getId();
 }

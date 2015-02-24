@@ -21,5 +21,5 @@ package de.kaiserpfalzEdv.office.commons;
  * @version 0.1.0
  * @since 0.1.0
  */
-public interface TenantHoldingEntity extends Entity, TenantHolder {
+public interface TenantHoldingEntity extends Entity, TenantIdHolder {
 }

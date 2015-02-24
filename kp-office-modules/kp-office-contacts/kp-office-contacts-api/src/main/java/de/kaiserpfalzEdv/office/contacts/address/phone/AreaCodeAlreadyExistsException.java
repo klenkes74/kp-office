@@ -16,7 +16,7 @@
 
 package de.kaiserpfalzEdv.office.contacts.address.phone;
 
-import de.kaiserpfalzEdv.office.core.EntityAlreadyExistsException;
+import de.kaiserpfalzEdv.office.core.data.EntityAlreadyExistsException;
 
 import javax.validation.constraints.NotNull;
 

@@ -61,6 +61,10 @@
         </dependency>
         <dependency>
             <groupId>org.vaadin.spring</groupId>
+            <artifactId>spring-vaadin-i18n</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.vaadin.spring</groupId>
             <artifactId>spring-vaadin-security</artifactId>
         </dependency>
 

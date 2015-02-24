@@ -39,9 +39,7 @@
 
     <modules>
         <module>kp-office-files-api</module>
-        <!--
-                <module>kp-office-projects-impl</module>
-        -->
+        <module>kp-office-files-impl</module>
     </modules>
 
     <properties>

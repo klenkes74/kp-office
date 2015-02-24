@@ -92,11 +92,16 @@
             <artifactId>kp-office-core-impl</artifactId>
         </dependency>
 
-
         <dependency>
-            <groupId>org.javamoney</groupId>
-            <artifactId>moneta</artifactId>
-            <version>1.0-RC1</version>
+            <groupId>de.kaiserpfalz-edv.office.modules.finance</groupId>
+            <artifactId>kp-office-finance-impl</artifactId>
+        </dependency>
+
+        <!-- Either kp-office-finance-money-offline or kp-office-finance-money-online is needed in production -->
+        <dependency>
+            <groupId>de.kaiserpfalz-edv.office.modules.finance</groupId>
+            <artifactId>kp-office-finance-money-offline</artifactId>
+            <optional>true</optional>
         </dependency>
 
 

@@ -16,22 +16,21 @@
 
 package de.kaiserpfalzEdv.office.accounting.chartsofaccounts;
 
-import javax.money.CurrencyUnit;
-import java.util.UUID;
+import de.kaiserpfalzEdv.office.commons.DisplayNameHolder;
+import de.kaiserpfalzEdv.office.commons.DisplayNumberHolder;
+import de.kaiserpfalzEdv.office.commons.IdentityHolder;
+import de.kaiserpfalzEdv.office.commons.TenantIdHolder;
+
+import java.io.Serializable;
 
 /**
  * @author klenkes
  * @version 2015Q1
  * @since 18.02.15 16:36
  */
-public interface Account {
-    UUID getId();
-
-    String getName();
-
-    String getDescription();
-
-    String getNumber();
-
-    CurrencyUnit getCurrency();
+public interface Account extends IdentityHolder, TenantIdHolder, DisplayNumberHolder, DisplayNameHolder, Serializable {
+    /**
+     * @return The display number of the current mapping (if any)
+     */
+    String getCurrentMapping();
 }

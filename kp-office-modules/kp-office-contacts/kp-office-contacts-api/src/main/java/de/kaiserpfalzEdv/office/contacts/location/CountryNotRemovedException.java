@@ -16,7 +16,7 @@
 
 package de.kaiserpfalzEdv.office.contacts.location;
 
-import de.kaiserpfalzEdv.office.core.EntityNotRemovedException;
+import de.kaiserpfalzEdv.office.core.data.EntityNotRemovedException;
 
 import javax.validation.constraints.NotNull;
 

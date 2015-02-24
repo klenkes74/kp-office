@@ -16,14 +16,14 @@
 
 package de.kaiserpfalzEdv.office.contacts;
 
-import de.kaiserpfalzEdv.commons.paging.Page;
-import de.kaiserpfalzEdv.commons.paging.Pageable;
+import de.kaiserpfalzEdv.commons.jee.paging.Page;
+import de.kaiserpfalzEdv.commons.jee.paging.Pageable;
 import de.kaiserpfalzEdv.office.contacts.location.Country;
 import de.kaiserpfalzEdv.office.contacts.location.CountryAlreadyExistsException;
 import de.kaiserpfalzEdv.office.contacts.location.CountryNotRemovedException;
 import de.kaiserpfalzEdv.office.contacts.location.InvalidCountryException;
 import de.kaiserpfalzEdv.office.contacts.location.NoSuchCountryException;
-import de.kaiserpfalzEdv.office.core.EntityQueryBase;
+import de.kaiserpfalzEdv.office.core.data.EntityQueryBase;
 
 import javax.validation.constraints.NotNull;
 import java.util.UUID;

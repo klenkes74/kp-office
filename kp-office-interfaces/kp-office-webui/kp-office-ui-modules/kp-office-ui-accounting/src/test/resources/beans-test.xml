@@ -23,6 +23,6 @@
        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
        ">
 
-    <context:component-scan base-package="de.kaiserpfalzEdv.office.ui.accounting"/>
+    <context:component-scan base-package="de.kaiserpfalzEdv.office.accounting,de.kaiserpfalzEdv.office.ui.accounting"/>
     <context:annotation-config/>
 </beans>

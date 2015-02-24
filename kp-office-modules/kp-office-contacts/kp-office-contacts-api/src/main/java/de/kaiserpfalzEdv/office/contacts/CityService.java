@@ -21,7 +21,7 @@ import de.kaiserpfalzEdv.office.contacts.location.CityAlreadyExistsException;
 import de.kaiserpfalzEdv.office.contacts.location.CityNotRemovedException;
 import de.kaiserpfalzEdv.office.contacts.location.InvalidCityException;
 import de.kaiserpfalzEdv.office.contacts.location.NoSuchCityException;
-import de.kaiserpfalzEdv.office.core.EntityQueryBase;
+import de.kaiserpfalzEdv.office.core.data.EntityQueryBase;
 
 import javax.validation.constraints.NotNull;
 import java.util.UUID;

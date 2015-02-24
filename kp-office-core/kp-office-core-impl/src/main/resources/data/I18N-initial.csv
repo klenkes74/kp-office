@@ -1,0 +1,41 @@
+KEY_,LANGUAGE_,VALUE_
+office.ui.accounting.defaultCurrency,de,Buchhaltungswährung
+office.ui.accounting.defaultCurrency,en,Default posting currency
+office.ui.accounting.primanota.button.name,de,Primanota
+office.ui.accounting.primanota.button.name,en,Primanota
+office.ui.accounting.primanota.button.desription,de,Öffnet/Schließt die Primanota
+office.ui.accounting.primanota.button.desription,en,Öffnet/Schließt die Primanota
+office.ui.accounting.primanota.id,de,Interne IdNr.
+office.ui.accounting.primanota.id,en,Internal ID
+office.ui.accounting.primanota.nummer,de,Primanota Nr.
+office.ui.accounting.primanota.nummer,en,Primanota No.
+office.ui.accounting.primanota.name,de,Primanota Name
+office.ui.accounting.primanota.name,en,Primanota Name
+office.ui.accounting.primanota.column.id,de,Interne IdNr.
+office.ui.accounting.primanota.column.id,en,Internal ID
+office.ui.accounting.primanota.column.entryId,de,Pagina Nr.
+office.ui.accounting.primanota.column.entryId,en,Pagina No.
+office.ui.accounting.primanota.column.entryDate,de,Erfassungsdatum
+office.ui.accounting.primanota.column.entryDate,en,Entry Date
+office.ui.accounting.primanota.column.accountingDate,de,Buchungsdatum
+office.ui.accounting.primanota.column.accountingDate,en,Posting Date
+office.ui.accounting.primanota.column.valutaDate,de,Wertstellungsdatum
+office.ui.accounting.primanota.column.valutaDate,en,Valuta Date
+office.ui.accounting.primanota.column.postingText,de,Buchungstext
+office.ui.accounting.primanota.column.postingText,en,Posting Text
+office.ui.accounting.primanota.column.postingText2,de,Buchungstext 2
+office.ui.accounting.primanota.column.postingText2,en,Posting Text 2
+office.ui.accounting.primanota.column.documentNumber,de,Belegnummer
+office.ui.accounting.primanota.column.documentNumber,en,Document No.
+office.ui.accounting.primanota.column.documentNumber2,de,Belegnummer 2
+office.ui.accounting.primanota.column.documentNumber2,en,Document No. 2
+office.ui.accounting.primanota.column.documentDate,de,Belegdatum
+office.ui.accounting.primanota.column.documentDate,en,Document Date
+office.ui.accounting.primanota.column.documentAmount,de,Belegwert
+office.ui.accounting.primanota.column.documentAmount,en,Document Value
+office.ui.accounting.primanota.column.debittedAccount,de,SOLL-Konto
+office.ui.accounting.primanota.column.debittedAccount,en,DEBIT Account
+office.ui.accounting.primanota.column.credittedAccount,de,HABEN-Konto
+office.ui.accounting.primanota.column.credittedAccount,en,CREDIT Account
+office.ui.accounting.primanota.column.amount,de,Buchungswert
+office.ui.accounting.primanota.column.amount,en,Posting Value

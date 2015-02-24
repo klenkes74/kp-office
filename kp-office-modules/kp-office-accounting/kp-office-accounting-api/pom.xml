@@ -47,12 +47,5 @@
             <groupId>de.kaiserpfalz-edv.office.modules.finance</groupId>
             <artifactId>kp-office-finance-api</artifactId>
         </dependency>
-
-
-        <dependency>
-            <groupId>javax.money</groupId>
-            <artifactId>money-api</artifactId>
-            <version>1.0-RC1</version>
-        </dependency>
     </dependencies>
 </project>

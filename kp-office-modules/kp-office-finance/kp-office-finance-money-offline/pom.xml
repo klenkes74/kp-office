@@ -84,7 +84,7 @@
     <dependencies>
         <dependency>
             <groupId>de.kaiserpfalz-edv.office.modules.finance</groupId>
-            <artifactId>kp-office-finance-api</artifactId>
+            <artifactId>kp-office-finance-impl</artifactId>
         </dependency>
 
         <dependency>

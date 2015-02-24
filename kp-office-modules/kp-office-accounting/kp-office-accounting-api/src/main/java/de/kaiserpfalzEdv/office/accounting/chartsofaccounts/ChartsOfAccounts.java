@@ -16,7 +16,14 @@
 
 package de.kaiserpfalzEdv.office.accounting.chartsofaccounts;
 
+import de.kaiserpfalzEdv.office.commons.DisplayNameHolder;
+import de.kaiserpfalzEdv.office.commons.DisplayNumberHolder;
+import de.kaiserpfalzEdv.office.commons.IdentityHolder;
+import de.kaiserpfalzEdv.office.commons.TenantIdHolder;
+
+import javax.money.CurrencyUnit;
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 import java.util.Set;
 import java.util.UUID;
 
@@ -25,12 +32,13 @@ import java.util.UUID;
  * @version 2015Q1
  * @since 18.02.15 18:04
  */
-public interface ChartsOfAccounts {
-    UUID getId();
-
-    String getName();
-
+public interface ChartsOfAccounts extends IdentityHolder, DisplayNameHolder, DisplayNumberHolder, TenantIdHolder, Serializable {
     Account getAccount(@NotNull UUID id);
 
     Set<Account> allAccounts();
+
+    /**
+     * @return The currency of this account.
+     */
+    CurrencyUnit getCurrencyUnit();
 }

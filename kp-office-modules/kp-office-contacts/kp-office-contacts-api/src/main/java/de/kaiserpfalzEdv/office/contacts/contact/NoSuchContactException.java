@@ -17,7 +17,7 @@
 package de.kaiserpfalzEdv.office.contacts.contact;
 
 import de.kaiserpfalzEdv.office.commons.Entity;
-import de.kaiserpfalzEdv.office.core.NoSuchEntityException;
+import de.kaiserpfalzEdv.office.core.data.NoSuchEntityException;
 
 /**
  * @author klenkes

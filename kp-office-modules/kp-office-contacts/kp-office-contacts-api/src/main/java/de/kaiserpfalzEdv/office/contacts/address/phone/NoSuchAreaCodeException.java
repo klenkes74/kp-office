@@ -18,7 +18,7 @@ package de.kaiserpfalzEdv.office.contacts.address.phone;
 
 import de.kaiserpfalzEdv.office.commons.Entity;
 import de.kaiserpfalzEdv.office.contacts.location.City;
-import de.kaiserpfalzEdv.office.core.NoSuchEntityException;
+import de.kaiserpfalzEdv.office.core.data.NoSuchEntityException;
 
 import javax.validation.constraints.NotNull;
 

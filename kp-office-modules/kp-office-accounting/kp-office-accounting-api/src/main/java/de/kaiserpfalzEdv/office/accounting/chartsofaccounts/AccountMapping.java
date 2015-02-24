@@ -16,6 +16,11 @@
 
 package de.kaiserpfalzEdv.office.accounting.chartsofaccounts;
 
+import de.kaiserpfalzEdv.office.commons.DisplayNameHolder;
+import de.kaiserpfalzEdv.office.commons.DisplayNumberHolder;
+import de.kaiserpfalzEdv.office.commons.IdentityHolder;
+import de.kaiserpfalzEdv.office.commons.TenantIdHolder;
+
 import javax.validation.constraints.NotNull;
 import java.util.Set;
 import java.util.UUID;
@@ -25,17 +30,7 @@ import java.util.UUID;
  * @version 2015Q1
  * @since 18.02.15 17:33
  */
-public interface AccountMapping {
-    /**
-     * @return The internal id of this mapping definition.
-     */
-    UUID getId();
-
-    /**
-     * @return The name of this mapping definition.
-     */
-    String getName();
-
+public interface AccountMapping extends IdentityHolder, DisplayNameHolder, DisplayNumberHolder, TenantIdHolder {
     /**
      * Renumbers the account to the current chart of account.
      *

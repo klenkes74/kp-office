@@ -16,7 +16,7 @@
 
 package de.kaiserpfalzEdv.office.contacts.location;
 
-import de.kaiserpfalzEdv.office.core.InvalidEntityException;
+import de.kaiserpfalzEdv.office.core.data.InvalidEntityException;
 
 import javax.validation.constraints.NotNull;
 

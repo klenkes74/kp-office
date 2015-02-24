@@ -21,13 +21,18 @@ import com.vaadin.ui.Button;
 import de.kaiserpfalzEdv.commons.service.Versionable;
 import de.kaiserpfalzEdv.office.core.license.ModuleInformation;
 import de.kaiserpfalzEdv.office.ui.OfficeModule;
-import de.kaiserpfalzEdv.office.ui.accounting.journal.JournalPresenter;
-import de.kaiserpfalzEdv.office.ui.accounting.journal.OpenJournalEvent;
+import de.kaiserpfalzEdv.office.ui.accounting.primanota.OpenPrimanotaEvent;
+import de.kaiserpfalzEdv.office.ui.accounting.primanota.PrimanotaPresenter;
 import de.kaiserpfalzEdv.office.ui.menu.MenuBuilder;
 import de.kaiserpfalzEdv.office.ui.web.widgets.menu.events.AddMenuEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.vaadin.spring.events.EventScope;
+import org.vaadin.spring.i18n.I18N;
+import org.vaadin.spring.i18n.MessageProvider;
+import org.vaadin.spring.i18n.ResourceBundleMessageProvider;
 import org.vaadin.spring.navigator.Presenter;
 import org.vaadin.spring.navigator.annotation.VaadinPresenter;
 
@@ -43,6 +48,7 @@ import java.util.UUID;
  * @since 18.02.15 22:11
  */
 @Named
+@Configuration
 @ModuleInformation(
         name = AccountingModuleImpl.LONG_NAME,
         id = AccountingModuleImpl.ID,
@@ -65,7 +71,10 @@ public class AccountingModuleImpl extends Presenter<AccountingMenu> implements O
 
 
     @Inject
-    private JournalPresenter journalPresenter;
+    private PrimanotaPresenter primanotaPresenter;
+    
+    @Inject
+    private I18N i18n;
 
 
     public AccountingModuleImpl() {
@@ -90,10 +99,10 @@ public class AccountingModuleImpl extends Presenter<AccountingMenu> implements O
     public void startModule() {
         LOG.info("Adding module: {}", this);
 
-        Button openJournal = new Button("Journal", this);
+        Button openJournal = new Button(i18n.get("office.ui.accounting.primanota.button.name"), this);
         openJournal.setWidth(100f, Sizeable.Unit.PERCENTAGE);
-        openJournal.setId("journal");
-        openJournal.setDescription("Opens/Closes a journal");
+        openJournal.setId("office.ui.accounting.primanota.button");
+        openJournal.setDescription(i18n.get("office.ui.accounting.primanota.button.description"));
 
         getView().addButton(openJournal);
 
@@ -113,8 +122,8 @@ public class AccountingModuleImpl extends Presenter<AccountingMenu> implements O
         LOG.debug("Clicked on: {}", event.getButton().getId());
 
         switch (event.getButton().getId()) {
-            case "journal":
-                getEventBus().publish(EventScope.SESSION, this, new OpenJournalEvent());
+            case "primaNota":
+                getEventBus().publish(EventScope.SESSION, this, new OpenPrimanotaEvent());
                 break;
         }
     }
@@ -138,5 +147,12 @@ public class AccountingModuleImpl extends Presenter<AccountingMenu> implements O
     @Override
     public String getDisplayName() {
         return LONG_NAME;
+    }
+
+
+    @Bean
+    public MessageProvider i18n() {
+        return new ResourceBundleMessageProvider(getClass().getCanonicalName());
+        
     }
 }

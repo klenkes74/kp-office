@@ -17,7 +17,7 @@
 package de.kaiserpfalzEdv.office.contacts.contact;
 
 import de.kaiserpfalzEdv.office.commons.Entity;
-import de.kaiserpfalzEdv.office.core.EntityAlreadyExistsException;
+import de.kaiserpfalzEdv.office.core.data.EntityAlreadyExistsException;
 
 /**
  * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;

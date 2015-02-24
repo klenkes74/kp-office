@@ -16,15 +16,15 @@
 
 package de.kaiserpfalzEdv.office.contacts;
 
-import de.kaiserpfalzEdv.commons.paging.Page;
-import de.kaiserpfalzEdv.commons.paging.Pageable;
+import de.kaiserpfalzEdv.commons.jee.paging.Page;
+import de.kaiserpfalzEdv.commons.jee.paging.Pageable;
 import de.kaiserpfalzEdv.office.contacts.address.phone.AreaCode;
 import de.kaiserpfalzEdv.office.contacts.address.phone.AreaCodeAlreadyExistsException;
 import de.kaiserpfalzEdv.office.contacts.address.phone.AreaCodeNotRemovedException;
 import de.kaiserpfalzEdv.office.contacts.address.phone.InvalidAreaCodeException;
 import de.kaiserpfalzEdv.office.contacts.address.phone.NoSuchAreaCodeException;
 import de.kaiserpfalzEdv.office.contacts.location.City;
-import de.kaiserpfalzEdv.office.core.EntityQueryBase;
+import de.kaiserpfalzEdv.office.core.data.EntityQueryBase;
 
 import javax.validation.constraints.NotNull;
 import java.util.UUID;
