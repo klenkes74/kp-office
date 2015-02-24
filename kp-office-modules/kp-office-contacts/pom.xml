@@ -34,9 +34,7 @@
 
     <modules>
         <module>kp-office-contacts-api</module>
-        <!--
-                <module>kp-office-contacts-impl</module>
-        -->
+        <module>kp-office-contacts-impl</module>
     </modules>
 
     <properties>

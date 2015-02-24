@@ -41,4 +41,5 @@
 
 
     <import resource="classpath*:/beans-database.xml"/>
+    <import resource="classpath*:/beans-cache.xml"/>
 </beans>

@@ -17,18 +17,24 @@
 package de.kaiserpfalzEdv.office.core.i18n.test;
 
 import de.kaiserpfalzEdv.commons.test.SpringTestNGBase;
-import de.kaiserpfalzEdv.office.core.i18n.impl.DatabaseMessageSource;
+import de.kaiserpfalzEdv.office.core.KPO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.slf4j.bridge.SLF4JBridgeHandler;
+import org.springframework.context.MessageSource;
 import org.springframework.test.context.ContextConfiguration;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import javax.inject.Inject;
+import java.time.Duration;
+import java.time.OffsetTime;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Locale;
+
+import static org.testng.Assert.assertTrue;
 
 /**
  * @author klenkes
@@ -41,10 +47,15 @@ public class I18NTest extends SpringTestNGBase {
     private static final Logger LOG = LoggerFactory.getLogger(I18NTest.class);
 
     @Inject
-    private DatabaseMessageSource messageSource;
+    @KPO
+    private MessageSource messageSource;
 
     public I18NTest() {
         super(I18NTest.class, LOG);
+
+        if (!SLF4JBridgeHandler.isInstalled()) {
+            SLF4JBridgeHandler.install();
+        }
     }
 
     @Test(dataProvider = "message-locale-provider")
@@ -56,7 +67,6 @@ public class I18NTest extends SpringTestNGBase {
         Assert.assertEquals(result, message, "Wrong message!");
     }
 
-
     @DataProvider(name = "message-locale-provider")
     protected Iterator<Object[]> generateMessageLocales() {
         ArrayList<Object[]> result = new ArrayList<>();
@@ -64,6 +74,36 @@ public class I18NTest extends SpringTestNGBase {
         result.add(new Object[]{Locale.GERMANY, "office.test", "Testeintrag für Integrationstests"});
         result.add(new Object[]{Locale.UK, "office.test", "Test entry for integration tests"});
         result.add(new Object[]{Locale.US, "office.test", "Test entry for integration tests"});
+
+        return result.iterator();
+    }
+
+
+    @Test(dataProvider = "message-locale-provider-timing")
+    public void testCaching(final Locale locale, final String code) {
+        logMethod("check-cache", "Testing the message cache for '" + code + "' in locale '" + locale.getDisplayName() + "'.");
+
+        OffsetTime start = OffsetTime.now();
+        messageSource.getMessage(code, new Object[]{}, locale);
+        OffsetTime firstLoad = OffsetTime.now();
+
+        messageSource.getMessage(code, new Object[]{}, locale);
+        OffsetTime secondLoad = OffsetTime.now();
+
+        Duration firstLoadDuration = Duration.between(start, firstLoad);
+        Duration secondLoadDuration = Duration.between(firstLoad, secondLoad);
+
+        LOG.debug("First load: {}", firstLoadDuration);
+        LOG.debug("Second load: {}", secondLoadDuration);
+
+        assertTrue(secondLoadDuration.toMillis() <= 10l, "The second request should take less than 10 milliseconds!");
+    }
+
+    @DataProvider(name = "message-locale-provider-timing")
+    protected Iterator<Object[]> generateMessageTiming() {
+        ArrayList<Object[]> result = new ArrayList<>();
+
+        result.add(new Object[]{Locale.GERMANY, "office.timing"});
 
         return result.iterator();
     }

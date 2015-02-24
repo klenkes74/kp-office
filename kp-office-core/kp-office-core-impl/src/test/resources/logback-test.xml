@@ -42,7 +42,7 @@
         <appender-ref ref="STDOUT"/>
         <appender-ref ref="DEVELOPMENT"/>
     </logger>
-    <logger name="de.kaiserpfalzEdv.commons.jndi" additivity="false" level="WARN">
+    <logger name="de.kaiserpfalzEdv.commons" additivity="false" level="WARN">
         <appender-ref ref="STDOUT"/>
         <appender-ref ref="DEVELOPMENT"/>
     </logger>
@@ -63,7 +63,7 @@
         <appender-ref ref="STDOUT"/>
         <appender-ref ref="DEVELOPMENT"/>
     </logger>
-    <logger name="org.hibernate.SQL" additivity="false" level="DEBUG">
+    <logger name="org.hibernate.SQL" additivity="false" level="WARN">
         <appender-ref ref="STDOUT"/>
         <appender-ref ref="DEVELOPMENT"/>
     </logger>
@@ -81,6 +81,15 @@
         <appender-ref ref="DEVELOPMENT"/>
     </logger>
     <logger name="org.springframework.jndi.JndiTemplate" additivity="false" level="WARN">
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="DEVELOPMENT"/>
+    </logger>
+
+    <logger name="jdbc" additivity="false" level="WARN">
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="DEVELOPMENT"/>
+    </logger>
+    <logger name="jdbc.sqltiming" additivity="false" level="TRACE">
         <appender-ref ref="STDOUT"/>
         <appender-ref ref="DEVELOPMENT"/>
     </logger>

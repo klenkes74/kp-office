@@ -16,6 +16,7 @@
 
 package de.kaiserpfalzEdv.office.core.i18n.impl;
 
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
 /**
@@ -23,5 +24,6 @@ import org.springframework.data.repository.PagingAndSortingRepository;
  * @version 2015Q1
  * @since 23.02.15 10:39
  */
+@Cacheable("i18n")
 public interface TranslationEntryRepository extends PagingAndSortingRepository<TranslationEntry, TranslationKey> {
 }

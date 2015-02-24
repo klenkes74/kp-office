@@ -19,6 +19,7 @@ package de.kaiserpfalzEdv.office.core.i18n.impl;
 import de.kaiserpfalzEdv.office.core.KPO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.context.MessageSource;
 import org.springframework.context.MessageSourceResolvable;
 import org.springframework.context.NoSuchMessageException;
@@ -59,6 +60,7 @@ public class DatabaseMessageSource implements MessageSource {
     }
 
 
+    @Cacheable("i18n")
     @Override
     public String getMessage(String code, Object[] args, String defaultMessage, Locale locale) {
         String result;
@@ -72,6 +74,7 @@ public class DatabaseMessageSource implements MessageSource {
         return result;
     }
 
+    @Cacheable("i18n")
     @Override
     public String getMessage(String code, Object[] args, Locale locale) throws NoSuchMessageException {
         TranslationEntry entry = null;
@@ -101,6 +104,7 @@ public class DatabaseMessageSource implements MessageSource {
         return entry.getValue();
     }
 
+    @Cacheable("i18n")
     @Override
     public String getMessage(MessageSourceResolvable resolvable, Locale locale) throws NoSuchMessageException {
         return getMessage(resolvable.getCodes()[0], resolvable.getArguments(), resolvable.getDefaultMessage(), locale);

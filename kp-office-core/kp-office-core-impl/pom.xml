@@ -66,6 +66,14 @@
 
             <dependency>
                 <groupId>de.kaiserpfalz-edv.base</groupId>
+                <artifactId>kp-jee-bom</artifactId>
+                <version>${kp-commons.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>de.kaiserpfalz-edv.base</groupId>
                 <artifactId>kp-database-bom</artifactId>
                 <version>${kp-commons.version}</version>
                 <type>pom</type>
@@ -228,6 +236,12 @@
         </dependency>
 
 
+        <!-- Caching -->
+        <dependency>
+            <groupId>javax.cache</groupId>
+            <artifactId>cache-api</artifactId>
+        </dependency>
+
         <!-- Spring -->
         <dependency>
             <groupId>org.springframework.security</groupId>
@@ -320,6 +334,14 @@
 
 
         <!-- Testing -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jul-to-slf4j</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jcl-over-slf4j</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-core</artifactId>
