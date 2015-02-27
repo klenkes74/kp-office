@@ -265,6 +265,11 @@
                 <artifactId>kp-office-contacts-impl</artifactId>
                 <version>${project.version}</version>
             </dependency>
+            <dependency>
+                <groupId>de.kaiserpfalz-edv.office.modules.contacts</groupId>
+                <artifactId>kp-office-contacts-geodb</artifactId>
+                <version>${project.version}</version>
+            </dependency>
 
             <dependency>
                 <groupId>de.kaiserpfalz-edv.office.modules.files</groupId>
@@ -283,7 +288,7 @@
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>de.kaiserpfalz-edv.office.modules.files.documents</groupId>
+                <groupId>de.kaiserpfalz-edv.office.modules.documents</groupId>
                 <artifactId>kp-office-documents-impl</artifactId>
                 <version>${project.version}</version>
             </dependency>

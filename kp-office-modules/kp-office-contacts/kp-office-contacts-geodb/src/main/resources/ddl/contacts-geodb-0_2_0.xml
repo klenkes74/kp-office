@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  ~ Copyright 2015 Kaiserpfalz EDV-Service, Roland T. Lichti
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="
+            http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd
+        ">
+
+
+    <changeSet id="kpo-contacts-geodb-inititial" author="klenkes74">
+        <comment>Tables of the GEO DB (http://opengeodb.org/wiki/OpenGeoDB).</comment>
+
+        <createTable tableName="geodb_changelog">
+            <column name="id" type="INT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="datum" type="DATE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="beschreibung" type="LONGTEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="autor" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="version" type="VARCHAR(8)"/>
+        </createTable>
+
+        <createTable tableName="geodb_coordinates">
+            <column name="loc_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="coord_type" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="lat" type="DOUBLE"/>
+            <column name="lon" type="DOUBLE"/>
+            <column name="coord_subtype" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="valid_since" type="DATE"/>
+            <column name="date_type_since" type="INT"/>
+            <column name="valid_until" type="DATE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="date_type_until" type="INT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="geodb_hierarchies">
+            <column name="loc_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="level" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id_lvl1" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id_lvl2" type="INT"/>
+            <column name="id_lvl3" type="INT"/>
+            <column name="id_lvl4" type="INT"/>
+            <column name="id_lvl5" type="INT"/>
+            <column name="id_lvl6" type="INT"/>
+            <column name="id_lvl7" type="INT"/>
+            <column name="id_lvl8" type="INT"/>
+            <column name="id_lvl9" type="INT"/>
+            <column name="valid_since" type="DATE"/>
+            <column name="date_type_since" type="INT"/>
+            <column name="valid_until" type="DATE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="date_type_until" type="INT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="geodb_locations">
+            <column name="loc_id" type="INT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="loc_type" type="INT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="geodb_textdata">
+            <column name="loc_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="text_type" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="text_val" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="text_locale" type="VARCHAR(5)"/>
+            <column name="is_native_lang" type="SMALLINT"/>
+            <column name="is_default_name" type="SMALLINT"/>
+            <column name="valid_since" type="DATE"/>
+            <column name="date_type_since" type="INT"/>
+            <column name="valid_until" type="DATE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="date_type_until" type="INT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="geodb_type_names">
+            <column name="type_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="type_locale" type="VARCHAR(5)"/>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="geodb_postcodes">
+            <column name="loc_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="postcode" type="VARCHAR(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="country" type="VARCHAR(5)"/>
+            <column name="lat" type="DOUBLE"/>
+            <column name="lon" type="DOUBLE"/>
+            <column name="city" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+    </changeSet>
+
+    <changeSet id="kpo-contacts-geodb-tag-initial" author="klenkes74">
+        <tagDatabase tag="kpo-contacts-geodb-initial"/>
+    </changeSet>
+
+    <changeSet id="kpo-contacts-geodb-load-initial" author="klenkes74">
+        <comment>Load GEO DB data.</comment>
+
+        <loadData
+                tableName="geodb_postcodes"
+                file="data/contacts-geodb_postcodes-initial.csv"/>
+
+
+        <loadData
+                tableName="geodb_type_names"
+                file="data/contacts-geodb_type_names-initial.csv"/>
+    </changeSet>
+
+    <changeSet id="kpo-contacts-geodb-index-initial" author="klenkes74">
+        <comment>Create the indicies of GEO DB.</comment>
+
+        <createIndex tableName="geodb_postcodes" indexName="geodb_postcodes_city_k">
+            <column name="city"/>
+        </createIndex>
+        <createIndex tableName="geodb_postcodes" indexName="geodb_postcodes_postcode_k">
+            <column name="country"/>
+            <column name="postcode"/>
+        </createIndex>
+
+        <createIndex tableName="geodb_type_names" indexName="tid_tnames_idx">
+            <column name="type_id"/>
+        </createIndex>
+        <createIndex tableName="geodb_type_names" indexName="locale_tnames_idx">
+            <column name="type_locale"/>
+        </createIndex>
+        <createIndex tableName="geodb_type_names" indexName="name_tnames_idx">
+            <column name="name"/>
+        </createIndex>
+        <createIndex tableName="geodb_type_names" indexName="tnames_uk" unique="true">
+            <column name="type_id"/>
+            <column name="type_locale"/>
+        </createIndex>
+
+        <createIndex tableName="geodb_locations" indexName="loc_type_idx">
+            <column name="loc_type"/>
+        </createIndex>
+
+        <createIndex tableName="geodb_coordinates" indexName="coord_loc_id_idx">
+            <column name="loc_id"/>
+        </createIndex>
+        <createIndex tableName="geodb_coordinates" indexName="coord_lon_idx">
+            <column name="lon"/>
+        </createIndex>
+        <createIndex tableName="geodb_coordinates" indexName="coord_lat_idx">
+            <column name="lat"/>
+        </createIndex>
+        <createIndex tableName="geodb_coordinates" indexName="coord_type_idx">
+            <column name="coord_type"/>
+        </createIndex>
+        <createIndex tableName="geodb_coordinates" indexName="coord_stype_idx">
+            <column name="cood_subtype"/>
+        </createIndex>
+        <createIndex tableName="geodb_coordinates" indexName="coord_since_idx">
+            <column name="valid_since"/>
+        </createIndex>
+        <createIndex tableName="geodb_coordinates" indexName="coord_until_idx">
+            <column name="valid_until"/>
+        </createIndex>
+
+        <createIndex tableName="geodb_hierarchies" indexName="hierarchy_loc_id_idx">
+            <column name="loc_id"/>
+        </createIndex>
+        <createIndex tableName="geodb_hierarchies" indexName="hierarchy_level_idx">
+            <column name="level"/>
+        </createIndex>
+        <createIndex tableName="geodb_hierarchies" indexName="hierarchy_lvl1_idx">
+            <column name="lvl1"/>
+        </createIndex>
+        <createIndex tableName="geodb_hierarchies" indexName="hierarchy_lvl1_idx">
+            <column name="lvl"/>
+        </createIndex>
+        <createIndex tableName="geodb_hierarchies" indexName="hierarchy_lvl2_idx">
+            <column name="lvl2"/>
+        </createIndex>
+        <createIndex tableName="geodb_hierarchies" indexName="hierarchy_lvl3_idx">
+            <column name="lvl3"/>
+        </createIndex>
+        <createIndex tableName="geodb_hierarchies" indexName="hierarchy_lvl4_idx">
+            <column name="lvl4"/>
+        </createIndex>
+        <createIndex tableName="geodb_hierarchies" indexName="hierarchy_lvl5_idx">
+            <column name="lvl5"/>
+        </createIndex>
+        <createIndex tableName="geodb_hierarchies" indexName="hierarchy_lvl6_idx">
+            <column name="lvl6"/>
+        </createIndex>
+        <createIndex tableName="geodb_hierarchies" indexName="hierarchy_lvl7_idx">
+            <column name="lvl7"/>
+        </createIndex>
+        <createIndex tableName="geodb_hierarchies" indexName="hierarchy_lvl8_idx">
+            <column name="lvl8"/>
+        </createIndex>
+        <createIndex tableName="geodb_hierarchies" indexName="hierarchy_lvl9_idx">
+            <column name="lvl9"/>
+        </createIndex>
+        <createIndex tableName="geodb_hierarchies" indexName="hierarchy_since_idx">
+            <column name="valid_since"/>
+        </createIndex>
+        <createIndex tableName="geodb_hierarchies" indexName="hierarchy_until_idx">
+            <column name="valid_until"/>
+        </createIndex>
+
+        <createIndex tableName="geodb_textdata" indexName="text_lid_idx">
+            <column name="loc_id"/>
+        </createIndex>
+        <createIndex tableName="geodb_textdata" indexName="text_val_idx">
+            <column name="text_val"/>
+        </createIndex>
+        <createIndex tableName="geodb_textdata" indexName="text_type_idx">
+            <column name="text_type"/>
+        </createIndex>
+        <createIndex tableName="geodb_textdata" indexName="text_locale_idx">
+            <column name="text_locale"/>
+        </createIndex>
+        <createIndex tableName="geodb_textdata" indexName="text_native_idx">
+            <column name="is_native_lang"/>
+        </createIndex>
+        <createIndex tableName="geodb_textdata" indexName="text_default_idx">
+            <column name="is_default_name"/>
+        </createIndex>
+        <createIndex tableName="geodb_textdata" indexName="text_since_idx">
+            <column name="valid_since"/>
+        </createIndex>
+        <createIndex tableName="geodb_textdata" indexName="text_until_idx">
+            <column name="valid_until"/>
+        </createIndex>
+
+        <createIndex tableName="geodb_intdata" indexName="int_lid_idx">
+            <column name="loc_id"/>
+        </createIndex>
+        <createIndex tableName="geodb_intdata" indexName="int_val_idx">
+            <column name="int_val"/>
+        </createIndex>
+        <createIndex tableName="geodb_intdata" indexName="int_type_idx">
+            <column name="int_type"/>
+        </createIndex>
+        <createIndex tableName="geodb_intdata" indexName="int_since_idx">
+            <column name="valid_since"/>
+        </createIndex>
+        <createIndex tableName="geodb_intdata" indexName="int_until_idx">
+            <column name="valid_until"/>
+        </createIndex>
+
+        <createIndex tableName="geodb_floatdata" indexName="float_lid_idx">
+            <column name="loc_id"/>
+        </createIndex>
+        <createIndex tableName="geodb_floatdata" indexName="float_val_idx">
+            <column name="float_val"/>
+        </createIndex>
+        <createIndex tableName="geodb_floatdata" indexName="float_type_idx">
+            <column name="float_type"/>
+        </createIndex>
+        <createIndex tableName="geodb_floatdata" indexName="float_since_idx">
+            <column name="valid_since"/>
+        </createIndex>
+        <createIndex tableName="geodb_floatdata" indexName="float_until_idx">
+            <column name="valid_until"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet id="kpo-contacts-geodb-tag-initial-data" author="klenkes74">
+        <tagDatabase tag="kpo-contacts-geodb-data-loaded"/>
+    </changeSet>
+</databaseChangeLog>

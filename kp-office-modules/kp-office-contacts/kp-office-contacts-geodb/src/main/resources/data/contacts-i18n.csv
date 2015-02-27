@@ -1,0 +1,48 @@
+key_,language_,value_
+office.contacts.geodb.100200000,de,Staat/Land
+office.contacts.geodb.100200000,en,Country
+office.contacts.geodb.100300000,de,Bundesland
+office.contacts.geodb.100300000,en,State
+office.contacts.geodb.100300000,de_CH,Kanton
+office.contacts.geodb.100300000,en_US,State
+office.contacts.geodb.100400000,de,Regierungsbezirk
+office.contacts.geodb.100400000,en,Administrative Region
+office.contacts.geodb.100500000,de,Landkreis
+office.contacts.geodb.100500000,en,Administrative District
+office.contacts.geodb.100500000,en_US,County
+office.contacts.geodb.100600000,de,Politische Gliederung
+office.contacts.geodb.100600000,en,Political Division
+office.contacts.geodb.100700000,de,Ortschaft
+office.contacts.geodb.100700000,en,Town
+office.contacts.geodb.100800000,de,Postleitzahlgebiet
+office.contacts.geodb.100800000,en,Post Code Area
+office.contacts.geodb.100800000,en_US,ZIP Code Area
+office.contacts.geodb.100900000,de,Ortsteil
+office.contacts.geodb.100900000,en,District
+office.contacts.geodb.400100000,de,Teil von
+office.contacts.geodb.400100000,en,Part of
+office.contacts.geodb.400200000,de,Ebene
+office.contacts.geodb.400200000,en,Level
+office.contacts.geodb.400300000,de,Typ
+office.contacts.geodb.400300000,en,Type
+office.contacts.geodb.500100000,de,Name
+office.contacts.geodb.500100000,en,Name
+office.contacts.geodb.500100002,de,Sortiername
+office.contacts.geodb.500100002,en,Name (sorting)
+office.contacts.geodb.500300000,de,Postleitzahl
+office.contacts.geodb.500300000,en,Post Code
+office.contacts.geodb.500300000,en_US,ZIP Code
+office.contacts.geodb.500400000,de,Telefonvorwahl
+office.contacts.geodb.500400000,en,Prefix
+office.contacts.geodb.500400000,en_US,Area Code
+office.contacts.geodb.500500000,de,KFZ-Kennzeichen
+office.contacts.geodb.500500000,en,Licence Plate Number
+office.contacts.geodb.500500000,en_US,License Plate Number
+office.contacts.geodb.500600000,de,Amtlicher Gemeindeschlüssel
+office.contacts.geodb.500600000,en,District Administration Code
+office.contacts.geodb.500700000,de,Verwaltungszusammenschluss
+office.contacts.geodb.500700000,en,Administrational Association
+office.contacts.geodb.600700000,de,Einwohnerzahl
+office.contacts.geodb.600700000,en,Population
+office.contacts.geodb.610000000,de,Fläche
+office.contacts.geodb.610000000,en,Area

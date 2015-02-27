@@ -43,6 +43,11 @@
 
     <dependencies>
         <dependency>
+            <groupId>de.kaiserpfalz-edv.office.ui.services</groupId>
+            <artifactId>kp-office-services-accounting-client</artifactId>
+        </dependency>
+
+        <dependency>
             <groupId>de.kaiserpfalz-edv.office.modules.accounting</groupId>
             <artifactId>kp-office-accounting-impl</artifactId>
         </dependency>

@@ -31,6 +31,10 @@
 
     <dependencies>
         <dependency>
+            <groupId>de.kaiserpfalz-edv.office.ui.services</groupId>
+            <artifactId>kp-office-services-core-client</artifactId>
+        </dependency>
+        <dependency>
             <groupId>de.kaiserpfalz-edv.office.core</groupId>
             <artifactId>kp-office-core-impl</artifactId>
         </dependency>

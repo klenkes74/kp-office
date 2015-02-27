@@ -18,18 +18,18 @@
              xmlns="http://xmlns.jcp.org/xml/ns/persistence"
              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://www.oracle.com/webfolder/technetwork/jsc/xml/ns/persistence/persistence_2_1.xsd">
 
-    <persistence-unit name="KPOCORE" transaction-type="RESOURCE_LOCAL">
+    <persistence-unit name="KPO" transaction-type="RESOURCE_LOCAL">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <non-jta-data-source>java:comp/env/db/kpo</non-jta-data-source>
 
-        <class>de.kaiserpfalzEdv.commons.db.ZonedDateTimeJPAConverter</class>
-        <class>de.kaiserpfalzEdv.commons.db.LocalDateJPAConverter</class>
-        <class>de.kaiserpfalzEdv.commons.db.LocalTimeJPAConverter</class>
-        <class>de.kaiserpfalzEdv.commons.db.LocalDateTimeJPAConverter</class>
-        <class>de.kaiserpfalzEdv.commons.db.OffsetDateTimeJPAConverter</class>
-        <class>de.kaiserpfalzEdv.commons.db.OffsetTimeJPAConverter</class>
-        <class>de.kaiserpfalzEdv.commons.db.PeriodJPAConverter</class>
-        <class>de.kaiserpfalzEdv.commons.db.DurationJPAConverter</class>
+        <class>de.kaiserpfalzEdv.commons.jee.db.PeriodJPAConverter</class>
+        <class>de.kaiserpfalzEdv.commons.jee.db.DurationJPAConverter</class>
+        <class>de.kaiserpfalzEdv.commons.jee.db.LocalDateJPAConverter</class>
+        <class>de.kaiserpfalzEdv.commons.jee.db.LocalTimeJPAConverter</class>
+        <class>de.kaiserpfalzEdv.commons.jee.db.LocalDateTimeJPAConverter</class>
+        <class>de.kaiserpfalzEdv.commons.jee.db.ZonedDateTimeJPAConverter</class>
+        <class>de.kaiserpfalzEdv.commons.jee.db.OffsetTimeJPAConverter</class>
+        <class>de.kaiserpfalzEdv.commons.jee.db.OffsetDateTimeJPAConverter</class>
 
 
         <properties>
