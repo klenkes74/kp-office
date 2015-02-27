@@ -32,7 +32,7 @@ import java.util.UUID;
  * @version 2015Q1
  * @since 19.02.15 06:39
  */
-class PrimanotaInfoImpl implements PrimaNotaInfo {
+class PrimaNotaInfoImpl implements PrimaNotaInfo {
     private static final long serialVersionUID = -7733476807351203505L;
 
     private final UUID tenantId;
@@ -42,7 +42,7 @@ class PrimanotaInfoImpl implements PrimaNotaInfo {
     private final int    entries;
 
 
-    public PrimanotaInfoImpl(
+    public PrimaNotaInfoImpl(
             @NotNull final UUID tenantId,
             @NotNull final UUID id,
             @NotNull final String number,
@@ -94,7 +94,7 @@ class PrimanotaInfoImpl implements PrimaNotaInfo {
         if (obj.getClass() != getClass()) {
             return false;
         }
-        PrimanotaInfoImpl rhs = (PrimanotaInfoImpl) obj;
+        PrimaNotaInfoImpl rhs = (PrimaNotaInfoImpl) obj;
         return new EqualsBuilder()
                 .append(this.id, rhs.id)
                 .isEquals();

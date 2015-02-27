@@ -23,6 +23,7 @@ import de.kaiserpfalzEdv.office.commons.IdentityHolder;
 import javax.money.MonetaryAmount;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.OffsetDateTime;
 
 /**
  * @author klenkes
@@ -33,7 +34,7 @@ public interface PostingRecord extends IdentityHolder, DisplayNumberHolder, Seri
     /**
      * @return The date of entry into this primaNota.
      */
-    LocalDate getEntryDate();
+    OffsetDateTime getEntryDate();
 
     /**
      * A manual changed date that declares the entry of this record. Normally the same as {@link #getEntryDate()} .

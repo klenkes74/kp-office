@@ -19,7 +19,7 @@ package de.kaiserpfalzEdv.office.ui.accounting.journal.test;
 import de.kaiserpfalzEdv.commons.test.SpringTestNGBase;
 import de.kaiserpfalzEdv.office.accounting.postingRecord.PostingRecord;
 import de.kaiserpfalzEdv.office.accounting.primaNota.Primanota;
-import de.kaiserpfalzEdv.office.accounting.primaNota.impl.PrimanotaDataLoader;
+import de.kaiserpfalzEdv.office.accounting.primaNota.impl.PrimaNotaDataLoader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.test.context.ContextConfiguration;
@@ -39,7 +39,7 @@ public class PrimanotaTest extends SpringTestNGBase {
     private static final Logger LOG = LoggerFactory.getLogger(PrimanotaTest.class);
 
     @Inject
-    private PrimanotaDataLoader service;
+    private PrimaNotaDataLoader service;
 
     public PrimanotaTest() {
         super(PrimanotaTest.class, LOG);

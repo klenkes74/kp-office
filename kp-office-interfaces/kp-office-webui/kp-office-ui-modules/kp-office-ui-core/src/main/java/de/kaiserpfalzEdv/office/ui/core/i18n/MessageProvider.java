@@ -16,14 +16,13 @@
 
 package de.kaiserpfalzEdv.office.ui.core.i18n;
 
-import de.kaiserpfalzEdv.office.core.i18n.impl.SpringMessageProviderBridge;
+import de.kaiserpfalzEdv.office.clients.core.i18n.SpringMessageProviderBridge;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.annotation.PreDestroy;
 import javax.inject.Inject;
 import javax.inject.Named;
-import javax.validation.constraints.NotNull;
 import java.text.MessageFormat;
 import java.util.Locale;
 
@@ -39,7 +38,7 @@ public class MessageProvider implements org.vaadin.spring.i18n.MessageProvider {
     private SpringMessageProviderBridge provider;
 
     @Inject
-    public MessageProvider(@NotNull SpringMessageProviderBridge provider) {
+    public MessageProvider(SpringMessageProviderBridge provider) {
         this.provider = provider;
 
         LOG.trace("Created/Initialized: {}", this);

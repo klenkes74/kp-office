@@ -1,41 +1,64 @@
-KEY_,LANGUAGE_,VALUE_
-office.ui.accounting.defaultCurrency,de,Buchhaltungswährung
-office.ui.accounting.defaultCurrency,en,Default posting currency
-office.ui.accounting.primanota.button.name,de,Primanota
-office.ui.accounting.primanota.button.name,en,Primanota
-office.ui.accounting.primanota.button.desription,de,Öffnet/Schließt die Primanota
-office.ui.accounting.primanota.button.desription,en,Öffnet/Schließt die Primanota
-office.ui.accounting.primanota.id,de,Interne IdNr.
-office.ui.accounting.primanota.id,en,Internal ID
-office.ui.accounting.primanota.nummer,de,Primanota Nr.
-office.ui.accounting.primanota.nummer,en,Primanota No.
-office.ui.accounting.primanota.name,de,Primanota Name
-office.ui.accounting.primanota.name,en,Primanota Name
-office.ui.accounting.primanota.column.id,de,Interne IdNr.
-office.ui.accounting.primanota.column.id,en,Internal ID
-office.ui.accounting.primanota.column.entryId,de,Pagina Nr.
-office.ui.accounting.primanota.column.entryId,en,Pagina No.
-office.ui.accounting.primanota.column.entryDate,de,Erfassungsdatum
-office.ui.accounting.primanota.column.entryDate,en,Entry Date
-office.ui.accounting.primanota.column.accountingDate,de,Buchungsdatum
-office.ui.accounting.primanota.column.accountingDate,en,Posting Date
-office.ui.accounting.primanota.column.valutaDate,de,Wertstellungsdatum
-office.ui.accounting.primanota.column.valutaDate,en,Valuta Date
-office.ui.accounting.primanota.column.postingText,de,Buchungstext
-office.ui.accounting.primanota.column.postingText,en,Posting Text
-office.ui.accounting.primanota.column.postingText2,de,Buchungstext 2
-office.ui.accounting.primanota.column.postingText2,en,Posting Text 2
-office.ui.accounting.primanota.column.documentNumber,de,Belegnummer
-office.ui.accounting.primanota.column.documentNumber,en,Document No.
-office.ui.accounting.primanota.column.documentNumber2,de,Belegnummer 2
-office.ui.accounting.primanota.column.documentNumber2,en,Document No. 2
-office.ui.accounting.primanota.column.documentDate,de,Belegdatum
-office.ui.accounting.primanota.column.documentDate,en,Document Date
-office.ui.accounting.primanota.column.documentAmount,de,Belegwert
-office.ui.accounting.primanota.column.documentAmount,en,Document Value
-office.ui.accounting.primanota.column.debittedAccount,de,SOLL-Konto
-office.ui.accounting.primanota.column.debittedAccount,en,DEBIT Account
-office.ui.accounting.primanota.column.credittedAccount,de,HABEN-Konto
-office.ui.accounting.primanota.column.credittedAccount,en,CREDIT Account
-office.ui.accounting.primanota.column.amount,de,Buchungswert
-office.ui.accounting.primanota.column.amount,en,Posting Value
+key_,language_,value_
+office.core.application,de,Kaiserpfalz Office
+office.core.application,en,Kaiserpfalz Office
+office.core.version,de,Version
+office.core.version,en,Version
+office.core.module,de,Modul
+office.core.module,en,Module
+office.core.label.tenant,de,Mandant
+office.core.label.tenant,en,Tenant
+office.core.label.id,de,ID
+office.core.label.id,en,ID
+office.core.label.display_number,de,Nummer
+office.core.label.display_number,en,Number
+office.core.label.display_name,de,Name
+office.core.label.display_name,en,Name
+office.core.label.hidden,de,Versteckt
+office.core.label.hidden,en,Hidden
+office.core.label.deleted,de,Gelöscht
+office.core.label.deleted,en,Deleted
+office.module.contacts,de,Adressen
+office.module.contacts,en,Contacts
+office.module.files,de,Akten
+office.module.files,en,Files
+office.module.documents,de,Dokumente
+office.module.documents,en,Documents
+office.module.finance,de,Finanzen
+office.module.finance,en,Finance
+office.module.accounting,de,Buchhaltung
+office.module.accounting,en,Accounting
+office.licence.id,de,Lizenz-Nr.
+office.licence.id,en,Licence No.
+office.licence.id,en_US,License No.
+office.licence.key,de,Lizenzschlüssel
+office.licence.key,en,Licence Key
+office.licence.key,en_US,License Key
+office.licence.issuer,de,Lizenzgeber
+office.licence.issuer,en,Licence Issuer
+office.licence.issuer,en_US,License Issuer
+office.licence.licencee,de,Lizenznehmer
+office.licence.licencee,en,Licencee
+office.licence.licencee,en_US,Licensee
+office.licence.date.issued,de,Lizenzierungsdatum
+office.licence.date.issued,en,Licence issued
+office.licence.date.issued,en_US,License issued
+office.licence.valid_from,de,gültig ab
+office.licence.valid_from,en,valid from 
+office.licence.valid_till,de,gültig bis
+office.licence.valid_till,en,valid till
+office.security.identity,de,Person
+office.security.identity,en,Identity
+office.security.account,de,Anmeldename
+office.security.account,en,Username
+office.security.password,de,Paßwort
+office.security.password,en,Password
+office.security.role,de,Rolle
+office.security.role,en,Role
+office.security.login_failed.short,de,Anmeldung fehlgeschlagen!
+office.security.login_failed.short,en,Login failed!
+office.security.login_failed.long,de,Die Anmeldung ist fehlgeschlagen. Bitte prüfen Sie den Anmeldenamen und das Passwort.
+office.security.login_failed.long,en,The login failed. Please check username and password!
+office.security.ticket_failed.short,de,Anmeldung fehlgeschlagen!
+office.security.ticket_failed.short,en,Login failed!
+office.security.ticket_failed.long,de,Ihre Anmeldung ist abgelaufen. Bitte prüfen Sie ihre Anmeldung!
+office.security.ticket_failed.long,en,Your login expired. Please check your login!

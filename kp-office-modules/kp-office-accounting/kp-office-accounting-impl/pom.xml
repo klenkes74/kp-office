@@ -156,4 +156,18 @@
             <artifactId>spring-test</artifactId>
         </dependency>
     </dependencies>
+
+    <profiles>
+        <profile>
+            <id>init-db</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.liquibase</groupId>
+                        <artifactId>liquibase-maven-plugin</artifactId>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 </project>

@@ -33,8 +33,8 @@ import static org.apache.commons.lang3.StringUtils.isBlank;
  * @version 2015Q1
  * @since 19.02.15 06:44
  */
-public class PrimanotaInfoBuilder implements Builder<PrimaNotaInfo> {
-    private static final Logger LOG = LoggerFactory.getLogger(PrimanotaInfoBuilder.class);
+public class PrimaNotaInfoBuilder implements Builder<PrimaNotaInfo> {
+    private static final Logger LOG = LoggerFactory.getLogger(PrimaNotaInfoBuilder.class);
 
     private UUID tenantId;
     private UUID   id;
@@ -46,7 +46,7 @@ public class PrimanotaInfoBuilder implements Builder<PrimaNotaInfo> {
     public PrimaNotaInfo build() {
         validate();
 
-        return new PrimanotaInfoImpl(tenantId, id, number, name, entries);
+        return new PrimaNotaInfoImpl(tenantId, id, number, name, entries);
     }
 
     public void validate() {
@@ -64,7 +64,7 @@ public class PrimanotaInfoBuilder implements Builder<PrimaNotaInfo> {
     }
 
 
-    public PrimanotaInfoBuilder withJournal(@NotNull final PrimaNotaInfo journal) {
+    public PrimaNotaInfoBuilder withJournal(@NotNull final PrimaNotaInfo journal) {
         withTenantId(journal.getTenantId());
         withId(journal.getId());
         withNumber(journal.getDisplayNumber());
@@ -75,31 +75,31 @@ public class PrimanotaInfoBuilder implements Builder<PrimaNotaInfo> {
     }
 
 
-    public PrimanotaInfoBuilder withTenantId(final UUID tenantId) {
+    public PrimaNotaInfoBuilder withTenantId(final UUID tenantId) {
         this.tenantId = tenantId;
 
         return this;
     }
 
-    public PrimanotaInfoBuilder withId(final UUID id) {
+    public PrimaNotaInfoBuilder withId(final UUID id) {
         this.id = id;
 
         return this;
     }
 
-    public PrimanotaInfoBuilder withNumber(final String number) {
+    public PrimaNotaInfoBuilder withNumber(final String number) {
         this.number = number;
 
         return this;
     }
 
-    public PrimanotaInfoBuilder withName(final String name) {
+    public PrimaNotaInfoBuilder withName(final String name) {
         this.name = name;
 
         return this;
     }
 
-    public PrimanotaInfoBuilder withEntries(final int entries) {
+    public PrimaNotaInfoBuilder withEntries(final int entries) {
         this.entries = entries;
 
         return this;

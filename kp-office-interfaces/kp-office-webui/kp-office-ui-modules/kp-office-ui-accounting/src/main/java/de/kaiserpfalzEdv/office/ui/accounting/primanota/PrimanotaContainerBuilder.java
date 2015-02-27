@@ -19,7 +19,7 @@ package de.kaiserpfalzEdv.office.ui.accounting.primanota;
 import de.kaiserpfalzEdv.commons.util.BuilderException;
 import de.kaiserpfalzEdv.office.accounting.chartsofaccounts.Account;
 import de.kaiserpfalzEdv.office.accounting.chartsofaccounts.AccountMapping;
-import de.kaiserpfalzEdv.office.accounting.primaNota.impl.PrimanotaDataLoader;
+import de.kaiserpfalzEdv.office.accounting.primaNota.impl.PrimaNotaDataLoader;
 import org.apache.commons.lang3.builder.Builder;
 import org.vaadin.addons.lazyquerycontainer.LazyQueryContainer;
 import org.vaadin.addons.lazyquerycontainer.LazyQueryDefinition;
@@ -37,7 +37,7 @@ import java.util.UUID;
  */
 public class PrimanotaContainerBuilder implements Builder<LazyQueryContainer> {
     private UUID                primanotaId;
-    private PrimanotaDataLoader client;
+    private PrimaNotaDataLoader client;
     private AccountMapping      mapping;
 
     @Override
@@ -85,7 +85,7 @@ public class PrimanotaContainerBuilder implements Builder<LazyQueryContainer> {
         return this;
     }
 
-    public PrimanotaContainerBuilder withClient(@NotNull final PrimanotaDataLoader client) {
+    public PrimanotaContainerBuilder withClient(@NotNull final PrimaNotaDataLoader client) {
         this.client = client;
 
         return this;

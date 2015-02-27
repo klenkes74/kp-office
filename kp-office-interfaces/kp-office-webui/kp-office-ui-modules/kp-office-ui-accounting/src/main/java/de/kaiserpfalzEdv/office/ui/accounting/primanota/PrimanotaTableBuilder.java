@@ -19,7 +19,7 @@ package de.kaiserpfalzEdv.office.ui.accounting.primanota;
 import com.vaadin.ui.Table;
 import de.kaiserpfalzEdv.commons.util.BuilderException;
 import de.kaiserpfalzEdv.office.accounting.chartsofaccounts.impl.AccountMappingLocator;
-import de.kaiserpfalzEdv.office.accounting.primaNota.impl.PrimanotaDataLoader;
+import de.kaiserpfalzEdv.office.accounting.primaNota.impl.PrimaNotaDataLoader;
 import org.apache.commons.lang3.builder.Builder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -57,7 +57,7 @@ public class PrimanotaTableBuilder implements Builder<Table> {
 
     private I18N i18n;
 
-    private PrimanotaDataLoader client;
+    private PrimaNotaDataLoader client;
     private AccountMappingLocator mappingLocator;
 
     private UUID journalId;
@@ -65,7 +65,7 @@ public class PrimanotaTableBuilder implements Builder<Table> {
 
     @Inject
     public PrimanotaTableBuilder(
-            final PrimanotaDataLoader client,
+            final PrimaNotaDataLoader client,
             final AccountMappingLocator mappingLocator,
             final I18N i18n
     ) {

@@ -47,13 +47,13 @@ import java.util.UUID;
  * @since 19.02.15 06:32
  */
 @Named
-public class PrimanotaDataLoader {
-    private static final Logger LOG = LoggerFactory.getLogger(PrimanotaDataLoader.class);
+public class PrimaNotaDataLoader {
+    private static final Logger LOG = LoggerFactory.getLogger(PrimaNotaDataLoader.class);
 
     private final HashMap<UUID, Primanota> journals = new HashMap<>(5);
 
 
-    public PrimanotaDataLoader() {
+    public PrimaNotaDataLoader() {
         LOG.trace("Created: {}", this);
     }
 
@@ -95,7 +95,7 @@ public class PrimanotaDataLoader {
 
 
     private void generateFakeJournal() {
-        Primanota fake = new PrimanotaImpl(TenantIdHolder.DEFAULT_TENANT_ID, UUID.fromString("400b4f5d-216e-4457-9dce-79859d8396af"), "1", "Journal 1");
+        Primanota fake = new PrimaNotaImpl(TenantIdHolder.DEFAULT_TENANT_ID, UUID.fromString("400b4f5d-216e-4457-9dce-79859d8396af"), "1", "Journal 1");
 
         Account debitAccount = new AccountBuilder()
                 .withTenantId(TenantIdHolder.DEFAULT_TENANT_ID)

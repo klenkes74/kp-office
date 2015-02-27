@@ -21,6 +21,7 @@ import de.kaiserpfalzEdv.commons.jee.paging.Page;
 import de.kaiserpfalzEdv.commons.jee.paging.PageDO;
 import de.kaiserpfalzEdv.commons.jee.paging.Pageable;
 import de.kaiserpfalzEdv.commons.jee.paging.PageableDO;
+import de.kaiserpfalzEdv.office.commons.KPO;
 import de.kaiserpfalzEdv.office.contacts.geodb.PostCode;
 import de.kaiserpfalzEdv.office.contacts.geodb.spi.InvalidQueryException;
 import de.kaiserpfalzEdv.office.contacts.geodb.spi.NoSuchPostCodeException;
@@ -31,12 +32,15 @@ import org.springframework.cache.annotation.Cacheable;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import static de.kaiserpfalzEdv.office.commons.KPO.Type.Implementation;
+
 /**
  * @author klenkes
  * @version 2015Q1
  * @since 25.02.15 14:04
  */
 @Named
+@KPO(Implementation)
 public class KPOInternalPostCodeProvider implements PostCodeProvider {
     @Inject
     private PostCodeRepository repository;

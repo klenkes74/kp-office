@@ -16,18 +16,22 @@
 
 package de.kaiserpfalzEdv.office.accounting.postingRecord.impl;
 
+import de.kaiserpfalzEdv.office.accounting.DatabaseMoney;
 import de.kaiserpfalzEdv.office.accounting.chartsofaccounts.Account;
 import de.kaiserpfalzEdv.office.accounting.postingRecord.PostingRecord;
 import de.kaiserpfalzEdv.office.core.impl.KPOEntity;
 
 import javax.money.MonetaryAmount;
+import javax.persistence.AttributeOverride;
+import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
-import javax.persistence.Entity;
+import javax.persistence.Embedded;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-import javax.persistence.Transient;
+import javax.persistence.MappedSuperclass;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
+import java.time.OffsetDateTime;
 import java.util.UUID;
 
 /**
@@ -35,46 +39,55 @@ import java.util.UUID;
  * @version 2015Q1
  * @since 18.02.15 16:18
  */
-@Entity
+@MappedSuperclass
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-public class PostingRecordImpl extends KPOEntity implements PostingRecord {
+public abstract class PostingRecordImpl extends KPOEntity implements PostingRecord {
 
-    @Column(name = "ENTRY_DATE_")
-    private LocalDate entryDate;
+    @Column(name = "timestamp_entry_")
+    private OffsetDateTime entryDate;
 
-    @Column(name = "ACCOUNTING_DATE_")
+    @Column(name = "date_accounting_")
     private LocalDate accountingDate;
 
-    @Column(name = "VALUTA_DATE_")
+    @Column(name = "date_valuta_")
     private LocalDate valutaDate;
 
 
-    @Column(name = "DOCUMENT_DATE_")
+    @Column(name = "document_date_")
     private LocalDate documentDate;
 
-    @Transient
-    private MonetaryAmount documentAmount;
+    @AttributeOverrides({
+            @AttributeOverride(name = "value", column = @Column(name = "document_amount_value_")),
+            @AttributeOverride(name = "currency", column = @Column(name = "document_amount_currency_"))
+    })
+    @Embedded
+    private DatabaseMoney documentAmount;
 
-
+    @Column(name = "notice", length = 255)
     private String notice;
 
-    @Transient
+    @Column(name = "account_debitted_", nullable = false)
     private Account accountDebitted;
-    @Transient
+    @Column(name = "account_creditted_", nullable = false)
     private Account accountCreditted;
 
-    @Transient
-    private MonetaryAmount amount;
+    @AttributeOverrides({
+            @AttributeOverride(name = "value", column = @Column(name = "entry_amount_value_")),
+            @AttributeOverride(name = "currency", column = @Column(name = "entry_amount_currency_"))
+    })
+    @Embedded
+    private DatabaseMoney entryAmount;
 
 
+    @SuppressWarnings("deprecation")
     @Deprecated // Only for JAX-B, Jaxon, JPA, ...
     protected PostingRecordImpl() {}
 
 
-    PostingRecordImpl(
+    public PostingRecordImpl(
             @NotNull final UUID id,
             @NotNull final String entryId,
-            @NotNull final LocalDate entryDate,
+            @NotNull final OffsetDateTime entryDate,
             @NotNull final String documentNumber,
             @NotNull final LocalDate documentDate,
             @NotNull final MonetaryAmount documentAmount,
@@ -84,20 +97,20 @@ public class PostingRecordImpl extends KPOEntity implements PostingRecord {
     ) {
         super(id, documentNumber, entryId);
         this.entryDate = entryDate;
-        this.accountingDate = entryDate;
-        this.valutaDate = entryDate;
+        this.accountingDate = entryDate.toLocalDate();
+        this.valutaDate = entryDate.toLocalDate();
 
         this.documentDate = documentDate;
-        this.documentAmount = documentAmount;
+        this.documentAmount = new DatabaseMoney(documentAmount);
 
         this.accountDebitted = accountDebitted;
         this.accountCreditted = accountCreditted;
-        this.amount = accountingAmount;
+        this.entryAmount = new DatabaseMoney(accountingAmount);
     }
 
 
     @Override
-    public LocalDate getEntryDate() {
+    public OffsetDateTime getEntryDate() {
         return entryDate;
     }
 
@@ -133,7 +146,7 @@ public class PostingRecordImpl extends KPOEntity implements PostingRecord {
 
     @Override
     public MonetaryAmount getDocumentAmount() {
-        return documentAmount;
+        return documentAmount.getMoney();
     }
 
 
@@ -158,6 +171,6 @@ public class PostingRecordImpl extends KPOEntity implements PostingRecord {
 
     @Override
     public MonetaryAmount getPostingAmount() {
-        return amount;
+        return entryAmount.getMoney();
     }
 }

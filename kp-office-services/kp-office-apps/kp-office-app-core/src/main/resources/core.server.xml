@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  ~ Copyright 2015 Kaiserpfalz EDV-Service, Roland T. Lichti
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:rabbit="http://www.springframework.org/schema/rabbit"
+       xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+                           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+                           http://www.springframework.org/schema/rabbit http://www.springframework.org/schema/rabbit/spring-rabbit.xsd
+                           http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd
+       ">
+
+    <context:component-scan base-package="de.kaiserpfalzEdv.office.core,de.kaiserpfalzEdv.office.services.core">
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Repository"/>
+    </context:component-scan>
+    <jpa:repositories base-package="de.kaiserpfalzEdv.office.core"/>
+
+    <context:spring-configured/>
+    <context:annotation-config/>
+    <tx:annotation-driven mode="proxy"/>
+
+    <context:load-time-weaver weaver-class="org.springframework.instrument.classloading.InstrumentationLoadTimeWeaver"/>
+
+    <import resource="classpath*:/beans-cache.xml"/>
+
+
+    <rabbit:connection-factory id="amqpConnectionFactory" host="${amqp.host}" port="${amqp.port}"
+                               virtual-host="${amqp.virtual}" username="${amqp.user}" password="${amqp.password}"/>
+    <rabbit:admin connection-factory="amqpConnectionFactory"/>
+    <rabbit:template id="amqpTemplate" connection-factory="amqConnectionFactory"/>
+
+
+    <rabbit:listener-container connection-factory="amqpConnectionFactory">
+        <rabbit:listener queues="core.i18n" ref="i18nListener"/>
+        <rabbit:listener queues="core.tenants" ref="tenantsListener"/>
+    </rabbit:listener-container>
+
+    <bean id="i18nListener" class="org.springframework.amqp.remoting.service.AmqpInvokerServiceExporter">
+        <property name="serviceInterface" value="de.kaiserpfalzEdv.office.core.i18n.TranslationProvider"/>
+        <property name="service" ref="translationProviderImpl"/>
+        <property name="amqpTemplate" ref="amqpTemplate"/>
+    </bean>
+    <rabbit:queue id="core.i18n" name="core.i18n.${info.app.hostName}" durable="false">
+        <rabbit:queue-arguments>
+            <entry key="x-message-ttl" value="300000" value-type="java.lang.Long"/>
+        </rabbit:queue-arguments>
+    </rabbit:queue>
+
+
+    <bean id="tenantsListener" class="org.springframework.amqp.remoting.service.AmqpInvokerServiceExporter">
+        <property name="serviceInterface" value="de.kaiserpfalzEdv.office.core.tenants.TenantService"/>
+        <property name="service" ref="tenantServiceImpl"/>
+        <property name="amqpTemplate" ref="amqpTemplate"/>
+    </bean>
+    <rabbit:queue id="core.tenants" name="core.tenants.${info.app.hostName}" durable="false">
+        <rabbit:queue-arguments>
+            <entry key="x-message-ttl" value="300000" value-type="java.lang.Long"/>
+        </rabbit:queue-arguments>
+    </rabbit:queue>
+</beans>

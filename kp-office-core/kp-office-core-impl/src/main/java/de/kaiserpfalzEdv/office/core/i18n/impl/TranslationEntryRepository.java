@@ -25,5 +25,5 @@ import org.springframework.data.repository.PagingAndSortingRepository;
  * @since 23.02.15 10:39
  */
 @Cacheable("i18n")
-public interface TranslationEntryRepository extends PagingAndSortingRepository<TranslationEntry, TranslationKey> {
+public interface TranslationEntryRepository extends PagingAndSortingRepository<TranslationEntryImpl, TranslationKey> {
 }

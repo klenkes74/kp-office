@@ -32,6 +32,9 @@
 
     <properties>
         <project.root>../../..</project.root>
+
+        <database.changelog>${project.basedir}/target/classes/ddl/db-changelog.xml</database.changelog>
+        <setupDatabase>false</setupDatabase>
     </properties>
 
 

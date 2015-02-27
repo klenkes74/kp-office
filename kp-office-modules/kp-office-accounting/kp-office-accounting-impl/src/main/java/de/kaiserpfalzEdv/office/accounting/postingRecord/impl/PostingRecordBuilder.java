@@ -28,6 +28,7 @@ import javax.money.convert.CurrencyConversion;
 import javax.money.convert.MonetaryConversions;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.UUID;
 
@@ -39,7 +40,7 @@ import static org.apache.commons.lang3.StringUtils.isNotBlank;
  * @version 2015Q1
  * @since 18.02.15 21:05
  */
-public class PostingRecordBuilder implements Builder<PostingRecord> {
+public abstract class PostingRecordBuilder<T extends PostingRecordImpl> implements Builder<T> {
     private static final Logger             LOG                = LoggerFactory.getLogger(PostingRecordBuilder.class);
     private static final CurrencyConversion DEFAULT_CONVERSION = MonetaryConversions.getConversion("EUR", "ECB");
 
@@ -48,7 +49,7 @@ public class PostingRecordBuilder implements Builder<PostingRecord> {
 
     private UUID      id;
     private String    entryId;
-    private LocalDate entryDate;
+    private OffsetDateTime entryDate;
     private LocalDate accountingDate;
     private LocalDate valutaDate;
 
@@ -63,20 +64,10 @@ public class PostingRecordBuilder implements Builder<PostingRecord> {
     private String notice;
 
     @Override
-    public PostingRecord build() {
+    public T build() {
         validate();
 
-        PostingRecordImpl result = new PostingRecordImpl(
-                id,
-                entryId,
-                entryDate,
-                documentNumber,
-                documentDate,
-                documentAmount,
-                accountDebitted,
-                accountCreditted,
-                accountingAmount
-        );
+        T result = createPostingRecord(id, entryId, entryDate, documentDate, documentNumber, documentAmount, accountDebitted, accountCreditted, accountingAmount);
 
         if (isNotBlank(notice)) result.setNotice(notice);
         if (valutaDate != null) result.setValutaDate(valutaDate);
@@ -84,6 +75,18 @@ public class PostingRecordBuilder implements Builder<PostingRecord> {
 
         return result;
     }
+
+    public abstract T createPostingRecord(
+            @NotNull final UUID id,
+            @NotNull final String entryId,
+            @NotNull final OffsetDateTime entryTimestamp,
+            @NotNull final LocalDate documentDate,
+            @NotNull final String documentNumber,
+            @NotNull final MonetaryAmount documentAmount,
+            @NotNull final Account accountDebitted,
+            @NotNull final Account accountCreditted,
+            @NotNull final MonetaryAmount accountingAmount
+    );
 
     public void validate() {
         ArrayList<String> failures = new ArrayList<>();
@@ -140,7 +143,7 @@ public class PostingRecordBuilder implements Builder<PostingRecord> {
         return this;
     }
 
-    public PostingRecordBuilder withEntryDate(final LocalDate entryDate) {
+    public PostingRecordBuilder withEntryDate(final OffsetDateTime entryDate) {
         this.entryDate = entryDate;
 
         return this;

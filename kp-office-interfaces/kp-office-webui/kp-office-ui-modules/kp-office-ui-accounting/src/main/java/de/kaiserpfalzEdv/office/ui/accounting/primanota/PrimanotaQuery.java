@@ -23,7 +23,7 @@ import de.kaiserpfalzEdv.office.accounting.chartsofaccounts.Account;
 import de.kaiserpfalzEdv.office.accounting.chartsofaccounts.AccountMapping;
 import de.kaiserpfalzEdv.office.accounting.postingRecord.PostingRecord;
 import de.kaiserpfalzEdv.office.accounting.primaNota.Primanota;
-import de.kaiserpfalzEdv.office.accounting.primaNota.impl.PrimanotaDataLoader;
+import de.kaiserpfalzEdv.office.accounting.primaNota.impl.PrimaNotaDataLoader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.vaadin.addons.lazyquerycontainer.LazyQueryDefinition;
@@ -153,14 +153,14 @@ public class PrimanotaQuery implements Query {
     }
 
     public static class Factory implements QueryFactory {
-        private PrimanotaDataLoader client;
+        private PrimaNotaDataLoader client;
         private AccountMapping      mapping;
 
         private UUID journalId;
 
         public Factory(
                 @NotNull final UUID journalId,
-                @NotNull final PrimanotaDataLoader client,
+                @NotNull final PrimaNotaDataLoader client,
                 @NotNull final AccountMapping mapping
         ) {
             this.client = client;

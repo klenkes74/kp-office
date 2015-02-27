@@ -25,6 +25,7 @@
 
     <!--<include file="../../classes/ddl/initialize-database.xml" relativeToChangelogFile="true"/>-->
     <include file="../../classes/ddl/version-0_1_0.xml" relativeToChangelogFile="true"/>
+    <include file="../../classes/ddl/version-0_2_0.xml" relativeToChangelogFile="true"/>
 
     <include file="load-testdata.xml" relativeToChangelogFile="true"/>
 </databaseChangeLog>

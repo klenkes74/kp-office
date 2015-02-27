@@ -16,7 +16,8 @@
 
 package de.kaiserpfalzEdv.office.core.i18n.impl;
 
-import de.kaiserpfalzEdv.office.core.KPO;
+import de.kaiserpfalzEdv.office.commons.KPO;
+import de.kaiserpfalzEdv.office.core.i18n.TranslationEntry;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.cache.annotation.Cacheable;
@@ -29,6 +30,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import java.util.Locale;
 
+import static de.kaiserpfalzEdv.office.commons.KPO.Type.Implementation;
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
 
 /**
@@ -37,7 +39,7 @@ import static org.apache.commons.lang3.StringUtils.isNotBlank;
  * @since 23.02.15 10:21
  */
 @Named
-@KPO
+@KPO(Implementation)
 public class DatabaseMessageSource implements MessageSource {
     private static final Logger LOG = LoggerFactory.getLogger(DatabaseMessageSource.class);
 
@@ -80,18 +82,21 @@ public class DatabaseMessageSource implements MessageSource {
         TranslationEntry entry = null;
 
         if (isNotBlank(locale.getVariant())) {
+            LOG.debug("Looking up in {}: {}", locale.getLanguage() + "_" + locale.getCountry() + "." + locale.getVariant(), code);
             entry = repository.findOne(
                     new TranslationKey(code, locale.getLanguage() + "_" + locale.getCountry() + "." + locale.getVariant())
             );
         }
 
         if (entry == null && isNotBlank(locale.getCountry())) {
+            LOG.debug("Looking up in {}: {}", locale.getLanguage() + "_" + locale.getCountry(), code);
             entry = repository.findOne(
                     new TranslationKey(code, locale.getLanguage() + "_" + locale.getCountry())
             );
         }
 
         if (entry == null) {
+            LOG.debug("Looking up in {}: {}", locale.getLanguage(), code);
             entry = repository.findOne(
                     new TranslationKey(code, locale.getLanguage())
             );

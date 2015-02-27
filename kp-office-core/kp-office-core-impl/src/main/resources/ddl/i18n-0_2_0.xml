@@ -25,33 +25,29 @@
     <changeSet id="kpo-i18n-store-inititial" author="klenkes74">
         <comment>The I18N translation table.</comment>
 
-        <createTable tableName="I18N_TRANSLATIONS_">
-            <column name="KEY_" type="VARCHAR2(100)">
+        <createTable tableName="i18n_translations">
+            <column name="key_" type="VARCHAR2(100)">
                 <constraints nullable="false"/>
             </column>
-            <column name="LANGUAGE_" type="VARCHAR2(3)">
+            <column name="language_" type="VARCHAR2(10)">
                 <constraints nullable="false"/>
             </column>
-            <column name="VALUE_" type="VARCHAR2(2000)"/>
+            <column name="value_" type="LONGTEXT"/>
         </createTable>
 
         <addPrimaryKey
-                tableName="I18N_TRANSLATIONS_"
-                columnNames="KEY_,LANGUAGE_"
-                constraintName="I18N_TRANSLATIONS_PK"/>
-    </changeSet>
-
-    <changeSet id="kpo-i18n-tag-initial" author="klenkes74">
-        <tagDatabase tag="kpo-tenant-initial"/>
+                tableName="i18n_translations"
+                columnNames="key_,language_"
+                constraintName="i18n_translations_pk"/>
     </changeSet>
 
     <changeSet id="kpo-i18n-load-initial" author="klenkes74">
         <comment>Load default translations.</comment>
 
-        <loadData tableName="I18N_TRANSLATIONS_" file="data/I18N-initial.csv"/>
+        <loadData tableName="i18n_translations" file="data/I18N-initial.csv"/>
     </changeSet>
 
-    <changeSet id="kpo-i18n-tag-initial-data" author="klenkes74">
-        <tagDatabase tag="kpo-tenant-data-loaded"/>
+    <changeSet id="kpo-i18n-tag-initial" author="klenkes74">
+        <tagDatabase tag="kpo-i18n-initialized"/>
     </changeSet>
 </databaseChangeLog>

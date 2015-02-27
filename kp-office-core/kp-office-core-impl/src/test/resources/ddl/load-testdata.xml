@@ -26,11 +26,11 @@
     <changeSet id="kpo-core-testdata" author="klenkes74">
         <comment>Load default tenant.</comment>
 
-        <loadData schemaName="SECURITY" tableName="IDENTITIES" file="data/IDENTITIES-test.csv"/>
-        <loadData schemaName="SECURITY" tableName="ACCOUNTS" file="data/ACCOUNTS-test.csv"/>
-        <loadData schemaName="SECURITY" tableName="ROLES" file="data/ROLES-test.csv"/>
-        <loadData schemaName="SECURITY" tableName="ACCOUNTS_ROLES" file="data/ACCOUNTS_ROLES-test.csv"/>
-        <loadData schemaName="SECURITY" tableName="TICKETS" file="data/TICETS-test.csv"/>
+        <loadData tableName="identities" file="data/IDENTITIES-test.csv"/>
+        <loadData tableName="accounts" file="data/ACCOUNTS-test.csv"/>
+        <loadData tableName="roles" file="data/ROLES-test.csv"/>
+        <loadData tableName="accounts_roles" file="data/ACCOUNTS_ROLES-test.csv"/>
+        <loadData tableName="tickets" file="data/TICETS-test.csv"/>
     </changeSet>
 
 

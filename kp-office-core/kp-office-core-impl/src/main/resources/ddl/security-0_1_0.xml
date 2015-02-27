@@ -26,127 +26,135 @@
         <comment>The initial user tables.</comment>
 
 
-        <createTable tableName="IDENTITIES" >
-            <column name="ID_" type="VARCHAR2(50)">
-                <constraints primaryKey="true" primaryKeyName="IDENTITIES_USER_PK"/>
+        <createTable tableName="identities">
+            <column name="id_" type="VARCHAR2(50)">
+                <constraints primaryKey="true" primaryKeyName="identities_pk"/>
             </column>
 
-            <column name="TENANT_" type="VARCHAR2(50)">
+            <column name="tenant_" type="VARCHAR2(50)">
                 <constraints nullable="false"/>
             </column>
 
-            <column name="DISPLAY_NAME_" type="VARCHAR2(100)">
-                <constraints unique="true" uniqueConstraintName="USER_NAME_UK"/>
-            </column>
+            <column name="display_name_" type="VARCHAR2(100)"/>
 
-            <column name="DISPLAY_NUMBER_" type="VARCHAR2(100)">
-                <constraints unique="true" uniqueConstraintName="USER_NUMBER_UK"/>
-            </column>
+            <column name="display_number_" type="VARCHAR2(100)"/>
 
-            <column name="HIDDEN_" type="BOOLEAN" />
+            <column name="hidden_" type="BOOLEAN"/>
         </createTable>
 
 
-        <createTable tableName="ACCOUNTS" >
-            <column name="DTYPE" type="VARCHAR2(20)"><constraints nullable="false"/></column>
-
-            <column name="ID_" type="VARCHAR2(50)">
-                <constraints primaryKey="true" primaryKeyName="ACCOUNTS_USER_PK"/>
-            </column>
-            <column name="TENANT_" type="VARCHAR2(50)"><constraints nullable="false"/></column>
-
-            <column name="DISPLAY_NAME_" type="VARCHAR2(100)">
-                <constraints unique="true" uniqueConstraintName="ACCOUNTS_NAME_UK"/>
+        <createTable tableName="accounts">
+            <column name="dtype" type="VARCHAR2(20)">
+                <constraints nullable="false"/>
             </column>
 
-            <column name="DISPLAY_NUMBER_" type="VARCHAR2(100)">
-                <constraints unique="true" uniqueConstraintName="ACCOUNTS_NUMBER_UK"/>
+            <column name="id_" type="VARCHAR2(50)">
+                <constraints primaryKey="true" primaryKeyName="accounts_PK"/>
+            </column>
+            <column name="tenant_" type="VARCHAR2(50)">
+                <constraints nullable="false"/>
             </column>
 
-            <column name="HIDDEN_" type="BOOLEAN" />
+            <column name="display_name_" type="VARCHAR2(100)">
+                <constraints unique="true" uniqueConstraintName="accounts_name_uk"/>
+            </column>
 
-            <column name="IDENTITY_" type="VARCHAR2(50)">
+            <column name="display_number_" type="VARCHAR2(100)">
+                <constraints unique="true" uniqueConstraintName="accounts_number_uk"/>
+            </column>
+
+            <column name="hidden_" type="BOOLEAN"/>
+
+            <column name="identity_" type="VARCHAR2(50)">
                 <constraints nullable="false" deleteCascade="true"
-                             foreignKeyName="ACCOUNTS_IDENTITIES_FK" references="SECURITY.IDENTITIES(ID_)"/>
+                             foreignKeyName="accounts_identities_fk" references="identities(id_)"/>
             </column>
 
-            <column name="PASSWORD_" type="VARCHAR2(100)"><constraints nullable="false"/></column>
-            <column name="SALT_" type="VARCHAR2(20)"><constraints nullable="false"/></column>
+            <column name="password_" type="VARCHAR2(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="salt_" type="VARCHAR2(20)">
+                <constraints nullable="false"/>
+            </column>
         </createTable>
 
 
-        <createTable tableName="ROLES" >
-            <column name="DTYPE" type="VARCHAR2(20)"><constraints nullable="false"/></column>
-
-            <column name="ID_" type="VARCHAR2(50)">
-                <constraints primaryKey="true" primaryKeyName="ROLES_USER_PK"/>
-            </column>
-            <column name="TENANT_" type="VARCHAR2(50)"><constraints nullable="false"/></column>
-
-            <column name="DISPLAY_NAME_" type="VARCHAR2(100)">
-                <constraints unique="true" uniqueConstraintName="ROLES_NAME_UK"/>
+        <createTable tableName="roles">
+            <column name="dtype" type="VARCHAR2(20)">
+                <constraints nullable="false"/>
             </column>
 
-            <column name="DISPLAY_NUMBER_" type="VARCHAR2(100)">
-                <constraints unique="true" uniqueConstraintName="ROLES_NUMBER_UK"/>
+            <column name="id_" type="VARCHAR2(50)">
+                <constraints primaryKey="true" primaryKeyName="roles_pk"/>
+            </column>
+            <column name="tenant_" type="VARCHAR2(50)">
+                <constraints nullable="false"/>
             </column>
 
-            <column name="HIDDEN_" type="BOOLEAN" />
+            <column name="display_name_" type="VARCHAR2(100)"/>
+
+            <column name="display_number_" type="VARCHAR2(100)"/>
+
+            <column name="hidden_" type="BOOLEAN"/>
         </createTable>
 
-        <createTable tableName="ACCOUNTS_ROLES" >
-            <column name="ACCOUNT_ID_" type="VARCHAR2(50)">
+        <createTable tableName="accounts_roles">
+            <column name="account_id_" type="VARCHAR2(50)">
                 <constraints nullable="false" deleteCascade="true"
-                             foreignKeyName="ACCOUNTS_ROLES_ACCOUNTS_FK" references="SECURITY.ACCOUNTS(ID_)"/>
+                             foreignKeyName="accounts_roles_accounts_fk" references="accounts(id_)"/>
             </column>
-            <column name="ROLE_ID_" type="VARCHAR2(50)">
+            <column name="role_id_" type="VARCHAR2(50)">
                 <constraints nullable="false" deleteCascade="true"
-                             foreignKeyName="ACCOUNTS_ROLES_ROLES_FK" references="SECURITY.ROLES(ID_)"/>
+                             foreignKeyName="accounts_roles_roles_fk" references="roles(id_)"/>
             </column>
         </createTable>
 
 
-        <createTable tableName="TICKETS" >
-            <column name="ID_" type="VARCHAR2(50)">
+        <createTable tableName="tickets">
+            <column name="id_" type="VARCHAR2(50)">
                 <constraints primaryKey="true" primaryKeyName="TICKETS_USER_PK"/>
             </column>
-            <column name="ACCOUNT_ID_" type="VARCHAR2(50)"><constraints nullable="false"/></column>
-            <column name="CREATED_" type="VARCHAR2(39)" />
-            <column name="VALIDITY_" type="VARCHAR2(39)"><constraints nullable="false"/></column>
+            <column name="account_id_" type="VARCHAR2(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_" type="VARCHAR2(39)"/>
+            <column name="validity_" type="VARCHAR2(39)">
+                <constraints nullable="false"/>
+            </column>
         </createTable>
 
 
-        <createIndex tableName="IDENTITIES" indexName="IDENTITIES_USERS_UK"  unique="true">
-            <column name="TENANT_"/>
-            <column name="DISPLAY_NUMBER_"/>
+        <createIndex tableName="identities" indexName="identities_tenant_number_uk" unique="true">
+            <column name="tenant_"/>
+            <column name="display_number_"/>
+        </createIndex>
+        <createIndex tableName="identities" indexName="identities_tenant_name_uk" unique="true">
+            <column name="tenant_"/>
+            <column name="display_name_"/>
         </createIndex>
 
-        <createIndex tableName="ACCOUNTS" indexName="TENANTS_USERS_UK"  unique="true">
-            <column name="TENANT_"/>
-            <column name="DISPLAY_NUMBER_"/>
+        <createIndex tableName="roles" indexName="roles_tenant_number_uk" unique="true">
+            <column name="tenant_"/>
+            <column name="display_number_"/>
+        </createIndex>
+        <createIndex tableName="roles" indexName="roles_tenant_name_uk" unique="true">
+            <column name="tenant_"/>
+            <column name="display_name_"/>
         </createIndex>
     </changeSet>
-
-
-
-    <changeSet id="kpo-security-tag-initial" author="klenkes74">
-        <tagDatabase tag="kpo-security-initial"/>
-    </changeSet>
-
 
 
     <changeSet id="kpo-security-load-initial" author="klenkes74">
         <comment>Load default tenant.</comment>
 
-        <loadData  tableName="IDENTITIES" file="data/IDENTITIES-initial.csv"/>
-        <loadData  tableName="ACCOUNTS" file="data/ACCOUNTS-initial.csv"/>
-        <loadData  tableName="ROLES" file="data/ROLES-initial.csv"/>
-        <loadData  tableName="ACCOUNTS_ROLES" file="data/ACCOUNTS_ROLES-initial.csv"/>
+        <loadData tableName="identities" file="data/IDENTITIES-initial.csv"/>
+        <loadData tableName="accounts" file="data/ACCOUNTS-initial.csv"/>
+        <loadData tableName="roles" file="data/ROLES-initial.csv"/>
+        <loadData tableName="accounts_roles" file="data/ACCOUNTS_ROLES-initial.csv"/>
     </changeSet>
 
 
-
-    <changeSet id="kpo-security-tag-initial-data" author="klenkes74">
-        <tagDatabase tag="kpo-security-data-loaded"/>
+    <changeSet id="kpo-security-tag-initial" author="klenkes74">
+        <tagDatabase tag="kpo-security-initialized"/>
     </changeSet>
 </databaseChangeLog>

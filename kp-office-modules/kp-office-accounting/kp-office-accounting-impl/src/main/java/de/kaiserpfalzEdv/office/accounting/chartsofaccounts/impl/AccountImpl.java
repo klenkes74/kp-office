@@ -34,12 +34,14 @@ import static org.apache.commons.lang3.StringUtils.isNotBlank;
  * @version 2015Q1
  * @since 18.02.15 16:20
  */
-@Entity(name = "FAAccount")
+@Entity
 @Table(
-        name = "FA_ACCOUNTS",
+        schema = "accounting",
+        catalog = "accounting",
+        name = "accounts",
         uniqueConstraints = {
-                @UniqueConstraint(name = "FA_ACCOUNTS_NAME_UK", columnNames = {"TENANT_", "DISPLAY_NAME_"}),
-                @UniqueConstraint(name = "FA_ACCOUNTS_NUMBER_UK", columnNames = {"TENANT_", "DISPLAY_NUMBER_"})
+                @UniqueConstraint(name = "accounts_name_fk", columnNames = {"tenant_", "display_name_"}),
+                @UniqueConstraint(name = "accounts_number_fk", columnNames = {"tenant_", "display_number_"})
         }
 )
 public class AccountImpl extends KPOTenantHoldingEntity implements Account, Serializable {

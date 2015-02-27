@@ -23,5 +23,5 @@
             http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd
         ">
 
-    <include file="contacts-0_2_0.xml" relativeToChangelogFile="true"/>
+    <include file="contacts-geodb-0_2_0.xml" relativeToChangelogFile="true"/>
 </databaseChangeLog>

@@ -36,7 +36,7 @@ import javax.persistence.Table;
  * @since 25.02.15 14:06
  */
 @Entity(name = "GeoDbPostCode")
-@Table(name = "geodb_postcodes")
+@Table(schema = "contacts", catalog = "contacts", name = "geodb_postcodes")
 public class KPOInternalPostCodeImpl implements PostCode {
     private static final long serialVersionUID = 2529963953411493897L;
 

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  ~ Copyright 2015 Kaiserpfalz EDV-Service, Roland T. Lichti
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:rabbit="http://www.springframework.org/schema/rabbit"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/rabbit http://www.springframework.org/schema/rabbit/spring-rabbit.xsd
+       ">
+
+    <rabbit:connection-factory id="amqpConnectionFactory" host="${amqp.host}" port="${amqp.port}"
+                               virtual-host="${amqp.virtual}" username="${amqp.user}" password="${amqp.password}"/>
+    <rabbit:admin connection-factory="amqpConnectionFactory"/>
+
+
+    <bean id="i18nClientFactory" class="de.kaiserpfalzEdv.office.clients.utils.AmqpProxyFactoryBean">
+        <property name="amqpTemplate" ref="i18nAmqpTemplate"/>
+        <property name="serviceInterface" value="de.kaiserpfalzEdv.office.core.i18n.TranslationProvider"/>
+    </bean>
+    <rabbit:template id="i18nAmqpTemplate" connection-factory="amqpConnectionFactory"
+                     reply-timeout="2000" routing-key="i18n" exchange="i18n.exchange"/>
+
+    <rabbit:queue name="core.i18n" durable="false">
+        <rabbit:queue-arguments>
+            <entry key="x-message-ttl" value="300000" value-type="java.lang.Long"/>
+        </rabbit:queue-arguments>
+    </rabbit:queue>
+    <rabbit:direct-exchange name="i18n.exchange">
+        <rabbit:bindings>
+            <rabbit:binding queue="core.i18n" key="i18n"/>
+        </rabbit:bindings>
+    </rabbit:direct-exchange>
+
+
+    <bean id="tenantClientFactory" class="de.kaiserpfalzEdv.office.clients.utils.AmqpProxyFactoryBean">
+        <property name="amqpTemplate" ref="tenantAmqpTemplate"/>
+        <property name="serviceInterface" value="de.kaiserpfalzEdv.office.core.tenants.TenantService"/>
+    </bean>
+
+    <rabbit:template id="tenantAmqpTemplate" connection-factory="amqpConnectionFactory"
+                     reply-timeout="2000" routing-key="tenants" exchange="tenant.exchange"/>
+
+    <rabbit:queue name="core.tenant" durable="false">
+        <rabbit:queue-arguments>
+            <entry key="x-message-ttl" value="300000" value-type="java.lang.Long"/>
+        </rabbit:queue-arguments>
+    </rabbit:queue>
+    <rabbit:direct-exchange name="tenant.exchange">
+        <rabbit:bindings>
+            <rabbit:binding queue="core.tenant" key="tenants"/>
+        </rabbit:bindings>
+    </rabbit:direct-exchange>
+
+
+    <bean id="securityClientFactory" class="de.kaiserpfalzEdv.office.clients.utils.AmqpProxyFactoryBean">
+        <property name="amqpTemplate" ref="tenantAmqpTemplate"/>
+        <property name="serviceInterface" value="de.kaiserpfalzEdv.office.core.security.SecurityService"/>
+    </bean>
+    <rabbit:template id="securityAmqpTemplate" connection-factory="amqpConnectionFactory"
+                     reply-timeout="2000" routing-key="security" exchange="security.exchange"/>
+
+    <rabbit:queue name="core.security" durable="false">
+        <rabbit:queue-arguments>
+            <entry key="x-message-ttl" value="300000" value-type="java.lang.Long"/>
+        </rabbit:queue-arguments>
+    </rabbit:queue>
+    <rabbit:direct-exchange name="security.exchange">
+        <rabbit:bindings>
+            <rabbit:binding queue="core.security" key="security"/>
+        </rabbit:bindings>
+    </rabbit:direct-exchange>
+</beans>
