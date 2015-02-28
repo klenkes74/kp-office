@@ -16,19 +16,11 @@
 
 package de.kaiserpfalzEdv.office.accounting.postingRecord.impl;
 
-import de.kaiserpfalzEdv.office.accounting.DatabaseMoney;
 import de.kaiserpfalzEdv.office.accounting.chartsofaccounts.Account;
 import de.kaiserpfalzEdv.office.accounting.postingRecord.PostingRecord;
-import de.kaiserpfalzEdv.office.core.impl.KPOEntity;
+import de.kaiserpfalzEdv.office.commons.impl.KPOEntity;
 
 import javax.money.MonetaryAmount;
-import javax.persistence.AttributeOverride;
-import javax.persistence.AttributeOverrides;
-import javax.persistence.Column;
-import javax.persistence.Embedded;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import javax.persistence.MappedSuperclass;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
@@ -39,44 +31,21 @@ import java.util.UUID;
  * @version 2015Q1
  * @since 18.02.15 16:18
  */
-@MappedSuperclass
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-public abstract class PostingRecordImpl extends KPOEntity implements PostingRecord {
+public class PostingRecordImpl extends KPOEntity implements PostingRecord {
 
-    @Column(name = "timestamp_entry_")
     private OffsetDateTime entryDate;
 
-    @Column(name = "date_accounting_")
     private LocalDate accountingDate;
 
-    @Column(name = "date_valuta_")
     private LocalDate valutaDate;
 
+    private AccountingVoucher voucher;
 
-    @Column(name = "document_date_")
-    private LocalDate documentDate;
-
-    @AttributeOverrides({
-            @AttributeOverride(name = "value", column = @Column(name = "document_amount_value_")),
-            @AttributeOverride(name = "currency", column = @Column(name = "document_amount_currency_"))
-    })
-    @Embedded
-    private DatabaseMoney documentAmount;
-
-    @Column(name = "notice", length = 255)
     private String notice;
 
-    @Column(name = "account_debitted_", nullable = false)
     private Account accountDebitted;
-    @Column(name = "account_creditted_", nullable = false)
     private Account accountCreditted;
-
-    @AttributeOverrides({
-            @AttributeOverride(name = "value", column = @Column(name = "entry_amount_value_")),
-            @AttributeOverride(name = "currency", column = @Column(name = "entry_amount_currency_"))
-    })
-    @Embedded
-    private DatabaseMoney entryAmount;
+    private MonetaryAmount entryAmount;
 
 
     @SuppressWarnings("deprecation")
@@ -95,17 +64,16 @@ public abstract class PostingRecordImpl extends KPOEntity implements PostingReco
             @NotNull final Account accountCreditted,
             @NotNull final MonetaryAmount accountingAmount
     ) {
-        super(id, documentNumber, entryId);
+        super(id, entryId, entryId);
         this.entryDate = entryDate;
         this.accountingDate = entryDate.toLocalDate();
         this.valutaDate = entryDate.toLocalDate();
 
-        this.documentDate = documentDate;
-        this.documentAmount = new DatabaseMoney(documentAmount);
+        this.voucher = new AccountingVoucher(documentNumber, documentDate, documentAmount);
 
         this.accountDebitted = accountDebitted;
         this.accountCreditted = accountCreditted;
-        this.entryAmount = new DatabaseMoney(accountingAmount);
+        this.entryAmount = accountingAmount;
     }
 
 
@@ -136,17 +104,17 @@ public abstract class PostingRecordImpl extends KPOEntity implements PostingReco
 
     @Override
     public String getDocumentNumber() {
-        return getDisplayName();
+        return voucher.getNumber();
     }
 
     @Override
     public LocalDate getDocumentDate() {
-        return documentDate;
+        return voucher.getDate();
     }
 
     @Override
     public MonetaryAmount getDocumentAmount() {
-        return documentAmount.getMoney();
+        return voucher.getAmount();
     }
 
 
@@ -171,6 +139,6 @@ public abstract class PostingRecordImpl extends KPOEntity implements PostingReco
 
     @Override
     public MonetaryAmount getPostingAmount() {
-        return entryAmount.getMoney();
+        return entryAmount;
     }
 }

@@ -35,5 +35,5 @@ public interface Primanota extends PrimaNotaInfo {
     /**
      * @param entry The primaNota entry to add to this primaNota.
      */
-    void addEntry(@NotNull PrimanotaEntry entry);
+    void addEntry(@NotNull PrimaNotaEntry entry);
 }

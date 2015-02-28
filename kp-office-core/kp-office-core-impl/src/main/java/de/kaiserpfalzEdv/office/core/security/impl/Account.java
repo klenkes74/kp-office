@@ -16,7 +16,7 @@
 
 package de.kaiserpfalzEdv.office.core.security.impl;
 
-import de.kaiserpfalzEdv.office.core.impl.KPOTenantHoldingEntity;
+import de.kaiserpfalzEdv.office.commons.impl.KPOTenantHoldingEntity;
 import de.kaiserpfalzEdv.office.core.security.CantCreatePasswordSaltException;
 import de.kaiserpfalzEdv.office.core.security.CantEncodePasswordException;
 

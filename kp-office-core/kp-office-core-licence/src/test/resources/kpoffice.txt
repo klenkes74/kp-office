@@ -1,0 +1,15 @@
+id=87e7cc68-f844-401a-ac80-2f9d34ed69b9
+issued=2015-02-01
+
+issuer=Kaiserpfalz EDV-Service
+licensee=Roland T. Lichti
+
+starts=2015-02-01
+expires=2034-01-31
+
+
+software=KP Office
+version=1.0.0
+lastVersion=1.9999.9999
+
+features=core,contacts,projects,accounting,documents

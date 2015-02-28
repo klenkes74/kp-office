@@ -20,6 +20,7 @@ import de.kaiserpfalzEdv.office.accounting.chartsofaccounts.Account;
 import de.kaiserpfalzEdv.office.accounting.chartsofaccounts.impl.AccountBuilder;
 import de.kaiserpfalzEdv.office.accounting.postingRecord.PostingRecord;
 import de.kaiserpfalzEdv.office.accounting.postingRecord.impl.PostingRecordBuilder;
+import de.kaiserpfalzEdv.office.accounting.primaNota.PrimaNotaEntry;
 import de.kaiserpfalzEdv.office.accounting.primaNota.PrimaNotaInfo;
 import de.kaiserpfalzEdv.office.accounting.primaNota.Primanota;
 import de.kaiserpfalzEdv.office.commons.TenantIdHolder;
@@ -33,7 +34,7 @@ import javax.inject.Named;
 import javax.money.MonetaryAmount;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
-import java.time.LocalDate;
+import java.time.OffsetDateTime;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -116,31 +117,33 @@ public class PrimaNotaDataLoader {
         for (int i = 0; i < 10; i++) {
             if (i % 2 == 0) {
                 MonetaryAmount amount = Money.of(new BigDecimal(Math.round(new Random().nextDouble() * 100000) / 100), "EUR");
-                fake.addEntry(generateFakeEntry("" + (i + 1), LocalDate.now(), "Entry " + i, debitAccount, creditAccount, amount));
+                fake.addEntry(generateFakeEntry("" + (i + 1), OffsetDateTime.now(), "Entry " + i, debitAccount, creditAccount, amount));
             } else {
                 MonetaryAmount amount = Money.of(new BigDecimal(Math.round(new Random().nextDouble() * 100000) / 100), "USD");
-                fake.addEntry(generateFakeEntry("" + (i + 1), LocalDate.now(), "Entry " + i, debitAccount, otherCreditAccount, amount));
+                fake.addEntry(generateFakeEntry("" + (i + 1), OffsetDateTime.now(), "Entry " + i, debitAccount, otherCreditAccount, amount));
             }
         }
 
         journals.put(fake.getId(), fake);
     }
 
-    private PostingRecord generateFakeEntry(
+    private PrimaNotaEntry generateFakeEntry(
             @NotNull final String entryId,
-            @NotNull final LocalDate date,
+            @NotNull final OffsetDateTime date,
             @NotNull final String documentNumber,
             @NotNull final Account debitAccount,
             @NotNull final Account creditAccount,
             @NotNull final MonetaryAmount amount
     ) {
-        return new PostingRecordBuilder()
+        PostingRecord record = new PostingRecordBuilder()
                 .generateId()
                 .withEntryId(entryId)
                 .withEntryDate(date)
-                .withDocumentDate(date)
+                .withDocumentDate(date.toLocalDate())
                 .withDocumentNumber(documentNumber)
                 .createBooking(debitAccount, creditAccount, amount)
                 .build();
+
+        return new PrimaNotaEntryBuilder().addPostingRecord(record).build();
     }
 }

@@ -17,7 +17,7 @@
 package de.kaiserpfalzEdv.office.accounting.chartsofaccounts.impl;
 
 import de.kaiserpfalzEdv.office.accounting.chartsofaccounts.Account;
-import de.kaiserpfalzEdv.office.core.impl.KPOTenantHoldingEntity;
+import de.kaiserpfalzEdv.office.commons.impl.KPOTenantHoldingEntity;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;

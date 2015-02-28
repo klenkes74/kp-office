@@ -17,15 +17,16 @@
 package de.kaiserpfalzEdv.office.accounting.primaNota.impl;
 
 import de.kaiserpfalzEdv.office.accounting.postingRecord.PostingRecord;
+import de.kaiserpfalzEdv.office.accounting.primaNota.PrimaNotaEntry;
 import de.kaiserpfalzEdv.office.accounting.primaNota.Primanota;
-import de.kaiserpfalzEdv.office.accounting.primaNota.PrimanotaEntry;
-import de.kaiserpfalzEdv.office.core.impl.KPOTenantHoldingEntity;
+import de.kaiserpfalzEdv.office.commons.impl.KPOTenantHoldingEntity;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
@@ -38,14 +39,14 @@ import java.util.UUID;
 @Entity
 @Table(schema = "accounting", catalog = "accounting", name = "primanota")
 public class PrimaNotaImpl extends KPOTenantHoldingEntity implements Primanota {
-    private static final long serialVersionUID = -1287571639832420541L;
+    private static final long serialVersionUID = -6634800863453395960L;
 
     @OneToMany(
             fetch = FetchType.LAZY,
             mappedBy = "primaNota",
             orphanRemoval = true
     )
-    private List<PrimaNotaEntryImpl> entries;
+    private List<PrimaNotaEntryImpl> entries = new ArrayList<>();
 
 
     @SuppressWarnings("deprecation")
@@ -72,7 +73,7 @@ public class PrimaNotaImpl extends KPOTenantHoldingEntity implements Primanota {
         return Collections.unmodifiableList(entries);
     }
 
-    public void addEntry(@NotNull PrimanotaEntry entry) {
+    public void addEntry(@NotNull PrimaNotaEntry entry) {
         entries.add((PrimaNotaEntryImpl) entry);
     }
 }

@@ -41,29 +41,26 @@
         <module>kp-office-core</module>
         <module>kp-office-modules</module>
         <module>kp-office-services</module>
-        <module>kp-office-interfaces</module>
+        <module>kp-office-ui</module>
     </modules>
 
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>${project.build.sourceEncoding}</project.reporting.outputEncoding>
 
         <project.root>${project.basedir}</project.root>
 
         <skipTests>false</skipTests>
-        <skipUnitTests>${skipTests}</skipUnitTests>
-        <skipIntegrationTests>${skipTests}</skipIntegrationTests>
-        <skipAcceptanceTests>${skipTests}</skipAcceptanceTests>
         <jeeTestEnvironment>wildfly-managed</jeeTestEnvironment>
-        <setupDatabase>${skipTests}</setupDatabase>
         <dontSign>true</dontSign>
 
         <jboss.installation>/opt/servers/jboss-as-7.1.1.Final</jboss.installation>
 
-        <database.changelog>
-            ${project.root}/kp-office-modules/kp-office-store/target/classes/ddl/db-changelog.xml
-        </database.changelog>
+        <aspectjVersion>1.8.4</aspectjVersion>
+        <compileAspectJ>false</compileAspectJ>
+        <initializeDatabase>false</initializeDatabase>
+        <useQueryDSL>false</useQueryDSL>
+        <database.changelog>${project.basedir}/target/classes/ddl/db-changelog.xml</database.changelog>
 
         <jdbc.driver>com.mysql.jdbc.Driver</jdbc.driver>
         <jdbc.host>docker</jdbc.host>
@@ -75,7 +72,6 @@
         <config.path>./config</config.path>
 
         <kp-commons.version>2015Q1</kp-commons.version>
-        <shiro.version>1.2.3</shiro.version>
     </properties>
 
     <distributionManagement>
@@ -193,11 +189,6 @@
             <groupId>de.kaiserpfalz-edv.commons</groupId>
             <artifactId>kp-commons-test</artifactId>
         </dependency>
-        <dependency>
-            <groupId>net.logstash.logback</groupId>
-            <artifactId>logstash-logback-encoder</artifactId>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
 
     <dependencyManagement>
@@ -205,6 +196,22 @@
             <dependency>
                 <groupId>de.kaiserpfalz-edv.commons</groupId>
                 <artifactId>kp-commons-bom</artifactId>
+                <version>${kp-commons.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>de.kaiserpfalz-edv.base</groupId>
+                <artifactId>kp-jee-bom</artifactId>
+                <version>${kp-commons.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>de.kaiserpfalz-edv.base</groupId>
+                <artifactId>kp-spring-bom</artifactId>
                 <version>${kp-commons.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
@@ -221,6 +228,14 @@
             <dependency>
                 <groupId>de.kaiserpfalz-edv.base</groupId>
                 <artifactId>kp-test-bom</artifactId>
+                <version>${kp-commons.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>de.kaiserpfalz-edv.base</groupId>
+                <artifactId>kp-database-bom</artifactId>
                 <version>${kp-commons.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
@@ -256,6 +271,11 @@
             <dependency>
                 <groupId>de.kaiserpfalz-edv.office.core</groupId>
                 <artifactId>kp-office-core-impl</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>de.kaiserpfalz-edv.office.core</groupId>
+                <artifactId>kp-office-core-licence</artifactId>
                 <version>${project.version}</version>
             </dependency>
 
@@ -323,16 +343,6 @@
                 <artifactId>kp-office-finance-impl</artifactId>
                 <version>${project.version}</version>
             </dependency>
-            <dependency>
-                <groupId>de.kaiserpfalz-edv.office.modules.finance</groupId>
-                <artifactId>kp-office-finance-money-online</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>de.kaiserpfalz-edv.office.modules.finance</groupId>
-                <artifactId>kp-office-finance-money-offline</artifactId>
-                <version>${project.version}</version>
-            </dependency>
 
 
             <!-- Server and Clients -->
@@ -398,4 +408,246 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+
+
+    <profiles>
+        <profile>
+            <id>with-querydsl</id>
+
+            <activation>
+                <file>
+                    <exists>${basedir}/.querydsl</exists>
+                </file>
+            </activation>
+
+            <dependencies>
+                <dependency>
+                    <groupId>com.mysema.querydsl</groupId>
+                    <artifactId>querydsl-core</artifactId>
+                </dependency>
+                <dependency>
+                    <groupId>com.mysema.querydsl</groupId>
+                    <artifactId>querydsl-apt</artifactId>
+                </dependency>
+                <dependency>
+                    <groupId>com.mysema.querydsl</groupId>
+                    <artifactId>querydsl-jpa</artifactId>
+                </dependency>
+            </dependencies>
+
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>com.mysema.maven</groupId>
+                        <artifactId>maven-apt-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <phase>generate-sources</phase>
+                                <goals>
+                                    <goal>process</goal>
+                                </goals>
+                                <configuration>
+                                    <outputDirectory>target/generated-sources</outputDirectory>
+                                    <processor>com.mysema.query.apt.jpa.JPAAnnotationProcessor</processor>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+
+        <profile>
+            <id>init-db</id>
+
+            <activation>
+                <file>
+                    <exists>${basedir}/.init-db</exists>
+                </file>
+            </activation>
+
+            <dependencies>
+                <dependency>
+                    <groupId>org.springframework.data</groupId>
+                    <artifactId>spring-data-jpa</artifactId>
+                </dependency>
+
+                <dependency>
+                    <groupId>org.liquibase</groupId>
+                    <artifactId>liquibase-core</artifactId>
+                    <scope>test</scope>
+                </dependency>
+                <dependency>
+                    <groupId>com.mattbertolini</groupId>
+                    <artifactId>liquibase-slf4j</artifactId>
+                    <scope>test</scope>
+                </dependency>
+
+
+                <dependency>
+                    <groupId>com.h2database</groupId>
+                    <artifactId>h2</artifactId>
+                    <scope>provided</scope>
+                </dependency>
+
+                <dependency>
+                    <groupId>mysql</groupId>
+                    <artifactId>mysql-connector-java</artifactId>
+                    <scope>provided</scope>
+                </dependency>
+
+                <dependency>
+                    <groupId>postgresql</groupId>
+                    <artifactId>postgresql</artifactId>
+                    <scope>provided</scope>
+                </dependency>
+
+                <dependency>
+                    <groupId>org.hsqldb</groupId>
+                    <artifactId>hsqldb</artifactId>
+                    <scope>provided</scope>
+                </dependency>
+
+                <dependency>
+                    <groupId>org.apache.derby</groupId>
+                    <artifactId>derby</artifactId>
+                    <scope>provided</scope>
+                </dependency>
+            </dependencies>
+
+            <dependencyManagement>
+                <dependencies>
+                    <dependency>
+                        <groupId>de.kaiserpfalz-edv.base</groupId>
+                        <artifactId>kp-database-bom</artifactId>
+                        <version>${kp-commons.version}</version>
+                        <type>pom</type>
+                        <scope>import</scope>
+                    </dependency>
+                    <dependency>
+                        <groupId>de.kaiserpfalz-edv.base</groupId>
+                        <artifactId>kp-spring-data-bom</artifactId>
+                        <version>${kp-commons.version}</version>
+                        <type>pom</type>
+                        <scope>import</scope>
+                    </dependency>
+                </dependencies>
+            </dependencyManagement>
+
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.liquibase</groupId>
+                        <artifactId>liquibase-maven-plugin</artifactId>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+
+        <profile>
+            <id>with-aop</id>
+
+            <activation>
+                <file>
+                    <exists>${basedir}/.aspectj</exists>
+                </file>
+            </activation>
+
+            <properties>
+                <aspectj.version>1.8.4</aspectj.version>
+            </properties>
+
+            <dependencies>
+                <dependency>
+                    <groupId>aopalliance</groupId>
+                    <artifactId>aopalliance</artifactId>
+                </dependency>
+                <dependency>
+                    <groupId>org.springframework</groupId>
+                    <artifactId>spring-instrument</artifactId>
+                </dependency>
+                <dependency>
+                    <groupId>org.springframework</groupId>
+                    <artifactId>spring-aspects</artifactId>
+                </dependency>
+                <dependency>
+                    <groupId>org.aspectj</groupId>
+                    <artifactId>aspectjrt</artifactId>
+                    <version>${aspectj.version}</version>
+                </dependency>
+                <dependency>
+                    <groupId>org.aspectj</groupId>
+                    <artifactId>aspectjtools</artifactId>
+                    <version>${aspectj.version}</version>
+                </dependency>
+            </dependencies>
+
+            <dependencyManagement>
+                <dependencies>
+                    <dependency>
+                        <groupId>de.kaiserpfalz-edv.base</groupId>
+                        <artifactId>kp-aspectj-bom</artifactId>
+                        <version>${kp-commons.version}</version>
+                        <type>pom</type>
+                        <scope>import</scope>
+                    </dependency>
+                    <dependency>
+                        <groupId>de.kaiserpfalz-edv.base</groupId>
+                        <artifactId>kp-spring-bom</artifactId>
+                        <version>${kp-commons.version}</version>
+                        <type>pom</type>
+                        <scope>import</scope>
+                    </dependency>
+                </dependencies>
+            </dependencyManagement>
+
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>aspectj-maven-plugin</artifactId>
+                        <version>1.7</version>
+                        <configuration>
+                            <complianceLevel>${targetJdk}</complianceLevel>
+                            <source>${targetJdk}</source>
+                            <target>${targetJdk}</target>
+                            <outxml>true</outxml>
+                            <verbose>true</verbose>
+                            <showWeaveInfo>true</showWeaveInfo>
+                            <detail>true</detail>
+                            <Xlint>warning</Xlint>
+                            <aspectLibraries>
+                                <aspectLibrary>
+                                    <groupId>org.springframework</groupId>
+                                    <artifactId>spring-aspects</artifactId>
+                                </aspectLibrary>
+                            </aspectLibraries>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>compile</goal>
+                                    <goal>test-compile</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <dependencies>
+                            <dependency>
+                                <groupId>org.aspectj</groupId>
+                                <artifactId>aspectjrt</artifactId>
+                                <version>${aspectj.version}</version>
+                            </dependency>
+                            <dependency>
+                                <groupId>org.aspectj</groupId>
+                                <artifactId>aspectjtools</artifactId>
+                                <version>${aspectj.version}</version>
+                            </dependency>
+                        </dependencies>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 </project>

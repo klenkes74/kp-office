@@ -39,18 +39,21 @@
             -javaagent:${settings.localRepository}/org/springframework/spring-instrument/${spring.version}/spring-instrument-${spring.version}.jar
         </maven.test.jvmargs>
 
+        <compileAspectJ>true</compileAspectJ>
+        <initializeDatabase>true</initializeDatabase>
+        <useQueryDSL>true</useQueryDSL>
         <database.changelog>${project.basedir}/target/test-classes/ddl/db-changelog-test.xml</database.changelog>
     </properties>
 
     <dependencies>
         <dependency>
-            <groupId>de.kaiserpfalz-edv.commons</groupId>
-            <artifactId>kp-commons-jee</artifactId>
+            <groupId>de.kaiserpfalz-edv.office.core</groupId>
+            <artifactId>kp-office-core-licence</artifactId>
         </dependency>
 
         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context-support</artifactId>
+            <groupId>de.kaiserpfalz-edv.commons</groupId>
+            <artifactId>kp-commons-jee</artifactId>
         </dependency>
 
 
@@ -60,24 +63,6 @@
             <artifactId>kp-office-core-api</artifactId>
         </dependency>
 
-
-        <!-- License Management -->
-        <dependency>
-            <groupId>com.verhas</groupId>
-            <artifactId>license3j</artifactId>
-            <version>1.0.4</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.bouncycastle</groupId>
-                    <artifactId>bcpg-jdk16</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>org.bouncycastle</groupId>
-            <artifactId>bcpg-jdk15on</artifactId>
-            <version>1.46</version>
-        </dependency>
 
         <!-- Data Persistence -->
         <dependency>
@@ -135,29 +120,7 @@
             <artifactId>spring-data-jpa</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>com.mysema.querydsl</groupId>
-            <artifactId>querydsl-core</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.mysema.querydsl</groupId>
-            <artifactId>querydsl-apt</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.mysema.querydsl</groupId>
-            <artifactId>querydsl-jpa</artifactId>
-        </dependency>
 
-        <dependency>
-            <groupId>org.liquibase</groupId>
-            <artifactId>liquibase-core</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.mattbertolini</groupId>
-            <artifactId>liquibase-slf4j</artifactId>
-            <scope>test</scope>
-        </dependency>
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-entitymanager</artifactId>
@@ -173,33 +136,6 @@
         <dependency>
             <groupId>com.googlecode.ehcache-spring-annotations</groupId>
             <artifactId>ehcache-spring-annotations</artifactId>
-        </dependency>
-
-
-        <!-- AOP -->
-        <dependency>
-            <groupId>aopalliance</groupId>
-            <artifactId>aopalliance</artifactId>
-            <version>1.0</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-instrument</artifactId>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-aspects</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.aspectj</groupId>
-            <artifactId>aspectjrt</artifactId>
-            <version>1.8.4</version>
-        </dependency>
-        <dependency>
-            <groupId>org.aspectj</groupId>
-            <artifactId>aspectjtools</artifactId>
-            <version>1.8.4</version>
         </dependency>
 
 
@@ -262,14 +198,6 @@
 
             <dependency>
                 <groupId>de.kaiserpfalz-edv.base</groupId>
-                <artifactId>kp-spring-bom</artifactId>
-                <version>${kp-commons.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-
-            <dependency>
-                <groupId>de.kaiserpfalz-edv.base</groupId>
                 <artifactId>kp-spring-data-bom</artifactId>
                 <version>${kp-commons.version}</version>
                 <type>pom</type>
@@ -285,84 +213,4 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>com.mysema.maven</groupId>
-                <artifactId>maven-apt-plugin</artifactId>
-                <version>1.0.4</version>
-                <executions>
-                    <execution>
-                        <phase>generate-sources</phase>
-                        <goals>
-                            <goal>process</goal>
-                        </goals>
-                        <configuration>
-                            <!-- Specifies the directory in which the query types are generated -->
-                            <outputDirectory>target/generated-sources</outputDirectory>
-                            <!-- States that the APT code generator should look for JPA annotations -->
-                            <processor>com.mysema.query.apt.jpa.JPAAnnotationProcessor</processor>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>aspectj-maven-plugin</artifactId>
-                <version>1.7</version>
-                <configuration>
-                    <complianceLevel>${targetJdk}</complianceLevel>
-                    <source>${targetJdk}</source>
-                    <target>${targetJdk}</target>
-                    <outxml>true</outxml>
-                    <verbose>true</verbose>
-                    <showWeaveInfo>true</showWeaveInfo>
-                    <detail>true</detail>
-                    <Xlint>warning</Xlint>
-                    <aspectLibraries>
-                        <aspectLibrary>
-                            <groupId>org.springframework</groupId>
-                            <artifactId>spring-aspects</artifactId>
-                        </aspectLibrary>
-                    </aspectLibraries>
-                </configuration>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>compile</goal>
-                            <goal>test-compile</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <dependencies>
-                    <dependency>
-                        <groupId>org.aspectj</groupId>
-                        <artifactId>aspectjrt</artifactId>
-                        <version>1.8.4</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>org.aspectj</groupId>
-                        <artifactId>aspectjtools</artifactId>
-                        <version>1.8.4</version>
-                    </dependency>
-                </dependencies>
-            </plugin>
-        </plugins>
-    </build>
-
-    <profiles>
-        <profile>
-            <id>init-db</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.liquibase</groupId>
-                        <artifactId>liquibase-maven-plugin</artifactId>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-    </profiles>
 </project>

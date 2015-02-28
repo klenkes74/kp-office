@@ -16,32 +16,37 @@
 
 package de.kaiserpfalzEdv.office.accounting.primaNota.impl;
 
-import de.kaiserpfalzEdv.office.accounting.chartsofaccounts.Account;
-import de.kaiserpfalzEdv.office.accounting.postingRecord.impl.PostingRecordBuilder;
-
-import javax.money.MonetaryAmount;
-import javax.validation.constraints.NotNull;
-import java.time.LocalDate;
-import java.time.OffsetDateTime;
-import java.util.UUID;
+import de.kaiserpfalzEdv.office.accounting.postingRecord.PostingRecord;
+import org.apache.commons.lang3.builder.Builder;
 
 /**
  * @author klenkes
  * @version 2015Q1
  * @since 27.02.15 11:28
  */
-public class PrimaNotaEntryBuilder extends PostingRecordBuilder<PrimaNotaEntryImpl> {
-    public PrimaNotaEntryImpl createPostingRecord(
-            @NotNull final UUID id,
-            @NotNull final String entryId,
-            @NotNull final OffsetDateTime entryDate,
-            @NotNull final LocalDate documentDate,
-            @NotNull final String documentNumber,
-            @NotNull final MonetaryAmount documentAmount,
-            @NotNull final Account accountDebitted,
-            @NotNull final Account accountCreditted,
-            @NotNull final MonetaryAmount accountingAmount
-    ) {
-        return new PrimaNotaEntryImpl(id, entryId, entryDate, documentNumber, documentDate, documentAmount, accountDebitted, accountCreditted, accountingAmount);
+public class PrimaNotaEntryBuilder implements Builder<PrimaNotaEntryImpl> {
+
+    private PostingRecord postingRecord;
+
+    @Override
+    public PrimaNotaEntryImpl build() {
+        return new PrimaNotaEntryImpl(
+                postingRecord.getId(),
+                postingRecord.getDisplayNumber(),
+                postingRecord.getEntryDate(),
+                postingRecord.getDocumentNumber(),
+                postingRecord.getDocumentDate(),
+                postingRecord.getDocumentAmount(),
+                postingRecord.getAccountDebitted(),
+                postingRecord.getAccountCreditted(),
+                postingRecord.getDocumentAmount()
+        );
+    }
+
+
+    public PrimaNotaEntryBuilder addPostingRecord(final PostingRecord record) {
+        this.postingRecord = record;
+
+        return this;
     }
 }

@@ -32,54 +32,8 @@
 
     <properties>
         <project.root>../../..</project.root>
-
-        <database.changelog>${project.basedir}/target/classes/ddl/db-changelog.xml</database.changelog>
     </properties>
 
-
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>de.kaiserpfalz-edv.base</groupId>
-                <artifactId>kp-spring-data-bom</artifactId>
-                <version>${kp-commons.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-
-            <dependency>
-                <groupId>de.kaiserpfalz-edv.base</groupId>
-                <artifactId>kp-hibernate-bom</artifactId>
-                <version>${kp-commons.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-
-            <dependency>
-                <groupId>de.kaiserpfalz-edv.base</groupId>
-                <artifactId>kp-database-bom</artifactId>
-                <version>${kp-commons.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-
-            <dependency>
-                <groupId>de.kaiserpfalz-edv.base</groupId>
-                <artifactId>kp-spring-bom</artifactId>
-                <version>${kp-commons.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-
-            <dependency>
-                <groupId>de.kaiserpfalz-edv.base</groupId>
-                <artifactId>kp-shiro-bom</artifactId>
-                <version>${kp-commons.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
 
     <dependencies>
         <dependency>
@@ -88,86 +42,14 @@
         </dependency>
 
         <dependency>
-            <groupId>de.kaiserpfalz-edv.office.core</groupId>
-            <artifactId>kp-office-core-impl</artifactId>
-        </dependency>
-
-        <dependency>
             <groupId>de.kaiserpfalz-edv.office.modules.finance</groupId>
-            <artifactId>kp-office-finance-impl</artifactId>
-        </dependency>
-
-        <!-- Either kp-office-finance-money-offline or kp-office-finance-money-online is needed in production -->
-        <dependency>
-            <groupId>de.kaiserpfalz-edv.office.modules.finance</groupId>
-            <artifactId>kp-office-finance-money-offline</artifactId>
-            <optional>true</optional>
+            <artifactId>kp-office-finance-api</artifactId>
         </dependency>
 
 
         <dependency>
-            <groupId>org.springframework.data</groupId>
-            <artifactId>spring-data-jpa</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>commons-dbcp</groupId>
-            <artifactId>commons-dbcp</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-entitymanager</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-ehcache</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>net.sf.ehcache</groupId>
-            <artifactId>ehcache-core</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.googlecode.ehcache-spring-annotations</groupId>
-            <artifactId>ehcache-spring-annotations</artifactId>
-        </dependency>
-
-
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-instrument</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.aspectj</groupId>
-            <artifactId>aspectjrt</artifactId>
-            <version>1.6.12</version>
-        </dependency>
-
-
-        <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.testng</groupId>
-            <artifactId>testng</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-test</artifactId>
+            <groupId>org.javamoney</groupId>
+            <artifactId>moneta</artifactId>
         </dependency>
     </dependencies>
-
-    <profiles>
-        <profile>
-            <id>init-db</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.liquibase</groupId>
-                        <artifactId>liquibase-maven-plugin</artifactId>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-    </profiles>
 </project>

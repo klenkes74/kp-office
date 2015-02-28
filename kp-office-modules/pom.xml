@@ -40,10 +40,6 @@
         <module>kp-office-finance</module>
     </modules>
 
-    <properties>
-        <setupDatabase>true</setupDatabase>
-    </properties>
-
 
     <dependencies>
         <!-- KP Office internal Dependencies -->
@@ -58,14 +54,23 @@
         </dependency>
 
 
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context-support</artifactId>
+        </dependency>
+
+
         <!-- Logging -->
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
         </dependency>
+
+
+        <!-- Testing -->
         <dependency>
-            <groupId>net.logstash.logback</groupId>
-            <artifactId>logstash-logback-encoder</artifactId>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
         </dependency>
     </dependencies>
 
@@ -74,6 +79,28 @@
             <dependency>
                 <groupId>de.kaiserpfalz-edv.base</groupId>
                 <artifactId>kp-jee-bom</artifactId>
+                <version>${kp-commons.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>de.kaiserpfalz-edv.base</groupId>
+                <artifactId>kp-spring-bom</artifactId>
+                <version>${kp-commons.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>de.kaiserpfalz-edv.base</groupId>
+                <artifactId>kp-spring-data-bom</artifactId>
+                <version>${kp-commons.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>de.kaiserpfalz-edv.base</groupId>
+                <artifactId>kp-database-bom</artifactId>
                 <version>${kp-commons.version}</version>
                 <type>pom</type>
                 <scope>import</scope>

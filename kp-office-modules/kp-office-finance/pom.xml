@@ -35,8 +35,6 @@
     <modules>
         <module>kp-office-finance-api</module>
         <module>kp-office-finance-impl</module>
-        <module>kp-office-finance-money-online</module>
-        <module>kp-office-finance-money-offline</module>
     </modules>
 
     <properties>

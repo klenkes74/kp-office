@@ -23,5 +23,5 @@ import de.kaiserpfalzEdv.office.accounting.postingRecord.PostingRecord;
  * @version 2015Q1
  * @since 27.02.15 11:38
  */
-public interface PrimanotaEntry extends PostingRecord {
+public interface PrimaNotaEntry extends PostingRecord {
 }

@@ -35,7 +35,9 @@
     <modules>
         <module>kp-office-accounting-api</module>
         <module>kp-office-accounting-impl</module>
-        <module>kp-office-accounting-gdpdu</module>
+        <!--
+                <module>kp-office-accounting-gdpdu</module>
+        -->
     </modules>
 
     <properties>

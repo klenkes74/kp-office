@@ -40,7 +40,7 @@ import static org.apache.commons.lang3.StringUtils.isNotBlank;
  * @version 2015Q1
  * @since 18.02.15 21:05
  */
-public abstract class PostingRecordBuilder<T extends PostingRecordImpl> implements Builder<T> {
+public class PostingRecordBuilder implements Builder<PostingRecord> {
     private static final Logger             LOG                = LoggerFactory.getLogger(PostingRecordBuilder.class);
     private static final CurrencyConversion DEFAULT_CONVERSION = MonetaryConversions.getConversion("EUR", "ECB");
 
@@ -64,10 +64,10 @@ public abstract class PostingRecordBuilder<T extends PostingRecordImpl> implemen
     private String notice;
 
     @Override
-    public T build() {
+    public PostingRecord build() {
         validate();
 
-        T result = createPostingRecord(id, entryId, entryDate, documentDate, documentNumber, documentAmount, accountDebitted, accountCreditted, accountingAmount);
+        PostingRecordImpl result = new PostingRecordImpl(id, entryId, entryDate, documentNumber, documentDate, documentAmount, accountDebitted, accountCreditted, accountingAmount);
 
         if (isNotBlank(notice)) result.setNotice(notice);
         if (valutaDate != null) result.setValutaDate(valutaDate);
@@ -75,18 +75,6 @@ public abstract class PostingRecordBuilder<T extends PostingRecordImpl> implemen
 
         return result;
     }
-
-    public abstract T createPostingRecord(
-            @NotNull final UUID id,
-            @NotNull final String entryId,
-            @NotNull final OffsetDateTime entryTimestamp,
-            @NotNull final LocalDate documentDate,
-            @NotNull final String documentNumber,
-            @NotNull final MonetaryAmount documentAmount,
-            @NotNull final Account accountDebitted,
-            @NotNull final Account accountCreditted,
-            @NotNull final MonetaryAmount accountingAmount
-    );
 
     public void validate() {
         ArrayList<String> failures = new ArrayList<>();

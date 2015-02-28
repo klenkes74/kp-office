@@ -31,7 +31,7 @@
 
 
     <properties>
-        <start-class>de.kaiserpfalzEdv.office.services.core.Application</start-class>
+        <start-class>de.kaiserpfalzEdv.office.core.Application</start-class>
     </properties>
 
 

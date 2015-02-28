@@ -37,21 +37,6 @@
     </properties>
 
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>com.edugility</groupId>
-                <artifactId>h2-maven-plugin</artifactId>
-                <configuration>
-                    <allowOthers>true</allowOthers>
-                    <baseDirectory>${project.basedir}/target/data</baseDirectory>
-                    <shutdownAllServers>true</shutdownAllServers>
-                    <trace>true</trace>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
-
     <dependencies>
         <dependency>
             <groupId>de.kaiserpfalz-edv.office.modules.contacts</groupId>
@@ -61,63 +46,22 @@
             <groupId>de.kaiserpfalz-edv.office.modules.contacts</groupId>
             <artifactId>kp-office-contacts-geodb</artifactId>
         </dependency>
-        <dependency>
-            <groupId>de.kaiserpfalz-edv.office.core</groupId>
-            <artifactId>kp-office-core-impl</artifactId>
-        </dependency>
-
 
         <dependency>
-            <groupId>org.testng</groupId>
-            <artifactId>testng</artifactId>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-jpa</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-test</artifactId>
+            <groupId>com.mysema.querydsl</groupId>
+            <artifactId>querydsl-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.mysema.querydsl</groupId>
+            <artifactId>querydsl-apt</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.mysema.querydsl</groupId>
+            <artifactId>querydsl-jpa</artifactId>
         </dependency>
     </dependencies>
-
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>de.kaiserpfalz-edv.base</groupId>
-                <artifactId>kp-spring-data-bom</artifactId>
-                <version>${kp-commons.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-
-            <dependency>
-                <groupId>de.kaiserpfalz-edv.base</groupId>
-                <artifactId>kp-hibernate-bom</artifactId>
-                <version>${kp-commons.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-
-            <dependency>
-                <groupId>de.kaiserpfalz-edv.base</groupId>
-                <artifactId>kp-database-bom</artifactId>
-                <version>${kp-commons.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-
-            <dependency>
-                <groupId>de.kaiserpfalz-edv.base</groupId>
-                <artifactId>kp-spring-bom</artifactId>
-                <version>${kp-commons.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-
-            <dependency>
-                <groupId>de.kaiserpfalz-edv.commons</groupId>
-                <artifactId>kp-commons-bom</artifactId>
-                <version>${kp-commons.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
 </project>

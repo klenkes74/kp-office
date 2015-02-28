@@ -35,14 +35,14 @@ import java.util.UUID;
  */
 @Test
 @ContextConfiguration("/beans-test.xml")
-public class PrimanotaTest extends SpringTestNGBase {
-    private static final Logger LOG = LoggerFactory.getLogger(PrimanotaTest.class);
+public class PrimaNotaTest extends SpringTestNGBase {
+    private static final Logger LOG = LoggerFactory.getLogger(PrimaNotaTest.class);
 
     @Inject
     private PrimaNotaDataLoader service;
 
-    public PrimanotaTest() {
-        super(PrimanotaTest.class, LOG);
+    public PrimaNotaTest() {
+        super(PrimaNotaTest.class, LOG);
     }
 
 

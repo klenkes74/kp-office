@@ -20,7 +20,7 @@ import de.kaiserpfalzEdv.commons.jee.paging.Page;
 import de.kaiserpfalzEdv.commons.jee.paging.PageDO;
 import de.kaiserpfalzEdv.commons.jee.paging.Pageable;
 import de.kaiserpfalzEdv.commons.jee.paging.PageableDO;
-import de.kaiserpfalzEdv.commons.service.BackendService;
+import de.kaiserpfalzEdv.office.commons.KPO;
 import de.kaiserpfalzEdv.office.core.tenants.NoSuchTenantException;
 import de.kaiserpfalzEdv.office.core.tenants.OnlyInvalidTenantFoundException;
 import de.kaiserpfalzEdv.office.core.tenants.Tenant;
@@ -36,13 +36,15 @@ import javax.inject.Named;
 import javax.validation.constraints.NotNull;
 import java.util.UUID;
 
+import static de.kaiserpfalzEdv.office.commons.KPO.Type.Implementation;
+
 /**
  * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;
  * @version 0.1.0
  * @since 0.1.0
  */
 @Named
-@BackendService
+@KPO(Implementation)
 public class TenantServiceImpl implements TenantService {
     private static final Logger LOG = LoggerFactory.getLogger(TenantServiceImpl.class);
     

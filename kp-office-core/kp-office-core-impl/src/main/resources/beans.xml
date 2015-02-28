@@ -48,7 +48,6 @@
 
     <import resource="classpath*:/beans-database.xml"/>
     <import resource="classpath*:/beans-cache.xml"/>
-    <import resource="classpath*:/beans-licensemanager.xml"/>
 
     <context:property-placeholder properties-ref="configuration" system-properties-mode="OVERRIDE"
                                   ignore-resource-not-found="false" ignore-unresolvable="false" local-override="true"/>
