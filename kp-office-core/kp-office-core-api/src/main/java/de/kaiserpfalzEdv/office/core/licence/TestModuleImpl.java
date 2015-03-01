@@ -16,11 +16,19 @@
 
 package de.kaiserpfalzEdv.office.core.licence;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * @author klenkes
  * @version 2015Q1
- * @since 08.02.15 22:17
+ * @since 15.02.15 13:53
  */
-public interface LicenseService {
-    OfficeLicense getLicense();
+@ModuleInformation(needsLicence = true)
+public class TestModuleImpl {
+    private static final Logger LOG = LoggerFactory.getLogger(TestModuleImpl.class);
+
+    public int getInt() {
+        return 0;
+    }
 }
