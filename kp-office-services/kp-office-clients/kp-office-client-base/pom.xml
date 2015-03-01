@@ -20,30 +20,24 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <artifactId>kp-office-apps</artifactId>
+        <artifactId>kp-office-clients</artifactId>
         <groupId>de.kaiserpfalz-edv.office.services</groupId>
         <version>0.2.0-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>kp-office-app-finance</artifactId>
-    <name>KP Office - Services - Apps - Finance</name>
-
-
-    <properties>
-        <start-class>de.kaiserpfalzEdv.office.webservices.Application</start-class>
-    </properties>
+    <artifactId>kp-office-client-base</artifactId>
+    <name>KP Office - Services - Clients - Base (Contacts and Files)</name>
 
 
     <dependencies>
         <dependency>
-            <groupId>de.kaiserpfalz-edv.office.services</groupId>
-            <artifactId>kp-office-client-core</artifactId>
+            <groupId>de.kaiserpfalz-edv.office.modules.contacts</groupId>
+            <artifactId>kp-office-contacts-api</artifactId>
         </dependency>
-
         <dependency>
-            <groupId>de.kaiserpfalz-edv.office.modules.finance</groupId>
-            <artifactId>kp-office-finance-impl</artifactId>
+            <groupId>de.kaiserpfalz-edv.office.modules.files</groupId>
+            <artifactId>kp-office-files-api</artifactId>
         </dependency>
     </dependencies>
 </project>

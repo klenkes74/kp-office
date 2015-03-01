@@ -27,8 +27,8 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>kp-office-commons-all</artifactId>
-    <name>KP Office - Commons - All</name>
+    <artifactId>kp-office-commons-shared</artifactId>
+    <name>KP Office - Commons - Shared</name>
     <description>Common part shared by clients and servers.</description>
 
 

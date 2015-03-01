@@ -64,7 +64,7 @@
     <dependencies>
         <dependency>
             <groupId>de.kaiserpfalz-edv.office.commons</groupId>
-            <artifactId>kp-office-commons-client</artifactId>
+            <artifactId>kp-office-commons-shared</artifactId>
         </dependency>
     </dependencies>
 </project>

@@ -32,8 +32,8 @@
 
     <modules>
         <module>kp-office-app-core</module>
+        <module>kp-office-app-base</module>
         <module>kp-office-app-documents</module>
-        <module>kp-office-app-finance</module>
         <module>kp-office-app-accounting</module>
     </modules>
 
@@ -48,6 +48,22 @@
             <artifactId>kp-office-commons-server</artifactId>
             <scope>test</scope>
         </dependency>
+
+
+        <!-- Data Persistence -->
+        <dependency>
+            <groupId>com.googlecode.log4jdbc</groupId>
+            <artifactId>log4jdbc</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+        </dependency>
+
 
         <!-- Spring Boot -->
         <dependency>
@@ -67,6 +83,21 @@
             <artifactId>spring-boot-starter-amqp</artifactId>
         </dependency>
 
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jul-to-slf4j</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jcl-over-slf4j</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+        </dependency>
+
+
         <!-- Testing -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -81,6 +112,14 @@
             <dependency>
                 <groupId>de.kaiserpfalz-edv.base</groupId>
                 <artifactId>kp-spring-boot-bom</artifactId>
+                <version>${kp-commons.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>de.kaiserpfalz-edv.base</groupId>
+                <artifactId>kp-database-bom</artifactId>
                 <version>${kp-commons.version}</version>
                 <type>pom</type>
                 <scope>import</scope>

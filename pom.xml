@@ -172,16 +172,9 @@
 
     <dependencies>
         <dependency>
-            <groupId>javax</groupId>
-            <artifactId>javaee-api</artifactId>
-            <scope>provided</scope>
-        </dependency>
-
-        <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
         </dependency>
-
 
         <dependency>
             <groupId>de.kaiserpfalz-edv.commons</groupId>
@@ -254,7 +247,7 @@
             </dependency>
             <dependency>
                 <groupId>de.kaiserpfalz-edv.office.commons</groupId>
-                <artifactId>kp-office-commons-all</artifactId>
+                <artifactId>kp-office-commons-shared</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>

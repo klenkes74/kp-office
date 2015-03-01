@@ -35,7 +35,7 @@
 
 
     <modules>
-        <module>kp-office-commons-all</module>
+        <module>kp-office-commons-shared</module>
         <module>kp-office-commons-server</module>
         <module>kp-office-commons-client</module>
     </modules>

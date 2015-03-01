@@ -37,11 +37,6 @@
 
     <dependencies>
         <dependency>
-            <groupId>de.kaiserpfalz-edv.office.commons</groupId>
-            <artifactId>kp-office-commons-server</artifactId>
-        </dependency>
-
-        <dependency>
             <groupId>de.kaiserpfalz-edv.office.modules.finance</groupId>
             <artifactId>kp-office-finance-api</artifactId>
         </dependency>
@@ -50,24 +45,6 @@
         <dependency>
             <groupId>org.javamoney</groupId>
             <artifactId>moneta</artifactId>
-        </dependency>
-
-
-        <dependency>
-            <groupId>org.springframework.data</groupId>
-            <artifactId>spring-data-jpa</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.mysema.querydsl</groupId>
-            <artifactId>querydsl-core</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.mysema.querydsl</groupId>
-            <artifactId>querydsl-apt</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.mysema.querydsl</groupId>
-            <artifactId>querydsl-jpa</artifactId>
         </dependency>
 
 

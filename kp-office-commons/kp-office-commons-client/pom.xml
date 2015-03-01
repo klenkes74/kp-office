@@ -35,7 +35,7 @@
     <dependencies>
         <dependency>
             <groupId>de.kaiserpfalz-edv.office.commons</groupId>
-            <artifactId>kp-office-commons-all</artifactId>
+            <artifactId>kp-office-commons-shared</artifactId>
         </dependency>
 
 

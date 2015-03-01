@@ -27,7 +27,7 @@
     </parent>
 
     <artifactId>kp-office-app-accounting</artifactId>
-    <name>KP Office - Services - Apps - Accounting</name>
+    <name>KP Office - Services - Apps - Accounting and Finance</name>
 
 
     <properties>
@@ -47,8 +47,8 @@
         </dependency>
 
         <dependency>
-            <groupId>de.kaiserpfalz-edv.office.services</groupId>
-            <artifactId>kp-office-client-finance</artifactId>
+            <groupId>de.kaiserpfalz-edv.office.modules.finance</groupId>
+            <artifactId>kp-office-finance-impl</artifactId>
         </dependency>
     </dependencies>
 </project>
