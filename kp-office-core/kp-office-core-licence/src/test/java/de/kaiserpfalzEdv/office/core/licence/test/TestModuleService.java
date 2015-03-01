@@ -16,7 +16,7 @@
 
 package de.kaiserpfalzEdv.office.core.licence.test;
 
-import de.kaiserpfalzEdv.office.core.licence.LicensingException;
+import de.kaiserpfalzEdv.office.core.licence.LicencingException;
 
 /**
  * @author klenkes
@@ -24,5 +24,5 @@ import de.kaiserpfalzEdv.office.core.licence.LicensingException;
  * @since 11.02.15 21:58
  */
 public interface TestModuleService {
-    boolean serviceCall() throws LicensingException;
+    boolean serviceCall() throws LicencingException;
 }

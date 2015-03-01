@@ -46,16 +46,9 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-remoting</artifactId>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.springframework</groupId>
-                    <artifactId>spring-web</artifactId>
-                </exclusion>
-            </exclusions>
+            <groupId>de.kaiserpfalz-edv.office.commons</groupId>
+            <artifactId>kp-office-commons-amqp</artifactId>
         </dependency>
-
 
         <!-- Testing -->
         <dependency>

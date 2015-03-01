@@ -20,7 +20,7 @@ import com.verhas.licensor.License;
 import de.kaiserpfalzEdv.commons.service.VersionRange;
 import de.kaiserpfalzEdv.commons.service.Versionable;
 import de.kaiserpfalzEdv.commons.util.BuilderException;
-import de.kaiserpfalzEdv.office.core.licence.OfficeLicense;
+import de.kaiserpfalzEdv.office.core.licence.OfficeLicence;
 import org.apache.commons.lang3.builder.Builder;
 
 import java.time.LocalDate;
@@ -37,7 +37,7 @@ import static org.apache.commons.lang3.StringUtils.isBlank;
  * @version 2015Q1
  * @since 14.02.15 21:26
  */
-public class LicenseBuilder implements Builder<OfficeLicense> {
+public class LicenseBuilder implements Builder<OfficeLicence> {
     private static final String LICENSE_ID            = "id";
     private static final String LICENSE_ISSUED        = "issued";
     private static final String LICENSE_ISSUER        = "issuer";
@@ -59,10 +59,10 @@ public class LicenseBuilder implements Builder<OfficeLicense> {
     private VersionRange versionRange;
 
     @Override
-    public OfficeLicense build() {
+    public OfficeLicence build() {
         validate();
 
-        return new LicenseImpl(
+        return new LicenceImpl(
                 id,
                 issued,
                 issuer,

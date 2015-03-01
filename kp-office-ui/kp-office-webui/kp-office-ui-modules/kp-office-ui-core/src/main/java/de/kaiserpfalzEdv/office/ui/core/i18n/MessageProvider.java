@@ -16,7 +16,7 @@
 
 package de.kaiserpfalzEdv.office.ui.core.i18n;
 
-import de.kaiserpfalzEdv.office.clients.core.i18n.SpringMessageProviderBridge;
+import de.kaiserpfalzEdv.office.clients.core.i18n.TranslationClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -35,11 +35,11 @@ import java.util.Locale;
 public class MessageProvider implements org.vaadin.spring.i18n.MessageProvider {
     private static final Logger LOG = LoggerFactory.getLogger(MessageProvider.class);
 
-    private SpringMessageProviderBridge provider;
+    private TranslationClient client;
 
     @Inject
-    public MessageProvider(SpringMessageProviderBridge provider) {
-        this.provider = provider;
+    public MessageProvider(final TranslationClient provider) {
+        this.client = provider;
 
         LOG.trace("Created/Initialized: {}", this);
         LOG.trace("  internal messsage provider: {}", this);
@@ -53,6 +53,6 @@ public class MessageProvider implements org.vaadin.spring.i18n.MessageProvider {
 
     @Override
     public MessageFormat resolveCode(String s, Locale locale) {
-        return provider.resolveCode(s, locale);
+        return client.resolveCode(s, locale);
     }
 }

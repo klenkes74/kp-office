@@ -16,10 +16,10 @@
 
 package de.kaiserpfalzEdv.office.core.licence.impl;
 
-import de.kaiserpfalzEdv.office.core.licence.FeatureNotLicensedException;
-import de.kaiserpfalzEdv.office.core.licence.LicenseService;
-import de.kaiserpfalzEdv.office.core.licence.ModuleInformation;
-import de.kaiserpfalzEdv.office.core.licence.OfficeLicense;
+import de.kaiserpfalzEdv.office.commons.ModuleInformation;
+import de.kaiserpfalzEdv.office.core.licence.FeatureNotLicencedException;
+import de.kaiserpfalzEdv.office.core.licence.LicenceService;
+import de.kaiserpfalzEdv.office.core.licence.OfficeLicence;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
@@ -47,7 +47,7 @@ import javax.inject.Inject;
  * for making the aspect easier to assign at runtime. Otherwise every single method call would have to be checkt on the
  * pointcuts.</p>
  *
- * <p>The real licence check is delegated to the {@link de.kaiserpfalzEdv.office.core.licence.LicenseService}.</p>
+ * <p>The real licence check is delegated to the {@link de.kaiserpfalzEdv.office.core.licence.LicenceService}.</p>
  * 
  * @author klenkes
  * @version 2015Q1
@@ -60,15 +60,15 @@ public class LicenseManager {
 
 
     @Inject
-    private LicenseService licenseService;
+    private LicenceService licenceService;
 
     public LicenseManager() {
         LOG.trace("Created: {}", this);
 
     }
 
-    public LicenseManager(LicenseService licenseService) {
-        this.licenseService = licenseService;
+    public LicenseManager(LicenceService licenceService) {
+        this.licenceService = licenceService;
 
         LOG.trace("Created: {}", this);
     }
@@ -76,7 +76,7 @@ public class LicenseManager {
 
     @PostConstruct
     public void init() {
-        LOG.trace("Licensing Interceptor uses: {}", licenseService);
+        LOG.trace("Licensing Interceptor uses: {}", licenceService);
     }
 
 
@@ -86,18 +86,18 @@ public class LicenseManager {
     }
 
 
-    @Pointcut("@within(de.kaiserpfalzEdv.office.core.licence.ModuleInformation)")
+    @Pointcut("@within(de.kaiserpfalzEdv.office.commons.ModuleInformation)")
     public void classAnnotatedWithOfficeModule() {}
 
-    @Pointcut("@annotation(de.kaiserpfalzEdv.office.core.licence.ModuleInformation)")
+    @Pointcut("@annotation(de.kaiserpfalzEdv.office.commons.ModuleInformation)")
     public void methodAnnotatedWithOfficeModule() {}
-    
+
     @Pointcut("execution(* de.kaiserpfalzEdv.office..*(..))")
     public void officeModuleImplementation() {}
 
 
     @Before("classAnnotatedWithOfficeModule() && officeModuleImplementation()")
-    public void checkLicenseOfClass(final JoinPoint invocation) throws FeatureNotLicensedException {
+    public void checkLicenseOfClass(final JoinPoint invocation) throws FeatureNotLicencedException {
         LOG.trace("Checking licensing for {} ...", invocation.getTarget().getClass().getName());
 
         ModuleInformation module = getOfficeModuleAnnotationFromClass(invocation);
@@ -110,7 +110,7 @@ public class LicenseManager {
 
 
     @Before("methodAnnotatedWithOfficeModule() && officeModuleImplementation()")
-    public void checkLicenseOfMethod(final JoinPoint invocation) throws FeatureNotLicensedException {
+    public void checkLicenseOfMethod(final JoinPoint invocation) throws FeatureNotLicencedException {
         LOG.trace("Checking licensing for {} ...", invocation.getSignature().getName());
 
         ModuleInformation module = getOfficeModuleFromMethodAnnotation(invocation);
@@ -125,19 +125,19 @@ public class LicenseManager {
 
     /**
      * Checks the licence of the module by checking if the module needs a licence and then checking it against the
-     * {@link de.kaiserpfalzEdv.office.core.licence.OfficeLicense} provided by {@link #licenseService}.
+     * {@link de.kaiserpfalzEdv.office.core.licence.OfficeLicence} provided by {@link #licenceService}.
      *
      * @param module The OfficeModule annoatation to check the data for. 
-     * @throws FeatureNotLicensedException If there is a problem with the licensing of the module.
+     * @throws de.kaiserpfalzEdv.office.core.licence.FeatureNotLicencedException If there is a problem with the licensing of the module.
      */
-    private void checkLicenseOfModule(final ModuleInformation module) throws FeatureNotLicensedException {
+    private void checkLicenseOfModule(final ModuleInformation module) throws FeatureNotLicencedException {
         if (module.needsLicence()) {
-            OfficeLicense license = licenseService.getLicense();
+            OfficeLicence license = licenceService.getLicence();
             
             if (! license.containsFeature(module.featureName())) {
                 LOG.warn("Feature '{}' not licensed in {}", module.featureName(), license);
-                
-                throw new FeatureNotLicensedException(license, module.featureName());
+
+                throw new FeatureNotLicencedException(license, module.featureName());
             }
 
             LOG.trace("Checked licence for: {} (#{})", module.name(), module.id());

@@ -18,7 +18,7 @@ package de.kaiserpfalzEdv.office.clients.core.i18n.test;
 
 import de.kaiserpfalzEdv.commons.test.SpringTestNGBase;
 import de.kaiserpfalzEdv.office.core.i18n.TranslationEntry;
-import de.kaiserpfalzEdv.office.core.i18n.TranslationProvider;
+import de.kaiserpfalzEdv.office.core.i18n.TranslationService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.test.context.ContextConfiguration;
@@ -41,7 +41,7 @@ public class TranslationClientIT extends SpringTestNGBase {
     private static final Logger LOG = LoggerFactory.getLogger(TranslationClientIT.class);
 
     @Inject
-    private TranslationProvider service;
+    private TranslationService service;
 
 
     public TranslationClientIT() {

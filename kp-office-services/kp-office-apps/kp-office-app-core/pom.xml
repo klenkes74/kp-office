@@ -40,15 +40,5 @@
             <groupId>de.kaiserpfalz-edv.office.core</groupId>
             <artifactId>kp-office-core-impl</artifactId>
         </dependency>
-        <!--
-                <dependency>
-                    <groupId>de.kaiserpfalz-edv.office.modules.contacts</groupId>
-                    <artifactId>kp-office-contacts-impl</artifactId>
-                </dependency>
-                <dependency>
-                    <groupId>de.kaiserpfalz-edv.office.modules.files</groupId>
-                    <artifactId>kp-office-files-impl</artifactId>
-                </dependency>
-        -->
     </dependencies>
 </project>

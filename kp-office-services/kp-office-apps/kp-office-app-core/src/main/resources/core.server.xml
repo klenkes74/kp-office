@@ -23,37 +23,45 @@
                            http://www.springframework.org/schema/rabbit http://www.springframework.org/schema/rabbit/spring-rabbit.xsd
        ">
 
-    <rabbit:connection-factory id="amqpConnectionFactory" host="${amqp.host}" port="${amqp.port}"
-                               virtual-host="${amqp.virtual}" username="${amqp.user}" password="${amqp.password}"/>
-    <rabbit:admin connection-factory="amqpConnectionFactory"/>
-    <rabbit:template id="amqpTemplate" connection-factory="amqConnectionFactory"/>
+    <import resource="classpath*:/amqp.xml"/>
 
 
     <rabbit:listener-container connection-factory="amqpConnectionFactory">
-        <rabbit:listener queues="core.i18n" ref="i18nListener"/>
-        <rabbit:listener queues="core.tenants" ref="tenantsListener"/>
+        <rabbit:listener queues="core.security" ref="securityServer"/>
+        <rabbit:listener queues="core.tenants" ref="tenantServer"/>
+        <rabbit:listener queues="core.licence" ref="licenceServer"/>
+        <rabbit:listener queues="core.i18n" ref="translationServer"/>
     </rabbit:listener-container>
 
-    <bean id="i18nListener" class="org.springframework.amqp.remoting.service.AmqpInvokerServiceExporter">
-        <property name="serviceInterface" value="de.kaiserpfalzEdv.office.core.i18n.TranslationProvider"/>
-        <property name="service" ref="translationProviderImpl"/>
-        <property name="amqpTemplate" ref="amqpTemplate"/>
-    </bean>
-    <rabbit:queue id="core.i18n" name="core.i18n.${info.app.hostName}" durable="false">
+
+    <rabbit:queue id="core.security" name="${info.app.hostName}.core.security" durable="false">
         <rabbit:queue-arguments>
-            <entry key="x-message-ttl" value="300000" value-type="java.lang.Long"/>
+            <entry key="x-dead-letter-exchange" value="kpo.dead-letter-queue" value-type="java.lang.String"/>
+            <entry key="x-dead-letter-routing-key" value="core.security" value-type="java.lang.String"/>
         </rabbit:queue-arguments>
     </rabbit:queue>
 
 
-    <bean id="tenantsListener" class="org.springframework.amqp.remoting.service.AmqpInvokerServiceExporter">
-        <property name="serviceInterface" value="de.kaiserpfalzEdv.office.core.tenants.TenantService"/>
-        <property name="service" ref="tenantServiceImpl"/>
-        <property name="amqpTemplate" ref="amqpTemplate"/>
-    </bean>
-    <rabbit:queue id="core.tenants" name="core.tenants.${info.app.hostName}" durable="false">
+    <rabbit:queue id="core.tenants" name="${info.app.hostName}.core.tenants" durable="false">
         <rabbit:queue-arguments>
-            <entry key="x-message-ttl" value="300000" value-type="java.lang.Long"/>
+            <entry key="x-dead-letter-exchange" value="kpo.dead-letter-queue" value-type="java.lang.String"/>
+            <entry key="x-dead-letter-routing-key" value="core.tenants" value-type="java.lang.String"/>
+        </rabbit:queue-arguments>
+    </rabbit:queue>
+
+
+    <rabbit:queue id="core.licence" name="${info.app.hostName}.core.licence" durable="false">
+        <rabbit:queue-arguments>
+            <entry key="x-dead-letter-exchange" value="kpo.dead-letter-queue" value-type="java.lang.String"/>
+            <entry key="x-dead-letter-routing-key" value="core.licence" value-type="java.lang.String"/>
+        </rabbit:queue-arguments>
+    </rabbit:queue>
+
+
+    <rabbit:queue id="core.i18n" name="${info.app.hostName}.core.i18n" durable="false">
+        <rabbit:queue-arguments>
+            <entry key="x-dead-letter-exchange" value="kpo.dead-letter-queue" value-type="java.lang.String"/>
+            <entry key="x-dead-letter-routing-key" value="core.i18n" value-type="java.lang.String"/>
         </rabbit:queue-arguments>
     </rabbit:queue>
 </beans>

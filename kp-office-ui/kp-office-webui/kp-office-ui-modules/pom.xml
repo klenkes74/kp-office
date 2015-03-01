@@ -32,10 +32,11 @@
 
     <modules>
         <module>kp-office-ui-core</module>
-        <module>kp-office-ui-accounting</module>
 <!--
         <module>kp-office-ui-contacts</module>
         <module>kp-office-ui-files</module>
+        <module>kp-office-ui-accounting</module>
+        <module>kp-office-ui-documents</module>
 -->
     </modules>
 

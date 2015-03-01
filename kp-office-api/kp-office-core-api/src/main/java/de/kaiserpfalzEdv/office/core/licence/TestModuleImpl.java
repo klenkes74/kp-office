@@ -16,6 +16,7 @@
 
 package de.kaiserpfalzEdv.office.core.licence;
 
+import de.kaiserpfalzEdv.office.commons.ModuleInformation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

@@ -17,7 +17,7 @@
 package de.kaiserpfalzEdv.office.core.licence.test;
 
 import de.kaiserpfalzEdv.commons.test.SpringTestNGBase;
-import de.kaiserpfalzEdv.office.core.licence.LicensingException;
+import de.kaiserpfalzEdv.office.core.licence.LicencingException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.test.context.ContextConfiguration;
@@ -57,17 +57,17 @@ public class LicenceManagerTest extends SpringTestNGBase {
     }
 
 
-    public void testInterceptorWithValidLicense() throws LicensingException {
+    public void testInterceptorWithValidLicense() throws LicencingException {
         logMethod("valid-licence", "Check with valid licence.");
 
         validService.serviceCall();
     }
 
     @Test(
-            expectedExceptions = LicensingException.class,
+            expectedExceptions = LicencingException.class,
             expectedExceptionsMessageRegExp = "Feature 'not-existing-feature' not licensed in licence: 87e7cc68-f844-401a-ac80-2f9d34ed69b9"
     )
-    public void testInterceptorWithInvalidLicense() throws LicensingException {
+    public void testInterceptorWithInvalidLicense() throws LicencingException {
         logMethod("invalid-licence", "Check with invalid licence.");
 
         invalidService.serviceCall();

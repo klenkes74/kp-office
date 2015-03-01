@@ -18,8 +18,8 @@ package de.kaiserpfalzEdv.office.ui.web.configuration;
 
 import de.kaiserpfalzEdv.commons.jee.servlet.model.ApplicationMetaData;
 import de.kaiserpfalzEdv.commons.service.Versionable;
-import de.kaiserpfalzEdv.office.core.licence.LicenseService;
-import de.kaiserpfalzEdv.office.core.licence.OfficeLicense;
+import de.kaiserpfalzEdv.office.core.licence.LicenceService;
+import de.kaiserpfalzEdv.office.core.licence.OfficeLicence;
 import de.kaiserpfalzEdv.office.core.licence.impl.SoftwareVersion;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -53,7 +53,7 @@ public class ApplicationDataProvider {
     private String applicationInstance;
 
     @Inject
-    private LicenseService licenseService;
+    private LicenceService licenceService;
 
 
     /**
@@ -110,7 +110,7 @@ public class ApplicationDataProvider {
 
 
     @Bean
-    public OfficeLicense getLicense() {
-        return licenseService.getLicense();
+    public OfficeLicence getLicense() {
+        return licenceService.getLicence();
     }
 }

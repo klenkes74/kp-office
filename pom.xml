@@ -261,6 +261,11 @@
                 <version>${project.version}</version>
             </dependency>
             <dependency>
+                <groupId>de.kaiserpfalz-edv.office.commons</groupId>
+                <artifactId>kp-office-commons-amqp</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
                 <groupId>de.kaiserpfalz-edv.office</groupId>
                 <artifactId>kp-office-api</artifactId>
                 <version>${project.version}</version>
@@ -371,17 +376,22 @@
             </dependency>
             <dependency>
                 <groupId>de.kaiserpfalz-edv.office.services</groupId>
-                <artifactId>kp-office-client-lib</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>de.kaiserpfalz-edv.office.services</groupId>
                 <artifactId>kp-office-app-core</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>de.kaiserpfalz-edv.office.services</groupId>
                 <artifactId>kp-office-client-core</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>de.kaiserpfalz-edv.office.services</groupId>
+                <artifactId>kp-office-app-base</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>de.kaiserpfalz-edv.office.services</groupId>
+                <artifactId>kp-office-client-base</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
@@ -402,16 +412,6 @@
             <dependency>
                 <groupId>de.kaiserpfalz-edv.office.services</groupId>
                 <artifactId>kp-office-client-documents</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>de.kaiserpfalz-edv.office.services</groupId>
-                <artifactId>kp-office-app-finance</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>de.kaiserpfalz-edv.office.services</groupId>
-                <artifactId>kp-office-client-finance</artifactId>
                 <version>${project.version}</version>
             </dependency>
         </dependencies>

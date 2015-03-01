@@ -27,7 +27,7 @@
  * and annotated with {@link de.kaiserpfalzEdv.office.core.licence.ModuleInformation}. If the parameter
  * {@link de.kaiserpfalzEdv.office.core.licence.ModuleInformation#needsLicence()} is set to <code>true</code>, then the
  * feature {@link de.kaiserpfalzEdv.office.core.licence.ModuleInformation#featureName()} is checked within the licence.
- * If there is no licence or the licence is invalid, an {@link de.kaiserpfalzEdv.office.core.licence.LicensingException}
+ * If there is no licence or the licence is invalid, an {@link de.kaiserpfalzEdv.office.core.licence.LicencingException}
  * or one of its subclasses is thrown.</p>
  *
  * <p>The check is also applied to method calls within classes named like <code>...ModuleImpl</code> if the methods are

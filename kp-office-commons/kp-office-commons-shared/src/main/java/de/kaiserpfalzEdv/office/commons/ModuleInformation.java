@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzEdv.office.core.licence;
+package de.kaiserpfalzEdv.office.commons;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;

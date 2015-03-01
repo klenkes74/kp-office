@@ -17,6 +17,7 @@
 package de.kaiserpfalzEdv.office.core.security.impl;
 
 import de.kaiserpfalzEdv.commons.service.BackendService;
+import de.kaiserpfalzEdv.office.commons.KPO;
 import de.kaiserpfalzEdv.office.core.security.InvalidLoginException;
 import de.kaiserpfalzEdv.office.core.security.InvalidTicketException;
 import de.kaiserpfalzEdv.office.core.security.NoSuchAccountException;
@@ -29,11 +30,12 @@ import org.springframework.dao.EmptyResultDataAccessException;
 
 import javax.inject.Inject;
 import javax.inject.Named;
-import javax.transaction.Transactional;
 import javax.validation.constraints.NotNull;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 import java.util.UUID;
+
+import static de.kaiserpfalzEdv.office.commons.KPO.Type.Implementation;
 
 /**
  * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;
@@ -42,6 +44,7 @@ import java.util.UUID;
  */
 @Named
 @BackendService
+@KPO(Implementation)
 public class SecurityServiceImpl implements SecurityService {
     private static final Logger LOG = LoggerFactory.getLogger(SecurityServiceImpl.class);
 
@@ -64,7 +67,6 @@ public class SecurityServiceImpl implements SecurityService {
 
 
     @SuppressWarnings("deprecation")
-    @Transactional
     @Override
     public OfficeLoginTicket login(@NotNull final String accountName, @NotNull final String password) throws InvalidLoginException, NoSuchAccountException {
         Account account = accountRepository.findByAccountName(accountName);
@@ -105,7 +107,6 @@ public class SecurityServiceImpl implements SecurityService {
     }
 
     @SuppressWarnings("deprecation")
-    @Transactional
     @Override
     public OfficeLoginTicket check(@NotNull OfficeLoginTicket ticket)
             throws InvalidTicketException, NoSuchTicketException {
@@ -136,7 +137,6 @@ public class SecurityServiceImpl implements SecurityService {
         return ticket;
     }
 
-    @Transactional
     @Override
     public void logout(@NotNull OfficeLoginTicket ticket) {
         try {

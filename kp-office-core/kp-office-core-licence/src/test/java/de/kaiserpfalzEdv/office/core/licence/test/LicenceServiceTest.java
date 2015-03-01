@@ -17,9 +17,9 @@
 package de.kaiserpfalzEdv.office.core.licence.test;
 
 import de.kaiserpfalzEdv.commons.test.CommonTestBase;
-import de.kaiserpfalzEdv.office.core.licence.LicensingException;
-import de.kaiserpfalzEdv.office.core.licence.OfficeLicense;
-import de.kaiserpfalzEdv.office.core.licence.impl.LicenseServiceImpl;
+import de.kaiserpfalzEdv.office.core.licence.LicencingException;
+import de.kaiserpfalzEdv.office.core.licence.OfficeLicence;
+import de.kaiserpfalzEdv.office.core.licence.impl.LicenceServiceImpl;
 import de.kaiserpfalzEdv.office.core.licence.impl.SoftwareVersion;
 import de.kaiserpfalzEdv.office.core.licence.impl.SoftwareVersionRange;
 import org.slf4j.Logger;
@@ -41,18 +41,18 @@ import static org.testng.Assert.assertTrue;
 public class LicenceServiceTest extends CommonTestBase {
     private static final Logger LOG = LoggerFactory.getLogger(LicenceServiceTest.class);
 
-    private LicenseServiceImpl service;
+    private LicenceServiceImpl service;
 
     public LicenceServiceTest() {
         super(LicenceServiceTest.class, LOG);
     }
 
 
-    public void checkBaseFunctionality() throws LicensingException {
+    public void checkBaseFunctionality() throws LicencingException {
         logMethod("licence-basics", "Checking basic licensing functionality.");
         service.init();
 
-        OfficeLicense license = service.getLicense();
+        OfficeLicence license = service.getLicence();
 
         SoftwareVersionRange range = new SoftwareVersionRange(new SoftwareVersion(0, 0, 0), new SoftwareVersion(999, 999, 999));
         assertTrue(license.isValid("KP Office", range), "The licence is invalid!");
@@ -68,6 +68,6 @@ public class LicenceServiceTest extends CommonTestBase {
 
     @BeforeMethod
     protected void setService() {
-        service = new LicenseServiceImpl("./target/test-classes/kpoffice.lic");
+        service = new LicenceServiceImpl("./target/test-classes/kpoffice.lic");
     }
 }

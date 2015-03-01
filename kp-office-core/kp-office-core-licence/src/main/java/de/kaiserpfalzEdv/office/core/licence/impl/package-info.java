@@ -22,9 +22,9 @@ package de.kaiserpfalzEdv.office.core.licence.impl;
  * Verhas</a>.</p>
  *
  * <p>License public key is needed within the classpath as file
- * <code>classpath:/{@value de.kaiserpfalzEdv.office.core.licence.impl.LicenseServiceImpl#KEY_RING}</code>. The licence
+ * <code>classpath:/{@value de.kaiserpfalzEdv.office.core.licence.impl.LicenceServiceImpl#KEY_RING}</code>. The licence
  * file should be configures via <code>application.properties</code>. As fallback a file named
- * {@value de.kaiserpfalzEdv.office.core.licence.impl.LicenseServiceImpl#LICENSE_FILE} in the startup directory of the
+ * {@value de.kaiserpfalzEdv.office.core.licence.impl.LicenceServiceImpl#LICENSE_FILE} in the startup directory of the
  * software is used.</p>
  *
  * <p>The licence check is annotated per aspect {@link de.kaiserpfalzEdv.office.core.licence.impl.LicenseManager} to
@@ -33,7 +33,7 @@ package de.kaiserpfalzEdv.office.core.licence.impl;
  * {@link de.kaiserpfalzEdv.office.core.licence.ModuleInformation#needsLicence()} is set to <code>true</code>, then the
  * feature {@link de.kaiserpfalzEdv.office.core.licence.ModuleInformation#featureName()} is checked within the licence.
  * If there is no licence or the licence is invalid, an
- * {@link de.kaiserpfalzEdv.office.core.licence.LicensingException} or one of its subclasses is thrown.</p>
+ * {@link de.kaiserpfalzEdv.office.core.licence.LicencingException} or one of its subclasses is thrown.</p>
  *
  * <p>The check is also applied to method calls within classes named like <code>...ModuleImpl</code> if they are
  * annotated with {@link de.kaiserpfalzEdv.office.core.licence.ModuleInformation}. This may be useful with a

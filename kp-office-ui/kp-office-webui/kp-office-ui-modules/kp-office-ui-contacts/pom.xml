@@ -28,4 +28,11 @@
 
     <artifactId>kp-office-ui-contacts</artifactId>
     <name>KP Office - Web UI - Modules - Contacts</name>
+
+    <dependencies>
+        <dependency>
+            <groupId>de.kaiserpfalz-edv.office.services</groupId>
+            <artifactId>kp-office-client-base</artifactId>
+        </dependency>
+    </dependencies>
 </project>

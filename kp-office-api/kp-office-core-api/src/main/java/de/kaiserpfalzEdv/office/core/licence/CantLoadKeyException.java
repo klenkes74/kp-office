@@ -23,7 +23,7 @@ package de.kaiserpfalzEdv.office.core.licence;
  * @version 2015Q1
  * @since 08.02.15 22:50
  */
-public class CantLoadKeyException extends LicensingException {
+public class CantLoadKeyException extends LicencingException {
     private static final long         serialVersionUID = 5304160454819460543L;
     private static final ErrorMessage CANT_LOAD_FILE   = ErrorMessage.LICENSE_2001;
 
