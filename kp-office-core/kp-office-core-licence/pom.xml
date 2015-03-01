@@ -38,19 +38,17 @@
             -Djava.awt.headless=true -Djava.net.preferIPv4Stack=true -Xmx512m
             -javaagent:${settings.localRepository}/org/springframework/spring-instrument/${spring.version}/spring-instrument-${spring.version}.jar
         </maven.test.jvmargs>
-
-        <compileAspectJ>true</compileAspectJ>
     </properties>
 
     <dependencies>
         <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>kp-office-core-api</artifactId>
+            <groupId>de.kaiserpfalz-edv.office.commons</groupId>
+            <artifactId>kp-office-commons-server</artifactId>
         </dependency>
 
         <dependency>
-            <groupId>de.kaiserpfalz-edv.commons</groupId>
-            <artifactId>kp-commons-jee</artifactId>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>kp-office-core-api</artifactId>
         </dependency>
 
 

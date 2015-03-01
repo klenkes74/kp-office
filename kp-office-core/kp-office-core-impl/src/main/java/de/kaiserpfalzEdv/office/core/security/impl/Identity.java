@@ -16,7 +16,7 @@
 
 package de.kaiserpfalzEdv.office.core.security.impl;
 
-import de.kaiserpfalzEdv.office.commons.impl.KPOTenantHoldingEntity;
+import de.kaiserpfalzEdv.office.commons.server.data.KPOTenantHoldingEntity;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;

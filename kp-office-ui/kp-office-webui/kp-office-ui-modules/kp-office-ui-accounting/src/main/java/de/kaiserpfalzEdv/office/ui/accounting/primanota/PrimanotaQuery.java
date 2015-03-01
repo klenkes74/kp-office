@@ -22,7 +22,7 @@ import com.vaadin.data.util.PropertysetItem;
 import de.kaiserpfalzEdv.office.accounting.chartsofaccounts.Account;
 import de.kaiserpfalzEdv.office.accounting.chartsofaccounts.AccountMapping;
 import de.kaiserpfalzEdv.office.accounting.postingRecord.PostingRecord;
-import de.kaiserpfalzEdv.office.accounting.primaNota.Primanota;
+import de.kaiserpfalzEdv.office.accounting.primaNota.PrimaNota;
 import de.kaiserpfalzEdv.office.accounting.primaNota.impl.PrimaNotaDataLoader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -44,31 +44,31 @@ import java.util.UUID;
  */
 public class PrimanotaQuery implements Query {
     private static final Logger LOG = LoggerFactory.getLogger(PrimanotaQuery.class);
-    private Primanota      primanota;
+    private PrimaNota primaNota;
     private AccountMapping mapping;
 
     PrimanotaQuery(
-            @NotNull final Primanota primanota,
+            @NotNull final PrimaNota primaNota,
             @NotNull final AccountMapping mapping
     ) {
-        this.primanota = primanota;
+        this.primaNota = primaNota;
         this.mapping = mapping;
 
         LOG.trace("Created: {}", this);
-        LOG.trace("  auto selected primaNota: {}", primanota);
+        LOG.trace("  auto selected primaNota: {}", primaNota);
         LOG.trace("  auto selected mapping: {}", mapping);
     }
 
     @Override
     public int size() {
-        return primanota.size();
+        return primaNota.size();
     }
 
     @Override
     public List<Item> loadItems(int startIndex, int count) {
         ArrayList<Item> result = new ArrayList<>(count);
 
-        List<? extends PostingRecord> entries = primanota.getEntries().subList(startIndex, startIndex + count);
+        List<? extends PostingRecord> entries = primaNota.getEntries().subList(startIndex, startIndex + count);
 
         entries.forEach(e -> result.add(constructItem(e)));
 
@@ -177,9 +177,9 @@ public class PrimanotaQuery implements Query {
 
         @Override
         public Query constructQuery(org.vaadin.addons.lazyquerycontainer.QueryDefinition queryDefinition) {
-            Primanota primanota = client.loadJournal(journalId);
+            PrimaNota primaNota = client.loadJournal(journalId);
 
-            return new PrimanotaQuery(primanota, mapping);
+            return new PrimanotaQuery(primaNota, mapping);
         }
     }
 

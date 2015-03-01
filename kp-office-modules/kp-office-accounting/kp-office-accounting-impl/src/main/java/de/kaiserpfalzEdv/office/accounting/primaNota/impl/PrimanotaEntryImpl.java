@@ -20,7 +20,7 @@ import de.kaiserpfalzEdv.office.accounting.DatabaseMoney;
 import de.kaiserpfalzEdv.office.accounting.chartsofaccounts.Account;
 import de.kaiserpfalzEdv.office.accounting.postingRecord.impl.AccountingVoucher;
 import de.kaiserpfalzEdv.office.accounting.primaNota.PrimaNotaEntry;
-import de.kaiserpfalzEdv.office.commons.impl.KPOEntity;
+import de.kaiserpfalzEdv.office.commons.server.data.KPOEntity;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import javax.money.MonetaryAmount;

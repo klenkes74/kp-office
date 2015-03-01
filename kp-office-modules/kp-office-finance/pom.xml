@@ -33,7 +33,6 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>kp-office-finance-api</module>
         <module>kp-office-finance-impl</module>
     </modules>
 

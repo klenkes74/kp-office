@@ -19,7 +19,7 @@ package de.kaiserpfalzEdv.office.ui.accounting;
 import com.vaadin.server.Sizeable;
 import com.vaadin.ui.Button;
 import de.kaiserpfalzEdv.commons.service.Versionable;
-import de.kaiserpfalzEdv.office.core.license.ModuleInformation;
+import de.kaiserpfalzEdv.office.core.licence.ModuleInformation;
 import de.kaiserpfalzEdv.office.ui.OfficeModule;
 import de.kaiserpfalzEdv.office.ui.accounting.primanota.OpenPrimanotaEvent;
 import de.kaiserpfalzEdv.office.ui.accounting.primanota.PrimanotaPresenter;

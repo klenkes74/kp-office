@@ -39,6 +39,12 @@
 
     <dependencies>
         <dependency>
+            <groupId>de.kaiserpfalz-edv.office.commons</groupId>
+            <artifactId>kp-office-commons-server</artifactId>
+        </dependency>
+
+
+        <dependency>
             <groupId>de.kaiserpfalz-edv.office.modules.contacts</groupId>
             <artifactId>kp-office-contacts-api</artifactId>
         </dependency>

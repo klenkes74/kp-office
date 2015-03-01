@@ -20,10 +20,10 @@ import de.kaiserpfalzEdv.office.accounting.chartsofaccounts.Account;
 import de.kaiserpfalzEdv.office.accounting.chartsofaccounts.impl.AccountBuilder;
 import de.kaiserpfalzEdv.office.accounting.postingRecord.PostingRecord;
 import de.kaiserpfalzEdv.office.accounting.postingRecord.impl.PostingRecordBuilder;
+import de.kaiserpfalzEdv.office.accounting.primaNota.PrimaNota;
 import de.kaiserpfalzEdv.office.accounting.primaNota.PrimaNotaEntry;
 import de.kaiserpfalzEdv.office.accounting.primaNota.PrimaNotaInfo;
-import de.kaiserpfalzEdv.office.accounting.primaNota.Primanota;
-import de.kaiserpfalzEdv.office.commons.TenantIdHolder;
+import de.kaiserpfalzEdv.office.commons.data.TenantIdHolder;
 import org.javamoney.moneta.Money;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -51,7 +51,7 @@ import java.util.UUID;
 public class PrimaNotaDataLoader {
     private static final Logger LOG = LoggerFactory.getLogger(PrimaNotaDataLoader.class);
 
-    private final HashMap<UUID, Primanota> journals = new HashMap<>(5);
+    private final HashMap<UUID, PrimaNota> journals = new HashMap<>(5);
 
 
     public PrimaNotaDataLoader() {
@@ -70,7 +70,7 @@ public class PrimaNotaDataLoader {
     }
 
 
-    public Primanota loadJournal(@NotNull final UUID journalId) {
+    public PrimaNota loadJournal(@NotNull final UUID journalId) {
         checkExisting(journalId);
 
         return journals.get(journalId);
@@ -96,7 +96,7 @@ public class PrimaNotaDataLoader {
 
 
     private void generateFakeJournal() {
-        Primanota fake = new PrimaNotaImpl(TenantIdHolder.DEFAULT_TENANT_ID, UUID.fromString("400b4f5d-216e-4457-9dce-79859d8396af"), "1", "Journal 1");
+        PrimaNota fake = new PrimaNotaImpl(TenantIdHolder.DEFAULT_TENANT_ID, UUID.fromString("400b4f5d-216e-4457-9dce-79859d8396af"), "1", "Journal 1");
 
         Account debitAccount = new AccountBuilder()
                 .withTenantId(TenantIdHolder.DEFAULT_TENANT_ID)

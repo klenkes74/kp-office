@@ -28,7 +28,7 @@
     <rabbit:admin connection-factory="amqpConnectionFactory"/>
 
 
-    <bean id="i18nClientFactory" class="de.kaiserpfalzEdv.office.clients.utils.AmqpProxyFactoryBean">
+    <bean id="i18nClientFactory" class="de.kaiserpfalzEdv.office.commons.client.AmqpProxyFactoryBean">
         <property name="amqpTemplate" ref="i18nAmqpTemplate"/>
         <property name="serviceInterface" value="de.kaiserpfalzEdv.office.core.i18n.TranslationProvider"/>
     </bean>
@@ -47,7 +47,7 @@
     </rabbit:direct-exchange>
 
 
-    <bean id="tenantClientFactory" class="de.kaiserpfalzEdv.office.clients.utils.AmqpProxyFactoryBean">
+    <bean id="tenantClientFactory" class="de.kaiserpfalzEdv.office.commons.client.AmqpProxyFactoryBean">
         <property name="amqpTemplate" ref="tenantAmqpTemplate"/>
         <property name="serviceInterface" value="de.kaiserpfalzEdv.office.core.tenants.TenantService"/>
     </bean>
@@ -67,7 +67,7 @@
     </rabbit:direct-exchange>
 
 
-    <bean id="securityClientFactory" class="de.kaiserpfalzEdv.office.clients.utils.AmqpProxyFactoryBean">
+    <bean id="securityClientFactory" class="de.kaiserpfalzEdv.office.commons.client.AmqpProxyFactoryBean">
         <property name="amqpTemplate" ref="tenantAmqpTemplate"/>
         <property name="serviceInterface" value="de.kaiserpfalzEdv.office.core.security.SecurityService"/>
     </bean>

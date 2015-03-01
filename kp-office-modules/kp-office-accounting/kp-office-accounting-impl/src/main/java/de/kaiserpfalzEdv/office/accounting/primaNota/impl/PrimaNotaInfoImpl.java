@@ -26,7 +26,7 @@ import javax.validation.constraints.NotNull;
 import java.util.UUID;
 
 /**
- * A short information about a {@link de.kaiserpfalzEdv.office.accounting.primaNota.Primanota}.
+ * A short information about a {@link de.kaiserpfalzEdv.office.accounting.primaNota.PrimaNota}.
  *
  * @author klenkes
  * @version 2015Q1

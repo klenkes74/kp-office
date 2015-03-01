@@ -83,6 +83,11 @@
 
     <dependencies>
         <dependency>
+            <groupId>de.kaiserpfalz-edv.office.commons</groupId>
+            <artifactId>kp-office-commons-server</artifactId>
+        </dependency>
+
+        <dependency>
             <groupId>de.kaiserpfalz-edv.office.modules.files</groupId>
             <artifactId>kp-office-files-api</artifactId>
         </dependency>

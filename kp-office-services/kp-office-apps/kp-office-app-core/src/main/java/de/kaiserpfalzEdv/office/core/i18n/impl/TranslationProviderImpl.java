@@ -37,6 +37,7 @@ import static de.kaiserpfalzEdv.office.commons.KPO.Type.Application;
  */
 @Named
 @KPO(Application)
+
 public class TranslationProviderImpl implements TranslationProvider {
     private static final Logger LOG = LoggerFactory.getLogger(TranslationProviderImpl.class);
 

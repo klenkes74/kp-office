@@ -18,7 +18,7 @@ package de.kaiserpfalzEdv.office.accounting.postingRecord.impl;
 
 import de.kaiserpfalzEdv.office.accounting.chartsofaccounts.Account;
 import de.kaiserpfalzEdv.office.accounting.postingRecord.PostingRecord;
-import de.kaiserpfalzEdv.office.commons.impl.KPOEntity;
+import de.kaiserpfalzEdv.office.commons.server.data.KPOEntity;
 
 import javax.money.MonetaryAmount;
 import javax.validation.constraints.NotNull;

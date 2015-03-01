@@ -24,7 +24,7 @@ import de.kaiserpfalzEdv.office.accounting.chartsofaccounts.impl.AccountBuilder;
 import de.kaiserpfalzEdv.office.accounting.chartsofaccounts.impl.AccountMappingImpl;
 import de.kaiserpfalzEdv.office.accounting.chartsofaccounts.impl.AccountMappingLocator;
 import de.kaiserpfalzEdv.office.accounting.chartsofaccounts.impl.ChartsOfAccountsImpl;
-import de.kaiserpfalzEdv.office.commons.TenantIdHolder;
+import de.kaiserpfalzEdv.office.commons.data.TenantIdHolder;
 import org.javamoney.moneta.Money;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

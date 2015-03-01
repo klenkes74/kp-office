@@ -16,7 +16,7 @@
 
 package de.kaiserpfalzEdv.office.core.tenants.impl;
 
-import de.kaiserpfalzEdv.office.commons.impl.KPOEntity;
+import de.kaiserpfalzEdv.office.commons.server.data.KPOEntity;
 import de.kaiserpfalzEdv.office.core.tenants.Tenant;
 
 import javax.persistence.Entity;

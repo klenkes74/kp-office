@@ -33,7 +33,6 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>kp-office-accounting-api</module>
         <module>kp-office-accounting-impl</module>
         <!--
                 <module>kp-office-accounting-gdpdu</module>

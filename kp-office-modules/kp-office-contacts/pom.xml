@@ -33,7 +33,6 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>kp-office-contacts-api</module>
         <module>kp-office-contacts-impl</module>
         <module>kp-office-contacts-geodb</module>
     </modules>

@@ -29,13 +29,13 @@
        ">
 
     <context:annotation-config/>
-    <context:component-scan base-package="de.kaiserpfalzEdv.office.core.license"/>
+    <context:component-scan base-package="de.kaiserpfalzEdv.office.core.licence"/>
     <context:load-time-weaver aspectj-weaving="autodetect"/>
 
     <aop:aspectj-autoproxy proxy-target-class="true" expose-proxy="true"/>
 
     <bean id="licenseManager"
-          class="de.kaiserpfalzEdv.office.core.license.impl.LicenseManager"
+          class="de.kaiserpfalzEdv.office.core.licence.impl.LicenseManager"
           factory-method="aspectOf"/>
 
     <context:property-placeholder properties-ref="configuration" system-properties-mode="OVERRIDE"
@@ -47,8 +47,8 @@
           destroy-method="close">
         <constructor-arg>
             <util:map scope="singleton" key-type="java.lang.String" value-type="java.lang.Object">
-                <entry key="license.file">
-                    <jee:jndi-lookup jndi-name="license-file"
+                <entry key="licence.file">
+                    <jee:jndi-lookup jndi-name="licence-file"
                                      expected-type="java.lang.String"
                                      cache="true"
                                      lookup-on-startup="true"/>

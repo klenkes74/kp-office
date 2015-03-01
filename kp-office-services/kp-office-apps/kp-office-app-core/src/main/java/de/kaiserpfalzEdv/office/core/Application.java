@@ -21,14 +21,12 @@ import org.slf4j.LoggerFactory;
 import org.slf4j.bridge.SLF4JBridgeHandler;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.orm.jpa.EntityScan;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.scheduling.annotation.EnableScheduling;
-import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 /**
@@ -37,11 +35,11 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  * @since 27.02.15 12:36
  */
 @Configuration
-@EnableAutoConfiguration
 @SpringBootApplication
 @EnableTransactionManagement
 @EnableScheduling
-@ComponentScan(excludeFilters = {@ComponentScan.Filter(Repository.class)})
+
+@ComponentScan
 @EnableJpaRepositories
 @EntityScan
 public class Application implements CommandLineRunner {

@@ -38,14 +38,6 @@
     </modules>
 
 
-    <dependencies>
-        <dependency>
-            <groupId>de.kaiserpfalz-edv.office</groupId>
-            <artifactId>kp-office-commons</artifactId>
-        </dependency>
-    </dependencies>
-
-
     <dependencyManagement>
         <dependencies>
             <!-- Web UI -->

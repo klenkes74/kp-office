@@ -17,9 +17,9 @@
 package de.kaiserpfalzEdv.office.accounting.primaNota.impl;
 
 import de.kaiserpfalzEdv.office.accounting.postingRecord.PostingRecord;
+import de.kaiserpfalzEdv.office.accounting.primaNota.PrimaNota;
 import de.kaiserpfalzEdv.office.accounting.primaNota.PrimaNotaEntry;
-import de.kaiserpfalzEdv.office.accounting.primaNota.Primanota;
-import de.kaiserpfalzEdv.office.commons.impl.KPOTenantHoldingEntity;
+import de.kaiserpfalzEdv.office.commons.server.data.KPOTenantHoldingEntity;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -38,7 +38,7 @@ import java.util.UUID;
  */
 @Entity
 @Table(schema = "accounting", catalog = "accounting", name = "primanota")
-public class PrimaNotaImpl extends KPOTenantHoldingEntity implements Primanota {
+public class PrimaNotaImpl extends KPOTenantHoldingEntity implements PrimaNota {
     private static final long serialVersionUID = -6634800863453395960L;
 
     @OneToMany(

@@ -23,7 +23,7 @@ import com.vaadin.ui.Label;
 import com.vaadin.ui.Layout;
 import com.vaadin.ui.VerticalLayout;
 import de.kaiserpfalzEdv.commons.jee.servlet.model.ApplicationMetaData;
-import de.kaiserpfalzEdv.office.core.license.OfficeLicense;
+import de.kaiserpfalzEdv.office.core.licence.OfficeLicense;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.vaadin.spring.annotation.VaadinUIScope;
@@ -68,7 +68,7 @@ public class AboutContent extends VerticalLayout implements View {
         addComponent(constructLicenseInformation());
         LOG.trace("Initialized: {}", this);
         LOG.trace("  application: {}", application);
-        LOG.trace("  license: {}", license);
+        LOG.trace("  licence: {}", license);
     }
 
     public Layout constructVersionString() {

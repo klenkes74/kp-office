@@ -18,7 +18,7 @@ package de.kaiserpfalzEdv.office.accounting.primaNota.test;
 
 import de.kaiserpfalzEdv.commons.test.SpringTestNGBase;
 import de.kaiserpfalzEdv.office.accounting.postingRecord.PostingRecord;
-import de.kaiserpfalzEdv.office.accounting.primaNota.Primanota;
+import de.kaiserpfalzEdv.office.accounting.primaNota.PrimaNota;
 import de.kaiserpfalzEdv.office.accounting.primaNota.impl.PrimaNotaDataLoader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -47,10 +47,10 @@ public class PrimaNotaTest extends SpringTestNGBase {
 
 
     public void testFakeJournal() {
-        Primanota primanota = service.loadJournal(UUID.fromString("400b4f5d-216e-4457-9dce-79859d8396af"));
-        LOG.info("Journal found: {}", primanota);
+        PrimaNota primaNota = service.loadJournal(UUID.fromString("400b4f5d-216e-4457-9dce-79859d8396af"));
+        LOG.info("Journal found: {}", primaNota);
 
-        for (PostingRecord entry : primanota.getEntries()) {
+        for (PostingRecord entry : primaNota.getEntries()) {
             LOG.debug("Entry: {}", entry);
         }
     }

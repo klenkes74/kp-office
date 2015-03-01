@@ -37,72 +37,11 @@
         <module>kp-office-client-accounting</module>
     </modules>
 
-    <properties>
-        <start-class>de.kaiserpfalzEdv.office.services.Application</start-class>
-    </properties>
-
 
     <dependencies>
         <dependency>
-            <groupId>de.kaiserpfalz-edv.office.services</groupId>
-            <artifactId>kp-office-client-lib</artifactId>
-            <scope>compile</scope>
-        </dependency>
-
-
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-messaging</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.amqp</groupId>
-            <artifactId>spring-rabbit</artifactId>
-        </dependency>
-
-
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-test</artifactId>
+            <groupId>de.kaiserpfalz-edv.office.commons</groupId>
+            <artifactId>kp-office-commons-client</artifactId>
         </dependency>
     </dependencies>
-
-
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>de.kaiserpfalz-edv.base</groupId>
-                <artifactId>kp-spring-boot-bom</artifactId>
-                <version>${kp-commons.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
-
-
-    <build>
-        <pluginManagement>
-            <plugins>
-                <!-- spring-boot-maven-plugin used to start application in debugging mode on port 8000 -->
-                <plugin>
-                    <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-maven-plugin</artifactId>
-                    <version>1.2.1.RELEASE</version>
-                    <configuration>
-                        <mainClass>${start-class}</mainClass>
-                        <classifier>application</classifier>
-                        <fork>false</fork>
-                    </configuration>
-                    <executions>
-                        <execution>
-                            <goals>
-                                <goal>repackage</goal>
-                            </goals>
-                            <phase>post-integration-test</phase>
-                        </execution>
-                    </executions>
-                </plugin>
-            </plugins>
-        </pluginManagement>
-    </build>
 </project>

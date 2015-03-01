@@ -37,6 +37,17 @@
 
     <dependencies>
         <dependency>
+            <groupId>de.kaiserpfalz-edv.commons</groupId>
+            <artifactId>kp-commons-jee</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>de.kaiserpfalz-edv.office.commons</groupId>
+            <artifactId>kp-office-commons-client</artifactId>
+        </dependency>
+
+
+        <!-- Vaadin -->
+        <dependency>
             <groupId>org.vaadin.spring</groupId>
             <artifactId>spring-vaadin</artifactId>
         </dependency>

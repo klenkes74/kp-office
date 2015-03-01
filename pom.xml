@@ -38,6 +38,7 @@
 
     <modules>
         <module>kp-office-commons</module>
+        <module>kp-office-api</module>
         <module>kp-office-core</module>
         <module>kp-office-modules</module>
         <module>kp-office-services</module>
@@ -57,9 +58,6 @@
         <jboss.installation>/opt/servers/jboss-as-7.1.1.Final</jboss.installation>
 
         <aspectjVersion>1.8.4</aspectjVersion>
-        <compileAspectJ>false</compileAspectJ>
-        <initializeDatabase>false</initializeDatabase>
-        <useQueryDSL>false</useQueryDSL>
         <database.changelog>${project.basedir}/target/classes/ddl/db-changelog.xml</database.changelog>
 
         <jdbc.driver>com.mysql.jdbc.Driver</jdbc.driver>
@@ -194,6 +192,14 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
+                <groupId>de.kaiserpfalz-edv.base</groupId>
+                <artifactId>kp-misc-bom</artifactId>
+                <version>${kp-commons.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
                 <groupId>de.kaiserpfalz-edv.commons</groupId>
                 <artifactId>kp-commons-bom</artifactId>
                 <version>${kp-commons.version}</version>
@@ -211,22 +217,6 @@
 
             <dependency>
                 <groupId>de.kaiserpfalz-edv.base</groupId>
-                <artifactId>kp-spring-bom</artifactId>
-                <version>${kp-commons.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-
-            <dependency>
-                <groupId>de.kaiserpfalz-edv.base</groupId>
-                <artifactId>kp-misc-bom</artifactId>
-                <version>${kp-commons.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-
-            <dependency>
-                <groupId>de.kaiserpfalz-edv.base</groupId>
                 <artifactId>kp-test-bom</artifactId>
                 <version>${kp-commons.version}</version>
                 <type>pom</type>
@@ -235,7 +225,7 @@
 
             <dependency>
                 <groupId>de.kaiserpfalz-edv.base</groupId>
-                <artifactId>kp-database-bom</artifactId>
+                <artifactId>kp-spring-bom</artifactId>
                 <version>${kp-commons.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
@@ -256,12 +246,35 @@
             </dependency>
 
 
+            <!-- Commons -->
             <dependency>
-                <groupId>de.kaiserpfalz-edv.office</groupId>
+                <groupId>de.kaiserpfalz-edv.office.commons</groupId>
                 <artifactId>kp-office-commons</artifactId>
                 <version>${project.version}</version>
             </dependency>
+            <dependency>
+                <groupId>de.kaiserpfalz-edv.office.commons</groupId>
+                <artifactId>kp-office-commons-all</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>de.kaiserpfalz-edv.office.commons</groupId>
+                <artifactId>kp-office-commons-server</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>de.kaiserpfalz-edv.office.commons</groupId>
+                <artifactId>kp-office-commons-client</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>de.kaiserpfalz-edv.office</groupId>
+                <artifactId>kp-office-api</artifactId>
+                <version>${project.version}</version>
+            </dependency>
 
+
+            <!-- Core -->
             <dependency>
                 <groupId>de.kaiserpfalz-edv.office.core</groupId>
                 <artifactId>kp-office-core-api</artifactId>
@@ -279,6 +292,8 @@
                 <version>${project.version}</version>
             </dependency>
 
+
+            <!-- Modules -->
             <dependency>
                 <groupId>de.kaiserpfalz-edv.office.modules.contacts</groupId>
                 <artifactId>kp-office-contacts-api</artifactId>
@@ -435,6 +450,18 @@
                 </dependency>
             </dependencies>
 
+            <dependencyManagement>
+                <dependencies>
+                    <dependency>
+                        <groupId>de.kaiserpfalz-edv.base</groupId>
+                        <artifactId>kp-database-bom</artifactId>
+                        <version>${kp-commons.version}</version>
+                        <type>pom</type>
+                        <scope>import</scope>
+                    </dependency>
+                </dependencies>
+            </dependencyManagement>
+
             <build>
                 <plugins>
                     <plugin>
@@ -555,10 +582,6 @@
                 </file>
             </activation>
 
-            <properties>
-                <aspectj.version>1.8.4</aspectj.version>
-            </properties>
-
             <dependencies>
                 <dependency>
                     <groupId>aopalliance</groupId>
@@ -575,12 +598,12 @@
                 <dependency>
                     <groupId>org.aspectj</groupId>
                     <artifactId>aspectjrt</artifactId>
-                    <version>${aspectj.version}</version>
+                    <version>1.8.4</version>
                 </dependency>
                 <dependency>
                     <groupId>org.aspectj</groupId>
                     <artifactId>aspectjtools</artifactId>
-                    <version>${aspectj.version}</version>
+                    <version>1.8.4</version>
                 </dependency>
             </dependencies>
 
@@ -637,12 +660,12 @@
                             <dependency>
                                 <groupId>org.aspectj</groupId>
                                 <artifactId>aspectjrt</artifactId>
-                                <version>${aspectj.version}</version>
+                                <version>1.8.4</version>
                             </dependency>
                             <dependency>
                                 <groupId>org.aspectj</groupId>
                                 <artifactId>aspectjtools</artifactId>
-                                <version>${aspectj.version}</version>
+                                <version>1.8.4</version>
                             </dependency>
                         </dependencies>
                     </plugin>

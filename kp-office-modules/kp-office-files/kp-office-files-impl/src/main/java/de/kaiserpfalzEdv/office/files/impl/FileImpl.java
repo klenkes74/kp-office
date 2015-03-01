@@ -16,25 +16,16 @@
 
 package de.kaiserpfalzEdv.office.files.impl;
 
-import de.kaiserpfalzEdv.office.commons.impl.KPOTenantHoldingEntity;
-import de.kaiserpfalzEdv.office.contacts.contact.Contact;
+import de.kaiserpfalzEdv.office.commons.server.data.KPOTenantHoldingEntity;
 import de.kaiserpfalzEdv.office.files.File;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.Set;
-
 /**
  * @author klenkes
- * @version 2015Q1
+ * @version 0.2.0
  * @since 28.02.15 07:39
  */
 public class FileImpl extends KPOTenantHoldingEntity implements File {
     private static final Logger LOG = LoggerFactory.getLogger(FileImpl.class);
-
-    @Override
-    public Set<Contact> getContacts(String type) {
-        // TODO klenkes Auto defined stub for: de.kaiserpfalzEdv.office.files.impl.FileImpl.getContacts
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
-    }
 }

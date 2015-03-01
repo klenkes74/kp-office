@@ -33,10 +33,7 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>kp-office-documents-api</module>
-        <!--
-                <module>kp-office-documents-impl</module>
-        -->
+        <module>kp-office-documents-impl</module>
     </modules>
 
     <properties>

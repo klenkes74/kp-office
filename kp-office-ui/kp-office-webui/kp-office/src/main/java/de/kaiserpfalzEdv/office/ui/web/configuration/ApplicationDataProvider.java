@@ -18,9 +18,9 @@ package de.kaiserpfalzEdv.office.ui.web.configuration;
 
 import de.kaiserpfalzEdv.commons.jee.servlet.model.ApplicationMetaData;
 import de.kaiserpfalzEdv.commons.service.Versionable;
-import de.kaiserpfalzEdv.office.core.license.LicenseService;
-import de.kaiserpfalzEdv.office.core.license.OfficeLicense;
-import de.kaiserpfalzEdv.office.core.license.impl.SoftwareVersion;
+import de.kaiserpfalzEdv.office.core.licence.LicenseService;
+import de.kaiserpfalzEdv.office.core.licence.OfficeLicense;
+import de.kaiserpfalzEdv.office.core.licence.impl.SoftwareVersion;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;

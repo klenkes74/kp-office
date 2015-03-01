@@ -25,7 +25,7 @@ import com.vaadin.ui.Image;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.VerticalLayout;
 import de.kaiserpfalzEdv.commons.jee.servlet.model.ApplicationMetaData;
-import de.kaiserpfalzEdv.office.core.license.OfficeLicense;
+import de.kaiserpfalzEdv.office.core.licence.OfficeLicense;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.vaadin.spring.annotation.VaadinUIScope;
@@ -96,7 +96,7 @@ public class AboutPanel extends VerticalLayout implements View {
 
         LOG.trace("Initialized: {}", this);
         LOG.trace("  application: {}", application);
-        LOG.trace("  license: {}", license);
+        LOG.trace("  licence: {}", license);
     }
 
     @PreDestroy
