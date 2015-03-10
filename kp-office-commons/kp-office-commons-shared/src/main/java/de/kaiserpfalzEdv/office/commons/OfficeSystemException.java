@@ -40,7 +40,7 @@ public class OfficeSystemException extends RuntimeException implements MessageCo
         i18n = new MessageBuilder().withErrorMessage(msg).build();
     }
 
-    public OfficeSystemException(@NotNull final ErrorMessage msg, @NotNull final List<? extends Serializable> data) {
+    public OfficeSystemException(@NotNull final ErrorMessage msg, @NotNull final List<Serializable> data) {
         super(msg.getMessage());
 
         i18n = new MessageBuilder().withErrorMessage(msg).withData(data).build();
@@ -53,7 +53,7 @@ public class OfficeSystemException extends RuntimeException implements MessageCo
         i18n = new MessageBuilder().withErrorMessage(msg).withMessage(message).build();
     }
 
-    public OfficeSystemException(@NotNull final ErrorMessage msg, final String message, @NotNull final List<? extends Serializable> data) {
+    public OfficeSystemException(@NotNull final ErrorMessage msg, final String message, @NotNull final List<Serializable> data) {
         super(message);
 
         i18n = new MessageBuilder().withErrorMessage(msg).withMessage(message).withData(data).build();
@@ -66,7 +66,7 @@ public class OfficeSystemException extends RuntimeException implements MessageCo
         i18n = new MessageBuilder().withErrorMessage(msg).build();
     }
 
-    public OfficeSystemException(@NotNull final ErrorMessage msg, @NotNull final List<? extends Serializable> data, final Throwable cause) {
+    public OfficeSystemException(@NotNull final ErrorMessage msg, @NotNull final List<Serializable> data, final Throwable cause) {
         super(msg.getMessage(), cause);
 
         i18n = new MessageBuilder().withErrorMessage(msg).withData(data).build();
@@ -79,7 +79,7 @@ public class OfficeSystemException extends RuntimeException implements MessageCo
         i18n = new MessageBuilder().withErrorMessage(msg).withMessage(message).build();
     }
 
-    public OfficeSystemException(@NotNull final ErrorMessage msg, final String message, @NotNull final List<? extends Serializable> data, final Throwable cause) {
+    public OfficeSystemException(@NotNull final ErrorMessage msg, final String message, @NotNull final List<Serializable> data, final Throwable cause) {
         super(message, cause);
 
         i18n = new MessageBuilder().withErrorMessage(msg).withMessage(message).withData(data).build();

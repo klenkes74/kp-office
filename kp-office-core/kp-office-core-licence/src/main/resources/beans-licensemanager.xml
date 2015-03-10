@@ -22,6 +22,6 @@
        ">
 
     <bean id="licenseManager"
-          class="de.kaiserpfalzEdv.office.core.licence.impl.LicenseManager"
+          class="de.kaiserpfalzEdv.office.core.licence.impl.LicenceManager"
           factory-method="aspectOf"/>
 </beans>

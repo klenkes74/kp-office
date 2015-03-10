@@ -80,14 +80,15 @@ public class LicenceServiceImpl implements LicenceService {
     };
 
 
-    private final String        licenseFile;
-    private       License       rawLicense;
-    private       OfficeLicence license;
+    private final String        licenceFile;
+    private       License       rawLicence;
+    private       OfficeLicence licence;
+    private       boolean       licenceLoaded;
 
 
     @Inject
-    public LicenceServiceImpl(@Value("${licence.file}") final String licenseFile) {
-        this.licenseFile = isNotBlank(licenseFile) ? licenseFile : LICENSE_FILE;
+    public LicenceServiceImpl(@Value("${licence.file}") final String licenceFile) {
+        this.licenceFile = isNotBlank(licenceFile) ? licenceFile : LICENSE_FILE;
 
         LOG.trace("Created: {}", this);
     }
@@ -95,20 +96,24 @@ public class LicenceServiceImpl implements LicenceService {
 
     @PostConstruct
     public void init() throws CantLoadKeyException, CantLoadLicenceException, LicenceCheckFailedException, LicenceExpiredException {
-        rawLicense = new License();
+        rawLicence = new License();
 
         loadLicenseKeyRing();
-        loadLicenseFile();
-        verifyLicenseIsUntouched();
+        loadLicenceFile();
+
 
         try {
-            license = new LicenseBuilder().withLicense(rawLicense).build();
+            verifyLicenceIsUntouched();
+
+            licence = new LicenseBuilder().withLicense(rawLicence).build();
         } catch (BuilderException e) {
             LOG.error("Failure reading the licence: {}", e.getFailures());
 
-            throw new LicenceCheckFailedException(licenseFile, e);
+            licence = new NullLincenceImpl();
         } catch (IllegalArgumentException | IllegalStateException e) {
-            throw new LicenceCheckFailedException(licenseFile, e);
+            LOG.error("Failure reading the licence: {}", e.getMessage());
+
+            licence = new NullLincenceImpl();
         }
 
         LOG.trace("Initialized: {}", this);
@@ -122,7 +127,7 @@ public class LicenceServiceImpl implements LicenceService {
 
     @Override
     public OfficeLicence getLicence() {
-        return license;
+        return licence;
     }
 
 
@@ -144,10 +149,10 @@ public class LicenceServiceImpl implements LicenceService {
         LOG.debug("Loading key: {}", loader.getResource(KEY_RING));
 
         try {
-            rawLicense.loadKeyRingFromResource(KEY_RING, DIGEST);
+            rawLicence.loadKeyRingFromResource(KEY_RING, DIGEST);
         } catch (IllegalArgumentException e) {
             LOG.warn("Loading test keyring instead of production ring!");
-            rawLicense.loadKeyRingFromResource(KEY_RING, TEST_DIGEST);
+            rawLicence.loadKeyRingFromResource(KEY_RING, TEST_DIGEST);
         }
     }
 
@@ -163,26 +168,27 @@ public class LicenceServiceImpl implements LicenceService {
         }
     }
 
-    private void loadLicenseFile() throws CantLoadLicenceException, LicenceCheckFailedException {
-        File f = new File(licenseFile);
+    private void loadLicenceFile() throws CantLoadLicenceException, LicenceCheckFailedException {
+        File f = new File(licenceFile);
 
         if (f.exists()) {
             LOG.info("Loading licence: {}", f.toURI());
         } else {
             LOG.warn("License file does not exist: {}", f.toURI());
+            return;
         }
 
         try {
-            rawLicense.setLicenseEncodedFromFile(f.getCanonicalPath());
+            rawLicence.setLicenseEncodedFromFile(f);
         } catch (IOException | PGPException e) {
             throw new CantLoadLicenceException(f.getAbsolutePath(), e);
         }
     }
 
 
-    private void verifyLicenseIsUntouched() throws LicenceCheckFailedException {
-        if (! rawLicense.isVerified()) {
-            throw new LicenceCheckFailedException(licenseFile);
+    private void verifyLicenceIsUntouched() throws LicenceCheckFailedException {
+        if (licenceLoaded && !rawLicence.isVerified()) {
+            throw new LicenceCheckFailedException(licenceFile);
         }
     }
 
@@ -190,14 +196,14 @@ public class LicenceServiceImpl implements LicenceService {
 
     @Override
     public String toString() {
-        if (rawLicense != null) {
+        if (rawLicence != null) {
                 return new ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE)
-                        .append("licence", license)
+                        .append("licence", licence)
                         .build();
         }
 
         return new ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE)
-                .append("licenseFile", licenseFile)
+                .append("licenceFile", licenceFile)
                 .build();
     }
 }

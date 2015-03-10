@@ -233,6 +233,12 @@
             </dependency>
 
             <dependency>
+                <groupId>javax.validation</groupId>
+                <artifactId>validation-api</artifactId>
+                <version>1.0.0.GA</version>
+            </dependency>
+
+            <dependency>
                 <groupId>de.kaiserpfalz-edv.commons</groupId>
                 <artifactId>kp-commons-jee</artifactId>
                 <version>${kp-commons.version}</version>
@@ -263,6 +269,11 @@
             <dependency>
                 <groupId>de.kaiserpfalz-edv.office.commons</groupId>
                 <artifactId>kp-office-commons-amqp</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>de.kaiserpfalz-edv.office.ui.cli</groupId>
+                <artifactId>kp-office-commons-cli</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>

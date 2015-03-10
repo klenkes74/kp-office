@@ -29,15 +29,15 @@ import java.time.LocalDate;
 public enum ErrorMessage implements de.kaiserpfalzEdv.office.commons.i18n.ErrorMessage {
     LICENSE_1000("LICENSE_1000", "Generic licensing failure", true, String.class),
     LICENSE_1001("LICENSE_1001", "No licence is loaded", false, null),
-    LICENSE_2001("LICENSE_2001", "Can not load licensing key file", true, String.class),
-    LICENSE_2002("LICENSE_2002", "Licensing key file not valid", true, String.class),
-    LICENSE_3001("LICENSE_3001", "Can not load licensing file", true, String.class),
-    LICENSE_3002("LICENSE_3002", "License file invalid", true, String.class),
-    LICENSE_4001("LICENSE_4001", "License expired", true, LocalDate.class),
-    LICENSE_4002("LICENSE_4002", "License software does not match", true, String.class),
-    LICENSE_4003("LICENSE_4003", "License issuer is invalid", true, String.class),
-    LICENSE_4004("LICENSE_4004", "Licensee is invalid", true, String.class),
-    LICENSE_4005("LICENSE_4005", "Feature is not licensed", true, String.class);
+    LICENSE_2001("LICENSE_2001", "Can not load licencing key file", true, String.class),
+    LICENSE_2002("LICENSE_2002", "Licencing key file not valid", true, String.class),
+    LICENSE_3001("LICENSE_3001", "Can not load licencing file", true, String.class),
+    LICENSE_3002("LICENSE_3002", "Licence file invalid", true, String.class),
+    LICENSE_4001("LICENSE_4001", "Licence expired", true, LocalDate.class),
+    LICENSE_4002("LICENSE_4002", "Licence software does not match", true, String.class),
+    LICENSE_4003("LICENSE_4003", "Licence issuer is invalid", true, String.class),
+    LICENSE_4004("LICENSE_4004", "Licencee is invalid", true, String.class),
+    LICENSE_4005("LICENSE_4005", "Feature is not licenced", true, String.class);
 
     private String   code;
     private String   message;

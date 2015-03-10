@@ -27,6 +27,9 @@ import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import static de.kaiserpfalzEdv.office.core.licence.test.ModuleSelector.Type.INVALID;
+import static de.kaiserpfalzEdv.office.core.licence.test.ModuleSelector.Type.VALID;
+
 /**
  * @author klenkes
  * @version 2015Q1
@@ -39,11 +42,11 @@ public class LicenceManagerTest extends SpringTestNGBase {
     private static final Logger LOG = LoggerFactory.getLogger(LicenceManagerTest.class);
 
     @Inject
-    @Named("validModuleImpl")
+    @ModuleSelector(VALID)
     private TestModuleService validService;
 
     @Inject
-    @Named("invalidModuleImpl")
+    @ModuleSelector(INVALID)
     private TestModuleService invalidService;
 
     public LicenceManagerTest() {

@@ -35,14 +35,6 @@
             <groupId>de.kaiserpfalz-edv.office.core</groupId>
             <artifactId>kp-office-core-api</artifactId>
         </dependency>
-        <dependency>
-            <groupId>de.kaiserpfalz-edv.office.modules.contacts</groupId>
-            <artifactId>kp-office-contacts-api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>de.kaiserpfalz-edv.office.modules.files</groupId>
-            <artifactId>kp-office-files-api</artifactId>
-        </dependency>
 
 
         <dependency>

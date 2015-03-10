@@ -31,9 +31,6 @@
         <class>de.kaiserpfalzEdv.commons.jee.db.OffsetTimeJPAConverter</class>
         <class>de.kaiserpfalzEdv.commons.jee.db.OffsetDateTimeJPAConverter</class>
 
-        <class>de.kaiserpfalzEdv.office.commons.server.data.KPOEntity</class>
-        <class>de.kaiserpfalzEdv.office.commons.server.data.KPOTenantHoldingEntity</class>
-
         <properties>
             <property name="hibernate.show_sql" value="true"/>
             <property name="hibernate.format_sql" value="true"/>

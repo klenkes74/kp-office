@@ -17,11 +17,11 @@
 package de.kaiserpfalzEdv.office.core.licence.test;
 
 import de.kaiserpfalzEdv.commons.test.CommonTestBase;
+import de.kaiserpfalzEdv.office.commons.SoftwareVersion;
+import de.kaiserpfalzEdv.office.commons.SoftwareVersionRange;
 import de.kaiserpfalzEdv.office.core.licence.LicencingException;
 import de.kaiserpfalzEdv.office.core.licence.OfficeLicence;
 import de.kaiserpfalzEdv.office.core.licence.impl.LicenceServiceImpl;
-import de.kaiserpfalzEdv.office.core.licence.impl.SoftwareVersion;
-import de.kaiserpfalzEdv.office.core.licence.impl.SoftwareVersionRange;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.annotations.BeforeMethod;

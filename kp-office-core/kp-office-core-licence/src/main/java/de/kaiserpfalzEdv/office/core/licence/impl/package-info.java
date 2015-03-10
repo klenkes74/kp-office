@@ -27,7 +27,7 @@ package de.kaiserpfalzEdv.office.core.licence.impl;
  * {@value de.kaiserpfalzEdv.office.core.licence.impl.LicenceServiceImpl#LICENSE_FILE} in the startup directory of the
  * software is used.</p>
  *
- * <p>The licence check is annotated per aspect {@link de.kaiserpfalzEdv.office.core.licence.impl.LicenseManager} to
+ * <p>The licence check is annotated per aspect {@link de.kaiserpfalzEdv.office.core.licence.impl.LicenceManager} to
  * every method within every class named like <code>...ModuleImpl</code> and annotated with
  * {@link de.kaiserpfalzEdv.office.core.licence.ModuleInformation}. If the parameter
  * {@link de.kaiserpfalzEdv.office.core.licence.ModuleInformation#needsLicence()} is set to <code>true</code>, then the

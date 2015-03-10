@@ -35,7 +35,7 @@
     <aop:aspectj-autoproxy proxy-target-class="true" expose-proxy="true"/>
 
     <bean id="licenseManager"
-          class="de.kaiserpfalzEdv.office.core.licence.impl.LicenseManager"
+          class="de.kaiserpfalzEdv.office.core.licence.impl.LicenceManager"
           factory-method="aspectOf"/>
 
     <context:property-placeholder properties-ref="configuration" system-properties-mode="OVERRIDE"

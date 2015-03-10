@@ -20,6 +20,8 @@ import com.verhas.licensor.License;
 import de.kaiserpfalzEdv.commons.service.VersionRange;
 import de.kaiserpfalzEdv.commons.service.Versionable;
 import de.kaiserpfalzEdv.commons.util.BuilderException;
+import de.kaiserpfalzEdv.office.commons.SoftwareVersion;
+import de.kaiserpfalzEdv.office.commons.SoftwareVersionRange;
 import de.kaiserpfalzEdv.office.core.licence.OfficeLicence;
 import org.apache.commons.lang3.builder.Builder;
 
@@ -95,7 +97,11 @@ public class LicenseBuilder implements Builder<OfficeLicence> {
     
     
     public LicenseBuilder withLicense(final License license) {
-        id = getUuidFromLicense(license, LICENSE_ID);
+        try {
+            id = getUuidFromLicense(license, LICENSE_ID);
+        } catch (NullPointerException | IllegalArgumentException e) {
+            // ID could not be loaded ...
+        }
         issued = getDateFromLicense(license, LICENSE_ISSUED);
         issuer = license.getFeature(LICENSE_ISSUER);
         licensee = license.getFeature(LICENSE_LICENSEE);

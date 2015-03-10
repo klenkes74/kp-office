@@ -99,7 +99,7 @@ public class MessageBuilder implements Builder<MessageKey> {
     }
 
     @SuppressWarnings("unchecked")
-    public MessageBuilder withData(@NotNull final List<? extends Serializable> data) {
+    public MessageBuilder withData(@NotNull final List<Serializable> data) {
         data.forEach(
                 d -> {
                     this.data.add(new MessageDetailDataImpl<>(d));

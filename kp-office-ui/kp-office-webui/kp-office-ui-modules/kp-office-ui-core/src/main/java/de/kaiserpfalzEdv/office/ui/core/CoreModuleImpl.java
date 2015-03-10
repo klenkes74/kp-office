@@ -17,7 +17,7 @@
 package de.kaiserpfalzEdv.office.ui.core;
 
 import de.kaiserpfalzEdv.commons.service.Versionable;
-import de.kaiserpfalzEdv.office.core.licence.ModuleInformation;
+import de.kaiserpfalzEdv.office.commons.ModuleInformation;
 import de.kaiserpfalzEdv.office.ui.OfficeModule;
 import de.kaiserpfalzEdv.office.ui.core.about.AboutPanel;
 import de.kaiserpfalzEdv.office.ui.menu.MenuBuilder;

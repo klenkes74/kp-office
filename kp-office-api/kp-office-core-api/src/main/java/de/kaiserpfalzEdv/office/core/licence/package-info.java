@@ -24,14 +24,14 @@
  * the startup directory of the software is used.</p>
  *
  * <p>The licence check is annotated per aspect to every method within every class named like <code>...ModuleImpl</code>
- * and annotated with {@link de.kaiserpfalzEdv.office.core.licence.ModuleInformation}. If the parameter
- * {@link de.kaiserpfalzEdv.office.core.licence.ModuleInformation#needsLicence()} is set to <code>true</code>, then the
- * feature {@link de.kaiserpfalzEdv.office.core.licence.ModuleInformation#featureName()} is checked within the licence.
+ * and annotated with {@link de.kaiserpfalzEdv.office.commons.ModuleInformation}. If the parameter
+ * {@link de.kaiserpfalzEdv.office.commons.ModuleInformation#needsLicence()} is set to <code>true</code>, then the
+ * feature {@link de.kaiserpfalzEdv.office.commons.ModuleInformation#featureName()} is checked within the licence.
  * If there is no licence or the licence is invalid, an {@link de.kaiserpfalzEdv.office.core.licence.LicencingException}
  * or one of its subclasses is thrown.</p>
  *
  * <p>The check is also applied to method calls within classes named like <code>...ModuleImpl</code> if the methods are
- * annotated with {@link de.kaiserpfalzEdv.office.core.licence.ModuleInformation}. This may be useful with a
+ * annotated with {@link de.kaiserpfalzEdv.office.commons.ModuleInformation}. This may be useful with a
  * <a href="http://en.wikipedia.org/wiki/Service_locator_pattern">Service Locator</a>.</p>
  */
 package de.kaiserpfalzEdv.office.core.licence;

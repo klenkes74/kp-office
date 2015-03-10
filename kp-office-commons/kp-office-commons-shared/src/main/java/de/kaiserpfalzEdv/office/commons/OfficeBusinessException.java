@@ -59,26 +59,26 @@ public class OfficeBusinessException extends Exception implements MessageContain
     }
 
 
-    public OfficeBusinessException(@NotNull final ErrorMessage msg, @NotNull final List<? extends Serializable> data) {
+    public OfficeBusinessException(@NotNull final ErrorMessage msg, @NotNull final List<Serializable> data) {
         super(msg.getMessage());
 
         i18n = new MessageBuilder().withErrorMessage(msg).withData(data).build();
     }
 
-    public OfficeBusinessException(@NotNull final ErrorMessage msg, @NotNull final List<? extends Serializable> data, @NotNull final Throwable cause) {
+    public OfficeBusinessException(@NotNull final ErrorMessage msg, @NotNull final List<Serializable> data, @NotNull final Throwable cause) {
         super(msg.getMessage(), cause);
 
         i18n = new MessageBuilder().withErrorMessage(msg).withData(data).build();
     }
 
 
-    public OfficeBusinessException(@NotNull final ErrorMessage msg, @NotNull final String message, @NotNull final List<? extends Serializable> data) {
+    public OfficeBusinessException(@NotNull final ErrorMessage msg, @NotNull final String message, @NotNull final List<Serializable> data) {
         super(message);
 
         i18n = new MessageBuilder().withErrorMessage(msg).withMessage(message).withData(data).build();
     }
 
-    public OfficeBusinessException(@NotNull final ErrorMessage msg, @NotNull final String message, @NotNull final List<? extends Serializable> data, @NotNull final Throwable cause) {
+    public OfficeBusinessException(@NotNull final ErrorMessage msg, @NotNull final String message, @NotNull final List<Serializable> data, @NotNull final Throwable cause) {
         super(message, cause);
 
         i18n = new MessageBuilder().withErrorMessage(msg).withMessage(message).withData(data).build();

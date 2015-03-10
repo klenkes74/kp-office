@@ -17,7 +17,6 @@
 package de.kaiserpfalzEdv.office.clients.core;
 
 import de.kaiserpfalzEdv.commons.jee.paging.Page;
-import de.kaiserpfalzEdv.commons.jee.paging.PageDO;
 import de.kaiserpfalzEdv.commons.jee.paging.Pageable;
 import de.kaiserpfalzEdv.office.commons.KPO;
 import de.kaiserpfalzEdv.office.commons.notifications.Failure;
@@ -152,7 +151,7 @@ public class TenantClient implements TenantService {
             return ((TenantListNotification) result).getTenants();
         }
 
-        return new PageDO<>(null);
+        return null;
     }
 
     @Override

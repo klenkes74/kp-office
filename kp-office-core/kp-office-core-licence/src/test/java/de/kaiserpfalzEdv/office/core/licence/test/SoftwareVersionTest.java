@@ -18,7 +18,7 @@ package de.kaiserpfalzEdv.office.core.licence.test;
 
 import de.kaiserpfalzEdv.commons.service.Versionable;
 import de.kaiserpfalzEdv.commons.test.CommonTestBase;
-import de.kaiserpfalzEdv.office.core.licence.impl.SoftwareVersion;
+import de.kaiserpfalzEdv.office.commons.SoftwareVersion;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.annotations.BeforeMethod;

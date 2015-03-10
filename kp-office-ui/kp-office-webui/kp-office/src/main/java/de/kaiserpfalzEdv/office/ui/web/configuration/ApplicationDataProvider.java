@@ -18,9 +18,10 @@ package de.kaiserpfalzEdv.office.ui.web.configuration;
 
 import de.kaiserpfalzEdv.commons.jee.servlet.model.ApplicationMetaData;
 import de.kaiserpfalzEdv.commons.service.Versionable;
+import de.kaiserpfalzEdv.office.commons.KPO;
+import de.kaiserpfalzEdv.office.commons.SoftwareVersion;
 import de.kaiserpfalzEdv.office.core.licence.LicenceService;
 import de.kaiserpfalzEdv.office.core.licence.OfficeLicence;
-import de.kaiserpfalzEdv.office.core.licence.impl.SoftwareVersion;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -30,6 +31,8 @@ import org.springframework.context.annotation.Configuration;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.inject.Inject;
+
+import static de.kaiserpfalzEdv.office.commons.KPO.Type.Client;
 
 /**
  * @author klenkes
@@ -53,19 +56,16 @@ public class ApplicationDataProvider {
     private String applicationInstance;
 
     @Inject
+    @KPO(Client)
     private LicenceService licenceService;
 
+    private Versionable version;
 
     /**
      * Application data built from the variables {@link #applicationId}, {@link #applicationName},
      * {@link #applicationVersion} and {@link #applicationInstance}.
      */
     private ApplicationMetaData applicationData;
-
-    /**
-     * Structured version calculated from {@link #applicationVersion}.
-     */
-    private SoftwareVersion version;
 
 
     public ApplicationDataProvider() {
@@ -89,7 +89,7 @@ public class ApplicationDataProvider {
         LOG.trace("  application version: {}", applicationVersion);
         LOG.trace("  application instance: {}", applicationInstance);
         LOG.trace("  application data: {}", applicationData);
-        LOG.trace("  version: {}", version);
+        LOG.trace("  application version: {}", version);
     }
 
     @PreDestroy

@@ -16,9 +16,11 @@
 
 package de.kaiserpfalzEdv.office.core.licence.test;
 
-import de.kaiserpfalzEdv.office.core.licence.ModuleInformation;
+import de.kaiserpfalzEdv.office.commons.ModuleInformation;
 
 import javax.inject.Named;
+
+import static de.kaiserpfalzEdv.office.core.licence.test.ModuleSelector.Type.VALID;
 
 /**
  * @author klenkes
@@ -26,6 +28,7 @@ import javax.inject.Named;
  * @since 11.02.15 21:13
  */
 @Named
+@ModuleSelector(VALID)
 @ModuleInformation(name = "Contact Module", needsLicence = true, featureName = "contacts")
 public class ValidModuleImpl implements TestModuleService {
     @Override
