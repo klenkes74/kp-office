@@ -16,8 +16,14 @@
 
 package de.kaiserpfalzEdv.office.commons;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import de.kaiserpfalzEdv.commons.service.VersionRange;
 import de.kaiserpfalzEdv.commons.service.Versionable;
+
+import java.io.Serializable;
+
+import static com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility.ANY;
+import static com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility.NONE;
 
 /**
  * A range of semantic versions.
@@ -26,15 +32,20 @@ import de.kaiserpfalzEdv.commons.service.Versionable;
  * @version 2015Q1
  * @since 15.02.15 07:32
  */
-public class SoftwareVersionRange implements VersionRange {
+@JsonAutoDetect(fieldVisibility = ANY, getterVisibility = NONE, setterVisibility = NONE)
+public class SoftwareVersionRange implements VersionRange, Serializable {
 
-    private Versionable start;
-    private Versionable end;
+    private SoftwareVersion start;
+    private SoftwareVersion end;
+
+
+    @Deprecated
+    public SoftwareVersionRange() {}
     
     
     public SoftwareVersionRange(final Versionable start, final Versionable end) {
-        this.start = start;
-        this.end = end;
+        this.start = new SoftwareVersion(start.getVersionString());
+        this.end = new SoftwareVersion(end.getVersionString());
     }
 
     

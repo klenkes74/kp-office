@@ -16,6 +16,8 @@
 
 package de.kaiserpfalzEdv.office.core.licence.impl;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import de.kaiserpfalzEdv.commons.service.VersionRange;
 import de.kaiserpfalzEdv.commons.service.Versionable;
 import de.kaiserpfalzEdv.office.commons.SoftwareVersion;
@@ -25,11 +27,17 @@ import de.kaiserpfalzEdv.office.core.licence.OfficeLicence;
 import java.time.LocalDate;
 import java.util.UUID;
 
+import static com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility.ANY;
+import static com.fasterxml.jackson.annotation.JsonTypeInfo.As.PROPERTY;
+import static com.fasterxml.jackson.annotation.JsonTypeInfo.Id.CLASS;
+
 /**
  * @author klenkes
  * @version 2015Q1
  * @since 02.03.15 20:17
  */
+@JsonTypeInfo(use = CLASS, include = PROPERTY, property = "class", visible = true)
+@JsonAutoDetect(fieldVisibility = ANY)
 public class NullLincenceImpl implements OfficeLicence {
     private static final UUID        LICENCE_UUID = UUID.fromString("00000000-0000-0000-0000-000000000000");
     private static final LocalDate   ISSUED       = LocalDate.MIN;

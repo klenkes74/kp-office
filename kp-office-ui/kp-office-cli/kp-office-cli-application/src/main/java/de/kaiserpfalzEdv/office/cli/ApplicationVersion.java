@@ -14,20 +14,19 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzEdv.office.cli.pingserver;
+package de.kaiserpfalzEdv.office.cli;
 
-import de.kaiserpfalzEdv.office.cli.executor.events.ExecutionCommand;
+import de.kaiserpfalzEdv.office.commons.SoftwareVersion;
 
 /**
  * @author klenkes
  * @version 2015Q1
- * @since 05.03.15 10:12
+ * @since 19.03.15 22:05
  */
-public class PingCommand extends ExecutionCommand {
-    private static final long serialVersionUID = -250757093687692019L;
+public class ApplicationVersion extends SoftwareVersion {
+    public static final ApplicationVersion INSTANCE = new ApplicationVersion();
 
-
-    public PingCommand(final Object source) {
-        super(source);
+    private ApplicationVersion() {
+        super(0, 2, 0);
     }
 }

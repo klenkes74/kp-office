@@ -20,10 +20,6 @@ import de.kaiserpfalzEdv.commons.jee.paging.Page;
 import de.kaiserpfalzEdv.commons.jee.paging.Pageable;
 import de.kaiserpfalzEdv.office.commons.KPO;
 import de.kaiserpfalzEdv.office.commons.notifications.Failure;
-import de.kaiserpfalzEdv.office.core.security.InvalidLoginException;
-import de.kaiserpfalzEdv.office.core.security.OfficeLoginTicket;
-import de.kaiserpfalzEdv.office.core.security.commands.SecurityLoginCommand;
-import de.kaiserpfalzEdv.office.core.security.notifications.OfficeLoginTicketNotification;
 import de.kaiserpfalzEdv.office.core.tenants.NoSuchTenantException;
 import de.kaiserpfalzEdv.office.core.tenants.Tenant;
 import de.kaiserpfalzEdv.office.core.tenants.TenantAlreadyExistsException;
@@ -72,20 +68,6 @@ public class TenantClient implements TenantService {
         LOG.trace("Created/Initialized: {}", this);
     }
 
-
-    public OfficeLoginTicket login(@NotNull String account, @NotNull String password) throws InvalidLoginException {
-        Object result = sender.convertSendAndReceive(MESSAGE_EXCHANGE, ROUTING_KEY, new SecurityLoginCommand(account, password));
-
-        if (result != null) {
-            try {
-                return ((OfficeLoginTicketNotification) result).getTicket();
-            } catch (ClassCastException e) {
-                throw new InvalidLoginException(account);
-            }
-        }
-
-        throw new InvalidLoginException(account);
-    }
 
     @Override
     public void create(@NotNull Tenant tenant) throws TenantAlreadyExistsException {

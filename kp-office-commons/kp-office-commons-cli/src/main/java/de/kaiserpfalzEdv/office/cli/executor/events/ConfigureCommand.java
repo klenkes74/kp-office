@@ -16,6 +16,8 @@
 
 package de.kaiserpfalzEdv.office.cli.executor.events;
 
+import org.apache.commons.lang3.builder.ToStringBuilder;
+
 import java.util.Properties;
 
 /**
@@ -26,13 +28,14 @@ import java.util.Properties;
 public class ConfigureCommand extends AbstractBaseCommand {
     private static final long serialVersionUID = 2882636175669581588L;
 
-
+    private String action;
     private Properties properties;
 
 
-    public ConfigureCommand(final Object source, final Properties properties) {
+    public ConfigureCommand(final Object source, final String action, final Properties properties) {
         super(source);
 
+        this.action = action;
         this.properties = properties;
     }
 
@@ -42,8 +45,23 @@ public class ConfigureCommand extends AbstractBaseCommand {
     }
 
 
+    public String getAction() {
+        return action;
+    }
+
+
     @Override
     public String getDisplayName() {
         return ConfigureCommand.class.getSimpleName();
+    }
+
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this)
+                .appendSuper(super.toString())
+                .append("action", action)
+                .append("properties", properties)
+                .toString();
     }
 }

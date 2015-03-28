@@ -18,6 +18,8 @@ package de.kaiserpfalzEdv.office.clients.core;
 
 import de.kaiserpfalzEdv.office.commons.KPO;
 import de.kaiserpfalzEdv.office.core.licence.LicenceService;
+import de.kaiserpfalzEdv.office.core.licence.NoLicenceLoadedException;
+import de.kaiserpfalzEdv.office.core.licence.impl.NullLincenceImpl;
 import de.kaiserpfalzEdv.office.core.licence.OfficeLicence;
 import de.kaiserpfalzEdv.office.core.licence.commands.GetLicenceCommand;
 import de.kaiserpfalzEdv.office.core.licence.notifications.LicenceDataNotification;
@@ -43,7 +45,7 @@ public class LicenceClient implements LicenceService {
 
 
     private static final String MESSAGE_EXCHANGE = "kpo.core";
-    private static final String ROUTING_KEY      = "core.i18n";
+    private static final String ROUTING_KEY = "core.licence";
 
 
     private RabbitTemplate sender;
@@ -59,18 +61,43 @@ public class LicenceClient implements LicenceService {
 
     @PostConstruct
     public void init() {
-        LicenceDataNotification result
-                = (LicenceDataNotification) sender.convertSendAndReceive(MESSAGE_EXCHANGE, ROUTING_KEY, new GetLicenceCommand());
-
-        licence = result.getLicence();
 
         LOG.trace("Initialized: {}", this);
-        LOG.trace("  licence: {}", this.licence);
+    }
+
+
+    private void loadLicence() throws NoLicenceLoadedException {
+        if (licence != null)
+            return;
+
+        synchronized (this) {
+            if (licence != null)
+                return;
+
+            LicenceDataNotification result
+                    = (LicenceDataNotification) sender.convertSendAndReceive(MESSAGE_EXCHANGE, ROUTING_KEY, new GetLicenceCommand());
+
+            if (licence == null) {
+                throw new NoLicenceLoadedException();
+            }
+
+            licence = result.getLicence();
+            LOG.trace("Licence: {}", this.licence);
+
+        }
     }
 
 
     @Override
     public OfficeLicence getLicence() {
+        try {
+            loadLicence();
+        } catch (NoLicenceLoadedException e) {
+            LOG.error(e.getClass().getSimpleName() + " caught: " + e.getMessage(), e);
+
+            return new NullLincenceImpl();
+        }
+
         return licence;
     }
 }

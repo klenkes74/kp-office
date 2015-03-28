@@ -1,1 +1,2 @@
 de.kaiserpfalzEdv.office.cli.executor.LogCommandModule
+de.kaiserpfalzEdv.office.cli.amqp.ConfigurableConnectionFactory

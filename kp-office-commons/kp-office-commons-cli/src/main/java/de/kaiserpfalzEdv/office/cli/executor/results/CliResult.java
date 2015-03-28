@@ -27,6 +27,7 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
 import java.io.Serializable;
+import java.util.EventObject;
 import java.util.UUID;
 
 /**
@@ -34,12 +35,11 @@ import java.util.UUID;
  * @version 2015Q1
  * @since 02.03.15 23:38
  */
-public abstract class CliResult implements IdentityHolder, DisplayNumberHolder, DisplayNameHolder, Serializable {
-    private static final long serialVersionUID = -1775469851141314493L;
+public abstract class CliResult extends EventObject implements IdentityHolder, DisplayNumberHolder, DisplayNameHolder, Serializable {
+    private static final long serialVersionUID = -9166704718940636811L;
 
 
     private UUID          id;
-    private CliModuleInfo moduleInfo;
 
     private String        displayNumber;
     private String        displayName;
@@ -47,8 +47,9 @@ public abstract class CliResult implements IdentityHolder, DisplayNumberHolder, 
 
 
     public CliResult(final UUID id, final CliModuleInfo moduleInfo, final CliResultCode key, final String displayNumber, final String displayName) {
+        super(moduleInfo);
+
         this.id = id;
-        this.moduleInfo = moduleInfo;
         this.messageKey = key;
         this.displayNumber = displayNumber;
         this.displayName = displayName;
@@ -65,7 +66,7 @@ public abstract class CliResult implements IdentityHolder, DisplayNumberHolder, 
     }
 
     public CliModuleInfo getModuleInfo() {
-        return moduleInfo;
+        return (CliModuleInfo) getSource();
     }
 
     @Override

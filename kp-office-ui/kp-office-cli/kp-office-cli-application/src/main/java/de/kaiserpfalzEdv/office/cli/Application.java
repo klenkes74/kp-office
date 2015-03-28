@@ -16,6 +16,7 @@
 
 package de.kaiserpfalzEdv.office.cli;
 
+import de.kaiserpfalzEdv.commons.jee.EnvironmentLogger;
 import de.kaiserpfalzEdv.commons.jee.eventbus.EventBusHandler;
 import de.kaiserpfalzEdv.office.cli.executor.events.ExecutionCommand;
 import de.kaiserpfalzEdv.office.cli.executor.events.PreparationCommand;
@@ -37,6 +38,8 @@ public class Application implements Serializable {
 
 
     public static void main(String[] args) {
+        EnvironmentLogger.log();
+
         ApplicationContext context = new ClassPathXmlApplicationContext(configFile);
 
         ModuleConfigurator configurator = context.getBean(ModuleConfigurator.class);
@@ -47,5 +50,7 @@ public class Application implements Serializable {
         bus.post(new PreparationCommand(Application.class));
 
         bus.post(new ExecutionCommand(Application.class));
+
+        return;
     }
 }

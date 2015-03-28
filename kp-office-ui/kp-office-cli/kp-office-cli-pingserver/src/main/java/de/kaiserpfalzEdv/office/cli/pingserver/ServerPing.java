@@ -17,6 +17,7 @@
 package de.kaiserpfalzEdv.office.cli.pingserver;
 
 import com.google.common.eventbus.Subscribe;
+import de.kaiserpfalzEdv.commons.jee.eventbus.EventBusHandler;
 import de.kaiserpfalzEdv.commons.service.Versionable;
 import de.kaiserpfalzEdv.office.cli.CliModule;
 import de.kaiserpfalzEdv.office.cli.executor.events.ConfigureCommand;
@@ -24,19 +25,22 @@ import de.kaiserpfalzEdv.office.cli.executor.events.ExecutionCommand;
 import de.kaiserpfalzEdv.office.cli.executor.events.InitializeCommand;
 import de.kaiserpfalzEdv.office.clients.core.LicenceClient;
 import de.kaiserpfalzEdv.office.commons.SoftwareVersion;
+import de.kaiserpfalzEdv.office.core.licence.impl.NullLincenceImpl;
 import de.kaiserpfalzEdv.office.core.licence.OfficeLicence;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Configurable;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import javax.inject.Inject;
+import javax.inject.Named;
 
 /**
  * @author klenkes
  * @version 2015Q1
  * @since 03.03.15 12:10
  */
-@Configurable
+@Named
 public class ServerPing implements CliModule {
     private static final Logger          LOG     = LoggerFactory.getLogger(ServerPing.class);
     private static final SoftwareVersion VERSION = new SoftwareVersion("0.2.0-SNAPSHOT");
@@ -44,26 +48,62 @@ public class ServerPing implements CliModule {
 
     private LicenceClient client;
     private boolean       initialized;
+    private String action;
+
+
+    private EventBusHandler bus;
 
 
     @Inject
-    public ServerPing(final LicenceClient client) {
+    public ServerPing(final LicenceClient client, final EventBusHandler bus) {
         this.client = client;
+        this.bus = bus;
 
         LOG.trace("Created: {}", this);
         LOG.trace("{} licence client: {}", this.client);
+        LOG.trace("{} event bus: {}", this.bus);
     }
+
+    @PostConstruct
+    public void init() {
+        bus.register(this);
+
+        LOG.trace("Initialized: {}", this);
+    }
+
+    @PreDestroy
+    public void close() {
+        bus.unregister(this);
+        initialized = false;
+        bus = null;
+
+        LOG.trace("Destroyed: {}", this);
+    }
+
+
 
 
     @SuppressWarnings("UnusedDeclaration") // Called via EventBus
     @Subscribe
     public void execute(ExecutionCommand event) {
-        try {
-            OfficeLicence licence = client.getLicence();
-        } catch (Exception e) {
-            LOG.error("Failure while pinging server: {}", e.getMessage());
+        LOG.trace("Executing event: {}", event);
 
-            throw e;
+        if ("ping".equalsIgnoreCase(action)) {
+            try {
+                OfficeLicence licence = client.getLicence();
+
+                if (NullLincenceImpl.class.isAssignableFrom(licence.getClass())) {
+                    throw new IllegalStateException("Licence could not be loaded. No communication with server possible.");
+                }
+            } catch (Exception e) {
+                LOG.error("Failure (" + e.getClass().getSimpleName() + ") while pinging server: " + e.getMessage(), e);
+
+                System.out.println("Could not ping server!");
+            }
+        }
+
+        if ("help".equalsIgnoreCase(action)) {
+            System.out.println(String.format("%-14s %s", "ping", "Retrieves the licence of the server to check availability."));
         }
     }
 
@@ -71,7 +111,10 @@ public class ServerPing implements CliModule {
     @SuppressWarnings("UnusedDeclaration") // Called via EventBus
     @Subscribe
     public void configure(ConfigureCommand event) {
+        action = event.getAction();
 
+        LOG.trace("Configured: {}", this);
+        LOG.trace("   action: {}", action);
     }
 
     @SuppressWarnings("UnusedDeclaration") // Called via EventBus

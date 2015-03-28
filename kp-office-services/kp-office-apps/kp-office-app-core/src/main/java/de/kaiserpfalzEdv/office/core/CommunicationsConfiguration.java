@@ -16,6 +16,7 @@
 
 package de.kaiserpfalzEdv.office.core;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import de.kaiserpfalzEdv.office.core.i18n.impl.TranslationServer;
 import de.kaiserpfalzEdv.office.core.licence.impl.LicenceServer;
 import de.kaiserpfalzEdv.office.core.security.impl.SecurityServer;
@@ -25,13 +26,20 @@ import org.slf4j.LoggerFactory;
 import org.springframework.amqp.core.MessageListener;
 import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer;
+import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
+import org.springframework.amqp.support.converter.MessageConverter;
+import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
+import javax.inject.Named;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -40,8 +48,9 @@ import java.util.Map;
  * @version 2015Q1
  * @since 02.03.15 22:23
  */
+@Named
 @Configuration
-public class CommunicationsConfiguration {
+public class CommunicationsConfiguration implements ApplicationContextAware {
     private static final Logger LOG = LoggerFactory.getLogger(CommunicationsConfiguration.class);
 
     @Value("${amqp.host}")
@@ -58,6 +67,9 @@ public class CommunicationsConfiguration {
     @Value("${amqp.virtual}")
     private String virtual;
 
+    @Value("${info.app.hostName}")
+    private String localHost;
+
 
     @Inject
     private SecurityServer    securityServer;
@@ -67,13 +79,18 @@ public class CommunicationsConfiguration {
     private TranslationServer i18nServer;
     @Inject
     private LicenceServer     licenceServer;
+    @Inject
+    private ApplicationContext context;
 
     private CachingConnectionFactory amqpConnectionFactory;
+    private Jackson2JsonMessageConverter amqpConverter;
+    private ObjectMapper                 jsonMapper;
 
 
     @PostConstruct
     public void init() {
         this.amqpConnectionFactory = connectionFactory();
+        this.amqpConverter = messageConverter();
 
         LOG.trace("Initialized: {}", this);
         LOG.trace("   security server: {}", this.securityServer);
@@ -85,29 +102,44 @@ public class CommunicationsConfiguration {
 
     @Bean
     public SimpleMessageListenerContainer securityListener() {
-        return generateContainer(securityQueue(), securityServer);
+        return generateContainer(securityQueue(), securityServer, messageConverter());
     }
 
     @Bean
     public SimpleMessageListenerContainer tenantsListener() {
-        return generateContainer(tenantQueue(), tenantServer);
+        return generateContainer(tenantQueue(), tenantServer, messageConverter());
     }
 
     @Bean
     public SimpleMessageListenerContainer i18nListener() {
-        return generateContainer(i18nQueue(), i18nServer);
+        return generateContainer(i18nQueue(), i18nServer, messageConverter());
     }
 
     @Bean
     public SimpleMessageListenerContainer licenceListener() {
-        return generateContainer(licenceQueue(), licenceServer);
+        return generateContainer(licenceQueue(), licenceServer, messageConverter());
     }
 
-    private SimpleMessageListenerContainer generateContainer(final Queue queue, final MessageListener listener) {
+    private SimpleMessageListenerContainer generateContainer(final Queue queue, final MessageListener listener, final MessageConverter converter) {
         SimpleMessageListenerContainer result = new SimpleMessageListenerContainer();
+
         result.setConnectionFactory(connectionFactory());
         result.setQueues(queue);
         result.setMessageListener(listener);
+        result.setMessageConverter(converter);
+        result.setApplicationContext(context);
+
+        return result;
+    }
+
+
+    @Bean
+    public RabbitTemplate amqpTemplate() {
+        RabbitTemplate result = new RabbitTemplate();
+
+        result.setConnectionFactory(connectionFactory());
+        result.setMessageConverter(messageConverter());
+
         return result;
     }
 
@@ -116,13 +148,33 @@ public class CommunicationsConfiguration {
     public synchronized CachingConnectionFactory connectionFactory() {
         if (amqpConnectionFactory != null) return amqpConnectionFactory;
 
-
         amqpConnectionFactory = new CachingConnectionFactory(host, Integer.parseInt(port, 10));
         amqpConnectionFactory.setUsername(user);
         amqpConnectionFactory.setPassword(password);
         amqpConnectionFactory.setVirtualHost(virtual);
 
         return amqpConnectionFactory;
+    }
+
+    @Bean
+    public Jackson2JsonMessageConverter messageConverter() {
+        if (amqpConverter != null) return amqpConverter;
+
+        amqpConverter = new Jackson2JsonMessageConverter();
+        amqpConverter.setJsonObjectMapper(objectMapper());
+
+        return amqpConverter;
+    }
+
+
+    @Bean
+    public ObjectMapper objectMapper() {
+        if (jsonMapper != null) return jsonMapper;
+
+        jsonMapper = new ObjectMapper();
+        jsonMapper.findAndRegisterModules();
+
+        return jsonMapper;
     }
 
 
@@ -133,17 +185,17 @@ public class CommunicationsConfiguration {
 
     @Bean
     public Queue tenantQueue() {
-        return buildQueue("hermes.core.tenants", "kpo.dead-letter-queue", "core.tenants");
+        return buildQueue(localHost + ".core.tenants", "kpo.dead-letter-queue", "core.tenants");
     }
 
     @Bean
     public Queue i18nQueue() {
-        return buildQueue("hermes.core.i18n", "kpo.dead-letter-queue", "core.i18n");
+        return buildQueue(localHost + ".core.i18n", "kpo.dead-letter-queue", "core.i18n");
     }
 
     @Bean
     public Queue licenceQueue() {
-        return buildQueue("hermes.core.licence", "kpo.dead-letter-queue", "core.licence");
+        return buildQueue(localHost + ".core.licence", "kpo.dead-letter-queue", "core.licence");
     }
 
 
@@ -159,5 +211,10 @@ public class CommunicationsConfiguration {
         result.put("x-dead-letter-routing-key", dlqRoutingKey);
 
         return result;
+    }
+
+    @Override
+    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+        context = applicationContext;
     }
 }

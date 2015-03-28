@@ -27,7 +27,7 @@ import java.lang.annotation.Target;
  * <p>The configuration of an OfficeModule. It is used for licensing via the
  * <code>de.kaiserpfalzEdv.office.core.licence.LicensingInterceptor</code> or to configure the version of the
  * office module via a {@link de.kaiserpfalzEdv.commons.service.Versionable} generated from {@link #version()}.</p>
- * <p>
+ *
  * <p>The ID is not used but should be configures via a new UUID. If you don't have a generator handy, the webpage
  * <a href="https://www.uuidgenerator.net/">Online UUID Generator</a> may come handy (best use Version 1 UUIDs).</p>
  *

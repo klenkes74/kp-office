@@ -47,19 +47,19 @@ public class OfficeSecurityException extends OfficeBusinessException {
         super(msg, message, cause);
     }
 
-    public OfficeSecurityException(@NotNull ErrorMessage msg, @NotNull List<? extends Serializable> data) {
+    public OfficeSecurityException(@NotNull ErrorMessage msg, @NotNull List<Serializable> data) {
         super(msg, data);
     }
 
-    public OfficeSecurityException(@NotNull ErrorMessage msg, @NotNull List<? extends Serializable> data, @NotNull Throwable cause) {
+    public OfficeSecurityException(@NotNull ErrorMessage msg, @NotNull List<Serializable> data, @NotNull Throwable cause) {
         super(msg, data, cause);
     }
 
-    public OfficeSecurityException(@NotNull ErrorMessage msg, @NotNull String message, @NotNull List<? extends Serializable> data) {
+    public OfficeSecurityException(@NotNull ErrorMessage msg, @NotNull String message, @NotNull List<Serializable> data) {
         super(msg, message, data);
     }
 
-    public OfficeSecurityException(@NotNull ErrorMessage msg, @NotNull String message, @NotNull List<? extends Serializable> data, @NotNull Throwable cause) {
+    public OfficeSecurityException(@NotNull ErrorMessage msg, @NotNull String message, @NotNull List<Serializable> data, @NotNull Throwable cause) {
         super(msg, message, data, cause);
     }
 }

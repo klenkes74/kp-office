@@ -16,19 +16,24 @@
 
 package de.kaiserpfalzEdv.office.core.licence.commands;
 
-import de.kaiserpfalzEdv.office.commons.notifications.Notification;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import de.kaiserpfalzEdv.office.core.licence.notifications.LicenceDataNotification;
+
+import static com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility.ANY;
 
 /**
  * @author klenkes
  * @version 2015Q1
  * @since 01.03.15 22:14
  */
+//@JsonTypeInfo(use = CLASS, include = PROPERTY, visible = true)
+@JsonAutoDetect(fieldVisibility = ANY)
 public class GetLicenceCommand implements LicenceCommand {
-    private static final long serialVersionUID = 8319524124838075399L;
+    private static final long serialVersionUID = 6267589569621720307L;
 
 
     @Override
-    public Notification execute(LicenceCommandExecutor executor) {
+    public LicenceDataNotification execute(LicenceCommandExecutor executor) {
         return executor.execute(this);
     }
 }

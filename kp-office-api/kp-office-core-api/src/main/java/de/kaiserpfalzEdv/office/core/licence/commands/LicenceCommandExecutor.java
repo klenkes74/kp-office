@@ -16,7 +16,7 @@
 
 package de.kaiserpfalzEdv.office.core.licence.commands;
 
-import de.kaiserpfalzEdv.office.commons.notifications.Notification;
+import de.kaiserpfalzEdv.office.core.licence.notifications.LicenceDataNotification;
 
 /**
  * @author klenkes
@@ -24,5 +24,5 @@ import de.kaiserpfalzEdv.office.commons.notifications.Notification;
  * @since 01.03.15 22:14
  */
 public interface LicenceCommandExecutor {
-    Notification execute(GetLicenceCommand command);
+    LicenceDataNotification execute(GetLicenceCommand command);
 }

@@ -25,6 +25,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.core.MessageListener;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.amqp.support.converter.MessageConverter;
 
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -43,22 +44,25 @@ public class LicenceServer implements MessageListener {
 
     private RabbitTemplate     sender;
     private LicenceApplication service;
+    private MessageConverter converter;
 
 
     @Inject
-    public LicenceServer(final RabbitTemplate sender, final LicenceApplication service) {
+    public LicenceServer(final RabbitTemplate sender, final LicenceApplication service, final MessageConverter converter) {
         this.sender = sender;
         this.service = service;
+        this.converter = converter;
 
         LOG.trace("Created: {}", this);
         LOG.trace("  amqp sender: {}", this.sender);
         LOG.trace("  licence command executor: {}", this.service);
+        LOG.trace("  message converter: {}", this.converter);
     }
 
 
     @Override
     public void onMessage(Message message) {
-        LicenceCommand command = (LicenceCommand) SerializationUtils.deserialize(message.getBody());
+        LicenceCommand command = (LicenceCommand) converter.fromMessage(message);
 
         Notification result = command.execute(service);
 

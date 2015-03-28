@@ -19,74 +19,54 @@
 
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
-            <level>INFO</level>
+            <level>TRACE</level>
         </filter>
         <encoder>
             <pattern>%d{HH:mm:ss.SSS} %-5level %logger{36} - %msg%n</pattern>
         </encoder>
     </appender>
 
-    <appender name="DEVELOPMENT" class="ch.qos.logback.core.FileAppender">
-        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
-            <level>TRACE</level>
-        </filter>
-        <file>target/development.log</file>
-        <append>false</append>
-        <encoder>
-            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
-        </encoder>
-    </appender>
-
-
     <logger name="de.kaiserpfalzEdv" additivity="false" level="TRACE">
         <appender-ref ref="STDOUT"/>
-        <appender-ref ref="DEVELOPMENT"/>
     </logger>
     <logger name="de.kaiserpfalzEdv.commons" additivity="false" level="WARN">
         <appender-ref ref="STDOUT"/>
-        <appender-ref ref="DEVELOPMENT"/>
     </logger>
 
     <logger name="ch.qos.logback" additivity="false" level="WARN">
         <appender-ref ref="STDOUT"/>
-        <appender-ref ref="DEVELOPMENT"/>
     </logger>
     <logger name="java" additivity="false" level="WARN">
         <appender-ref ref="STDOUT"/>
-        <appender-ref ref="DEVELOPMENT"/>
     </logger>
     <logger name="net.sf.ehcache" additivity="false" level="WARN">
         <appender-ref ref="STDOUT"/>
-        <appender-ref ref="DEVELOPMENT"/>
     </logger>
     <logger name="org.hibernate" additivity="false" level="WARN">
         <appender-ref ref="STDOUT"/>
-        <appender-ref ref="DEVELOPMENT"/>
     </logger>
     <logger name="org.hibernate.SQL" additivity="false" level="WARN">
         <appender-ref ref="STDOUT"/>
-        <appender-ref ref="DEVELOPMENT"/>
     </logger>
     <logger name="liquibase" additivity="false" level="INFO">
         <appender-ref ref="STDOUT"/>
-        <appender-ref ref="DEVELOPMENT"/>
     </logger>
 
     <logger name="org.springframework" additivity="false" level="WARN">
         <appender-ref ref="STDOUT"/>
-        <appender-ref ref="DEVELOPMENT"/>
     </logger>
     <logger name="org.springframework.amqp" additivity="false" level="WARN">
         <appender-ref ref="STDOUT"/>
-        <appender-ref ref="DEVELOPMENT"/>
     </logger>
     <logger name="org.springframework.jndi.JndiTemplate" additivity="false" level="WARN">
         <appender-ref ref="STDOUT"/>
-        <appender-ref ref="DEVELOPMENT"/>
+    </logger>
+
+    <logger name="Environment" additivity="false" level="TRACE">
+        <appender-ref ref="STDOUT"/>
     </logger>
 
     <root level="INFO">
         <appender-ref ref="STDOUT"/>
-        <appender-ref ref="DEVELOPMENT"/>
     </root>
 </configuration>

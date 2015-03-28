@@ -16,7 +16,9 @@
 
 package de.kaiserpfalzEdv.office.core.licence.impl;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import de.kaiserpfalzEdv.commons.service.VersionRange;
+import de.kaiserpfalzEdv.office.commons.SoftwareVersionRange;
 import de.kaiserpfalzEdv.office.core.licence.OfficeLicence;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
@@ -27,6 +29,8 @@ import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.UUID;
 
+import static com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility.ANY;
+
 /**
  * The loaded licence.
  * 
@@ -34,18 +38,22 @@ import java.util.UUID;
  * @version 2015Q1
  * @since 14.02.15 18:35
  */
-class LicenceImpl implements OfficeLicence {
-    private static final long serialVersionUID = -7238073081541326721L;
-    private final HashMap<String, Boolean> modules = new HashMap<>(10);
-    private UUID      id;
-    private LocalDate issued;
-    private String    issuer;
-    private String    licensee;
-    private LocalDate starts;
-    private LocalDate expires;
-    private String      software;
-    private VersionRange versionRange;
+@JsonAutoDetect(fieldVisibility = ANY)
+public class LicenceImpl implements OfficeLicence {
+    private static final long                     serialVersionUID = -835294742597162907L;
+    private final        HashMap<String, Boolean> modules          = new HashMap<>(10);
+    private UUID                 id;
+    private LocalDate            issued;
+    private String               issuer;
+    private String               licensee;
+    private LocalDate            starts;
+    private LocalDate            expires;
+    private String               software;
+    private SoftwareVersionRange versionRange;
 
+
+    @Deprecated
+    protected LicenceImpl() {}
 
     public LicenceImpl(
             UUID id,
@@ -67,7 +75,7 @@ class LicenceImpl implements OfficeLicence {
         this.expires = expires;
 
         this.software = software;
-        this.versionRange = range;
+        this.versionRange = new SoftwareVersionRange(range.getStart(), range.getEnd());
 
         for (String module : modules) {
             this.modules.put(module, true);
@@ -87,7 +95,7 @@ class LicenceImpl implements OfficeLicence {
 
     @Override
     public boolean isValid(final String software, final VersionRange range) {
-        return this.software.equals(software) 
+        return this.software.equals(software)
                 && (this.versionRange.overlapsWith(range))
                 && isWithinValidityPeriod();
     }

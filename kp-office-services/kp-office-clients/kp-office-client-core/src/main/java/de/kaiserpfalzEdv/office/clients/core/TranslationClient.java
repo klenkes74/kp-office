@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzEdv.office.clients.core.i18n;
+package de.kaiserpfalzEdv.office.clients.core;
 
 import de.kaiserpfalzEdv.office.commons.KPO;
 import de.kaiserpfalzEdv.office.core.i18n.MessageProvider;
@@ -70,21 +70,33 @@ public class TranslationClient implements TranslationService, MessageProvider {
 
     @PostConstruct
     public void init() {
-        Set<TranslationEntry> entries = getTranslationEntries();
-
-        entries.forEach(
-                e -> {
-                    messages.put(e.getKey() + "/" + e.getLanguage(), e.getValue());
-                }
-        );
-
         LOG.trace("Initialized: {}", this);
-        LOG.trace("  {} messages loaded.", messages.size());
     }
 
     @PreDestroy
     public void close() {
         LOG.trace("Destroyed: {}", this);
+    }
+
+
+    private void loadTranslations() {
+        if (messages.size() != 0)
+            return;
+
+        synchronized (this) {
+            if (messages.size() != 0)
+                return;
+
+            Set<TranslationEntry> entries = getTranslationEntries();
+
+            entries.forEach(
+                    e -> {
+                        messages.put(e.getKey() + "/" + e.getLanguage(), e.getValue());
+                    }
+            );
+
+            LOG.trace("{} messages loaded.", messages.size());
+        }
     }
 
 

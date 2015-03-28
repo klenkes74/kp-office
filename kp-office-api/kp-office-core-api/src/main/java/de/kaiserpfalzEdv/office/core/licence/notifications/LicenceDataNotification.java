@@ -16,23 +16,30 @@
 
 package de.kaiserpfalzEdv.office.core.licence.notifications;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import de.kaiserpfalzEdv.office.commons.notifications.Notification;
 import de.kaiserpfalzEdv.office.core.licence.OfficeLicence;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
+import static com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility.ANY;
+
 /**
  * @author klenkes
  * @version 2015Q1
  * @since 01.03.15 22:13
  */
+@JsonAutoDetect(fieldVisibility = ANY)
 public class LicenceDataNotification implements Notification {
     private static final long serialVersionUID = 3287815572114343343L;
 
 
     private OfficeLicence licence;
 
+
+    @Deprecated
+    protected LicenceDataNotification() {}
 
     public LicenceDataNotification(final OfficeLicence licence) {
         this.licence = licence;

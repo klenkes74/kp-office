@@ -79,12 +79,14 @@ public class ModuleConfigurator implements ClientModuleInitializer {
     @Override
     public void initialializeModules(String[] commandLine) {
         ReadConfigurationCommand command = generateConfigurationReadingCommand(commandLine);
+        LOG.info("Command Line: {}", commandLine);
+        String action = commandLine.length >= 1 ? commandLine[0] : "help";
         Properties configuration = readConfiguration(command);
 
-        ConfigureCommand configurationCommand = new ConfigureCommand(this, configuration);
+        ConfigureCommand configurationCommand = new ConfigureCommand(this, action, configuration);
         bus.post(configurationCommand);
 
-        InitializeCommand intializationCommand = new InitializeCommand(context);
+        InitializeCommand intializationCommand = new InitializeCommand(this, context);
         bus.post(intializationCommand);
     }
 
@@ -92,7 +94,7 @@ public class ModuleConfigurator implements ClientModuleInitializer {
         Map<String, String> environment = System.getenv();
         Properties properties = System.getProperties();
 
-        return new ReadConfigurationCommand(environment, properties, commandLine);
+        return new ReadConfigurationCommand(this, environment, properties, commandLine);
     }
 
 

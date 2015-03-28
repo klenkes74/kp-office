@@ -16,7 +16,6 @@
 
 package de.kaiserpfalzEdv.office.core.licence.impl;
 
-import de.kaiserpfalzEdv.office.commons.notifications.Notification;
 import de.kaiserpfalzEdv.office.core.licence.LicenceService;
 import de.kaiserpfalzEdv.office.core.licence.commands.GetLicenceCommand;
 import de.kaiserpfalzEdv.office.core.licence.commands.LicenceCommandExecutor;
@@ -62,7 +61,9 @@ public class LicenceApplication implements LicenceCommandExecutor {
 
 
     @Override
-    public Notification execute(GetLicenceCommand command) {
+    public LicenceDataNotification execute(GetLicenceCommand command) {
+        LOG.info("Working on: {}", command);
+
         return new LicenceDataNotification(service.getLicence());
     }
 }

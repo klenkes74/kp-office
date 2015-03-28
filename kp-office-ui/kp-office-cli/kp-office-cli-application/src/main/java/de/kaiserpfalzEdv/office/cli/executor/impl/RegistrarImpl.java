@@ -35,7 +35,6 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.inject.Inject;
-import javax.inject.Named;
 import java.util.HashSet;
 import java.util.ServiceLoader;
 import java.util.Set;
@@ -45,7 +44,6 @@ import java.util.Set;
  * @version 2015Q1
  * @since 03.03.15 00:28
  */
-@Named
 public class RegistrarImpl implements CliModuleInfo, CliModuleRegistrar, CliModuleScanner, ApplicationContextAware {
     private static final Logger LOG = LoggerFactory.getLogger(RegistrarImpl.class);
 

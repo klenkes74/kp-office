@@ -16,11 +16,15 @@
 
 package de.kaiserpfalzEdv.office.commons;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import de.kaiserpfalzEdv.commons.service.VersionRange;
 import de.kaiserpfalzEdv.commons.service.Versionable;
 
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+
+import static com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility.ANY;
+import static com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility.NONE;
 
 /**
  * <p>A version number as described in <a href="http://semver.org/spec/v2.0.0.html">Semantic Versioning</a>. The valid 
@@ -39,13 +43,18 @@ import java.io.Serializable;
  * @version 2015Q1
  * @since 11.02.15 20:03
  */
+@JsonAutoDetect(fieldVisibility = ANY, getterVisibility = NONE, setterVisibility = NONE)
 public class SoftwareVersion implements Versionable, Serializable {
     /** The parts of the version scheme. Default is a three part version number. */
     public static final int VERSION_SIZE = 3;
     public static final String VERSION_REGEX = "\\d+(.\\d+){0," + (VERSION_SIZE-1) + "}(-(alpha|beta|releaseCandidate|release))?";
-    private static final long serialVersionUID = -6778399647727817889L;
+    private static final long serialVersionUID = -4873076866533730389L;
+
     private Integer[] version = new Integer[VERSION_SIZE];
     private ReleaseState state = ReleaseState.release;
+
+    @Deprecated
+    protected SoftwareVersion() {}
     
     public SoftwareVersion(@NotNull final String versionString) {
         parse(versionString);
