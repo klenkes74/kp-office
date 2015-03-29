@@ -16,15 +16,13 @@
 
 package de.kaiserpfalzEdv.office.commons;
 
-import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import de.kaiserpfalzEdv.commons.service.VersionRange;
 import de.kaiserpfalzEdv.commons.service.Versionable;
 
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
-
-import static com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility.ANY;
-import static com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility.NONE;
 
 /**
  * <p>A version number as described in <a href="http://semver.org/spec/v2.0.0.html">Semantic Versioning</a>. The valid 
@@ -43,19 +41,16 @@ import static com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility.NONE;
  * @version 2015Q1
  * @since 11.02.15 20:03
  */
-@JsonAutoDetect(fieldVisibility = ANY, getterVisibility = NONE, setterVisibility = NONE)
 public class SoftwareVersion implements Versionable, Serializable {
     /** The parts of the version scheme. Default is a three part version number. */
     public static final int VERSION_SIZE = 3;
     public static final String VERSION_REGEX = "\\d+(.\\d+){0," + (VERSION_SIZE-1) + "}(-(alpha|beta|releaseCandidate|release))?";
     private static final long serialVersionUID = -4873076866533730389L;
 
+    @JsonIgnore
     private Integer[] version = new Integer[VERSION_SIZE];
     private ReleaseState state = ReleaseState.release;
 
-    @Deprecated
-    protected SoftwareVersion() {}
-    
     public SoftwareVersion(@NotNull final String versionString) {
         parse(versionString);
     }
@@ -65,8 +60,8 @@ public class SoftwareVersion implements Versionable, Serializable {
             this.version[i] = version[i];
         }
     }
-    
-    public SoftwareVersion(final ReleaseState state, final int... version) {
+
+    public SoftwareVersion(@JsonProperty("state") final ReleaseState state, @JsonProperty("version") final int... version) {
         this(version);
         
         this.state = state;
@@ -87,7 +82,8 @@ public class SoftwareVersion implements Versionable, Serializable {
             this.version[i] = Integer.parseUnsignedInt(version[i], 10);
         }
     }
-    
+
+    @JsonIgnore
     @Override
     public String getBuildDescriptor() {
         StringBuilder result = new StringBuilder(getVersionString());
@@ -99,6 +95,7 @@ public class SoftwareVersion implements Versionable, Serializable {
         return result.toString();
     }
 
+    @JsonIgnore
     @Override
     public String getVersionString() {
         StringBuilder result = new StringBuilder()
@@ -112,6 +109,7 @@ public class SoftwareVersion implements Versionable, Serializable {
         return result.toString();
     }
 
+    @JsonProperty("version")
     @Override
     public int[] getVersion() {
         int[] result = new int[VERSION_SIZE];
@@ -153,6 +151,7 @@ public class SoftwareVersion implements Versionable, Serializable {
         return other.beforeOrEqual(this);
     }
 
+    @JsonProperty("state")
     @Override
     public ReleaseState getReleaseState() {
         return state;

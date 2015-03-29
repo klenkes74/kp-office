@@ -92,4 +92,9 @@ public class NullLincenceImpl implements OfficeLicence {
     public boolean containsFeature(String feature) {
         return false;
     }
+
+    @Override
+    public String[] getModules() {
+        return new String[0];
+    }
 }

@@ -14,26 +14,29 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzEdv.office.commons.commons.test;
+package de.kaiserpfalzEdv.office.cli.amqp;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.amqp.AmqpException;
+import org.springframework.amqp.core.Message;
+import org.springframework.amqp.core.MessagePostProcessor;
+
+import javax.inject.Named;
 
 /**
  * @author klenkes
  * @version 2015Q1
- * @since 01.03.15 13:43
+ * @since 28.03.15 23:34
  */
-public class TestCommandExecutorImpl implements TestCommandExecutor {
-    private static final Logger LOG = LoggerFactory.getLogger(TestCommandExecutorImpl.class);
+@Named
+public class PrintMessage implements MessagePostProcessor {
+    private static final Logger LOG = LoggerFactory.getLogger(PrintMessage.class);
 
     @Override
-    public void execute(SecondCommandImpl command) {
-        LOG.info("SecondCommand received: {}", command);
-    }
+    public Message postProcessMessage(Message message) throws AmqpException {
+        LOG.trace("Message: {}", message);
 
-    @Override
-    public void execute(TestCommand command) {
-        LOG.info("TestComand received: {}", command);
+        return message;
     }
 }

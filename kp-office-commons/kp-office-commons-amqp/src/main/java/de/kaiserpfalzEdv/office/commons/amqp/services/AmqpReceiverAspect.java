@@ -16,6 +16,7 @@
 
 package de.kaiserpfalzEdv.office.commons.amqp.services;
 
+import de.kaiserpfalzEdv.office.commons.amqp.SendMessagePrinter;
 import de.kaiserpfalzEdv.office.commons.amqp.session.AmqpRequest;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
@@ -53,8 +54,12 @@ public class AmqpReceiverAspect {
 
     @PostConstruct
     public void init() {
+        if (request == null || service == null) {
+            throw new IllegalStateException(getClass().getSimpleName() + " won't work without injected request and service!");
+        }
         LOG.trace("Initialized: {}", this);
         LOG.trace("  amqp request: {}", request);
+        LOG.trace("  injector service: {}", service);
     }
 
     @PreDestroy
@@ -85,6 +90,8 @@ public class AmqpReceiverAspect {
         Message message = (Message) invocation.getArgs()[2];
 
         service.postProcessMessage(message);
+
+        new SendMessagePrinter().postProcessMessage(message);
 
         request.endRequest();
     }

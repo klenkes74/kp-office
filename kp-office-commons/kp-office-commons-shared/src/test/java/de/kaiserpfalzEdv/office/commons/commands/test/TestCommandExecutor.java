@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzEdv.office.commons.commons.test;
+package de.kaiserpfalzEdv.office.commons.commands.test;
 
 import de.kaiserpfalzEdv.office.commons.commands.CommandExecutor;
 

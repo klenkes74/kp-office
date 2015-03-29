@@ -16,14 +16,14 @@
 
 package de.kaiserpfalzEdv.office.commons;
 
-import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import de.kaiserpfalzEdv.commons.service.VersionRange;
 import de.kaiserpfalzEdv.commons.service.Versionable;
 
 import java.io.Serializable;
-
-import static com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility.ANY;
-import static com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility.NONE;
 
 /**
  * A range of semantic versions.
@@ -32,28 +32,32 @@ import static com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility.NONE;
  * @version 2015Q1
  * @since 15.02.15 07:32
  */
-@JsonAutoDetect(fieldVisibility = ANY, getterVisibility = NONE, setterVisibility = NONE)
 public class SoftwareVersionRange implements VersionRange, Serializable {
 
+    @JsonIgnore
     private SoftwareVersion start;
+    @JsonIgnore
     private SoftwareVersion end;
 
 
-    @Deprecated
-    public SoftwareVersionRange() {}
-    
-    
-    public SoftwareVersionRange(final Versionable start, final Versionable end) {
+    public SoftwareVersionRange(
+            @JsonProperty("start") @JsonSerialize(as = SoftwareVersion.class) final Versionable start,
+            @JsonProperty("end") @JsonSerialize(as = SoftwareVersion.class) final Versionable end
+    ) {
         this.start = new SoftwareVersion(start.getVersionString());
         this.end = new SoftwareVersion(end.getVersionString());
     }
 
-    
+
+    @JsonProperty("start")
+    @JsonDeserialize(as = SoftwareVersion.class)
     @Override
     public Versionable getStart() {
         return start;
     }
 
+    @JsonProperty("end")
+    @JsonDeserialize(as = SoftwareVersion.class)
     @Override
     public Versionable getEnd() {
         return end;

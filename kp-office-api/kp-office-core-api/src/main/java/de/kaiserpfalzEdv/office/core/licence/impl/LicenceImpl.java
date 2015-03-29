@@ -17,6 +17,8 @@
 package de.kaiserpfalzEdv.office.core.licence.impl;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import de.kaiserpfalzEdv.commons.service.VersionRange;
 import de.kaiserpfalzEdv.office.commons.SoftwareVersionRange;
 import de.kaiserpfalzEdv.office.core.licence.OfficeLicence;
@@ -30,6 +32,7 @@ import java.util.HashMap;
 import java.util.UUID;
 
 import static com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility.ANY;
+import static com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility.NONE;
 
 /**
  * The loaded licence.
@@ -38,33 +41,40 @@ import static com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility.ANY;
  * @version 2015Q1
  * @since 14.02.15 18:35
  */
-@JsonAutoDetect(fieldVisibility = ANY)
+@JsonAutoDetect(fieldVisibility = ANY, getterVisibility = NONE, setterVisibility = NONE)
 public class LicenceImpl implements OfficeLicence {
-    private static final long                     serialVersionUID = -835294742597162907L;
-    private final        HashMap<String, Boolean> modules          = new HashMap<>(10);
+    private static final long serialVersionUID = -3563183495993877255L;
+
+    @JsonIgnore
+    private final HashMap<String, Boolean> modules = new HashMap<>(10);
+    @JsonProperty("id")
     private UUID                 id;
+    @JsonProperty("issued")
     private LocalDate            issued;
+    @JsonProperty("issuer")
     private String               issuer;
+    @JsonProperty("licensee")
     private String               licensee;
+    @JsonProperty("starts")
     private LocalDate            starts;
+    @JsonProperty("expires")
     private LocalDate            expires;
+    @JsonProperty("software")
     private String               software;
+    @JsonProperty("range")
     private SoftwareVersionRange versionRange;
 
 
-    @Deprecated
-    protected LicenceImpl() {}
-
     public LicenceImpl(
-            UUID id,
-            LocalDate issued,
-            String issuer,
-            String licensee,
-            LocalDate starts,
-            LocalDate expires,
-            String software,
-            VersionRange range,
-            String[] modules
+            @JsonProperty("id") UUID id,
+            @JsonProperty("issued") LocalDate issued,
+            @JsonProperty("issuer") String issuer,
+            @JsonProperty("licensee") String licensee,
+            @JsonProperty("starts") LocalDate starts,
+            @JsonProperty("expires") LocalDate expires,
+            @JsonProperty("software") String software,
+            @JsonProperty("range") VersionRange range,
+            @JsonProperty("modules") String[] modules
     ) {
         this.id = id;
         this.issued = issued;
@@ -140,6 +150,12 @@ public class LicenceImpl implements OfficeLicence {
     @Override
     public boolean containsFeature(String feature) {
         return modules.containsKey(feature);
+    }
+
+    @JsonProperty("modules")
+    @Override
+    public String[] getModules() {
+        return modules.keySet().toArray(new String[1]);
     }
     
     

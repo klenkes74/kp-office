@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzEdv.office.commons.commons.test;
+package de.kaiserpfalzEdv.office.commons.commands.test;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;

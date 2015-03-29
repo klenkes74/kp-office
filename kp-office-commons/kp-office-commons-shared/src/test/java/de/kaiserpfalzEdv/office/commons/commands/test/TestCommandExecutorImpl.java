@@ -14,20 +14,26 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzEdv.office.commons.commons.test;
+package de.kaiserpfalzEdv.office.commons.commands.test;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * @author klenkes
  * @version 2015Q1
- * @since 01.03.15 13:45
+ * @since 01.03.15 13:43
  */
-public class SecondCommandImpl extends TestCommandImpl {
-    public SecondCommandImpl(String data) {
-        super(data);
+public class TestCommandExecutorImpl implements TestCommandExecutor {
+    private static final Logger LOG = LoggerFactory.getLogger(TestCommandExecutorImpl.class);
+
+    @Override
+    public void execute(SecondCommandImpl command) {
+        LOG.info("SecondCommand received: {}", command);
     }
 
     @Override
-    public void execute(TestCommandExecutor executor) {
-        executor.execute(this);
+    public void execute(TestCommand command) {
+        LOG.info("TestComand received: {}", command);
     }
 }

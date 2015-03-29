@@ -14,15 +14,20 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzEdv.office.commons.commons.test;
-
-import de.kaiserpfalzEdv.office.commons.commands.Command;
+package de.kaiserpfalzEdv.office.commons.commands.test;
 
 /**
  * @author klenkes
  * @version 2015Q1
- * @since 01.03.15 14:16
+ * @since 01.03.15 13:45
  */
-public interface TestCommand extends Command {
-    void execute(TestCommandExecutor executor);
+public class SecondCommandImpl extends TestCommandImpl {
+    public SecondCommandImpl(String data) {
+        super(data);
+    }
+
+    @Override
+    public void execute(TestCommandExecutor executor) {
+        executor.execute(this);
+    }
 }

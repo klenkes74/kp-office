@@ -20,7 +20,10 @@ import de.kaiserpfalzEdv.commons.jee.EnvironmentLogger;
 import de.kaiserpfalzEdv.commons.jee.eventbus.EventBusHandler;
 import de.kaiserpfalzEdv.office.cli.executor.events.ExecutionCommand;
 import de.kaiserpfalzEdv.office.cli.executor.events.PreparationCommand;
+import de.kaiserpfalzEdv.office.cli.executor.events.ShutdownCommand;
 import de.kaiserpfalzEdv.office.cli.executor.impl.ModuleConfigurator;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.aspectj.EnableSpringConfigured;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -34,23 +37,36 @@ import java.io.Serializable;
  */
 @EnableSpringConfigured
 public class Application implements Serializable {
+    private static Logger LOG = LoggerFactory.getLogger(Application.class);
     private static String configFile = "/beans.xml";
 
+    private static Application runner = new Application();
 
     public static void main(String[] args) {
+        runner.run(args);
+
+        System.exit(0);
+    }
+
+    private void run(String[] args) {
+        LOG.info("Starting kp-office-cli: {}", args);
         EnvironmentLogger.log();
 
         ApplicationContext context = new ClassPathXmlApplicationContext(configFile);
 
+        LOG.debug("Initializing application ...");
         ModuleConfigurator configurator = context.getBean(ModuleConfigurator.class);
         configurator.initialializeModules(args);
 
         EventBusHandler bus = context.getBean(EventBusHandler.class);
 
+        LOG.debug("Preparing commands ...");
         bus.post(new PreparationCommand(Application.class));
 
+        LOG.debug("Executing commands ...");
         bus.post(new ExecutionCommand(Application.class));
 
-        return;
+        LOG.info("Stopping kp-office-cli");
+        bus.post(new ShutdownCommand(Application.class));
     }
 }

@@ -17,6 +17,8 @@
 package de.kaiserpfalzEdv.office.core.licence.notifications;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import de.kaiserpfalzEdv.office.commons.notifications.Notification;
 import de.kaiserpfalzEdv.office.core.licence.OfficeLicence;
 import org.apache.commons.lang3.builder.EqualsBuilder;
@@ -35,17 +37,16 @@ public class LicenceDataNotification implements Notification {
     private static final long serialVersionUID = 3287815572114343343L;
 
 
+    @JsonProperty("licence")
     private OfficeLicence licence;
 
 
-    @Deprecated
-    protected LicenceDataNotification() {}
-
-    public LicenceDataNotification(final OfficeLicence licence) {
+    public LicenceDataNotification(@JsonProperty("licence") final OfficeLicence licence) {
         this.licence = licence;
     }
 
 
+    @JsonIgnore
     public OfficeLicence getLicence() {
         return licence;
     }

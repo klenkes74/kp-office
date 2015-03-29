@@ -22,7 +22,6 @@ import de.kaiserpfalzEdv.office.cli.CliModule;
 import de.kaiserpfalzEdv.office.cli.CliModuleInfo;
 import de.kaiserpfalzEdv.office.cli.executor.CliModuleRegistrar;
 import de.kaiserpfalzEdv.office.cli.executor.CliModuleScanner;
-import de.kaiserpfalzEdv.office.cli.executor.events.ShutdownCommand;
 import de.kaiserpfalzEdv.office.cli.executor.results.CliResult;
 import de.kaiserpfalzEdv.office.cli.executor.results.CliSuccessResult;
 import org.slf4j.Logger;
@@ -84,11 +83,6 @@ public class RegistrarImpl implements CliModuleInfo, CliModuleRegistrar, CliModu
     @PreDestroy
     @Override
     public CliResult close() {
-        if (initialized) {
-            ShutdownCommand command = new ShutdownCommand(this);
-            bus.post(command);
-        }
-
         initialized = false;
 
         return new CliSuccessResult(this, CliResultCode.OK);
