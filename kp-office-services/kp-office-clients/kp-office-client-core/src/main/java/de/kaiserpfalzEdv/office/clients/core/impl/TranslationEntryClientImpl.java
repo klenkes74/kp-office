@@ -14,43 +14,54 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzEdv.office.core.i18n.notifications;
+package de.kaiserpfalzEdv.office.clients.core.impl;
 
-import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import de.kaiserpfalzEdv.office.commons.notifications.Notification;
 import de.kaiserpfalzEdv.office.core.i18n.TranslationEntry;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Set;
-
-import static com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility.ANY;
-import static com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility.PUBLIC_ONLY;
+import java.io.Serializable;
 
 /**
  * @author klenkes
  * @version 2015Q1
- * @since 01.03.15 18:53
+ * @since 06.04.15 17:24
  */
-@JsonAutoDetect(fieldVisibility = ANY, getterVisibility = PUBLIC_ONLY, setterVisibility = PUBLIC_ONLY)
-public class TranslationsNotification implements Notification {
-    private static final long serialVersionUID = -4258834015464666951L;
+public class TranslationEntryClientImpl implements TranslationEntry, Serializable {
+    private static final long serialVersionUID = -6498892949081698892L;
 
 
-    private final HashSet<TranslationEntry> entries = new HashSet<>();
+    private String key;
+    private String language;
+    private String value;
 
-    public TranslationsNotification(@JsonProperty("entries") final Collection<? extends TranslationEntry> translations) {
-        entries.addAll(translations);
+
+    public TranslationEntryClientImpl(
+            @JsonProperty("key") String key,
+            @JsonProperty("language") String language,
+            @JsonProperty("value") String value
+    ) {
+        this.key = key;
+        this.language = language;
+        this.value = value;
     }
 
-    @JsonProperty("entries")
-    public Set<TranslationEntry> getTranslations() {
-        return Collections.unmodifiableSet(entries);
+
+    @Override
+    public String getKey() {
+        return key;
+    }
+
+    @Override
+    public String getLanguage() {
+        return language;
+    }
+
+    @Override
+    public String getValue() {
+        return value;
     }
 
 
@@ -65,16 +76,18 @@ public class TranslationsNotification implements Notification {
         if (obj.getClass() != getClass()) {
             return false;
         }
-        TranslationsNotification rhs = (TranslationsNotification) obj;
+        TranslationEntryClientImpl rhs = (TranslationEntryClientImpl) obj;
         return new EqualsBuilder()
-                .append(this.entries, rhs.entries)
+                .append(this.key, rhs.key)
+                .append(this.language, rhs.language)
                 .isEquals();
     }
 
     @Override
     public int hashCode() {
         return new HashCodeBuilder()
-                .append(entries)
+                .append(key)
+                .append(language)
                 .toHashCode();
     }
 
@@ -82,7 +95,9 @@ public class TranslationsNotification implements Notification {
     @Override
     public String toString() {
         return new ToStringBuilder(this)
-                .append("count", entries.size())
+                .append("key", key)
+                .append("language", language)
+                .append("value", value)
                 .toString();
     }
 }

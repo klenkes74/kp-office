@@ -19,6 +19,7 @@ package de.kaiserpfalzEdv.office.core;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import de.kaiserpfalzEdv.office.commons.amqp.ReceiveMessagePrinter;
 import de.kaiserpfalzEdv.office.commons.amqp.SendMessagePrinter;
+import de.kaiserpfalzEdv.office.commons.jackson.VersionableJacksonModule;
 import de.kaiserpfalzEdv.office.core.i18n.impl.TranslationServer;
 import de.kaiserpfalzEdv.office.core.licence.impl.LicenceServer;
 import de.kaiserpfalzEdv.office.core.security.impl.SecurityServer;
@@ -175,6 +176,7 @@ public class CommunicationsConfiguration implements ApplicationContextAware {
 
         jsonMapper = new ObjectMapper();
         jsonMapper.findAndRegisterModules();
+        jsonMapper.registerModule(new VersionableJacksonModule());
 
         return jsonMapper;
     }

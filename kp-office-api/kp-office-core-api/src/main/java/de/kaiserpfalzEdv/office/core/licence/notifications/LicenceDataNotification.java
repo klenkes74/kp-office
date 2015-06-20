@@ -17,7 +17,6 @@
 package de.kaiserpfalzEdv.office.core.licence.notifications;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import de.kaiserpfalzEdv.office.commons.notifications.Notification;
 import de.kaiserpfalzEdv.office.core.licence.OfficeLicence;
@@ -26,18 +25,18 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import static com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility.ANY;
+import static com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility.NONE;
 
 /**
  * @author klenkes
  * @version 2015Q1
  * @since 01.03.15 22:13
  */
-@JsonAutoDetect(fieldVisibility = ANY)
+@JsonAutoDetect(fieldVisibility = NONE, getterVisibility = ANY, setterVisibility = NONE)
 public class LicenceDataNotification implements Notification {
     private static final long serialVersionUID = 3287815572114343343L;
 
 
-    @JsonProperty("licence")
     private OfficeLicence licence;
 
 
@@ -46,7 +45,7 @@ public class LicenceDataNotification implements Notification {
     }
 
 
-    @JsonIgnore
+    @JsonProperty("licence")
     public OfficeLicence getLicence() {
         return licence;
     }

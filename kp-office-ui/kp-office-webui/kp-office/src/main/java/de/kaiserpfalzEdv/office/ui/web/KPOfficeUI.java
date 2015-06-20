@@ -19,20 +19,17 @@ package de.kaiserpfalzEdv.office.ui.web;
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.Widgetset;
 import com.vaadin.server.VaadinRequest;
-import com.vaadin.ui.Alignment;
+import com.vaadin.spring.annotation.SpringUI;
+import com.vaadin.ui.CssLayout;
 import com.vaadin.ui.UI;
-import com.vaadin.ui.VerticalLayout;
+import de.kaiserpfalzEdv.commons.jee.eventbus.EventBusHandler;
 import de.kaiserpfalzEdv.office.ui.OfficeModule;
-import de.kaiserpfalzEdv.office.ui.events.Action;
 import de.kaiserpfalzEdv.office.ui.web.mainScreen.MainScreenPresenter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
-import org.vaadin.spring.annotation.VaadinUI;
-import org.vaadin.spring.events.EventBus;
-import org.vaadin.spring.events.EventScope;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
@@ -45,7 +42,7 @@ import java.util.ServiceLoader;
  */
 @Theme("valo")
 @Widgetset("KPOfficeWidgetset")
-@VaadinUI
+@SpringUI
 public class KPOfficeUI extends UI implements ApplicationContextAware {
     private static final long serialVersionUID = 3187407073643645462L;
     private static final Logger LOG              = LoggerFactory.getLogger(KPOfficeUI.class);
@@ -56,9 +53,9 @@ public class KPOfficeUI extends UI implements ApplicationContextAware {
      */
     private final HashSet<OfficeModule> officeModules = new HashSet<>(10);
 
-    
+
     @Inject
-    private EventBus eventBus;
+    private EventBusHandler eventBus;
 
     @Inject
     private MainScreenPresenter presenter;
@@ -71,7 +68,7 @@ public class KPOfficeUI extends UI implements ApplicationContextAware {
      * root window. Since the main content may not be changed this is the main content. Then everything may be changed
      * within this layout.
      */
-    private VerticalLayout mainLayout;
+    private CssLayout mainLayout;
 
 
     public KPOfficeUI() {
@@ -83,6 +80,8 @@ public class KPOfficeUI extends UI implements ApplicationContextAware {
     public void init() {
         scanOfficeModules();
         initializeModules();
+
+        eventBus.register(this);
 
         LOG.trace("Initialized: {}", this);
     }
@@ -105,21 +104,20 @@ public class KPOfficeUI extends UI implements ApplicationContextAware {
 
     @PreDestroy
     public void close() {
+        eventBus.unregister(this);
+
         LOG.trace("Destroyed: {}", this);
     }
 
 
     @Override
     protected void init(VaadinRequest vaadinRequest) {
-        mainLayout = new VerticalLayout();
+        mainLayout = new CssLayout();
         mainLayout.setSizeFull();
         mainLayout.setHeight(100f, Unit.PERCENTAGE);
         mainLayout.setWidth(100f, Unit.PERCENTAGE);
-        mainLayout.setMargin(false);
-        mainLayout.setDefaultComponentAlignment(Alignment.MIDDLE_CENTER);
         setContent(mainLayout);
 
-        eventBus.publish(EventScope.SESSION, this, Action.START);
         mainLayout.addComponent(presenter.getView());
 
         officeModules.forEach(

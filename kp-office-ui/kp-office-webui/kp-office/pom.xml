@@ -27,7 +27,7 @@
     </parent>
 
     <artifactId>kp-office</artifactId>
-    <name>KP Office - UI - Web - Application</name>
+    <name>KP Office - UI - Web - Vaadin Application</name>
 
 
     <properties>
@@ -77,20 +77,8 @@
             <artifactId>vaadin-themes</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.vaadin.spring</groupId>
-            <artifactId>spring-boot-vaadin</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.vaadin.spring</groupId>
-            <artifactId>spring-vaadin-security</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.vaadin.spring</groupId>
-            <artifactId>spring-vaadin-mvp</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.vaadin.spring</groupId>
-            <artifactId>spring-vaadin-test</artifactId>
+            <groupId>com.vaadin</groupId>
+            <artifactId>vaadin-spring-boot</artifactId>
         </dependency>
 
         <!-- Custom components -->

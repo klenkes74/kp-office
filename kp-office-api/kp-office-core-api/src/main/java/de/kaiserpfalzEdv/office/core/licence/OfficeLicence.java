@@ -19,7 +19,6 @@ package de.kaiserpfalzEdv.office.core.licence;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import de.kaiserpfalzEdv.commons.service.VersionRange;
-import de.kaiserpfalzEdv.office.commons.SoftwareVersionRange;
 import de.kaiserpfalzEdv.office.core.licence.impl.LicenceImpl;
 
 import java.io.Serializable;
@@ -68,8 +67,6 @@ public interface OfficeLicence extends Serializable {
 
     String getSoftware();
 
-    @JsonSerialize(as = SoftwareVersionRange.class)
-    @JsonDeserialize(as = SoftwareVersionRange.class)
     VersionRange getVersionRange();
 
     boolean containsFeature(final String feature);

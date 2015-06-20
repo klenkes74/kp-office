@@ -16,12 +16,22 @@
 
 package de.kaiserpfalzEdv.office.ui.events;
 
+import java.util.EventObject;
+
 /**
  * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;
  * @version 0.1.0
  * @since 0.1.0
  */
-public enum Action {
-    START,
-    GET_DATA
+public abstract class Action extends EventObject {
+    /**
+     * Constructs a prototypical Event.
+     *
+     * @param source The object on which the Event initially occurred.
+     *
+     * @throws IllegalArgumentException if source is null.
+     */
+    public Action(Object source) {
+        super(source);
+    }
 }

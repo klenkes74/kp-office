@@ -19,9 +19,9 @@ package de.kaiserpfalzEdv.office.clients.core;
 import de.kaiserpfalzEdv.office.commons.KPO;
 import de.kaiserpfalzEdv.office.core.licence.LicenceService;
 import de.kaiserpfalzEdv.office.core.licence.NoLicenceLoadedException;
-import de.kaiserpfalzEdv.office.core.licence.impl.NullLincenceImpl;
 import de.kaiserpfalzEdv.office.core.licence.OfficeLicence;
 import de.kaiserpfalzEdv.office.core.licence.commands.GetLicenceCommand;
+import de.kaiserpfalzEdv.office.core.licence.impl.NullLincenceImpl;
 import de.kaiserpfalzEdv.office.core.licence.notifications.LicenceDataNotification;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -77,7 +77,7 @@ public class LicenceClient implements LicenceService {
             LicenceDataNotification result
                     = (LicenceDataNotification) sender.convertSendAndReceive(MESSAGE_EXCHANGE, ROUTING_KEY, new GetLicenceCommand());
 
-            if (licence == null) {
+            if (result == null) {
                 throw new NoLicenceLoadedException();
             }
 

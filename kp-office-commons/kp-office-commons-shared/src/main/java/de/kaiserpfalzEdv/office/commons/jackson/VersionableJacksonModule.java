@@ -17,7 +17,10 @@
 package de.kaiserpfalzEdv.office.commons.jackson;
 
 import com.fasterxml.jackson.databind.module.SimpleModule;
+import de.kaiserpfalzEdv.commons.service.VersionRange;
 import de.kaiserpfalzEdv.commons.service.Versionable;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * @author klenkes
@@ -25,12 +28,18 @@ import de.kaiserpfalzEdv.commons.service.Versionable;
  * @since 29.03.15 08:55
  */
 public class VersionableJacksonModule extends SimpleModule {
+    private static final Logger LOG = LoggerFactory.getLogger(VersionableJacksonModule.class);
     private static final long serialVersionUID = 9008524273826778753L;
 
     public VersionableJacksonModule() {
         super(PackageVersion.VERSION);
 
+        LOG.debug("Software Version jackson mapper module is loaded!");
+
         addSerializer(Versionable.class, new SoftwareVersionSerializer());
         addDeserializer(Versionable.class, new SoftwareVersionDeserializer());
+
+        addSerializer(VersionRange.class, new SoftwareVersionRangeSerializer());
+        addDeserializer(VersionRange.class, new SoftwareVersionRangeDeserializer());
     }
 }

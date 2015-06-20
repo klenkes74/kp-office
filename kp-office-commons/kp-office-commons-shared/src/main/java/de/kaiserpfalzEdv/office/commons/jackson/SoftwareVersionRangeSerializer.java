@@ -19,7 +19,7 @@ package de.kaiserpfalzEdv.office.commons.jackson;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.SerializerProvider;
-import de.kaiserpfalzEdv.commons.service.Versionable;
+import de.kaiserpfalzEdv.commons.service.VersionRange;
 
 import java.io.IOException;
 
@@ -28,20 +28,13 @@ import java.io.IOException;
  * @version 2015Q1
  * @since 29.03.15 08:38
  */
-public class SoftwareVersionSerializer extends JsonSerializer<Versionable> {
+public class SoftwareVersionRangeSerializer extends JsonSerializer<VersionRange> {
     @Override
-    public void serialize(Versionable value, JsonGenerator jgen, SerializerProvider provider) throws IOException {
+    public void serialize(VersionRange value, JsonGenerator jgen, SerializerProvider provider) throws IOException {
         jgen.writeStartObject();
 
-        jgen.writeArrayFieldStart("version");
-        for (int v : value.getVersion()) {
-            jgen.writeNumber(v);
-        }
-        jgen.writeEndArray();
-
-        if (!value.getReleaseState().equals(Versionable.ReleaseState.release)) {
-            jgen.writeObjectField("state", value.getReleaseState());
-        }
+        jgen.writeObjectField("start", value.getStart());
+        jgen.writeObjectField("end", value.getEnd());
 
         jgen.writeEndObject();
     }

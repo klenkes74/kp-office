@@ -16,17 +16,12 @@
 
 package de.kaiserpfalzEdv.office.ui.web.mainScreen;
 
-import de.kaiserpfalzEdv.office.ui.events.Action;
-import de.kaiserpfalzEdv.office.ui.events.StartupFilter;
+import com.vaadin.spring.annotation.UIScope;
 import de.kaiserpfalzEdv.office.ui.web.widgets.content.ContentPresenter;
 import de.kaiserpfalzEdv.office.ui.web.widgets.menu.NavigationPresenter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.vaadin.spring.annotation.VaadinSessionScope;
-import org.vaadin.spring.events.EventScope;
-import org.vaadin.spring.events.annotation.EventBusListenerMethod;
 import org.vaadin.spring.navigator.Presenter;
-import org.vaadin.spring.navigator.annotation.VaadinPresenter;
 
 import javax.inject.Inject;
 
@@ -35,8 +30,7 @@ import javax.inject.Inject;
  * @version 2015Q1
  * @since 17.02.15 20:29
  */
-@VaadinSessionScope
-@VaadinPresenter(viewName = MainScreenView.NAME)
+@UIScope
 public class MainScreenPresenter extends Presenter<MainScreenView> {
     private static final Logger LOG = LoggerFactory.getLogger(MainScreenPresenter.class);
 
@@ -46,15 +40,4 @@ public class MainScreenPresenter extends Presenter<MainScreenView> {
 
     @Inject
     private ContentPresenter content;
-
-
-    @SuppressWarnings("UnusedDeclaration") // called via BUS
-    @EventBusListenerMethod(scope = EventScope.SESSION, filter = StartupFilter.class)
-    public void onStartup(org.vaadin.spring.events.Event<Action> event) {
-        LOG.debug("{} received: {}", this, event);
-
-        LOG.info("Setting up main screen.");
-        getView().setFirstComponent(navigation.getView());
-        getView().setSecondComponent(content.getView());
-    }
 }

@@ -25,8 +25,8 @@ import de.kaiserpfalzEdv.office.cli.executor.events.ExecutionCommand;
 import de.kaiserpfalzEdv.office.cli.executor.events.InitializeCommand;
 import de.kaiserpfalzEdv.office.clients.core.LicenceClient;
 import de.kaiserpfalzEdv.office.commons.SoftwareVersion;
-import de.kaiserpfalzEdv.office.core.licence.impl.NullLincenceImpl;
 import de.kaiserpfalzEdv.office.core.licence.OfficeLicence;
+import de.kaiserpfalzEdv.office.core.licence.impl.NullLincenceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -95,6 +95,11 @@ public class ServerPing implements CliModule {
                 if (NullLincenceImpl.class.isAssignableFrom(licence.getClass())) {
                     throw new IllegalStateException("Licence could not be loaded. No communication with server possible.");
                 }
+
+                LOG.info("Server responded to licence request: {}", licence);
+
+                System.out.println("Server answered to licence request.");
+
             } catch (Exception e) {
                 LOG.error("Failure (" + e.getClass().getSimpleName() + ") while pinging server: " + e.getMessage(), e);
 

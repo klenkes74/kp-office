@@ -17,6 +17,7 @@
 package de.kaiserpfalzEdv.office.cli.amqp;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import de.kaiserpfalzEdv.office.commons.jackson.VersionableJacksonModule;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
@@ -43,6 +44,8 @@ public class JacksonConfiguration {
 
             jsonMapper = new ObjectMapper();
             jsonMapper.findAndRegisterModules();
+
+            jsonMapper.registerModule(new VersionableJacksonModule());
         }
 
         return jsonMapper;

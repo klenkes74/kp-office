@@ -17,6 +17,8 @@
 package de.kaiserpfalzEdv.office.ui.web;
 
 import com.google.common.eventbus.EventBus;
+import de.kaiserpfalzEdv.commons.jee.eventbus.EventBusHandler;
+import de.kaiserpfalzEdv.commons.jee.eventbus.SimpleEventBusHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.bridge.SLF4JBridgeHandler;
@@ -29,10 +31,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.FilterType;
 import org.springframework.context.annotation.Scope;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.stereotype.Repository;
-import org.vaadin.spring.annotation.EnableVaadin;
-import org.vaadin.spring.i18n.annotation.EnableVaadinI18N;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
@@ -45,8 +44,6 @@ import java.util.logging.Level;
  * @since 0.1.0
  */
 @Named
-@EnableVaadin
-@EnableVaadinI18N
 @EnableAutoConfiguration
 @ComponentScan(
         value = {"de.kaiserpfalzEdv.office"},
@@ -63,7 +60,6 @@ import java.util.logging.Level;
 @EntityScan(
         basePackages = {"de.kaiserpfalzEdv.office", "de.kaiserpfalzEdv.commons.jee.db"}
 )
-@EnableWebSecurity
 @Configuration
 public class Application {
     private static Logger LOG = LoggerFactory.getLogger(Application.class);
@@ -88,12 +84,18 @@ public class Application {
     
     @PreDestroy
     public void close() {
+        if (SLF4JBridgeHandler.isInstalled()) {
+            LOG.info("Removiing java.util.logging bridge to SLF4J ...");
+            SLF4JBridgeHandler.uninstall();
+            java.util.logging.LogManager.getLogManager().reset();
+        }
+
         LOG.trace("Destroyed: {}", this);
     }
 
     @Bean
     @Scope("singleton")
-    public EventBus guavaEventBus() {
-        return new EventBus("ApplicationEventBus");
+    public EventBusHandler guavaEventBus() {
+        return new SimpleEventBusHandler(new EventBus("ApplicationEventBus"));
     }
 }

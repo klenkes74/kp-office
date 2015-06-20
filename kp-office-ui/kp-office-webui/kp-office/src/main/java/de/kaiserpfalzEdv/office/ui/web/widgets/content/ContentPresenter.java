@@ -18,8 +18,6 @@ package de.kaiserpfalzEdv.office.ui.web.widgets.content;
 
 import de.kaiserpfalzEdv.office.ui.content.ContentTab;
 import de.kaiserpfalzEdv.office.ui.core.about.AboutContent;
-import de.kaiserpfalzEdv.office.ui.events.Action;
-import de.kaiserpfalzEdv.office.ui.events.StartupFilter;
 import de.kaiserpfalzEdv.office.ui.web.widgets.admin.EventLoggingPresenter;
 import de.kaiserpfalzEdv.office.ui.web.widgets.content.events.AddMainTabEvent;
 import de.kaiserpfalzEdv.office.ui.web.widgets.content.events.RemoveMainTabEvent;
@@ -81,13 +79,6 @@ public class ContentPresenter extends Presenter<ContentView> {
         eventBus.publish(EventScope.SESSION, this, tabEvent);
         
         LOG.trace("Destroyed: {}", this);
-    }
-
-
-    @SuppressWarnings("UnusedDeclaration") // called via BUS
-    @EventBusListenerMethod(scope= EventScope.SESSION, filter=StartupFilter.class)
-    public void onStartup(org.vaadin.spring.events.Event<Action> event) {
-        LOG.debug("{} received: {}", this, event);
     }
 
 

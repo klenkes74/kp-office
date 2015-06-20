@@ -38,6 +38,7 @@
         <module>kp-office-ui-api</module>
         <module>kp-office-ui-modules</module>
         <module>kp-office</module>
+        <module>kp-office-ui-tenant</module>
     </modules>
 
 
