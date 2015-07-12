@@ -16,20 +16,21 @@
 
 package de.kaiserpfalzEdv.office.ui.core;
 
+import de.kaiserpfalzEdv.commons.jee.servlet.model.ApplicationMetaData;
 import de.kaiserpfalzEdv.commons.service.Versionable;
 import de.kaiserpfalzEdv.office.commons.ModuleInformation;
+import de.kaiserpfalzEdv.office.core.licence.OfficeLicence;
 import de.kaiserpfalzEdv.office.ui.OfficeModule;
 import de.kaiserpfalzEdv.office.ui.core.about.AboutPanel;
 import de.kaiserpfalzEdv.office.ui.menu.MenuBuilder;
+import de.kaiserpfalzEdv.office.ui.presenter.Presenter;
 import de.kaiserpfalzEdv.office.ui.web.widgets.menu.events.AddMenuEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.vaadin.spring.events.EventScope;
-import org.vaadin.spring.navigator.Presenter;
-import org.vaadin.spring.navigator.annotation.VaadinPresenter;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
+import javax.inject.Inject;
 import javax.inject.Named;
 import java.util.UUID;
 
@@ -45,7 +46,6 @@ import java.util.UUID;
         needsLicence = true,
         featureName = CoreModuleImpl.SHORT_NAME
 )
-@VaadinPresenter(viewName = AboutPanel.NAME)
 public class CoreModuleImpl extends Presenter<AboutPanel> implements OfficeModule {
     static final         String      ID                    = "84e03cdc-b833-11e4-a71e-12e3f512a338";
     static final         String      CANONICAL_NAME        = "KPO::core";
@@ -59,16 +59,35 @@ public class CoreModuleImpl extends Presenter<AboutPanel> implements OfficeModul
     private static final String      ABOUT_MENU_TITLE      = "About";
     private static final int         ABOUT_MENU_SORT_ORDER = 100;
 
+    @Inject
+    private OfficeLicence licence;
+
+    @Inject
+    private ApplicationMetaData applicationMetaData;
+
+    @Inject
+    private AboutPanel view;
+
 
     public CoreModuleImpl() {
+        super();
+
         LOG.trace("Created: {}", this);
     }
 
     @PostConstruct
     public void init() {
+        super.setView(view);
+
         super.init();
 
+        getView().setApplicationData(applicationMetaData);
+        getView().setLicense(licence);
+
         LOG.trace("Initialized: {}", this);
+        LOG.trace("   view: {}", view);
+        LOG.trace("   license: {}", licence);
+        LOG.trace("   application data: {}", applicationMetaData);
     }
 
     @PreDestroy
@@ -86,9 +105,9 @@ public class CoreModuleImpl extends Presenter<AboutPanel> implements OfficeModul
                 .withTitle(ABOUT_MENU_TITLE)
                 .withSortOrder(ABOUT_MENU_SORT_ORDER)
                 .withComponent(getView())
-                .addMenuEvent();
+                .addMenuEvent(this);
 
-        getEventBus().publish(EventScope.APPLICATION, this, menuEvent);
+        getEventBus().post(menuEvent);
     }
 
     @Override

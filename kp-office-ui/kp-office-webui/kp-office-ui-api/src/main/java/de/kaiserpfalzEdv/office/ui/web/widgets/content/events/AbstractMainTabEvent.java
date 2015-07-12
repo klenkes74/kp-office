@@ -30,8 +30,8 @@ public class AbstractMainTabEvent extends AbstractWidgetEvent {
     private UUID tabId;
 
 
-    public AbstractMainTabEvent(final UUID tabId) {
-        super(UUID.randomUUID());
+    public AbstractMainTabEvent(final Object source, final UUID tabId) {
+        super(source, UUID.randomUUID());
         
         this.tabId = tabId;
     }

@@ -34,8 +34,8 @@ public class AddMainTabEvent extends AbstractMainTabEvent {
 
 
     @Deprecated
-    public AddMainTabEvent(final UUID id, final String title, final Component component) {
-        super(UUID.randomUUID());
+    public AddMainTabEvent(final Object source, final UUID id, final String title, final Component component) {
+        super(source, UUID.randomUUID());
 
         tab = new ContentTabBuilder()
                 .withId(id)
@@ -44,8 +44,8 @@ public class AddMainTabEvent extends AbstractMainTabEvent {
                 .build();
     }
 
-    public AddMainTabEvent(@NotNull final ContentTab tab) {
-        super(UUID.randomUUID());
+    public AddMainTabEvent(@NotNull final Object source, @NotNull final ContentTab tab) {
+        super(source, UUID.randomUUID());
 
         this.tab = tab;
     }

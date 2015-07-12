@@ -16,24 +16,18 @@
 
 package de.kaiserpfalzEdv.office.ui.web.widgets.content;
 
+import com.google.common.eventbus.Subscribe;
 import de.kaiserpfalzEdv.office.ui.content.ContentTab;
-import de.kaiserpfalzEdv.office.ui.core.about.AboutContent;
-import de.kaiserpfalzEdv.office.ui.web.widgets.admin.EventLoggingPresenter;
+import de.kaiserpfalzEdv.office.ui.presenter.Presenter;
 import de.kaiserpfalzEdv.office.ui.web.widgets.content.events.AddMainTabEvent;
 import de.kaiserpfalzEdv.office.ui.web.widgets.content.events.RemoveMainTabEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.vaadin.spring.annotation.VaadinSessionScope;
-import org.vaadin.spring.events.Event;
-import org.vaadin.spring.events.EventBus;
-import org.vaadin.spring.events.EventScope;
-import org.vaadin.spring.events.annotation.EventBusListenerMethod;
-import org.vaadin.spring.navigator.Presenter;
-import org.vaadin.spring.navigator.annotation.VaadinPresenter;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.inject.Inject;
+import javax.inject.Named;
 import java.util.UUID;
 
 /**
@@ -41,19 +35,12 @@ import java.util.UUID;
  * @version 2015Q1
  * @since 17.02.15 20:38
  */
-@VaadinSessionScope
-@VaadinPresenter(viewName = ContentView.NAME)
+@Named
 public class ContentPresenter extends Presenter<ContentView> {
     private static final Logger LOG = LoggerFactory.getLogger(ContentPresenter.class);
 
     @Inject
-    private EventBus eventBus;
-
-    @Inject
-    private AboutContent about;
-
-    @Inject
-    private EventLoggingPresenter eventLogger;
+    private ContentView view;
 
 
     private UUID splashScreenTabId = UUID.randomUUID();
@@ -65,7 +52,11 @@ public class ContentPresenter extends Presenter<ContentView> {
 
     @PostConstruct
     public void init() {
+        super.setView(view);
         super.init();
+
+        getEventBus().register(this);
+
         LOG.trace("Initialized: {}", this);
         LOG.trace("  View: {}", getView());
         LOG.trace("  splash screen tab id: {}", splashScreenTabId);
@@ -75,31 +66,30 @@ public class ContentPresenter extends Presenter<ContentView> {
 
     @PreDestroy
     public void close() {
-        RemoveMainTabEvent tabEvent = new RemoveMainTabEvent(splashScreenTabId);
-        eventBus.publish(EventScope.SESSION, this, tabEvent);
-        
+        RemoveMainTabEvent tabEvent = new RemoveMainTabEvent(this, splashScreenTabId);
+        getEventBus().post(tabEvent);
+
+        getView().close();
         LOG.trace("Destroyed: {}", this);
     }
 
 
     @SuppressWarnings("UnusedDeclaration") // called via BUS
-    @EventBusListenerMethod(scope = EventScope.SESSION)
-    public void addTab(Event<AddMainTabEvent> event) {
+    @Subscribe
+    public void addTab(AddMainTabEvent event) {
         LOG.debug("{} received: {}", this, event);
 
-        ContentTab tab = event.getPayload().getTab();
+        ContentTab tab = event.getTab();
 
         getView().addTab(tab);
     }
 
     @SuppressWarnings("UnusedDeclaration") // called via BUS
-    @EventBusListenerMethod(scope = EventScope.SESSION)
-    public void removeTab(Event<RemoveMainTabEvent> event) {
+    @Subscribe
+    public void removeTab(RemoveMainTabEvent event) {
         LOG.debug("{} received: {}", this, event);
 
-        RemoveMainTabEvent tab = event.getPayload();
-
-        getView().removeTab(tab.getTabId());
+        getView().removeTab(event.getTabId());
 
     }
 }

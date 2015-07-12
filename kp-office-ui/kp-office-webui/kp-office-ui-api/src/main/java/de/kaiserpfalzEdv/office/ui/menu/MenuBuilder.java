@@ -71,8 +71,8 @@ public class MenuBuilder implements Builder<Menu> {
         }
     }
 
-    public AddMenuEvent addMenuEvent() {
-        return new AddMenuEvent(build());
+    public AddMenuEvent addMenuEvent(final Object source) {
+        return new AddMenuEvent(source, build());
     }
 
     public ReplaceMenuEvent replaceMenuEvent() {

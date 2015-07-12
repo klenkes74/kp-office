@@ -16,22 +16,20 @@
 
 package de.kaiserpfalzEdv.office.ui.web.widgets.menu;
 
+import com.google.common.eventbus.Subscribe;
+import com.vaadin.spring.annotation.VaadinSessionScope;
 import com.vaadin.ui.Component;
 import de.kaiserpfalzEdv.office.ui.menu.Menu;
+import de.kaiserpfalzEdv.office.ui.presenter.Presenter;
 import de.kaiserpfalzEdv.office.ui.web.widgets.menu.events.AddMenuEvent;
 import de.kaiserpfalzEdv.office.ui.web.widgets.menu.events.RemoveMenuEvent;
 import de.kaiserpfalzEdv.office.ui.web.widgets.menu.events.ReplaceMenuEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.vaadin.spring.annotation.VaadinSessionScope;
-import org.vaadin.spring.events.Event;
-import org.vaadin.spring.events.EventScope;
-import org.vaadin.spring.events.annotation.EventBusListenerMethod;
-import org.vaadin.spring.navigator.Presenter;
-import org.vaadin.spring.navigator.annotation.VaadinPresenter;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
+import javax.inject.Inject;
 import java.util.UUID;
 
 /**
@@ -40,10 +38,11 @@ import java.util.UUID;
  * @since 17.02.15 20:57
  */
 @VaadinSessionScope
-@VaadinPresenter(viewName = NavigationView.NAME)
 public class NavigationPresenter extends Presenter<NavigationView> implements Component.Listener {
     private static final Logger LOG = LoggerFactory.getLogger(NavigationPresenter.class);
 
+    @Inject
+    private NavigationView view;
 
     public NavigationPresenter() {
         LOG.trace("Created: {}", this);
@@ -51,6 +50,7 @@ public class NavigationPresenter extends Presenter<NavigationView> implements Co
 
     @PostConstruct
     public void init() {
+        super.setView(view);
         super.init();
 
         LOG.trace("Initialized: {}", this);
@@ -64,22 +64,22 @@ public class NavigationPresenter extends Presenter<NavigationView> implements Co
 
 
     @SuppressWarnings("UnusedDeclaration") // called via BUS
-    @EventBusListenerMethod(scope = EventScope.APPLICATION)
-    public void addMenu(Event<AddMenuEvent> event) {
+    @Subscribe
+    public void addMenu(AddMenuEvent event) {
         LOG.debug("{} received: {}", this, event);
 
-        Menu menu = event.getPayload().getMenu();
+        Menu menu = event.getMenu();
         menu.getComponent().addListener(this);
 
         getView().addEntry(menu);
     }
 
     @SuppressWarnings("UnusedDeclaration") // called via BUS
-    @EventBusListenerMethod(scope = EventScope.APPLICATION)
-    public void removeMenu(Event<RemoveMenuEvent> event) {
+    @Subscribe
+    public void removeMenu(RemoveMenuEvent event) {
         LOG.debug("{} received: {}", this, event);
 
-        UUID menuId = event.getPayload().getMenuId();
+        UUID menuId = event.getMenuId();
 
         Component removed = getView().getMenu(menuId).getComponent();
         removed.removeListener(this);
@@ -89,11 +89,11 @@ public class NavigationPresenter extends Presenter<NavigationView> implements Co
     }
 
     @SuppressWarnings("UnusedDeclaration") // called via BUS
-    @EventBusListenerMethod(scope = EventScope.APPLICATION)
-    public void replaceMenu(Event<ReplaceMenuEvent> event) {
+    @Subscribe
+    public void replaceMenu(ReplaceMenuEvent event) {
         LOG.debug("{} received: {}", this, event);
 
-        Menu menu = event.getPayload().getMenu();
+        Menu menu = event.getMenu();
         menu.getComponent().addListener(this);
 
         getView().replaceEntry(menu);
@@ -104,6 +104,6 @@ public class NavigationPresenter extends Presenter<NavigationView> implements Co
     public void componentEvent(Component.Event event) {
         LOG.debug("{} received for {}: {}", this, event.getComponent(), event);
 
-        getEventBus().publish(event.getComponent(), event);
+        getEventBus().post(event);
     }
 }

@@ -33,14 +33,14 @@ public class ReplaceMenuEvent extends AbstractMenuEvent {
 
 
     @Deprecated
-    public ReplaceMenuEvent(final UUID id, final Component component) {
-        super(id);
+    public ReplaceMenuEvent(final Object source, final UUID id, final Component component) {
+        super(source, id);
 
         menu = new MenuBuilder().withId(id).withComponent(component).withTitle("old title").build();
     }
 
-    public ReplaceMenuEvent(final Menu menu) {
-        super(menu.getId());
+    public ReplaceMenuEvent(final Object source, final Menu menu) {
+        super(source, menu.getId());
 
         this.menu = menu;
     }

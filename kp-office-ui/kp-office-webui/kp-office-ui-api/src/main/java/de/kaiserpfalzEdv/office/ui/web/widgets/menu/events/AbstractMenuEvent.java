@@ -30,8 +30,8 @@ public class AbstractMenuEvent extends AbstractWidgetEvent {
     private UUID menuId;
 
 
-    public AbstractMenuEvent(final UUID id) {
-        super(UUID.randomUUID());
+    public AbstractMenuEvent(final Object source, final UUID id) {
+        super(source, UUID.randomUUID());
     }
 
 

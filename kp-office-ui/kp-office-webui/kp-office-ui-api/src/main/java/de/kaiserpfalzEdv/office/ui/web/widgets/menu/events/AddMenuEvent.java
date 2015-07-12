@@ -33,14 +33,14 @@ public class AddMenuEvent extends AbstractMenuEvent {
 
 
     @Deprecated
-    public AddMenuEvent(final UUID menuId, final String title, final Component menu) {
-        super(menuId);
+    public AddMenuEvent(final Object source, final UUID menuId, final String title, final Component menu) {
+        super(source, menuId);
 
         this.menu = new MenuBuilder().withId(menuId).withTitle(title).withComponent(menu).build();
     }
 
-    public AddMenuEvent(final Menu menu) {
-        super(menu.getId());
+    public AddMenuEvent(final Object source, final Menu menu) {
+        super(source, menu.getId());
         
         this.menu = menu;
     }

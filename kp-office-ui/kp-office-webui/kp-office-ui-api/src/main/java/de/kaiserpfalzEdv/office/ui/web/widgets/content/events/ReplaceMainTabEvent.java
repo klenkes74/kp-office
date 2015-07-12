@@ -34,8 +34,8 @@ public class ReplaceMainTabEvent extends AbstractMainTabEvent {
 
 
     @Deprecated
-    public ReplaceMainTabEvent(final UUID id, final Component component) {
-        super(id);
+    public ReplaceMainTabEvent(final Object source, final UUID id, final Component component) {
+        super(source, id);
 
         tab = new ContentTabBuilder()
                 .withId(id)
@@ -44,8 +44,8 @@ public class ReplaceMainTabEvent extends AbstractMainTabEvent {
                 .build();
     }
 
-    public ReplaceMainTabEvent(@NotNull final ContentTab tab) {
-        super(tab.getId());
+    public ReplaceMainTabEvent(@NotNull final Object source, @NotNull final ContentTab tab) {
+        super(source, tab.getId());
 
         this.tab = tab;
     }

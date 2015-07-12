@@ -24,7 +24,7 @@ import java.util.UUID;
  * @since 18.02.15 07:08
  */
 public class RemoveMainTabEvent extends AbstractMainTabEvent {
-    public RemoveMainTabEvent(final UUID id) {
-        super(id);
+    public RemoveMainTabEvent(final Object source, final UUID id) {
+        super(source, id);
     }
 }

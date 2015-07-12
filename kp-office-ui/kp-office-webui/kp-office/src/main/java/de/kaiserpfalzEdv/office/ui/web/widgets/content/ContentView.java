@@ -22,11 +22,7 @@ import com.vaadin.ui.TabSheet;
 import de.kaiserpfalzEdv.office.ui.content.ContentTab;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.vaadin.spring.annotation.VaadinSessionScope;
-import org.vaadin.spring.navigator.annotation.VaadinView;
 
-import javax.annotation.PostConstruct;
-import javax.annotation.PreDestroy;
 import javax.validation.constraints.NotNull;
 import java.util.HashMap;
 import java.util.UUID;
@@ -36,8 +32,6 @@ import java.util.UUID;
  * @version 2015Q1
  * @since 17.02.15 20:34
  */
-@VaadinSessionScope
-@VaadinView(name = ContentView.NAME)
 public class ContentView extends TabSheet implements View {
     static final         String NAME             = "MAIN.CONTENT";
     private static final long   serialVersionUID = 1722734766184991100L;
@@ -52,12 +46,10 @@ public class ContentView extends TabSheet implements View {
         LOG.trace("Created: {}", this);
     }
 
-    @PostConstruct
     public void init() {
         LOG.trace("Initialized: {}", this);
     }
 
-    @PreDestroy
     public void close() {
         LOG.trace("Destroyed: {}", this);
     }

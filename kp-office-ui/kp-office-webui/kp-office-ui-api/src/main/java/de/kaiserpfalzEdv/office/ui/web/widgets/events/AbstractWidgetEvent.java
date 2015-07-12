@@ -23,6 +23,7 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.EventObject;
 import java.util.UUID;
 
 /**
@@ -30,11 +31,15 @@ import java.util.UUID;
  * @version 2015Q1
  * @since 18.02.15 09:28
  */
-public class AbstractWidgetEvent {
+public class AbstractWidgetEvent extends EventObject {
     private static final Logger LOG = LoggerFactory.getLogger(AbstractWidgetEvent.class);
     protected UUID id;
 
-    public AbstractWidgetEvent(final UUID eventId) {this.id = eventId;}
+    public AbstractWidgetEvent(final Object source, final UUID eventId) {
+        super(source);
+
+        this.id = eventId;
+    }
 
     public UUID getId() {
         return id;

@@ -16,7 +16,6 @@
 
 package de.kaiserpfalzEdv.office.ui.web;
 
-import com.google.common.eventbus.EventBus;
 import de.kaiserpfalzEdv.commons.jee.eventbus.EventBusHandler;
 import de.kaiserpfalzEdv.commons.jee.eventbus.SimpleEventBusHandler;
 import org.slf4j.Logger;
@@ -96,6 +95,6 @@ public class Application {
     @Bean
     @Scope("singleton")
     public EventBusHandler guavaEventBus() {
-        return new SimpleEventBusHandler(new EventBus("ApplicationEventBus"));
+        return new SimpleEventBusHandler();
     }
 }
