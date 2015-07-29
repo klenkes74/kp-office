@@ -61,7 +61,12 @@
                                      lookup-on-startup="true"/>
                 </entry>
 
-                <entry key="security.ticketName" value="securityTicket"/>
+                <entry key="amqp.ticketName">
+                    <jee:jndi-lookup jndi-name="amqp/ticketName"
+                                     expected-type="java.lang.String"
+                                     cache="true"
+                                     default-value="securityTicket"/>
+                </entry>
 
                 <entry key="amqp.domain">
                     <jee:jndi-lookup jndi-name="amqp/domain"

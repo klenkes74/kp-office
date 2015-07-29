@@ -33,6 +33,10 @@
 
 
     <modules>
+        <module>kp-office-ui-api</module>
+        <module>kp-office-ui-core</module>
+        <module>kp-office-ui-modules</module>
+        <module>kp-office-gi</module>
         <module>kp-office-webui</module>
         <module>kp-office-cli</module>
     </modules>
@@ -40,35 +44,80 @@
 
     <dependencyManagement>
         <dependencies>
-            <!-- Web UI -->
+            <!-- UI Core -->
             <dependency>
-                <groupId>de.kaiserpfalz-edv.office.ui.web</groupId>
-                <artifactId>kp-office-ui-modules</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>de.kaiserpfalz-edv.office.ui.web</groupId>
+                <groupId>de.kaiserpfalz-edv.office.ui</groupId>
                 <artifactId>kp-office-ui-api</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>de.kaiserpfalz-edv.office.ui.web</groupId>
+                <groupId>de.kaiserpfalz-edv.office.ui</groupId>
                 <artifactId>kp-office-ui-core</artifactId>
                 <version>${project.version}</version>
             </dependency>
+
+            <!-- UI Core Modules-->
+            <dependency>
+                <groupId>de.kaiserpfalz-edv.office.ui</groupId>
+                <artifactId>kp-office-ui-modules-core</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>de.kaiserpfalz-edv.office.ui</groupId>
+                <artifactId>kp-office-ui-modules-contacts</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>de.kaiserpfalz-edv.office.ui</groupId>
+                <artifactId>kp-office-ui-modules-files</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>de.kaiserpfalz-edv.office.ui</groupId>
+                <artifactId>kp-office-ui-modules-documents</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>de.kaiserpfalz-edv.office.ui</groupId>
+                <artifactId>kp-office-ui-modules-accounting</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>de.kaiserpfalz-edv.office.ui</groupId>
+                <artifactId>kp-office-ui-modules-finance</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+
+            <!-- Web UI -->
             <dependency>
                 <groupId>de.kaiserpfalz-edv.office.ui.web</groupId>
-                <artifactId>kp-office-ui-contacts</artifactId>
+                <artifactId>kp-office-ui-web-modules</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>de.kaiserpfalz-edv.office.ui.web</groupId>
-                <artifactId>kp-office-ui-projects</artifactId>
+                <artifactId>kp-office-ui-web-api</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>de.kaiserpfalz-edv.office.ui.web</groupId>
-                <artifactId>kp-office-ui-accounting</artifactId>
+                <artifactId>kp-office-ui-web-core</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>de.kaiserpfalz-edv.office.ui.web</groupId>
+                <artifactId>kp-office-ui-web-contacts</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>de.kaiserpfalz-edv.office.ui.web</groupId>
+                <artifactId>kp-office-ui-web-projects</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>de.kaiserpfalz-edv.office.ui.web</groupId>
+                <artifactId>kp-office-ui-web-accounting</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
@@ -78,7 +127,7 @@
             </dependency>
             <dependency>
                 <groupId>de.kaiserpfalz-edv.office.ui.web</groupId>
-                <artifactId>kp-office-ui-widgetset</artifactId>
+                <artifactId>kp-office-ui-web-widgetset</artifactId>
                 <version>${project.version}</version>
             </dependency>
 

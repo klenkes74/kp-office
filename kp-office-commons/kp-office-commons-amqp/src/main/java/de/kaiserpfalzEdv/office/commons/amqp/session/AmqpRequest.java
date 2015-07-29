@@ -42,7 +42,7 @@ public class AmqpRequest {
     private static final RequestDataHolder requestMap = new RequestDataHolder();
 
 
-    @Value("${security.ticketName}")
+    @Value("${amqp.ticketName}")
     private String securityTicketHeaderName;
 
     public AmqpRequest() {

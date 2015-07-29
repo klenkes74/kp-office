@@ -34,11 +34,10 @@
 
     
     <modules>
-        <module>kp-office-ui-widgetset</module>
-        <module>kp-office-ui-api</module>
-        <module>kp-office-ui-modules</module>
+        <module>kp-office-ui-web-widgetset</module>
+        <module>kp-office-ui-web-api</module>
+        <module>kp-office-ui-web-modules</module>
         <module>kp-office</module>
-        <module>kp-office-ui-tenant</module>
     </modules>
 
 

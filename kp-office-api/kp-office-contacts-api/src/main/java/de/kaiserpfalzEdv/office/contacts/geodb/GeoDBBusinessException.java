@@ -45,19 +45,19 @@ public class GeoDBBusinessException extends OfficeBusinessException {
         super(msg, message, cause);
     }
 
-    public GeoDBBusinessException(@NotNull ErrorMessage msg, @NotNull List<? extends Serializable> data) {
+    public GeoDBBusinessException(@NotNull ErrorMessage msg, @NotNull List<Serializable> data) {
         super(msg, data);
     }
 
-    public GeoDBBusinessException(@NotNull ErrorMessage msg, @NotNull List<? extends Serializable> data, @NotNull Throwable cause) {
+    public GeoDBBusinessException(@NotNull ErrorMessage msg, @NotNull List<Serializable> data, @NotNull Throwable cause) {
         super(msg, data, cause);
     }
 
-    public GeoDBBusinessException(@NotNull ErrorMessage msg, @NotNull String message, @NotNull List<? extends Serializable> data) {
+    public GeoDBBusinessException(@NotNull ErrorMessage msg, @NotNull String message, @NotNull List<Serializable> data) {
         super(msg, message, data);
     }
 
-    public GeoDBBusinessException(@NotNull ErrorMessage msg, @NotNull String message, @NotNull List<? extends Serializable> data, @NotNull Throwable cause) {
+    public GeoDBBusinessException(@NotNull ErrorMessage msg, @NotNull String message, @NotNull List<Serializable> data, @NotNull Throwable cause) {
         super(msg, message, data, cause);
     }
 }

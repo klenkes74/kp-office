@@ -16,6 +16,7 @@
 
 package de.kaiserpfalzEdv.office.ui.web;
 
+import com.google.common.eventbus.EventBus;
 import de.kaiserpfalzEdv.commons.jee.eventbus.EventBusHandler;
 import de.kaiserpfalzEdv.commons.jee.eventbus.SimpleEventBusHandler;
 import org.slf4j.Logger;
@@ -23,13 +24,11 @@ import org.slf4j.LoggerFactory;
 import org.slf4j.bridge.SLF4JBridgeHandler;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.boot.orm.jpa.EntityScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.FilterType;
 import org.springframework.context.annotation.Scope;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.PostConstruct;
@@ -50,18 +49,22 @@ import java.util.logging.Level;
                 @ComponentScan.Filter(type = FilterType.ANNOTATION, value = Repository.class)
         }
 )
-@EnableJpaRepositories(
-        value = {"de.kaiserpfalzEdv.office"},
-        includeFilters = {
-                @ComponentScan.Filter(type = FilterType.ANNOTATION, value = Repository.class)
-        }
-)
-@EntityScan(
-        basePackages = {"de.kaiserpfalzEdv.office", "de.kaiserpfalzEdv.commons.jee.db"}
-)
 @Configuration
 public class Application {
     private static Logger LOG = LoggerFactory.getLogger(Application.class);
+
+    ThreadLocal<EventBusHandler> eventBus = new ThreadLocal<EventBusHandler>() {
+        @Override
+        protected EventBusHandler initialValue() {
+            String busName = "EventBus-" + Thread.currentThread().getName();
+
+            SimpleEventBusHandler result = new SimpleEventBusHandler();
+            result.setBus(new EventBus(busName));
+
+            LOG.debug("Created event bus: {}", busName);
+            return result;
+        }
+    };
 
     public static void main(String[] args) {
         if (!SLF4JBridgeHandler.isInstalled()) {
@@ -74,17 +77,17 @@ public class Application {
 
         SpringApplication.run(Application.class, args);
     }
-    
+
     @PostConstruct
     public void init() {
         LOG.trace("Created: {}", this);
 
     }
-    
+
     @PreDestroy
     public void close() {
         if (SLF4JBridgeHandler.isInstalled()) {
-            LOG.info("Removiing java.util.logging bridge to SLF4J ...");
+            LOG.info("Removing java.util.logging bridge to SLF4J ...");
             SLF4JBridgeHandler.uninstall();
             java.util.logging.LogManager.getLogManager().reset();
         }
@@ -93,8 +96,8 @@ public class Application {
     }
 
     @Bean
-    @Scope("singleton")
+    @Scope("prototype")
     public EventBusHandler guavaEventBus() {
-        return new SimpleEventBusHandler();
+        return eventBus.get();
     }
 }

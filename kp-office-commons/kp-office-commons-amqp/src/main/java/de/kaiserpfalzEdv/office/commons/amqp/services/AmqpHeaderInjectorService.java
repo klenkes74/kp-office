@@ -48,7 +48,7 @@ public class AmqpHeaderInjectorService implements MessagePostProcessor {
     @Value("${info.app.name}")
     private String appName;
 
-    @Value("${security.ticketName}")
+    @Value("${amqp.ticketName}")
     private String securityTicketHeaderName;
 
 

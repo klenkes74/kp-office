@@ -18,10 +18,7 @@ package de.kaiserpfalzEdv.office.ui.web.configuration;
 
 import de.kaiserpfalzEdv.commons.jee.servlet.model.ApplicationMetaData;
 import de.kaiserpfalzEdv.commons.service.Versionable;
-import de.kaiserpfalzEdv.office.commons.KPO;
 import de.kaiserpfalzEdv.office.commons.SoftwareVersion;
-import de.kaiserpfalzEdv.office.core.licence.LicenceService;
-import de.kaiserpfalzEdv.office.core.licence.OfficeLicence;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -30,9 +27,6 @@ import org.springframework.context.annotation.Configuration;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
-import javax.inject.Inject;
-
-import static de.kaiserpfalzEdv.office.commons.KPO.Type.Client;
 
 /**
  * @author klenkes
@@ -54,10 +48,6 @@ public class ApplicationDataProvider {
 
     @Value("${info.app.hostId}")
     private String applicationInstance;
-
-    @Inject
-    @KPO(Client)
-    private LicenceService licenceService;
 
     private Versionable version;
 
@@ -106,11 +96,5 @@ public class ApplicationDataProvider {
     @Bean
     public Versionable getApplicationVersion() {
         return version;
-    }
-
-
-    @Bean
-    public OfficeLicence getLicense() {
-        return licenceService.getLicence();
     }
 }

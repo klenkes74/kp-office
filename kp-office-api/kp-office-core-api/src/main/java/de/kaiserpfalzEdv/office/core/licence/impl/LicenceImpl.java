@@ -20,6 +20,7 @@ import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import de.kaiserpfalzEdv.commons.service.VersionRange;
+import de.kaiserpfalzEdv.office.commons.SoftwareVersion;
 import de.kaiserpfalzEdv.office.commons.SoftwareVersionRange;
 import de.kaiserpfalzEdv.office.core.licence.OfficeLicence;
 import org.apache.commons.lang3.builder.EqualsBuilder;
@@ -66,6 +67,41 @@ public class LicenceImpl implements OfficeLicence {
 
 
     public LicenceImpl(
+            UUID id,
+            LocalDate issued,
+            String issuer,
+            String licensee,
+            LocalDate starts,
+            LocalDate expires,
+            String software,
+            VersionRange range,
+            String[] modules
+    ) {
+        this.id = id;
+        this.issued = issued;
+        this.issuer = issuer;
+        this.licensee = licensee;
+
+        this.starts = starts;
+        this.expires = expires;
+
+        this.software = software;
+
+        if (range != null) {
+            this.versionRange = new SoftwareVersionRange(range.getStart(), range.getEnd());
+        } else {
+            this.versionRange = new SoftwareVersionRange(new SoftwareVersion("0.0.0"), new SoftwareVersion("999999.999999.999999"));
+        }
+
+        if (modules != null) {
+            for (String module : modules) {
+                this.modules.put(module, true);
+            }
+        }
+    }
+
+
+    public LicenceImpl(
             @JsonProperty("id") UUID id,
             @JsonProperty("issued") LocalDate issued,
             @JsonProperty("issuer") String issuer,
@@ -73,7 +109,7 @@ public class LicenceImpl implements OfficeLicence {
             @JsonProperty("starts") LocalDate starts,
             @JsonProperty("expires") LocalDate expires,
             @JsonProperty("software") String software,
-            @JsonProperty("range") VersionRange range,
+            @JsonProperty("range") SoftwareVersionRange range,
             @JsonProperty("modules") String[] modules
     ) {
         this.id = id;
@@ -85,7 +121,8 @@ public class LicenceImpl implements OfficeLicence {
         this.expires = expires;
 
         this.software = software;
-        this.versionRange = new SoftwareVersionRange(range.getStart(), range.getEnd());
+
+        this.versionRange = range;
 
         for (String module : modules) {
             this.modules.put(module, true);

@@ -17,6 +17,7 @@
 package de.kaiserpfalzEdv.office.ui.web.configuration;
 
 import ch.qos.logback.classic.selector.servlet.LoggerContextFilter;
+import com.vaadin.spring.server.SpringVaadinServlet;
 import de.kaiserpfalzEdv.commons.jee.servlet.filter.ContextLogInjector;
 import de.kaiserpfalzEdv.commons.jee.servlet.filter.HttpApplicationDataEnricher;
 import de.kaiserpfalzEdv.commons.jee.servlet.model.ApplicationMetaData;
@@ -26,7 +27,6 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.context.request.RequestContextListener;
-import org.vaadin.spring.servlet.SpringAwareVaadinServlet;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
@@ -62,8 +62,8 @@ public class WebConfig {
 
 
     @Bean
-    public SpringAwareVaadinServlet uiServlet() {
-        return new SpringAwareVaadinServlet();
+    public SpringVaadinServlet uiServlet() {
+        return new SpringVaadinServlet();
     }
 
 
