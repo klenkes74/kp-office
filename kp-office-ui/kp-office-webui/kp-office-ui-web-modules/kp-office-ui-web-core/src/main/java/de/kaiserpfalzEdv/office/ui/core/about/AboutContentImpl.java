@@ -27,7 +27,7 @@ import com.vaadin.ui.Layout;
 import com.vaadin.ui.VerticalLayout;
 import de.kaiserpfalzEdv.commons.jee.servlet.model.ApplicationMetaData;
 import de.kaiserpfalzEdv.office.core.licence.OfficeLicence;
-import de.kaiserpfalzEdv.office.ui.api.Presenter;
+import de.kaiserpfalzEdv.office.ui.api.mvp.Presenter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

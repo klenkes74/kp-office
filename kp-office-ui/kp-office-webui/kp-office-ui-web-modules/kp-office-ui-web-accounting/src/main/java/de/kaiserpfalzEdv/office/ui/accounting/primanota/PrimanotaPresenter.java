@@ -17,9 +17,9 @@
 package de.kaiserpfalzEdv.office.ui.accounting.primanota;
 
 import com.vaadin.ui.Table;
-import de.kaiserpfalzEdv.office.ui.content.ContentTabBuilder;
-import de.kaiserpfalzEdv.office.ui.web.widgets.content.events.AddMainTabEvent;
-import de.kaiserpfalzEdv.office.ui.web.widgets.content.events.RemoveMainTabEvent;
+import de.kaiserpfalzEdv.office.ui.web.api.content.ContentTabBuilder;
+import de.kaiserpfalzEdv.office.ui.web.api.widgets.content.events.AddMainTabEvent;
+import de.kaiserpfalzEdv.office.ui.web.api.widgets.content.events.RemoveMainTabEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.vaadin.spring.annotation.VaadinSessionScope;

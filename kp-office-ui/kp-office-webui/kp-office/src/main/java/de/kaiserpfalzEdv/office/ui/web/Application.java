@@ -16,57 +16,26 @@
 
 package de.kaiserpfalzEdv.office.ui.web;
 
-import com.google.common.eventbus.EventBus;
-import de.kaiserpfalzEdv.commons.jee.eventbus.EventBusHandler;
-import de.kaiserpfalzEdv.commons.jee.eventbus.SimpleEventBusHandler;
+import de.kaiserpfalzEdv.office.ui.web.configuration.QueueCommunicationConfiguration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.bridge.SLF4JBridgeHandler;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.FilterType;
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Repository;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
-import javax.inject.Named;
 import java.util.logging.Level;
 
 /**
- * @author klenkes &lt;rlichti@kaiserpfalz-edv.de&gt;
- * @version 0.1.0
- * @since 0.1.0
+ * @author klenkes
+ * @version 2015Q1
+ * @since 01.08.15 05:23
  */
-@Named
-@EnableAutoConfiguration
-@ComponentScan(
-        value = {"de.kaiserpfalzEdv.office"},
-        excludeFilters = {
-                @ComponentScan.Filter(type = FilterType.ANNOTATION, value = Repository.class)
-        }
-)
-@Configuration
 public class Application {
-    private static Logger LOG = LoggerFactory.getLogger(Application.class);
+    private static final Logger LOG = LoggerFactory.getLogger(Application.class);
 
-    ThreadLocal<EventBusHandler> eventBus = new ThreadLocal<EventBusHandler>() {
-        @Override
-        protected EventBusHandler initialValue() {
-            String busName = "EventBus-" + Thread.currentThread().getName();
 
-            SimpleEventBusHandler result = new SimpleEventBusHandler();
-            result.setBus(new EventBus(busName));
-
-            LOG.debug("Created event bus: {}", busName);
-            return result;
-        }
-    };
-
-    public static void main(String[] args) {
+    static {
         if (!SLF4JBridgeHandler.isInstalled()) {
             LOG.info("Redirecting java.util.logging to SLF4J ...");
 
@@ -74,30 +43,19 @@ public class Application {
             SLF4JBridgeHandler.install();
             java.util.logging.Logger.getLogger("global").setLevel(Level.FINEST);
         }
+    }
 
-        SpringApplication.run(Application.class, args);
+    public static void main(String[] args) {
+        SpringApplication.run(QueueCommunicationConfiguration.class, args);
     }
 
     @PostConstruct
     public void init() {
-        LOG.trace("Created: {}", this);
-
+        LOG.trace("***** Created: {}", this);
     }
 
     @PreDestroy
     public void close() {
-        if (SLF4JBridgeHandler.isInstalled()) {
-            LOG.info("Removing java.util.logging bridge to SLF4J ...");
-            SLF4JBridgeHandler.uninstall();
-            java.util.logging.LogManager.getLogManager().reset();
-        }
-
-        LOG.trace("Destroyed: {}", this);
-    }
-
-    @Bean
-    @Scope("prototype")
-    public EventBusHandler guavaEventBus() {
-        return eventBus.get();
+        LOG.trace("***** Destroyed: {}", this);
     }
 }

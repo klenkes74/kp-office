@@ -16,7 +16,7 @@
 
 package de.kaiserpfalzEdv.office.ui.accounting.primanota;
 
-import de.kaiserpfalzEdv.office.ui.web.widgets.events.AbstractWidgetEvent;
+import de.kaiserpfalzEdv.office.ui.web.api.widgets.events.AbstractWidgetEvent;
 
 import java.util.UUID;
 

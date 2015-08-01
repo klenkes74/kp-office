@@ -18,7 +18,7 @@ package de.kaiserpfalzEdv.office.ui.core.about;
 
 import de.kaiserpfalzEdv.commons.jee.servlet.model.ApplicationMetaData;
 import de.kaiserpfalzEdv.office.core.licence.OfficeLicence;
-import de.kaiserpfalzEdv.office.ui.api.View;
+import de.kaiserpfalzEdv.office.ui.api.mvp.View;
 
 import java.util.Locale;
 

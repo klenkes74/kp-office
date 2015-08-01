@@ -50,6 +50,16 @@
         </property>
     </bean>
 
+
+    <bean id="amqpConfigurationProperties" class="de.kaiserpfalzEdv.office.commons.client.AmqpConfigurationProperties">
+        <property name="host" value="${amqp.host}"/>
+        <property name="port" value="${ampq.port}"/>
+        <property name="virtual" value="${amqp.virtual}"/>
+        <property name="username" value="${amqp.user}"/>
+        <property name="password" value="${amqp.password}"/>
+    </bean>
+
+
     <!-- Spring AMQP Admin -->
     <bean id="admin" class="org.springframework.amqp.rabbit.core.RabbitAdmin">
         <constructor-arg ref="configurableConnectionFactory"/>

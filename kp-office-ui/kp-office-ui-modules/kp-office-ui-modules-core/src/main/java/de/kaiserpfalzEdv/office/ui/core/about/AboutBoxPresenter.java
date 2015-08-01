@@ -17,7 +17,9 @@
 package de.kaiserpfalzEdv.office.ui.core.about;
 
 import de.kaiserpfalzEdv.commons.jee.eventbus.EventBusHandler;
-import de.kaiserpfalzEdv.office.ui.api.Presenter;
+import de.kaiserpfalzEdv.office.ui.api.mvp.Presenter;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -37,4 +39,11 @@ public class AboutBoxPresenter extends Presenter<AboutBox> {
     private EventBusHandler eventBus;
 
 
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this, ToStringStyle.SIMPLE_STYLE)
+                .appendSuper(super.toString())
+                .append("view", getView())
+                .toString();
+    }
 }

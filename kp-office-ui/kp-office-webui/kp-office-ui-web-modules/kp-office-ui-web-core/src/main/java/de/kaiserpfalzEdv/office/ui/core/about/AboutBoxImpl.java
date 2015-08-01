@@ -22,8 +22,8 @@ import com.vaadin.spring.annotation.SpringView;
 import com.vaadin.spring.annotation.UIScope;
 import com.vaadin.ui.Component;
 import com.vaadin.ui.VerticalLayout;
-import de.kaiserpfalzEdv.office.ui.api.Presenter;
-import de.kaiserpfalzEdv.office.ui.menu.MenuEntry;
+import de.kaiserpfalzEdv.office.ui.api.mvp.Presenter;
+import de.kaiserpfalzEdv.office.ui.web.api.menu.MenuEntry;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

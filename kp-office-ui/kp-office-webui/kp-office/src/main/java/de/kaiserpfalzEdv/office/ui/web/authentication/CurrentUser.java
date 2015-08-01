@@ -18,7 +18,7 @@ package de.kaiserpfalzEdv.office.ui.web.authentication;
 
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.server.VaadinService;
-import net.itconcepts.specifications.backend.User;
+import de.kaiserpfalzEdv.office.core.security.OfficeLoginTicket;
 
 /**
  * Class for retrieving and setting the name of the current user of the current
@@ -37,8 +37,9 @@ public final class CurrentUser {
     private CurrentUser() {
     }
 
-    public static User getUser() {
-        User result = (User) getCurrentRequest().getWrappedSession().getAttribute(CURRENT_USER_SESSION_ATTRIBUTE_KEY);
+    public static OfficeLoginTicket getUser() {
+        OfficeLoginTicket result = (OfficeLoginTicket) getCurrentRequest().getWrappedSession()
+                                                                          .getAttribute(CURRENT_USER_SESSION_ATTRIBUTE_KEY);
 
         return result;
     }
@@ -47,15 +48,16 @@ public final class CurrentUser {
      * Returns the name of the current user stored in the current session, or an
      * empty string if no user name is stored.
      *
+     * @return The account name of the current user.
      * @throws IllegalStateException if the current session cannot be accessed.
      */
     public static String get() {
-        User currentUser = getUser();
+        OfficeLoginTicket currentUser = getUser();
 
         if (currentUser == null) {
             return "";
         } else {
-            return currentUser.getUser();
+            return currentUser.getAccountName();
         }
     }
 
@@ -63,9 +65,11 @@ public final class CurrentUser {
      * Sets the name of the current user and stores it in the current session.
      * Using a {@code null} username will remove the username from the session.
      *
+     * @param currentUser The user to be saved into the session.
+     *
      * @throws IllegalStateException if the current session cannot be accessed.
      */
-    public static void set(User currentUser) {
+    public static void set(OfficeLoginTicket currentUser) {
         if (currentUser == null) {
             getCurrentRequest().getWrappedSession().removeAttribute(
                     CURRENT_USER_SESSION_ATTRIBUTE_KEY

@@ -16,7 +16,7 @@
 
 package de.kaiserpfalzEdv.office.ui.core.about;
 
-import de.kaiserpfalzEdv.office.ui.api.View;
+import de.kaiserpfalzEdv.office.ui.api.mvp.View;
 
 /**
  * @author klenkes

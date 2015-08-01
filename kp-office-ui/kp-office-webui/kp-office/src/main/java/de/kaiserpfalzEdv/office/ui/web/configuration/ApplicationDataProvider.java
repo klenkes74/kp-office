@@ -21,7 +21,7 @@ import de.kaiserpfalzEdv.commons.service.Versionable;
 import de.kaiserpfalzEdv.office.commons.SoftwareVersion;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -34,52 +34,28 @@ import javax.annotation.PreDestroy;
  * @since 18.02.15 06:10
  */
 @Configuration
+@ConfigurationProperties(prefix = "info.app")
 public class ApplicationDataProvider {
     private static final Logger LOG = LoggerFactory.getLogger(ApplicationDataProvider.class);
 
-    @Value("${info.app.id}")
-    private String applicationId;
-
-    @Value("${info.app.name}")
-    private String applicationName;
-
-    @Value("${info.app.version}")
-    private String applicationVersion;
-
-    @Value("${info.app.hostId}")
-    private String applicationInstance;
-
-    private Versionable version;
-
-    /**
-     * Application data built from the variables {@link #applicationId}, {@link #applicationName},
-     * {@link #applicationVersion} and {@link #applicationInstance}.
-     */
-    private ApplicationMetaData applicationData;
+    private String id;
+    private String name;
+    private String version;
+    private String hostId;
 
 
     public ApplicationDataProvider() {
-        LOG.trace("Created: {}", this);
+        LOG.trace("***** Created: {}", this);
     }
 
     @PostConstruct
     public void init() {
-        applicationData = new ApplicationMetaData.Builder()
-                .withId(applicationId)
-                .withName(applicationName)
-                .withVersion(applicationVersion)
-                .withInstance(applicationInstance)
-                .build();
-
-        version = new SoftwareVersion(applicationVersion);
-
-        LOG.trace("Initialized: {}", this);
-        LOG.trace("  application id: {}", applicationId);
-        LOG.trace("  application name: {}", applicationName);
-        LOG.trace("  application version: {}", applicationVersion);
-        LOG.trace("  application instance: {}", applicationInstance);
-        LOG.trace("  application data: {}", applicationData);
-        LOG.trace("  application version: {}", version);
+        LOG.trace("*   *   application id: {}", id);
+        LOG.trace("*   *   application name: {}", name);
+        LOG.trace("*   *   application version: {}", version);
+        LOG.trace("*   *   application instance: {}", hostId);
+        LOG.trace("*   *   application version: {}", version);
+        LOG.trace("***** Initialized: {}", this);
     }
 
     @PreDestroy
@@ -90,11 +66,32 @@ public class ApplicationDataProvider {
 
     @Bean
     public ApplicationMetaData getApplicationData() {
-        return applicationData;
+        return new ApplicationMetaData.Builder()
+                .withId(id)
+                .withName(name)
+                .withVersion(version)
+                .withInstance(hostId)
+                .build();
     }
 
     @Bean
-    public Versionable getApplicationVersion() {
-        return version;
+    public Versionable getVersion() {
+        return new SoftwareVersion(version);
+    }
+
+    public void setVersion(String version) {
+        this.version = version;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setHostId(String hostId) {
+        this.hostId = hostId;
     }
 }

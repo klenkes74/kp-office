@@ -16,9 +16,11 @@
 
 package de.kaiserpfalzEdv.office.ui.web.authentication;
 
-import net.itconcepts.specifications.backend.User;
+import de.kaiserpfalzEdv.office.core.security.OfficeLoginTicket;
 
 import javax.inject.Named;
+import java.time.OffsetDateTime;
+import java.util.UUID;
 
 /**
  * Default mock implementation of {@link AccessControl}. This implementation
@@ -33,13 +35,12 @@ public class BasicAccessControl implements AccessControl {
         if (username == null || username.isEmpty())
             return false;
 
-        User user = new User();
-        user.setUser(username);
-        user.setPassword(password);
-        user.setFullName(username);
-        user.setOrganization("---");
-        user.setCostCenter("---");
-        CurrentUser.set(user);
+        OfficeLoginTicket ticket = new OfficeLoginTicket(
+                UUID.randomUUID(), username, username, OffsetDateTime.now()
+                                                                     .plusDays(1L)
+        );
+        CurrentUser.set(ticket);
+
         return true;
     }
 

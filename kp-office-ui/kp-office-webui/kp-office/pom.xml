@@ -33,6 +33,16 @@
     <properties>
         <project.root>../../..</project.root>
         <start-class>de.kaiserpfalzEdv.office.ui.web.Application</start-class>
+
+        <jetty.plugin.version>9.2.3.v20140905</jetty.plugin.version>
+
+
+        <info.app.name>Kaiserpfalz Office</info.app.name>
+        <info.app.description>ERP-System für kleine und mittlere Unternehmen</info.app.description>
+        <info.app.version>0.2.0-SNAPSHOT</info.app.version>
+        <info.app.id>568d4159-fa57-4378-bf5a-20c5197f3228</info.app.id>
+        <info.app.hostId>bd9a3ad4-9cc7-49a2-bc95-9c5ccc8a76e1</info.app.hostId>
+
     </properties>
 
 
@@ -46,15 +56,15 @@
             <groupId>${project.groupId}</groupId>
             <artifactId>kp-office-ui-web-api</artifactId>
         </dependency>
-        <!--
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>kp-office-ui-web-core</artifactId>
         </dependency>
-        <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>kp-office-ui-web-accounting</artifactId>
-        </dependency>
+        <!--
+                <dependency>
+                    <groupId>${project.groupId}</groupId>
+                    <artifactId>kp-office-ui-web-accounting</artifactId>
+                </dependency>
                 <dependency>
                     <groupId>${project.groupId}</groupId>
                     <artifactId>kp-office-ui-web-files</artifactId>
@@ -69,8 +79,24 @@
         <!-- Versions for these are configured in the parent POM -->
         <dependency>
             <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
-            <scope>provided</scope>
+            <artifactId>servlet-api</artifactId>
+        </dependency>
+        <!--
+                <dependency>
+                    <groupId>org.mortbay.jasper</groupId>
+                    <artifactId>apache-el</artifactId>
+                    <version>8.0.9.M3</version>
+                </dependency>
+        -->
+
+
+        <dependency>
+            <groupId>com.vaadin</groupId>
+            <artifactId>vaadin-server</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.vaadin</groupId>
+            <artifactId>vaadin-push</artifactId>
         </dependency>
         <dependency>
             <groupId>com.vaadin</groupId>
@@ -80,6 +106,32 @@
             <groupId>com.vaadin</groupId>
             <artifactId>vaadin-spring-boot</artifactId>
         </dependency>
+        <!--
+                <dependency>
+                    <groupId>com.vaadin</groupId>
+                    <artifactId>vaadin-client</artifactId>
+                    <scope>provided</scope>
+                </dependency>
+                <dependency>
+                    <groupId>com.vaadin</groupId>
+                    <artifactId>vaadin-client-compiler</artifactId>
+                    <scope>provided</scope>
+                    <exclusions>
+                        <exclusion>
+                            <groupId>commons-logging</groupId>
+                            <artifactId>commons-logging</artifactId>
+                        </exclusion>
+                    </exclusions>
+                </dependency>
+                <dependency>
+                    <groupId>com.vaadin</groupId>
+                    <artifactId>vaadin-client-compiled</artifactId>
+                </dependency>
+                <dependency>
+                    <groupId>com.vaadin</groupId>
+                    <artifactId>vaadin-spring</artifactId>
+                </dependency>
+        -->
 
         <!-- Custom components -->
 
@@ -104,31 +156,41 @@
         <!-- Spring -->
         <dependency>
             <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
             <artifactId>spring-context-support</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-web</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-web</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-config</artifactId>
-        </dependency>
+        <!--
+                <dependency>
+                    <groupId>org.springframework</groupId>
+                    <artifactId>spring-context</artifactId>
+                </dependency>
+                <dependency>
+                    <groupId>org.springframework</groupId>
+                    <artifactId>spring-web</artifactId>
+                </dependency>
+                <dependency>
+                    <groupId>org.springframework.security</groupId>
+                    <artifactId>spring-security-web</artifactId>
+                </dependency>
+                <dependency>
+                    <groupId>org.springframework.security</groupId>
+                    <artifactId>spring-security-config</artifactId>
+                </dependency>
+        -->
 
+        <!-- Spring Boot -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <version>1.2.2.RELEASE</version>
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
-
-        <!-- Spring Boot -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
@@ -145,12 +207,22 @@
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-dbcp2</artifactId>
             <version>2.0.1</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>commons-logging</groupId>
+                    <artifactId>commons-logging</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <!-- Logging -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>jul-to-slf4j</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jcl-over-slf4j</artifactId>
         </dependency>
         <dependency>
             <groupId>ch.qos.logback</groupId>
@@ -209,7 +281,8 @@
 
 
     <build>
-        <plugins>
+
+    <plugins>
             <!-- spring-boot-maven-plugin used to start application in debugging mode on port 8000 -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>

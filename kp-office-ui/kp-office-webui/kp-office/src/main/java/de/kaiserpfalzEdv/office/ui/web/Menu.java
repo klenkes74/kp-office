@@ -35,8 +35,10 @@ import com.vaadin.ui.MenuBar;
 import com.vaadin.ui.MenuBar.Command;
 import com.vaadin.ui.MenuBar.MenuItem;
 import com.vaadin.ui.themes.ValoTheme;
+import de.kaiserpfalzEdv.office.ui.web.api.menu.MenuEntry;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -62,7 +64,7 @@ public class Menu extends CssLayout {
         top.setDefaultComponentAlignment(Alignment.MIDDLE_LEFT);
         top.addStyleName(ValoTheme.MENU_TITLE);
         top.setSpacing(true);
-        Label title = new Label("LaH");
+        Label title = new Label("KP Office");
         title.addStyleName(ValoTheme.LABEL_H3);
         title.setSizeUndefined();
         Image image = new Image(null, new ThemeResource("img/table-logo.png"));
@@ -149,6 +151,22 @@ public class Menu extends CssLayout {
     ) {
         createViewButton(name, caption, icon);
     }
+
+
+    /**
+     * Adds all entries listed in the list menuEntries to the menu and the {@link Navigator}
+     * based on a view class.
+     *
+     * @param menuEntries all entries of the menu. Will be sorted by {@link MenuEntry#getSortOrder()}.
+     */
+    public void addEntries(final List<MenuEntry> menuEntries) {
+        menuEntries.sort((o1, o2) -> o1.getSortOrder() - o2.getSortOrder());
+
+        for (MenuEntry entry : menuEntries) {
+            addView(entry, entry.getViewName(), entry.getCaption(), entry.getIcon());
+        }
+    }
+
 
     private void createViewButton(
             final String name, String caption,

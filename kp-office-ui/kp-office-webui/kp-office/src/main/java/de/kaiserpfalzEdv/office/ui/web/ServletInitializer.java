@@ -16,6 +16,7 @@
 
 package de.kaiserpfalzEdv.office.ui.web;
 
+import de.kaiserpfalzEdv.office.ui.web.configuration.QueueCommunicationConfiguration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.builder.SpringApplicationBuilder;
@@ -49,6 +50,6 @@ public class ServletInitializer extends SpringBootServletInitializer {
 
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-        return application.sources(Application.class);
+        return application.sources(QueueCommunicationConfiguration.class);
     }
 }
