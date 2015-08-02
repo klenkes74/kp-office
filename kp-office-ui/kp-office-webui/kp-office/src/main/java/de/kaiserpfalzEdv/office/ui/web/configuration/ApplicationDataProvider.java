@@ -65,7 +65,9 @@ public class ApplicationDataProvider {
 
 
     @Bean
-    public ApplicationMetaData getApplicationData() {
+    public ApplicationMetaData applicationData() {
+        LOG.warn("Application Meta Data is created ...");
+
         return new ApplicationMetaData.Builder()
                 .withId(id)
                 .withName(name)

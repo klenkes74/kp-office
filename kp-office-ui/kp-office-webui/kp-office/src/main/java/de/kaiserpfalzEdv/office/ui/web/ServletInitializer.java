@@ -16,10 +16,8 @@
 
 package de.kaiserpfalzEdv.office.ui.web;
 
-import de.kaiserpfalzEdv.office.ui.web.configuration.QueueCommunicationConfiguration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.context.web.SpringBootServletInitializer;
 
 import javax.annotation.PostConstruct;
@@ -34,22 +32,16 @@ public class ServletInitializer extends SpringBootServletInitializer {
     private static final Logger LOG = LoggerFactory.getLogger(ServletInitializer.class);
 
     public ServletInitializer() {
-        LOG.trace("Created: {}", this);
+        LOG.trace("***** Created: {}", this);
     }
     
     @PostConstruct
     public void init() {
-        LOG.trace("Initialized: {}", this);
+        LOG.trace("***** Initialized: {}", this);
     }
     
     @PreDestroy
     public void close() {
-        LOG.trace("Destroyed: {}", this);
-    }
-
-
-    @Override
-    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-        return application.sources(QueueCommunicationConfiguration.class);
+        LOG.trace("***** Destroyed: {}", this);
     }
 }

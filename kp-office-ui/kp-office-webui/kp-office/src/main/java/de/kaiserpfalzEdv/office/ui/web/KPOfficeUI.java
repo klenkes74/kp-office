@@ -17,7 +17,6 @@
 package de.kaiserpfalzEdv.office.ui.web;
 
 import com.vaadin.annotations.Theme;
-import com.vaadin.annotations.VaadinServletConfiguration;
 import com.vaadin.annotations.Viewport;
 import com.vaadin.annotations.Widgetset;
 import com.vaadin.navigator.Navigator;
@@ -25,7 +24,6 @@ import com.vaadin.server.Responsive;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.spring.annotation.SpringUI;
 import com.vaadin.spring.navigator.SpringViewProvider;
-import com.vaadin.spring.server.SpringVaadinServlet;
 import com.vaadin.ui.CssLayout;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.UI;
@@ -38,17 +36,11 @@ import de.kaiserpfalzEdv.office.ui.web.authentication.LoginScreen;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.slf4j.bridge.SLF4JBridgeHandler;
-import org.springframework.web.context.ContextLoaderListener;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.inject.Inject;
-import javax.servlet.annotation.WebListener;
-import javax.servlet.annotation.WebServlet;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.LogManager;
 
 /**
  * The main UI of the application
@@ -60,17 +52,6 @@ import java.util.logging.LogManager;
 public class KPOfficeUI extends UI {
     private static final long   serialVersionUID = -6086448022988650873L;
     private static final Logger LOG              = LoggerFactory.getLogger(KPOfficeUI.class);
-
-
-    static {
-        if (!SLF4JBridgeHandler.isInstalled()) {
-            LogManager.getLogManager().reset();
-            SLF4JBridgeHandler.install();
-            java.util.logging.Logger.getLogger("global").setLevel(Level.FINEST);
-
-            LOG.info("Redirected java.util.logging to SLF4J");
-        }
-    }
 
 
     @Inject // DatabaseAccessControl will use database to create the user.
@@ -171,12 +152,13 @@ public class KPOfficeUI extends UI {
         return accessControl;
     }
 
-
-    @WebServlet(urlPatterns = "/ui/*", name = "MyUIServlet", asyncSupported = true)
+/**
+ @WebServlet(urlPatterns = "/ui/*", name = "KpOfficeServlet", asyncSupported = true)
     @VaadinServletConfiguration(ui = KPOfficeUI.class, productionMode = false)
-    public static class MyUIServlet extends SpringVaadinServlet {}
+    public static class KPOfficeServlet extends SpringVaadinServlet {}
 
 
     @WebListener
     public static class SpringContextLoaderListener extends ContextLoaderListener {}
+ */
 }

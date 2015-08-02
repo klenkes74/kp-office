@@ -16,11 +16,16 @@
 
 package de.kaiserpfalzEdv.office.ui.web;
 
-import de.kaiserpfalzEdv.office.ui.web.configuration.QueueCommunicationConfiguration;
+import com.vaadin.spring.annotation.EnableVaadin;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.bridge.SLF4JBridgeHandler;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.FilterType;
+import org.springframework.stereotype.Repository;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
@@ -31,6 +36,15 @@ import java.util.logging.Level;
  * @version 2015Q1
  * @since 01.08.15 05:23
  */
+@SpringBootApplication
+@EnableVaadin
+@EnableAutoConfiguration
+@ComponentScan(
+        value = {"de.kaiserpfalzEdv.office.ui,de.kaiserpfalzEdv.office.clients"},
+        excludeFilters = {
+                @ComponentScan.Filter(type = FilterType.ANNOTATION, value = Repository.class)
+        }
+)
 public class Application {
     private static final Logger LOG = LoggerFactory.getLogger(Application.class);
 
@@ -46,7 +60,7 @@ public class Application {
     }
 
     public static void main(String[] args) {
-        SpringApplication.run(QueueCommunicationConfiguration.class, args);
+        SpringApplication.run(Application.class, args);
     }
 
     @PostConstruct

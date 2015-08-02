@@ -42,21 +42,8 @@
 
     <dependencies>
         <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.vaadin</groupId>
-            <artifactId>vaadin-server</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.vaadin</groupId>
-            <artifactId>vaadin-themes</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.vaadin</groupId>
-            <artifactId>vaadin-spring</artifactId>
+            <groupId>de.kaiserpfalz-edv.office.ui.web</groupId>
+            <artifactId>kp-office-ui-web-api</artifactId>
         </dependency>
 
         <dependency>
@@ -65,10 +52,6 @@
         </dependency>
 
         <!-- Custom components -->
-        <dependency>
-            <groupId>de.kaiserpfalz-edv.office.ui.web</groupId>
-            <artifactId>kp-office-ui-web-api</artifactId>
-        </dependency>
         <dependency>
             <groupId>de.kaiserpfalz-edv.office.ui.web</groupId>
             <artifactId>kp-office-ui-web-widgetset</artifactId>

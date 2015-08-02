@@ -17,9 +17,6 @@
 package de.kaiserpfalzEdv.office.ui.web.configuration;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.common.eventbus.EventBus;
-import de.kaiserpfalzEdv.commons.jee.eventbus.EventBusHandler;
-import de.kaiserpfalzEdv.commons.jee.eventbus.SimpleEventBusHandler;
 import de.kaiserpfalzEdv.office.commons.jackson.VersionableJacksonModule;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,7 +27,6 @@ import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Scope;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
@@ -41,21 +37,10 @@ import javax.annotation.PreDestroy;
  * @since 0.1.0
  */
 @Configuration
-@ConfigurationProperties("spring.rabbit")
+@ConfigurationProperties("spring.rabbitmq")
 public class QueueCommunicationConfiguration {
     private static Logger LOG = LoggerFactory.getLogger(QueueCommunicationConfiguration.class);
-    ThreadLocal<EventBusHandler> eventBus = new ThreadLocal<EventBusHandler>() {
-        @Override
-        protected EventBusHandler initialValue() {
-            String busName = "EventBus-" + Thread.currentThread().getName();
 
-            SimpleEventBusHandler result = new SimpleEventBusHandler();
-            result.setBus(new EventBus(busName));
-
-            LOG.debug("Created event bus: {}", busName);
-            return result;
-        }
-    };
     private String                       host;
     private int                          port;
     private String                       virtual;
@@ -65,22 +50,19 @@ public class QueueCommunicationConfiguration {
     private Jackson2JsonMessageConverter amqpConverter;
     private ObjectMapper                 jsonMapper;
 
+
+    public QueueCommunicationConfiguration() {
+        LOG.trace("***** Created: {}", this);
+    }
+
     @PostConstruct
     public void init() {
-        LOG.trace("***** Created: {}", this);
-
+        LOG.debug("***** Initialized: {}", this);
     }
 
     @PreDestroy
     public void close() {
         LOG.trace("***** Destroyed: {}", this);
-    }
-
-
-    @Bean
-    @Scope("prototype")
-    public EventBusHandler guavaEventBus() {
-        return eventBus.get();
     }
 
 
@@ -137,6 +119,8 @@ public class QueueCommunicationConfiguration {
 
     public void setHost(String host) {
         this.host = host;
+
+        LOG.trace("*   *   set host: {}", host);
     }
 
     public int getPort() {
@@ -145,6 +129,8 @@ public class QueueCommunicationConfiguration {
 
     public void setPort(int port) {
         this.port = port;
+
+        LOG.trace("*   *   set port: {}", port);
     }
 
     public String getVirtual() {
@@ -153,6 +139,8 @@ public class QueueCommunicationConfiguration {
 
     public void setVirtual(String virtual) {
         this.virtual = virtual;
+
+        LOG.trace("*   *   set virtual: {}", virtual);
     }
 
     public String getUsername() {
@@ -161,6 +149,8 @@ public class QueueCommunicationConfiguration {
 
     public void setUsername(String username) {
         this.username = username;
+
+        LOG.trace("*   *   set username: {}", username);
     }
 
     public String getPassword() {
@@ -169,5 +159,7 @@ public class QueueCommunicationConfiguration {
 
     public void setPassword(String password) {
         this.password = password;
+
+        LOG.trace("*   *   set password: {}", password);
     }
 }

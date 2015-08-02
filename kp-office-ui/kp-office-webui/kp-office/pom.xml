@@ -32,8 +32,9 @@
 
     <properties>
         <project.root>../../..</project.root>
+        <!--
         <start-class>de.kaiserpfalzEdv.office.ui.web.Application</start-class>
-
+        -->
         <jetty.plugin.version>9.2.3.v20140905</jetty.plugin.version>
 
 
@@ -80,6 +81,7 @@
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>servlet-api</artifactId>
+            <scope>provided</scope>
         </dependency>
         <!--
                 <dependency>
@@ -89,10 +91,9 @@
                 </dependency>
         -->
 
-
         <dependency>
             <groupId>com.vaadin</groupId>
-            <artifactId>vaadin-server</artifactId>
+            <artifactId>vaadin-spring-boot</artifactId>
         </dependency>
         <dependency>
             <groupId>com.vaadin</groupId>
@@ -104,7 +105,7 @@
         </dependency>
         <dependency>
             <groupId>com.vaadin</groupId>
-            <artifactId>vaadin-spring-boot</artifactId>
+            <artifactId>vaadin-client-compiled</artifactId>
         </dependency>
         <!--
                 <dependency>
@@ -122,14 +123,6 @@
                             <artifactId>commons-logging</artifactId>
                         </exclusion>
                     </exclusions>
-                </dependency>
-                <dependency>
-                    <groupId>com.vaadin</groupId>
-                    <artifactId>vaadin-client-compiled</artifactId>
-                </dependency>
-                <dependency>
-                    <groupId>com.vaadin</groupId>
-                    <artifactId>vaadin-spring</artifactId>
                 </dependency>
         -->
 
@@ -180,12 +173,13 @@
         <!-- Spring Boot -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
             <version>1.2.2.RELEASE</version>
+        </dependency>
+        <!--
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -195,7 +189,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
-        <!--
                 <dependency>
                     <groupId>org.springframework.boot</groupId>
                     <artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -289,7 +282,9 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>1.2.2.RELEASE</version>
                 <configuration>
-                    <mainClass>${start-class}</mainClass>
+                    <!--
+                                        <mainClass>${start-class}</mainClass>
+                    -->
                     <classifier>application</classifier>
                     <fork>false</fork>
                 </configuration>
