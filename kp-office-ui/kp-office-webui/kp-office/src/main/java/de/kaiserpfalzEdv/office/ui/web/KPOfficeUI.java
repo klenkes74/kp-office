@@ -16,6 +16,8 @@
 
 package de.kaiserpfalzEdv.office.ui.web;
 
+import com.google.common.eventbus.Subscribe;
+import com.vaadin.annotations.Push;
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.Viewport;
 import com.vaadin.annotations.Widgetset;
@@ -29,6 +31,7 @@ import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.themes.ValoTheme;
 import de.kaiserpfalzEdv.commons.jee.eventbus.EventBusHandler;
+import de.kaiserpfalzEdv.office.ui.core.i18n.LocaleChangeEvent;
 import de.kaiserpfalzEdv.office.ui.web.api.menu.MenuEntry;
 import de.kaiserpfalzEdv.office.ui.web.authentication.AccessControl;
 import de.kaiserpfalzEdv.office.ui.web.authentication.BasicAccessControl;
@@ -36,6 +39,7 @@ import de.kaiserpfalzEdv.office.ui.web.authentication.LoginScreen;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.context.annotation.Configuration;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
@@ -46,9 +50,11 @@ import java.util.List;
  * The main UI of the application
  */
 @SpringUI
+@Push
 @Viewport("user-scalable=no,initial-scale=1.0")
 @Theme("mytheme")
 @Widgetset("KPOfficeWidgetset")
+@Configuration
 public class KPOfficeUI extends UI {
     private static final long   serialVersionUID = -6086448022988650873L;
     private static final Logger LOG              = LoggerFactory.getLogger(KPOfficeUI.class);
@@ -99,7 +105,9 @@ public class KPOfficeUI extends UI {
     @Override
     protected void init(VaadinRequest vaadinRequest) {
         Responsive.makeResponsive(this);
-        setLocale(vaadinRequest.getLocale());
+
+        eventBus.post(new LocaleChangeEvent(this, vaadinRequest.getLocale()));
+
         getPage().setTitle("KP Office");
         if (!accessControl.isUserSignedIn()) {
             setContent(
@@ -152,13 +160,11 @@ public class KPOfficeUI extends UI {
         return accessControl;
     }
 
-/**
- @WebServlet(urlPatterns = "/ui/*", name = "KpOfficeServlet", asyncSupported = true)
-    @VaadinServletConfiguration(ui = KPOfficeUI.class, productionMode = false)
-    public static class KPOfficeServlet extends SpringVaadinServlet {}
 
+    @Subscribe
+    public void setLocale(final LocaleChangeEvent event) {
+        LOG.trace("Changing locale: {} -> {}", getLocale(), event.getLocale());
 
-    @WebListener
-    public static class SpringContextLoaderListener extends ContextLoaderListener {}
- */
+        setLocale(event.getLocale());
+    }
 }

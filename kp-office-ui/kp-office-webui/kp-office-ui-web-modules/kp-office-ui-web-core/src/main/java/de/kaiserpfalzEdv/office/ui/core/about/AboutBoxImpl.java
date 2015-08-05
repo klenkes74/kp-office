@@ -23,7 +23,6 @@ import com.vaadin.spring.annotation.UIScope;
 import com.vaadin.ui.Component;
 import com.vaadin.ui.VerticalLayout;
 import de.kaiserpfalzEdv.office.ui.api.mvp.Presenter;
-import de.kaiserpfalzEdv.office.ui.web.api.menu.MenuEntry;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -37,7 +36,7 @@ import javax.inject.Inject;
  */
 @UIScope
 @SpringView(name = AboutBoxImpl.VIEW_NAME)
-public class AboutBoxImpl extends VerticalLayout implements AboutBox, View, Component, MenuEntry {
+public class AboutBoxImpl extends VerticalLayout implements AboutBox, View, Component {
     public static final  String VIEW_NAME = "AboutBox";
     private static final Logger LOG       = LoggerFactory.getLogger(AboutBoxImpl.class);
     @Inject
@@ -59,15 +58,6 @@ public class AboutBoxImpl extends VerticalLayout implements AboutBox, View, Comp
         LOG.trace("Initilized: {}", this);
     }
 
-    @Override
-    public String getViewName() {
-        return VIEW_NAME;
-    }
-
-    @Override
-    public int getSortOrder() {
-        return MenuEntry.LOWEST;
-    }
 
     @Override
     public void enter(ViewChangeListener.ViewChangeEvent event) {

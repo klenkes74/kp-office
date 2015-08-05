@@ -16,10 +16,6 @@
 
 package de.kaiserpfalzEdv.office.core.i18n.impl;
 
-import de.kaiserpfalzEdv.office.core.i18n.TranslationEntry;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
@@ -39,8 +35,7 @@ import javax.validation.constraints.NotNull;
                 @UniqueConstraint(name = "PRIMARY", columnNames = {"key_", "language_"})
         }
 )
-public class TranslationEntryImpl implements TranslationEntry {
-    private static final Logger LOG = LoggerFactory.getLogger(TranslationEntryImpl.class);
+public class TranslationEntryImpl {
 
     @EmbeddedId
     private TranslationKey key;
@@ -62,17 +57,14 @@ public class TranslationEntryImpl implements TranslationEntry {
     }
 
 
-    @Override
     public String getKey() {
         return key.getKey();
     }
 
-    @Override
     public String getLanguage() {
         return key.getLanguage();
     }
 
-    @Override
     public String getValue() {
         return value;
     }

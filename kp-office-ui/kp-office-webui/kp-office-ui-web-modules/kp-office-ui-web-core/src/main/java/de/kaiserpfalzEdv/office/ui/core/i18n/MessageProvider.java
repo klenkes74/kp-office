@@ -16,15 +16,22 @@
 
 package de.kaiserpfalzEdv.office.ui.core.i18n;
 
+import com.google.common.eventbus.Subscribe;
+import com.vaadin.spring.annotation.UIScope;
+import de.kaiserpfalzEdv.commons.jee.eventbus.EventBusHandler;
 import de.kaiserpfalzEdv.office.clients.core.TranslationClient;
+import de.kaiserpfalzEdv.office.commons.KPO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.annotation.PreDestroy;
 import javax.inject.Inject;
 import javax.inject.Named;
+import java.io.Serializable;
 import java.text.MessageFormat;
 import java.util.Locale;
+
+import static de.kaiserpfalzEdv.office.commons.KPO.Type.Client;
 
 /**
  * @author klenkes
@@ -32,27 +39,56 @@ import java.util.Locale;
  * @since 23.02.15 10:04
  */
 @Named
-public class MessageProvider { // implements org.vaadin.spring.i18n.MessageProvider {
+@UIScope
+public class MessageProvider implements Serializable { // implements org.vaadin.spring.i18n.MessageProvider {
     private static final Logger LOG = LoggerFactory.getLogger(MessageProvider.class);
 
     private TranslationClient client;
 
-    @Inject
-    public MessageProvider(final TranslationClient provider) {
-        this.client = provider;
+    private Locale locale;
 
-        LOG.trace("Created/Initialized: {}", this);
-        LOG.trace("  internal messsage provider: {}", this);
+    private EventBusHandler bus;
+
+
+    @Inject
+    public MessageProvider(@KPO(Client) final TranslationClient provider, final EventBusHandler bus, final Locale locale) {
+        LOG.trace("***** Created: {}", this);
+
+        this.client = provider;
+        LOG.trace("*   *   internal messsage provider: {}", this.client);
+
+        this.bus = bus;
+        bus.register(this);
+        LOG.trace("*   *   event bus: {}", this.bus);
+
+        this.locale = locale;
+        LOG.trace("*   *   locale: {}", this.locale);
+
+        LOG.debug("***** Initialized: {}", this);
     }
+
 
     @PreDestroy
     public void close() {
-        LOG.trace("Destroyed: {}", this);
+        bus.unregister(this);
+        LOG.trace("***** Destroyed: {}", this);
+    }
+
+
+    @Subscribe
+    public void setLocale(LocaleChangeEvent event) {
+        LOG.trace("Changing locale: {} -> {}", this.locale, locale);
+
+        this.locale = event.getLocale();
     }
 
 
     //    @Override
-    public MessageFormat resolveCode(String s, Locale locale) {
-        return client.resolveCode(s, locale);
+    public MessageFormat resolveCode(String key, Locale locale) {
+        return client.resolveCode(key, locale);
+    }
+
+    public MessageFormat resolveCode(String key) {
+        return resolveCode(key, locale);
     }
 }

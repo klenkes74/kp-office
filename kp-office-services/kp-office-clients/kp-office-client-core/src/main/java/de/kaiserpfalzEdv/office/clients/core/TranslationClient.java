@@ -34,6 +34,7 @@ import javax.inject.Named;
 import javax.validation.constraints.NotNull;
 import java.text.MessageFormat;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Set;
@@ -108,11 +109,18 @@ public class TranslationClient implements TranslationService, MessageProvider {
         TranslationsNotification result
                 = (TranslationsNotification) sender.convertSendAndReceive(MESSAGE_EXCHANGE, ROUTING_KEY, command);
 
+        if (result == null) // return NULL-Object
+            result = new TranslationsNotification(new HashSet<>());
+
         return result.getTranslations();
     }
 
 
+    @Override
     public MessageFormat resolveCode(final String key, final Locale locale) {
+        loadTranslations();
+
+
         List<String> messageKeys = asList(
                 fullMessageKey(key, locale),
                 countryMessageKey(key, locale),

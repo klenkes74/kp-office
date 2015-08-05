@@ -14,13 +14,13 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzEdv.office.core.licence.impl;
+package de.kaiserpfalzEdv.office.core.i18n.impl;
 
 import de.kaiserpfalzEdv.office.commons.KPO;
-import de.kaiserpfalzEdv.office.core.licence.LicenceService;
-import de.kaiserpfalzEdv.office.core.licence.commands.GetLicenceCommand;
-import de.kaiserpfalzEdv.office.core.licence.commands.LicenceCommandExecutor;
-import de.kaiserpfalzEdv.office.core.licence.notifications.LicenceDataNotification;
+import de.kaiserpfalzEdv.office.core.i18n.TranslationCommandExecutor;
+import de.kaiserpfalzEdv.office.core.i18n.TranslationService;
+import de.kaiserpfalzEdv.office.core.i18n.commands.RequestTranslationsCommand;
+import de.kaiserpfalzEdv.office.core.i18n.notifications.TranslationsNotification;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -33,24 +33,23 @@ import static de.kaiserpfalzEdv.office.commons.KPO.Type.Implementation;
 /**
  * @author klenkes
  * @version 2015Q1
- * @since 01.03.15 22:26
+ * @since 05.08.15 08:02
  */
 @Named
-public class LicenceApplication implements LicenceCommandExecutor {
-    private static final Logger LOG = LoggerFactory.getLogger(LicenceApplication.class);
+public class TranslationApplication implements TranslationCommandExecutor {
+    private static final Logger LOG = LoggerFactory.getLogger(TranslationApplication.class);
 
-
-    private LicenceService service;
+    private TranslationService service;
 
 
     @Inject
-    public LicenceApplication(@KPO(Implementation) final LicenceService service) {
+    public TranslationApplication(@KPO(Implementation) final TranslationService service) {
         LOG.trace("***** Created: {}", this);
 
         this.service = service;
-        LOG.trace("*   *   licence service: {}", this.service);
+        LOG.trace("*   *   i18n service: {}", this.service);
 
-        LOG.debug("***** Initialized: {}", this);
+        LOG.debug("***** Created: {}", this);
     }
 
     @PreDestroy
@@ -60,9 +59,9 @@ public class LicenceApplication implements LicenceCommandExecutor {
 
 
     @Override
-    public LicenceDataNotification execute(GetLicenceCommand command) {
+    public TranslationsNotification execute(RequestTranslationsCommand command) {
         LOG.info("Working on: {}", command);
 
-        return new LicenceDataNotification(service.getLicence());
+        return new TranslationsNotification(service.getTranslationEntries());
     }
 }

@@ -51,6 +51,7 @@ public class Menu extends CssLayout {
     private static final String              VALO_MENU_VISIBLE = "valo-menu-visible";
     private              Map<String, Button> viewButtons       = new HashMap<String, Button>();
 
+    private MenuBar menu;
     private CssLayout menuItemsLayout;
     private CssLayout menuPart;
 
@@ -73,21 +74,6 @@ public class Menu extends CssLayout {
         top.addComponent(title);
         menuPart.addComponent(top);
 
-        // logout menu item
-        MenuBar logoutMenu = new MenuBar();
-        logoutMenu.addItem(
-                "Logout", FontAwesome.SIGN_OUT, new Command() {
-
-                    @Override
-                    public void menuSelected(MenuItem selectedItem) {
-                        VaadinSession.getCurrent().getSession().invalidate();
-                        Page.getCurrent().reload();
-                    }
-                }
-        );
-
-        logoutMenu.addStyleName("user-menu");
-        menuPart.addComponent(logoutMenu);
 
         // button for toggling the visibility of the menu when on a small screen
         final Button showMenu = new Button(
@@ -112,6 +98,22 @@ public class Menu extends CssLayout {
         menuItemsLayout = new CssLayout();
         menuItemsLayout.setPrimaryStyleName(VALO_MENUITEMS);
         menuPart.addComponent(menuItemsLayout);
+
+        // logout menu item
+        MenuBar logoutMenu = new MenuBar();
+        logoutMenu.addItem(
+                "Logout", FontAwesome.SIGN_OUT, new Command() {
+
+                    @Override
+                    public void menuSelected(MenuItem selectedItem) {
+                        VaadinSession.getCurrent().getSession().invalidate();
+                        Page.getCurrent().reload();
+                    }
+                }
+        );
+
+        logoutMenu.addStyleName("user-menu");
+        menuPart.addComponent(logoutMenu);
 
         addComponent(menuPart);
     }
@@ -172,6 +174,7 @@ public class Menu extends CssLayout {
             final String name, String caption,
             Resource icon
     ) {
+
         Button button = new Button(
                 caption, new ClickListener() {
 

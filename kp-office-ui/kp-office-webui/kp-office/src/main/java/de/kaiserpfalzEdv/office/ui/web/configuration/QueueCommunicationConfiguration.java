@@ -133,14 +133,14 @@ public class QueueCommunicationConfiguration {
         LOG.trace("*   *   set port: {}", port);
     }
 
-    public String getVirtual() {
+    public String getVirtualHost() {
         return virtual;
     }
 
-    public void setVirtual(String virtual) {
+    public void setVirtualHost(String virtual) {
         this.virtual = virtual;
 
-        LOG.trace("*   *   set virtual: {}", virtual);
+        LOG.trace("*   *   set virtual host: {}", virtual);
     }
 
     public String getUsername() {

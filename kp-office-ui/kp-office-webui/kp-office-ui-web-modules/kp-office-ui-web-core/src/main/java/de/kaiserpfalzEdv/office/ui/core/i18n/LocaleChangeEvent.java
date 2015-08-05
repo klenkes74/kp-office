@@ -14,19 +14,34 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzEdv.office.core.i18n.commands;
+package de.kaiserpfalzEdv.office.ui.core.i18n;
 
-import com.fasterxml.jackson.annotation.JsonAutoDetect;
-import de.kaiserpfalzEdv.office.commons.commands.Command;
+import de.kaiserpfalzEdv.office.ui.api.Action;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import static com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility.ANY;
+import java.util.Locale;
 
 /**
+ * The event for sending locale changes of the user.
+ *
  * @author klenkes
  * @version 2015Q1
- * @since 01.03.15 18:50
+ * @since 03.08.15 08:15
  */
-@JsonAutoDetect(fieldVisibility = ANY)
-public class RequestTranslationsCommand implements Command {
-    private static final long serialVersionUID = 1144693910132922664L;
+public class LocaleChangeEvent extends Action {
+    private static final Logger LOG = LoggerFactory.getLogger(LocaleChangeEvent.class);
+
+    private Locale locale;
+
+    public LocaleChangeEvent(final Object source, final Locale locale) {
+        super(source);
+
+        this.locale = locale;
+    }
+
+
+    public Locale getLocale() {
+        return locale;
+    }
 }

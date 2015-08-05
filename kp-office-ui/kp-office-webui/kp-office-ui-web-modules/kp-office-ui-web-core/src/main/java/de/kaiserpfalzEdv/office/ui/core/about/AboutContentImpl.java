@@ -16,8 +16,10 @@
 
 package de.kaiserpfalzEdv.office.ui.core.about;
 
+import com.google.common.eventbus.Subscribe;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
+import com.vaadin.server.FontAwesome;
 import com.vaadin.spring.annotation.SpringView;
 import com.vaadin.spring.annotation.UIScope;
 import com.vaadin.ui.Component;
@@ -25,9 +27,13 @@ import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.Layout;
 import com.vaadin.ui.VerticalLayout;
+import de.kaiserpfalzEdv.commons.jee.eventbus.EventBusHandler;
 import de.kaiserpfalzEdv.commons.jee.servlet.model.ApplicationMetaData;
 import de.kaiserpfalzEdv.office.core.licence.OfficeLicence;
 import de.kaiserpfalzEdv.office.ui.api.mvp.Presenter;
+import de.kaiserpfalzEdv.office.ui.core.i18n.LocaleChangeEvent;
+import de.kaiserpfalzEdv.office.ui.core.i18n.MessageProvider;
+import de.kaiserpfalzEdv.office.ui.web.api.menu.MenuEntry;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -44,33 +50,55 @@ import java.util.Locale;
  * @since 18.02.15 08:23
  */
 @UIScope
-@SpringView(name = AboutBoxImpl.VIEW_NAME)
-public class AboutContentImpl extends VerticalLayout implements AboutContent, View, Component {
-    private static final Logger LOG = LoggerFactory.getLogger(AboutContentImpl.class);
+@SpringView(name = AboutContentImpl.VIEW_NAME)
+public class AboutContentImpl extends VerticalLayout implements AboutContent, View, Component, MenuEntry {
+    public static final  String VIEW_NAME = "About";
+    private static final Logger LOG       = LoggerFactory.getLogger(AboutContentImpl.class);
 
     private OfficeLicence       license;
     private ApplicationMetaData application;
-    private Locale userLocale;
 
     @Inject
     private AboutContentPresenter presenter;
 
+    @Inject
+    private MessageProvider i18n;
+
+    @Inject
+    private EventBusHandler bus;
+
+    private Locale locale;
+
 
     public AboutContentImpl() {
-        LOG.trace("Created: {}", this);
+        LOG.trace("***** Created: {}", this);
     }
 
     @PostConstruct
     public void init() {
         presenter.setView(this);
-        LOG.trace("***** Initialized: {}", this);
+
+        setCaption(VIEW_NAME);
+        setIcon(FontAwesome.INFO);
+
+        LOG.trace("*   *   presenter: {}", this.presenter);
+        LOG.trace("*   *   i18n: {}", this.i18n);
+
+        bus.register(this);
+        LOG.trace("*   *   event bus: {}", this.bus);
+
+        this.locale = Locale.getDefault();
+        LOG.trace("*   *   locale: {}", this.locale);
+
+        LOG.debug("***** Initialized: {}", this);
     }
 
     @PreDestroy
     public void close() {
         removeAllComponents();
+        bus.unregister(this);
 
-        LOG.trace("Destroyed: {}", this);
+        LOG.trace("***** Destroyed: {}", this);
     }
 
 
@@ -94,47 +122,48 @@ public class AboutContentImpl extends VerticalLayout implements AboutContent, Vi
         this.application = application;
     }
 
-    @Override
-    public Locale getUserLocale() {
-        return userLocale;
-    }
-
-    @Override
-    public void setUserLocale(Locale userLocale) {
-        this.userLocale = userLocale;
-    }
-
 
     @Override
     public void enter(ViewChangeListener.ViewChangeEvent event) {
         LOG.trace("{} received: {}", this, event);
 
-        addComponent(constructVersionString());
-        addComponent(constructLicenseInformation());
+        if (getComponentCount() == 0) {
+            addComponent(constructVersionString());
+            addComponent(constructLicenseInformation());
+        }
     }
 
     private Layout constructVersionString() {
         HorizontalLayout result = new HorizontalLayout();
+        result.setSpacing(true);
 
-        result.addComponent(new Label(application.get(ApplicationMetaData.APPLICATION_NAME)));
-        result.addComponent(new Label("(v. " + application.get(ApplicationMetaData.APPLICATION_VERSION) + ")"));
+        Label applicationName = new Label(i18n.resolveCode("office.core.application").format(null));
+        result.addComponent(applicationName);
+
+        Label applicationVersion = new Label("(v. " + application.get(ApplicationMetaData.APPLICATION_VERSION) + ")");
+        result.addComponent(applicationVersion);
 
         return result;
     }
 
     private Layout constructLicenseInformation() {
         HorizontalLayout result = new HorizontalLayout();
+        result.setSpacing(true);
 
-        result.addComponent(new Label("Lizenz-Nr.: " + license.getId().toString()));
-        result.addComponent(
-                new Label(
-                        "gültig bis: " + license.getExpiry()
-                                                .format(
-                                                        DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT)
-                                                                         .withLocale(userLocale)
-                                                )
-                )
+        Label licenseNumber = new Label(
+                i18n.resolveCode("office.licence.id").format(null) + license.getId()
+                                                                            .toString()
         );
+        result.addComponent(licenseNumber);
+
+        Label validTill = new Label(
+                i18n.resolveCode("office.licence.valid_till").format(null) + ": " + license.getExpiry()
+                                                                                           .format(
+                                                                                                   DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT)
+                                                                                                                    .withLocale(locale)
+                                                                                           )
+        );
+        result.addComponent(validTill);
 
         return result;
     }
@@ -142,5 +171,23 @@ public class AboutContentImpl extends VerticalLayout implements AboutContent, Vi
     @Override
     public void setPresenter(Presenter<?> presenter) {
         this.presenter = (AboutContentPresenter) presenter;
+    }
+
+    @Override
+    public String getViewName() {
+        return VIEW_NAME;
+    }
+
+    @Override
+    public int getSortOrder() {
+        return MenuEntry.LOWEST;
+    }
+
+
+    @Subscribe
+    public void setLocale(final LocaleChangeEvent locale) {
+        LOG.trace("Change locale: {} -> {}", this.locale, locale.getLocale());
+
+        this.locale = locale.getLocale();
     }
 }

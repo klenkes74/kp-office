@@ -25,8 +25,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.orm.jpa.EntityScan;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.FilterType;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 /**
@@ -36,10 +38,13 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  */
 @SpringBootApplication
 @EnableTransactionManagement
-
 @EnableScheduling
-
-@ComponentScan
+@ComponentScan(
+//        value = {"de.kaiserpfalzEdv.office"},
+        excludeFilters = {
+                @ComponentScan.Filter(type = FilterType.ANNOTATION, value = Repository.class)
+        }
+)
 @EnableJpaRepositories
 @EntityScan
 
@@ -47,16 +52,18 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 public class Application implements CommandLineRunner {
     private static final Logger LOG = LoggerFactory.getLogger(Application.class);
 
-    public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
-    }
-
-    @Override
-    public void run(String... args) throws Exception {
+    static {
         if (!SLF4JBridgeHandler.isInstalled()) {
             SLF4JBridgeHandler.install();
 
             LOG.info("java.util.logging bridge to SLF4J added");
         }
     }
+
+    public static void main(String[] args) {
+        SpringApplication.run(Application.class, args);
+    }
+
+    @Override
+    public void run(String... args) throws Exception {}
 }

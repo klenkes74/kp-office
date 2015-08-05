@@ -161,10 +161,10 @@ public class CommunicationsConfiguration implements ApplicationContextAware {
 
     @Bean
     public Jackson2JsonMessageConverter messageConverter() {
-        if (amqpConverter != null) return amqpConverter;
-
-        amqpConverter = new Jackson2JsonMessageConverter();
-        amqpConverter.setJsonObjectMapper(objectMapper());
+        if (amqpConverter == null) {
+            amqpConverter = new Jackson2JsonMessageConverter();
+            amqpConverter.setJsonObjectMapper(objectMapper());
+        }
 
         return amqpConverter;
     }
@@ -172,11 +172,11 @@ public class CommunicationsConfiguration implements ApplicationContextAware {
 
     @Bean
     public ObjectMapper objectMapper() {
-        if (jsonMapper != null) return jsonMapper;
-
-        jsonMapper = new ObjectMapper();
-        jsonMapper.findAndRegisterModules();
-        jsonMapper.registerModule(new VersionableJacksonModule());
+        if (jsonMapper == null) {
+            jsonMapper = new ObjectMapper();
+            jsonMapper.findAndRegisterModules();
+            jsonMapper.registerModule(new VersionableJacksonModule());
+        }
 
         return jsonMapper;
     }
@@ -216,6 +216,7 @@ public class CommunicationsConfiguration implements ApplicationContextAware {
 
     private Queue buildQueue(final String name, final String dlqExchange, final String dlqRoutingKey) {
         Map<String, Object> parameters = generateDlqParameters(dlqExchange, dlqRoutingKey);
+
         return new Queue(name, true, false, false, parameters);
     }
 
@@ -230,6 +231,8 @@ public class CommunicationsConfiguration implements ApplicationContextAware {
 
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+        LOG.trace("Changing application context: {} -> {}", this.context, applicationContext);
+
         context = applicationContext;
     }
 }

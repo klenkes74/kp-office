@@ -48,5 +48,10 @@
 @mixin mytheme {
   @include valo;
 
+  div #about_license_number #about_valid_till #about_application_name #about_application_version {
+    clear: both;
+    margin: 100px 50px 25px 12px;
+    border: dotted;
+  }
   // Insert your own theme rules here
 }

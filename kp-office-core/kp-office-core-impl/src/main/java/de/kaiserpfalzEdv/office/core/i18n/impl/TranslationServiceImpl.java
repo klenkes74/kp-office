@@ -64,7 +64,7 @@ public class TranslationServiceImpl implements TranslationService {
 
         Iterable<TranslationEntryImpl> translations = repository.findAll();
 
-        translations.forEach(result::add);
+        translations.forEach(e -> result.add(new TranslationEntry(e.getKey(), e.getLanguage(), e.getValue())));
         return result;
     }
 }

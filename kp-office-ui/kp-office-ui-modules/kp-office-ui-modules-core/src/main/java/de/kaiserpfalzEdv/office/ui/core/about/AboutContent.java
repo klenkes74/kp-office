@@ -20,8 +20,6 @@ import de.kaiserpfalzEdv.commons.jee.servlet.model.ApplicationMetaData;
 import de.kaiserpfalzEdv.office.core.licence.OfficeLicence;
 import de.kaiserpfalzEdv.office.ui.api.mvp.View;
 
-import java.util.Locale;
-
 /**
  * @author klenkes
  * @version 2015Q1
@@ -35,8 +33,4 @@ public interface AboutContent extends View {
     ApplicationMetaData getApplication();
 
     void setApplication(final ApplicationMetaData application);
-
-    Locale getUserLocale();
-
-    void setUserLocale(final Locale locale);
 }

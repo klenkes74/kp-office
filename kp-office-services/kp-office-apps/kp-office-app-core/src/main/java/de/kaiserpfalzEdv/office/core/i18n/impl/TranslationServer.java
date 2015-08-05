@@ -17,14 +17,14 @@
 package de.kaiserpfalzEdv.office.core.i18n.impl;
 
 import de.kaiserpfalzEdv.office.commons.KPO;
-import de.kaiserpfalzEdv.office.core.i18n.TranslationService;
+import de.kaiserpfalzEdv.office.core.i18n.commands.RequestTranslationsCommand;
 import de.kaiserpfalzEdv.office.core.i18n.notifications.TranslationsNotification;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.amqp.core.Address;
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.core.MessageListener;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.amqp.support.converter.MessageConverter;
 
 import javax.annotation.PreDestroy;
 import javax.inject.Inject;
@@ -43,18 +43,29 @@ public class TranslationServer implements MessageListener {
     private static final Logger LOG = LoggerFactory.getLogger(TranslationServer.class);
 
 
-    private TranslationService service;
+    private TranslationApplication service;
+    private RabbitTemplate         sender;
+    private MessageConverter       converter;
+
 
     @Inject
-    private RabbitTemplate sender;
+    public TranslationServer(
+            final TranslationApplication service,
+            final RabbitTemplate sender,
+            final MessageConverter converter
+    ) {
+        LOG.trace("***** Created: {}", this);
 
-
-    @Inject
-    public TranslationServer(final TranslationService service) {
         this.service = service;
+        LOG.trace("*   *   translation application: {}", this.service);
 
-        LOG.trace("Created/Initialized: {}", this);
-        LOG.trace("  translation repository: {}", this.service);
+        this.sender = sender;
+        LOG.trace("*   *   queue sender: {}", this.sender);
+
+        this.converter = converter;
+        LOG.trace("*   *   message converter: {}", this.converter);
+
+        LOG.debug("***** Created: {}", this);
     }
 
     @PreDestroy
@@ -65,10 +76,20 @@ public class TranslationServer implements MessageListener {
 
     @Override
     public void onMessage(Message message) {
-        Address replyTo = message.getMessageProperties().getReplyToAddress();
+        RequestTranslationsCommand command = (RequestTranslationsCommand) converter.fromMessage(message);
 
-        TranslationsNotification response = new TranslationsNotification(service.getTranslationEntries());
+        TranslationsNotification result = service.execute(command);
 
-        sender.convertAndSend(replyTo.getExchangeName(), replyTo.getRoutingKey(), response);
+        sender.convertAndSend(getReplyExchange(message), getReplyRoutingKey(message), result);
+    }
+
+
+    private String getReplyExchange(final Message message) {
+        return message.getMessageProperties().getReplyToAddress().getExchangeName();
+    }
+
+    private String getReplyRoutingKey(final Message message) {
+        return message.getMessageProperties().getReplyToAddress().getRoutingKey();
+
     }
 }

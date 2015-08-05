@@ -26,7 +26,6 @@ import static com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility.ANY;
  * @version 2015Q1
  * @since 01.03.15 22:14
  */
-//@JsonTypeInfo(use = CLASS, include = PROPERTY, visible = true)
 @JsonAutoDetect(fieldVisibility = ANY)
 public class GetLicenceCommand implements LicenceCommand {
     private static final long serialVersionUID = 6267589569621720307L;

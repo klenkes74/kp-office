@@ -298,41 +298,59 @@
                 </executions>
             </plugin>
 
-            <!-- Currently not needed.
-                        <plugin>
-                            <groupId>org.codehaus.mojo</groupId>
-                            <artifactId>exec-maven-plugin</artifactId>
-                            <version>1.3.2</version>
-                            <executions>
-                                <execution>
-                                    <phase>generate-sources</phase>
-                                    <goals>
-                                        <goal>java</goal>
-                                    </goals>
-                                    <configuration>
-                                        <classpathScope>compile</classpathScope>
-                                        <mainClass>com.vaadin.sass.SassCompiler</mainClass>
-                                        <arguments>
-                                            <argument>src/main/webapp/VAADIN/themes/kpo/styles.scss</argument>
-                                            <argument>src/main/webapp/VAADIN/themes/kpo/styles.css</argument>
-                                        </arguments>
-                                    </configuration>
-                                </execution>
-                            </executions>
-                            <dependencies>
-                                <dependency>
-                                    <groupId>com.vaadin</groupId>
-                                    <artifactId>vaadin-theme-compiler</artifactId>
-                                    <version>7.1.5</version>
-                                </dependency>
-                                <dependency>
-                                    <groupId>com.vaadin</groupId>
-                                    <artifactId>vaadin-themes</artifactId>
-                                    <version>${vaadin.version}</version>
-                                </dependency>
-                            </dependencies>
-                        </plugin>
-            -->
+        <plugin>
+            <groupId>com.vaadin</groupId>
+            <artifactId>vaadin-maven-plugin</artifactId>
+            <executions>
+                <execution>
+                    <id>default</id>
+                    <goals>
+                        <goal>clean</goal>
+                        <goal>resources</goal>
+                        <goal>update-theme</goal>
+                        <goal>update-widgetset</goal>
+                        <goal>compile-theme</goal>
+                        <goal>compile</goal>
+                    </goals>
+                </execution>
+            </executions>
+        </plugin>
+
+        <!-- Currently not needed.
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>exec-maven-plugin</artifactId>
+                        <version>1.3.2</version>
+                        <executions>
+                            <execution>
+                                <phase>generate-sources</phase>
+                                <goals>
+                                    <goal>java</goal>
+                                </goals>
+                                <configuration>
+                                    <classpathScope>compile</classpathScope>
+                                    <mainClass>com.vaadin.sass.SassCompiler</mainClass>
+                                    <arguments>
+                                        <argument>src/main/webapp/VAADIN/themes/kpo/styles.scss</argument>
+                                        <argument>src/main/webapp/VAADIN/themes/kpo/styles.css</argument>
+                                    </arguments>
+                                </configuration>
+                            </execution>
+                        </executions>
+                        <dependencies>
+                            <dependency>
+                                <groupId>com.vaadin</groupId>
+                                <artifactId>vaadin-theme-compiler</artifactId>
+                                <version>7.1.5</version>
+                            </dependency>
+                            <dependency>
+                                <groupId>com.vaadin</groupId>
+                                <artifactId>vaadin-themes</artifactId>
+                                <version>${vaadin.version}</version>
+                            </dependency>
+                        </dependencies>
+                    </plugin>
+        -->
         </plugins>
     </build>
 </project>

@@ -17,7 +17,6 @@
 package de.kaiserpfalzEdv.office.core.i18n.impl;
 
 import de.kaiserpfalzEdv.office.commons.KPO;
-import de.kaiserpfalzEdv.office.core.i18n.TranslationEntry;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.cache.annotation.Cacheable;
@@ -79,7 +78,7 @@ public class DatabaseMessageSource implements MessageSource {
     @Cacheable("i18n")
     @Override
     public String getMessage(String code, Object[] args, Locale locale) throws NoSuchMessageException {
-        TranslationEntry entry = null;
+        TranslationEntryImpl entry = null;
 
         if (isNotBlank(locale.getVariant())) {
             LOG.debug("Looking up in {}: {}", locale.getLanguage() + "_" + locale.getCountry() + "." + locale.getVariant(), code);

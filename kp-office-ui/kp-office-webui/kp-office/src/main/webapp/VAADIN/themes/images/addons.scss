@@ -14,19 +14,13 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzEdv.office.core.i18n.commands;
+/* This file is automatically managed and will be overwritten from time to time. */
+/* Do not manually edit this file. */
+/* Provided by contextmenu-4.5.jar */
+@import "../../../VAADIN/themes/contextmenu/contextmenu.scss";
 
-import com.fasterxml.jackson.annotation.JsonAutoDetect;
-import de.kaiserpfalzEdv.office.commons.commands.Command;
-
-import static com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility.ANY;
-
-/**
- * @author klenkes
- * @version 2015Q1
- * @since 01.03.15 18:50
- */
-@JsonAutoDetect(fieldVisibility = ANY)
-public class RequestTranslationsCommand implements Command {
-    private static final long serialVersionUID = 1144693910132922664L;
+/* Import and include this mixin into your project theme to include the addon themes */
+@mixin addons {
+  @include contextmenu;
 }
+

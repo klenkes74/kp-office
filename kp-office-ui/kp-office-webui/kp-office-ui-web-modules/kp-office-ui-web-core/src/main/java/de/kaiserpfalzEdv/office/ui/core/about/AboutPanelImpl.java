@@ -20,6 +20,7 @@ import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.server.ThemeResource;
 import com.vaadin.shared.ui.label.ContentMode;
+import com.vaadin.spring.annotation.SpringView;
 import com.vaadin.spring.annotation.VaadinSessionScope;
 import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Component;
@@ -34,6 +35,9 @@ import org.slf4j.LoggerFactory;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
+import javax.inject.Inject;
+
+import static de.kaiserpfalzEdv.office.ui.core.about.AboutPanelImpl.VIEW_NAME;
 
 /**
  * @author klenkes
@@ -41,13 +45,14 @@ import javax.annotation.PreDestroy;
  * @since 18.02.15 08:23
  */
 @VaadinSessionScope
+@SpringView(name = VIEW_NAME)
 public class AboutPanelImpl extends VerticalLayout implements AboutPanel, View, Component {
+    public static final String VIEW_NAME = "About Panel";
     private static final Logger LOG = LoggerFactory.getLogger(AboutPanelImpl.class);
-
-
     private OfficeLicence       license;
     private ApplicationMetaData application;
 
+    @Inject
     private AboutContentPresenter presenter;
 
 
@@ -55,11 +60,11 @@ public class AboutPanelImpl extends VerticalLayout implements AboutPanel, View, 
         this.application = applicationData;
         this.license = license;
 
-        LOG.trace("Created: {}", this);
+        LOG.trace("***** Created: {}", this);
     }
 
     public AboutPanelImpl() {
-        LOG.trace("Created: {}", this);
+        LOG.trace("***** Created: {}", this);
     }
 
 
@@ -112,9 +117,9 @@ public class AboutPanelImpl extends VerticalLayout implements AboutPanel, View, 
                 )
         );
 
-        LOG.trace("Initialized: {}", this);
         LOG.trace("  application: {}", application);
         LOG.trace("  licence: {}", license);
+        LOG.debug("***** Initialized: {}", this);
     }
 
     @PreDestroy

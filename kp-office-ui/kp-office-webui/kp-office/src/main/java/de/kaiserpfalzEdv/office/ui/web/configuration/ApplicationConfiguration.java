@@ -18,6 +18,7 @@ package de.kaiserpfalzEdv.office.ui.web.configuration;
 
 import com.google.common.eventbus.EventBus;
 import com.vaadin.spring.annotation.UIScope;
+import com.vaadin.ui.UI;
 import de.kaiserpfalzEdv.commons.jee.eventbus.EventBusHandler;
 import de.kaiserpfalzEdv.commons.jee.eventbus.SimpleEventBusHandler;
 import de.kaiserpfalzEdv.office.ui.web.api.menu.MenuEntry;
@@ -34,6 +35,7 @@ import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 /**
@@ -83,6 +85,16 @@ public class ApplicationConfiguration implements ApplicationContextAware {
         return eventBus.get();
     }
 
+
+    @Bean
+    @UIScope
+    public Locale locale() {
+        if (UI.getCurrent() == null)
+            return Locale.getDefault();
+
+
+        return UI.getCurrent().getLocale();
+    }
 
     @UIScope
     @Bean
