@@ -18,6 +18,7 @@ package de.kaiserpfalzEdv.office.core.licence.impl;
 
 import com.verhas.licensor.License;
 import de.kaiserpfalzEdv.commons.util.BuilderException;
+import de.kaiserpfalzEdv.office.commons.KPO;
 import de.kaiserpfalzEdv.office.core.licence.CantLoadKeyException;
 import de.kaiserpfalzEdv.office.core.licence.CantLoadLicenceException;
 import de.kaiserpfalzEdv.office.core.licence.InvalidKeyDigestException;
@@ -39,6 +40,7 @@ import javax.inject.Named;
 import java.io.File;
 import java.io.IOException;
 
+import static de.kaiserpfalzEdv.office.commons.KPO.Type.Implementation;
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
 
 /**
@@ -47,6 +49,7 @@ import static org.apache.commons.lang3.StringUtils.isNotBlank;
  * @since 08.02.15 21:09
  */
 @Named
+@KPO(Implementation)
 public class LicenceServiceImpl implements LicenceService {
     private static final Logger LOG = LoggerFactory.getLogger(LicenceServiceImpl.class);
 

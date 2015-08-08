@@ -23,16 +23,14 @@ import com.vaadin.server.FontAwesome;
 import com.vaadin.spring.annotation.SpringView;
 import com.vaadin.spring.annotation.UIScope;
 import com.vaadin.ui.Component;
-import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Label;
-import com.vaadin.ui.Layout;
 import com.vaadin.ui.VerticalLayout;
 import de.kaiserpfalzEdv.commons.jee.eventbus.EventBusHandler;
 import de.kaiserpfalzEdv.commons.jee.servlet.model.ApplicationMetaData;
 import de.kaiserpfalzEdv.office.core.licence.OfficeLicence;
 import de.kaiserpfalzEdv.office.ui.api.mvp.Presenter;
 import de.kaiserpfalzEdv.office.ui.core.i18n.LocaleChangeEvent;
-import de.kaiserpfalzEdv.office.ui.core.i18n.MessageProvider;
+import de.kaiserpfalzEdv.office.ui.core.i18n.LocalizedStringProvider;
 import de.kaiserpfalzEdv.office.ui.web.api.menu.MenuEntry;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -54,16 +52,12 @@ import java.util.Locale;
 public class AboutContentImpl extends VerticalLayout implements AboutContent, View, Component, MenuEntry {
     public static final  String VIEW_NAME = "About";
     private static final Logger LOG       = LoggerFactory.getLogger(AboutContentImpl.class);
-
+    @Inject
+    LocalizedStringProvider i18n;
     private OfficeLicence       license;
     private ApplicationMetaData application;
-
     @Inject
     private AboutContentPresenter presenter;
-
-    @Inject
-    private MessageProvider i18n;
-
     @Inject
     private EventBusHandler bus;
 
@@ -133,39 +127,22 @@ public class AboutContentImpl extends VerticalLayout implements AboutContent, Vi
         }
     }
 
-    private Layout constructVersionString() {
-        HorizontalLayout result = new HorizontalLayout();
-        result.setSpacing(true);
-
-        Label applicationName = new Label(i18n.resolveCode("office.core.application").format(null));
-        result.addComponent(applicationName);
-
-        Label applicationVersion = new Label("(v. " + application.get(ApplicationMetaData.APPLICATION_VERSION) + ")");
-        result.addComponent(applicationVersion);
-
-        return result;
+    private Component constructVersionString() {
+        return new Label(
+                i18n.getLocalized("office.core.application").getValue()
+                        + " (v. " + application.get(ApplicationMetaData.APPLICATION_VERSION) + ")"
+        );
     }
 
-    private Layout constructLicenseInformation() {
-        HorizontalLayout result = new HorizontalLayout();
-        result.setSpacing(true);
-
-        Label licenseNumber = new Label(
-                i18n.resolveCode("office.licence.id").format(null) + license.getId()
-                                                                            .toString()
+    private Component constructLicenseInformation() {
+        return new Label(
+                i18n.getLocalized("office.licence.id").getValue() + ": " + license.getId().toString()
+                        + i18n.getLocalized("office.licence.valid_till").getValue() + ": "
+                        + license.getExpiry().format(
+                        DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT)
+                                         .withLocale(locale)
+                )
         );
-        result.addComponent(licenseNumber);
-
-        Label validTill = new Label(
-                i18n.resolveCode("office.licence.valid_till").format(null) + ": " + license.getExpiry()
-                                                                                           .format(
-                                                                                                   DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT)
-                                                                                                                    .withLocale(locale)
-                                                                                           )
-        );
-        result.addComponent(validTill);
-
-        return result;
     }
 
     @Override

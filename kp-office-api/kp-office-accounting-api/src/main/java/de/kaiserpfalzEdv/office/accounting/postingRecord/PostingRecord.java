@@ -17,6 +17,7 @@
 package de.kaiserpfalzEdv.office.accounting.postingRecord;
 
 import de.kaiserpfalzEdv.office.accounting.chartsofaccounts.Account;
+import de.kaiserpfalzEdv.office.accounting.chartsofaccounts.CostCenter;
 import de.kaiserpfalzEdv.office.commons.data.DisplayNumberHolder;
 import de.kaiserpfalzEdv.office.commons.data.IdentityHolder;
 
@@ -31,6 +32,59 @@ import java.time.OffsetDateTime;
  * @since 18.02.15 21:04
  */
 public interface PostingRecord extends IdentityHolder, DisplayNumberHolder, Serializable {
+    /**
+     * @return The accounting relevant amount.
+     */
+    MonetaryAmount getAmount();
+
+    /**
+     * The posting key. Contains the tax key and function key. Strictly numeric.
+     *
+     * @return The posting key of this posting record.
+     */
+    PostingKey getPostingKey();
+
+    /**
+     * @return The creditted account.
+     */
+    Account getAccountCreditted();
+
+    /**
+     * @return The number on the document this entry is based on.
+     */
+    String getDocumentNumber1();
+
+    /**
+     * @return The number on the document this entry is based on.
+     */
+    String getDocumentNumber2();
+
+    /**
+     * @return The date of the base document for this primaNota entry.
+     */
+    LocalDate getDocumentDate();
+
+    /**
+     * @return The amount given on the document with the used currency.
+     */
+    MonetaryAmount getDocumentAmount();
+
+
+    /**
+     * @return The debitted account.
+     */
+    Account getAccountDebitted();
+
+
+    CostCenter getCostCenter1();
+
+    CostCenter getCostCenter2();
+
+    String getNotice1();
+
+    String getNotice2();
+
+
     /**
      * @return The date of entry into this primaNota.
      */
@@ -49,43 +103,4 @@ public interface PostingRecord extends IdentityHolder, DisplayNumberHolder, Seri
      * @return The date this entry should be calculated.
      */
     LocalDate getValutaDate();
-
-
-    /**
-     * @return The number on the document this entry is based on.
-     */
-    String getDocumentNumber();
-
-    /**
-     * @return The date of the base document for this primaNota entry.
-     */
-    LocalDate getDocumentDate();
-
-    /**
-     * @return The amount given on the document with the used currency.
-     */
-    MonetaryAmount getDocumentAmount();
-
-
-    /**
-     * @return A notice of the book keeping clerk.
-     */
-    String getNotice();
-
-
-    /**
-     * @return The debitted account.
-     */
-    Account getAccountDebitted();
-
-    /**
-     * @return The creditted account.
-     */
-    Account getAccountCreditted();
-
-
-    /**
-     * @return The accounting relevant amount.
-     */
-    MonetaryAmount getPostingAmount();
 }

@@ -17,9 +17,9 @@
 package de.kaiserpfalzEdv.office.core.i18n.impl;
 
 import de.kaiserpfalzEdv.office.commons.KPO;
-import de.kaiserpfalzEdv.office.core.i18n.TranslationCommandExecutor;
 import de.kaiserpfalzEdv.office.core.i18n.TranslationService;
 import de.kaiserpfalzEdv.office.core.i18n.commands.RequestTranslationsCommand;
+import de.kaiserpfalzEdv.office.core.i18n.commands.TranslationCommandExecutor;
 import de.kaiserpfalzEdv.office.core.i18n.notifications.TranslationsNotification;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

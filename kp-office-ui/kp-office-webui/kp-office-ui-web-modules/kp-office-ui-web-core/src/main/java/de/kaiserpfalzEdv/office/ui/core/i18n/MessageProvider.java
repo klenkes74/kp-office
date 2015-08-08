@@ -77,7 +77,7 @@ public class MessageProvider implements Serializable { // implements org.vaadin.
 
     @Subscribe
     public void setLocale(LocaleChangeEvent event) {
-        LOG.trace("Changing locale: {} -> {}", this.locale, locale);
+        LOG.trace("Changing locale: {} -> {}", this.locale, event.getLocale());
 
         this.locale = event.getLocale();
     }

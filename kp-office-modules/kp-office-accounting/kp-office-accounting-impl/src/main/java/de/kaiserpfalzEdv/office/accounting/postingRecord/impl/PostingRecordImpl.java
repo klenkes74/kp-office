@@ -17,6 +17,8 @@
 package de.kaiserpfalzEdv.office.accounting.postingRecord.impl;
 
 import de.kaiserpfalzEdv.office.accounting.chartsofaccounts.Account;
+import de.kaiserpfalzEdv.office.accounting.chartsofaccounts.CostCenter;
+import de.kaiserpfalzEdv.office.accounting.postingRecord.PostingKey;
 import de.kaiserpfalzEdv.office.accounting.postingRecord.PostingRecord;
 import de.kaiserpfalzEdv.office.commons.server.data.KPOEntity;
 
@@ -41,7 +43,10 @@ public class PostingRecordImpl extends KPOEntity implements PostingRecord {
 
     private AccountingVoucher voucher;
 
-    private String notice;
+    private String notice1;
+    private String notice2;
+
+    private PostingKeyImpl postingKey;
 
     private Account accountDebitted;
     private Account accountCreditted;
@@ -57,7 +62,8 @@ public class PostingRecordImpl extends KPOEntity implements PostingRecord {
             @NotNull final UUID id,
             @NotNull final String entryId,
             @NotNull final OffsetDateTime entryDate,
-            @NotNull final String documentNumber,
+            @NotNull final String documentNumber1,
+            @NotNull final String documentNumber2,
             @NotNull final LocalDate documentDate,
             @NotNull final MonetaryAmount documentAmount,
             @NotNull final Account accountDebitted,
@@ -69,7 +75,7 @@ public class PostingRecordImpl extends KPOEntity implements PostingRecord {
         this.accountingDate = entryDate.toLocalDate();
         this.valutaDate = entryDate.toLocalDate();
 
-        this.voucher = new AccountingVoucher(documentNumber, documentDate, documentAmount);
+        this.voucher = new AccountingVoucher(documentNumber1, documentNumber2, documentDate, documentAmount);
 
         this.accountDebitted = accountDebitted;
         this.accountCreditted = accountCreditted;
@@ -103,11 +109,6 @@ public class PostingRecordImpl extends KPOEntity implements PostingRecord {
 
 
     @Override
-    public String getDocumentNumber() {
-        return voucher.getNumber();
-    }
-
-    @Override
     public LocalDate getDocumentDate() {
         return voucher.getDate();
     }
@@ -117,19 +118,47 @@ public class PostingRecordImpl extends KPOEntity implements PostingRecord {
         return voucher.getAmount();
     }
 
-
-    @Override
-    public String getNotice() {
-        return notice;
-    }
-
-    public void setNotice(String notice) {
-        this.notice = notice;
-    }
-
     @Override
     public Account getAccountDebitted() {
         return accountDebitted;
+    }
+
+    @Override
+    public CostCenter getCostCenter1() {
+        // TODO klenkes Auto defined stub for: de.kaiserpfalzEdv.office.accounting.postingRecord.impl.PostingRecordImpl.getCostCenter1
+        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    public CostCenter getCostCenter2() {
+        // TODO klenkes Auto defined stub for: de.kaiserpfalzEdv.office.accounting.postingRecord.impl.PostingRecordImpl.getCostCenter2
+        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    public String getNotice1() {
+        return notice1;
+    }
+
+    public void setNotice1(String notice) {
+        this.notice1 = notice;
+    }
+
+    @Override
+    public String getNotice2() {
+        return notice2;
+    }
+
+    public void setNotice2(String notice) { this.notice2 = notice; }
+
+    @Override
+    public MonetaryAmount getAmount() {
+        return entryAmount;
+    }
+
+    @Override
+    public PostingKey getPostingKey() {
+        return
     }
 
     @Override
@@ -138,7 +167,14 @@ public class PostingRecordImpl extends KPOEntity implements PostingRecord {
     }
 
     @Override
-    public MonetaryAmount getPostingAmount() {
-        return entryAmount;
+    public String getDocumentNumber1() {
+        // TODO klenkes Auto defined stub for: de.kaiserpfalzEdv.office.accounting.postingRecord.impl.PostingRecordImpl.getDocumentNumber1
+        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    public String getDocumentNumber2() {
+        // TODO klenkes Auto defined stub for: de.kaiserpfalzEdv.office.accounting.postingRecord.impl.PostingRecordImpl.getDocumentNumber2
+        return null;  //To change body of implemented methods use File | Settings | File Templates.
     }
 }

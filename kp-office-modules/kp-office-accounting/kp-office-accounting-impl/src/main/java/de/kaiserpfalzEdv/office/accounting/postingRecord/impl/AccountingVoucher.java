@@ -38,8 +38,11 @@ import java.time.LocalDate;
 @Embeddable
 public class AccountingVoucher implements Serializable {
 
-    @Column(name = "document_number_")
-    private String number;
+    @Column(name = "document_number1_")
+    private String number1;
+
+    @Column(name = "document_number2_")
+    private String number2;
 
     @Column(name = "document_date_")
     private LocalDate date;
@@ -56,16 +59,19 @@ public class AccountingVoucher implements Serializable {
     protected AccountingVoucher() {}
 
 
-    public AccountingVoucher(final String number, final LocalDate date, final MonetaryAmount amount) {
-        this.number = number;
+    public AccountingVoucher(final String number1, final String number2, final LocalDate date, final MonetaryAmount amount) {
+        this.number1 = number1;
+        this.number2 = number2;
         this.date = date;
         this.amount = new DatabaseMoney(amount);
     }
 
 
     public String getNumber() {
-        return number;
+        return number1;
     }
+
+    public String getNumber2() { return number2; }
 
     public LocalDate getDate() {
         return date;
@@ -89,7 +95,8 @@ public class AccountingVoucher implements Serializable {
         }
         AccountingVoucher rhs = (AccountingVoucher) obj;
         return new EqualsBuilder()
-                .append(this.number, rhs.number)
+                .append(this.number1, rhs.number1)
+                .append(this.number2, rhs.number2)
                 .append(this.date, rhs.date)
                 .isEquals();
     }
@@ -97,7 +104,8 @@ public class AccountingVoucher implements Serializable {
     @Override
     public int hashCode() {
         return new HashCodeBuilder()
-                .append(number)
+                .append(number1)
+                .append(number2)
                 .append(date)
                 .toHashCode();
     }
@@ -106,7 +114,8 @@ public class AccountingVoucher implements Serializable {
     @Override
     public String toString() {
         return new ToStringBuilder(this)
-                .append("number", number)
+                .append("number1", number1)
+                .append("number2", number2)
                 .append("date", date)
                 .toString();
     }

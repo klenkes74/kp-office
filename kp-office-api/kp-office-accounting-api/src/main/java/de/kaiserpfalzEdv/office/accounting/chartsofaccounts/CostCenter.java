@@ -14,18 +14,12 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzEdv.office.core.i18n.commands;
-
-import com.fasterxml.jackson.annotation.JsonAutoDetect;
-
-import static com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility.ANY;
+package de.kaiserpfalzEdv.office.accounting.chartsofaccounts;
 
 /**
  * @author klenkes
  * @version 2015Q1
- * @since 01.03.15 18:50
+ * @since 07.08.15 18:25
  */
-@JsonAutoDetect(fieldVisibility = ANY)
-public class RequestTranslationsCommand implements TranslationCommand {
-    private static final long serialVersionUID = -3349216016022706064L;
+public interface CostCenter extends Account {
 }

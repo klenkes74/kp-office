@@ -23,6 +23,7 @@ import com.vaadin.server.Page;
 import com.vaadin.server.Resource;
 import com.vaadin.server.ThemeResource;
 import com.vaadin.server.VaadinSession;
+import com.vaadin.spring.annotation.UIScope;
 import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Button.ClickEvent;
@@ -32,11 +33,12 @@ import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Image;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.MenuBar;
-import com.vaadin.ui.MenuBar.Command;
-import com.vaadin.ui.MenuBar.MenuItem;
 import com.vaadin.ui.themes.ValoTheme;
+import de.kaiserpfalzEdv.office.ui.core.i18n.LocalizedStringProvider;
 import de.kaiserpfalzEdv.office.ui.web.api.menu.MenuEntry;
 
+import javax.inject.Inject;
+import javax.inject.Named;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -44,6 +46,8 @@ import java.util.Map;
 /**
  * Responsive navigation menu presenting a list of available views to the user.
  */
+@Named
+@UIScope
 public class Menu extends CssLayout {
 
     private static final String              VALO_MENUITEMS    = "valo-menuitems";
@@ -55,7 +59,13 @@ public class Menu extends CssLayout {
     private CssLayout menuItemsLayout;
     private CssLayout menuPart;
 
-    public Menu() {
+
+    private LocalizedStringProvider i18n;
+
+    @Inject
+    public Menu(final LocalizedStringProvider i18n) {
+        this.i18n = i18n;
+
         setPrimaryStyleName(ValoTheme.MENU_ROOT);
         menuPart = new CssLayout();
         menuPart.addStyleName(ValoTheme.MENU_PART);
@@ -65,7 +75,7 @@ public class Menu extends CssLayout {
         top.setDefaultComponentAlignment(Alignment.MIDDLE_LEFT);
         top.addStyleName(ValoTheme.MENU_TITLE);
         top.setSpacing(true);
-        Label title = new Label("KP Office");
+        Label title = new Label(i18n.getLocalized("office.core.application"));
         title.addStyleName(ValoTheme.LABEL_H3);
         title.setSizeUndefined();
         Image image = new Image(null, new ThemeResource("img/table-logo.png"));
@@ -77,7 +87,7 @@ public class Menu extends CssLayout {
 
         // button for toggling the visibility of the menu when on a small screen
         final Button showMenu = new Button(
-                "Menu", new ClickListener() {
+                i18n.getLocalized("office.ui.menu").getValue(), new ClickListener() {
             @Override
             public void buttonClick(final ClickEvent event) {
                 if (menuPart.getStyleName().contains(VALO_MENU_VISIBLE)) {
@@ -102,13 +112,9 @@ public class Menu extends CssLayout {
         // logout menu item
         MenuBar logoutMenu = new MenuBar();
         logoutMenu.addItem(
-                "Logout", FontAwesome.SIGN_OUT, new Command() {
-
-                    @Override
-                    public void menuSelected(MenuItem selectedItem) {
-                        VaadinSession.getCurrent().getSession().invalidate();
-                        Page.getCurrent().reload();
-                    }
+                i18n.getLocalized("office.ui.logout").getValue(), FontAwesome.SIGN_OUT, selectedItem -> {
+                    VaadinSession.getCurrent().getSession().invalidate();
+                    Page.getCurrent().reload();
                 }
         );
 
@@ -170,18 +176,11 @@ public class Menu extends CssLayout {
     }
 
 
-    private void createViewButton(
-            final String name, String caption,
-            Resource icon
-    ) {
+    private void createViewButton(final String name, final String caption, final Resource icon) {
 
         Button button = new Button(
-                caption, new ClickListener() {
-
-            @Override
-            public void buttonClick(ClickEvent event) {
-                getUI().getNavigator().navigateTo(name);
-            }
+                i18n.getLocalized("office.ui.menu." + caption).getValue(), event -> {
+            getUI().getNavigator().navigateTo(name);
         }
         );
         button.setPrimaryStyleName(ValoTheme.MENU_ITEM);

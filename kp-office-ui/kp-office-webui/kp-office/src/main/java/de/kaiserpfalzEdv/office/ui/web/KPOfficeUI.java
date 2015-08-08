@@ -31,6 +31,7 @@ import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.themes.ValoTheme;
 import de.kaiserpfalzEdv.commons.jee.eventbus.EventBusHandler;
+import de.kaiserpfalzEdv.office.clients.core.TranslationClient;
 import de.kaiserpfalzEdv.office.ui.core.i18n.LocaleChangeEvent;
 import de.kaiserpfalzEdv.office.ui.web.api.menu.MenuEntry;
 import de.kaiserpfalzEdv.office.ui.web.authentication.AccessControl;
@@ -73,6 +74,12 @@ public class KPOfficeUI extends UI {
     @Inject
     private EventBusHandler eventBus;
 
+    @Inject
+    private TranslationClient i18n;
+
+    @Inject
+    private Menu menu;
+
     /**
      * root window. Since the main content may not be changed this is the main content. Then everything may be changed
      * within this layout.
@@ -112,12 +119,7 @@ public class KPOfficeUI extends UI {
         if (!accessControl.isUserSignedIn()) {
             setContent(
                     new LoginScreen(
-                            accessControl, new LoginScreen.LoginListener() {
-                        @Override
-                        public void loginSuccessful() {
-                            showMainView();
-                        }
-                    }
+                            accessControl, () -> showMainView()
                     )
             );
         } else {
@@ -128,7 +130,6 @@ public class KPOfficeUI extends UI {
     protected void showMainView() {
         HorizontalLayout screen = new HorizontalLayout();
 
-        Menu menu = new Menu();
         menu.addEntries(menuEntries);
 
 

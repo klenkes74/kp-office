@@ -14,18 +14,13 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzEdv.office.core.i18n;
-
-import de.kaiserpfalzEdv.office.core.i18n.commands.RequestTranslationsCommand;
-import de.kaiserpfalzEdv.office.core.i18n.notifications.TranslationsNotification;
+package de.kaiserpfalzEdv.office.accounting.postingRecord;
 
 /**
- * The command executor for i18n translation commands.
- *
  * @author klenkes
  * @version 2015Q1
- * @since 05.08.15 08:03
+ * @since 07.08.15 18:22
  */
-public interface TranslationCommandExecutor {
-    TranslationsNotification execute(RequestTranslationsCommand command);
+public interface PostingKey {
+    String getKey();
 }

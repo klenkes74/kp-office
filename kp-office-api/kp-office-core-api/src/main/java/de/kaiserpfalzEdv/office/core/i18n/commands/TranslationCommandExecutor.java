@@ -16,16 +16,15 @@
 
 package de.kaiserpfalzEdv.office.core.i18n.commands;
 
-import com.fasterxml.jackson.annotation.JsonAutoDetect;
-
-import static com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility.ANY;
+import de.kaiserpfalzEdv.office.core.i18n.notifications.TranslationsNotification;
 
 /**
+ * The command executor for i18n translation commands.
+ *
  * @author klenkes
  * @version 2015Q1
- * @since 01.03.15 18:50
+ * @since 05.08.15 08:03
  */
-@JsonAutoDetect(fieldVisibility = ANY)
-public class RequestTranslationsCommand implements TranslationCommand {
-    private static final long serialVersionUID = -3349216016022706064L;
+public interface TranslationCommandExecutor {
+    TranslationsNotification execute(RequestTranslationsCommand command);
 }
