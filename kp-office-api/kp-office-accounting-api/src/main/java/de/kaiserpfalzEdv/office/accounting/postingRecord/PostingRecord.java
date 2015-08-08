@@ -27,64 +27,13 @@ import java.time.LocalDate;
 import java.time.OffsetDateTime;
 
 /**
+ * This is a single posting record.
+ *
  * @author klenkes
  * @version 2015Q1
  * @since 18.02.15 21:04
  */
 public interface PostingRecord extends IdentityHolder, DisplayNumberHolder, Serializable {
-    /**
-     * @return The accounting relevant amount.
-     */
-    MonetaryAmount getAmount();
-
-    /**
-     * The posting key. Contains the tax key and function key. Strictly numeric.
-     *
-     * @return The posting key of this posting record.
-     */
-    PostingKey getPostingKey();
-
-    /**
-     * @return The creditted account.
-     */
-    Account getAccountCreditted();
-
-    /**
-     * @return The number on the document this entry is based on.
-     */
-    String getDocumentNumber1();
-
-    /**
-     * @return The number on the document this entry is based on.
-     */
-    String getDocumentNumber2();
-
-    /**
-     * @return The date of the base document for this primaNota entry.
-     */
-    LocalDate getDocumentDate();
-
-    /**
-     * @return The amount given on the document with the used currency.
-     */
-    MonetaryAmount getDocumentAmount();
-
-
-    /**
-     * @return The debitted account.
-     */
-    Account getAccountDebitted();
-
-
-    CostCenter getCostCenter1();
-
-    CostCenter getCostCenter2();
-
-    String getNotice1();
-
-    String getNotice2();
-
-
     /**
      * @return The date of entry into this primaNota.
      */
@@ -103,4 +52,52 @@ public interface PostingRecord extends IdentityHolder, DisplayNumberHolder, Seri
      * @return The date this entry should be calculated.
      */
     LocalDate getValutaDate();
+
+
+    /**
+     * @return The accounting relevant amount.
+     */
+    MonetaryAmount getAmount();
+
+    /**
+     * The posting key. Contains the tax key and function key. Strictly numeric.
+     *
+     * @return The posting key of this posting record.
+     */
+    PostingKey getPostingKey();
+
+    /**
+     * @return The creditted account.
+     */
+    Account getAccountCreditted();
+
+    /**
+     * @return The debitted account.
+     */
+    Account getAccountDebitted();
+
+    /**
+     * @return The cost center to book the amount to.
+     */
+    CostCenter getCostCenter1();
+
+    /**
+     * @return a cost center for a second method of cost accounting.
+     */
+    CostCenter getCostCenter2();
+
+    /**
+     * @return The information about the document that is base of this posting record.
+     */
+    DocumentInformation getDocumentInformation();
+
+    /**
+     * @return an informational note for this posting record. will be printed in lists.
+     */
+    String getNotice();
+
+    /**
+     * @return second informational note for this posting record. Will only be shown in detail records.
+     */
+    String getNotice2();
 }

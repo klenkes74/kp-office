@@ -16,28 +16,34 @@
 
 package de.kaiserpfalzEdv.office.accounting.postingRecord;
 
-import de.kaiserpfalzEdv.office.accounting.automation.FunctionKey;
-import de.kaiserpfalzEdv.office.accounting.tax.TaxKey;
+import javax.money.MonetaryAmount;
+import java.time.LocalDate;
 
 /**
- * The posting key is a combined information about the
+ * Information about the Document the posting record is based on.
+ *
  * @author klenkes
  * @version 2015Q1
- * @since 07.08.15 18:22
+ * @since 08.08.15 07:57
  */
-public interface PostingKey {
+public interface DocumentInformation {
     /**
-     * @return The displayed key. A number of up to 3 digits in length.
+     * @return The number on the document this entry is based on.
      */
-    String getKey();
+    String getDocumentNumber1();
 
     /**
-     * @return The tax information for this posting key.
+     * @return The number on the document this entry is based on.
      */
-    TaxKey getTaxKey();
+    String getDocumentNumber2();
 
     /**
-     * @return The automation information for this posting key.
+     * @return The date of the base document for this primaNota entry.
      */
-    FunctionKey getFunctionKey();
+    LocalDate getDocumentDate();
+
+    /**
+     * @return The amount given on the document with the used currency.
+     */
+    MonetaryAmount getDocumentAmount();
 }

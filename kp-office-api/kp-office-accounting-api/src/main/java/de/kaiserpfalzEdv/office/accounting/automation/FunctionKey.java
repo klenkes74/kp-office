@@ -14,30 +14,17 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzEdv.office.accounting.postingRecord;
+package de.kaiserpfalzEdv.office.accounting.automation;
 
-import de.kaiserpfalzEdv.office.accounting.automation.FunctionKey;
-import de.kaiserpfalzEdv.office.accounting.tax.TaxKey;
+import de.kaiserpfalzEdv.office.commons.data.DisplayNameHolder;
+import de.kaiserpfalzEdv.office.commons.data.DisplayNumberHolder;
+import de.kaiserpfalzEdv.office.commons.data.IdentityHolder;
+
+import java.io.Serializable;
 
 /**
- * The posting key is a combined information about the
  * @author klenkes
  * @version 2015Q1
- * @since 07.08.15 18:22
+ * @since 08.08.15 08:11
  */
-public interface PostingKey {
-    /**
-     * @return The displayed key. A number of up to 3 digits in length.
-     */
-    String getKey();
-
-    /**
-     * @return The tax information for this posting key.
-     */
-    TaxKey getTaxKey();
-
-    /**
-     * @return The automation information for this posting key.
-     */
-    FunctionKey getFunctionKey();
-}
+public interface FunctionKey extends IdentityHolder, DisplayNumberHolder, DisplayNameHolder, Serializable {}
