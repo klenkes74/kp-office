@@ -20,6 +20,7 @@ import de.kaiserpfalzEdv.office.accounting.chartsofaccounts.Account;
 import de.kaiserpfalzEdv.office.accounting.chartsofaccounts.CostCenter;
 import de.kaiserpfalzEdv.office.commons.data.DisplayNumberHolder;
 import de.kaiserpfalzEdv.office.commons.data.IdentityHolder;
+import de.kaiserpfalzEdv.office.commons.data.TenantIdHolder;
 
 import javax.money.MonetaryAmount;
 import java.io.Serializable;
@@ -33,7 +34,7 @@ import java.time.OffsetDateTime;
  * @version 2015Q1
  * @since 18.02.15 21:04
  */
-public interface PostingRecord extends IdentityHolder, DisplayNumberHolder, Serializable {
+public interface PostingRecord extends IdentityHolder, DisplayNumberHolder, TenantIdHolder, Serializable {
     /**
      * @return The date of entry into this primaNota.
      */

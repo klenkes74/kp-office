@@ -16,21 +16,17 @@
 
 package de.kaiserpfalzEdv.office.accounting.primaNota;
 
-import de.kaiserpfalzEdv.office.commons.data.DisplayNameHolder;
-import de.kaiserpfalzEdv.office.commons.data.DisplayNumberHolder;
-import de.kaiserpfalzEdv.office.commons.data.IdentityHolder;
-import de.kaiserpfalzEdv.office.commons.data.TenantIdHolder;
-
-import java.io.Serializable;
+import java.time.LocalDate;
 
 /**
- * The base information about a prima nota.
- * only the size of the nota (in entries) is given. To retrieve the entries, the {@link PrimaNotaPage} is needed.
- *
  * @author klenkes
  * @version 2015Q1
- * @since 19.02.15 06:43
+ * @since 09.08.15 00:01
  */
-public interface PrimaNotaInfo extends IdentityHolder, TenantIdHolder, DisplayNumberHolder, DisplayNameHolder, Serializable {
-    int size();
+public interface FiscalYear {
+    LocalDate getStartDate();
+
+    int getFirstPeriod();
+
+    int getMaxPeriods();
 }

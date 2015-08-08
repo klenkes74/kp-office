@@ -16,24 +16,11 @@
 
 package de.kaiserpfalzEdv.office.accounting.primaNota;
 
-import de.kaiserpfalzEdv.office.accounting.postingRecord.PostingRecord;
-
-import javax.validation.constraints.NotNull;
-import java.util.List;
-
 /**
  * @author klenkes
  * @version 2015Q1
- * @since 18.02.15 20:02
+ * @since 08.08.15 22:42
  */
-public interface PrimaNota extends PrimaNotaInfo {
-    /**
-     * @return All entries of this primaNota.
-     */
-    List<? extends PostingRecord> getEntries();
+public class PrimaNotaQuery {
 
-    /**
-     * @param entry The primaNota entry to add to this primaNota.
-     */
-    void addEntry(@NotNull PrimaNotaEntry entry);
 }

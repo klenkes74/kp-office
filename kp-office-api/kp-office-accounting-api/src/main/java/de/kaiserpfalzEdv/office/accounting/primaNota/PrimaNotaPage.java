@@ -16,21 +16,13 @@
 
 package de.kaiserpfalzEdv.office.accounting.primaNota;
 
-import de.kaiserpfalzEdv.office.commons.data.DisplayNameHolder;
-import de.kaiserpfalzEdv.office.commons.data.DisplayNumberHolder;
-import de.kaiserpfalzEdv.office.commons.data.IdentityHolder;
-import de.kaiserpfalzEdv.office.commons.data.TenantIdHolder;
-
-import java.io.Serializable;
+import de.kaiserpfalzEdv.commons.jee.paging.Page;
 
 /**
- * The base information about a prima nota.
- * only the size of the nota (in entries) is given. To retrieve the entries, the {@link PrimaNotaPage} is needed.
+ * The prima nota. A system can hold multiple prima notae for one tenant.
  *
  * @author klenkes
  * @version 2015Q1
- * @since 19.02.15 06:43
+ * @since 18.02.15 20:02
  */
-public interface PrimaNotaInfo extends IdentityHolder, TenantIdHolder, DisplayNumberHolder, DisplayNameHolder, Serializable {
-    int size();
-}
+public interface PrimaNotaPage extends PrimaNotaInfo, Page<PrimaNotaEntry> {}
