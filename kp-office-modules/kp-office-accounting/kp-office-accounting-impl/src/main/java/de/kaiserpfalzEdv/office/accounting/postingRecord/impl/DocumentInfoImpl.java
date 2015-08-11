@@ -17,9 +17,11 @@
 package de.kaiserpfalzEdv.office.accounting.postingRecord.impl;
 
 import de.kaiserpfalzEdv.office.accounting.DatabaseMoney;
+import de.kaiserpfalzEdv.office.accounting.postingRecord.DocumentInformation;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
 
 import javax.money.MonetaryAmount;
 import javax.persistence.AttributeOverride;
@@ -27,16 +29,18 @@ import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.persistence.Embedded;
-import java.io.Serializable;
 import java.time.LocalDate;
 
 /**
+ * The document information for the base document of a posting record. Contains information about the document (invoice)
+ * the posting record is about.
+ *
  * @author klenkes
  * @version 2015Q1
  * @since 28.02.15 13:08
  */
 @Embeddable
-public class AccountingVoucher implements Serializable {
+public class DocumentInfoImpl implements DocumentInformation {
 
     @Column(name = "document_number1_")
     private String number1;
@@ -56,10 +60,10 @@ public class AccountingVoucher implements Serializable {
 
 
     @Deprecated // only for Jackson, JAX-B, JPA, ...
-    protected AccountingVoucher() {}
+    protected DocumentInfoImpl() {}
 
 
-    public AccountingVoucher(final String number1, final String number2, final LocalDate date, final MonetaryAmount amount) {
+    public DocumentInfoImpl(final String number1, final String number2, final LocalDate date, final MonetaryAmount amount) {
         this.number1 = number1;
         this.number2 = number2;
         this.date = date;
@@ -67,17 +71,17 @@ public class AccountingVoucher implements Serializable {
     }
 
 
-    public String getNumber() {
+    public String getDocumentNumber1() {
         return number1;
     }
 
-    public String getNumber2() { return number2; }
+    public String getDocumentNumber2() { return number2; }
 
-    public LocalDate getDate() {
+    public LocalDate getDocumentDate() {
         return date;
     }
 
-    public MonetaryAmount getAmount() {
+    public MonetaryAmount getDocumentAmount() {
         return amount.getMoney();
     }
 
@@ -93,11 +97,11 @@ public class AccountingVoucher implements Serializable {
         if (obj.getClass() != getClass()) {
             return false;
         }
-        AccountingVoucher rhs = (AccountingVoucher) obj;
+        DocumentInformation rhs = (DocumentInformation) obj;
         return new EqualsBuilder()
-                .append(this.number1, rhs.number1)
-                .append(this.number2, rhs.number2)
-                .append(this.date, rhs.date)
+                .append(this.number1, rhs.getDocumentNumber1())
+                .append(this.number2, rhs.getDocumentNumber2())
+                .append(this.date, rhs.getDocumentDate())
                 .isEquals();
     }
 
@@ -113,10 +117,11 @@ public class AccountingVoucher implements Serializable {
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this)
+        return new ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE)
                 .append("number1", number1)
                 .append("number2", number2)
                 .append("date", date)
+                .append("amount", amount)
                 .toString();
     }
 }

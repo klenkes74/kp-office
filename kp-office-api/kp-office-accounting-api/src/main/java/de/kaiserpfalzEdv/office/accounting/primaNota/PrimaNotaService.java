@@ -20,7 +20,6 @@ import de.kaiserpfalzEdv.commons.jee.paging.Pageable;
 
 import javax.validation.constraints.NotNull;
 import java.util.Set;
-import java.util.UUID;
 
 /**
  * @author klenkes
@@ -31,24 +30,24 @@ public interface PrimaNotaService {
     /**
      * @return The complete set of prima notae.
      */
-    Set<PrimaNotaInfo> listAllPrimaNota();
+    Set<PrimaNota> listAllPrimaNota();
 
-    PrimaNotaPage loadPrimaNota(final PrimaNotaInfo info, final Pageable pageRequest);
+    PrimaNotaPage loadPrimaNota(final PrimaNota info, final Pageable pageRequest);
 
-    PrimaNotaInfo createNewPrimaNota(final UUID tenant, final FiscalPeriod period);
+    PrimaNota createNewPrimaNota(PrimaNota created);
 
 
     /**
      * @param primaNota The prima nota to add this entry to.
      * @param entry     The prima nota entry to add.
      */
-    void addEntry(@NotNull PrimaNotaInfo primaNota, @NotNull PrimaNotaEntry entry);
+    void addEntry(@NotNull PrimaNota primaNota, @NotNull PrimaNotaEntry entry);
 
     /**
      * @param primaNota The prima nota to remove this entry entry from.
      * @param entry     The prima nota entry to remove.
      */
-    void removeEntry(@NotNull PrimaNotaInfo primaNota, @NotNull PrimaNotaEntry entry);
+    void removeEntry(@NotNull PrimaNota primaNota, @NotNull PrimaNotaEntry entry);
 
 
     /**
@@ -57,5 +56,5 @@ public interface PrimaNotaService {
      *
      * @param info The prima nota to be closed.
      */
-    void closePrimaNota(final PrimaNotaInfo info);
+    void closePrimaNota(final PrimaNota info);
 }

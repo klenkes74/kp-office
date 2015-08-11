@@ -24,4 +24,5 @@ import de.kaiserpfalzEdv.office.accounting.postingRecord.PostingRecord;
  * @since 27.02.15 11:38
  */
 public interface PrimaNotaEntry extends PostingRecord {
+    PrimaNota getPrimaNota();
 }

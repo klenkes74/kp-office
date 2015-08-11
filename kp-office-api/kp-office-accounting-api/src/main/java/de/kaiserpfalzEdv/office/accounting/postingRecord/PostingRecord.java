@@ -16,8 +16,10 @@
 
 package de.kaiserpfalzEdv.office.accounting.postingRecord;
 
+import de.kaiserpfalzEdv.office.accounting.automation.FunctionKey;
 import de.kaiserpfalzEdv.office.accounting.chartsofaccounts.Account;
 import de.kaiserpfalzEdv.office.accounting.chartsofaccounts.CostCenter;
+import de.kaiserpfalzEdv.office.accounting.tax.TaxKey;
 import de.kaiserpfalzEdv.office.commons.data.DisplayNumberHolder;
 import de.kaiserpfalzEdv.office.commons.data.IdentityHolder;
 import de.kaiserpfalzEdv.office.commons.data.TenantIdHolder;
@@ -61,11 +63,14 @@ public interface PostingRecord extends IdentityHolder, DisplayNumberHolder, Tena
     MonetaryAmount getAmount();
 
     /**
-     * The posting key. Contains the tax key and function key. Strictly numeric.
-     *
-     * @return The posting key of this posting record.
+     * @return The tax information for this posting key.
      */
-    PostingKey getPostingKey();
+    TaxKey getTaxKey();
+
+    /**
+     * @return The automation information for this posting key.
+     */
+    FunctionKey getFunctionKey();
 
     /**
      * @return The creditted account.

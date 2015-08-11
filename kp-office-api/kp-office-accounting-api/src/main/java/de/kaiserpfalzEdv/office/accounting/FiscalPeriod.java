@@ -14,7 +14,9 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzEdv.office.accounting.primaNota;
+package de.kaiserpfalzEdv.office.accounting;
+
+import java.time.Month;
 
 /**
  * @author klenkes
@@ -26,6 +28,11 @@ public interface FiscalPeriod extends Comparable<FiscalPeriod> {
      * @return The year of the prima nota.
      */
     FiscalYear getYear();
+
+    /**
+     * @return The month this period is assigned to.
+     */
+    Month getMonth();
 
     /**
      * @return The period of the prima nota. Must be a positive integer.

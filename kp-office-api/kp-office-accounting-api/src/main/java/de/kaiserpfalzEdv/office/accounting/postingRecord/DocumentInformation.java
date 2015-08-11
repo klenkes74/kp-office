@@ -17,6 +17,7 @@
 package de.kaiserpfalzEdv.office.accounting.postingRecord;
 
 import javax.money.MonetaryAmount;
+import java.io.Serializable;
 import java.time.LocalDate;
 
 /**
@@ -26,7 +27,7 @@ import java.time.LocalDate;
  * @version 2015Q1
  * @since 08.08.15 07:57
  */
-public interface DocumentInformation {
+public interface DocumentInformation extends Serializable {
     /**
      * @return The number on the document this entry is based on.
      */

@@ -22,7 +22,7 @@
             <level>TRACE</level>
         </filter>
         <encoder>
-            <pattern>%d{HH:mm:ss.SSS} [%thread|%X{test-class}|%X{test}|%X{id}] %-5level %logger{36} - %msg%n</pattern>
+            <pattern>%d{HH:mm:ss.SSS} [%thread|%X{id}|%X{test-class}|%X{test}] %-5level %logger{36} - %msg%n</pattern>
         </encoder>
     </appender>
 
@@ -33,7 +33,7 @@
         <file>target/development.log</file>
         <append>false</append>
         <encoder>
-            <pattern>%d{HH:mm:ss.SSS} [%thread|%X{test-class}|%X{test}|%X{id}] %-5level %logger{36} - %msg%n</pattern>
+            <pattern>%d{HH:mm:ss.SSS} [%thread|%X{id}|%X{test-class}|%X{test}] %-5level %logger{36} - %msg%n</pattern>
         </encoder>
     </appender>
 

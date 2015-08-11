@@ -19,10 +19,10 @@ package de.kaiserpfalzEdv.office.accounting.primaNota;
 import de.kaiserpfalzEdv.commons.jee.paging.Page;
 
 /**
- * The prima nota. A system can hold multiple prima notae for one tenant.
+ * A page of the {@link PrimaNota}.
  *
  * @author klenkes
  * @version 2015Q1
  * @since 18.02.15 20:02
  */
-public interface PrimaNotaPage extends PrimaNotaInfo, Page<PrimaNotaEntry> {}
+public interface PrimaNotaPage extends PrimaNota, Page<PrimaNotaEntry> {}

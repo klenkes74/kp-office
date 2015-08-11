@@ -14,19 +14,22 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzEdv.office.accounting.primaNota.impl;
+package de.kaiserpfalzEdv.office.accounting;
 
-import de.kaiserpfalzEdv.office.accounting.primaNota.FiscalPeriod;
-import de.kaiserpfalzEdv.office.accounting.primaNota.FiscalYear;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+import java.time.Month;
 
 import static com.google.common.base.Preconditions.checkArgument;
 
@@ -39,18 +42,22 @@ import static com.google.common.base.Preconditions.checkArgument;
  */
 @Embeddable
 public class FiscalPeriodImpl implements FiscalPeriod, Serializable {
-    private static final long serialVersionUID = 8180348096089882680L;
+    private static final long serialVersionUID = 2785169539922383221L;
 
     /**
      * The fiscal year.
      */
-    @Column(name = "fiscal_period_year_")
+    @ManyToOne(fetch = FetchType.EAGER, optional = false, cascade = CascadeType.ALL)
+    @JoinColumn(name = "fiscal_year_", nullable = false)
     private FiscalYearImpl year;
+
+    @Column(name = "fiscal_month_")
+    private Month month;
 
     /**
      * The fiscal period.
      */
-    @Column(name = "fiscal_period_period_")
+    @Column(name = "fiscal_period_", nullable = false)
     private int period;
 
 
@@ -81,12 +88,30 @@ public class FiscalPeriodImpl implements FiscalPeriod, Serializable {
 
 
     @Override
+    public Month getMonth() {
+        return month;
+    }
+
+    public void setMonth(final Month month) {
+        this.month = month;
+    }
+
+
+    @Override
     public int getPeriod() {
         return period;
     }
 
     public void setPeriod(@NotNull final int period) {
-        checkArgument(period >= 0, "The period has to be a positive integer!");
+        checkArgument(
+                period >= year.getFirstPeriod(), "The period has to be at least '"
+                        + year.getFirstPeriod() + "' since the fiscal year starts with that period!"
+        );
+        checkArgument(
+                period <= year.getMaxPeriod(),
+                "The Period has to be less or equal than '" + year.getMaxPeriod()
+                        + "' since the fiscal year ends with that period!"
+        );
 
         this.period = period;
     }
@@ -136,6 +161,7 @@ public class FiscalPeriodImpl implements FiscalPeriod, Serializable {
     public String toString() {
         return new ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE)
                 .append("year", year)
+                .append("month", month)
                 .append("period", period)
                 .toString();
     }

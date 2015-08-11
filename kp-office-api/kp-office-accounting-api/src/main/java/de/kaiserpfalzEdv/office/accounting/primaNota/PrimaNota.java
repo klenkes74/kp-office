@@ -16,17 +16,22 @@
 
 package de.kaiserpfalzEdv.office.accounting.primaNota;
 
-import java.time.LocalDate;
+import de.kaiserpfalzEdv.office.accounting.FiscalPeriod;
+import de.kaiserpfalzEdv.office.commons.data.DisplayNameHolder;
+import de.kaiserpfalzEdv.office.commons.data.DisplayNumberHolder;
+import de.kaiserpfalzEdv.office.commons.data.IdentityHolder;
+import de.kaiserpfalzEdv.office.commons.data.TenantIdHolder;
+
+import java.io.Serializable;
 
 /**
+ * The base prima nota.
+ *
+ *
  * @author klenkes
  * @version 2015Q1
- * @since 09.08.15 00:01
+ * @since 19.02.15 06:43
  */
-public interface FiscalYear {
-    LocalDate getStartDate();
-
-    int getFirstPeriod();
-
-    int getMaxPeriods();
+public interface PrimaNota extends IdentityHolder, TenantIdHolder, DisplayNumberHolder, DisplayNameHolder, Serializable {
+    FiscalPeriod getPeriod();
 }
