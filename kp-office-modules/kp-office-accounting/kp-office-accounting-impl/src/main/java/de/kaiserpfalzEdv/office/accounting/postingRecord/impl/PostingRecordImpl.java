@@ -17,20 +17,25 @@
 package de.kaiserpfalzEdv.office.accounting.postingRecord.impl;
 
 import de.kaiserpfalzEdv.office.accounting.DatabaseMoney;
-import de.kaiserpfalzEdv.office.accounting.automation.FunctionKey;
+import de.kaiserpfalzEdv.office.accounting.automation.impl.FunctionKeyImpl;
+import de.kaiserpfalzEdv.office.accounting.automation.impl.TaxKeyImpl;
 import de.kaiserpfalzEdv.office.accounting.chartsofaccounts.impl.AccountImpl;
 import de.kaiserpfalzEdv.office.accounting.chartsofaccounts.impl.CostCenterImpl;
 import de.kaiserpfalzEdv.office.accounting.postingRecord.PostingRecord;
-import de.kaiserpfalzEdv.office.accounting.tax.TaxKey;
 import de.kaiserpfalzEdv.office.commons.server.data.KPOTenantHoldingEntity;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
+import javax.persistence.Column;
+import javax.persistence.Embedded;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.MappedSuperclass;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import java.util.UUID;
+
+import static javax.persistence.FetchType.LAZY;
 
 /**
  * The default posting record.
@@ -40,27 +45,58 @@ import java.util.UUID;
  * @since 11.08.15 03:08
  */
 @MappedSuperclass
-public abstract class PostingRecordImpl extends KPOTenantHoldingEntity implements PostingRecord {
-    private static final Logger LOG = LoggerFactory.getLogger(PostingRecordImpl.class);
+public class PostingRecordImpl extends KPOTenantHoldingEntity implements PostingRecord {
+    private static final long serialVersionUID = 3240890814688813211L;
 
+
+    @Column(name = "date_entry_", nullable = false, insertable = true, updatable = false)
     private OffsetDateTime entryDate;
-    private LocalDate      accountingDate;
-    private LocalDate      valutaDate;
 
+    @Column(name = "date_accounting_", nullable = false, insertable = true, updatable = true)
+    private LocalDate accountingDate;
+
+    @Column(name = "date_valuta_", nullable = false, insertable = true, updatable = true)
+    private LocalDate valutaDate;
+
+
+    @Embedded
     private DatabaseMoney amount;
 
-    private TaxKey      taxKey;
-    private FunctionKey functionKey;
 
+    @ManyToOne(optional = true, fetch = LAZY)
+    @JoinColumn(name = "taxkey_")
+    private TaxKeyImpl taxKey;
+
+    @ManyToOne(optional = true, fetch = LAZY)
+    @JoinColumn(name = "functionkey_")
+    private FunctionKeyImpl functionKey;
+
+
+    @ManyToOne(optional = false, fetch = LAZY)
+    @JoinColumn(name = "debitted_", nullable = false)
     private AccountImpl accountDebitted;
+
+    @ManyToOne(optional = false, fetch = LAZY)
+    @JoinColumn(name = "creditted_", nullable = false)
     private AccountImpl accountCreditted;
 
+
+    @ManyToOne(optional = true, fetch = LAZY)
+    @JoinColumn(name = "costcenter1_")
     private CostCenterImpl costCenter1;
+
+    @ManyToOne(optional = true, fetch = LAZY)
+    @JoinColumn(name = "costcenter2_")
     private CostCenterImpl costCenter2;
 
-    private DocumentInfoImpl document;
+    @Embedded
+    private DocumentInformationImpl document;
 
+
+    @Column(name = "notice1_", length = 25)
     private String notice1;
+
+    @Column(name = "notice2_", length = 25)
     private String notice2;
 
 
@@ -71,7 +107,25 @@ public abstract class PostingRecordImpl extends KPOTenantHoldingEntity implement
     public PostingRecordImpl() {}
 
 
-    public PostingRecordImpl(@NotNull UUID id, @NotNull String displayName, @NotNull String displayNumber, @NotNull UUID tenantId, OffsetDateTime entryDate, LocalDate accountingDate, LocalDate valutaDate, DatabaseMoney amount, TaxKey taxKey, FunctionKey functionKey, AccountImpl accountDebitted, AccountImpl accountCreditted, CostCenterImpl costCenter1, CostCenterImpl costCenter2, DocumentInfoImpl document, String notice1, String notice2) {
+    public PostingRecordImpl(
+            @NotNull UUID id,
+            @NotNull String displayName,
+            @NotNull String displayNumber,
+            @NotNull UUID tenantId,
+            @NotNull OffsetDateTime entryDate,
+            @NotNull LocalDate accountingDate,
+            @NotNull LocalDate valutaDate,
+            @NotNull DatabaseMoney amount,
+            TaxKeyImpl taxKey,
+            FunctionKeyImpl functionKey,
+            @NotNull AccountImpl accountDebitted,
+            @NotNull AccountImpl accountCreditted,
+            CostCenterImpl costCenter1,
+            CostCenterImpl costCenter2,
+            @NotNull DocumentInformationImpl document,
+            @NotNull String notice1,
+            String notice2
+    ) {
         super(id, displayName, displayNumber, tenantId);
 
         this.entryDate = entryDate;
@@ -127,20 +181,20 @@ public abstract class PostingRecordImpl extends KPOTenantHoldingEntity implement
     }
 
     @Override
-    public TaxKey getTaxKey() {
+    public TaxKeyImpl getTaxKey() {
         return taxKey;
     }
 
-    public void setTaxKey(TaxKey taxKey) {
+    public void setTaxKey(TaxKeyImpl taxKey) {
         this.taxKey = taxKey;
     }
 
     @Override
-    public FunctionKey getFunctionKey() {
+    public FunctionKeyImpl getFunctionKey() {
         return functionKey;
     }
 
-    public void setFunctionKey(FunctionKey functionKey) {
+    public void setFunctionKey(FunctionKeyImpl functionKey) {
         this.functionKey = functionKey;
     }
 
@@ -181,11 +235,11 @@ public abstract class PostingRecordImpl extends KPOTenantHoldingEntity implement
     }
 
     @Override
-    public DocumentInfoImpl getDocumentInformation() {
+    public DocumentInformationImpl getDocumentInformation() {
         return document;
     }
 
-    public void setDocumentInformation(DocumentInfoImpl document) {
+    public void setDocumentInformation(DocumentInformationImpl document) {
         this.document = document;
     }
 
@@ -205,5 +259,18 @@ public abstract class PostingRecordImpl extends KPOTenantHoldingEntity implement
 
     public void setNotice2(String notice) {
         this.notice2 = notice;
+    }
+
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this)
+                .appendSuper(super.toString())
+                .append("entryDate", entryDate)
+                .append("accountingDate", accountingDate)
+                .append("valutaDate", valutaDate)
+                .append("amount", amount)
+                .append("notice1", notice1)
+                .toString();
     }
 }

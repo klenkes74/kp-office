@@ -24,7 +24,7 @@ import de.kaiserpfalzEdv.office.commons.data.IdentityHolder;
 
 import javax.money.MonetaryAmount;
 import java.io.Serializable;
-import java.math.BigInteger;
+import java.math.BigDecimal;
 
 /**
  * The tax information. This entity holds all information about calculating the tax for a posting record.
@@ -47,7 +47,7 @@ public interface TaxKey extends IdentityHolder, DisplayNumberHolder, DisplayName
     /**
      * @return The tax rate (e.g. 19.0 for the german VAT)
      */
-    BigInteger getTaxRate();
+    BigDecimal getTaxRate();
 
     /**
      * Calculates the posting record for the tax for the given posting record if the tax is to be creditted.

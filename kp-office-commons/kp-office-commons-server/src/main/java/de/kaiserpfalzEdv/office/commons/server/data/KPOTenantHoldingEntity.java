@@ -30,7 +30,7 @@ import java.util.UUID;
  */
 @MappedSuperclass
 public class KPOTenantHoldingEntity extends KPOEntity implements TenantHoldingEntity {
-    private static final long serialVersionUID = 3706937080258806740L;
+    private static final long serialVersionUID = -1955446632645498430L;
 
     @Column(name = "TENANT_", unique = false)
     private UUID tenantId;
@@ -48,9 +48,7 @@ public class KPOTenantHoldingEntity extends KPOEntity implements TenantHoldingEn
             @NotNull final String displayNumber,
             @NotNull final UUID tenantId
     ) {
-        setId(id);
-        setDisplayName(displayName);
-        setDisplayNumber(displayNumber);
+        super(id, displayName, displayNumber);
         setTenantId(tenantId);
     }
 

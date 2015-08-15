@@ -40,7 +40,7 @@ import java.time.LocalDate;
  * @since 28.02.15 13:08
  */
 @Embeddable
-public class DocumentInfoImpl implements DocumentInformation {
+public class DocumentInformationImpl implements DocumentInformation {
 
     @Column(name = "document_number1_")
     private String number1;
@@ -48,7 +48,7 @@ public class DocumentInfoImpl implements DocumentInformation {
     @Column(name = "document_number2_")
     private String number2;
 
-    @Column(name = "document_date_")
+    @Column(name = "document_date_", nullable = false)
     private LocalDate date;
 
     @AttributeOverrides({
@@ -60,10 +60,10 @@ public class DocumentInfoImpl implements DocumentInformation {
 
 
     @Deprecated // only for Jackson, JAX-B, JPA, ...
-    protected DocumentInfoImpl() {}
+    protected DocumentInformationImpl() {}
 
 
-    public DocumentInfoImpl(final String number1, final String number2, final LocalDate date, final MonetaryAmount amount) {
+    public DocumentInformationImpl(final String number1, final String number2, final LocalDate date, final MonetaryAmount amount) {
         this.number1 = number1;
         this.number2 = number2;
         this.date = date;

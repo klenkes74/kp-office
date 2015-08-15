@@ -64,7 +64,6 @@ public class AccountImpl extends KPOTenantHoldingEntity implements Account, Seri
         super(id, name, name, tenantId);
     }
 
-
     @Override
     public String getCurrentMapping() {
         return isNotBlank(mapping) ? mapping : "";

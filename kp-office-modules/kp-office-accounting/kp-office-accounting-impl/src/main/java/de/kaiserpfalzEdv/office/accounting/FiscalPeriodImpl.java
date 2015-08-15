@@ -24,6 +24,7 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -32,6 +33,7 @@ import java.io.Serializable;
 import java.time.Month;
 
 import static com.google.common.base.Preconditions.checkArgument;
+import static javax.persistence.EnumType.STRING;
 
 /**
  * The fiscal period used within the accounting system. The year and a positive integer as period within that year.
@@ -51,6 +53,7 @@ public class FiscalPeriodImpl implements FiscalPeriod, Serializable {
     @JoinColumn(name = "fiscal_year_", nullable = false)
     private FiscalYearImpl year;
 
+    @Enumerated(STRING)
     @Column(name = "fiscal_month_")
     private Month month;
 
