@@ -19,7 +19,7 @@ package de.kaiserpfalzEdv.office.ui.core.i18n;
 import com.google.common.eventbus.Subscribe;
 import com.vaadin.spring.annotation.UIScope;
 import de.kaiserpfalzEdv.commons.jee.eventbus.EventBusHandler;
-import de.kaiserpfalzEdv.office.clients.core.TranslationClient;
+import de.kaiserpfalzEdv.office.clients.core.impl.TranslationClient;
 import de.kaiserpfalzEdv.office.commons.KPO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

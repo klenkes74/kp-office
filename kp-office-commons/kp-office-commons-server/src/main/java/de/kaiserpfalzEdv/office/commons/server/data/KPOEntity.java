@@ -37,7 +37,7 @@ import java.util.UUID;
  */
 @MappedSuperclass
 public abstract class KPOEntity implements Entity {
-    private static final long serialVersionUID = -6143928839834376900L;
+    private static final long serialVersionUID = 2778388820585854809L;
 
     @Id
     @NotNull
@@ -85,13 +85,13 @@ public abstract class KPOEntity implements Entity {
     }
 
     @Deprecated // Only for Jackson, JAX-B and JPA!
-    public void setDisplayName(@NotNull DisplayNameHolder nameHolder) {
-        this.displayName = nameHolder.getDisplayName();
+    public void setDisplayName(@NotNull String displayName) {
+        this.displayName = displayName;
     }
 
     @Deprecated // Only for Jackson, JAX-B and JPA!
-    public void setDisplayName(@NotNull String displayName) {
-        this.displayName = displayName;
+    public void setDisplayName(@NotNull DisplayNameHolder nameHolder) {
+        this.displayName = nameHolder.getDisplayName();
     }
 
     public String getDisplayNumber() {

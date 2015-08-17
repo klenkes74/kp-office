@@ -102,6 +102,11 @@
             </dependency>
             <dependency>
                 <groupId>de.kaiserpfalz-edv.office.ui.web</groupId>
+                <artifactId>kp-office-ui-web-commons</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>de.kaiserpfalz-edv.office.ui.web</groupId>
                 <artifactId>kp-office-ui-web-core</artifactId>
                 <version>${project.version}</version>
             </dependency>

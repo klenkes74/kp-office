@@ -16,8 +16,8 @@
 
 package de.kaiserpfalzEdv.office.accounting.primaNota.impl;
 
-import de.kaiserpfalzEdv.office.accounting.FiscalPeriodImpl;
 import de.kaiserpfalzEdv.office.accounting.primaNota.PrimaNota;
+import de.kaiserpfalzEdv.office.accounting.tax.impl.FiscalPeriodImpl;
 import de.kaiserpfalzEdv.office.commons.server.data.KPOTenantHoldingEntity;
 
 import javax.persistence.Cacheable;

@@ -59,13 +59,18 @@
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
+            <artifactId>kp-office-ui-web-commons</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
             <artifactId>kp-office-ui-web-core</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>kp-office-ui-web-accounting</artifactId>
+        </dependency>
         <!--
-                <dependency>
-                    <groupId>${project.groupId}</groupId>
-                    <artifactId>kp-office-ui-web-accounting</artifactId>
-                </dependency>
                 <dependency>
                     <groupId>${project.groupId}</groupId>
                     <artifactId>kp-office-ui-web-files</artifactId>

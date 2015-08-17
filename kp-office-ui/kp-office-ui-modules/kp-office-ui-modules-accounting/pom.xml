@@ -33,4 +33,11 @@
     <properties>
         <project.root>../../..</project.root>
     </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>de.kaiserpfalz-edv.office.services</groupId>
+            <artifactId>kp-office-client-accounting</artifactId>
+        </dependency>
+    </dependencies>
 </project>

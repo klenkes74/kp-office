@@ -21,7 +21,7 @@
 
     <parent>
         <groupId>de.kaiserpfalz-edv.office.ui.web</groupId>
-        <artifactId>kp-office-ui-modules</artifactId>
+        <artifactId>kp-office-ui-web-modules</artifactId>
         <version>0.2.0-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>

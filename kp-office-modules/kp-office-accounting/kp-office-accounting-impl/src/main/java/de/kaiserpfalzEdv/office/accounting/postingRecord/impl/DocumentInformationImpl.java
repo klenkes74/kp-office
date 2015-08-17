@@ -67,7 +67,8 @@ public class DocumentInformationImpl implements DocumentInformation {
         this.number1 = number1;
         this.number2 = number2;
         this.date = date;
-        this.amount = new DatabaseMoney(amount);
+
+        this.amount = (DatabaseMoney.class.isAssignableFrom(amount.getClass())) ? (DatabaseMoney) amount : new DatabaseMoney(amount);
     }
 
 
@@ -82,7 +83,7 @@ public class DocumentInformationImpl implements DocumentInformation {
     }
 
     public MonetaryAmount getDocumentAmount() {
-        return amount.getMoney();
+        return amount;
     }
 
 

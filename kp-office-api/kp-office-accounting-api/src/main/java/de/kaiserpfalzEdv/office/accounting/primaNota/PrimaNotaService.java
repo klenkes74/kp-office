@@ -34,7 +34,7 @@ public interface PrimaNotaService {
 
     PrimaNotaPage loadPrimaNota(final PrimaNota info, final Pageable pageRequest);
 
-    PrimaNota createNewPrimaNota(PrimaNota created);
+    PrimaNota save(PrimaNota created);
 
 
     /**

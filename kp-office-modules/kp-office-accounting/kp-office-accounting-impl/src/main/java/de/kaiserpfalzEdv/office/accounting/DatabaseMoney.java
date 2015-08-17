@@ -56,7 +56,7 @@ import java.math.BigDecimal;
  */
 @Embeddable
 public class DatabaseMoney implements MonetaryAmount, Serializable {
-    private static final long serialVersionUID = 409128734911221329L;
+    private static final long serialVersionUID = 1008134900241738711L;
 
 
     @Column(name = "value_", nullable = false)

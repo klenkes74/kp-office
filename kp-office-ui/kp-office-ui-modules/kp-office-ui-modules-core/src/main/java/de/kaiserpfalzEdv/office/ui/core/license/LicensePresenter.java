@@ -18,7 +18,7 @@ package de.kaiserpfalzEdv.office.ui.core.license;
 
 import com.google.common.eventbus.Subscribe;
 import de.kaiserpfalzEdv.commons.jee.eventbus.EventBusHandler;
-import de.kaiserpfalzEdv.office.clients.core.LicenceClient;
+import de.kaiserpfalzEdv.office.clients.core.impl.LicenceClient;
 import de.kaiserpfalzEdv.office.core.licence.OfficeLicence;
 import de.kaiserpfalzEdv.office.ui.api.mvp.Presenter;
 import org.apache.commons.lang3.builder.ToStringBuilder;

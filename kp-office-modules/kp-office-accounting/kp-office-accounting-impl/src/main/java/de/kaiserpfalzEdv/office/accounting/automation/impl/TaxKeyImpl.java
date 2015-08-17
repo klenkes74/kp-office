@@ -16,9 +16,9 @@
 
 package de.kaiserpfalzEdv.office.accounting.automation.impl;
 
+import de.kaiserpfalzEdv.office.accounting.automation.TaxKey;
 import de.kaiserpfalzEdv.office.accounting.chartsofaccounts.impl.AccountImpl;
 import de.kaiserpfalzEdv.office.accounting.postingRecord.PostingRecord;
-import de.kaiserpfalzEdv.office.accounting.tax.TaxKey;
 import de.kaiserpfalzEdv.office.commons.server.data.KPOEntity;
 
 import javax.money.MonetaryAmount;

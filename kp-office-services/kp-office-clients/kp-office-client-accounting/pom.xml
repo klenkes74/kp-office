@@ -39,5 +39,9 @@
             <groupId>de.kaiserpfalz-edv.office.modules.finance</groupId>
             <artifactId>kp-office-finance-api</artifactId>
         </dependency>
+        <dependency>
+            <groupId>de.kaiserpfalz-edv.office.services</groupId>
+            <artifactId>kp-office-client-core</artifactId>
+        </dependency>
     </dependencies>
 </project>

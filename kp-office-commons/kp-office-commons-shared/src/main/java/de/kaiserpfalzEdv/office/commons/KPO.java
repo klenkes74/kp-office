@@ -37,9 +37,10 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 public @interface KPO {
     Type value();
 
-    public static enum Type {
+    enum Type {
         Implementation,
         Application,
+        Mock,
         Client
     }
 

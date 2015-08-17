@@ -32,10 +32,10 @@
 
     <modules>
         <module>kp-office-ui-web-core</module>
+        <module>kp-office-ui-web-accounting</module>
         <!--
                 <module>kp-office-ui-web-contacts</module>
                 <module>kp-office-ui-web-files</module>
-                <module>kp-office-ui-web-accounting</module>
                 <module>kp-office-ui-web-documents</module>
         -->
     </modules>
@@ -44,6 +44,10 @@
         <dependency>
             <groupId>de.kaiserpfalz-edv.office.ui.web</groupId>
             <artifactId>kp-office-ui-web-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>de.kaiserpfalz-edv.office.ui.web</groupId>
+            <artifactId>kp-office-ui-web-commons</artifactId>
         </dependency>
 
         <dependency>

@@ -16,13 +16,8 @@
 
 package de.kaiserpfalzEdv.office.accounting.primaNota;
 
-import de.kaiserpfalzEdv.office.accounting.FiscalPeriod;
-import de.kaiserpfalzEdv.office.commons.data.DisplayNameHolder;
-import de.kaiserpfalzEdv.office.commons.data.DisplayNumberHolder;
-import de.kaiserpfalzEdv.office.commons.data.IdentityHolder;
-import de.kaiserpfalzEdv.office.commons.data.TenantIdHolder;
-
-import java.io.Serializable;
+import de.kaiserpfalzEdv.office.accounting.tax.FiscalPeriod;
+import de.kaiserpfalzEdv.office.commons.data.Entity;
 
 /**
  * The base prima nota.
@@ -32,6 +27,6 @@ import java.io.Serializable;
  * @version 2015Q1
  * @since 19.02.15 06:43
  */
-public interface PrimaNota extends IdentityHolder, TenantIdHolder, DisplayNumberHolder, DisplayNameHolder, Serializable {
+public interface PrimaNota extends Entity {
     FiscalPeriod getPeriod();
 }

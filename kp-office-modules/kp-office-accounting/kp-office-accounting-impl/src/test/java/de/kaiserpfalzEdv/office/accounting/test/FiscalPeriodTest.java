@@ -17,10 +17,10 @@
 package de.kaiserpfalzEdv.office.accounting.test;
 
 import de.kaiserpfalzEdv.commons.test.CommonTestBase;
-import de.kaiserpfalzEdv.office.accounting.FiscalPeriod;
-import de.kaiserpfalzEdv.office.accounting.FiscalPeriodImpl;
-import de.kaiserpfalzEdv.office.accounting.FiscalYear;
-import de.kaiserpfalzEdv.office.accounting.FiscalYearImpl;
+import de.kaiserpfalzEdv.office.accounting.tax.FiscalPeriod;
+import de.kaiserpfalzEdv.office.accounting.tax.FiscalYear;
+import de.kaiserpfalzEdv.office.accounting.tax.impl.FiscalPeriodImpl;
+import de.kaiserpfalzEdv.office.accounting.tax.impl.FiscalYearImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.annotations.Test;

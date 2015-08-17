@@ -31,7 +31,7 @@ import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.themes.ValoTheme;
 import de.kaiserpfalzEdv.commons.jee.eventbus.EventBusHandler;
-import de.kaiserpfalzEdv.office.clients.core.TranslationClient;
+import de.kaiserpfalzEdv.office.clients.core.impl.TranslationClient;
 import de.kaiserpfalzEdv.office.ui.core.i18n.LocaleChangeEvent;
 import de.kaiserpfalzEdv.office.ui.web.api.menu.MenuEntry;
 import de.kaiserpfalzEdv.office.ui.web.authentication.AccessControl;

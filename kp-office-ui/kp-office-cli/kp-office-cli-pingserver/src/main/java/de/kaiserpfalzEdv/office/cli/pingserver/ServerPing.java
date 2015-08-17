@@ -23,7 +23,7 @@ import de.kaiserpfalzEdv.office.cli.CliModule;
 import de.kaiserpfalzEdv.office.cli.executor.events.ConfigureCommand;
 import de.kaiserpfalzEdv.office.cli.executor.events.ExecutionCommand;
 import de.kaiserpfalzEdv.office.cli.executor.events.InitializeCommand;
-import de.kaiserpfalzEdv.office.clients.core.LicenceClient;
+import de.kaiserpfalzEdv.office.clients.core.impl.LicenceClient;
 import de.kaiserpfalzEdv.office.commons.SoftwareVersion;
 import de.kaiserpfalzEdv.office.core.licence.OfficeLicence;
 import de.kaiserpfalzEdv.office.core.licence.impl.NullLincenceImpl;

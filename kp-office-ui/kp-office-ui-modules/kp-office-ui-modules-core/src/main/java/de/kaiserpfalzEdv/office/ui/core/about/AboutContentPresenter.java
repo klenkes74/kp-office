@@ -17,17 +17,19 @@
 package de.kaiserpfalzEdv.office.ui.core.about;
 
 import de.kaiserpfalzEdv.commons.jee.servlet.model.ApplicationMetaData;
-import de.kaiserpfalzEdv.office.clients.core.LicenceClient;
+import de.kaiserpfalzEdv.office.clients.core.impl.LicenceClient;
+import de.kaiserpfalzEdv.office.commons.KPO;
 import de.kaiserpfalzEdv.office.ui.api.mvp.Presenter;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.inject.Inject;
 import javax.inject.Named;
+
+import static de.kaiserpfalzEdv.office.commons.KPO.Type.Client;
 
 /**
  * @author klenkes
@@ -38,21 +40,23 @@ import javax.inject.Named;
 public class AboutContentPresenter extends Presenter<AboutContent> {
     private static final Logger LOG = LoggerFactory.getLogger(AboutContentPresenter.class);
 
-    @Inject
     private LicenceClient licenseClient;
-
-    @Inject
     private ApplicationMetaData applicationData;
 
-    public AboutContentPresenter() {
+    @Inject
+    public AboutContentPresenter(
+            @KPO(Client) final LicenceClient licenseClient,
+            final ApplicationMetaData applicationData
+    ) {
         LOG.trace("***** Created: {}", this);
-    }
 
-    @PostConstruct
-    public void init() {
-        LOG.trace("*   *   license client: {}", licenseClient);
-        LOG.trace("*   *   application data: {}", applicationData);
-        LOG.debug("***** Initialized: {}", this);
+        this.licenseClient = licenseClient;
+        LOG.trace("*   *   license client: {}", this.licenseClient);
+
+        this.applicationData = applicationData;
+        LOG.trace("*   *   application data: {}", this.applicationData);
+
+        LOG.debug("***** Created: {}", this);
     }
 
     @PreDestroy

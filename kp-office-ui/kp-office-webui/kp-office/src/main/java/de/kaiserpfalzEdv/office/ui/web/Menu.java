@@ -36,6 +36,8 @@ import com.vaadin.ui.MenuBar;
 import com.vaadin.ui.themes.ValoTheme;
 import de.kaiserpfalzEdv.office.ui.core.i18n.LocalizedStringProvider;
 import de.kaiserpfalzEdv.office.ui.web.api.menu.MenuEntry;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -49,6 +51,8 @@ import java.util.Map;
 @Named
 @UIScope
 public class Menu extends CssLayout {
+    private static final long   serialVersionUID = -6955181299475446094L;
+    private static final Logger LOG              = LoggerFactory.getLogger(Menu.class);
 
     private static final String              VALO_MENUITEMS    = "valo-menuitems";
     private static final String              VALO_MENU_TOGGLE  = "valo-menu-toggle";
@@ -171,6 +175,8 @@ public class Menu extends CssLayout {
         menuEntries.sort((o1, o2) -> o1.getSortOrder() - o2.getSortOrder());
 
         for (MenuEntry entry : menuEntries) {
+            LOG.debug("Adding menu entry: {}", entry);
+
             addView(entry, entry.getViewName(), entry.getCaption(), entry.getIcon());
         }
     }

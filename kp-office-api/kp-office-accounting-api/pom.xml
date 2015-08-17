@@ -48,5 +48,10 @@
             <groupId>de.kaiserpfalz-edv.office.modules.finance</groupId>
             <artifactId>kp-office-finance-api</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>org.javamoney</groupId>
+            <artifactId>moneta</artifactId>
+        </dependency>
     </dependencies>
 </project>

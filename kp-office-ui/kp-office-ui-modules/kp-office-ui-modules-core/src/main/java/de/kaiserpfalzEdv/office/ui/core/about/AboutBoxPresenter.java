@@ -16,14 +16,12 @@
 
 package de.kaiserpfalzEdv.office.ui.core.about;
 
-import de.kaiserpfalzEdv.commons.jee.eventbus.EventBusHandler;
 import de.kaiserpfalzEdv.office.ui.api.mvp.Presenter;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.inject.Inject;
 import javax.inject.Named;
 
 /**
@@ -34,9 +32,6 @@ import javax.inject.Named;
 @Named
 public class AboutBoxPresenter extends Presenter<AboutBox> {
     private static final Logger LOG = LoggerFactory.getLogger(AboutBoxPresenter.class);
-
-    @Inject
-    private EventBusHandler eventBus;
 
 
     @Override

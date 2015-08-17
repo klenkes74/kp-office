@@ -17,8 +17,8 @@
 package de.kaiserpfalzEdv.office.accounting.postingRecord.impl;
 
 import de.kaiserpfalzEdv.commons.util.BuilderException;
-import de.kaiserpfalzEdv.office.accounting.DatabaseMoney;
 import de.kaiserpfalzEdv.office.accounting.automation.FunctionKey;
+import de.kaiserpfalzEdv.office.accounting.automation.TaxKey;
 import de.kaiserpfalzEdv.office.accounting.automation.impl.FunctionKeyImpl;
 import de.kaiserpfalzEdv.office.accounting.automation.impl.TaxKeyImpl;
 import de.kaiserpfalzEdv.office.accounting.chartsofaccounts.Account;
@@ -29,7 +29,6 @@ import de.kaiserpfalzEdv.office.accounting.chartsofaccounts.impl.CostCenterBuild
 import de.kaiserpfalzEdv.office.accounting.chartsofaccounts.impl.CostCenterImpl;
 import de.kaiserpfalzEdv.office.accounting.postingRecord.DocumentInformation;
 import de.kaiserpfalzEdv.office.accounting.postingRecord.PostingRecord;
-import de.kaiserpfalzEdv.office.accounting.tax.TaxKey;
 import org.apache.commons.lang3.builder.Builder;
 
 import javax.money.MonetaryAmount;
@@ -55,14 +54,20 @@ public class PostingRecordBuilder implements Builder<PostingRecordImpl> {
     private OffsetDateTime          entryDate;
     private LocalDate               accountingDate;
     private LocalDate               valutaDate;
-    private DatabaseMoney           amount;
+    private MonetaryAmount amount;
     private TaxKeyImpl              taxKey;
     private FunctionKeyImpl         functionKey;
     private AccountImpl             accountDebitted;
     private AccountImpl             accountCreditted;
     private CostCenterImpl          costCenter1;
     private CostCenterImpl          costCenter2;
+
     private DocumentInformationImpl document;
+    private String         documentNumber1;
+    private String         documentNumber2;
+    private LocalDate      documentDate;
+    private MonetaryAmount documentAmount;
+
     private String                  notice1;
     private String                  notice2;
 
@@ -93,9 +98,17 @@ public class PostingRecordBuilder implements Builder<PostingRecordImpl> {
         if (accountingDate == null) accountingDate = LocalDate.now();
         if (valutaDate == null) valutaDate = accountingDate;
 
-        if (document == null) {
-            document = new DocumentInformationImpl("", "", accountingDate, amount);
-        }
+        if (documentDate == null) documentDate = accountingDate;
+        if (documentAmount == null) documentAmount = amount;
+        if (isBlank(documentNumber1)) documentNumber1 = "";
+        if (isBlank(documentNumber2)) documentNumber2 = "";
+
+        document = new DocumentInformationBuilder()
+                .withNumber1(documentNumber1)
+                .withNumber2(documentNumber2)
+                .withDate(documentDate)
+                .withAmount(documentAmount)
+                .build();
     }
 
     public void validate() {
@@ -126,7 +139,7 @@ public class PostingRecordBuilder implements Builder<PostingRecordImpl> {
 
     public PostingRecordBuilder withPostingRecord(PostingRecord original) {
         withId(original.getId());
-        withDisplayName(original.getDisplayNumber());
+        withDisplayName(original.getDisplayName());
         withDisplayNumber(original.getDisplayNumber());
         withTenantId(original.getTenantId());
 
@@ -186,13 +199,9 @@ public class PostingRecordBuilder implements Builder<PostingRecordImpl> {
         return this;
     }
 
-    public PostingRecordBuilder withAmount(DatabaseMoney amount) {
+    public PostingRecordBuilder withAmount(MonetaryAmount amount) {
         this.amount = amount;
         return this;
-    }
-
-    public PostingRecordBuilder withAmount(MonetaryAmount amount) {
-        return withAmount(new DatabaseMoney(amount));
     }
 
     public PostingRecordBuilder withTaxKey(TaxKeyImpl taxKey) {
@@ -249,13 +258,33 @@ public class PostingRecordBuilder implements Builder<PostingRecordImpl> {
         return withCostCenter2(new CostCenterBuilder().withCostCenter(costCenter).build());
     }
 
-    public PostingRecordBuilder withDocument(DocumentInformationImpl document) {
-        this.document = document;
+    public PostingRecordBuilder withDocument(DocumentInformation document) {
+        withDocumentNumber1(document.getDocumentNumber1());
+        withDocumentNumber2(document.getDocumentNumber2());
+        withDocumentDate(document.getDocumentDate());
+        withDocumentAmount(document.getDocumentAmount());
+
         return this;
     }
 
-    public PostingRecordBuilder withDocument(DocumentInformation document) {
-        return withDocument(new DocumentInformationBuilder().withDocument(document).build());
+    public PostingRecordBuilder withDocumentNumber1(String documentNumber1) {
+        this.documentNumber1 = documentNumber1;
+        return this;
+    }
+
+    public PostingRecordBuilder withDocumentNumber2(String documentNumber2) {
+        this.documentNumber2 = documentNumber2;
+        return this;
+    }
+
+    public PostingRecordBuilder withDocumentDate(LocalDate documentDate) {
+        this.documentDate = documentDate;
+        return this;
+    }
+
+    public PostingRecordBuilder withDocumentAmount(MonetaryAmount documentAmount) {
+        this.documentAmount = documentAmount;
+        return this;
     }
 
     public PostingRecordBuilder withNotice1(String notice1) {

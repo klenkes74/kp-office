@@ -19,6 +19,7 @@ package de.kaiserpfalzEdv.office.accounting.primaNota.impl;
 import de.kaiserpfalzEdv.commons.util.BuilderException;
 import de.kaiserpfalzEdv.office.accounting.DatabaseMoney;
 import de.kaiserpfalzEdv.office.accounting.automation.FunctionKey;
+import de.kaiserpfalzEdv.office.accounting.automation.TaxKey;
 import de.kaiserpfalzEdv.office.accounting.automation.impl.FunctionKeyImpl;
 import de.kaiserpfalzEdv.office.accounting.automation.impl.TaxKeyImpl;
 import de.kaiserpfalzEdv.office.accounting.chartsofaccounts.Account;
@@ -29,7 +30,6 @@ import de.kaiserpfalzEdv.office.accounting.postingRecord.DocumentInformation;
 import de.kaiserpfalzEdv.office.accounting.postingRecord.PostingRecord;
 import de.kaiserpfalzEdv.office.accounting.postingRecord.impl.DocumentInformationImpl;
 import de.kaiserpfalzEdv.office.accounting.postingRecord.impl.PostingRecordBuilder;
-import de.kaiserpfalzEdv.office.accounting.tax.TaxKey;
 import org.apache.commons.lang3.builder.Builder;
 
 import javax.money.MonetaryAmount;

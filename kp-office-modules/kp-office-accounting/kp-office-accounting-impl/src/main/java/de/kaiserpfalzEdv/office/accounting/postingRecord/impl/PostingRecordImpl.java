@@ -24,7 +24,9 @@ import de.kaiserpfalzEdv.office.accounting.chartsofaccounts.impl.CostCenterImpl;
 import de.kaiserpfalzEdv.office.accounting.postingRecord.PostingRecord;
 import de.kaiserpfalzEdv.office.commons.server.data.KPOTenantHoldingEntity;
 import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
 
+import javax.money.MonetaryAmount;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.JoinColumn;
@@ -46,7 +48,7 @@ import static javax.persistence.FetchType.LAZY;
  */
 @MappedSuperclass
 public class PostingRecordImpl extends KPOTenantHoldingEntity implements PostingRecord {
-    private static final long serialVersionUID = 3240890814688813211L;
+    private static final long serialVersionUID = 3158594809081948120L;
 
 
     @Column(name = "date_entry_", nullable = false, insertable = true, updatable = false)
@@ -115,7 +117,7 @@ public class PostingRecordImpl extends KPOTenantHoldingEntity implements Posting
             @NotNull OffsetDateTime entryDate,
             @NotNull LocalDate accountingDate,
             @NotNull LocalDate valutaDate,
-            @NotNull DatabaseMoney amount,
+            @NotNull MonetaryAmount amount,
             TaxKeyImpl taxKey,
             FunctionKeyImpl functionKey,
             @NotNull AccountImpl accountDebitted,
@@ -131,7 +133,7 @@ public class PostingRecordImpl extends KPOTenantHoldingEntity implements Posting
         this.entryDate = entryDate;
         this.accountingDate = accountingDate;
         this.valutaDate = valutaDate;
-        this.amount = amount;
+        setAmount(amount);
         this.taxKey = taxKey;
         this.functionKey = functionKey;
         this.accountDebitted = accountDebitted;
@@ -172,12 +174,12 @@ public class PostingRecordImpl extends KPOTenantHoldingEntity implements Posting
     }
 
     @Override
-    public DatabaseMoney getAmount() {
+    public MonetaryAmount getAmount() {
         return amount;
     }
 
-    public void setAmount(DatabaseMoney amount) {
-        this.amount = amount;
+    public void setAmount(MonetaryAmount amount) {
+        this.amount = (DatabaseMoney.class.isAssignableFrom(amount.getClass())) ? (DatabaseMoney) amount : new DatabaseMoney(amount);
     }
 
     @Override
@@ -264,11 +266,9 @@ public class PostingRecordImpl extends KPOTenantHoldingEntity implements Posting
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this)
+        return new ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE)
                 .appendSuper(super.toString())
                 .append("entryDate", entryDate)
-                .append("accountingDate", accountingDate)
-                .append("valutaDate", valutaDate)
                 .append("amount", amount)
                 .append("notice1", notice1)
                 .toString();
