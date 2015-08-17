@@ -32,12 +32,11 @@
     <name>KP Office - API</name>
 
     <modules>
-        <module>kp-office-core-api</module>
-        <module>kp-office-contacts-api</module>
-        <module>kp-office-files-api</module>
-        <module>kp-office-documents-api</module>
+        <module>kp-office-base-api</module>
         <module>kp-office-accounting-api</module>
-        <module>kp-office-finance-api</module>
+        <!--
+                <module>kp-office-documents-api</module>
+        -->
     </modules>
 
 

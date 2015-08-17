@@ -32,7 +32,7 @@
 
     <dependencies>
         <dependency>
-            <groupId>de.kaiserpfalz-edv.office.modules.documents</groupId>
+            <groupId>de.kaiserpfalz-edv.office.modules</groupId>
             <artifactId>kp-office-documents-api</artifactId>
         </dependency>
     </dependencies>

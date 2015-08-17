@@ -31,17 +31,22 @@
     <packaging>pom</packaging>
     <version>0.2.0-SNAPSHOT</version>
 
-    <name>KP Office - Parent</name>
+    <name>KP Office</name>
     <description>Kaiserpfalz EDV-Service Office - A central office management suite.</description>
     <url>https://devzone.kaiserpfalz-edv.de/kp-office/</url>
 
 
     <modules>
         <module>kp-office-commons</module>
+
+        <module>kp-office-core-api</module>
+        <module>kp-office-core-impl</module>
+
         <module>kp-office-api</module>
-        <module>kp-office-core</module>
         <module>kp-office-modules</module>
+
         <module>kp-office-services</module>
+
         <module>kp-office-ui</module>
     </modules>
 
@@ -235,7 +240,6 @@
             <dependency>
                 <groupId>javax.validation</groupId>
                 <artifactId>validation-api</artifactId>
-                <!--                <version>1.0.0.GA</version> -->
                 <version>1.1.0.Final</version>
             </dependency>
 
@@ -286,86 +290,49 @@
 
             <!-- Core -->
             <dependency>
-                <groupId>de.kaiserpfalz-edv.office.core</groupId>
+                <groupId>de.kaiserpfalz-edv.office</groupId>
                 <artifactId>kp-office-core-api</artifactId>
                 <version>${project.version}</version>
             </dependency>
 
             <dependency>
-                <groupId>de.kaiserpfalz-edv.office.core</groupId>
+                <groupId>de.kaiserpfalz-edv.office</groupId>
                 <artifactId>kp-office-core-impl</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>de.kaiserpfalz-edv.office.core</groupId>
-                <artifactId>kp-office-core-licence</artifactId>
                 <version>${project.version}</version>
             </dependency>
 
 
             <!-- Modules -->
             <dependency>
-                <groupId>de.kaiserpfalz-edv.office.modules.contacts</groupId>
-                <artifactId>kp-office-contacts-api</artifactId>
+                <groupId>de.kaiserpfalz-edv.office.modules</groupId>
+                <artifactId>kp-office-base-api</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>de.kaiserpfalz-edv.office.modules.contacts</groupId>
-                <artifactId>kp-office-contacts-impl</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>de.kaiserpfalz-edv.office.modules.contacts</groupId>
-                <artifactId>kp-office-contacts-geodb</artifactId>
+                <groupId>de.kaiserpfalz-edv.office.modules</groupId>
+                <artifactId>kp-office-base-impl</artifactId>
                 <version>${project.version}</version>
             </dependency>
 
             <dependency>
-                <groupId>de.kaiserpfalz-edv.office.modules.files</groupId>
-                <artifactId>kp-office-files-api</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>de.kaiserpfalz-edv.office.modules.files</groupId>
-                <artifactId>kp-office-files-impl</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>de.kaiserpfalz-edv.office.modules.documents</groupId>
-                <artifactId>kp-office-documents-api</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>de.kaiserpfalz-edv.office.modules.documents</groupId>
-                <artifactId>kp-office-documents-impl</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>de.kaiserpfalz-edv.office.modules.accounting</groupId>
+                <groupId>de.kaiserpfalz-edv.office.modules</groupId>
                 <artifactId>kp-office-accounting-api</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>de.kaiserpfalz-edv.office.modules.accounting</groupId>
+                <groupId>de.kaiserpfalz-edv.office.modules</groupId>
                 <artifactId>kp-office-accounting-impl</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>de.kaiserpfalz-edv.office.modules.accounting</groupId>
-                <artifactId>kp-office-accounting-gdpdu</artifactId>
                 <version>${project.version}</version>
             </dependency>
 
             <dependency>
-                <groupId>de.kaiserpfalz-edv.office.modules.finance</groupId>
-                <artifactId>kp-office-finance-api</artifactId>
+                <groupId>de.kaiserpfalz-edv.office.modules</groupId>
+                <artifactId>kp-office-documents-api</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>de.kaiserpfalz-edv.office.modules.finance</groupId>
-                <artifactId>kp-office-finance-impl</artifactId>
+                <groupId>de.kaiserpfalz-edv.office.modules</groupId>
+                <artifactId>kp-office-documents-impl</artifactId>
                 <version>${project.version}</version>
             </dependency>
 

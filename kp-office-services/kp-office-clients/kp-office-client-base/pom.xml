@@ -27,17 +27,13 @@
     </parent>
 
     <artifactId>kp-office-client-base</artifactId>
-    <name>KP Office - Services - Clients - Base (Contacts and Files)</name>
+    <name>KP Office - Services - Clients - Base</name>
 
 
     <dependencies>
         <dependency>
-            <groupId>de.kaiserpfalz-edv.office.modules.contacts</groupId>
-            <artifactId>kp-office-contacts-api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>de.kaiserpfalz-edv.office.modules.files</groupId>
-            <artifactId>kp-office-files-api</artifactId>
+            <groupId>de.kaiserpfalz-edv.office.modules</groupId>
+            <artifactId>kp-office-base-api</artifactId>
         </dependency>
     </dependencies>
 </project>

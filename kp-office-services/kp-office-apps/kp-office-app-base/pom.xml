@@ -26,8 +26,8 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>kp-office-app-finance</artifactId>
-    <name>KP Office - Services - Apps - Base (Contacts and Files)</name>
+    <artifactId>kp-office-app-base</artifactId>
+    <name>KP Office - Services - Apps - Base</name>
 
 
     <properties>
@@ -42,13 +42,8 @@
         </dependency>
 
         <dependency>
-            <groupId>de.kaiserpfalz-edv.office.modules.contacts</groupId>
-            <artifactId>kp-office-contacts-impl</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>de.kaiserpfalz-edv.office.modules.files</groupId>
-            <artifactId>kp-office-files-impl</artifactId>
+            <groupId>de.kaiserpfalz-edv.office.modules</groupId>
+            <artifactId>kp-office-base-impl</artifactId>
         </dependency>
     </dependencies>
 </project>

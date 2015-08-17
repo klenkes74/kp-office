@@ -27,7 +27,7 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <groupId>de.kaiserpfalz-edv.office.modules.accounting</groupId>
+    <groupId>de.kaiserpfalz-edv.office.modules</groupId>
     <artifactId>kp-office-accounting-api</artifactId>
     <name>KP Office - API - Accounting</name>
 
@@ -37,16 +37,8 @@
 
     <dependencies>
         <dependency>
-            <groupId>de.kaiserpfalz-edv.office.modules.contacts</groupId>
-            <artifactId>kp-office-contacts-api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>de.kaiserpfalz-edv.office.modules.files</groupId>
-            <artifactId>kp-office-files-api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>de.kaiserpfalz-edv.office.modules.finance</groupId>
-            <artifactId>kp-office-finance-api</artifactId>
+            <groupId>de.kaiserpfalz-edv.office.modules</groupId>
+            <artifactId>kp-office-base-api</artifactId>
         </dependency>
 
         <dependency>

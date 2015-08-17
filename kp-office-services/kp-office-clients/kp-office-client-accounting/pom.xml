@@ -27,17 +27,13 @@
     </parent>
 
     <artifactId>kp-office-client-accounting</artifactId>
-    <name>KP Office - Services - Clients - Accounting and Finance</name>
+    <name>KP Office - Services - Clients - Accounting</name>
 
 
     <dependencies>
         <dependency>
-            <groupId>de.kaiserpfalz-edv.office.modules.accounting</groupId>
+            <groupId>de.kaiserpfalz-edv.office.modules</groupId>
             <artifactId>kp-office-accounting-api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>de.kaiserpfalz-edv.office.modules.finance</groupId>
-            <artifactId>kp-office-finance-api</artifactId>
         </dependency>
         <dependency>
             <groupId>de.kaiserpfalz-edv.office.services</groupId>

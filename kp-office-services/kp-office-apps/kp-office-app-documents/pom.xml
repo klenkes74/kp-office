@@ -42,7 +42,7 @@
         </dependency>
 
         <dependency>
-            <groupId>de.kaiserpfalz-edv.office.modules.documents</groupId>
+            <groupId>de.kaiserpfalz-edv.office.modules</groupId>
             <artifactId>kp-office-documents-impl</artifactId>
         </dependency>
     </dependencies>

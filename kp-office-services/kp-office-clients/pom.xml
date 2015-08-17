@@ -33,8 +33,10 @@
     <modules>
         <module>kp-office-client-core</module>
         <module>kp-office-client-base</module>
-        <module>kp-office-client-documents</module>
         <module>kp-office-client-accounting</module>
+        <!--
+                <module>kp-office-client-documents</module>
+        -->
     </modules>
 
 

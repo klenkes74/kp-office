@@ -21,7 +21,7 @@ import de.kaiserpfalzEdv.office.commons.amqp.ReceiveMessagePrinter;
 import de.kaiserpfalzEdv.office.commons.amqp.SendMessagePrinter;
 import de.kaiserpfalzEdv.office.commons.jackson.VersionableJacksonModule;
 import de.kaiserpfalzEdv.office.core.i18n.impl.TranslationServer;
-import de.kaiserpfalzEdv.office.core.licence.impl.LicenceServer;
+import de.kaiserpfalzEdv.office.core.license.impl.LicenceServer;
 import de.kaiserpfalzEdv.office.core.security.impl.SecurityServer;
 import de.kaiserpfalzEdv.office.core.tenants.impl.TenantServer;
 import org.slf4j.Logger;
@@ -99,7 +99,7 @@ public class CommunicationsConfiguration implements ApplicationContextAware {
         LOG.trace("   security server: {}", this.securityServer);
         LOG.trace("   tenant server: {}", this.tenantServer);
         LOG.trace("   i18n server: {}", this.i18nQueue());
-        LOG.trace("   licence server: {}", this.licenceServer);
+        LOG.trace("   license server: {}", this.licenceServer);
     }
 
 
@@ -210,7 +210,7 @@ public class CommunicationsConfiguration implements ApplicationContextAware {
 
     @Bean
     public Queue licenceQueue() {
-        return buildQueue(localHost + ".core.licence", "kpo.dead-letter-queue", "core.licence");
+        return buildQueue(localHost + ".core.license", "kpo.dead-letter-queue", "core.license");
     }
 
 

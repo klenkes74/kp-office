@@ -25,7 +25,7 @@ import java.lang.annotation.Target;
 
 /**
  * <p>The configuration of an OfficeModule. It is used for licensing via the
- * <code>de.kaiserpfalzEdv.office.core.licence.LicensingInterceptor</code> or to configure the version of the
+ * <code>de.kaiserpfalzEdv.office.core.license.LicensingInterceptor</code> or to configure the version of the
  * office module via a {@link de.kaiserpfalzEdv.commons.service.Versionable} generated from {@link #version()}.</p>
  *
  * <p>The ID is not used but should be configures via a new UUID. If you don't have a generator handy, the webpage
@@ -40,17 +40,17 @@ import java.lang.annotation.Target;
 @Target({ElementType.TYPE, ElementType.METHOD})
 public @interface ModuleInformation {
     /**
-     * @return The ID of the licence needed.
+     * @return The ID of the license needed.
      */
     String id() default "00000000-0000-0000-0000-000000000000";
 
     /**
-     * @return The official name of the licence needed.
+     * @return The official name of the license needed.
      */
     String name() default "No Licence needed";
 
     /**
-     * @return The feature name to check in the licence file.
+     * @return The feature name to check in the license file.
      */
     String featureName() default "core";
 
@@ -61,7 +61,7 @@ public @interface ModuleInformation {
     String version() default "0-alpha";
 
     /**
-     * @return If this module needs a licence at all.
+     * @return If this module needs a license at all.
      */
     boolean needsLicence() default false;
 }

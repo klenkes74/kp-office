@@ -16,7 +16,7 @@
         <setting name="validation-enabled" value="true" />
         <setting name="provider-name" value="" />
         <datasource-mapping />
-        <deploymentDescriptor name="persistence.xml" url="file://$MODULE_DIR$/kp-office-modules/kp-office-files/kp-office-files-impl/src/main/resources/META-INF/persistence.xml" />
+        <deploymentDescriptor name="persistence.xml" url="file://$MODULE_DIR$/kp-office-modules/kp-office-base-impl/kp-office-files-impl/src/main/resources/META-INF/persistence.xml" />
       </configuration>
     </facet>
     <facet type="AspectJ" name="AspectJ">

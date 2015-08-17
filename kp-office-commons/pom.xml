@@ -36,10 +36,7 @@
 
     <modules>
         <module>kp-office-commons-shared</module>
-        <module>kp-office-commons-server</module>
         <module>kp-office-commons-client</module>
-        <module>kp-office-commons-amqp</module>
-        <module>kp-office-commons-cli</module>
     </modules>
 
 

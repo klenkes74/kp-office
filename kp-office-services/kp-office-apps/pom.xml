@@ -33,8 +33,10 @@
     <modules>
         <module>kp-office-app-core</module>
         <module>kp-office-app-base</module>
-        <module>kp-office-app-documents</module>
         <module>kp-office-app-accounting</module>
+        <!--
+                <module>kp-office-app-documents</module>
+        -->
     </modules>
 
     <properties>
@@ -43,12 +45,6 @@
 
 
     <dependencies>
-        <dependency>
-            <groupId>de.kaiserpfalz-edv.office.commons</groupId>
-            <artifactId>kp-office-commons-server</artifactId>
-        </dependency>
-
-
         <!-- Data Persistence -->
         <dependency>
             <groupId>com.googlecode.log4jdbc</groupId>

@@ -37,7 +37,7 @@
 
     <dependencies>
         <dependency>
-            <groupId>de.kaiserpfalz-edv.office.core</groupId>
+            <groupId>de.kaiserpfalz-edv.office</groupId>
             <artifactId>kp-office-core-impl</artifactId>
         </dependency>
     </dependencies>

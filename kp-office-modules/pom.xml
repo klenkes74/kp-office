@@ -33,23 +33,23 @@
     <name>KP Office - Modules</name>
 
     <modules>
-        <module>kp-office-contacts</module>
-        <module>kp-office-files</module>
-        <module>kp-office-documents</module>
-        <module>kp-office-accounting</module>
-        <module>kp-office-finance</module>
+        <module>kp-office-base-impl</module>
+        <module>kp-office-accounting-impl</module>
+        <!--
+                <module>kp-office-documents-impl</module>
+        -->
     </modules>
 
 
     <dependencies>
         <dependency>
             <groupId>de.kaiserpfalz-edv.office.commons</groupId>
-            <artifactId>kp-office-commons-server</artifactId>
+            <artifactId>kp-office-commons-shared</artifactId>
         </dependency>
 
         <dependency>
-            <groupId>de.kaiserpfalz-edv.office.core</groupId>
-            <artifactId>kp-office-core-api</artifactId>
+            <groupId>de.kaiserpfalz-edv.office</groupId>
+            <artifactId>kp-office-core-impl</artifactId>
         </dependency>
 
 
