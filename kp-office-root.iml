@@ -4,28 +4,21 @@
     <facet type="Spring" name="Spring">
       <configuration>
         <fileset id="fileset" name="Spring Application Context" removed="false">
-          <file>file://$MODULE_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-impl/src/test/resources/beans.xml</file>
-          <file>file://$MODULE_DIR$/kp-office-modules/kp-office-projects/kp-office-projects-impl/src/main/resources/beans.xml</file>
-          <file>file://$MODULE_DIR$/kp-office-modules/kp-office-contacts/kp-office-contacts-impl/src/main/resources/beans.xml</file>
-          <file>file://$MODULE_DIR$/kp-office-modules/kp-office-projects/kp-office-projects-impl/src/test/resources/beans.xml</file>
+          <file>file://$MODULE_DIR$/kp-office-core-impl/target/classes/beans-cache.xml</file>
+          <file>file://$MODULE_DIR$/kp-office-core-impl/src/main/resources/beans-cache.xml</file>
+          <file>file://$MODULE_DIR$/kp-office-core-impl/src/main/resources/beans-database.xml</file>
+          <file>file://$MODULE_DIR$/kp-office-core-impl/target/classes/beans-database.xml</file>
+          <file>file://$MODULE_DIR$/kp-office-core-impl/src/main/resources/beans-licensemanager.xml</file>
+          <file>file://$MODULE_DIR$/kp-office-core-impl/target/classes/beans-licensemanager.xml</file>
+          <file>file://$MODULE_DIR$/kp-office-core-impl/src/main/resources/beans.xml</file>
+          <file>file://$MODULE_DIR$/kp-office-core-impl/target/classes/beans.xml</file>
+          <file>file://$MODULE_DIR$/kp-office-core-impl/src/main/resources/core.impl.xml</file>
+          <file>file://$MODULE_DIR$/kp-office-core-impl/target/classes/core.impl.xml</file>
+          <file>file://$MODULE_DIR$/kp-office-core-impl/target/test-classes/i18n-beans.xml</file>
+          <file>file://$MODULE_DIR$/kp-office-core-impl/src/test/resources/i18n-beans.xml</file>
+          <file>file://$MODULE_DIR$/kp-office-core-impl/target/test-classes/licensingInterceptorTest-beans.xml</file>
+          <file>file://$MODULE_DIR$/kp-office-core-impl/src/test/resources/licensingInterceptorTest-beans.xml</file>
         </fileset>
-      </configuration>
-    </facet>
-    <facet type="jpa" name="JPA">
-      <configuration>
-        <setting name="validation-enabled" value="true" />
-        <setting name="provider-name" value="" />
-        <datasource-mapping />
-        <deploymentDescriptor name="persistence.xml" url="file://$MODULE_DIR$/kp-office-modules/kp-office-base-impl/kp-office-files-impl/src/main/resources/META-INF/persistence.xml" />
-      </configuration>
-    </facet>
-    <facet type="AspectJ" name="AspectJ">
-      <configuration>
-        <option name="aspectPath">
-          <projectLibrary>
-            <option name="name" value="Maven: org.springframework:spring-aspects:4.1.5.RELEASE" />
-          </projectLibrary>
-        </option>
       </configuration>
     </facet>
   </component>
