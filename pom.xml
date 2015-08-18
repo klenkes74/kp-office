@@ -263,22 +263,7 @@
             </dependency>
             <dependency>
                 <groupId>de.kaiserpfalz-edv.office.commons</groupId>
-                <artifactId>kp-office-commons-server</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>de.kaiserpfalz-edv.office.commons</groupId>
                 <artifactId>kp-office-commons-client</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>de.kaiserpfalz-edv.office.commons</groupId>
-                <artifactId>kp-office-commons-amqp</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>de.kaiserpfalz-edv.office.ui.cli</groupId>
-                <artifactId>kp-office-commons-cli</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>

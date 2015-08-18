@@ -47,7 +47,7 @@
     <dependencies>
         <dependency>
             <groupId>de.kaiserpfalz-edv.office.commons</groupId>
-            <artifactId>kp-office-commons-amqp</artifactId>
+            <artifactId>kp-office-commons-shared</artifactId>
         </dependency>
 
         <!-- Testing -->

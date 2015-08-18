@@ -41,10 +41,8 @@
     <orderEntry type="library" name="Maven: org.aspectj:aspectjweaver:1.8.5" level="project" />
     <orderEntry type="library" name="Maven: org.aspectj:aspectjrt:1.8.4" level="project" />
     <orderEntry type="library" name="Maven: org.aspectj:aspectjtools:1.8.4" level="project" />
-    <orderEntry type="module" module-name="kp-office-core-impl" />
+    <orderEntry type="module" module-name="kp-office-core" />
     <orderEntry type="module" module-name="kp-office-core-api" />
-    <orderEntry type="library" name="Maven: de.kaiserpfalz-edv.office.commons:kp-office-commons-server:0.2.0-SNAPSHOT" level="project" />
-    <orderEntry type="library" name="Maven: org.slf4j:jul-to-slf4j:1.7.9" level="project" />
     <orderEntry type="library" name="Maven: com.verhas:license3j:1.0.4" level="project" />
     <orderEntry type="library" name="Maven: org.bouncycastle:bcpg-jdk16:1.46" level="project" />
     <orderEntry type="library" name="Maven: org.bouncycastle:bcprov-jdk16:1.46" level="project" />
@@ -62,7 +60,7 @@
     <orderEntry type="library" name="Maven: org.springframework:spring-orm:4.1.5.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-jdbc:4.1.5.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-aop:4.1.5.RELEASE" level="project" />
-    <orderEntry type="library" name="Maven: org.slf4j:jcl-over-slf4j:1.7.9" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.slf4j:jcl-over-slf4j:1.7.9" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: javax:javaee-api:7.0" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: com.sun.mail:javax.mail:1.5.0" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: javax.activation:activation:1.1" level="project" />
