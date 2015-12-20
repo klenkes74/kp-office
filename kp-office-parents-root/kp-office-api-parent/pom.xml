@@ -22,16 +22,11 @@
 
     <parent>
         <groupId>de.kaiserpfalz-edv.office</groupId>
-        <artifactId>kp-office-root</artifactId>
+        <artifactId>kp-office-parent</artifactId>
         <version>restart-SNAPSHOT</version>
-        <relativePath>../pom.xml</relativePath>
+        <relativePath>../kp-office-parent/pom.xml</relativePath>
     </parent>
 
-    <artifactId>kp-office-modules</artifactId>
+    <artifactId>kp-office-api-parent</artifactId>
     <packaging>pom</packaging>
-
-    <modules>
-        <module>kp-office-base-root</module>
-        <module>kp-office-finance-root</module>
-    </modules>
 </project>

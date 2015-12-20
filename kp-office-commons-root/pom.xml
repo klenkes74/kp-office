@@ -27,11 +27,12 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>kp-office-modules</artifactId>
+    <artifactId>kp-office-commons-root</artifactId>
     <packaging>pom</packaging>
 
+
     <modules>
-        <module>kp-office-base-root</module>
-        <module>kp-office-finance-root</module>
+        <module>kp-office-commons-api</module>
+        <module>kp-office-commons-impl</module>
     </modules>
 </project>
