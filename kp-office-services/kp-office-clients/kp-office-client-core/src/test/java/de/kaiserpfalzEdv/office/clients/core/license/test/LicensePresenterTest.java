@@ -18,9 +18,9 @@ package de.kaiserpfalzEdv.office.clients.core.license.test;
 
 import de.kaiserpfalzEdv.commons.jee.eventbus.EventBusHandler;
 import de.kaiserpfalzEdv.commons.test.MockingTestBase;
-import de.kaiserpfalzEdv.office.clients.core.impl.LicenseClient;
-import de.kaiserpfalzEdv.office.clients.core.license.LicensePresenter;
-import de.kaiserpfalzEdv.office.clients.core.license.LicenseView;
+import de.kaiserpfalzEdv.office.clients.core.license.impl.LicenseClient;
+import de.kaiserpfalzEdv.office.clients.core.license.impl.LicensePresenter;
+import de.kaiserpfalzEdv.office.clients.core.license.impl.LicenseView;
 import de.kaiserpfalzEdv.office.commons.SoftwareVersion;
 import de.kaiserpfalzEdv.office.commons.SoftwareVersionRange;
 import de.kaiserpfalzEdv.office.core.license.OfficeLicense;

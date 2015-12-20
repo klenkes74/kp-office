@@ -76,7 +76,6 @@ public class FiscalPeriodMockClient implements FiscalPeriodService {
 
         FiscalYear year = new FiscalYearImpl(tenant, UUID.randomUUID(), 2015);
         year = save(year);
-        LOG.trace("*   *   created fiscal year: {}", year);
 
         for (int i = 0; i < FiscalYear.DEFAULT_MAX_PERIODS; i++) {
             FiscalPeriodImpl p = new FiscalPeriodImpl(UUID.randomUUID(), year, i);
@@ -86,8 +85,6 @@ public class FiscalPeriodMockClient implements FiscalPeriodService {
             }
 
             p = (FiscalPeriodImpl) save(p);
-
-            LOG.trace("*   *   created fiscal period: {}", p);
         }
     }
 

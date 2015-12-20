@@ -23,7 +23,7 @@ import com.vaadin.spring.annotation.UIScope;
 import com.vaadin.ui.Component;
 import com.vaadin.ui.CssLayout;
 import com.vaadin.ui.Label;
-import de.kaiserpfalzEdv.office.clients.core.license.LicensePresenter;
+import de.kaiserpfalzEdv.office.clients.core.license.impl.LicensePresenter;
 import de.kaiserpfalzEdv.office.commons.client.mvp.Presenter;
 import de.kaiserpfalzEdv.office.core.license.OfficeLicense;
 import org.slf4j.Logger;
@@ -41,7 +41,7 @@ import java.time.format.FormatStyle;
  */
 @UIScope
 @SpringView(name = LicenseView.VIEW_NAME)
-public class LicenseView extends CssLayout implements de.kaiserpfalzEdv.office.clients.core.license.LicenseView, View, Component {
+public class LicenseView extends CssLayout implements de.kaiserpfalzEdv.office.clients.core.license.impl.LicenseView, View, Component {
     public static final  String VIEW_NAME = "License";
     private static final Logger LOG       = LoggerFactory.getLogger(LicenseView.class);
     private OfficeLicense license;

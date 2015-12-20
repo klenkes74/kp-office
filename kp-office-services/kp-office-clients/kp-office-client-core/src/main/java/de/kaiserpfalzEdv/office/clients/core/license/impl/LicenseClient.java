@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzEdv.office.clients.core.impl;
+package de.kaiserpfalzEdv.office.clients.core.license.impl;
 
 import de.kaiserpfalzEdv.office.commons.KPO;
 import de.kaiserpfalzEdv.office.core.license.LicenseService;

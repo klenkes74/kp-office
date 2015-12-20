@@ -17,6 +17,7 @@
 package de.kaiserpfalzEdv.office.core.tenants.impl;
 
 import de.kaiserpfalzEdv.commons.util.BuilderException;
+import de.kaiserpfalzEdv.office.core.tenants.Tenant;
 import org.apache.commons.lang3.builder.Builder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -76,6 +77,13 @@ public class TenantBuilder implements Builder<TenantImpl> {
 
     public TenantBuilder withName(final String name) {
         this.name = name;
+        return this;
+    }
+
+    public TenantBuilder withTenant(final Tenant tenant) {
+        this.id = tenant.getId();
+        this.number = tenant.getDisplayNumber();
+        this.name = tenant.getDisplayName();
         return this;
     }
 }

@@ -14,11 +14,27 @@
  * limitations under the License.
  */
 
+package de.kaiserpfalzEdv.office.ui.web.commons.actions;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.time.Duration;
+import java.time.OffsetDateTime;
+import java.time.ZoneId;
+import java.util.UUID;
+
+import static java.time.temporal.ChronoUnit.FOREVER;
+
 /**
- *
- *
  * @author klenkes
  * @version 2015Q1
- * @since 27.02.15 17:59
+ * @since 21.08.15 06:22
  */
-package de.kaiserpfalzEdv.office.clients.core;
+public class NullTransaction extends UserTransactionInfo {
+    private static final Logger LOG = LoggerFactory.getLogger(NullTransaction.class);
+
+    public NullTransaction() {
+        super(UUID.randomUUID(), null, null, OffsetDateTime.now(ZoneId.of("UTC")), Duration.of(1L, FOREVER));
+    }
+}

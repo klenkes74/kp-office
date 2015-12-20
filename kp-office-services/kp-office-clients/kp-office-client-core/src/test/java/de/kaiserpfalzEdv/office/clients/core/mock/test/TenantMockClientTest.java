@@ -18,7 +18,7 @@ package de.kaiserpfalzEdv.office.clients.core.mock.test;
 
 import de.kaiserpfalzEdv.commons.jee.paging.Page;
 import de.kaiserpfalzEdv.commons.test.CommonTestBase;
-import de.kaiserpfalzEdv.office.clients.core.mock.TenantMockClient;
+import de.kaiserpfalzEdv.office.clients.core.tenant.impl.TenantMockClient;
 import de.kaiserpfalzEdv.office.commons.paging.PageableImpl;
 import de.kaiserpfalzEdv.office.commons.paging.SortImpl;
 import de.kaiserpfalzEdv.office.core.tenants.Tenant;

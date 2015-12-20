@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzEdv.office.clients.core.mock;
+package de.kaiserpfalzEdv.office.clients.core.tenant.impl;
 
 import de.kaiserpfalzEdv.commons.jee.paging.Page;
 import de.kaiserpfalzEdv.commons.jee.paging.Pageable;
@@ -60,7 +60,6 @@ public class TenantMockClient implements TenantService {
             try {
                 Tenant t = new TenantBuilder().withNumber(Integer.toString(i)).build();
                 create(t);
-                LOG.trace("*   *   Created tenant: {}", t);
             } catch (TenantAlreadyExistsException e) {
                 LOG.error(e.getClass().getSimpleName() + " caught: " + e.getMessage(), e);
             }

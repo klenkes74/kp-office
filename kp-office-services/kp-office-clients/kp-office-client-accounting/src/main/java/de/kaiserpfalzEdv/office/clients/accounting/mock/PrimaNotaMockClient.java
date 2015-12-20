@@ -106,7 +106,6 @@ public class PrimaNotaMockClient implements PrimaNotaService {
                 .getPeriod(), period
         );
         primaNota = save(primaNota);
-        LOG.trace("*   *   Created prima nota: {}", primaNota);
 
 
         for (int i = 1; i <= NUM_ENTRIES; i++) {
@@ -150,11 +149,7 @@ public class PrimaNotaMockClient implements PrimaNotaService {
 
 
         try {
-            PrimaNotaEntry returnValue = result.build();
-            if (i == 1) LOG.debug("Generated: {}", returnValue);
-            else LOG.trace("Generated: {}", returnValue);
-
-            return returnValue;
+            return result.build();
         } catch (BuilderException e) {
             LOG.error("Can't build prima nota entry: " + e.getMessage(), e);
             LOG.info("Failures: {}", e.getFailures());

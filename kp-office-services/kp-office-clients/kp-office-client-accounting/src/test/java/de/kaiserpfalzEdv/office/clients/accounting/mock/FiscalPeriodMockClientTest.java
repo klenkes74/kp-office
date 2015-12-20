@@ -19,7 +19,7 @@ package de.kaiserpfalzEdv.office.clients.accounting.mock;
 import de.kaiserpfalzEdv.commons.test.CommonTestBase;
 import de.kaiserpfalzEdv.office.accounting.tax.FiscalPeriod;
 import de.kaiserpfalzEdv.office.accounting.tax.FiscalPeriodService;
-import de.kaiserpfalzEdv.office.clients.core.mock.TenantMockClient;
+import de.kaiserpfalzEdv.office.clients.core.tenant.impl.TenantMockClient;
 import de.kaiserpfalzEdv.office.core.tenants.TenantService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

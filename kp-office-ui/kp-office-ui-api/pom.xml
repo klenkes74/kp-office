@@ -45,6 +45,11 @@
             <artifactId>kp-office-commons-client</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>de.kaiserpfalz-edv.office.services</groupId>
+            <artifactId>kp-office-client-core</artifactId>
+        </dependency>
+
 
         <!-- Bean validation implementation -->
         <dependency>

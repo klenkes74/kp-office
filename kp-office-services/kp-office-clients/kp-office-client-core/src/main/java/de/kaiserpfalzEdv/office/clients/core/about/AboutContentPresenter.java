@@ -17,7 +17,7 @@
 package de.kaiserpfalzEdv.office.clients.core.about;
 
 import de.kaiserpfalzEdv.commons.jee.servlet.model.ApplicationMetaData;
-import de.kaiserpfalzEdv.office.clients.core.impl.LicenseClient;
+import de.kaiserpfalzEdv.office.clients.core.license.impl.LicenseClient;
 import de.kaiserpfalzEdv.office.commons.KPO;
 import de.kaiserpfalzEdv.office.commons.client.mvp.Presenter;
 import org.apache.commons.lang3.builder.ToStringBuilder;

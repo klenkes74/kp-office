@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzEdv.office.clients.core.impl;
+package de.kaiserpfalzEdv.office.clients.core.tenant.impl;
 
 import de.kaiserpfalzEdv.commons.jee.paging.Page;
 import de.kaiserpfalzEdv.commons.jee.paging.Pageable;

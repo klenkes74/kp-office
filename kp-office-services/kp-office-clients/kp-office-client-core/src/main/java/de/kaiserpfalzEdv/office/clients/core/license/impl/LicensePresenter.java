@@ -14,11 +14,10 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzEdv.office.clients.core.license;
+package de.kaiserpfalzEdv.office.clients.core.license.impl;
 
 import com.google.common.eventbus.Subscribe;
 import de.kaiserpfalzEdv.commons.jee.eventbus.EventBusHandler;
-import de.kaiserpfalzEdv.office.clients.core.impl.LicenseClient;
 import de.kaiserpfalzEdv.office.commons.client.mvp.Presenter;
 import de.kaiserpfalzEdv.office.core.license.OfficeLicense;
 import org.apache.commons.lang3.builder.ToStringBuilder;
