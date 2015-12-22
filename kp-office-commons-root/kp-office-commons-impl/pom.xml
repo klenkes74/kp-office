@@ -28,4 +28,24 @@
     </parent>
 
     <artifactId>kp-office-commons-impl</artifactId>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>de.kaiserpfalz-edv.office</groupId>
+                <artifactId>kp-office-bom</artifactId>
+                <version>${project.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+
+    <dependencies>
+        <dependency>
+            <groupId>de.kaiserpfalz-edv.office</groupId>
+            <artifactId>kp-office-commons-api</artifactId>
+        </dependency>
+    </dependencies>
 </project>

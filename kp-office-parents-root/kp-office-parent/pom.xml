@@ -20,12 +20,6 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <parent>
-        <groupId>de.kaiserpfalz-edv</groupId>
-        <artifactId>kp-parent-pom</artifactId>
-        <version>2015Q1</version>
-    </parent>
-
     <groupId>de.kaiserpfalz-edv.office</groupId>
     <artifactId>kp-office-parent</artifactId>
     <packaging>pom</packaging>
@@ -148,79 +142,18 @@
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>de.kaiserpfalz-edv.commons</groupId>
-            <artifactId>kp-commons-test</artifactId>
+            <version>1.7.12</version>
         </dependency>
     </dependencies>
 
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>de.kaiserpfalz-edv.base</groupId>
-                <artifactId>kp-misc-bom</artifactId>
-                <version>${kp-commons.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-
-            <dependency>
-                <groupId>de.kaiserpfalz-edv.commons</groupId>
-                <artifactId>kp-commons-bom</artifactId>
-                <version>${kp-commons.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-
-            <dependency>
-                <groupId>de.kaiserpfalz-edv.base</groupId>
-                <artifactId>kp-jee-bom</artifactId>
-                <version>${kp-commons.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-
-            <dependency>
-                <groupId>de.kaiserpfalz-edv.base</groupId>
-                <artifactId>kp-test-bom</artifactId>
-                <version>${kp-commons.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-
-
-            <dependency>
-                <groupId>javax</groupId>
-                <artifactId>javaee-api</artifactId>
-                <version>7.0</version>
-                <scope>provided</scope>
-            </dependency>
-
-            <dependency>
-                <groupId>javax.validation</groupId>
-                <artifactId>validation-api</artifactId>
-                <version>1.1.0.Final</version>
-            </dependency>
-
-            <dependency>
-                <groupId>de.kaiserpfalz-edv.commons</groupId>
-                <artifactId>kp-commons-jee</artifactId>
-                <version>${kp-commons.version}</version>
-            </dependency>
-
-
-            <!-- Commons -->
-            <dependency>
-                <groupId>de.kaiserpfalz-edv.office.commons</groupId>
-                <artifactId>kp-office-commons-api</artifactId>
+                <groupId>de.kaiserpfalz-edv.office</groupId>
+                <artifactId>kp-office-bom</artifactId>
                 <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>de.kaiserpfalz-edv.office.commons</groupId>
-                <artifactId>kp-office-commons-impl</artifactId>
-                <version>${project.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>

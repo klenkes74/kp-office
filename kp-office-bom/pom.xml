@@ -38,6 +38,7 @@
                 <artifactId>kp-office-commons-impl</artifactId>
                 <version>${project.version}</version>
             </dependency>
+
             <!-- Base -->
             <dependency>
                 <groupId>${project.groupId}</groupId>
@@ -49,6 +50,7 @@
                 <artifactId>kp-office-base-impl</artifactId>
                 <version>${project.version}</version>
             </dependency>
+
             <!-- Finance -->
             <dependency>
                 <groupId>${project.groupId}</groupId>
