@@ -20,15 +20,19 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>de.kaiserpfalz-edv.office</groupId>
-    <artifactId>kp-office-root</artifactId>
-    <packaging>pom</packaging>
-    <version>restart-SNAPSHOT</version>
+    <parent>
+        <groupId>de.kaiserpfalz-edv.office</groupId>
+        <artifactId>kp-office-api-parent</artifactId>
+        <version>restart-SNAPSHOT</version>
+        <relativePath>../../../kp-office-parents-root/kp-office-api-parent/pom.xml</relativePath>
+    </parent>
 
-    <modules>
-        <module>kp-office-parents-root</module>
-        <module>kp-office-bom</module>
-        <module>kp-office-commons-root</module>
-        <module>kp-office-modules</module>
-    </modules>
+    <artifactId>kp-office-dms-api</artifactId>
+
+    <dependencies>
+        <dependency>
+            <groupId>de.kaiserpfalz-edv.office</groupId>
+            <artifactId>kp-office-base-api</artifactId>
+        </dependency>
+    </dependencies>
 </project>

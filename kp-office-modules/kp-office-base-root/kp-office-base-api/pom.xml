@@ -28,4 +28,11 @@
     </parent>
 
     <artifactId>kp-office-base-api</artifactId>
+
+    <dependencies>
+        <dependency>
+            <groupId>de.kaiserpfalz-edv.office</groupId>
+            <artifactId>kp-office-commons-api</artifactId>
+        </dependency>
+    </dependencies>
 </project>

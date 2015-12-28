@@ -30,6 +30,7 @@
 
 
     <properties>
+        <javaVersion>1.8</javaVersion>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
         <project.root>${project.basedir}</project.root>
@@ -69,31 +70,55 @@
 
 
     <build>
+        <resources>
+            <resource>
+                <directory>${project.build.sourceDirectory}/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+        <testResources>
+            <testResource>
+                <directory>${project.build.sourceDirectory}/test/resources</directory>
+                <filtering>true</filtering>
+            </testResource>
+        </testResources>
+
+
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-scm-plugin</artifactId>
+                <version>1.9.4</version>
             </plugin>
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.3</version>
+                <configuration>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                    <source>${javaVersion}</source>
+                    <target>${javaVersion}</target>
+                </configuration>
             </plugin>
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
+                <version>2.7</version>
             </plugin>
 
             <!-- ===[Testing]=============================================================================[BEGIN]=== -->
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>findbugs-maven-plugin</artifactId>
+                <version>3.0.2</version>
             </plugin>
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.18.1</version>
             </plugin>
             <!-- ===[Testing]=============================================================================[END  ]=== -->
         </plugins>
@@ -140,9 +165,13 @@
 
     <dependencies>
         <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-api</artifactId>
+        </dependency>
+
+        <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
-            <version>1.7.12</version>
         </dependency>
     </dependencies>
 

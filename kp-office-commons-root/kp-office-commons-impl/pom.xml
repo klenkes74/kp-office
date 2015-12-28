@@ -22,9 +22,9 @@
 
     <parent>
         <groupId>de.kaiserpfalz-edv.office</groupId>
-        <artifactId>kp-office-commons-root</artifactId>
+        <artifactId>kp-office-impl-parent</artifactId>
         <version>restart-SNAPSHOT</version>
-        <relativePath>../pom.xml</relativePath>
+        <relativePath>../../kp-office-parents-root/kp-office-impl-parent/pom.xml</relativePath>
     </parent>
 
     <artifactId>kp-office-commons-impl</artifactId>

@@ -28,4 +28,17 @@
     </parent>
 
     <artifactId>kp-office-finance-api</artifactId>
+
+    <dependencies>
+        <dependency>
+            <groupId>de.kaiserpfalz-edv.office</groupId>
+            <artifactId>kp-office-base-api</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.money</groupId>
+            <artifactId>money-api</artifactId>
+            <version>1.0</version>
+        </dependency>
+    </dependencies>
 </project>
