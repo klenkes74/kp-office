@@ -50,5 +50,17 @@
                 </exclusion>
             </exclusions>
         </dependency>
+<!--
+        <dependency>
+            <groupId>org.javamoney.lib</groupId>
+            <artifactId>javamoney-calc</artifactId>
+            <version>0.9-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>org.javamoney.lib</groupId>
+            <artifactId>javamoney-cdi</artifactId>
+            <version>0.9-SNAPSHOT</version>
+        </dependency>
+-->
     </dependencies>
 </project>
