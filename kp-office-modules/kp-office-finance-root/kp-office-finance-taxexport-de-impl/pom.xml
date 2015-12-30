@@ -22,19 +22,17 @@
 
     <parent>
         <groupId>de.kaiserpfalz-edv.office</groupId>
-        <artifactId>kp-office-modules</artifactId>
+        <artifactId>kp-office-impl-parent</artifactId>
         <version>restart-SNAPSHOT</version>
-        <relativePath>../pom.xml</relativePath>
+        <relativePath>../../../kp-office-parents-root/kp-office-impl-parent/pom.xml</relativePath>
     </parent>
 
-    <artifactId>kp-office-finance-root</artifactId>
-    <packaging>pom</packaging>
+    <artifactId>kp-office-finance-taxexport-de-impl</artifactId>
 
-    <modules>
-        <module>kp-office-finance-api</module>
-        <module>kp-office-finance-accounting-impl</module>
-        <module>kp-office-finance-taxexport-de-impl</module>
-        <module>kp-office-finance-datevexport-impl</module>
-        <module>kp-office-finance-reporting-impl</module>
-    </modules>
+    <dependencies>
+        <dependency>
+            <groupId>de.kaiserpfalz-edv.office</groupId>
+            <artifactId>kp-office-finance-accounting-impl</artifactId>
+        </dependency>
+    </dependencies>
 </project>

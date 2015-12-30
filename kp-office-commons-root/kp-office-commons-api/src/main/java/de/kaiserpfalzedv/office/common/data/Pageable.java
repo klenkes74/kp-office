@@ -14,14 +14,37 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzedv.office.finance.accounting.accounts;
+package de.kaiserpfalzedv.office.common.data;
 
-import de.kaiserpfalzedv.office.common.data.Identifyable;
+import java.io.Serializable;
 
 /**
  * @author klenkes
  * @version 2015Q1
- * @since 27.12.15 18:04
+ * @since 27.12.15 19:56
  */
-public interface Account extends Identifyable {
+public interface Pageable extends Serializable {
+    long getPage();
+
+    long getSize();
+
+    long getTotalCount();
+
+    long getTotalPages();
+
+    boolean hasNextPage();
+
+    boolean hasPrevPage();
+
+    boolean isFirstPage();
+
+    boolean isLastPage();
+
+    Pageable getNextPage();
+
+    Pageable getPrevPage();
+
+    Pageable getFirstPage();
+
+    Pageable getLastPage();
 }

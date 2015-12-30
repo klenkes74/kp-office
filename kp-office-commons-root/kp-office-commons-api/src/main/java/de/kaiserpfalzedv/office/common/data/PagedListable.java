@@ -14,14 +14,18 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzedv.office.finance.accounting.accounts;
+package de.kaiserpfalzedv.office.common.data;
 
-import de.kaiserpfalzedv.office.common.data.Identifyable;
+import java.io.Serializable;
+import java.util.List;
 
 /**
  * @author klenkes
  * @version 2015Q1
- * @since 27.12.15 18:04
+ * @since 27.12.15 19:54
  */
-public interface Account extends Identifyable {
+public interface PagedListable<T> extends Serializable {
+    Pageable getPage();
+
+    List<T> getEntries();
 }

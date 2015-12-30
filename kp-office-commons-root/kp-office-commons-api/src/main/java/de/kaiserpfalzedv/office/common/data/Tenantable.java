@@ -14,36 +14,22 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzedv.office.common.impl;
-
-import de.kaiserpfalzedv.office.common.data.Identifyable;
+package de.kaiserpfalzedv.office.common.data;
 
 import java.util.UUID;
 
 /**
- * The null tenant for all objects that don't have a tenant.
+ * All objects implementing this interface can be used in a multi tenant data structure.
  *
  * @author klenkes
  * @version 2015Q1
- * @since 27.12.15 11:41
+ * @since 27.12.15 11:36
  */
-public class NullTenant implements Identifyable {
-    private static final long   serialVersionUID = 7355747572880952600L;
-    private static final String NULL_ID          = "00000000-0000-0000-0000-000000000000";
-
-    public UUID getId() {
-        return UUID.fromString(NULL_ID);
-    }
-
-    public String getDisplayname() {
-        return "";
-    }
-
-    public String getFullname() {
-        return "";
-    }
-
-    public UUID getTenantId() {
-        return getId();
-    }
+public interface Tenantable {
+    /**
+     * Returns only the id of the tenant. The data of the tenant may be retrieved by the appropriate service.
+     *
+     * @return The unique tenant id of the owning tenant.
+     */
+    UUID getTenantId();
 }

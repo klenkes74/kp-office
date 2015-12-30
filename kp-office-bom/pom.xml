@@ -65,7 +65,22 @@
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>kp-office-finance-impl</artifactId>
+                <artifactId>kp-office-finance-accounting-impl</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>kp-office-finance-taxexport-de-impl</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>kp-office-finance-datevexport-impl</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>kp-office-finance-reporting-impl</artifactId>
                 <version>${project.version}</version>
             </dependency>
 

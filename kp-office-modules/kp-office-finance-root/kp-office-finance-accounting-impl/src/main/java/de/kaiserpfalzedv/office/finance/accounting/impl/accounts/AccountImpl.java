@@ -14,36 +14,53 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzedv.office.common.impl;
+package de.kaiserpfalzedv.office.finance.accounting.impl.accounts;
 
-import de.kaiserpfalzedv.office.common.data.Identifyable;
+import de.kaiserpfalzedv.office.finance.accounting.accounts.Account;
 
 import java.util.UUID;
 
 /**
- * The null tenant for all objects that don't have a tenant.
+ * The immutable account object.
  *
  * @author klenkes
  * @version 2015Q1
- * @since 27.12.15 11:41
+ * @since 28.12.15 07:13
  */
-public class NullTenant implements Identifyable {
-    private static final long   serialVersionUID = 7355747572880952600L;
-    private static final String NULL_ID          = "00000000-0000-0000-0000-000000000000";
+public class AccountImpl implements Account {
+    private static final long serialVersionUID = -3544817616044320036L;
 
+    private UUID   tenantId;
+    private UUID   id;
+    private String displayName;
+    private String fullName;
+
+
+    AccountImpl(final UUID tenantId, final UUID id, final String displayName, final String fullName) {
+        this.tenantId = tenantId;
+        this.id = id;
+        this.displayName = displayName;
+        this.fullName = fullName;
+    }
+
+
+    @Override
     public UUID getId() {
-        return UUID.fromString(NULL_ID);
+        return id;
     }
 
+    @Override
     public String getDisplayname() {
-        return "";
+        return displayName;
     }
 
+    @Override
     public String getFullname() {
-        return "";
+        return fullName;
     }
 
+    @Override
     public UUID getTenantId() {
-        return getId();
+        return tenantId;
     }
 }

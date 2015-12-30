@@ -14,14 +14,14 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzedv.office.finance.accounting.accounts;
+package de.kaiserpfalzedv.office.finance.accounting.impl.journal;
 
-import de.kaiserpfalzedv.office.common.data.Identifyable;
+import de.kaiserpfalzedv.office.finance.accounting.PagedPostingRecordList;
 
 /**
  * @author klenkes
  * @version 2015Q1
- * @since 27.12.15 18:04
+ * @since 27.12.15 20:01
  */
-public interface Account extends Identifyable {
+public interface Journal extends PagedPostingRecordList<JournalEntry> {
 }

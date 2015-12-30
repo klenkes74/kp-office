@@ -14,14 +14,14 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzedv.office.finance.accounting.accounts;
+package de.kaiserpfalzedv.office.finance.accounting.impl.primanota;
 
-import de.kaiserpfalzedv.office.common.data.Identifyable;
+import de.kaiserpfalzedv.office.finance.accounting.BasePostingRecord;
 
 /**
  * @author klenkes
  * @version 2015Q1
- * @since 27.12.15 18:04
+ * @since 27.12.15 19:51
  */
-public interface Account extends Identifyable {
+public interface PrimaNotaEntry extends BasePostingRecord {
 }

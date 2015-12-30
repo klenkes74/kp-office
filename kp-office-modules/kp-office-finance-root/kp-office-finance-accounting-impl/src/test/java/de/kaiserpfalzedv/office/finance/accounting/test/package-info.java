@@ -14,14 +14,11 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzedv.office.finance.accounting.accounts;
-
-import de.kaiserpfalzedv.office.common.data.Identifyable;
-
 /**
+ * The tests for the accounting sub feature of the finance package.
+ *
  * @author klenkes
  * @version 2015Q1
- * @since 27.12.15 18:04
+ * @since 29.12.15 19:32
  */
-public interface Account extends Identifyable {
-}
+package de.kaiserpfalzedv.office.finance.accounting.test;

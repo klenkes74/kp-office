@@ -14,36 +14,31 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzedv.office.common.impl;
+package de.kaiserpfalzedv.office.common.data;
 
-import de.kaiserpfalzedv.office.common.data.Identifyable;
-
+import java.io.Serializable;
 import java.util.UUID;
 
 /**
- * The null tenant for all objects that don't have a tenant.
+ * The interface for retrieving identification information.
  *
  * @author klenkes
  * @version 2015Q1
- * @since 27.12.15 11:41
+ * @since 27.12.15 11:31
  */
-public class NullTenant implements Identifyable {
-    private static final long   serialVersionUID = 7355747572880952600L;
-    private static final String NULL_ID          = "00000000-0000-0000-0000-000000000000";
+public interface Identifyable extends Tenantable, Serializable {
+    /**
+     * @return The UUID of this object.
+     */
+    UUID getId();
 
-    public UUID getId() {
-        return UUID.fromString(NULL_ID);
-    }
+    /**
+     * @return The display name (max. 50 characters long) of this object.
+     */
+    String getDisplayname();
 
-    public String getDisplayname() {
-        return "";
-    }
-
-    public String getFullname() {
-        return "";
-    }
-
-    public UUID getTenantId() {
-        return getId();
-    }
+    /**
+     * @return The full name (max 200 characters long) of this object.
+     */
+    String getFullname();
 }

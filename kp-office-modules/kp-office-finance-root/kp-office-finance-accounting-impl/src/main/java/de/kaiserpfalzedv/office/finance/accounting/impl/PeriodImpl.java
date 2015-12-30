@@ -14,36 +14,36 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzedv.office.common.impl;
+package de.kaiserpfalzedv.office.finance.accounting.impl;
 
-import de.kaiserpfalzedv.office.common.data.Identifyable;
-
-import java.util.UUID;
+import de.kaiserpfalzedv.office.finance.accounting.Period;
 
 /**
- * The null tenant for all objects that don't have a tenant.
- *
  * @author klenkes
  * @version 2015Q1
- * @since 27.12.15 11:41
+ * @since 28.12.15 07:03
  */
-public class NullTenant implements Identifyable {
-    private static final long   serialVersionUID = 7355747572880952600L;
-    private static final String NULL_ID          = "00000000-0000-0000-0000-000000000000";
+public class PeriodImpl implements Period {
+    private static final long serialVersionUID = 622330645962397997L;
 
-    public UUID getId() {
-        return UUID.fromString(NULL_ID);
+
+    private int year;
+    private int period;
+
+
+    public PeriodImpl(final int year, final int period) {
+        this.year = year;
+        this.period = period;
     }
 
-    public String getDisplayname() {
-        return "";
+
+    @Override
+    public int getYear() {
+        return year;
     }
 
-    public String getFullname() {
-        return "";
-    }
-
-    public UUID getTenantId() {
-        return getId();
+    @Override
+    public int getPeriod() {
+        return period;
     }
 }
