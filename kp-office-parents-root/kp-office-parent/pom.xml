@@ -30,7 +30,8 @@
 
 
     <properties>
-        <javaVersion>1.8</javaVersion>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
         <project.root>${project.basedir}</project.root>
@@ -95,11 +96,6 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.3</version>
-                <configuration>
-                    <encoding>${project.build.sourceEncoding}</encoding>
-                    <source>${javaVersion}</source>
-                    <target>${javaVersion}</target>
-                </configuration>
             </plugin>
 
             <plugin>

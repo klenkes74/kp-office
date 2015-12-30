@@ -27,9 +27,13 @@
         <relativePath>../../../kp-office-parents-root/kp-office-impl-parent/pom.xml</relativePath>
     </parent>
 
-    <artifactId>kp-office-base-impl</artifactId>
+    <artifactId>kp-office-base-license-impl</artifactId>
 
     <dependencies>
+        <dependency>
+            <groupId>de.kaiserpfalz-edv.office</groupId>
+            <artifactId>kp-office-base-api</artifactId>
+        </dependency>
         <dependency>
             <groupId>de.kaiserpfalz-edv.office</groupId>
             <artifactId>kp-office-commons-impl</artifactId>

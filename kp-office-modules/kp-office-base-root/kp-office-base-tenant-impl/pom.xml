@@ -22,20 +22,21 @@
 
     <parent>
         <groupId>de.kaiserpfalz-edv.office</groupId>
-        <artifactId>kp-office-modules</artifactId>
+        <artifactId>kp-office-impl-parent</artifactId>
         <version>restart-SNAPSHOT</version>
-        <relativePath>../pom.xml</relativePath>
+        <relativePath>../../../kp-office-parents-root/kp-office-impl-parent/pom.xml</relativePath>
     </parent>
 
-    <artifactId>kp-office-base-root</artifactId>
-    <packaging>pom</packaging>
+    <artifactId>kp-office-base-tenant-impl</artifactId>
 
-    <modules>
-        <module>kp-office-base-api</module>
-        <module>kp-office-base-access-impl</module>
-        <module>kp-office-base-contacts-impl</module>
-        <module>kp-office-base-files-impl</module>
-        <module>kp-office-base-license-impl</module>
-        <module>kp-office-base-tenant-impl</module>
-    </modules>
+    <dependencies>
+        <dependency>
+            <groupId>de.kaiserpfalz-edv.office</groupId>
+            <artifactId>kp-office-base-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>de.kaiserpfalz-edv.office</groupId>
+            <artifactId>kp-office-commons-impl</artifactId>
+        </dependency>
+    </dependencies>
 </project>
