@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 Kaiserpfalz EDV-Service, Roland T. Lichti
+ * Copyright 2016 Kaiserpfalz EDV-Service, Roland T. Lichti
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,14 +14,14 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzedv.office.finance.accounting.impl.primanota;
+package de.kaiserpfalzedv.office.finance.accounting.journal;
 
 import de.kaiserpfalzedv.office.finance.accounting.PagedPostingRecordList;
 
 /**
  * @author klenkes
  * @version 2015Q1
- * @since 27.12.15 19:53
+ * @since 27.12.15 20:01
  */
-public interface PrimaNota extends PagedPostingRecordList<PrimaNotaEntry> {
+public interface Journal extends PagedPostingRecordList<JournalEntry> {
 }

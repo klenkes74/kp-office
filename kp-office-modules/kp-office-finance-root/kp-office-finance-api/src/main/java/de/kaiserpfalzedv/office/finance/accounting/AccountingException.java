@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 Kaiserpfalz EDV-Service, Roland T. Lichti
+ * Copyright 2016 Kaiserpfalz EDV-Service, Roland T. Lichti
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,14 +14,28 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzedv.office.finance.accounting.impl.generalledger;
+package de.kaiserpfalzedv.office.finance.accounting;
 
-import de.kaiserpfalzedv.office.finance.accounting.PagedPostingRecordList;
+import de.kaiserpfalzedv.office.common.BaseBusinessException;
 
 /**
  * @author klenkes
  * @version 2015Q1
- * @since 27.12.15 20:02
+ * @since 31.12.15 07:05
  */
-public interface GeneralLedger extends PagedPostingRecordList<GeneralLedgerEntry> {
+public class AccountingException extends BaseBusinessException {
+    private static final long serialVersionUID = -3431932005873210721L;
+
+
+    public AccountingException(String message) {
+        super(message);
+    }
+
+    public AccountingException(String message, Throwable cause) {
+        super(message, cause);
+    }
+
+    public AccountingException(Throwable cause) {
+        super(cause);
+    }
 }

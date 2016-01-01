@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 Kaiserpfalz EDV-Service, Roland T. Lichti
+ * Copyright 2016 Kaiserpfalz EDV-Service, Roland T. Lichti
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,6 +20,7 @@ import de.kaiserpfalzedv.office.finance.accounting.accounts.Account;
 import de.kaiserpfalzedv.office.finance.accounting.accounts.CostCenter;
 
 import javax.money.MonetaryAmount;
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
 
@@ -28,7 +29,7 @@ import java.time.OffsetDateTime;
  * @version 2015Q1
  * @since 27.12.15 16:18
  */
-public interface BasePostingRecord {
+public interface BasePostingRecord extends Serializable {
     OffsetDateTime getEntryDate();
 
     LocalDate getAccountingDate();

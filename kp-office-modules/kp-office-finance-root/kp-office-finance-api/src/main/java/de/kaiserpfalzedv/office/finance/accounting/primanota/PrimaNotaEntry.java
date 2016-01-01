@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 Kaiserpfalz EDV-Service, Roland T. Lichti
+ * Copyright 2016 Kaiserpfalz EDV-Service, Roland T. Lichti
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,14 +14,28 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzedv.office.finance.accounting.impl.generalledger;
+package de.kaiserpfalzedv.office.finance.accounting.primanota;
 
 import de.kaiserpfalzedv.office.finance.accounting.BasePostingRecord;
 
 /**
  * @author klenkes
  * @version 2015Q1
- * @since 27.12.15 19:52
+ * @since 27.12.15 19:51
  */
-public interface GeneralLedgerEntry extends BasePostingRecord {
+public interface PrimaNotaEntry extends BasePostingRecord {
+    /**
+     * @return The PN number.
+     */
+    long getPN();
+
+    /**
+     * @return TRUE if this entry is a STORNO to another prima nota entry.
+     */
+    boolean isCancelationEntry();
+
+    /**
+     * @return The canceled entry.
+     */
+    PrimaNotaEntry getCanceledEntry() throws PrimanotaEntryNotCanceledException;
 }
