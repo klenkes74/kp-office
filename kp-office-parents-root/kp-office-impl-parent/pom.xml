@@ -23,7 +23,7 @@
     <parent>
         <groupId>de.kaiserpfalz-edv.office</groupId>
         <artifactId>kp-office-parent</artifactId>
-        <version>restart-SNAPSHOT</version>
+        <version>0.3.0-SNAPSHOT</version>
         <relativePath>../kp-office-parent/pom.xml</relativePath>
     </parent>
 
@@ -37,12 +37,6 @@
     </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>de.kaiserpfalz-edv.office</groupId>
-            <artifactId>kp-office-commons-impl</artifactId>
-        </dependency>
-
-
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
@@ -120,6 +114,7 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <configuration>
+                    <!--suppress MavenModelInspection --><!-- It's ok, it will be set by a plugin at build time -->
                     <argLine>${surefireArgLine}</argLine>
                     <skipTests>${skip.unit.tests}</skipTests>
                     <excludes>
