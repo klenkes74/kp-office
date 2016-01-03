@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 Kaiserpfalz EDV-Service, Roland T. Lichti
+ * Copyright 2016 Kaiserpfalz EDV-Service, Roland T. Lichti
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -34,6 +34,8 @@ import java.util.ArrayList;
 public class PageableBuilder implements Builder<Pageable> {
     private static final Logger LOG = LoggerFactory.getLogger(PageableBuilder.class);
 
+    private static final int DEFAULT_PAGE_SIZE = 10;
+
     private long page;
     private long size;
     private long totalPages;
@@ -48,6 +50,7 @@ public class PageableBuilder implements Builder<Pageable> {
     }
 
     private void setDefaultValues() {
+        if (size == 0) size = DEFAULT_PAGE_SIZE;
         if (totalPages == 0) totalPages = page + 1;
     }
 

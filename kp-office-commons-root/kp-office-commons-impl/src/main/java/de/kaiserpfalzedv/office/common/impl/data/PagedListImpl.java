@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 Kaiserpfalz EDV-Service, Roland T. Lichti
+ * Copyright 2016 Kaiserpfalz EDV-Service, Roland T. Lichti
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,6 +20,7 @@ import de.kaiserpfalzedv.office.common.data.Pageable;
 import de.kaiserpfalzedv.office.common.data.PagedListable;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -35,7 +36,7 @@ public class PagedListImpl<T> implements PagedListable<T> {
     private PageImpl paging;
 
 
-    PagedListImpl(List<T> data, Pageable pageable) {
+    PagedListImpl(Collection<T> data, Pageable pageable) {
         if (data != null) this.data.addAll(data);
 
         paging = new PageableBuilder().withPaging(pageable).build();

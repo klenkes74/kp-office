@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 Kaiserpfalz EDV-Service, Roland T. Lichti
+ * Copyright 2016 Kaiserpfalz EDV-Service, Roland T. Lichti
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@ import java.util.UUID;
  * @since 28.12.15 07:16
  */
 public class CostCenterImpl extends AccountImpl implements CostCenter {
-    CostCenterImpl(UUID tenantId, UUID id, String displayName, String fullName) {
-        super(tenantId, id, displayName, fullName);
+    CostCenterImpl(UUID tenantId, UUID id, String accountNumber, String displayName, String fullName) {
+        super(tenantId, id, accountNumber, displayName, fullName);
     }
 }

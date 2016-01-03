@@ -16,15 +16,28 @@
 
 package de.kaiserpfalzedv.office.finance.accounting.accounts;
 
-import de.kaiserpfalzedv.office.common.data.Identifyable;
+import javax.security.auth.login.AccountException;
+import java.util.UUID;
 
 /**
+ * This exception is thrown if a mapping of an unmapped account is requested.
+ *
  * @author klenkes
  * @version 2015Q1
- * @since 27.12.15 18:04
+ * @since 03.01.16 12:05
  */
-public interface Account extends Identifyable, Comparable<Account> {
-    String getCurrentAccountId() throws AccountNotMappedException;
+public class AccountNotMappedException extends AccountException {
+    private static final long serialVersionUID = -1725667515126633454L;
 
-    void setCurrentAccountId(final String accountId);
+    public AccountNotMappedException(final Account account) {
+        this(account.getId());
+    }
+
+    public AccountNotMappedException(final String accountNumber) {
+        super("Account '" + accountNumber + "' has no current display number mapping.");
+    }
+
+    public AccountNotMappedException(final UUID accountId) {
+        this(accountId.toString());
+    }
 }

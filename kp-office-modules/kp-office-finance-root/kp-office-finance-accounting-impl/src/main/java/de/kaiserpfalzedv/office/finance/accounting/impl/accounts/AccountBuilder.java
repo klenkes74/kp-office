@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 Kaiserpfalz EDV-Service, Roland T. Lichti
+ * Copyright 2016 Kaiserpfalz EDV-Service, Roland T. Lichti
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,6 +18,7 @@ package de.kaiserpfalzedv.office.finance.accounting.impl.accounts;
 
 import de.kaiserpfalzedv.office.common.data.BuilderException;
 import de.kaiserpfalzedv.office.finance.accounting.accounts.Account;
+import de.kaiserpfalzedv.office.finance.accounting.accounts.AccountNotMappedException;
 import org.apache.commons.lang3.builder.Builder;
 
 import java.util.ArrayList;
@@ -37,13 +38,14 @@ public class AccountBuilder implements Builder<Account> {
     private UUID   id;
     private String displayName;
     private String fullName;
+    private String accountNumber;
 
     @Override
     public Account build() {
         setDefaultValues();
         validate();
 
-        return generateObject(tenantId, id, displayName, fullName);
+        return generateObject(tenantId, id, accountNumber, displayName, fullName);
     }
 
     /**
@@ -57,8 +59,8 @@ public class AccountBuilder implements Builder<Account> {
      *
      * @return An object of type AccountImpl.
      */
-    private AccountImpl generateObject(final UUID tenantId, final UUID id, final String displayName, final String fullName) {
-        return new AccountImpl(tenantId, id, displayName, fullName);
+    private AccountImpl generateObject(final UUID tenantId, final UUID id, final String accountNumber, final String displayName, final String fullName) {
+        return new AccountImpl(tenantId, id, accountNumber, displayName, fullName);
     }
 
     /**
@@ -92,6 +94,22 @@ public class AccountBuilder implements Builder<Account> {
     }
 
 
+    public AccountBuilder withAccount(Account account) {
+        withTenantId(account.getTenantId());
+        withId(account.getId());
+        withDisplayName(account.getDisplayname());
+        withFullName(account.getFullname());
+
+        try {
+            withAccountNumber(account.getCurrentAccountId());
+        } catch (AccountNotMappedException e) {
+            // Nothing to do. It will have no mapping in this situation.
+        }
+
+        return this;
+    }
+
+
     public AccountBuilder withTenantId(UUID tenantId) {
         this.tenantId = tenantId;
         return this;
@@ -99,6 +117,11 @@ public class AccountBuilder implements Builder<Account> {
 
     public AccountBuilder withId(UUID id) {
         this.id = id;
+        return this;
+    }
+
+    public AccountBuilder withAccountNumber(String accountNumber) {
+        this.accountNumber = accountNumber;
         return this;
     }
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 Kaiserpfalz EDV-Service, Roland T. Lichti
+ * Copyright 2016 Kaiserpfalz EDV-Service, Roland T. Lichti
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,6 +17,8 @@
 package de.kaiserpfalzedv.office.common.impl.data;
 
 import de.kaiserpfalzedv.office.common.data.Pageable;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
 
 /**
  * Implementation of the pageable interface to contain paging data and some base functions for calculating pages ...
@@ -26,6 +28,9 @@ import de.kaiserpfalzedv.office.common.data.Pageable;
  * @since 30.12.15 13:58
  */
 public class PageImpl implements Pageable {
+    private static final long serialVersionUID = -6816585501293408061L;
+
+
     private long page;
     private long size;
 
@@ -97,5 +102,17 @@ public class PageImpl implements Pageable {
     @Override
     public Pageable getLastPage() {
         return new PageImpl(totalPages - 1, size, totalPages, totalCount);
+    }
+
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE)
+                .append(System.identityHashCode(this))
+                .append("page", page)
+                .append("size", size)
+                .append("totalPages", totalPages)
+                .append("totalCount", totalCount)
+                .toString();
     }
 }
