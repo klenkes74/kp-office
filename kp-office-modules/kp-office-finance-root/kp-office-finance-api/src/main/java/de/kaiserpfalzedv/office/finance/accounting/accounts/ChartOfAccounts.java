@@ -18,13 +18,33 @@ package de.kaiserpfalzedv.office.finance.accounting.accounts;
 
 import de.kaiserpfalzedv.office.common.data.Identifyable;
 
+import java.io.Serializable;
+import java.util.Map;
+import java.util.Set;
+import java.util.UUID;
+
 /**
+ * A sorted {@link Map} of the mapped accounts.
+ *
  * @author klenkes
  * @version 2015Q1
- * @since 27.12.15 18:04
+ * @since 03.01.16 17:22
  */
-public interface Account extends Identifyable, Comparable<Account> {
-    String getCurrentAccountId() throws AccountNotMappedException;
+public interface ChartOfAccounts extends Identifyable, Serializable {
+    Account put(final String accountNumber, final Account account);
 
-    void setCurrentAccountId(final String accountId);
+    Account remove(final String accountNumber, final Account account);
+
+    Set<Account> remove(final String accountNumber);
+
+
+    Set<Account> get(final String accountNumber);
+
+    String get(final Account account) throws AccountNotMappedException;
+
+    String get(final UUID accountId) throws AccountNotMappedException;
+
+    void clear(final String accountNumber);
+
+    void clear();
 }

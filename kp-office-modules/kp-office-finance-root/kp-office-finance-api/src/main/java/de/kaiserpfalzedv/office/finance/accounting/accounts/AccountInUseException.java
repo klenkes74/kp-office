@@ -16,15 +16,27 @@
 
 package de.kaiserpfalzedv.office.finance.accounting.accounts;
 
-import de.kaiserpfalzedv.office.common.data.Identifyable;
+import de.kaiserpfalzedv.office.finance.accounting.AccountingException;
 
 /**
+ * The changes demanded could not be made since the account is already (or still) in use.
+ *
  * @author klenkes
  * @version 2015Q1
- * @since 27.12.15 18:04
+ * @since 03.01.16 09:57
  */
-public interface Account extends Identifyable, Comparable<Account> {
-    String getCurrentAccountId() throws AccountNotMappedException;
+public class AccountInUseException extends AccountingException {
+    private static final long serialVersionUID = 1919470708692757910L;
 
-    void setCurrentAccountId(final String accountId);
+    private Account account;
+
+    public AccountInUseException(final Account account) {
+        super("The account '" + account.getId() + "' (" + account.getDisplayname() + ") is in use.");
+
+        this.account = account;
+    }
+
+    public Account getAccount() {
+        return account;
+    }
 }

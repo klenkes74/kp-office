@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 Kaiserpfalz EDV-Service, Roland T. Lichti
+ * Copyright 2016 Kaiserpfalz EDV-Service, Roland T. Lichti
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -130,5 +130,72 @@ public class AccountBuilderTest {
         assertEquals(DEFAULT_ID, result.getId());
         assertEquals(DEFAULT_DISPLAY_NAME, result.getDisplayname());
         assertEquals(DEFAULT_DISPLAY_NAME, result.getFullname());
+    }
+
+
+    @Test
+    public void testComaratorEqual() {
+        service
+                .withTenantId(DEFAULT_TENANT_ID)
+                .withId(DEFAULT_ID)
+                .withDisplayName(DEFAULT_DISPLAY_NAME);
+
+        Account o1 = service.build();
+        o1.setCurrentAccountId("1000");
+
+        Account o2 = service.build();
+        o2.setCurrentAccountId("1000");
+
+        assertEquals(0, o1.compareTo(o2));
+        assertEquals(0, o2.compareTo(o1));
+    }
+
+    @Test
+    public void testComaratorNotEqual() {
+        service
+                .withTenantId(DEFAULT_TENANT_ID)
+                .withId(DEFAULT_ID)
+                .withDisplayName(DEFAULT_DISPLAY_NAME);
+
+        Account o1 = service.build();
+        o1.setCurrentAccountId("1000");
+
+        Account o2 = service.build();
+        o2.setCurrentAccountId("2000");
+
+        assertEquals(-1, o1.compareTo(o2));
+        assertEquals(1, o2.compareTo(o1));
+    }
+
+    @Test
+    public void testComaratorOneNotMapped() {
+        service
+                .withTenantId(DEFAULT_TENANT_ID)
+                .withId(DEFAULT_ID)
+                .withDisplayName(DEFAULT_DISPLAY_NAME);
+
+        Account o1 = service.build();
+        o1.setCurrentAccountId("1000");
+
+        Account o2 = service.build();
+
+        assertEquals(1, o1.compareTo(o2));
+        assertEquals(-1, o2.compareTo(o1));
+    }
+
+    @Test
+    public void testComaratorBothNotMapped() {
+        service
+                .withTenantId(DEFAULT_TENANT_ID)
+                .withId(DEFAULT_ID)
+                .withDisplayName(DEFAULT_DISPLAY_NAME);
+
+        Account o1 = service.build();
+
+        service.withId(UUID.randomUUID());
+        Account o2 = service.build();
+
+        assertEquals(o1.getId().compareTo(o2.getId()), o1.compareTo(o2));
+        assertEquals(o2.getId().compareTo(o1.getId()), o2.compareTo(o1));
     }
 }

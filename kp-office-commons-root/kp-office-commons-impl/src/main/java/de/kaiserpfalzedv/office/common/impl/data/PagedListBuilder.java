@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 Kaiserpfalz EDV-Service, Roland T. Lichti
+ * Copyright 2016 Kaiserpfalz EDV-Service, Roland T. Lichti
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,7 +22,7 @@ import de.kaiserpfalzedv.office.common.data.PagedListable;
 import org.apache.commons.lang3.builder.Builder;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Collection;
 
 /**
  * @author klenkes
@@ -30,8 +30,8 @@ import java.util.List;
  * @since 30.12.15 14:16
  */
 public class PagedListBuilder<T> implements Builder<PagedListable<T>> {
-    private List<T>  data;
-    private Pageable pageable;
+    private Collection<T> data;
+    private Pageable      pageable;
 
     @Override
     public PagedListable<T> build() {
@@ -65,7 +65,7 @@ public class PagedListBuilder<T> implements Builder<PagedListable<T>> {
     }
 
 
-    public PagedListBuilder<T> withData(List<T> data) {
+    public PagedListBuilder<T> withData(Collection<T> data) {
         this.data = data;
         return this;
     }

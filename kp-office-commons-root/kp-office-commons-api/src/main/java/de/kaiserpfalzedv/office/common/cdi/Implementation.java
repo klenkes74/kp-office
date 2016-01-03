@@ -14,17 +14,26 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzedv.office.finance.accounting.accounts;
+package de.kaiserpfalzedv.office.common.cdi;
 
-import de.kaiserpfalzedv.office.common.data.Identifyable;
+import javax.inject.Qualifier;
+import java.lang.annotation.Retention;
+import java.lang.annotation.Target;
+
+import static java.lang.annotation.ElementType.FIELD;
+import static java.lang.annotation.ElementType.PARAMETER;
+import static java.lang.annotation.ElementType.TYPE;
+import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 /**
+ * This is the qualifier for the default implementation of the service.
+ *
  * @author klenkes
  * @version 2015Q1
- * @since 27.12.15 18:04
+ * @since 03.01.16 09:48
  */
-public interface Account extends Identifyable, Comparable<Account> {
-    String getCurrentAccountId() throws AccountNotMappedException;
-
-    void setCurrentAccountId(final String accountId);
+@Qualifier
+@Retention(RUNTIME)
+@Target({TYPE, FIELD, PARAMETER})
+public @interface Implementation {
 }

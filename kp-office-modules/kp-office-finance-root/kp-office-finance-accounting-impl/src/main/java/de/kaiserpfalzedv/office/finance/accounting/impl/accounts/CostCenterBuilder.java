@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 Kaiserpfalz EDV-Service, Roland T. Lichti
+ * Copyright 2016 Kaiserpfalz EDV-Service, Roland T. Lichti
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,6 +17,7 @@
 package de.kaiserpfalzedv.office.finance.accounting.impl.accounts;
 
 import de.kaiserpfalzedv.office.common.data.BuilderException;
+import de.kaiserpfalzedv.office.finance.accounting.accounts.AccountNotMappedException;
 import de.kaiserpfalzedv.office.finance.accounting.accounts.CostCenter;
 import org.apache.commons.lang3.builder.Builder;
 
@@ -37,13 +38,14 @@ public class CostCenterBuilder implements Builder<CostCenter> {
     private UUID   id;
     private String displayName;
     private String fullName;
+    private String accountNumber;
 
     @Override
     public CostCenter build() {
         setDefaultValues();
         validate();
 
-        return generateObject(tenantId, id, displayName, fullName);
+        return generateObject(tenantId, id, accountNumber, displayName, fullName);
     }
 
     /**
@@ -57,8 +59,8 @@ public class CostCenterBuilder implements Builder<CostCenter> {
      *
      * @return An object of type AccountImpl.
      */
-    private CostCenter generateObject(final UUID tenantId, final UUID id, final String displayName, final String fullName) {
-        return new CostCenterImpl(tenantId, id, displayName, fullName);
+    private CostCenter generateObject(final UUID tenantId, final UUID id, final String accountNumber, final String displayName, final String fullName) {
+        return new CostCenterImpl(tenantId, id, accountNumber, displayName, fullName);
     }
 
     /**
@@ -92,6 +94,22 @@ public class CostCenterBuilder implements Builder<CostCenter> {
     }
 
 
+    public CostCenterBuilder withCostCenter(CostCenter orig) {
+        withTenantId(orig.getTenantId());
+        withId(orig.getId());
+        withDisplayName(orig.getDisplayname());
+        withFullName(orig.getFullname());
+
+        try {
+            withAccountNumber(orig.getCurrentAccountId());
+        } catch (AccountNotMappedException e) {
+            // It's ok. It has no account number mapping in this case ...
+        }
+
+        return this;
+    }
+
+
     public CostCenterBuilder withTenantId(UUID tenantId) {
         this.tenantId = tenantId;
         return this;
@@ -99,6 +117,11 @@ public class CostCenterBuilder implements Builder<CostCenter> {
 
     public CostCenterBuilder withId(UUID id) {
         this.id = id;
+        return this;
+    }
+
+    public CostCenterBuilder withAccountNumber(String accountNumber) {
+        this.accountNumber = accountNumber;
         return this;
     }
 
