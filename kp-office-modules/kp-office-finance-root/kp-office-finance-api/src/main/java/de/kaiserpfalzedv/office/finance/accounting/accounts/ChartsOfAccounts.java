@@ -16,7 +16,7 @@
 
 package de.kaiserpfalzedv.office.finance.accounting.accounts;
 
-import java.util.Map;
+import java.io.Serializable;
 import java.util.Set;
 import java.util.UUID;
 
@@ -25,14 +25,16 @@ import java.util.UUID;
  * @version 2015Q1
  * @since 03.01.16 17:21
  */
-public interface ChartsOfAccounts extends Map<String, ChartOfAccounts> {
-    Set<Account> put(final String chartOfAccounts, final String accountNumber, final Account account);
+public interface ChartsOfAccounts extends Serializable {
+    void createChartOfAccount(final String chartOfAccount, final UUID tenantId, final UUID id, final String displayName, final String fullName) throws ChartOfAccountsAlreadyExistsException;
 
-    Set<Account> remove(final String chartOfAccounts, final String accountNumber, final Account account);
+    Set<Account> put(final String chartOfAccounts, final String accountNumber, final Account account) throws ChartOfAccountsDoesNotExistException;
 
-    Set<Account> clear(final String chartOfAccounts, final String accountNumber);
+    Set<Account> remove(final String chartOfAccounts, final String accountNumber, final Account account) throws ChartOfAccountsDoesNotExistException;
 
-    Set<Account> clear(final String chartOfAccounts);
+    Set<Account> clear(final String chartOfAccounts, final String accountNumber) throws ChartOfAccountsDoesNotExistException;
+
+    void clear(final String chartOfAccounts);
 
     Set<Account> get(final String chartOfAccounts, final String accountNumber) throws AccountNotMappedException;
 
