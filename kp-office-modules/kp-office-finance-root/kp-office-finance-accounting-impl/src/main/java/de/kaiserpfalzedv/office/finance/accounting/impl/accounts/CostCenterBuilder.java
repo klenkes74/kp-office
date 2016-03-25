@@ -17,7 +17,7 @@
 package de.kaiserpfalzedv.office.finance.accounting.impl.accounts;
 
 import de.kaiserpfalzedv.office.common.data.BuilderException;
-import de.kaiserpfalzedv.office.finance.accounting.accounts.AccountNotMappedException;
+import de.kaiserpfalzedv.office.finance.accounting.AccountNotMappedException;
 import de.kaiserpfalzedv.office.finance.accounting.accounts.CostCenter;
 import org.apache.commons.lang3.builder.Builder;
 

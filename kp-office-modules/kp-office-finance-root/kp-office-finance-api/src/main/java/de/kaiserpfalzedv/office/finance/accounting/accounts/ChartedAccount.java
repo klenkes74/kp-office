@@ -18,6 +18,7 @@ package de.kaiserpfalzedv.office.finance.accounting.accounts;
 
 import de.kaiserpfalzedv.office.common.data.Nameable;
 import de.kaiserpfalzedv.office.common.data.Tenantable;
+import de.kaiserpfalzedv.office.finance.accounting.AccountMultiMappedException;
 
 import java.io.Serializable;
 import java.util.Set;

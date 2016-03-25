@@ -14,31 +14,31 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzedv.office.finance.accounting.accounts;
+package de.kaiserpfalzedv.office.finance.accounting;
+
+import de.kaiserpfalzedv.office.finance.accounting.accounts.Account;
+import de.kaiserpfalzedv.office.finance.accounting.accounts.ChartedAccount;
 
 import javax.security.auth.login.AccountException;
-import java.util.HashSet;
 import java.util.Set;
 
 /**
  * This exception is thrown if a mapping of an unmapped account is requested.
  *
- * @author klenkes
- * @version 2015Q1
- * @since 03.01.16 12:05
+ * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
+ * @version 0.3.0
+ * @since 2016-03-23
  */
 public class AccountMultiMappedException extends AccountException {
-    private static final long                       serialVersionUID = 5149856876016421022L;
-    private final        HashSet<? extends Account> accounts         = new HashSet<>();
+    private static final long serialVersionUID = 5149856876016421022L;
+
     private ChartedAccount account;
 
-
-    public AccountMultiMappedException(final ChartedAccount account, Set<? extends Account> mappedAccounts) {
+    public AccountMultiMappedException(final ChartedAccount account) {
         super("Account '" + account.getAccountNumber()
                       + "' (" + account.getDisplayname() + ") is mapped multiple times.");
 
         this.account = account;
-        mappedAccounts.forEach(accounts::add);
     }
 
     /**
@@ -51,7 +51,7 @@ public class AccountMultiMappedException extends AccountException {
     /**
      * @return The complete set of accounts the charted account is mapped to.
      */
-    public HashSet<? extends Account> getAccounts() {
-        return accounts;
+    public Set<? extends Account> getAccounts() {
+        return account.getAccounts();
     }
 }

@@ -16,6 +16,10 @@
 
 package de.kaiserpfalzedv.office.finance.accounting.accounts;
 
+import de.kaiserpfalzedv.office.finance.accounting.AccountNotMappedException;
+import de.kaiserpfalzedv.office.finance.accounting.ChartOfAccountsAlreadyExistsException;
+import de.kaiserpfalzedv.office.finance.accounting.ChartOfAccountsDoesNotExistException;
+
 import java.io.Serializable;
 import java.util.Set;
 import java.util.UUID;

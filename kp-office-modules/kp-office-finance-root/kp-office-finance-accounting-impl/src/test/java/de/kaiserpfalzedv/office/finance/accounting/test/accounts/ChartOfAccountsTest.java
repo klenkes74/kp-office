@@ -17,7 +17,7 @@
 package de.kaiserpfalzedv.office.finance.accounting.test.accounts;
 
 import de.kaiserpfalzedv.office.common.impl.NullTenant;
-import de.kaiserpfalzedv.office.finance.accounting.accounts.ChartOfAccountsAlreadyExistsException;
+import de.kaiserpfalzedv.office.finance.accounting.ChartOfAccountsAlreadyExistsException;
 import de.kaiserpfalzedv.office.finance.accounting.accounts.ChartsOfAccounts;
 import de.kaiserpfalzedv.office.finance.accounting.impl.accounts.ChartsOfAccountsImpl;
 import org.junit.Before;

@@ -14,27 +14,29 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzedv.office.finance.accounting.accounts;
+package de.kaiserpfalzedv.office.finance.accounting;
 
-import de.kaiserpfalzedv.office.finance.accounting.AccountingException;
+import de.kaiserpfalzedv.office.finance.accounting.accounts.Account;
 
 /**
+ * The changes demanded could not be made since the account is already (or still) in use.
+ *
  * @author klenkes
  * @version 2015Q1
- * @since 04.01.16 04:42
+ * @since 03.01.16 09:57
  */
-public class ChartOfAccountsAlreadyExistsException extends AccountingException {
-    private static final long serialVersionUID = -4403712558954899958L;
+public class AccountInUseException extends AccountingException {
+    private static final long serialVersionUID = 1919470708692757910L;
 
-    private String chartOfAccounts;
+    private Account account;
 
-    public ChartOfAccountsAlreadyExistsException(final String chartOfAccounts) {
-        super("Chart of account '" + chartOfAccounts + "' does not exist.");
+    public AccountInUseException(final Account account) {
+        super("The account '" + account.getId() + "' (" + account.getDisplayname() + ") is in use.");
 
-        this.chartOfAccounts = chartOfAccounts;
+        this.account = account;
     }
 
-    public String getChartOfAccounts() {
-        return chartOfAccounts;
+    public Account getAccount() {
+        return account;
     }
 }

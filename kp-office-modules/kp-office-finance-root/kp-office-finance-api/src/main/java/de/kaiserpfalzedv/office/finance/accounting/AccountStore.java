@@ -21,7 +21,6 @@ import de.kaiserpfalzedv.office.common.data.ObjectExistsException;
 import de.kaiserpfalzedv.office.common.data.Pageable;
 import de.kaiserpfalzedv.office.common.data.PagedListable;
 import de.kaiserpfalzedv.office.finance.accounting.accounts.Account;
-import de.kaiserpfalzedv.office.finance.accounting.accounts.AccountInUseException;
 
 import java.util.UUID;
 
