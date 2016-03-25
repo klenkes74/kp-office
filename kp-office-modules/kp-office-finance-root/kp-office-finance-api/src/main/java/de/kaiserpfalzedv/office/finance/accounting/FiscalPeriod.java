@@ -14,28 +14,28 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzedv.office.finance.accounting.accounts;
+package de.kaiserpfalzedv.office.finance.accounting;
 
-import de.kaiserpfalzedv.office.common.data.Identifyable;
-
-import javax.money.CurrencySupplier;
-import javax.money.CurrencyUnit;
+import java.io.Serializable;
 
 /**
- * The real account in the system. Normally it will be used via an charted account (an account mapping practically
- * virtualizing the account numbers for the users).
- *
- * Every account is recorded in a currency.
+ * The fiscal period needed on a lot of book keeping events. In book keeping the fiscal year may not match the calendar
+ * year and contain more than 12 periods. Most of times a period matches a calendar month plus an additional 13. or even
+ * 14. period for book keeping uses. But we don't limit it to that. You may have up to
+ * {@value java.lang.Integer#MAX_VALUE} periods in this system.
  *
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
  * @version 0.3.0
  * @since 2015-12-27
  */
-public interface Account extends Identifyable, Comparable<Account>, CurrencySupplier {
+public interface FiscalPeriod extends Serializable {
     /**
-     * {@inheritDoc}
-     *
-     * @return The currency this account is calculated in.
+     * @return The fiscal year this period belongs to.
      */
-    CurrencyUnit getCurrency();
+    int getYear();
+
+    /**
+     * @return The period within the fiscal year.
+     */
+    int getPeriod();
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 Kaiserpfalz EDV-Service, Roland T. Lichti
+ * Copyright 2016 Kaiserpfalz EDV-Service, Roland T. Lichti
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,7 +18,7 @@
  * The finance package includes all accounting an finance methods of the KPO system.
  *
  * @author klenkes
- * @version 2016Q1
- * @since 27.12.15 16:17
+ * @version 0.3.0
+ * @since 2015-12-27
  */
 package de.kaiserpfalzedv.office.finance;

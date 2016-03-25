@@ -14,28 +14,13 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzedv.office.finance.accounting.accounts;
-
-import de.kaiserpfalzedv.office.common.data.Identifyable;
-
-import javax.money.CurrencySupplier;
-import javax.money.CurrencyUnit;
-
 /**
- * The real account in the system. Normally it will be used via an charted account (an account mapping practically
- * virtualizing the account numbers for the users).
- *
- * Every account is recorded in a currency.
+ * The core accounting implementation. This is the core book keeping module. Everything that is an entry in prima nota,
+ * journal or general ledger is handled by this package in one way or another. This package is the base for all other
+ * accounting modules since it provides the data to work with.
  *
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
  * @version 0.3.0
- * @since 2015-12-27
+ * @since 2016-03-24
  */
-public interface Account extends Identifyable, Comparable<Account>, CurrencySupplier {
-    /**
-     * {@inheritDoc}
-     *
-     * @return The currency this account is calculated in.
-     */
-    CurrencyUnit getCurrency();
-}
+package de.kaiserpfalzedv.office.finance.accounting;

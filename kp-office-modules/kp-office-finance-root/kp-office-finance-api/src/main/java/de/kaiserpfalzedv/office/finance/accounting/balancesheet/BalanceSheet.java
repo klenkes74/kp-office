@@ -14,28 +14,32 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzedv.office.finance.accounting.accounts;
+package de.kaiserpfalzedv.office.finance.accounting.balancesheet;
 
-import de.kaiserpfalzedv.office.common.data.Identifyable;
+import de.kaiserpfalzedv.office.finance.accounting.PagedPostingRecordList;
+import de.kaiserpfalzedv.office.finance.accounting.accounts.Account;
 
-import javax.money.CurrencySupplier;
-import javax.money.CurrencyUnit;
+import javax.money.MonetaryAmount;
 
 /**
- * The real account in the system. Normally it will be used via an charted account (an account mapping practically
- * virtualizing the account numbers for the users).
- *
- * Every account is recorded in a currency.
- *
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
  * @version 0.3.0
- * @since 2015-12-27
+ * @since 2016-03-25
  */
-public interface Account extends Identifyable, Comparable<Account>, CurrencySupplier {
+public interface BalanceSheet extends PagedPostingRecordList {
     /**
-     * {@inheritDoc}
-     *
-     * @return The currency this account is calculated in.
+     * @return The account this balance sheet is created for.
      */
-    CurrencyUnit getCurrency();
+    Account getAccount();
+
+
+    /**
+     * @return The balance of this account at start of the period.
+     */
+    MonetaryAmount getStartingBalance();
+
+    /**
+     * @return The balance of this account at end of the period of this balance sheet.
+     */
+    MonetaryAmount getEndingBalance();
 }

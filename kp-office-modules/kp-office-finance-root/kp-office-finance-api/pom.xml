@@ -28,6 +28,7 @@
     </parent>
 
     <artifactId>kp-office-finance-api</artifactId>
+    <description>The public API to the accounting feature of the KP Office system.</description>
 
     <build>
         <plugins>
@@ -40,9 +41,13 @@
                         <Bundle-Version>${project.version}</Bundle-Version>
                         <Export-Package>
                             de.kaiserpfalzedv.office.finance.accounting.*;version=${project.version}
+                            de.kaiserpfalzedv.office.finance.accounting.client.*;version=${project.version}
                             de.kaiserpfalzedv.office.finance.datevexport.*;version=${project.version}
+                            de.kaiserpfalzedv.office.finance.datevexport.client.*;version=${project.version}
                             de.kaiserpfalzedv.office.finance.reporting.*;version=${project.version}
+                            de.kaiserpfalzedv.office.finance.reporting.client.*;version=${project.version}
                             de.kaiserpfalzedv.office.finance.taxexport.de.*;version=${project.version}
+                            de.kaiserpfalzedv.office.finance.taxexport.de.client.*;version=${project.version}
                         </Export-Package>
                         <Import-Package>
                             *
@@ -57,6 +62,12 @@
         <dependency>
             <groupId>de.kaiserpfalz-edv.office</groupId>
             <artifactId>kp-office-base-api</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.osgi</groupId>
+            <artifactId>org.osgi.core</artifactId>
+            <scope>provided</scope>
         </dependency>
 
 

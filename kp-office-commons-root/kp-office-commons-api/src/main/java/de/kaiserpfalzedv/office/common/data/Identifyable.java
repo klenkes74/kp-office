@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 Kaiserpfalz EDV-Service, Roland T. Lichti
+ * Copyright 2016 Kaiserpfalz EDV-Service, Roland T. Lichti
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,19 +26,10 @@ import java.util.UUID;
  * @version 2015Q1
  * @since 27.12.15 11:31
  */
-public interface Identifyable extends Tenantable, Serializable {
+public interface Identifyable extends Tenantable, Nameable, Serializable {
     /**
      * @return The UUID of this object.
      */
     UUID getId();
 
-    /**
-     * @return The display name (max. 50 characters long) of this object.
-     */
-    String getDisplayname();
-
-    /**
-     * @return The full name (max 200 characters long) of this object.
-     */
-    String getFullname();
 }
