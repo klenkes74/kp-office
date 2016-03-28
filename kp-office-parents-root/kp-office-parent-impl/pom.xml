@@ -27,7 +27,7 @@
         <relativePath>../kp-office-parent/pom.xml</relativePath>
     </parent>
 
-    <artifactId>kp-office-impl-parent</artifactId>
+    <artifactId>kp-office-parent-impl</artifactId>
     <packaging>pom</packaging>
 
     <properties>

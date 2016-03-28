@@ -76,16 +76,57 @@
 
 
     <build>
+
         <resources>
             <resource>
-                <directory>${project.build.sourceDirectory}/main/resources</directory>
+                <directory>src/main/resources</directory>
                 <filtering>true</filtering>
+                <excludes>
+                    <exclude>**/*.docx</exclude>
+                    <exclude>**/*.xlsx</exclude>
+                    <exclude>**/*.zip</exclude>
+                    <exclude>**/*.tgz</exclude>
+                    <exclude>**/*.png</exclude>
+                    <exclude>**/*.jpg</exclude>
+                </excludes>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>false</filtering>
+                <includes>
+                    <include>**/*.docx</include>
+                    <include>**/*.xlsx</include>
+                    <include>**/*.zip</include>
+                    <include>**/*.tgz</include>
+                    <include>**/*.png</include>
+                    <include>**/*.jpg</include>
+                </includes>
             </resource>
         </resources>
         <testResources>
             <testResource>
-                <directory>${project.build.sourceDirectory}/test/resources</directory>
+                <directory>src/test/resources</directory>
                 <filtering>true</filtering>
+                <excludes>
+                    <exclude>**/*.docx</exclude>
+                    <exclude>**/*.xlsx</exclude>
+                    <exclude>**/*.zip</exclude>
+                    <exclude>**/*.tgz</exclude>
+                    <exclude>**/*.png</exclude>
+                    <exclude>**/*.jpg</exclude>
+                </excludes>
+            </testResource>
+            <testResource>
+                <directory>src/test/resources</directory>
+                <filtering>false</filtering>
+                <includes>
+                    <include>**/*.docx</include>
+                    <include>**/*.xlsx</include>
+                    <include>**/*.zip</include>
+                    <include>**/*.tgz</include>
+                    <include>**/*.png</include>
+                    <include>**/*.jpg</include>
+                </includes>
             </testResource>
         </testResources>
 
