@@ -31,5 +31,6 @@
         <module>kp-office-commons-root</module>
         <module>kp-office-modules</module>
         <module>kp-office-ui</module>
+        <module>kp-vaadin-tools</module>
     </modules>
 </project>
