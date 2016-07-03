@@ -16,10 +16,16 @@
 
 package de.kaiserpfalzedv.office.webui.ui.login;
 
+import javax.annotation.security.PermitAll;
+import javax.inject.Inject;
+import javax.servlet.ServletException;
+
 import com.vaadin.cdi.CDIView;
 import com.vaadin.cdi.ViewScoped;
 import com.vaadin.cdi.access.JaasAccessControl;
 import com.vaadin.event.ShortcutAction;
+import com.vaadin.navigator.View;
+import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.server.Page;
 import com.vaadin.shared.ui.label.ContentMode;
 import com.vaadin.ui.Alignment;
@@ -39,18 +45,13 @@ import org.vaadin.addon.cdiproperties.annotation.LabelProperties;
 import org.vaadin.addon.cdiproperties.annotation.TextFieldProperties;
 import org.vaadin.addon.cdiproperties.annotation.VerticalLayoutProperties;
 
-import javax.annotation.PostConstruct;
-import javax.annotation.security.PermitAll;
-import javax.inject.Inject;
-import javax.servlet.ServletException;
-
 /**
  * UI content when the user is not logged in yet.
  */
 @ViewScoped
 @PermitAll
-@CDIView
-public class LoginScreen extends CssLayout {
+@CDIView(value = "login", uis = {LoginUI.class})
+public class LoginScreen extends CssLayout implements View {
     private static final long serialVersionUID = -1379268123072026394L;
 
     @Inject
@@ -62,11 +63,19 @@ public class LoginScreen extends CssLayout {
     private FormLayout loginForm;
 
     @Inject
-    @TextFieldProperties(captionKey = "login.name.caption", widthValue = 15, widthUnits = Unit.EM)
+    @TextFieldProperties(
+            captionKey = "login.name.caption",
+            descriptionKey = "login.name.description",
+            widthValue = 15, widthUnits = Unit.EM
+    )
     private TextField username;
 
     @Inject
-    @TextFieldProperties(captionKey = "login.password.caption", widthValue = 15, widthUnits = Unit.EM)
+    @TextFieldProperties(
+            captionKey = "login.password.caption",
+            descriptionKey = "login.password.description",
+            widthValue = 15, widthUnits = Unit.EM
+    )
     private TextField password;
 
     @Inject
@@ -103,8 +112,8 @@ public class LoginScreen extends CssLayout {
     private TextBundle i18n;
 
 
-    @PostConstruct
-    public void buildUI() {
+    @Override
+    public void enter(ViewChangeListener.ViewChangeEvent event) {
         addStyleName("login-screen");
 
         // login form, centered in the available part of the screen

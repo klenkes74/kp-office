@@ -16,15 +16,22 @@
 
 package de.kaiserpfalzedv.office.webui.ui.login;
 
+import javax.inject.Inject;
+
 import com.vaadin.cdi.CDIUI;
+import com.vaadin.navigator.Navigator;
+import com.vaadin.navigator.ViewProvider;
 import com.vaadin.server.Responsive;
 import com.vaadin.server.VaadinRequest;
+import com.vaadin.ui.CssLayout;
 import com.vaadin.ui.UI;
+import com.vaadin.ui.themes.ValoTheme;
 import de.kaiserpfalzedv.vaadin.I18NHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.vaadin.addon.cdiproperties.annotation.CssLayoutProperties;
 
-import javax.inject.Inject;
+import static org.apache.commons.lang3.StringUtils.isNotBlank;
 
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
@@ -36,10 +43,15 @@ public class LoginUI extends UI {
     private static final Logger LOG = LoggerFactory.getLogger(LoginUI.class);
 
     @Inject
-    private LoginScreen login;
+    private I18NHandler i18n;
 
     @Inject
-    private I18NHandler i18n;
+    private ViewProvider viewProvider;
+
+
+    @Inject
+    @CssLayoutProperties(styleName = {"valo-content"}, sizeFull = true)
+    private CssLayout viewContainer;
 
 
     @Override
@@ -49,7 +61,17 @@ public class LoginUI extends UI {
         i18n.setLocale(request.getLocale());
         getPage().setTitle(translate("application.name"));
 
-        setContent(login);
+        Navigator navigator = new Navigator(this, viewContainer);
+        navigator.addProvider(viewProvider);
+
+        addStyleName(ValoTheme.UI_WITH_MENU);
+        setContent(viewContainer);
+
+        if (isNotBlank(getNavigator().getState())) {
+            getNavigator().navigateTo(getNavigator().getState());
+        } else {
+            getNavigator().navigateTo("login");
+        }
     }
 
     private String translate(final String key) {

@@ -14,15 +14,31 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzEdv.vaadin.auth.user.editor;
+package de.kaiserpfalzedv.office.webui.ui;
 
-import de.kaiserpfalzEdv.piracc.backend.db.auth.User;
-import de.kaiserpfalzEdv.vaadin.ui.defaultviews.editor.BaseEditorView;
+import java.io.Serializable;
+import java.util.UUID;
+
+import javax.enterprise.inject.Default;
+import javax.enterprise.inject.Produces;
+
+import com.google.common.eventbus.EventBus;
+import com.vaadin.cdi.ViewScoped;
 
 /**
- * @author klenkes
- * @version 2015Q1
- * @since 12.09.15 22:36
+ * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
+ * @version 1.0.0
+ * @since 2016-07-02
  */
-public interface UserEditorView extends BaseEditorView<User> {
+@ViewScoped
+public class ViewConfiguration implements Serializable {
+
+    @Produces
+    @Default
+    private final UUID viewId = UUID.randomUUID();
+
+
+    @Produces
+    @ViewScoped
+    private EventBus bus = new EventBus("view-" + viewId.toString());
 }

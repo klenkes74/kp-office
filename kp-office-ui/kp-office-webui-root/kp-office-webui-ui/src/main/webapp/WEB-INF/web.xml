@@ -23,7 +23,7 @@
         <web-resource-collection>
             <web-resource-name>KP Office</web-resource-name>
             <description>The password protected pages of KP Office</description>
-            <url-pattern>/*</url-pattern>
+            <url-pattern>/office/*</url-pattern>
         </web-resource-collection>
         <auth-constraint>
             <description>Your user has to exist.</description>

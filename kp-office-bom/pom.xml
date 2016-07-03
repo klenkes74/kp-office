@@ -106,6 +106,23 @@
             </dependency>
 
 
+            <!-- Vaadin Web Framework -->
+            <dependency>
+                <groupId>com.vaadin</groupId>
+                <artifactId>vaadin-cdi</artifactId>
+                <version>1.0.2</version>
+            </dependency>
+            <dependency>
+                <groupId>org.vaadin.addon</groupId>
+                <artifactId>cdi-properties</artifactId>
+                <version>0.9.2.kp1</version>
+            </dependency>
+            <dependency>
+                <groupId>org.vaadin.addon</groupId>
+                <artifactId>cdi-mvp</artifactId>
+                <version>0.9.4</version>
+            </dependency>
+
             <dependency>
                 <groupId>de.kaiserpfalz-edv.vaadin</groupId>
                 <artifactId>vaadin-tools-api</artifactId>
@@ -115,6 +132,24 @@
                 <groupId>de.kaiserpfalz-edv.vaadin</groupId>
                 <artifactId>vaadin-tools-impl</artifactId>
                 <version>1.0-SNAPSHOT</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.apache.felix</groupId>
+                        <artifactId>org.apache.felix.scr.ds-annotations</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.ops4j.pax.cdi</groupId>
+                        <artifactId>pax-cdi-extension</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.ops4j.pax.cdi</groupId>
+                        <artifactId>pax-cdi-api</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.ops4j.pax.cdi</groupId>
+                        <artifactId>pax-cdi-extender</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
 
             <!-- === Third parties ================================================================================= -->

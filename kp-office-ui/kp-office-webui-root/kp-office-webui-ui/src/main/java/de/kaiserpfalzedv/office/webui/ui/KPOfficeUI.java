@@ -16,9 +16,10 @@
 
 package de.kaiserpfalzedv.office.webui.ui;
 
+import javax.inject.Inject;
+
 import com.vaadin.annotations.Push;
 import com.vaadin.annotations.Theme;
-import com.vaadin.annotations.VaadinServletConfiguration;
 import com.vaadin.annotations.Viewport;
 import com.vaadin.annotations.Widgetset;
 import com.vaadin.cdi.CDIUI;
@@ -27,18 +28,14 @@ import com.vaadin.navigator.Navigator;
 import com.vaadin.navigator.ViewProvider;
 import com.vaadin.server.Responsive;
 import com.vaadin.server.VaadinRequest;
-import com.vaadin.server.VaadinServlet;
 import com.vaadin.ui.CssLayout;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.themes.ValoTheme;
-import de.kaiserpfalzedv.vaadin.Menu;
+import de.kaiserpfalzedv.vaadin.menu.Menu;
 import org.vaadin.addon.cdiproperties.TextBundle;
 import org.vaadin.addon.cdiproperties.annotation.CssLayoutProperties;
 import org.vaadin.addon.cdiproperties.annotation.HorizontalLayoutProperties;
-
-import javax.inject.Inject;
-import javax.servlet.annotation.WebServlet;
 
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
 
@@ -46,7 +43,7 @@ import static org.apache.commons.lang3.StringUtils.isNotBlank;
 @Push
 @Theme("mytheme")
 @Widgetset("de.kaiserpfalzedv.office.OfficeWidgetset")
-@CDIUI
+@CDIUI("office")
 public class KPOfficeUI extends UI {
     @Inject
     private AccessControl accessControl;
@@ -60,6 +57,14 @@ public class KPOfficeUI extends UI {
     @Inject
     private Menu menu;
 
+    @Inject
+    @HorizontalLayoutProperties(styleName = {"main-screen"}, sizeFull = true)
+    private HorizontalLayout screen;
+
+    @Inject
+    @CssLayoutProperties(styleName = {"valo-content"}, sizeFull = true)
+    private CssLayout viewContainer;
+
 
     @Override
     protected void init(VaadinRequest vaadinRequest) {
@@ -70,16 +75,8 @@ public class KPOfficeUI extends UI {
         showMainView();
     }
 
-    @Inject
-    @HorizontalLayoutProperties(styleName = {"main-screen"}, sizeFull = true)
-    private HorizontalLayout screen;
 
-    @Inject
-    @CssLayoutProperties(styleName = {"valo-content"}, sizeFull = true)
-    private CssLayout viewContainer;
-
-
-    protected void showMainView() {
+    private void showMainView() {
         viewContainer.setSizeFull();
 
         screen.addComponent(menu);
@@ -94,14 +91,10 @@ public class KPOfficeUI extends UI {
 
         if (isNotBlank(getNavigator().getState())) {
             getNavigator().navigateTo(getNavigator().getState());
+        } else {
+            getNavigator().navigateTo("splash");
         }
 
         menu.generate();
-    }
-
-
-    @WebServlet(value = {"/office/*", "/VAADIN/*"}, name = "KPOffice", asyncSupported = true)
-    @VaadinServletConfiguration(ui = de.kaiserpfalzedv.office.webui.ui.KPOfficeUI.class, productionMode = false)
-    public static class MyUIServlet extends VaadinServlet {
     }
 }
