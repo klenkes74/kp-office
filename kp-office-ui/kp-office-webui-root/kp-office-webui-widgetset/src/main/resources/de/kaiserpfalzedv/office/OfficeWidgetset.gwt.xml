@@ -55,7 +55,6 @@
 
     <inherits name="fi.jasoft.qrcode.QrcodeWidgetset"/>
 
-    <inherits name="de.steinwedel.messagebox.WidgetSet"/>
 
     <inherits name="org.vaadin.peter.multibutton.MultibuttonWidgetset"/>
 

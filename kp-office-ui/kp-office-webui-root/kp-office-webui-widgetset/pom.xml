@@ -44,7 +44,7 @@
         <vaadin-multibutton.version>3.0</vaadin-multibutton.version>
         <vaadin-delayedbutton.version>2.0.0</vaadin-delayedbutton.version>
         <vaadin-userinactivity.version>1.0.0</vaadin-userinactivity.version>
-        <messagebox.version>2.0.7</messagebox.version>
+        <messagebox.version>3.0.17</messagebox.version>
         <loginform.version>0.5.2</loginform.version>
         <suggestfield.version>0.0.4</suggestfield.version>
         <vaadin-lazyquerycontainer.version>7.4.0.1</vaadin-lazyquerycontainer.version>

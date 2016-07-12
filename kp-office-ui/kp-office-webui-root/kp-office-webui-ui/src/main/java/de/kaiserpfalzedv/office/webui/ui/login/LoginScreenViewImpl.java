@@ -16,27 +16,29 @@
 
 package de.kaiserpfalzedv.office.webui.ui.login;
 
+import javax.annotation.PostConstruct;
 import javax.annotation.security.PermitAll;
 import javax.inject.Inject;
-import javax.servlet.ServletException;
+import javax.persistence.PreRemove;
 
 import com.vaadin.cdi.CDIView;
 import com.vaadin.cdi.ViewScoped;
-import com.vaadin.cdi.access.JaasAccessControl;
 import com.vaadin.event.ShortcutAction;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
-import com.vaadin.server.Page;
 import com.vaadin.shared.ui.label.ContentMode;
 import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.CssLayout;
 import com.vaadin.ui.FormLayout;
 import com.vaadin.ui.Label;
-import com.vaadin.ui.Notification;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.themes.ValoTheme;
+import de.kaiserpfalzedv.office.webui.ui.SerializableEventBus;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.vaadin.addon.cdimvp.AbstractMVPView;
 import org.vaadin.addon.cdiproperties.TextBundle;
 import org.vaadin.addon.cdiproperties.annotation.ButtonProperties;
 import org.vaadin.addon.cdiproperties.annotation.CssLayoutProperties;
@@ -50,9 +52,15 @@ import org.vaadin.addon.cdiproperties.annotation.VerticalLayoutProperties;
  */
 @ViewScoped
 @PermitAll
-@CDIView(value = "login", uis = {LoginUI.class})
-public class LoginScreen extends CssLayout implements View {
+@CDIView(value = "login")
+public class LoginScreenViewImpl extends AbstractMVPView implements View, LoginScreenView {
     private static final long serialVersionUID = -1379268123072026394L;
+
+    private static final Logger LOG = LoggerFactory.getLogger(LoginScreenViewImpl.class);
+
+    @Inject
+    @CssLayoutProperties(styleName = {"login-screen"})
+    private CssLayout screen;
 
     @Inject
     @VerticalLayoutProperties(styleName = {"centering-layout"})
@@ -66,6 +74,9 @@ public class LoginScreen extends CssLayout implements View {
     @TextFieldProperties(
             captionKey = "login.name.caption",
             descriptionKey = "login.name.description",
+            nullRepresentation = "",
+            required = true,
+            requiredError = "login.name.missing",
             widthValue = 15, widthUnits = Unit.EM
     )
     private TextField username;
@@ -74,6 +85,8 @@ public class LoginScreen extends CssLayout implements View {
     @TextFieldProperties(
             captionKey = "login.password.caption",
             descriptionKey = "login.password.description",
+            nullRepresentation = "",
+            required = true,
             widthValue = 15, widthUnits = Unit.EM
     )
     private TextField password;
@@ -104,17 +117,36 @@ public class LoginScreen extends CssLayout implements View {
     private CssLayout loginInformation;
 
     @Inject
-    @LabelProperties(captionKey = "login.info-text", contentMode = ContentMode.HTML)
+    @LabelProperties(captionKey = "login.info-text", contentMode = ContentMode.PREFORMATTED)
     private Label loginInfoText;
 
 
     @Inject
     private TextBundle i18n;
 
+    @Inject
+    @ViewScoped
+    private SerializableEventBus bus;
+
+
+    @PostConstruct
+    public void init() {
+        bus.register(this);
+    }
+
+    @PreRemove
+    public void close() {
+        bus.unregister(this);
+    }
+
 
     @Override
     public void enter(ViewChangeListener.ViewChangeEvent event) {
-        addStyleName("login-screen");
+        enter();
+    }
+
+    public void enter() {
+        super.enter();
 
         // login form, centered in the available part of the screen
         buildLoginForm();
@@ -127,8 +159,9 @@ public class LoginScreen extends CssLayout implements View {
 
         loginInformation.addComponent(loginInfoText);
 
-        addComponent(centeringLayout);
-        addComponent(loginInformation);
+        screen.addComponent(centeringLayout);
+        screen.addComponent(loginInformation);
+        setCompositionRoot(screen);
 
         username.focus();
     }
@@ -143,8 +176,9 @@ public class LoginScreen extends CssLayout implements View {
         login.addClickListener(
                 event -> {
                     try {
-                        login();
+                        bus.post(new LoginEvent(username.getValue(), password.getValue()));
                     } finally {
+                        username.focus();
                         login.setEnabled(true);
                     }
                 }
@@ -154,24 +188,24 @@ public class LoginScreen extends CssLayout implements View {
 
         buttons.addComponent(forgotPassword);
         forgotPassword.addClickListener(
-                (Button.ClickListener) event -> Notification.show(i18n.getText("login.password-forgotten.text"))
+                (Button.ClickListener) event -> {
+                    try {
+                        bus.post(new ForgottPasswordEvent());
+                    } finally {
+                        username.focus();
+                        forgotPassword.setEnabled(true);
+                    }
+                }
         );
     }
 
-    private void login() {
-        try {
-            JaasAccessControl.login(username.getValue(), password.getValue());
+    @Override
+    public String getUserName() {
+        return username.getValue();
+    }
 
-            Page page = Page.getCurrent();
-            page.setLocation(page.getLocation());
-        } catch (ServletException e) {
-            Notification.show(
-                    i18n.getText("login.failed.caption"),
-                    i18n.getText("login.failed.description"),
-                    Notification.Type.ERROR_MESSAGE
-            );
-
-            username.focus();
-        }
+    @Override
+    public String getPassword() {
+        return password.getValue();
     }
 }

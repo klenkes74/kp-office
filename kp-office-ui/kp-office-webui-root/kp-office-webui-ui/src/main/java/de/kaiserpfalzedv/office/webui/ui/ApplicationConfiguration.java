@@ -20,11 +20,9 @@ import java.io.Serializable;
 import java.util.UUID;
 
 import javax.annotation.PostConstruct;
-import javax.enterprise.inject.Default;
+import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.Produces;
 
-import com.google.common.eventbus.EventBus;
-import com.vaadin.cdi.ViewScoped;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -33,22 +31,21 @@ import org.slf4j.LoggerFactory;
  * @version 1.0.0
  * @since 2016-07-02
  */
-@ViewScoped
-public class ViewConfiguration implements Serializable {
+@ApplicationScoped
+public class ApplicationConfiguration implements Serializable {
     private static final Logger LOG = LoggerFactory.getLogger(ApplicationConfiguration.class);
 
     @Produces
-    @Default
-    private final UUID ui = UUID.randomUUID();
-
+    @ApplicationScoped
+    private UUID ui = UUID.randomUUID();
 
     @Produces
-    @ViewScoped
-    private EventBus bus = new EventBus("kpo-view-" + ui.toString());
+    @ApplicationScoped
+    private SerializableEventBus applicationBus = new SerializableEventBus("kpo-");
 
 
     @PostConstruct
     public void init() {
-        LOG.info("Created {}: ui={}, bus={}", getClass().getSimpleName(), ui, bus);
+        LOG.info("Created {}: ui={}, bus={}", getClass().getSimpleName(), ui, applicationBus);
     }
 }

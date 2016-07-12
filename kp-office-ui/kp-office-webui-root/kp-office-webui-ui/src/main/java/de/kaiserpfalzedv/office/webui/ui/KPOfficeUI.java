@@ -16,6 +16,8 @@
 
 package de.kaiserpfalzedv.office.webui.ui;
 
+import javax.enterprise.context.ApplicationScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 
 import com.vaadin.annotations.Push;
@@ -43,7 +45,7 @@ import static org.apache.commons.lang3.StringUtils.isNotBlank;
 @Push
 @Theme("mytheme")
 @Widgetset("de.kaiserpfalzedv.office.OfficeWidgetset")
-@CDIUI("office")
+@CDIUI("")
 public class KPOfficeUI extends UI {
     @Inject
     private AccessControl accessControl;
@@ -58,6 +60,14 @@ public class KPOfficeUI extends UI {
     private Menu menu;
 
     @Inject
+    @SessionScoped
+    private SerializableEventBus sessionBus;
+
+    @Inject
+    @ApplicationScoped
+    private SerializableEventBus applicationBus;
+
+    @Inject
     @HorizontalLayoutProperties(styleName = {"main-screen"}, sizeFull = true)
     private HorizontalLayout screen;
 
@@ -68,33 +78,51 @@ public class KPOfficeUI extends UI {
 
     @Override
     protected void init(VaadinRequest vaadinRequest) {
+        prepareScreen(vaadinRequest);
+
+        if (vaadinRequest.getUserPrincipal() == null) {
+            showLogin();
+        } else {
+            showMainView();
+        }
+    }
+
+    private void prepareScreen(VaadinRequest vaadinRequest) {
         Responsive.makeResponsive(this);
         setLocale(vaadinRequest.getLocale());
         getPage().setTitle(i18n.getText("application.name"));
 
-        showMainView();
+        Navigator navigator = new Navigator(this, viewContainer);
+        navigator.addProvider(viewProvider);
+        setNavigator(navigator);
+
+        screen.removeAllComponents();
+    }
+
+    private void showLogin() {
+        getNavigator().navigateTo("login");
     }
 
 
     private void showMainView() {
         viewContainer.setSizeFull();
-
-        screen.addComponent(menu);
         screen.addComponent(viewContainer);
         screen.setExpandRatio(viewContainer, 1);
 
-        Navigator navigator = new Navigator(this, viewContainer);
-        navigator.addProvider(viewProvider);
+        screen.addComponent(menu, 0);
+        menu.generate();
 
-        addStyleName(ValoTheme.UI_WITH_MENU);
-        setContent(screen);
-
-        if (isNotBlank(getNavigator().getState())) {
-            getNavigator().navigateTo(getNavigator().getState());
-        } else {
-            getNavigator().navigateTo("splash");
+        if (getContent() != screen) {
+            setContent(screen);
         }
 
-        menu.generate();
+        addStyleName(ValoTheme.UI_WITH_MENU);
+
+        if (isNotBlank(getNavigator().getState())
+                && !"login".equals(getNavigator().getState())) {
+            getNavigator().navigateTo(getNavigator().getState());
+        } else {
+            getNavigator().navigateTo("login");
+        }
     }
 }

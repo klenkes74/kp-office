@@ -16,30 +16,26 @@
 
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
-   http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+   http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="KPO" version="3.0">
+    <display-name>KP Office</display-name>
 
-    <security-constraint>
-        <display-name>Security Constraints for KP Office WebUI</display-name>
-        <web-resource-collection>
-            <web-resource-name>KP Office</web-resource-name>
-            <description>The password protected pages of KP Office</description>
-            <url-pattern>/office/*</url-pattern>
-        </web-resource-collection>
-        <auth-constraint>
-            <description>Your user has to exist.</description>
-            <role-name>**</role-name>
-        </auth-constraint>
-    </security-constraint>
-    <login-config>
-        <auth-method>FORM</auth-method>
-        <realm-name>ApplicationRealm</realm-name>
-        <form-login-config>
-            <form-login-page>/login</form-login-page>
-            <form-error-page>/login</form-error-page>
-        </form-login-config>
-    </login-config>
-    <security-role>
-        <role-name>**</role-name>
-    </security-role>
+    <context-param>
+        <description>Vaadin production mode</description>
+        <param-name>productionMode</param-name>
+        <param-value>false</param-value>
+    </context-param>
 
+    <servlet>
+        <servlet-name>Vaadin Application Servlet</servlet-name>
+        <servlet-class>com.vaadin.cdi.server.VaadinCDIServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>Vaadin Application Servlet</servlet-name>
+        <url-pattern>/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Vaadin Application Servlet</servlet-name>
+        <url-pattern>/VAADIN/*</url-pattern>
+    </servlet-mapping>
 </web-app>
