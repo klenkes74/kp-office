@@ -16,6 +16,8 @@
 
 package de.kaiserpfalzedv.office.finance.accounting.test.accounts.store;
 
+import java.util.UUID;
+
 import de.kaiserpfalzedv.office.common.data.ObjectDoesNotExistException;
 import de.kaiserpfalzedv.office.common.data.ObjectExistsException;
 import de.kaiserpfalzedv.office.common.data.Pageable;
@@ -29,8 +31,6 @@ import de.kaiserpfalzedv.office.finance.accounting.impl.accounts.AccountBuilder;
 import de.kaiserpfalzedv.office.finance.accounting.impl.accounts.store.AccountStoreMockingImpl;
 import org.junit.Before;
 import org.junit.Test;
-
-import java.util.UUID;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
@@ -157,7 +157,6 @@ public class AccountStoreMockingTest {
                     .withFullName("Test account " + i + " Fullname")
                     .build();
 
-            data.setCurrentAccountId(String.format("%04d", i));
             service.createAccount(data);
         }
 

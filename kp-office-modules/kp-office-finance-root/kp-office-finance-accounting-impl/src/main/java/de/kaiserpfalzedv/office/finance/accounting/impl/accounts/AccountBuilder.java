@@ -16,13 +16,14 @@
 
 package de.kaiserpfalzedv.office.finance.accounting.impl.accounts;
 
-import de.kaiserpfalzedv.office.common.data.BuilderException;
-import de.kaiserpfalzedv.office.finance.accounting.AccountNotMappedException;
-import de.kaiserpfalzedv.office.finance.accounting.accounts.Account;
-import org.apache.commons.lang3.builder.Builder;
-
 import java.util.ArrayList;
 import java.util.UUID;
+
+import javax.money.CurrencyUnit;
+
+import de.kaiserpfalzedv.office.common.data.BuilderException;
+import de.kaiserpfalzedv.office.finance.accounting.accounts.Account;
+import org.apache.commons.lang3.builder.Builder;
 
 import static org.apache.commons.lang3.StringUtils.isBlank;
 
@@ -38,29 +39,14 @@ public class AccountBuilder implements Builder<Account> {
     private UUID   id;
     private String displayName;
     private String fullName;
-    private String accountNumber;
+    private CurrencyUnit currency;
 
     @Override
     public Account build() {
         setDefaultValues();
         validate();
 
-        return generateObject(tenantId, id, accountNumber, displayName, fullName);
-    }
-
-    /**
-     * Method to generate the account. This is the method that needs to be overwritten to generate another type of
-     * account.
-     *
-     * @param tenantId    The tenant for which this account exists.
-     * @param id          The id of the account.
-     * @param displayName The display name of the account.
-     * @param fullName    The full name of the account.
-     *
-     * @return An object of type AccountImpl.
-     */
-    private AccountImpl generateObject(final UUID tenantId, final UUID id, final String accountNumber, final String displayName, final String fullName) {
-        return new AccountImpl(tenantId, id, accountNumber, displayName, fullName);
+        return generateObject(tenantId, id, displayName, fullName, currency);
     }
 
     /**
@@ -93,18 +79,30 @@ public class AccountBuilder implements Builder<Account> {
         }
     }
 
+    /**
+     * Method to generate the account. This is the method that needs to be overwritten to generate another type of
+     * account.
+     *
+     * @param tenantId    The tenant for which this account exists.
+     * @param id          The id of the account.
+     * @param displayName The display name of the account.
+     * @param fullName    The full name of the account.
+     *
+     * @return An object of type AccountImpl.
+     */
+    private AccountImpl generateObject(
+            final UUID tenantId, final UUID id,
+            final String displayName, final String fullName,
+            final CurrencyUnit currency
+    ) {
+        return new AccountImpl(tenantId, id, displayName, fullName, currency);
+    }
 
     public AccountBuilder withAccount(Account account) {
         withTenantId(account.getTenantId());
         withId(account.getId());
         withDisplayName(account.getDisplayname());
         withFullName(account.getFullname());
-
-        try {
-            withAccountNumber(account.getCurrentAccountId());
-        } catch (AccountNotMappedException e) {
-            // Nothing to do. It will have no mapping in this situation.
-        }
 
         return this;
     }
@@ -120,11 +118,6 @@ public class AccountBuilder implements Builder<Account> {
         return this;
     }
 
-    public AccountBuilder withAccountNumber(String accountNumber) {
-        this.accountNumber = accountNumber;
-        return this;
-    }
-
     public AccountBuilder withDisplayName(String displayName) {
         this.displayName = displayName;
         return this;
@@ -132,6 +125,11 @@ public class AccountBuilder implements Builder<Account> {
 
     public AccountBuilder withFullName(String fullName) {
         this.fullName = fullName;
+        return this;
+    }
+
+    public AccountBuilder withCurrency(CurrencyUnit currency) {
+        this.currency = currency;
         return this;
     }
 }

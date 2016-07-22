@@ -16,13 +16,14 @@
 
 package de.kaiserpfalzedv.office.finance.accounting.impl.accounts;
 
-import de.kaiserpfalzedv.office.common.data.BuilderException;
-import de.kaiserpfalzedv.office.finance.accounting.AccountNotMappedException;
-import de.kaiserpfalzedv.office.finance.accounting.accounts.CostCenter;
-import org.apache.commons.lang3.builder.Builder;
-
 import java.util.ArrayList;
 import java.util.UUID;
+
+import javax.money.CurrencyUnit;
+
+import de.kaiserpfalzedv.office.common.data.BuilderException;
+import de.kaiserpfalzedv.office.finance.accounting.accounts.CostCenter;
+import org.apache.commons.lang3.builder.Builder;
 
 import static org.apache.commons.lang3.StringUtils.isBlank;
 
@@ -38,29 +39,14 @@ public class CostCenterBuilder implements Builder<CostCenter> {
     private UUID   id;
     private String displayName;
     private String fullName;
-    private String accountNumber;
+    private CurrencyUnit currency;
 
     @Override
     public CostCenter build() {
         setDefaultValues();
         validate();
 
-        return generateObject(tenantId, id, accountNumber, displayName, fullName);
-    }
-
-    /**
-     * Method to generate the account. This is the method that needs to be overwritten to generate another type of
-     * account.
-     *
-     * @param tenantId    The tenant for which this account exists.
-     * @param id          The id of the account.
-     * @param displayName The display name of the account.
-     * @param fullName    The full name of the account.
-     *
-     * @return An object of type AccountImpl.
-     */
-    private CostCenter generateObject(final UUID tenantId, final UUID id, final String accountNumber, final String displayName, final String fullName) {
-        return new CostCenterImpl(tenantId, id, accountNumber, displayName, fullName);
+        return generateObject(tenantId, id, displayName, fullName, currency);
     }
 
     /**
@@ -93,18 +79,26 @@ public class CostCenterBuilder implements Builder<CostCenter> {
         }
     }
 
+    /**
+     * Method to generate the account. This is the method that needs to be overwritten to generate another type of
+     * account.
+     *
+     * @param tenantId    The tenant for which this account exists.
+     * @param id          The id of the account.
+     * @param displayName The display name of the account.
+     * @param fullName    The full name of the account.
+     *
+     * @return An object of type AccountImpl.
+     */
+    private CostCenter generateObject(final UUID tenantId, final UUID id, final String displayName, final String fullName, CurrencyUnit currency) {
+        return new CostCenterImpl(tenantId, id, displayName, fullName, currency);
+    }
 
     public CostCenterBuilder withCostCenter(CostCenter orig) {
         withTenantId(orig.getTenantId());
         withId(orig.getId());
         withDisplayName(orig.getDisplayname());
         withFullName(orig.getFullname());
-
-        try {
-            withAccountNumber(orig.getCurrentAccountId());
-        } catch (AccountNotMappedException e) {
-            // It's ok. It has no account number mapping in this case ...
-        }
 
         return this;
     }
@@ -120,11 +114,6 @@ public class CostCenterBuilder implements Builder<CostCenter> {
         return this;
     }
 
-    public CostCenterBuilder withAccountNumber(String accountNumber) {
-        this.accountNumber = accountNumber;
-        return this;
-    }
-
     public CostCenterBuilder withDisplayName(String displayName) {
         this.displayName = displayName;
         return this;
@@ -132,6 +121,11 @@ public class CostCenterBuilder implements Builder<CostCenter> {
 
     public CostCenterBuilder withFullName(String fullName) {
         this.fullName = fullName;
+        return this;
+    }
+
+    public CostCenterBuilder withCurrency(CurrencyUnit currency) {
+        this.currency = currency;
         return this;
     }
 }

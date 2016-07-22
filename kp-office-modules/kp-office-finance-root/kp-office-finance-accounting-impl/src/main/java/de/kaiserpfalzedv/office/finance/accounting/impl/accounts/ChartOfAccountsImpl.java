@@ -16,14 +16,14 @@
 
 package de.kaiserpfalzedv.office.finance.accounting.impl.accounts;
 
+import java.util.HashMap;
+import java.util.Set;
+import java.util.UUID;
+
 import de.kaiserpfalzedv.office.finance.accounting.AccountNotMappedException;
 import de.kaiserpfalzedv.office.finance.accounting.accounts.Account;
 import de.kaiserpfalzedv.office.finance.accounting.accounts.ChartOfAccounts;
 import de.kaiserpfalzedv.office.finance.accounting.accounts.ChartedAccount;
-
-import java.util.HashMap;
-import java.util.Set;
-import java.util.UUID;
 
 /**
  * @author klenkes
@@ -53,12 +53,21 @@ public class ChartOfAccountsImpl implements ChartOfAccounts {
             final String displayName, final String fullName,
             final Set<? extends Account> accounts
     ) {
-        ChartedAccount result = new ChartedAccountBuilder()
+        return put(accountNumber, new ChartedAccountBuilder()
                 .withTenantId(tenantId)
                 .withAccountNumber(accountNumber)
                 .withDisplayName(displayName)
                 .withFullName(fullName)
                 .withAccounts(accounts)
+                .build()
+        );
+    }
+
+    @Override
+    public ChartedAccount put(String accountNumber, ChartedAccount account) {
+        ChartedAccount result = new ChartedAccountBuilder()
+                .withChartedAccount(account)
+                .withAccountNumber(accountNumber)
                 .build();
 
         if (data.containsKey(accountNumber)) {
@@ -80,6 +89,15 @@ public class ChartOfAccountsImpl implements ChartOfAccounts {
         return data.get(accountNumber);
     }
 
+    @Override
+    public void remove(final String key) {
+        data.remove(key);
+    }
+
+    @Override
+    public void clear() {
+        data.clear();
+    }
 
     @Override
     public UUID getTenantId() {
@@ -99,11 +117,5 @@ public class ChartOfAccountsImpl implements ChartOfAccounts {
     @Override
     public String getFullname() {
         return fullName;
-    }
-
-
-    @Override
-    public void remove(final String key) {
-        data.remove(key);
     }
 }

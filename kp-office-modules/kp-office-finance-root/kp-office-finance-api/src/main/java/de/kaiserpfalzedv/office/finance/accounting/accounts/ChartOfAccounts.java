@@ -16,12 +16,12 @@
 
 package de.kaiserpfalzedv.office.finance.accounting.accounts;
 
-import de.kaiserpfalzedv.office.common.data.Identifyable;
-import de.kaiserpfalzedv.office.finance.accounting.AccountNotMappedException;
-
 import java.io.Serializable;
 import java.util.Set;
 import java.util.UUID;
+
+import de.kaiserpfalzedv.office.common.data.Identifyable;
+import de.kaiserpfalzedv.office.finance.accounting.AccountNotMappedException;
 
 /**
  * This is the chart of accounts as used by humans to order the accounts. Normally the accounts get numbers attached. In
@@ -49,6 +49,9 @@ public interface ChartOfAccounts extends Identifyable, Serializable {
             final Set<? extends Account> accounts
     );
 
+
+    ChartedAccount put(final String accountNumber, final ChartedAccount account);
+
     /**
      * Retrieves the charted account referenced by the accountNumber given.
      *
@@ -66,4 +69,9 @@ public interface ChartOfAccounts extends Identifyable, Serializable {
      * @param accountNumber The reference of the charted account to be removed from the chart of accounts.
      */
     void remove(final String accountNumber);
+
+    /**
+     * Remove all accounts from this chart.
+     */
+    void clear();
 }
