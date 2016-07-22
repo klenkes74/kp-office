@@ -16,15 +16,14 @@
 
 package de.kaiserpfalzedv.office.finance.accounting.impl.accounts;
 
-import de.kaiserpfalzedv.office.finance.accounting.accounts.Account;
-import de.kaiserpfalzedv.office.finance.accounting.accounts.AccountNotMappedException;
-import de.kaiserpfalzedv.office.finance.accounting.accounts.ChartOfAccounts;
-
-import java.util.Collections;
-import java.util.HashSet;
+import java.util.HashMap;
 import java.util.Set;
 import java.util.UUID;
-import java.util.concurrent.ConcurrentSkipListMap;
+
+import de.kaiserpfalzedv.office.finance.accounting.AccountNotMappedException;
+import de.kaiserpfalzedv.office.finance.accounting.accounts.Account;
+import de.kaiserpfalzedv.office.finance.accounting.accounts.ChartOfAccounts;
+import de.kaiserpfalzedv.office.finance.accounting.accounts.ChartedAccount;
 
 /**
  * @author klenkes
@@ -32,14 +31,8 @@ import java.util.concurrent.ConcurrentSkipListMap;
  * @since 03.01.16 17:38
  */
 public class ChartOfAccountsImpl implements ChartOfAccounts {
-    private static final long serialVersionUID = -1012983357060344008L;
-
-
-    private final ConcurrentSkipListMap<String, HashSet<Account>> data        = new ConcurrentSkipListMap<>();
-    private final ConcurrentSkipListMap<Account, String>          byAccount   = new ConcurrentSkipListMap<>();
-    private final ConcurrentSkipListMap<UUID, String>             byAccountId = new ConcurrentSkipListMap<>();
-
-
+    private static final long                            serialVersionUID = -1012983357060344008L;
+    private final        HashMap<String, ChartedAccount> data             = new HashMap<>();
     private UUID   tenantId;
     private UUID   id;
     private String displayName;
@@ -55,49 +48,56 @@ public class ChartOfAccountsImpl implements ChartOfAccounts {
 
 
     @Override
-    public Account put(String accountNumber, Account account) {
-        if (!data.containsKey(accountNumber)) {
-            data.put(accountNumber, new HashSet<>());
-        }
+    public ChartedAccount put(
+            final UUID tenantId, final String accountNumber,
+            final String displayName, final String fullName,
+            final Set<? extends Account> accounts
+    ) {
+        return put(accountNumber, new ChartedAccountBuilder()
+                .withTenantId(tenantId)
+                .withAccountNumber(accountNumber)
+                .withDisplayName(displayName)
+                .withFullName(fullName)
+                .withAccounts(accounts)
+                .build()
+        );
+    }
 
-        Account added = new AccountBuilder()
-                .withAccount(account)
+    @Override
+    public ChartedAccount put(String accountNumber, ChartedAccount account) {
+        ChartedAccount result = new ChartedAccountBuilder()
+                .withChartedAccount(account)
                 .withAccountNumber(accountNumber)
                 .build();
 
+        if (data.containsKey(accountNumber)) {
+            data.remove(accountNumber);
+        }
 
-        data.get(accountNumber).add(added);
+        data.put(accountNumber, result);
 
-        byAccount.put(added, accountNumber);
-        byAccountId.put(added.getId(), accountNumber);
-
-        return added;
+        return result;
     }
 
+
     @Override
-    public Set<Account> get(String accountNumber) {
+    public ChartedAccount get(String accountNumber) throws AccountNotMappedException {
         if (!data.containsKey(accountNumber))
-            return Collections.unmodifiableSet(new HashSet<>());
+            throw new AccountNotMappedException(accountNumber);
 
-        return Collections.unmodifiableSet(data.get(accountNumber));
+
+        return data.get(accountNumber);
     }
 
     @Override
-    public String get(Account account) throws AccountNotMappedException {
-        if (!byAccount.containsKey(account))
-            throw new AccountNotMappedException(account);
-
-        return byAccount.get(account);
+    public void remove(final String key) {
+        data.remove(key);
     }
 
     @Override
-    public String get(UUID accountId) throws AccountNotMappedException {
-        if (!byAccountId.containsKey(accountId))
-            throw new AccountNotMappedException(accountId);
-
-        return byAccountId.get(accountId);
+    public void clear() {
+        data.clear();
     }
-
 
     @Override
     public UUID getTenantId() {
@@ -117,60 +117,5 @@ public class ChartOfAccountsImpl implements ChartOfAccounts {
     @Override
     public String getFullname() {
         return fullName;
-    }
-
-
-    @Override
-    public Set<Account> remove(final String key) {
-        if (!data.containsKey(key)) {
-            return new HashSet<>();
-        }
-
-        Set<Account> result = new HashSet<>(data.get(key).size());
-        data.get(key).forEach(result::add);
-
-        data.get(key).forEach(e -> {
-            byAccount.remove(e);
-            byAccountId.remove(e.getId());
-        });
-        data.remove(key);
-
-        return result;
-    }
-
-    @Override
-    public Account remove(final String accountNumber, final Account account) {
-        byAccount.remove(account);
-        byAccountId.remove(account.getId());
-
-        try {
-            data.get(accountNumber).remove(account);
-        } catch (NullPointerException e) {
-            // No mapping for accountNumber exists. So the removal is automatically successful :-)
-        }
-
-        return account;
-    }
-
-    @Override
-    public void clear() {
-        data.clear();
-        byAccount.clear();
-        byAccountId.clear();
-    }
-
-
-    @Override
-    public void clear(String accountNumber) {
-        try {
-            data.get(accountNumber).forEach(e -> {
-                byAccount.remove(e);
-                byAccountId.remove(e.getId());
-            });
-
-            data.remove(accountNumber);
-        } catch (NullPointerException e) {
-            // No mapping for accountNumber exists. So the removal is automatically successful :-)
-        }
     }
 }

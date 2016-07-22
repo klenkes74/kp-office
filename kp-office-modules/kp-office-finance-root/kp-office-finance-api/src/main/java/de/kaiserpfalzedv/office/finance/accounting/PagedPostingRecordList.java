@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 Kaiserpfalz EDV-Service, Roland T. Lichti
+ * Copyright 2016 Kaiserpfalz EDV-Service, Roland T. Lichti
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,15 +16,19 @@
 
 package de.kaiserpfalzedv.office.finance.accounting;
 
-import java.util.UUID;
+import de.kaiserpfalzedv.office.common.data.PagedListable;
 
 /**
- * @author klenkes
- * @version 2015Q1
- * @since 27.12.15 22:06
+ * A paged list of posting records. Every paged list of any subtype of posting records may be use this as base
+ * interface.
+ *
+ * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
+ * @version 0.3.0
+ * @since 2015-12-27
  */
-public interface PagedPostingRecordList<T extends BasePostingRecord> {
-    UUID getId();
-
-    Period getPeriod();
+public interface PagedPostingRecordList<T extends BasePostingRecord> extends PagedListable<T> {
+    /**
+     * @return The period this paged list is generated for.
+     */
+    FiscalPeriod getPeriod();
 }

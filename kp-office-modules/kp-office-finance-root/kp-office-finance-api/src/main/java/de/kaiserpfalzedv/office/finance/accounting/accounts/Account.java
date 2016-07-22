@@ -18,13 +18,24 @@ package de.kaiserpfalzedv.office.finance.accounting.accounts;
 
 import de.kaiserpfalzedv.office.common.data.Identifyable;
 
-/**
- * @author klenkes
- * @version 2015Q1
- * @since 27.12.15 18:04
- */
-public interface Account extends Identifyable, Comparable<Account> {
-    String getCurrentAccountId() throws AccountNotMappedException;
+import javax.money.CurrencySupplier;
+import javax.money.CurrencyUnit;
 
-    void setCurrentAccountId(final String accountId);
+/**
+ * The real account in the system. Normally it will be used via an charted account (an account mapping practically
+ * virtualizing the account numbers for the users).
+ *
+ * Every account is recorded in a currency.
+ *
+ * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
+ * @version 0.3.0
+ * @since 2015-12-27
+ */
+public interface Account extends Identifyable, Comparable<Account>, CurrencySupplier {
+    /**
+     * {@inheritDoc}
+     *
+     * @return The currency this account is calculated in.
+     */
+    CurrencyUnit getCurrency();
 }

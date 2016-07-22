@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 Kaiserpfalz EDV-Service, Roland T. Lichti
+ * Copyright 2016 Kaiserpfalz EDV-Service, Roland T. Lichti
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,17 +14,9 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzedv.office.finance.accounting;
-
-import java.io.Serializable;
-
 /**
- * @author klenkes
- * @version 2015Q1
- * @since 27.12.15 22:07
+ * @author klenkes  {@literal <rlichti@kaiserpfalz-edv.de>}
+ * @version 0.3.0
+ * @since 2016-03-28
  */
-public interface Period extends Serializable {
-    int getYear();
-
-    int getPeriod();
-}
+package de.kaiserpfalzedv.office.webui;

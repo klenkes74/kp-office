@@ -22,12 +22,37 @@
 
     <parent>
         <groupId>de.kaiserpfalz-edv.office</groupId>
-        <artifactId>kp-office-api-parent</artifactId>
+        <artifactId>kp-office-parent-api</artifactId>
         <version>0.3.0-SNAPSHOT</version>
-        <relativePath>../../../kp-office-parents-root/kp-office-api-parent/pom.xml</relativePath>
+        <relativePath>../../../kp-office-parents-root/kp-office-parent-api/pom.xml</relativePath>
     </parent>
 
     <artifactId>kp-office-base-api</artifactId>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <configuration>
+                    <instructions>
+                        <Bundle-SymbolixName>${project.artifactId}</Bundle-SymbolixName>
+                        <Bundle-Version>${project.version}</Bundle-Version>
+                        <Export-Package>
+                            de.kaiserpfalzedv.office.access.*;version=${project.version}
+                            de.kaiserpfalzedv.office.contacts.*;version=${project.version}
+                            de.kaiserpfalzedv.office.files.*;version=${project.version}
+                            de.kaiserpfalzedv.office.license.*;version=${project.version}
+                            de.kaiserpfalzedv.office.tenant.*;version=${project.version}
+                        </Export-Package>
+                        <Import-Package>
+                            *
+                        </Import-Package>
+                    </instructions>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
     <dependencies>
         <dependency>

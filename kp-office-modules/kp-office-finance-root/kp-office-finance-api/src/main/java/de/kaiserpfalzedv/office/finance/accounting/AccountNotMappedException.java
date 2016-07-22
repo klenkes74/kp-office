@@ -14,7 +14,9 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzedv.office.finance.accounting.accounts;
+package de.kaiserpfalzedv.office.finance.accounting;
+
+import de.kaiserpfalzedv.office.finance.accounting.accounts.Account;
 
 import javax.security.auth.login.AccountException;
 import java.util.UUID;

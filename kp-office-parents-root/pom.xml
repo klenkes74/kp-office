@@ -32,7 +32,7 @@
 
     <modules>
         <module>kp-office-parent</module>
-        <module>kp-office-api-parent</module>
-        <module>kp-office-impl-parent</module>
+        <module>kp-office-parent-api</module>
+        <module>kp-office-parent-impl</module>
     </modules>
 </project>

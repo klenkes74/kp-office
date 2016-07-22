@@ -14,9 +14,7 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzedv.office.finance.accounting.accounts;
-
-import de.kaiserpfalzedv.office.finance.accounting.AccountingException;
+package de.kaiserpfalzedv.office.finance.accounting;
 
 /**
  * @author klenkes

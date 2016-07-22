@@ -16,16 +16,16 @@
 
 package de.kaiserpfalzedv.office.finance.accounting.impl.accounts;
 
-import de.kaiserpfalzedv.office.finance.accounting.accounts.Account;
-import de.kaiserpfalzedv.office.finance.accounting.accounts.AccountNotMappedException;
-import de.kaiserpfalzedv.office.finance.accounting.accounts.ChartOfAccounts;
-import de.kaiserpfalzedv.office.finance.accounting.accounts.ChartOfAccountsAlreadyExistsException;
-import de.kaiserpfalzedv.office.finance.accounting.accounts.ChartOfAccountsDoesNotExistException;
-import de.kaiserpfalzedv.office.finance.accounting.accounts.ChartsOfAccounts;
-
 import java.util.HashMap;
-import java.util.Set;
 import java.util.UUID;
+
+import de.kaiserpfalzedv.office.finance.accounting.AccountNotMappedException;
+import de.kaiserpfalzedv.office.finance.accounting.ChartOfAccountsAlreadyExistsException;
+import de.kaiserpfalzedv.office.finance.accounting.ChartOfAccountsDoesNotExistException;
+import de.kaiserpfalzedv.office.finance.accounting.accounts.Account;
+import de.kaiserpfalzedv.office.finance.accounting.accounts.ChartOfAccounts;
+import de.kaiserpfalzedv.office.finance.accounting.accounts.ChartedAccount;
+import de.kaiserpfalzedv.office.finance.accounting.accounts.ChartsOfAccounts;
 
 /**
  * @author klenkes
@@ -43,10 +43,23 @@ public class ChartsOfAccountsImpl implements ChartsOfAccounts {
     }
 
     @Override
-    public Set<Account> put(String chartOfAccounts, String accountNumber, Account account) throws ChartOfAccountsDoesNotExistException {
-        getChartOfAcounts(chartOfAccounts).put(accountNumber, account);
+    public ChartedAccount put(String chartOfAccounts, String accountNumber, Account account) throws ChartOfAccountsDoesNotExistException {
+        ChartOfAccounts chartOfAccountsTable = getChartOfAcounts(chartOfAccounts);
 
-        return getChartOfAcounts(chartOfAccounts).get(accountNumber);
+        ChartedAccountBuilder chartedAccount;
+        try {
+            chartedAccount = new ChartedAccountBuilder()
+                    .withChartedAccount(chartOfAccountsTable.get(accountNumber));
+        } catch (AccountNotMappedException e) {
+            chartedAccount = new ChartedAccountBuilder()
+                    .withAccountNumber(accountNumber)
+                    .withDisplayName(account.getDisplayname())
+                    .withFullName(account.getFullname());
+        }
+
+        chartedAccount.addAccount(account);
+
+        return chartOfAccountsTable.put(accountNumber, chartedAccount.build());
     }
 
     private ChartOfAccounts getChartOfAcounts(final String chartOfAccounts) throws ChartOfAccountsDoesNotExistException {
@@ -57,21 +70,19 @@ public class ChartsOfAccountsImpl implements ChartsOfAccounts {
     }
 
     @Override
-    public Set<Account> remove(String chartOfAccounts, String accountNumber, Account account) throws ChartOfAccountsDoesNotExistException {
-        Set<Account> result = getChartOfAcounts(chartOfAccounts).get(accountNumber);
+    public void remove(String chartOfAccounts, String accountNumber, Account account) throws ChartOfAccountsDoesNotExistException, AccountNotMappedException {
+        ChartOfAccounts chartOfAccountsTable = getChartOfAcounts(chartOfAccounts);
 
-        getChartOfAcounts(chartOfAccounts).remove(accountNumber, account);
-
-        return result;
+        ChartedAccountBuilder chartedAccount = new ChartedAccountBuilder()
+                .withChartedAccount(chartOfAccountsTable.get(accountNumber));
+        chartedAccount.removeAccount(account);
+        chartOfAccountsTable.remove(accountNumber);
+        chartOfAccountsTable.put(accountNumber, chartedAccount.build());
     }
 
     @Override
-    public Set<Account> clear(String chartOfAccounts, String accountNumber) throws ChartOfAccountsDoesNotExistException {
-        Set<Account> result = getChartOfAcounts(chartOfAccounts).get(accountNumber);
-
-        getChartOfAcounts(chartOfAccounts).clear(accountNumber);
-
-        return result;
+    public void clear(String chartOfAccounts, String accountNumber) throws ChartOfAccountsDoesNotExistException, AccountNotMappedException {
+        getChartOfAcounts(chartOfAccounts).remove(accountNumber);
     }
 
     @Override
@@ -84,29 +95,11 @@ public class ChartsOfAccountsImpl implements ChartsOfAccounts {
     }
 
     @Override
-    public Set<Account> get(String chartOfAccounts, String accountNumber) throws AccountNotMappedException {
+    public ChartedAccount get(String chartOfAccounts, String accountNumber) throws AccountNotMappedException {
         try {
             return getChartOfAcounts(chartOfAccounts).get(accountNumber);
         } catch (ChartOfAccountsDoesNotExistException e) {
             throw new AccountNotMappedException(accountNumber);
-        }
-    }
-
-    @Override
-    public String get(String chartOfAccounts, Account account) throws AccountNotMappedException {
-        try {
-            return getChartOfAcounts(chartOfAccounts).get(account);
-        } catch (ChartOfAccountsDoesNotExistException e) {
-            throw new AccountNotMappedException(account);
-        }
-    }
-
-    @Override
-    public String get(String chartOfAccounts, UUID accountId) throws AccountNotMappedException {
-        try {
-            return getChartOfAcounts(chartOfAccounts).get(accountId);
-        } catch (ChartOfAccountsDoesNotExistException e) {
-            throw new AccountNotMappedException(accountId);
         }
     }
 }

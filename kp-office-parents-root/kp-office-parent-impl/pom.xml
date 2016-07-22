@@ -27,7 +27,7 @@
         <relativePath>../kp-office-parent/pom.xml</relativePath>
     </parent>
 
-    <artifactId>kp-office-impl-parent</artifactId>
+    <artifactId>kp-office-parent-impl</artifactId>
     <packaging>pom</packaging>
 
     <properties>
@@ -40,7 +40,6 @@
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
-            <version>18.0</version>
         </dependency>
 
         <dependency>

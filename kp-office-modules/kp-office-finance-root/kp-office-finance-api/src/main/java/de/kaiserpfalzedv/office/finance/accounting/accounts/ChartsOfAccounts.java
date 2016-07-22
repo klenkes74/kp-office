@@ -17,8 +17,11 @@
 package de.kaiserpfalzedv.office.finance.accounting.accounts;
 
 import java.io.Serializable;
-import java.util.Set;
 import java.util.UUID;
+
+import de.kaiserpfalzedv.office.finance.accounting.AccountNotMappedException;
+import de.kaiserpfalzedv.office.finance.accounting.ChartOfAccountsAlreadyExistsException;
+import de.kaiserpfalzedv.office.finance.accounting.ChartOfAccountsDoesNotExistException;
 
 /**
  * @author klenkes
@@ -28,17 +31,13 @@ import java.util.UUID;
 public interface ChartsOfAccounts extends Serializable {
     void createChartOfAccount(final String chartOfAccount, final UUID tenantId, final UUID id, final String displayName, final String fullName) throws ChartOfAccountsAlreadyExistsException;
 
-    Set<Account> put(final String chartOfAccounts, final String accountNumber, final Account account) throws ChartOfAccountsDoesNotExistException;
+    ChartedAccount put(final String chartOfAccounts, final String accountNumber, final Account account) throws ChartOfAccountsDoesNotExistException;
 
-    Set<Account> remove(final String chartOfAccounts, final String accountNumber, final Account account) throws ChartOfAccountsDoesNotExistException;
+    void remove(final String chartOfAccounts, final String accountNumber, final Account account) throws ChartOfAccountsDoesNotExistException, AccountNotMappedException;
 
-    Set<Account> clear(final String chartOfAccounts, final String accountNumber) throws ChartOfAccountsDoesNotExistException;
+    void clear(final String chartOfAccounts, final String accountNumber) throws ChartOfAccountsDoesNotExistException, AccountNotMappedException;
 
     void clear(final String chartOfAccounts);
 
-    Set<Account> get(final String chartOfAccounts, final String accountNumber) throws AccountNotMappedException;
-
-    String get(final String chartOfAccounts, final Account account) throws AccountNotMappedException;
-
-    String get(final String chartOfAccounts, final UUID accountId) throws AccountNotMappedException;
+    ChartedAccount get(final String chartOfAccounts, final String accountNumber) throws AccountNotMappedException;
 }

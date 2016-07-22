@@ -16,9 +16,11 @@
 
 package de.kaiserpfalzedv.office.finance.accounting.impl.accounts;
 
-import de.kaiserpfalzedv.office.finance.accounting.accounts.CostCenter;
-
 import java.util.UUID;
+
+import javax.money.CurrencyUnit;
+
+import de.kaiserpfalzedv.office.finance.accounting.accounts.CostCenter;
 
 /**
  * @author klenkes
@@ -26,7 +28,7 @@ import java.util.UUID;
  * @since 28.12.15 07:16
  */
 public class CostCenterImpl extends AccountImpl implements CostCenter {
-    CostCenterImpl(UUID tenantId, UUID id, String accountNumber, String displayName, String fullName) {
-        super(tenantId, id, accountNumber, displayName, fullName);
+    CostCenterImpl(UUID tenantId, UUID id, String displayName, String fullName, CurrencyUnit currency) {
+        super(tenantId, id, displayName, fullName, currency);
     }
 }

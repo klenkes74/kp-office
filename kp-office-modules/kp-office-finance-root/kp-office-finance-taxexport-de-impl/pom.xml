@@ -22,12 +22,33 @@
 
     <parent>
         <groupId>de.kaiserpfalz-edv.office</groupId>
-        <artifactId>kp-office-impl-parent</artifactId>
-        <version>restart-SNAPSHOT</version>
-        <relativePath>../../../kp-office-parents-root/kp-office-impl-parent/pom.xml</relativePath>
+        <artifactId>kp-office-parent-impl</artifactId>
+        <version>0.3.0-SNAPSHOT</version>
+        <relativePath>../../../kp-office-parents-root/kp-office-parent-impl/pom.xml</relativePath>
     </parent>
 
     <artifactId>kp-office-finance-taxexport-de-impl</artifactId>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <configuration>
+                    <instructions>
+                        <Bundle-SymbolixName>${project.artifactId}</Bundle-SymbolixName>
+                        <Bundle-Version>${project.version}</Bundle-Version>
+                        <Export-Package>
+                            de.kaiserpfalzedv.office.finance.taxexport.de.impl.*;version=${project.version}
+                        </Export-Package>
+                        <Import-Package>
+                            *
+                        </Import-Package>
+                    </instructions>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
     <dependencies>
         <dependency>

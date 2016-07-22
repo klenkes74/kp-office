@@ -16,35 +16,62 @@
 
 package de.kaiserpfalzedv.office.finance.accounting.accounts;
 
-import de.kaiserpfalzedv.office.common.data.Identifyable;
-
 import java.io.Serializable;
-import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
 
+import de.kaiserpfalzedv.office.common.data.Identifyable;
+import de.kaiserpfalzedv.office.finance.accounting.AccountNotMappedException;
+
 /**
- * A sorted {@link Map} of the mapped accounts.
+ * This is the chart of accounts as used by humans to order the accounts. Normally the accounts get numbers attached. In
+ * KP Office the accounts may be mapped with multiple chart of accounts so the accounts itself are referenced by their
+ * internal UUID. Multiple accounts may be mapped to a unique account number within a chart of accounts.
  *
- * @author klenkes
- * @version 2015Q1
- * @since 03.01.16 17:22
+ * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
+ * @version 0.3.0
+ * @since 2016-01-03
  */
 public interface ChartOfAccounts extends Identifyable, Serializable {
-    Account put(final String accountNumber, final Account account);
+    /**
+     * Adds the given accounts to the chart of accounts referenced by the accountNumber. If the charted account already
+     * exists, the given accounts are added to the already existing accounts.
+     *
+     * @param accountNumber The reference number/name of this account.
+     * @param displayName   The display name of the charted account.
+     * @param fullName      The full name of the charted account.
+     * @param accounts      The set of accounts to use for this single charted account.
+     *
+     * @return The charted account created or updated to be used in human interaction.
+     */
+    ChartedAccount put(
+            final UUID tenantId, final String accountNumber, final String displayName, final String fullName,
+            final Set<? extends Account> accounts
+    );
 
-    Account remove(final String accountNumber, final Account account);
 
-    Set<Account> remove(final String accountNumber);
+    ChartedAccount put(final String accountNumber, final ChartedAccount account);
 
+    /**
+     * Retrieves the charted account referenced by the accountNumber given.
+     *
+     * @param accountNumber The account number reference to be searched for.
+     *
+     * @return The referenced account
+     *
+     * @throws AccountNotMappedException If the accountNumber is not listed in this chart of accounts.
+     */
+    ChartedAccount get(final String accountNumber) throws AccountNotMappedException;
 
-    Set<Account> get(final String accountNumber);
+    /**
+     * Removes the charted account from this chart of accounts.
+     *
+     * @param accountNumber The reference of the charted account to be removed from the chart of accounts.
+     */
+    void remove(final String accountNumber);
 
-    String get(final Account account) throws AccountNotMappedException;
-
-    String get(final UUID accountId) throws AccountNotMappedException;
-
-    void clear(final String accountNumber);
-
+    /**
+     * Remove all accounts from this chart.
+     */
     void clear();
 }
