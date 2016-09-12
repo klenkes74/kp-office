@@ -59,12 +59,12 @@ public class AccountImpl implements Account {
     }
 
     @Override
-    public String getDisplayname() {
+    public String getDisplayName() {
         return displayName;
     }
 
     @Override
-    public String getFullname() {
+    public String getFullName() {
         return fullName;
     }
 

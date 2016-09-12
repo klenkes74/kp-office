@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 Kaiserpfalz EDV-Service, Roland T. Lichti
+ * Copyright 2016 Kaiserpfalz EDV-Service, Roland T. Lichti
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,14 +16,14 @@
 
 package de.kaiserpfalzedv.office.finance.accounting.test.accounts;
 
+import java.util.UUID;
+
 import de.kaiserpfalzedv.office.common.data.BuilderException;
 import de.kaiserpfalzedv.office.common.impl.NullTenant;
 import de.kaiserpfalzedv.office.finance.accounting.accounts.CostCenter;
 import de.kaiserpfalzedv.office.finance.accounting.impl.accounts.CostCenterBuilder;
 import org.junit.Before;
 import org.junit.Test;
-
-import java.util.UUID;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
@@ -64,8 +64,8 @@ public class CostCenterBuilderTest {
 
         assertEquals(DEFAULT_TENANT_ID, result.getTenantId());
         assertEquals(DEFAULT_ID, result.getId());
-        assertEquals(DEFAULT_DISPLAY_NAME, result.getDisplayname());
-        assertEquals(DEFAULT_FULL_NAME, result.getFullname());
+        assertEquals(DEFAULT_DISPLAY_NAME, result.getDisplayName());
+        assertEquals(DEFAULT_FULL_NAME, result.getFullName());
     }
 
 
@@ -80,8 +80,8 @@ public class CostCenterBuilderTest {
 
         assertEquals(DEFAULT_TENANT_ID, result.getTenantId());
         assertEquals(DEFAULT_ID, result.getId());
-        assertEquals(DEFAULT_DISPLAY_NAME, result.getDisplayname());
-        assertEquals(DEFAULT_FULL_NAME, result.getFullname());
+        assertEquals(DEFAULT_DISPLAY_NAME, result.getDisplayName());
+        assertEquals(DEFAULT_FULL_NAME, result.getFullName());
     }
 
 
@@ -96,8 +96,8 @@ public class CostCenterBuilderTest {
 
         assertEquals(DEFAULT_TENANT_ID, result.getTenantId());
         assertNotEquals(DEFAULT_ID, result.getId());
-        assertEquals(DEFAULT_DISPLAY_NAME, result.getDisplayname());
-        assertEquals(DEFAULT_FULL_NAME, result.getFullname());
+        assertEquals(DEFAULT_DISPLAY_NAME, result.getDisplayName());
+        assertEquals(DEFAULT_FULL_NAME, result.getFullName());
     }
 
 
@@ -112,8 +112,8 @@ public class CostCenterBuilderTest {
 
         assertEquals(DEFAULT_TENANT_ID, result.getTenantId());
         assertEquals(DEFAULT_ID, result.getId());
-        assertEquals(DEFAULT_FULL_NAME, result.getDisplayname());
-        assertEquals(DEFAULT_FULL_NAME, result.getFullname());
+        assertEquals(DEFAULT_FULL_NAME, result.getDisplayName());
+        assertEquals(DEFAULT_FULL_NAME, result.getFullName());
     }
 
 
@@ -128,7 +128,7 @@ public class CostCenterBuilderTest {
 
         assertEquals(DEFAULT_TENANT_ID, result.getTenantId());
         assertEquals(DEFAULT_ID, result.getId());
-        assertEquals(DEFAULT_DISPLAY_NAME, result.getDisplayname());
-        assertEquals(DEFAULT_DISPLAY_NAME, result.getFullname());
+        assertEquals(DEFAULT_DISPLAY_NAME, result.getDisplayName());
+        assertEquals(DEFAULT_DISPLAY_NAME, result.getFullName());
     }
 }

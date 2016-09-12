@@ -16,11 +16,12 @@
 
 package de.kaiserpfalzedv.office.finance.accounting;
 
-import de.kaiserpfalzedv.office.finance.accounting.accounts.Account;
-import de.kaiserpfalzedv.office.finance.accounting.accounts.ChartedAccount;
+import java.util.Set;
 
 import javax.security.auth.login.AccountException;
-import java.util.Set;
+
+import de.kaiserpfalzedv.office.finance.accounting.accounts.Account;
+import de.kaiserpfalzedv.office.finance.accounting.accounts.ChartedAccount;
 
 /**
  * This exception is thrown if a mapping of an unmapped account is requested.
@@ -36,7 +37,7 @@ public class AccountMultiMappedException extends AccountException {
 
     public AccountMultiMappedException(final ChartedAccount account) {
         super("Account '" + account.getAccountNumber()
-                      + "' (" + account.getDisplayname() + ") is mapped multiple times.");
+                      + "' (" + account.getDisplayName() + ") is mapped multiple times.");
 
         this.account = account;
     }

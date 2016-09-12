@@ -16,16 +16,16 @@
 
 package de.kaiserpfalzedv.office.finance.accounting.impl.accounts;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.UUID;
+
 import de.kaiserpfalzedv.office.common.data.BuilderException;
 import de.kaiserpfalzedv.office.common.impl.NullTenant;
 import de.kaiserpfalzedv.office.finance.accounting.accounts.Account;
 import de.kaiserpfalzedv.office.finance.accounting.accounts.ChartedAccount;
 import org.apache.commons.lang3.builder.Builder;
-
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.UUID;
 
 /**
  * This builder returns a ChartedAccount that is build from the values given.
@@ -59,11 +59,11 @@ public class ChartedAccountBuilder implements Builder<ChartedAccount> {
             Account mainAccount = accounts.iterator().next();
 
             if (displayName == null) {
-                this.displayName = mainAccount.getDisplayname();
+                this.displayName = mainAccount.getDisplayName();
             }
 
             if (fullName == null) {
-                this.fullName = mainAccount.getFullname();
+                this.fullName = mainAccount.getFullName();
             }
         }
     }
@@ -92,8 +92,8 @@ public class ChartedAccountBuilder implements Builder<ChartedAccount> {
     public ChartedAccountBuilder withChartedAccount(final ChartedAccount account) {
         withTenantId(account.getTenantId());
         withAccountNumber(account.getAccountNumber());
-        withDisplayName(account.getDisplayname());
-        withFullName(account.getFullname());
+        withDisplayName(account.getDisplayName());
+        withFullName(account.getFullName());
         withAccounts(account.getAccounts());
 
         return this;

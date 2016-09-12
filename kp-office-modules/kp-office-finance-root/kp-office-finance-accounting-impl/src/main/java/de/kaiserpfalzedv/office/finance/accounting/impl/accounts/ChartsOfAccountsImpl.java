@@ -53,8 +53,8 @@ public class ChartsOfAccountsImpl implements ChartsOfAccounts {
         } catch (AccountNotMappedException e) {
             chartedAccount = new ChartedAccountBuilder()
                     .withAccountNumber(accountNumber)
-                    .withDisplayName(account.getDisplayname())
-                    .withFullName(account.getFullname());
+                    .withDisplayName(account.getDisplayName())
+                    .withFullName(account.getFullName());
         }
 
         chartedAccount.addAccount(account);

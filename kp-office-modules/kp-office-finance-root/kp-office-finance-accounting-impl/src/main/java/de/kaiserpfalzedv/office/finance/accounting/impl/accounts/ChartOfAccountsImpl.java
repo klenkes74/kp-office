@@ -110,12 +110,12 @@ public class ChartOfAccountsImpl implements ChartOfAccounts {
     }
 
     @Override
-    public String getDisplayname() {
+    public String getDisplayName() {
         return displayName;
     }
 
     @Override
-    public String getFullname() {
+    public String getFullName() {
         return fullName;
     }
 }

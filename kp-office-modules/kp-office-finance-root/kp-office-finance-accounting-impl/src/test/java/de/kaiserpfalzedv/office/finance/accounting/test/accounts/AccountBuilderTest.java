@@ -64,8 +64,8 @@ public class AccountBuilderTest {
 
         assertEquals(DEFAULT_TENANT_ID, result.getTenantId());
         assertEquals(DEFAULT_ID, result.getId());
-        assertEquals(DEFAULT_DISPLAY_NAME, result.getDisplayname());
-        assertEquals(DEFAULT_FULL_NAME, result.getFullname());
+        assertEquals(DEFAULT_DISPLAY_NAME, result.getDisplayName());
+        assertEquals(DEFAULT_FULL_NAME, result.getFullName());
     }
 
 
@@ -80,8 +80,8 @@ public class AccountBuilderTest {
 
         assertEquals(DEFAULT_TENANT_ID, result.getTenantId());
         assertEquals(DEFAULT_ID, result.getId());
-        assertEquals(DEFAULT_DISPLAY_NAME, result.getDisplayname());
-        assertEquals(DEFAULT_FULL_NAME, result.getFullname());
+        assertEquals(DEFAULT_DISPLAY_NAME, result.getDisplayName());
+        assertEquals(DEFAULT_FULL_NAME, result.getFullName());
     }
 
 
@@ -96,8 +96,8 @@ public class AccountBuilderTest {
 
         assertEquals(DEFAULT_TENANT_ID, result.getTenantId());
         assertNotEquals(DEFAULT_ID, result.getId());
-        assertEquals(DEFAULT_DISPLAY_NAME, result.getDisplayname());
-        assertEquals(DEFAULT_FULL_NAME, result.getFullname());
+        assertEquals(DEFAULT_DISPLAY_NAME, result.getDisplayName());
+        assertEquals(DEFAULT_FULL_NAME, result.getFullName());
     }
 
 
@@ -112,8 +112,8 @@ public class AccountBuilderTest {
 
         assertEquals(DEFAULT_TENANT_ID, result.getTenantId());
         assertEquals(DEFAULT_ID, result.getId());
-        assertEquals(DEFAULT_FULL_NAME, result.getDisplayname());
-        assertEquals(DEFAULT_FULL_NAME, result.getFullname());
+        assertEquals(DEFAULT_FULL_NAME, result.getDisplayName());
+        assertEquals(DEFAULT_FULL_NAME, result.getFullName());
     }
 
 
@@ -128,8 +128,8 @@ public class AccountBuilderTest {
 
         assertEquals(DEFAULT_TENANT_ID, result.getTenantId());
         assertEquals(DEFAULT_ID, result.getId());
-        assertEquals(DEFAULT_DISPLAY_NAME, result.getDisplayname());
-        assertEquals(DEFAULT_DISPLAY_NAME, result.getFullname());
+        assertEquals(DEFAULT_DISPLAY_NAME, result.getDisplayName());
+        assertEquals(DEFAULT_DISPLAY_NAME, result.getFullName());
     }
 
 
