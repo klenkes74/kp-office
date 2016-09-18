@@ -36,6 +36,7 @@
         <skip.at.tests>${skipTests}</skip.at.tests>
 
         <version.wildfly.swarm>2016.9</version.wildfly.swarm>
+        <cucumber-java.version>1.2.4</cucumber-java.version>
     </properties>
 
     <dependencyManagement>
@@ -67,7 +68,9 @@
         <dependency>
             <groupId>org.wildfly.swarm</groupId>
             <artifactId>arquillian</artifactId>
+            <scope>test</scope>
         </dependency>
+        <!--
         <dependency>
             <groupId>org.wildfly.swarm</groupId>
             <artifactId>bean-validation</artifactId>
@@ -148,19 +151,20 @@
             <groupId>org.wildfly.swarm</groupId>
             <artifactId>swagger-webapp</artifactId>
         </dependency>
+        -->
 
 
         <!-- Testing helpers -->
         <dependency>
             <groupId>info.cukes</groupId>
             <artifactId>cucumber-java</artifactId>
-            <version>1.1.7</version>
+            <version>${cucumber-java.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>info.cukes</groupId>
             <artifactId>cucumber-junit</artifactId>
-            <version>1.1.7</version>
+            <version>${cucumber-java.version}</version>
             <scope>test</scope>
         </dependency>
 
@@ -181,21 +185,25 @@
     </dependencies>
 
     <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.wildfly.swarm</groupId>
+                    <artifactId>wildfly-swarm-plugin</artifactId>
+                    <version>${version.wildfly.swarm}</version>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>package</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+
+
         <plugins>
-            <plugin>
-                <groupId>org.wildfly.swarm</groupId>
-                <artifactId>wildfly-swarm-plugin</artifactId>
-                <version>${version.wildfly.swarm}</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>package</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-
-
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
@@ -252,20 +260,33 @@
                 <configuration>
                     <!--suppress MavenModelInspection --><!-- It's ok, it will be set by a plugin at build time -->
                     <argLine>${surefireArgLine}</argLine>
-                    <skipTests>${skip.unit.tests}</skipTests>
-                    <includes>
-                        <include>**/*IT.java</include>
-                        <include>**/IT*.java</include>
-                        <include>**/*AT.java</include>
-                        <include>**/AT*.java</include>
-                    </includes>
                 </configuration>
                 <executions>
                     <execution>
+                        <id>integratin-tests</id>
                         <goals>
                             <goal>integration-test</goal>
-                            <goal>verify</goal>
                         </goals>
+                        <configuration>
+                            <skipTests>${skip.it.tests}</skipTests>
+                            <includes>
+                                <include>**/*IT.java</include>
+                                <include>**/IT*.java</include>
+                            </includes>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>acceptance-tests</id>
+                        <goals>
+                            <goal>integration-test</goal>
+                        </goals>
+                        <configuration>
+                            <skipTests>${skip.at.tests}</skipTests>
+                            <includes>
+                                <include>**/*AT.java</include>
+                                <include>**/AT*.java</include>
+                            </includes>
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>

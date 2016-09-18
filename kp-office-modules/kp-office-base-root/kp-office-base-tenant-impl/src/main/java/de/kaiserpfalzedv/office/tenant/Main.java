@@ -16,10 +16,32 @@
 
 package de.kaiserpfalzedv.office.tenant;
 
+import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.wildfly.swarm.Swarm;
+import org.wildfly.swarm.spi.api.JARArchive;
+
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
  * @version 1.0.0
- * @since 2016-09-04
+ * @since 2016-09-17
  */
-public class TenantServiceSteps {
+public class Main {
+    private static final Logger LOG = LoggerFactory.getLogger(Main.class);
+
+    public static void main(String... args) throws Exception {
+        JARArchive deployment = createDeployment();
+
+        Swarm swarm = new Swarm(args);
+        swarm.deploy(deployment);
+        swarm.start();
+    }
+
+    private static JARArchive createDeployment() {
+        JARArchive deployment = ShrinkWrap.create(JARArchive.class);
+        deployment.addPackage("de.kaiserpfalz.office");
+
+        return deployment;
+    }
 }
