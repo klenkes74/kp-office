@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 Kaiserpfalz EDV-Service, Roland T. Lichti
+ * Copyright 2016 Kaiserpfalz EDV-Service, Roland T. Lichti
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,9 +16,9 @@
 
 package de.kaiserpfalzedv.office.common.impl;
 
-import de.kaiserpfalzedv.office.common.data.Identifyable;
-
 import java.util.UUID;
+
+import de.kaiserpfalzedv.office.common.data.Identifyable;
 
 /**
  * The null tenant for all objects that don't have a tenant.
@@ -31,19 +31,19 @@ public class NullTenant implements Identifyable {
     private static final long   serialVersionUID = 7355747572880952600L;
     private static final String NULL_ID          = "00000000-0000-0000-0000-000000000000";
 
-    public UUID getId() {
-        return UUID.fromString(NULL_ID);
-    }
-
-    public String getDisplayname() {
+    public String getDisplayName() {
         return "";
     }
 
-    public String getFullname() {
+    public String getFullName() {
         return "";
     }
 
     public UUID getTenantId() {
         return getId();
+    }
+
+    public UUID getId() {
+        return UUID.fromString(NULL_ID);
     }
 }

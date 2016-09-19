@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 Kaiserpfalz EDV-Service, Roland T. Lichti
+ * Copyright 2016 Kaiserpfalz EDV-Service, Roland T. Lichti
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,12 +16,12 @@
 
 package de.kaiserpfalzedv.office.common.test;
 
+import java.util.UUID;
+
 import de.kaiserpfalzedv.office.common.data.Identifyable;
 import de.kaiserpfalzedv.office.common.impl.NullTenant;
 import org.junit.Before;
 import org.junit.Test;
-
-import java.util.UUID;
 
 import static org.junit.Assert.assertEquals;
 
@@ -49,12 +49,12 @@ public class NullTenantTest {
 
     @Test
     public void testGetDisplayname() throws Exception {
-        assertEquals("The display name should be empty!", "", tenant.getDisplayname());
+        assertEquals("The display name should be empty!", "", tenant.getDisplayName());
     }
 
     @Test
     public void testGetFullname() throws Exception {
-        assertEquals("The full name should be empty!", "", tenant.getFullname());
+        assertEquals("The full name should be empty!", "", tenant.getFullName());
     }
 
     @Test

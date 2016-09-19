@@ -97,8 +97,8 @@ public class CostCenterBuilder implements Builder<CostCenter> {
     public CostCenterBuilder withCostCenter(CostCenter orig) {
         withTenantId(orig.getTenantId());
         withId(orig.getId());
-        withDisplayName(orig.getDisplayname());
-        withFullName(orig.getFullname());
+        withDisplayName(orig.getDisplayName());
+        withFullName(orig.getFullName());
 
         return this;
     }

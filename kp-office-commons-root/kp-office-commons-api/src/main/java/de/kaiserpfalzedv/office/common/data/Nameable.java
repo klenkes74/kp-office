@@ -25,10 +25,10 @@ public interface Nameable {
     /**
      * @return The display name (max. 50 characters long) of this object.
      */
-    String getDisplayname();
+    String getDisplayName();
 
     /**
      * @return The full name (max 200 characters long) of this object.
      */
-    String getFullname();
+    String getFullName();
 }

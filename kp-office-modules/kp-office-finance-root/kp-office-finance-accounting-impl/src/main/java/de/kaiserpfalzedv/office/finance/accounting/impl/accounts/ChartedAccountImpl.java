@@ -16,17 +16,17 @@
 
 package de.kaiserpfalzedv.office.finance.accounting.impl.accounts;
 
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.UUID;
+
 import de.kaiserpfalzedv.office.finance.accounting.AccountMultiMappedException;
 import de.kaiserpfalzedv.office.finance.accounting.accounts.Account;
 import de.kaiserpfalzedv.office.finance.accounting.accounts.ChartedAccount;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
-
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.UUID;
 
 import static org.apache.commons.lang3.builder.ToStringStyle.SHORT_PREFIX_STYLE;
 
@@ -57,46 +57,23 @@ public class ChartedAccountImpl implements ChartedAccount {
         this.accounts.addAll(accounts);
     }
 
-
     @Override
-    public UUID getTenantId() {
-        return tenantId;
-    }
-
-    @Override
-    public String getAccountNumber() {
-        return accountNumber;
-    }
-
-    @Override
-    public String getDisplayname() {
+    public String getDisplayName() {
         return displayName;
     }
 
     @Override
-    public String getFullname() {
+    public String getFullName() {
         return fullName;
     }
 
     @Override
-    public Set<? extends Account> getAccounts() {
-        return Collections.unmodifiableSet(accounts);
+    public int hashCode() {
+        return new HashCodeBuilder()
+                .append(tenantId)
+                .append(accountNumber)
+                .toHashCode();
     }
-
-    @Override
-    public Account getBookableAccount() throws AccountMultiMappedException {
-        if (!isDirectlyBookable()) {
-            throw new AccountMultiMappedException(this);
-        }
-
-        return accounts.iterator().next();
-    }
-
-    @Override
-    public boolean isDirectlyBookable() {
-        return (accounts.size() == 1);
-    }
-
 
     @Override
     public boolean equals(Object obj) {
@@ -117,13 +94,33 @@ public class ChartedAccountImpl implements ChartedAccount {
     }
 
     @Override
-    public int hashCode() {
-        return new HashCodeBuilder()
-                .append(tenantId)
-                .append(accountNumber)
-                .toHashCode();
+    public UUID getTenantId() {
+        return tenantId;
     }
 
+    @Override
+    public String getAccountNumber() {
+        return accountNumber;
+    }
+
+    @Override
+    public Set<? extends Account> getAccounts() {
+        return Collections.unmodifiableSet(accounts);
+    }
+
+    @Override
+    public Account getBookableAccount() throws AccountMultiMappedException {
+        if (!isDirectlyBookable()) {
+            throw new AccountMultiMappedException(this);
+        }
+
+        return accounts.iterator().next();
+    }
+
+    @Override
+    public boolean isDirectlyBookable() {
+        return (accounts.size() == 1);
+    }
 
     @Override
     public String toString() {
