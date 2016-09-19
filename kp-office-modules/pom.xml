@@ -32,7 +32,9 @@
 
     <modules>
         <module>kp-office-base-root</module>
+<!--
         <module>kp-office-finance-root</module>
         <module>kp-office-dms-root</module>
+-->
     </modules>
 </project>

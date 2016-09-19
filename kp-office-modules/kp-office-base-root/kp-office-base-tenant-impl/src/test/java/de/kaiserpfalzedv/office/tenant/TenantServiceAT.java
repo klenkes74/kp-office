@@ -52,102 +52,17 @@ import static org.junit.Assert.fail;
  * @since 2016-09-04
  */
 @RunWith(CukeSpace.class)
-@Features({"src/test/resources/de/kaiserpfalzedv/office/tenant/CreateTenant.feature"})
+@Features({"src/test/resources/de/kaiserpfalzedv/office/tenant"})
 public class TenantServiceAT {
     private static final Logger LOG = LoggerFactory.getLogger(TenantServiceAT.class);
+
     @Inject
     private TenantService service;
+
     private ArrayList<Exception> exceptions = new ArrayList<>();
     private Set<? extends Tenant> tenants = new HashSet<>();
+
     private Tenant tenant;
-
-    @Deployment
-    public static WebArchive createDeployment() {
-        File pomFile = new File("pom.xml");
-        LOG.info("Loading POM pomFile: {}", pomFile.getAbsolutePath());
-
-        File[] lib = Maven.resolver()
-                          .loadPomFromFile(pomFile)
-                          .resolve(
-                                  "de.kaiserpfalz-edv.office:kp-office-base-api",
-                                  "de.kaiserpfalz-edv.office:kp-office-commons-impl"
-                          )
-                          .withTransitivity()
-                          .as(File.class);
-
-        WebArchive war = ShrinkWrap.create(WebArchive.class, "tenant.war");
-
-        LOG.info("Created {}.", war.getName());
-
-        war
-                .addAsLibraries(lib)
-                .addPackages(true, "de.kaiserpfalzedv.office.tenant");
-
-        LOG.info("Added libraries and packages.");
-
-        Map<String, File> resources = new HashMap<>();
-        File metainfResurces = new File("src/test/resources/META-INF");
-        addResource(resources, "/", metainfResurces);
-        for (Map.Entry<String, File> r : resources.entrySet()) {
-            war.addAsManifestResource(r.getValue(), r.getKey());
-        }
-
-        LOG.info("Added resources to META-INF/");
-
-        resources = new HashMap<>();
-        File webinfClasses = new File("src/test/webapp");
-        addResource(resources, "/classes/", webinfClasses);
-
-        for (Map.Entry<String, File> r : resources.entrySet()) {
-            war.addAsWebInfResource(r.getValue(), r.getKey());
-        }
-
-        LOG.info("Added resources to WEB-INF/");
-
-        listFiles(war.get("/"), 0);
-
-        ZipExporter archive = war.as(ZipExporter.class);
-        archive.exportTo(new File("target/tenant.war"), true);
-
-        return war;
-    }
-
-    private static void addResource(Map<String, File> resources, String path, File node) {
-        if (node.isDirectory()) {
-            for (File n : node.listFiles()) {
-                addResource(resources, path + n.getName() + (n.isDirectory() ? "/" : ""), n);
-            }
-        }
-
-        if (node.isFile()) {
-            LOG.info("Adding Resource to {}: {}", path, node.getAbsolutePath());
-
-            resources.put(path, node);
-        }
-    }
-
-    private static void listFiles(Node node, int level) {
-        if (node.getAsset() != null) {
-            LOG.info("{} {}: {}", pathdepth(level), node.getPath(), node.getAsset());
-        }
-
-        for (Node n : node.getChildren()) {
-            listFiles(n, level + 1);
-        }
-    }
-
-    private static String pathdepth(int level) {
-        StringBuilder result = new StringBuilder();
-
-        for (int i = 0; i < level - 1; i++) {
-            result.append("|");
-        }
-
-        result.append("+->");
-
-        return result.toString();
-    }
-
     @Given(".*tenant '([a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12})' does not exist in the system.*")
     public void ensureTenantDoesNotExist(final String id) {
         UUID tenant = UUID.fromString(id);
@@ -302,5 +217,99 @@ public class TenantServiceAT {
         }
 
         fail("The tenant with id '" + id.toString() + "' has not been found in result set!");
+    }
+
+
+
+    @Deployment
+    public static WebArchive createDeployment() {
+        File pomFile = new File("pom.xml");
+        LOG.info("Loading POM pomFile: {}", pomFile.getAbsolutePath());
+
+        File[] lib = Maven.resolver()
+                .loadPomFromFile(pomFile)
+                .resolve(
+                        "de.kaiserpfalz-edv.office:kp-office-base-api",
+                        "de.kaiserpfalz-edv.office:kp-office-commons-impl",
+                        "ch.qos.logback:logback-classic"
+                )
+                .withTransitivity()
+                .as(File.class);
+
+        WebArchive war = ShrinkWrap.create(WebArchive.class, "tenant.war").addManifest();
+
+        LOG.info("Created {}.", war.getName());
+
+        war
+                .addAsLibraries(lib)
+                .addPackages(true, "de.kaiserpfalzedv.office.tenant");
+
+        LOG.info("Added libraries and packages.");
+
+        Map<String, File> resources = new HashMap<>();
+        File metainfResurces = new File("src/test/resources/META-INF");
+        addResource(resources, "/", metainfResurces);
+        for (Map.Entry<String, File> r : resources.entrySet()) {
+            war.addAsManifestResource(r.getValue(), r.getKey());
+        }
+
+        LOG.info("Added resources to META-INF/");
+
+        resources = new HashMap<>();
+        File webinfClasses = new File("src/test/resources");
+        addResource(resources, "/classes/", webinfClasses);
+
+        for (Map.Entry<String, File> r : resources.entrySet()) {
+            war.addAsWebInfResource(r.getValue(), r.getKey());
+        }
+
+        LOG.info("Added resources to WEB-INF/");
+
+        listFiles(war.get("/"), 0);
+
+        ZipExporter archive = war.as(ZipExporter.class);
+        archive.exportTo(new File("target/tenant.war"), true);
+
+        return war;
+    }
+
+    private static void addResource(Map<String, File> resources, String path, File node) {
+        if (node.isDirectory()) {
+            //noinspection ConstantConditions
+            for (File n : node.listFiles()) {
+                addResource(resources, path + n.getName() + (n.isDirectory() ? "/" : ""), n);
+            }
+
+        }
+
+        if (node.isFile()) {
+            LOG.info("Adding Resource to {}: {}", path, node.getAbsolutePath());
+
+            resources.put(path, node);
+        }
+    }
+
+    private static void listFiles(Node node, int level) {
+        if (node.getAsset() != null) {
+            LOG.info("{} {}: {}", pathdepth(level), node.getPath(), node.getAsset());
+        } else {
+            LOG.info("{} {}: Directory", pathdepth(level), node.getPath());
+        }
+
+        for (Node n : node.getChildren()) {
+            listFiles(n, level + 1);
+        }
+    }
+
+    private static String pathdepth(int level) {
+        StringBuilder result = new StringBuilder();
+
+        for (int i = 0; i < level - 1; i++) {
+            result.append("|");
+        }
+
+        result.append("+->");
+
+        return result.toString();
     }
 }

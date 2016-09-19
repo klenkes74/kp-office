@@ -45,13 +45,6 @@
                 <artifactId>kp-office-commons-impl</artifactId>
                 <version>${project.version}</version>
             </dependency>
-            <dependency>
-                <groupId>${project.groupId}</groupId>
-                <artifactId>kp-office-commons-test</artifactId>
-                <version>${project.version}</version>
-                <scope>test</scope>
-            </dependency>
-
 
             <!-- Base -->
             <dependency>
