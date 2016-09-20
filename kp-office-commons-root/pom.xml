@@ -23,7 +23,7 @@
     <parent>
         <groupId>de.kaiserpfalz-edv.office</groupId>
         <artifactId>kp-office-root</artifactId>
-        <version>0.3.0-SNAPSHOT</version>
+        <version>1.0.0-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
@@ -33,6 +33,6 @@
     <modules>
         <module>kp-office-commons-api</module>
         <module>kp-office-commons-impl</module>
-        <module>kp-office-commons-test</module>
+        <module>kp-office-commons-client</module>
     </modules>
 </project>
