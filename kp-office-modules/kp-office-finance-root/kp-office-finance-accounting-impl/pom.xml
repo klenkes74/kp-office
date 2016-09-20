@@ -23,7 +23,7 @@
     <parent>
         <groupId>de.kaiserpfalz-edv.office</groupId>
         <artifactId>kp-office-parent-impl</artifactId>
-        <version>0.3.0-SNAPSHOT</version>
+        <version>1.0.0-SNAPSHOT</version>
         <relativePath>../../../kp-office-parents-root/kp-office-parent-impl/pom.xml</relativePath>
     </parent>
 

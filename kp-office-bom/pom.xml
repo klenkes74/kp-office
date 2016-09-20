@@ -23,7 +23,7 @@
     <groupId>de.kaiserpfalz-edv.office</groupId>
     <artifactId>kp-office-bom</artifactId>
     <packaging>pom</packaging>
-    <version>0.3.0-SNAPSHOT</version>
+    <version>1.0.0-SNAPSHOT</version>
 
 
     <properties>
@@ -38,6 +38,11 @@
             <dependency>
                 <groupId>${project.groupId}</groupId>
                 <artifactId>kp-office-commons-api</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>kp-office-commons-client</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
@@ -59,7 +64,17 @@
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
+                <artifactId>kp-office-base-access-client</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
                 <artifactId>kp-office-base-tenant-impl</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>kp-office-base-tenant-client</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
@@ -69,12 +84,27 @@
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
+                <artifactId>kp-office-base-contacts-client</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
                 <artifactId>kp-office-base-files-impl</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
+                <artifactId>kp-office-base-files-client</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
                 <artifactId>kp-office-base-license-impl</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>kp-office-base-license-client</artifactId>
                 <version>${project.version}</version>
             </dependency>
 
@@ -91,7 +121,17 @@
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
+                <artifactId>kp-office-finance-accounting-client</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
                 <artifactId>kp-office-finance-taxexport-de-impl</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>kp-office-finance-taxexport-de-client</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
@@ -101,7 +141,17 @@
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
+                <artifactId>kp-office-finance-datevexport-client</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
                 <artifactId>kp-office-finance-reporting-impl</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>kp-office-finance-reporting-client</artifactId>
                 <version>${project.version}</version>
             </dependency>
 
@@ -157,6 +207,7 @@
                 <groupId>javax</groupId>
                 <artifactId>javaee-api</artifactId>
                 <version>7.0</version>
+                <scope>provided</scope>
             </dependency>
 
             <dependency>

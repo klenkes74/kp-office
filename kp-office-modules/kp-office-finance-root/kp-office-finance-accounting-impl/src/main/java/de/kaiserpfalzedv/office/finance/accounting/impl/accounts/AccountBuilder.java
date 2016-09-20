@@ -101,8 +101,8 @@ public class AccountBuilder implements Builder<Account> {
     public AccountBuilder withAccount(Account account) {
         withTenantId(account.getTenantId());
         withId(account.getId());
-        withDisplayName(account.getDisplayname());
-        withFullName(account.getFullname());
+        withDisplayName(account.getDisplayName());
+        withFullName(account.getFullName());
 
         return this;
     }

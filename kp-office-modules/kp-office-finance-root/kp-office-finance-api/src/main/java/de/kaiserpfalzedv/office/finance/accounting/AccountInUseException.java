@@ -31,7 +31,7 @@ public class AccountInUseException extends AccountingException {
     private Account account;
 
     public AccountInUseException(final Account account) {
-        super("The account '" + account.getId() + "' (" + account.getDisplayname() + ") is in use.");
+        super("The account '" + account.getId() + "' (" + account.getDisplayName() + ") is in use.");
 
         this.account = account;
     }
