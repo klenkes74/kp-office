@@ -19,8 +19,7 @@ package de.kaiserpfalzedv.office.tenant.impl;
 import java.util.ArrayList;
 import java.util.UUID;
 
-import de.kaiserpfalzedv.office.common.data.BuilderException;
-import de.kaiserpfalzedv.office.tenant.NullTenant;
+import de.kaiserpfalzedv.office.common.BuilderException;
 import de.kaiserpfalzedv.office.tenant.Tenant;
 import org.apache.commons.lang3.builder.Builder;
 

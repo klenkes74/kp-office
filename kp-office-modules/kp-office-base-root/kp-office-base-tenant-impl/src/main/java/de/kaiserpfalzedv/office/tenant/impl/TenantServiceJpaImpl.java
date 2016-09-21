@@ -12,6 +12,7 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+ *
  */
 
 package de.kaiserpfalzedv.office.tenant.impl;
@@ -20,6 +21,9 @@ import java.util.Set;
 import java.util.UUID;
 
 import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 
 import de.kaiserpfalzedv.office.tenant.Tenant;
 import de.kaiserpfalzedv.office.tenant.TenantDoesNotExistException;
@@ -39,29 +43,46 @@ import org.slf4j.LoggerFactory;
 public class TenantServiceJpaImpl implements TenantService {
     private static final Logger LOG = LoggerFactory.getLogger(TenantServiceJpaImpl.class);
 
+    private EntityManagerFactory emf;
+
+
+    @Inject
+    public TenantServiceJpaImpl(final EntityManagerFactory emf) {
+        this.emf = emf;
+    }
+
 
     @Override
-    public void createTenant(Tenant data) throws TenantExistsException {
+    public Tenant createTenant(final Tenant data) throws TenantExistsException {
+        EntityManager em = emf.createEntityManager();
+
+        em.persist(data);
+
+        Tenant result = (Tenant) em.createQuery("select d from Tenant d where d.id=:id")
+                .setParameter("id", data.getId()).getSingleResult();
+
+        em.close();
+
+        return result;
+    }
+
+    @Override
+    public Tenant retrieveTenant(final UUID id) throws TenantDoesNotExistException {
         throw new UnsupportedOperationException("not yet imlemented");
     }
 
     @Override
-    public Tenant retrieveTenant(UUID id) throws TenantDoesNotExistException {
+    public Set<Tenant> retrieveTenants() {
         throw new UnsupportedOperationException("not yet imlemented");
     }
 
     @Override
-    public Set<? extends Tenant> retrieveTenants() {
+    public Tenant updateTenant(final Tenant data) throws TenantDoesNotExistException {
         throw new UnsupportedOperationException("not yet imlemented");
     }
 
     @Override
-    public Tenant updateTenant(Tenant data) throws TenantDoesNotExistException {
-        throw new UnsupportedOperationException("not yet imlemented");
-    }
-
-    @Override
-    public void deleteTenant(UUID id) {
+    public void deleteTenant(final UUID id) {
         throw new UnsupportedOperationException("not yet imlemented");
     }
 }

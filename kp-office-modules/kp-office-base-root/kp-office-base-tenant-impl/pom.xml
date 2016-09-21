@@ -88,6 +88,11 @@
             <groupId>de.kaiserpfalz-edv.office</groupId>
             <artifactId>kp-office-commons-impl</artifactId>
         </dependency>
+        <dependency>
+            <groupId>de.kaiserpfalz-edv.office</groupId>
+            <artifactId>kp-office-base-tenant-client</artifactId>
+            <scope>test</scope>
+        </dependency>
 
         <dependency>
             <groupId>org.wildfly.swarm</groupId>

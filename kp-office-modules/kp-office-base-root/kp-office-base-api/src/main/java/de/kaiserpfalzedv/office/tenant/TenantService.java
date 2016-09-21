@@ -16,6 +16,7 @@
 
 package de.kaiserpfalzedv.office.tenant;
 
+import java.util.Collection;
 import java.util.Set;
 import java.util.UUID;
 
@@ -32,9 +33,9 @@ public interface TenantService {
      *
      * @param data The tenant to be saved.
      *
-     * @throws TenantExistsException A tenant with the given UUID already exists on the system.
+     * @throws TenantExistsException A tenant with the given UUID, full or display name already exists on the system.
      */
-    void createTenant(final Tenant data) throws TenantExistsException;
+    Tenant createTenant(final Tenant data) throws TenantExistsException;
 
 
     /**
@@ -54,7 +55,7 @@ public interface TenantService {
      *
      * @return A set of tenants available.
      */
-    Set<? extends Tenant> retrieveTenants();
+    Collection<Tenant> retrieveTenants();
 
 
     /**
@@ -65,8 +66,9 @@ public interface TenantService {
      * @return The updated tenant.
      *
      * @throws TenantDoesNotExistException If there is no tentant with the UUID to be updated.
+     * @throws TenantExistsException If the new data would break a constraint (unique full or display name).
      */
-    Tenant updateTenant(final Tenant data) throws TenantDoesNotExistException;
+    Tenant updateTenant(final Tenant data) throws TenantDoesNotExistException, TenantExistsException;
 
 
     /**

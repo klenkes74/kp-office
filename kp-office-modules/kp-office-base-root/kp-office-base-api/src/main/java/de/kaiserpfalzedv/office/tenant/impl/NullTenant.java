@@ -14,26 +14,27 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzedv.office.common.cdi.impl;
+package de.kaiserpfalzedv.office.tenant.impl;
 
-import javax.inject.Qualifier;
-import java.lang.annotation.Retention;
-import java.lang.annotation.Target;
+import java.util.UUID;
 
-import static java.lang.annotation.ElementType.FIELD;
-import static java.lang.annotation.ElementType.PARAMETER;
-import static java.lang.annotation.ElementType.TYPE;
-import static java.lang.annotation.RetentionPolicy.RUNTIME;
+import de.kaiserpfalzedv.office.common.data.Identifyable;
+import de.kaiserpfalzedv.office.tenant.Tenant;
+import de.kaiserpfalzedv.office.tenant.impl.TenantImpl;
 
 /**
- * This is the qualifier for a mock implementation of the service.
+ * The null tenant for all objects that don't have a tenant.
  *
  * @author klenkes
  * @version 2015Q1
- * @since 03.01.16 09:48
+ * @since 27.12.15 11:41
  */
-@Qualifier
-@Retention(RUNTIME)
-@Target({TYPE, FIELD, PARAMETER})
-public @interface Mock {
+public class NullTenant extends TenantImpl implements Tenant {
+    private static final long serialVersionUID = 7355747572880952600L;
+
+    private static final UUID NULL_ID          = UUID.fromString("00000000-0000-0000-0000-000000000000");
+
+    public NullTenant() {
+        super(NULL_ID, NULL_ID, "", "");
+    }
 }
