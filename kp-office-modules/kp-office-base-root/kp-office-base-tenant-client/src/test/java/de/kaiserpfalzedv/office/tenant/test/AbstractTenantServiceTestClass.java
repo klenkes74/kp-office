@@ -15,7 +15,7 @@
  *
  */
 
-package de.kaiserpfalzedv.office.tenant.mock.test;
+package de.kaiserpfalzedv.office.tenant.test;
 
 import de.kaiserpfalzedv.office.tenant.Tenant;
 import de.kaiserpfalzedv.office.tenant.TenantDoesNotExistException;

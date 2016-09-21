@@ -48,10 +48,17 @@ public class LoadTimePropertyConfigReaderTest extends AbstractConfigReaderTestCl
 
     @Override
     public ConfigReader createWithAllMethods(String defaultFileName, String environmentVariableName, String systemPropertyName) {
-        return new ConfigReaderBuilder()
-                .withPropertyFile(defaultFileName)
-                .withEnvironmentPropertyFileName(environmentVariableName)
-                .withSystemPropertyFileName(systemPropertyName)
-                .build();
+        ConfigReaderBuilder builder = new ConfigReaderBuilder();
+
+        if (systemPropertyName != null)
+            builder.withSystemPropertyFileName(systemPropertyName);
+
+        if (environmentVariableName != null)
+                builder.withEnvironmentPropertyFileName(environmentVariableName);
+
+        if (defaultFileName != null)
+            builder.withPropertyFile(defaultFileName);
+
+        return builder.build();
     }
 }

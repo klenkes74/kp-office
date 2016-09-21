@@ -23,13 +23,13 @@ import org.apache.commons.lang3.builder.Builder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Properties;
 
-import static org.apache.commons.lang3.StringUtils.isBlank;
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
 
 /**
@@ -49,12 +49,18 @@ import static org.apache.commons.lang3.StringUtils.isNotBlank;
 public class ConfigReaderBuilder implements Builder<ConfigReader> {
     private static final Logger LOG = LoggerFactory.getLogger(ConfigReaderBuilder.class);
 
-    private String propertyFileName;
+    private static final String DEFAULT_CONFIG_FILE_NAME = "kp-office.properties";
+
+    private String systemPropertyName;
+    private String environmentVariableName;
+    private String fileName;
 
     @Override
     public ConfigReader build() {
+        String propertyFileName = whichFileToUse();
+
         if (isNotBlank(propertyFileName))
-            return buildPropertyFileConfigReader();
+            return buildPropertyFileConfigReader(propertyFileName);
 
         throw new BuilderException(
                 ConfigReaderBuilder.class,
@@ -62,7 +68,92 @@ public class ConfigReaderBuilder implements Builder<ConfigReader> {
         );
     }
 
-    private ConfigReader buildPropertyFileConfigReader() {
+    private String whichFileToUse() {
+        String result = getSystemPropertyFileName();
+
+        if (result == null) {
+            result = getEnvironmentFileName();
+        }
+
+        if (result == null) {
+            result = getDefaultFileName();
+        }
+
+        if (result == null) {
+            result = DEFAULT_CONFIG_FILE_NAME;
+
+            LOG.debug("Loading default configuration from: {}", DEFAULT_CONFIG_FILE_NAME);
+        }
+
+        return result;
+    }
+
+    private String getSystemPropertyFileName() {
+        String result = null;
+
+        if (isNotBlank(systemPropertyName)) {
+            result = checkPropertyFile(
+                    System.getProperty(systemPropertyName),
+                    "The configuration file '{}' pointed to by the system property '{}' does not exist.",
+                    "Loading configuration via system property '{}': {}"
+            );
+        }
+
+        return result;
+    }
+
+    private String getEnvironmentFileName() {
+        String result = null;
+
+        if (isNotBlank(environmentVariableName)) {
+            result = checkPropertyFile(
+                    System.getenv(environmentVariableName),
+                    "The configuration file '{}' pointed to by the environment variable '{}' does not exist.",
+                    "Loading configuration via environment variable '{}': {}"
+            );
+        }
+
+        return result;
+    }
+
+    private String checkPropertyFile(
+            String result,
+            final String nonExistingFileTemplate,
+            final String loadingTemplate
+    ) {
+        try {
+            File file = new File(getClass().getClassLoader().getResource(result).getFile());
+
+            if (!file.exists()) {
+                LOG.warn(nonExistingFileTemplate, result, environmentVariableName);
+
+                result = null;
+            } else {
+                LOG.debug(loadingTemplate, environmentVariableName, result);
+            }
+        } catch (NullPointerException e) {
+            LOG.warn(nonExistingFileTemplate, result, environmentVariableName);
+            result = null;
+        }
+
+        return result;
+    }
+
+    private String getDefaultFileName() {
+        String result = null;
+
+        if (isNotBlank(fileName)) {
+            result = checkPropertyFile(
+                    fileName,
+                    "The configuration file '{}' given from the executing programm does not exist.",
+                    "Loading configuration as specified by the software: {}"
+            );
+        }
+
+        return result;
+    }
+
+    private ConfigReader buildPropertyFileConfigReader(final String propertyFileName) {
         ArrayList<String> failures = new ArrayList<>();
 
         try {
@@ -91,38 +182,20 @@ public class ConfigReaderBuilder implements Builder<ConfigReader> {
     }
 
     public ConfigReaderBuilder withEnvironmentPropertyFileName(final String propertyName) {
-        LOG.debug("Loading properties file name from environment variable: {}", propertyName);
-
-        String propertyFileName = System.getenv(propertyName);
-
-        if (isBlank(propertyFileName)) {
-            LOG.error("The environment variable '{}' does not contain a file name for reading properties from.", propertyName);
-        } else {
-           this.propertyFileName = propertyFileName;
-        }
+        this.environmentVariableName = propertyName;
 
         return this;
     }
 
     public ConfigReaderBuilder withSystemPropertyFileName(final String propertyName) {
-        LOG.debug("Loading properties file name from system property: {}", propertyName);
-
-        String propertyFileName = System.getProperty(propertyName);
-
-        if (isBlank(propertyFileName)) {
-            LOG.error("The system property '{}' does not contain a file name for reading properties from.", propertyName);
-        } else {
-            this.propertyFileName = propertyFileName;
-        }
+        this.systemPropertyName = propertyName;
 
         return this;
     }
 
 
     public ConfigReaderBuilder withPropertyFile(final String propertyFileName) {
-        LOG.debug("Loading properties from file: {}", propertyFileName);
-
-        this.propertyFileName = propertyFileName;
+        this.fileName = propertyFileName;
 
         return this;
     }

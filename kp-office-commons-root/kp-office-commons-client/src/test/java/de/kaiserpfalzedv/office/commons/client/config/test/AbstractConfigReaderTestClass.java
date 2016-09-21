@@ -23,8 +23,6 @@ import de.kaiserpfalzedv.office.commons.client.config.NoSuchPropertyException;
 import org.junit.Before;
 import org.junit.Test;
 
-import javax.annotation.processing.ProcessingEnvironment;
-
 import java.lang.reflect.Field;
 import java.util.Collections;
 import java.util.HashMap;
@@ -39,10 +37,14 @@ import static org.junit.Assert.fail;
  */
 public abstract class AbstractConfigReaderTestClass {
     private static final String PROPERTY_FILE = "test.properties";
+    private static final String ENV_PROPERTY_FILE = "test.env.properties";
+    private static final String PROP_PROPERTY_FILE = "test.props.properties";
+
     private static final String ENV_VARIABLE_NAME = "KPO_TEST_PROPERTIES";
     private static final String SYSTEM_PROPERTY_VARIABLE_NAME = "de.kaiserpfalzedv.offce.commons.client.conf.test";
-    public static final String PROPERTY_KEY = "property1";
-    public static final String PROPERTY_VALUE = "This is the first property";
+
+    private static final String PROPERTY_KEY = "property1";
+    private static final String PROPERTY_VALUE = "This is the first property";
 
     private ConfigReader service;
 
@@ -51,6 +53,13 @@ public abstract class AbstractConfigReaderTestClass {
         String result = service.getEntry(PROPERTY_KEY);
 
         assertEquals(result, "This is the first property");
+    }
+
+    @Test
+    public void checkDefaultProperty() {
+        String result = service.getEntry("PropertyNotExisting", "This is the default value");
+
+        assertEquals("This is the default value", result);
     }
 
     @Test
@@ -71,59 +80,80 @@ public abstract class AbstractConfigReaderTestClass {
     public void checkSystemPropertyReaderBuilder() throws NoSuchPropertyException {
 
         try {
-            System.getProperties().put(SYSTEM_PROPERTY_VARIABLE_NAME, PROPERTY_FILE);
+            setupSystemProperty(PROP_PROPERTY_FILE);
             service = createReaderFromSystemProperty(SYSTEM_PROPERTY_VARIABLE_NAME);
 
-            String result = service.getEntry(PROPERTY_KEY);
-
-            assertEquals(result, PROPERTY_VALUE);
+            assertEquals("props", service.getEntry("type"));
         } finally {
-            System.getProperties().remove(SYSTEM_PROPERTY_VARIABLE_NAME);
+            removeSystemProperty();
         }
     }
 
     @Test
-    public void checkNotExistingSystemPropertyReaderBuilder() {
-        try {
-            service = createReaderFromSystemProperty(SYSTEM_PROPERTY_VARIABLE_NAME);
+    public void checkNotExistingSystemPropertyReaderBuilder() throws NoSuchPropertyException {
+        service = createReaderFromSystemProperty(SYSTEM_PROPERTY_VARIABLE_NAME);
 
-            fail("An exception of type BuilderException should have been thrown!");
-        } catch(BuilderException e) {
-            // everything as expected
-        }
-
-        // no assert needed we are checking that an exception is thrown
+        assertEquals("default", service.getEntry("type"));
     }
 
 
     @Test
     public void checkEnvPropertyReaderBuilder() throws NoSuchPropertyException {
         try {
-            HashMap<String, String> env = new HashMap<>(System.getenv());
-            env.put(ENV_VARIABLE_NAME, PROPERTY_FILE);
-            setEnv(env);
+            setupEnvironmentVariable(PROPERTY_FILE);
 
             service = createReaderFromEnvironmentVariable(ENV_VARIABLE_NAME);
 
             assertEquals(service.getEntry(PROPERTY_KEY), PROPERTY_VALUE);
         } finally {
-            HashMap<String, String> env = new HashMap<>(System.getenv());
-            env.remove(ENV_VARIABLE_NAME);
-            setEnv(env);
+            removeEnvironmentVariable();
         }
     }
 
     @Test
-    public void checkNotExistingEnvPropertyReaderBuilder() {
+    public void checkNotExistingEnvPropertyReaderBuilder() throws NoSuchPropertyException {
+        service = createReaderFromEnvironmentVariable(ENV_VARIABLE_NAME);
+
+        assertEquals("default", service.getEntry("type"));
+    }
+
+
+    @Test
+    public void checkFilePrecedenceFull() throws NoSuchPropertyException {
         try {
-            service = createReaderFromEnvironmentVariable(ENV_VARIABLE_NAME);
+            setupEnvironmentVariable(ENV_PROPERTY_FILE);
+            setupSystemProperty(PROP_PROPERTY_FILE);
 
-            fail("An exception of type BuilderException should have been thrown!");
-        } catch(BuilderException e) {
-            // everything as expected
+            service = createWithAllMethods(PROPERTY_FILE, ENV_VARIABLE_NAME, SYSTEM_PROPERTY_VARIABLE_NAME);
+
+            String result = service.getEntry("type");
+
+            assertEquals("props", result);
+        } finally {
+            removeEnvironmentVariable();
+            removeSystemProperty();
         }
+    }
 
-        // no assert needed we are checking that an exception is thrown
+
+    private void setupSystemProperty(String propPropertyFile) {
+        System.getProperties().put(SYSTEM_PROPERTY_VARIABLE_NAME, propPropertyFile);
+    }
+
+    private void removeSystemProperty() {
+        System.getProperties().remove(SYSTEM_PROPERTY_VARIABLE_NAME);
+    }
+
+    private void setupEnvironmentVariable(String envPropertyFile) {
+        HashMap<String, String> env = new HashMap<>(System.getenv());
+        env.put(ENV_VARIABLE_NAME, envPropertyFile);
+        setEnv(env);
+    }
+
+    private void removeEnvironmentVariable() {
+        HashMap<String, String> env = new HashMap<>(System.getenv());
+        env.remove(ENV_VARIABLE_NAME);
+        setEnv(env);
     }
 
 
@@ -134,6 +164,7 @@ public abstract class AbstractConfigReaderTestClass {
      *
      * @param newenv The new system environment to be used.
      */
+    @SuppressWarnings("unchecked")
     private void setEnv(Map<String, String> newenv)
     {
         try
@@ -208,10 +239,10 @@ public abstract class AbstractConfigReaderTestClass {
      *     <li>environment variable</li>
      *     <li>default file name</li>
      * </ul>
-     * @param defaultFileName
-     * @param environmentVariableName
-     * @param systemPropertyName
-     * @return
+     * @param defaultFileName The default file name (last resort)
+     * @param environmentVariableName The name of the environment variable to scan for the property file.
+     * @param systemPropertyName The system property to scan for the name of the property file.
+     * @return the ConfigReader with the data of the found file.
      */
     abstract public ConfigReader createWithAllMethods(
             final String defaultFileName,

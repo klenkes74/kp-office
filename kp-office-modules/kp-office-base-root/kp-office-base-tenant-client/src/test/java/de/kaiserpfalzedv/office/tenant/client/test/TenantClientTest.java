@@ -15,11 +15,11 @@
  *
  */
 
-package de.kaiserpfalzedv.office.tenant.mock.test;
+package de.kaiserpfalzedv.office.tenant.client.test;
 
 import de.kaiserpfalzedv.office.tenant.TenantService;
 import de.kaiserpfalzedv.office.tenant.client.TenantClient;
-import org.junit.Before;
+import de.kaiserpfalzedv.office.tenant.test.AbstractTenantServiceTestClass;
 
 /**
  * @author rlichti {@literal <rlichti@kaiserpfalz-edv.de>}

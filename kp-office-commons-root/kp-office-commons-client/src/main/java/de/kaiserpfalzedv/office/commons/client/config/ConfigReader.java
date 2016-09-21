@@ -17,11 +17,8 @@
 
 package de.kaiserpfalzedv.office.commons.client.config;
 
-import de.kaiserpfalzedv.office.common.init.Initializable;
-import de.kaiserpfalzedv.office.commons.client.config.NoSuchPropertyException;
 
-import java.io.Closeable;
-import java.io.File;
+import de.kaiserpfalzedv.office.common.init.Closeable;
 
 /**
  * @author rlichti {@literal <rlichti@kaiserpfalz-edv.de>}

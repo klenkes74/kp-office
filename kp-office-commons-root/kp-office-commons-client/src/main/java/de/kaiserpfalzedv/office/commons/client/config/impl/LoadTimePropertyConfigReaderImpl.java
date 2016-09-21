@@ -24,6 +24,12 @@ import java.io.IOException;
 import java.util.Properties;
 
 /**
+ * The load time property config reader is the simplest {@link ConfigReader}. It is given the properties that
+ * can be looked up and thats it.
+ *
+ * It won't reload the properties if the file changes, it can't save any changed properties. Only plain property reader
+ * without any fancy stuff.
+ *
  * @author rlichti {@literal <rlichti@kaiserpfalz-edv.de>}
  * @since 2016-09-21
  */
@@ -50,6 +56,6 @@ public class LoadTimePropertyConfigReaderImpl implements ConfigReader {
 
 
     @Override
-    public void close() throws IOException {
+    public void close() {
     }
 }

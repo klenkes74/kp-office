@@ -19,7 +19,7 @@ package de.kaiserpfalzedv.office.tenant.mock.test;
 
 import de.kaiserpfalzedv.office.tenant.TenantService;
 import de.kaiserpfalzedv.office.tenant.mock.TenantMock;
-import org.junit.Before;
+import de.kaiserpfalzedv.office.tenant.test.AbstractTenantServiceTestClass;
 
 /**
  * @author rlichti {@literal <rlichti@kaiserpfalz-edv.de>}
