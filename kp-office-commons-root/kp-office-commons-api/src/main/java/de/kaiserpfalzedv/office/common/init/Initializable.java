@@ -17,8 +17,6 @@
 
 package de.kaiserpfalzedv.office.common.init;
 
-import de.kaiserpfalzedv.office.common.init.InitializationException;
-
 import java.util.Properties;
 
 /**

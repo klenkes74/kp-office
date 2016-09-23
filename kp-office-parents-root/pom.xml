@@ -30,6 +30,8 @@
     <artifactId>kp-office-parents-root</artifactId>
     <packaging>pom</packaging>
 
+    <name>KP Office :: Parents</name>
+
     <modules>
         <module>kp-office-parent</module>
         <module>kp-office-parent-api</module>

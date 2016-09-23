@@ -28,6 +28,7 @@
     </parent>
 
     <artifactId>kp-office-commons-impl</artifactId>
+    <name>KP Office :: Commons :: Service</name>
 
     <dependencyManagement>
         <dependencies>

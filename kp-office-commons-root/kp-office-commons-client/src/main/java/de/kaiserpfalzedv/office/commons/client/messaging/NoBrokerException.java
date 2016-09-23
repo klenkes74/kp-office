@@ -15,24 +15,14 @@
  *
  */
 
-package de.kaiserpfalzedv.office.commons.client.config;
-
-import de.kaiserpfalzedv.office.common.BaseBusinessException;
+package de.kaiserpfalzedv.office.commons.client.messaging;
 
 /**
  * @author rlichti {@literal <rlichti@kaiserpfalz-edv.de>}
- * @since 2016-09-21
+ * @since 2016-09-22
  */
-public class NoSuchPropertyException extends BaseBusinessException {
-    private String key;
-
-    public NoSuchPropertyException(String key, String message) {
-        super(message);
-
-        this.key = key;
-    }
-
-    public String getKey() {
-        return key;
+public class NoBrokerException extends MessagingException {
+    public NoBrokerException(Throwable cause) {
+        super(cause);
     }
 }

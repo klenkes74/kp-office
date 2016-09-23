@@ -15,24 +15,28 @@
  *
  */
 
-package de.kaiserpfalzedv.office.commons.client.config;
-
-import de.kaiserpfalzedv.office.common.BaseBusinessException;
+package de.kaiserpfalzedv.office.commons.client.messaging;
 
 /**
  * @author rlichti {@literal <rlichti@kaiserpfalz-edv.de>}
- * @since 2016-09-21
+ * @since 2016-09-23
  */
-public class NoSuchPropertyException extends BaseBusinessException {
-    private String key;
+public class NoResponseException extends MessagingException {
+    private String correlationId;
 
-    public NoSuchPropertyException(String key, String message) {
-        super(message);
+    public NoResponseException(final String correlationId) {
+        super("Sorry, no response for correlation-id '" + correlationId + "' received!");
 
-        this.key = key;
+        this.correlationId = correlationId;
     }
 
-    public String getKey() {
-        return key;
+    public NoResponseException(final String correlationId, Throwable cause) {
+        super("Sorry, no response for correlation-id '" + correlationId + "' received!", cause);
+
+        this.correlationId = correlationId;
+    }
+
+    public String getCorrelationId() {
+        return correlationId;
     }
 }

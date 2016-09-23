@@ -28,6 +28,7 @@
     </parent>
 
     <artifactId>kp-office-base-api</artifactId>
+    <name>KP Office :: Modules :: Base :: API</name>
 
     <build>
         <plugins>

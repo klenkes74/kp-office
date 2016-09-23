@@ -28,6 +28,7 @@
     </parent>
 
     <artifactId>kp-office-commons-api</artifactId>
+    <name>KP Office :: Commons :: API</name>
 
     <dependencyManagement>
         <dependencies>

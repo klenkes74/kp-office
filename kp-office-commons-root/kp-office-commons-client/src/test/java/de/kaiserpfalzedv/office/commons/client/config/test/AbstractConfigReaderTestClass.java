@@ -27,6 +27,7 @@ import java.lang.reflect.Field;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Properties;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
@@ -73,6 +74,17 @@ public abstract class AbstractConfigReaderTestClass {
         }
 
         // No assert is needed. We are checking for the exception
+    }
+
+
+    @Test
+    public void checkProvidedPropertiesReaderBuilder() throws NoSuchPropertyException {
+        Properties props = new Properties();
+        props.setProperty("type", "in-memory");
+
+        service = createReaderFromProperties(props);
+
+        assertEquals("in-memory", service.getEntry("type"));
     }
 
 
@@ -249,4 +261,12 @@ public abstract class AbstractConfigReaderTestClass {
             final String environmentVariableName,
             final String systemPropertyName
     );
+
+    /**
+     * Creates a configuration reader by providing the properties to read from.
+     *
+     * @param props The properties to read configuration from.
+     * @return the ConfigReader with the properties provided.
+     */
+    abstract public ConfigReader createReaderFromProperties(final Properties props);
 }

@@ -15,24 +15,26 @@
  *
  */
 
-package de.kaiserpfalzedv.office.commons.client.config;
+package de.kaiserpfalzedv.office.commons.client.messaging;
 
 import de.kaiserpfalzedv.office.common.BaseBusinessException;
 
 /**
+ * The base class for all messaging exceptions. To ease exception handling.
+ *
  * @author rlichti {@literal <rlichti@kaiserpfalz-edv.de>}
- * @since 2016-09-21
+ * @since 2016-09-22
  */
-public class NoSuchPropertyException extends BaseBusinessException {
-    private String key;
-
-    public NoSuchPropertyException(String key, String message) {
+public class MessagingException extends BaseBusinessException {
+    public MessagingException(String message) {
         super(message);
-
-        this.key = key;
     }
 
-    public String getKey() {
-        return key;
+    public MessagingException(String message, Throwable cause) {
+        super(message, cause);
+    }
+
+    public MessagingException(Throwable cause) {
+        super(cause);
     }
 }

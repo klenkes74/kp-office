@@ -15,24 +15,18 @@
  *
  */
 
-package de.kaiserpfalzedv.office.commons.client.config;
-
-import de.kaiserpfalzedv.office.common.BaseBusinessException;
+package de.kaiserpfalzedv.office.commons.client.messaging;
 
 /**
  * @author rlichti {@literal <rlichti@kaiserpfalz-edv.de>}
- * @since 2016-09-21
+ * @since 2016-09-23
  */
-public class NoSuchPropertyException extends BaseBusinessException {
-    private String key;
-
-    public NoSuchPropertyException(String key, String message) {
-        super(message);
-
-        this.key = key;
+public class ResponseOfWrongTypeException extends MessagingException {
+    public ResponseOfWrongTypeException(final String correlationId) {
+        super("Response for correlation-id '" + correlationId + "' is of wrong type!");
     }
 
-    public String getKey() {
-        return key;
+    public ResponseOfWrongTypeException(final String correlationId, final Throwable cause) {
+        super("Response for correlation-id '" + correlationId + "' is of wrong type!", cause);
     }
 }

@@ -15,24 +15,21 @@
  *
  */
 
-package de.kaiserpfalzedv.office.commons.client.config;
+package de.kaiserpfalzedv.office.commons.client.messaging;
 
-import de.kaiserpfalzedv.office.common.BaseBusinessException;
+import de.kaiserpfalzedv.office.common.init.Closeable;
+import de.kaiserpfalzedv.office.common.init.Initializable;
+import org.apache.commons.pool2.ObjectPool;
+
+import javax.jms.Connection;
+import javax.jms.Destination;
+import javax.jms.MessageListener;
 
 /**
  * @author rlichti {@literal <rlichti@kaiserpfalz-edv.de>}
- * @since 2016-09-21
+ * @since 2016-09-22
  */
-public class NoSuchPropertyException extends BaseBusinessException {
-    private String key;
-
-    public NoSuchPropertyException(String key, String message) {
-        super(message);
-
-        this.key = key;
-    }
-
-    public String getKey() {
-        return key;
-    }
+public interface MessagingCore extends Initializable, Closeable {
+    ObjectPool<Connection> getConnectionPool();
+    Destination getReplyTo();
 }

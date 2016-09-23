@@ -51,12 +51,19 @@ public class ConfigReaderBuilder implements Builder<ConfigReader> {
 
     private static final String DEFAULT_CONFIG_FILE_NAME = "kp-office.properties";
 
+    private Properties properties;
     private String systemPropertyName;
     private String environmentVariableName;
     private String fileName;
 
     @Override
     public ConfigReader build() {
+        if (properties != null) {
+            LOG.debug("Software loaded configuration with in-memory-properties.");
+
+            return new LoadTimePropertyConfigReaderImpl(properties);
+        }
+
         String propertyFileName = whichFileToUse();
 
         if (isNotBlank(propertyFileName))
@@ -122,6 +129,7 @@ public class ConfigReaderBuilder implements Builder<ConfigReader> {
             final String loadingTemplate
     ) {
         try {
+            //noinspection ConstantConditions
             File file = new File(getClass().getClassLoader().getResource(result).getFile());
 
             if (!file.exists()) {
@@ -179,6 +187,12 @@ public class ConfigReaderBuilder implements Builder<ConfigReader> {
         }
 
         throw new BuilderException(LoadTimePropertyConfigReaderImpl.class, failures.toArray(new String[1]));
+    }
+
+    public ConfigReaderBuilder withProperties(final Properties properties) {
+        this.properties = properties;
+
+        return this;
     }
 
     public ConfigReaderBuilder withEnvironmentPropertyFileName(final String propertyName) {

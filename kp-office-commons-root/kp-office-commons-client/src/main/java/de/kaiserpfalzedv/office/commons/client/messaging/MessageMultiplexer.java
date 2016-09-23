@@ -15,24 +15,23 @@
  *
  */
 
-package de.kaiserpfalzedv.office.commons.client.config;
+package de.kaiserpfalzedv.office.commons.client.messaging;
 
-import de.kaiserpfalzedv.office.common.BaseBusinessException;
+import de.kaiserpfalzedv.office.common.init.Closeable;
+import de.kaiserpfalzedv.office.common.init.Initializable;
+
+import javax.jms.Destination;
+import javax.jms.Message;
+import java.io.Serializable;
 
 /**
  * @author rlichti {@literal <rlichti@kaiserpfalz-edv.de>}
- * @since 2016-09-21
+ * @since 2016-09-22
  */
-public class NoSuchPropertyException extends BaseBusinessException {
-    private String key;
+public interface MessageMultiplexer extends Initializable, Closeable {
+    void multiplex(Message message) throws NoCorrelationInMessageException, NoListenerForCorrelationId;
+    Destination getReplyTo();
 
-    public NoSuchPropertyException(String key, String message) {
-        super(message);
-
-        this.key = key;
-    }
-
-    public String getKey() {
-        return key;
-    }
+    void register(final String correlationId, final javax.jms.MessageListener listener);
+    void unregister(String correlationId);
 }

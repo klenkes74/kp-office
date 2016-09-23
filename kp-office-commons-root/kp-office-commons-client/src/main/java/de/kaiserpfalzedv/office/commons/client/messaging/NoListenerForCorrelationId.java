@@ -15,24 +15,30 @@
  *
  */
 
-package de.kaiserpfalzedv.office.commons.client.config;
+package de.kaiserpfalzedv.office.commons.client.messaging;
 
-import de.kaiserpfalzedv.office.common.BaseBusinessException;
+import javax.jms.Message;
 
 /**
  * @author rlichti {@literal <rlichti@kaiserpfalz-edv.de>}
- * @since 2016-09-21
+ * @since 2016-09-23
  */
-public class NoSuchPropertyException extends BaseBusinessException {
-    private String key;
+public class NoListenerForCorrelationId extends MessagingException {
+    private String correlationId;
+    private Message message;
 
-    public NoSuchPropertyException(String key, String message) {
-        super(message);
+    public NoListenerForCorrelationId(final String correlationId, final Message message) {
+        super("No listener for correlation id '" + correlationId + "'. Can't multiplex message!");
 
-        this.key = key;
+        this.correlationId = correlationId;
+        this.message = message;
     }
 
-    public String getKey() {
-        return key;
+    public String getCorrelationId() {
+        return correlationId;
+    }
+
+    public Message getJMSMessage() {
+        return message;
     }
 }

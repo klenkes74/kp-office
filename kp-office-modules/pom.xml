@@ -30,6 +30,8 @@
     <artifactId>kp-office-modules</artifactId>
     <packaging>pom</packaging>
 
+    <name>KP Office :: Modules</name>
+
     <modules>
         <module>kp-office-base-root</module>
         <!--

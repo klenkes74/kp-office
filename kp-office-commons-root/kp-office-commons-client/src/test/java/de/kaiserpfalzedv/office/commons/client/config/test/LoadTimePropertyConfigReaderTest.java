@@ -20,6 +20,8 @@ package de.kaiserpfalzedv.office.commons.client.config.test;
 import de.kaiserpfalzedv.office.commons.client.config.ConfigReader;
 import de.kaiserpfalzedv.office.commons.client.config.impl.ConfigReaderBuilder;
 
+import java.util.Properties;
+
 /**
  * @author rlichti {@literal <rlichti@kaiserpfalz-edv.de>}
  * @since 2016-09-21
@@ -60,5 +62,12 @@ public class LoadTimePropertyConfigReaderTest extends AbstractConfigReaderTestCl
             builder.withPropertyFile(defaultFileName);
 
         return builder.build();
+    }
+
+    @Override
+    public ConfigReader createReaderFromProperties(Properties props) {
+        return new ConfigReaderBuilder()
+                .withProperties(props)
+                .build();
     }
 }
