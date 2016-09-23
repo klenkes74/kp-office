@@ -23,12 +23,15 @@ import de.kaiserpfalzedv.office.commons.client.messaging.NoBrokerException;
 import de.kaiserpfalzedv.office.commons.client.messaging.impl.ActiveMqConnectionPoolFactory;
 import de.kaiserpfalzedv.office.commons.client.messaging.impl.MessageSenderImpl;
 import de.kaiserpfalzedv.office.commons.client.messaging.impl.NoResponseMessageInfo;
+import org.apache.activemq.ActiveMQConnectionFactory;
 import org.apache.commons.pool2.ObjectPool;
 import org.apache.commons.pool2.impl.GenericObjectPool;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.omg.CORBA.Object;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.jms.Connection;
 
@@ -39,16 +42,39 @@ import static org.junit.Assert.assertEquals;
  * @since 2016-09-22
  */
 public class MessageSenderTest {
+    private static final Logger LOG = LoggerFactory.getLogger(MessageSenderTest.class);
+
+    private ActiveMQConnectionFactory connectionFactory = new ActiveMQConnectionFactory("vm://localhost?broker.persistence=false");
+
     private ObjectPool<Connection> connectionPool = new GenericObjectPool<>(
-            new ActiveMqConnectionPoolFactory("vm://localhost?broker.persistence=false", "test-client")
+            new ActiveMqConnectionPoolFactory(connectionFactory, "test-client")
     );
+
+    private MessageReflector reflector;
 
     private MessageSender<String, String> service;
 
+    public MessageSenderTest() throws Exception {
+        reflector = new MessageReflector();
+    }
+
+    public void finalize() throws Throwable {
+        if (reflector != null) {
+            reflector.close();
+        }
+
+        connectionPool.close();
+
+        super.finalize();
+    }
+
+
     @Test
     public void checkSendMessage() throws NoBrokerException {
+        LOG.info("Sending message without reflection ...");
+
         MessageInfo<String> response = service
-                .withDestination("queue/reflector")
+                .withDestination("reflector")
                 .withPayload("Test Payload")
                 .sendMessage();
 

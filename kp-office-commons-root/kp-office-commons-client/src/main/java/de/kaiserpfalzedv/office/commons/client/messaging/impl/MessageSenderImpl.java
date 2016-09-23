@@ -72,7 +72,7 @@ public class MessageSenderImpl<T extends Serializable, R extends Serializable> i
         MessageProducer producer = null;
         try {
             connection = connectionPool.borrowObject();
-            session = connection.createSession(false, 0);
+            session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
 
             Destination target = session.createQueue(destination);
 

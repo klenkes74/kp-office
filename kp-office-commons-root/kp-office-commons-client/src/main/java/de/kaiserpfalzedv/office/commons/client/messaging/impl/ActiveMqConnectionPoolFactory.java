@@ -46,18 +46,18 @@ public class ActiveMqConnectionPoolFactory extends BasePooledObjectFactory<Conne
     private String userName;
     private String passWord;
 
-    public ActiveMqConnectionPoolFactory(final String brokerURL, final String clientId) {
-        this.factory = new ActiveMQConnectionFactory(brokerURL);
+    public ActiveMqConnectionPoolFactory(final ActiveMQConnectionFactory connectionFactory, final String clientId) {
+        this.factory = connectionFactory;
         this.clientId = clientId;
     }
 
     public ActiveMqConnectionPoolFactory(
-            final String brokerURL,
+            final ActiveMQConnectionFactory connectionFactory,
             final String clientId,
             final String userName,
             final String passWord
     ) {
-        this(brokerURL, clientId);
+        this(connectionFactory, clientId);
 
         this.userName = userName;
         this.passWord = passWord;

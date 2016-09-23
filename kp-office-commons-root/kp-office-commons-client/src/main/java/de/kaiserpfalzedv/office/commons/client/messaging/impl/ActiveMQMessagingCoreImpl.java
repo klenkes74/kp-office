@@ -23,9 +23,8 @@ import de.kaiserpfalzedv.office.commons.client.config.impl.ConfigReaderBuilder;
 import de.kaiserpfalzedv.office.commons.client.messaging.MessageListener;
 import de.kaiserpfalzedv.office.commons.client.messaging.MessageMultiplexer;
 import de.kaiserpfalzedv.office.commons.client.messaging.MessagingCore;
-import de.kaiserpfalzedv.office.commons.client.messaging.NoBrokerException;
+import org.apache.activemq.ActiveMQConnectionFactory;
 import org.apache.commons.pool2.ObjectPool;
-import org.apache.commons.pool2.impl.GenericKeyedObjectPool;
 import org.apache.commons.pool2.impl.GenericObjectPool;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -42,7 +41,7 @@ import java.util.UUID;
 public class ActiveMQMessagingCoreImpl implements MessagingCore {
     static private final Logger LOG = LoggerFactory.getLogger(ActiveMQMessagingCoreImpl.class);
 
-    private GenericObjectPool<Connection> connectionFactories;
+    private GenericObjectPool<Connection> connectionPool;
     private MessageMultiplexer multiplexer;
     private MessageListener listener;
 
@@ -50,10 +49,10 @@ public class ActiveMQMessagingCoreImpl implements MessagingCore {
     public ActiveMQMessagingCoreImpl() { }
 
     public ActiveMQMessagingCoreImpl(
-            final GenericObjectPool<Connection> connectionFactories,
+            final GenericObjectPool<Connection> connectionPool,
             final MessageListener listener
     ) {
-        this.connectionFactories = connectionFactories;
+        this.connectionPool = connectionPool;
         this.listener = listener;
         this.multiplexer = new MessageMultiplexerImpl(listener.getDestination());
     }
@@ -73,13 +72,17 @@ public class ActiveMQMessagingCoreImpl implements MessagingCore {
         String clientId = config.getEntry("messaging.client-id", UUID.randomUUID().toString());
         String broker = config.getEntry("messaging.activemq.broker", "vm://localhost?broker.persistence=false");
 
-        if (connectionFactories == null) {
-            connectionFactories = new GenericObjectPool<>(new ActiveMqConnectionPoolFactory(broker, clientId));
+        ActiveMQConnectionFactory connectionFactory = new ActiveMQConnectionFactory(broker);
+
+        if (connectionPool == null) {
+            connectionPool = new GenericObjectPool<>(
+                    new ActiveMqConnectionPoolFactory(connectionFactory, clientId)
+            );
         }
 
         if (listener == null) {
             listener = new MessageListenerBuilder()
-                    .withConnectionPool(connectionFactories)
+                    .withConnectionPool(connectionPool)
                     .withMultiplexer(multiplexer)
                     .build();
         }
@@ -97,14 +100,14 @@ public class ActiveMQMessagingCoreImpl implements MessagingCore {
     public void close() {
         listener.close();
         multiplexer.close();
-        connectionFactories.close();
+        connectionPool.close();
 
         LOG.info("Stopped messaging core: {}", this);
     }
 
     @Override
     public ObjectPool<Connection> getConnectionPool() {
-        return connectionFactories;
+        return connectionPool;
     }
 
     @Override
