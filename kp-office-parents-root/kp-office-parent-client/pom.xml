@@ -31,8 +31,8 @@
     <packaging>pom</packaging>
 
     <name>KP Office :: Parents :: Client</name>
-
-    <properties>
+    
+<properties>
         <skip.unit.tests>${skipTests}</skip.unit.tests>
         <skip.it.tests>${skipTests}</skip.it.tests>
         <skip.at.tests>${skipTests}</skip.at.tests>
