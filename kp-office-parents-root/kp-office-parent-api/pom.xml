@@ -29,4 +29,6 @@
 
     <artifactId>kp-office-parent-api</artifactId>
     <packaging>pom</packaging>
+
+    <name>KP Office :: Parents :: API</name>
 </project>

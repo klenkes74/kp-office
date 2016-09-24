@@ -30,6 +30,8 @@
     <artifactId>kp-office-commons-root</artifactId>
     <packaging>pom</packaging>
 
+    <name>KP Office :: Commons</name>
+
     <modules>
         <module>kp-office-commons-api</module>
         <module>kp-office-commons-impl</module>

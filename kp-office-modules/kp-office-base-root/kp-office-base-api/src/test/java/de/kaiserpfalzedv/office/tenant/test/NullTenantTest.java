@@ -18,7 +18,7 @@ package de.kaiserpfalzedv.office.tenant.test;
 
 import java.util.UUID;
 
-import de.kaiserpfalzedv.office.tenant.NullTenant;
+import de.kaiserpfalzedv.office.tenant.impl.NullTenant;
 import de.kaiserpfalzedv.office.tenant.Tenant;
 import org.junit.Assert;
 import org.junit.Before;

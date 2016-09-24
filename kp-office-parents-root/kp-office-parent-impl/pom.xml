@@ -30,6 +30,8 @@
     <artifactId>kp-office-parent-impl</artifactId>
     <packaging>pom</packaging>
 
+    <name>KP Office :: Parents :: Service</name>
+
     <properties>
         <skip.unit.tests>${skipTests}</skip.unit.tests>
         <skip.it.tests>${skipTests}</skip.it.tests>

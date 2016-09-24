@@ -29,6 +29,7 @@
 
     <artifactId>kp-office-base-root</artifactId>
     <packaging>pom</packaging>
+    <name>KP Office :: Modules :: Base</name>
 
     <modules>
         <module>kp-office-base-api</module>

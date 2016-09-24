@@ -16,7 +16,7 @@
 
 package de.kaiserpfalzedv.office.common.data.test;
 
-import de.kaiserpfalzedv.office.common.data.BuilderException;
+import de.kaiserpfalzedv.office.common.BuilderException;
 import de.kaiserpfalzedv.office.common.data.Pageable;
 import de.kaiserpfalzedv.office.common.data.PagedListable;
 import de.kaiserpfalzedv.office.common.data.impl.PageableBuilder;

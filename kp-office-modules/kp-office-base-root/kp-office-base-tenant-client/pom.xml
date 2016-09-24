@@ -28,6 +28,7 @@
     </parent>
 
     <artifactId>kp-office-base-tenant-client</artifactId>
+    <name>KP Office :: Modules :: Base :: Tenant :: Client</name>
 
     <dependencies>
         <dependency>

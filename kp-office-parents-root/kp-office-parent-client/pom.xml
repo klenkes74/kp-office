@@ -30,7 +30,9 @@
     <artifactId>kp-office-parent-client</artifactId>
     <packaging>pom</packaging>
 
-    <properties>
+    <name>KP Office :: Parents :: Client</name>
+    
+<properties>
         <skip.unit.tests>${skipTests}</skip.unit.tests>
         <skip.it.tests>${skipTests}</skip.it.tests>
         <skip.at.tests>${skipTests}</skip.at.tests>
