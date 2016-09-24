@@ -18,9 +18,8 @@ package de.kaiserpfalzedv.office.tenant.test;
 
 import java.util.UUID;
 
-import de.kaiserpfalzedv.office.tenant.impl.NullTenant;
 import de.kaiserpfalzedv.office.tenant.Tenant;
-import org.junit.Assert;
+import de.kaiserpfalzedv.office.tenant.impl.NullTenant;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -45,21 +44,21 @@ public class NullTenantTest {
 
     @Test
     public void testGetId() throws Exception {
-        Assert.assertEquals("The id should be only 0s!", NULL_ID, tenant.getId());
+        assertEquals("The id should be only 0s!", NULL_ID, tenant.getId());
     }
 
     @Test
     public void testGetDisplayname() throws Exception {
-        Assert.assertEquals("The display name should be empty!", "", tenant.getDisplayName());
+        assertEquals("The display name should be empty!", "", tenant.getDisplayName());
     }
 
     @Test
     public void testGetFullname() throws Exception {
-        Assert.assertEquals("The full name should be empty!", "", tenant.getFullName());
+        assertEquals("The full name should be empty!", "", tenant.getFullName());
     }
 
     @Test
     public void testGetTenantId() throws Exception {
-        Assert.assertEquals("The tenant id should be only 0s!", NULL_ID, tenant.getTenantId());
+        assertEquals("The tenant id should be only 0s!", NULL_ID, tenant.getTenantId());
     }
 }
