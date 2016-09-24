@@ -14,11 +14,12 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzedv.office.common.cdi.impl;
+package de.kaiserpfalzedv.office.common.cdi;
 
-import javax.inject.Qualifier;
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
+
+import javax.inject.Qualifier;
 
 import static java.lang.annotation.ElementType.FIELD;
 import static java.lang.annotation.ElementType.PARAMETER;
