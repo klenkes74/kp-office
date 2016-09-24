@@ -30,6 +30,8 @@
     <artifactId>kp-office-parent</artifactId>
     <packaging>pom</packaging>
 
+    <name>KP Office :: Parents : Parent</name>
+
     <description>Kaiserpfalz EDV-Service Office - A central office management suite.</description>
     <url>https://devzone.kaiserpfalz-edv.de/kp-office/</url>
 

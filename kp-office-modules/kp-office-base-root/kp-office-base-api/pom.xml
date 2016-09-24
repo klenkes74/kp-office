@@ -28,6 +28,7 @@
     </parent>
 
     <artifactId>kp-office-base-api</artifactId>
+    <name>KP Office :: Modules :: Base :: API</name>
 
     <build>
         <plugins>
@@ -58,6 +59,10 @@
         <dependency>
             <groupId>de.kaiserpfalz-edv.office</groupId>
             <artifactId>kp-office-commons-api</artifactId>
+        </dependency>
+
+        <dependency>
+            <artifactId>commons-lang3</artifactId>
         </dependency>
 
         <dependency>
