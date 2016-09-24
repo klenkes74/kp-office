@@ -12,16 +12,17 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- *
  */
 
 package de.kaiserpfalzedv.office.commons.client.messaging.impl;
 
-import de.kaiserpfalzedv.office.commons.client.messaging.MessageInfo;
-import de.kaiserpfalzedv.office.commons.client.messaging.NoResponseException;
+import java.io.Serializable;
 
 import javax.jms.Message;
-import java.io.Serializable;
+
+import de.kaiserpfalzedv.office.commons.client.messaging.MessageInfo;
+import de.kaiserpfalzedv.office.commons.client.messaging.NoResponseException;
+import de.kaiserpfalzedv.office.commons.client.messaging.ResponseOfWrongTypeException;
 
 /**
  * @author rlichti {@literal <rlichti@kaiserpfalz-edv.de>}
@@ -47,6 +48,11 @@ public class NoResponseMessageInfo implements MessageInfo {
     @Override
     public Serializable retrieveResponse() throws NoResponseException {
         throw new NoResponseException(correlationId);
+    }
+
+    @Override
+    public Serializable waitForResponse() throws NoResponseException, ResponseOfWrongTypeException, InterruptedException {
+        return retrieveResponse();
     }
 
     @Override

@@ -12,15 +12,15 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- *
  */
 
 package de.kaiserpfalzedv.office.commons.client.messaging;
 
-import de.kaiserpfalzedv.office.common.init.Closeable;
+import java.io.Serializable;
 
 import javax.jms.MessageListener;
-import java.io.Serializable;
+
+import de.kaiserpfalzedv.office.common.init.Closeable;
 
 /**
  * @author rlichti {@literal <rlichti@kaiserpfalz-edv.de>}
@@ -30,4 +30,6 @@ public interface MessageInfo<T extends Serializable> extends Closeable, MessageL
     boolean hasResponse();
 
     T retrieveResponse() throws NoResponseException, ResponseOfWrongTypeException;
+
+    T waitForResponse() throws NoResponseException, ResponseOfWrongTypeException, InterruptedException;
 }

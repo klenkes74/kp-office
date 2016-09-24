@@ -12,21 +12,27 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- *
  */
 
 package de.kaiserpfalzedv.office.commons.client.messaging.impl;
 
+import java.util.Properties;
+
+import javax.jms.Connection;
+import javax.jms.Destination;
+import javax.jms.JMSException;
+import javax.jms.Message;
+import javax.jms.MessageConsumer;
+import javax.jms.Session;
+
 import de.kaiserpfalzedv.office.common.init.InitializationException;
-import de.kaiserpfalzedv.office.commons.client.messaging.*;
 import de.kaiserpfalzedv.office.commons.client.messaging.MessageListener;
-import org.apache.commons.pool2.KeyedObjectPool;
+import de.kaiserpfalzedv.office.commons.client.messaging.MessageMultiplexer;
+import de.kaiserpfalzedv.office.commons.client.messaging.NoCorrelationInMessageException;
+import de.kaiserpfalzedv.office.commons.client.messaging.NoListenerForCorrelationId;
 import org.apache.commons.pool2.ObjectPool;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import javax.jms.*;
-import java.util.Properties;
 
 /**
  * @author rlichti {@literal <rlichti@kaiserpfalz-edv.de>}
@@ -64,10 +70,15 @@ class MessageListenerImpl implements MessageListener {
     }
 
     @Override
+    public Destination getDestination() {
+        return destination;
+    }
+
+    @Override
     public void init() throws InitializationException {
         try {
             connection = connectionPool.borrowObject();
-            session = connection.createSession(false, 0);
+            session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
             destination = session.createTemporaryQueue();
             consumer = session.createConsumer(destination);
             consumer.setMessageListener(this);
@@ -79,7 +90,7 @@ class MessageListenerImpl implements MessageListener {
             }
         }
 
-        LOG.info("Started messaging multiplexer: {}", multiplexer);
+        LOG.info("Started messaging listener: {}", multiplexer);
     }
 
     @Override
@@ -90,25 +101,30 @@ class MessageListenerImpl implements MessageListener {
     @Override
     public void close() {
         closeConsumer();
+        multiplexer.close();
         closeSession();
         closeConnectionPool();
 
-        LOG.info("Closed messaging multiplexer: {}", multiplexer);
+        LOG.info("Closed messaging listener: {}", multiplexer);
     }
 
     private void closeConsumer() {
-        try {
-            consumer.close();
-        } catch (JMSException e) {
-            LOG.error("Can't close the message consumer: {}", consumer);
+        if (consumer != null) {
+            try {
+                consumer.close();
+            } catch (JMSException e) {
+                LOG.error("Can't close the message consumer: {}", consumer);
+            }
         }
     }
 
     private void closeSession() {
-        try {
-            session.close();
-        } catch (JMSException e) {
-            LOG.error("Can't close JMS session: {}", session);
+        if (session != null) {
+            try {
+                session.close();
+            } catch (JMSException e) {
+                LOG.error("Can't close JMS session: {}", session);
+            }
         }
     }
 
@@ -134,8 +150,5 @@ class MessageListenerImpl implements MessageListener {
         this.multiplexer = multiplexer;
     }
 
-    @Override
-    public Destination getDestination() {
-        return destination;
-    }
+
 }

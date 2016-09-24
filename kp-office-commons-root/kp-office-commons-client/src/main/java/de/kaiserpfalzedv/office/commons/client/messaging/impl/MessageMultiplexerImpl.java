@@ -12,10 +12,16 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- *
  */
 
 package de.kaiserpfalzedv.office.commons.client.messaging.impl;
+
+import java.util.HashMap;
+import java.util.Properties;
+
+import javax.jms.JMSException;
+import javax.jms.Message;
+import javax.jms.MessageListener;
 
 import de.kaiserpfalzedv.office.common.init.InitializationException;
 import de.kaiserpfalzedv.office.commons.client.messaging.MessageMultiplexer;
@@ -23,15 +29,6 @@ import de.kaiserpfalzedv.office.commons.client.messaging.NoCorrelationInMessageE
 import de.kaiserpfalzedv.office.commons.client.messaging.NoListenerForCorrelationId;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import javax.jms.Destination;
-import javax.jms.JMSException;
-import javax.jms.Message;
-import javax.jms.MessageListener;
-import java.util.HashMap;
-import java.util.Properties;
-
-import static org.apache.commons.lang3.Validate.notNull;
 
 /**
  * @author rlichti {@literal <rlichti@kaiserpfalz-edv.de>}
@@ -41,13 +38,6 @@ public class MessageMultiplexerImpl implements MessageMultiplexer {
     private static final Logger LOG = LoggerFactory.getLogger(MessageMultiplexerImpl.class);
 
     private final HashMap<String, MessageListener> listeners = new HashMap<>();
-    private Destination replyTo;
-
-    public MessageMultiplexerImpl(final Destination replyTo) {
-        notNull(replyTo, "A multiplexer needs a reply to (the destination it reads from)");
-
-        this.replyTo = replyTo;
-    }
 
 
     @Override
@@ -88,10 +78,6 @@ public class MessageMultiplexerImpl implements MessageMultiplexer {
         } catch (JMSException e) {
             throw new NoCorrelationInMessageException(message);
         }
-    }
-
-    public Destination getReplyTo() {
-        return replyTo;
     }
 
     @Override

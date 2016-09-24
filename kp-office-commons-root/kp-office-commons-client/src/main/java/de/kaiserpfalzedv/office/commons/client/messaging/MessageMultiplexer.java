@@ -12,17 +12,14 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- *
  */
 
 package de.kaiserpfalzedv.office.commons.client.messaging;
 
+import javax.jms.Message;
+
 import de.kaiserpfalzedv.office.common.init.Closeable;
 import de.kaiserpfalzedv.office.common.init.Initializable;
-
-import javax.jms.Destination;
-import javax.jms.Message;
-import java.io.Serializable;
 
 /**
  * @author rlichti {@literal <rlichti@kaiserpfalz-edv.de>}
@@ -30,7 +27,6 @@ import java.io.Serializable;
  */
 public interface MessageMultiplexer extends Initializable, Closeable {
     void multiplex(Message message) throws NoCorrelationInMessageException, NoListenerForCorrelationId;
-    Destination getReplyTo();
 
     void register(final String correlationId, final javax.jms.MessageListener listener);
     void unregister(String correlationId);

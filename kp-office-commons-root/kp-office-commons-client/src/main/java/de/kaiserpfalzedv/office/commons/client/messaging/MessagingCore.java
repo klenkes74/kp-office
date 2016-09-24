@@ -12,18 +12,17 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- *
  */
 
 package de.kaiserpfalzedv.office.commons.client.messaging;
 
+import javax.jms.Connection;
+import javax.jms.ConnectionFactory;
+import javax.jms.Destination;
+
 import de.kaiserpfalzedv.office.common.init.Closeable;
 import de.kaiserpfalzedv.office.common.init.Initializable;
 import org.apache.commons.pool2.ObjectPool;
-
-import javax.jms.Connection;
-import javax.jms.Destination;
-import javax.jms.MessageListener;
 
 /**
  * @author rlichti {@literal <rlichti@kaiserpfalz-edv.de>}
@@ -31,5 +30,9 @@ import javax.jms.MessageListener;
  */
 public interface MessagingCore extends Initializable, Closeable {
     ObjectPool<Connection> getConnectionPool();
+
+    MessageMultiplexer getMultiplexer();
     Destination getReplyTo();
+
+    ConnectionFactory getConnectionFactory();
 }

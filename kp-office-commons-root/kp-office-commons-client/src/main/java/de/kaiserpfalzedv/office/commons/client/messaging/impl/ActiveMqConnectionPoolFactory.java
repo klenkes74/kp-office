@@ -12,24 +12,18 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- *
  */
 
 package de.kaiserpfalzedv.office.commons.client.messaging.impl;
 
+import javax.jms.Connection;
+import javax.jms.JMSException;
+
 import de.kaiserpfalzedv.office.common.init.Closeable;
 import org.apache.activemq.ActiveMQConnectionFactory;
-import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.pool2.BaseKeyedPooledObjectFactory;
 import org.apache.commons.pool2.BasePooledObjectFactory;
 import org.apache.commons.pool2.PooledObject;
 import org.apache.commons.pool2.impl.DefaultPooledObject;
-
-import javax.jms.Connection;
-import javax.jms.JMSException;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
 
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
 
@@ -46,11 +40,6 @@ public class ActiveMqConnectionPoolFactory extends BasePooledObjectFactory<Conne
     private String userName;
     private String passWord;
 
-    public ActiveMqConnectionPoolFactory(final ActiveMQConnectionFactory connectionFactory, final String clientId) {
-        this.factory = connectionFactory;
-        this.clientId = clientId;
-    }
-
     public ActiveMqConnectionPoolFactory(
             final ActiveMQConnectionFactory connectionFactory,
             final String clientId,
@@ -63,6 +52,10 @@ public class ActiveMqConnectionPoolFactory extends BasePooledObjectFactory<Conne
         this.passWord = passWord;
     }
 
+    public ActiveMqConnectionPoolFactory(final ActiveMQConnectionFactory connectionFactory, final String clientId) {
+        this.factory = connectionFactory;
+        this.clientId = clientId;
+    }
 
     @Override
     public Connection create() throws Exception {
@@ -76,6 +69,7 @@ public class ActiveMqConnectionPoolFactory extends BasePooledObjectFactory<Conne
             result = factory.createConnection();
         }
         result.setClientID(clientId + "-" + counter);
+        result.start();
 
         return result;
     }
@@ -86,18 +80,18 @@ public class ActiveMqConnectionPoolFactory extends BasePooledObjectFactory<Conne
     }
 
     @Override
+    public void destroyObject(PooledObject<Connection> p)
+            throws Exception {
+        p.getObject().close();
+    }
+
+    @Override
     public boolean validateObject(PooledObject<Connection> value) {
         try {
             return value.getObject().getClientID().startsWith(clientId);
         } catch (NullPointerException | JMSException e) {
             return false;
         }
-    }
-
-    @Override
-    public void destroyObject(PooledObject<Connection> p)
-            throws Exception {
-        p.getObject().close();
     }
 
     @Override

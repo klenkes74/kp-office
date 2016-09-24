@@ -12,13 +12,10 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- *
  */
 
 package de.kaiserpfalzedv.office.commons.client.messaging;
 
-import javax.jms.ConnectionFactory;
-import javax.jms.Queue;
 import java.io.Serializable;
 import java.util.Map;
 
@@ -32,11 +29,18 @@ public interface MessageSender<T extends Serializable, R extends Serializable> {
     MessageSender<T, R> withPayload(T payload);
     MessageSender<T, R> withDestination(final String destination);
     MessageSender<T, R> withCorrelationId(final String correlationId);
+
+    MessageSender<T, R> withMessageId(String messageId);
+
+    MessageSender<T, R> withPersistentDelivery(boolean persistentDelivery);
+
+    MessageSender<T, R> withPriority(int priority);
     MessageSender<T, R> withTTL(final long ttl);
     MessageSender<T, R> withCustomHeaders(final Map<String, String> headers);
     MessageSender<T, R> withCustomHeader(final String header, final String value);
     MessageSender<T, R> removeCustomHeader(final String header);
-    MessageSender<T, R> withResponse(final MessageMultiplexer multiplexer);
+
+    MessageSender<T, R> withResponse();
     MessageSender<T, R> withoutResponse();
 
     String getCorrelationId();
