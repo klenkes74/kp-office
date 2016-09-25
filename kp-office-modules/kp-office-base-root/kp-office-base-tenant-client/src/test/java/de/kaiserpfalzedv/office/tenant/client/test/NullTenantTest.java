@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzedv.office.tenant.test;
+package de.kaiserpfalzedv.office.tenant.client.test;
 
 import java.util.UUID;
 
@@ -22,8 +22,6 @@ import de.kaiserpfalzedv.office.tenant.Tenant;
 import de.kaiserpfalzedv.office.tenant.impl.NullTenant;
 import org.junit.Before;
 import org.junit.Test;
-
-import static org.junit.Assert.assertEquals;
 
 /**
  * @author klenkes
@@ -44,21 +42,21 @@ public class NullTenantTest {
 
     @Test
     public void testGetId() throws Exception {
-        assertEquals("The id should be only 0s!", NULL_ID, tenant.getId());
+        Assert.assertEquals("The id should be only 0s!", NULL_ID, tenant.getId());
     }
 
     @Test
     public void testGetDisplayname() throws Exception {
-        assertEquals("The display name should be empty!", "", tenant.getDisplayName());
+        Assert.assertEquals("The display name should be empty!", "", tenant.getDisplayName());
     }
 
     @Test
     public void testGetFullname() throws Exception {
-        assertEquals("The full name should be empty!", "", tenant.getFullName());
+        Assert.assertEquals("The full name should be empty!", "", tenant.getFullName());
     }
 
     @Test
     public void testGetTenantId() throws Exception {
-        assertEquals("The tenant id should be only 0s!", NULL_ID, tenant.getTenantId());
+        Assert.assertEquals("The tenant id should be only 0s!", NULL_ID, tenant.getTenantId());
     }
 }

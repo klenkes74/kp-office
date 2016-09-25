@@ -14,27 +14,39 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzedv.office.tenant.impl;
+package de.kaiserpfalzedv.office.tenant.commands.test;
 
 import java.util.UUID;
 
-import de.kaiserpfalzedv.office.common.data.Identifyable;
 import de.kaiserpfalzedv.office.tenant.Tenant;
-import de.kaiserpfalzedv.office.tenant.impl.TenantImpl;
 
 /**
- * The null tenant for all objects that don't have a tenant.
- *
- * @author klenkes
- * @version 2015Q1
- * @since 27.12.15 11:41
+ * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
+ * @version 1.0.0
+ * @since 2016-09-25
  */
-public class NullTenant extends TenantImpl implements Tenant {
-    private static final long serialVersionUID = 7355747572880952600L;
+public class TestTenant implements Tenant {
+    private static final long serialVersionUID = -2804739088043736423L;
 
-    private static final UUID NULL_ID          = UUID.fromString("00000000-0000-0000-0000-000000000000");
+    private static final UUID NULL_ID = UUID.fromString("00000000-0000-0000-0000-000000000000");
 
-    public NullTenant() {
-        super(NULL_ID, NULL_ID, "", "");
+    @Override
+    public String getDisplayName() {
+        return "";
+    }
+
+    @Override
+    public String getFullName() {
+        return "";
+    }
+
+    @Override
+    public UUID getId() {
+        return NULL_ID;
+    }
+
+    @Override
+    public UUID getTenantId() {
+        return NULL_ID;
     }
 }

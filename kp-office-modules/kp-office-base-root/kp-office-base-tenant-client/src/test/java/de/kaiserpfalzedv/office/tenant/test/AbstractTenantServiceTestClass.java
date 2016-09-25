@@ -12,22 +12,21 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- *
  */
 
 package de.kaiserpfalzedv.office.tenant.test;
+
+import java.util.Collection;
+import java.util.UUID;
 
 import de.kaiserpfalzedv.office.tenant.Tenant;
 import de.kaiserpfalzedv.office.tenant.TenantDoesNotExistException;
 import de.kaiserpfalzedv.office.tenant.TenantExistsException;
 import de.kaiserpfalzedv.office.tenant.TenantService;
-import de.kaiserpfalzedv.office.tenant.impl.NullTenant;
-import de.kaiserpfalzedv.office.tenant.impl.TenantBuilder;
+import de.kaiserpfalzedv.office.tenant.client.NullTenant;
+import de.kaiserpfalzedv.office.tenant.client.TenantBuilder;
 import org.junit.Before;
 import org.junit.Test;
-
-import java.util.Collection;
-import java.util.UUID;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
@@ -60,6 +59,15 @@ public abstract class AbstractTenantServiceTestClass {
         assertEquals(data.getId(), result.getId());
         assertEquals(data.getDisplayName(), result.getDisplayName());
         assertEquals(data.getFullName(), result.getFullName());
+    }
+
+    private Tenant createDefaultTenant() {
+        return new TenantBuilder()
+                .withTenantId(TENANT_ID)
+                .withId(ID)
+                .withDisplayName(DISPLAY_NAME)
+                .withFullName(FULL_NAME)
+                .build();
     }
 
     @Test
@@ -290,15 +298,6 @@ public abstract class AbstractTenantServiceTestClass {
         }
 
         // No assert needed. A failure will be thrown inside the try-catch-block if the expected exception is missing.
-    }
-
-    private Tenant createDefaultTenant() {
-        return new TenantBuilder()
-                .withTenantId(TENANT_ID)
-                .withId(ID)
-                .withDisplayName(DISPLAY_NAME)
-                .withFullName(FULL_NAME)
-                .build();
     }
 
     @Before
