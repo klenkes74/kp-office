@@ -17,8 +17,10 @@
 package de.kaiserpfalzedv.office.tenant;
 
 import java.util.Collection;
-import java.util.Set;
 import java.util.UUID;
+
+import de.kaiserpfalzedv.office.common.init.Closeable;
+import de.kaiserpfalzedv.office.common.init.Initializable;
 
 /**
  * The tenant service manages the tenant data within the system. It's a simple crud service.
@@ -27,7 +29,7 @@ import java.util.UUID;
  * @version 1.0.0
  * @since 2016-09-04
  */
-public interface TenantService {
+public interface TenantService extends Initializable, Closeable {
     /**
      * Saves a tenant to the database.
      *

@@ -29,25 +29,29 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
  * @since 2016-09-05
  */
 public class TenantImpl implements Tenant {
-    private static final long serialVersionUID = 4445352263010550750L;
+    private static final long serialVersionUID = 2545215242144328003L;
 
 
-    private UUID tenantId;
     private UUID id;
-    private String displayname;
-    private String fullname;
+    private UUID tenantId;
 
+    private String displayName;
+    private String fullName;
+
+
+    @Deprecated // Only for JPA, JAX-B, Jackson, ...
+    protected TenantImpl() {}
 
     TenantImpl(
             final UUID tenantId,
             final UUID id,
-            final String displayname,
-            final String fullname
+            final String displayName,
+            final String fullName
     ) {
         this.tenantId = tenantId;
         this.id = id;
-        this.displayname = displayname;
-        this.fullname = fullname;
+        this.displayName = displayName;
+        this.fullName = fullName;
     }
 
 
@@ -63,12 +67,12 @@ public class TenantImpl implements Tenant {
 
     @Override
     public String getDisplayName() {
-        return displayname;
+        return displayName;
     }
 
     @Override
     public String getFullName() {
-        return fullname;
+        return fullName;
     }
 
     @Override
@@ -86,10 +90,14 @@ public class TenantImpl implements Tenant {
         if (obj == this) {
             return true;
         }
-        if (obj.getClass() != getClass()) {
+
+        Tenant rhs;
+        try {
+            rhs = (Tenant) obj;
+        } catch (ClassCastException e) {
             return false;
         }
-        Tenant rhs = (Tenant) obj;
+
         return new EqualsBuilder()
                 .append(this.id, rhs.getId())
                 .isEquals();
@@ -98,10 +106,9 @@ public class TenantImpl implements Tenant {
     @Override
     public String toString() {
         return new ToStringBuilder(this)
-                .append("tenantId", tenantId)
                 .append("id", id)
-                .append("displayname", displayname)
-                .append("fullname", fullname)
+                .append("tenantId", tenantId)
+                .append("displayName", displayName)
                 .toString();
     }
 }
