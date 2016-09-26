@@ -22,7 +22,7 @@ import javax.jms.Message;
  * @author rlichti {@literal <rlichti@kaiserpfalz-edv.de>}
  * @since 2016-09-23
  */
-public class NoCorrelationInMessageException extends MessagingException {
+public class NoCorrelationInMessageException extends MessagingBusinessException {
     private Message message;
 
     public NoCorrelationInMessageException(final Message message) {

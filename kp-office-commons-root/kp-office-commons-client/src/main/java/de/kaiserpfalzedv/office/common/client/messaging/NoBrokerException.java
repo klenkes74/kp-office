@@ -20,7 +20,7 @@ package de.kaiserpfalzedv.office.common.client.messaging;
  * @author rlichti {@literal <rlichti@kaiserpfalz-edv.de>}
  * @since 2016-09-22
  */
-public class NoBrokerException extends MessagingException {
+public class NoBrokerException extends MessagingBusinessException {
     public NoBrokerException(Throwable cause) {
         super(cause);
     }

@@ -48,6 +48,7 @@ public class ActiveMQMessagingCoreImpl implements MessagingCore {
     private ActiveMQConnectionFactory connectionFactory;
     private ObjectPool<Connection> connectionPool;
     private MessageListener listener;
+    private UUID clientId = UUID.randomUUID();
 
 
     public ActiveMQMessagingCoreImpl() { }
@@ -120,5 +121,10 @@ public class ActiveMQMessagingCoreImpl implements MessagingCore {
     @Override
     public ConnectionFactory getConnectionFactory() {
         return connectionFactory;
+    }
+
+    @Override
+    public UUID getClientId() {
+        return clientId;
     }
 }

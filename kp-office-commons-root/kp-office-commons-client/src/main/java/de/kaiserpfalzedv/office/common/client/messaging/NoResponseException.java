@@ -20,7 +20,7 @@ package de.kaiserpfalzedv.office.common.client.messaging;
  * @author rlichti {@literal <rlichti@kaiserpfalz-edv.de>}
  * @since 2016-09-23
  */
-public class NoResponseException extends MessagingException {
+public class NoResponseException extends MessagingBusinessException {
     private String correlationId;
 
     public NoResponseException(final String correlationId) {

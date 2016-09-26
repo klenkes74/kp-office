@@ -14,18 +14,27 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzedv.office.common.client.messaging;
+package de.kaiserpfalzedv.office.tenant.client;
+
+import de.kaiserpfalzedv.office.common.BaseBusinessException;
 
 /**
- * @author rlichti {@literal <rlichti@kaiserpfalz-edv.de>}
- * @since 2016-09-23
+ * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
+ * @version 1.0.0
+ * @since 2016-09-26
  */
-public class ResponseOfWrongTypeException extends MessagingBusinessException {
-    public ResponseOfWrongTypeException(final String correlationId) {
-        super("Response for correlation-id '" + correlationId + "' is of wrong type!");
+public class TenantClientBusinessException extends BaseBusinessException {
+    private static final long serialVersionUID = -776815532101519468L;
+
+    public TenantClientBusinessException(String message) {
+        super(message);
     }
 
-    public ResponseOfWrongTypeException(final String correlationId, final Throwable cause) {
-        super("Response for correlation-id '" + correlationId + "' is of wrong type!", cause);
+    public TenantClientBusinessException(String message, Throwable cause) {
+        super(message, cause);
+    }
+
+    public TenantClientBusinessException(Throwable cause) {
+        super(cause);
     }
 }

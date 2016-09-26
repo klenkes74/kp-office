@@ -22,7 +22,7 @@ import javax.jms.Message;
  * @author rlichti {@literal <rlichti@kaiserpfalz-edv.de>}
  * @since 2016-09-23
  */
-public class NoListenerForCorrelationId extends MessagingException {
+public class NoListenerForCorrelationId extends MessagingBusinessException {
     private String correlationId;
     private Message message;
 

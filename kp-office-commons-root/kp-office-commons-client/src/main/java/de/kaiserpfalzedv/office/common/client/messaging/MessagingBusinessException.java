@@ -16,27 +16,24 @@
 
 package de.kaiserpfalzedv.office.common.client.messaging;
 
-import java.util.UUID;
-
-import javax.jms.Connection;
-import javax.jms.ConnectionFactory;
-import javax.jms.Destination;
-
-import de.kaiserpfalzedv.office.common.init.Closeable;
-import de.kaiserpfalzedv.office.common.init.Initializable;
-import org.apache.commons.pool2.ObjectPool;
+import de.kaiserpfalzedv.office.common.BaseBusinessException;
 
 /**
+ * The base class for all messaging exceptions. To ease exception handling.
+ *
  * @author rlichti {@literal <rlichti@kaiserpfalz-edv.de>}
  * @since 2016-09-22
  */
-public interface MessagingCore extends Initializable, Closeable {
-    ObjectPool<Connection> getConnectionPool();
+public class MessagingBusinessException extends BaseBusinessException {
+    public MessagingBusinessException(String message) {
+        super(message);
+    }
 
-    MessageMultiplexer getMultiplexer();
-    Destination getReplyTo();
+    public MessagingBusinessException(String message, Throwable cause) {
+        super(message, cause);
+    }
 
-    ConnectionFactory getConnectionFactory();
-
-    UUID getClientId();
+    public MessagingBusinessException(Throwable cause) {
+        super(cause);
+    }
 }

@@ -23,7 +23,6 @@ import java.util.Map;
 import java.util.UUID;
 
 import javax.jms.Connection;
-import javax.jms.ConnectionMetaData;
 import javax.jms.DeliveryMode;
 import javax.jms.Destination;
 import javax.jms.JMSException;
@@ -83,8 +82,6 @@ public class MessageSenderImpl<T extends Serializable, R extends Serializable> i
         try {
             connection = core.getConnectionPool().borrowObject();
             session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
-            ConnectionMetaData metaData = connection.getMetaData();
-            LOG.debug("JMS-Version: {}, {} {}", metaData.getJMSVersion(), metaData.getJMSProviderName(), metaData.getProviderVersion());
 
             Destination target = session.createQueue(destination);
 
@@ -95,6 +92,7 @@ public class MessageSenderImpl<T extends Serializable, R extends Serializable> i
                 message = session.createObjectMessage(payload);
             }
 
+            setClientIdToMessage(message);
             setMessageIdToMessage(message);
             setCorrelationIdToMessage(message);
             setReplyToToMessage(message);
@@ -121,6 +119,7 @@ public class MessageSenderImpl<T extends Serializable, R extends Serializable> i
         }
     }
 
+
     public void validate() {
         ArrayList<String> failures = new ArrayList<>();
 
@@ -141,6 +140,11 @@ public class MessageSenderImpl<T extends Serializable, R extends Serializable> i
             throw new BuilderException(MessageSenderImpl.class, failures.toArray(new String[1]));
         }
     }
+
+    private void setClientIdToMessage(Message message) throws JMSException {
+        message.setStringProperty("client-id", core.getClientId().toString());
+    }
+
 
     private void setMessageIdToMessage(Message message) throws JMSException {
         if (isNotBlank(messageId)) {

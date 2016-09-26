@@ -16,7 +16,7 @@
 
 package de.kaiserpfalzedv.office.common.client.messaging;
 
-import de.kaiserpfalzedv.office.common.BaseBusinessException;
+import de.kaiserpfalzedv.office.common.BaseSystemException;
 
 /**
  * The base class for all messaging exceptions. To ease exception handling.
@@ -24,16 +24,16 @@ import de.kaiserpfalzedv.office.common.BaseBusinessException;
  * @author rlichti {@literal <rlichti@kaiserpfalz-edv.de>}
  * @since 2016-09-22
  */
-public class MessagingException extends BaseBusinessException {
-    public MessagingException(String message) {
+public class MessagingSytemException extends BaseSystemException {
+    public MessagingSytemException(String message) {
         super(message);
     }
 
-    public MessagingException(String message, Throwable cause) {
+    public MessagingSytemException(String message, Throwable cause) {
         super(message, cause);
     }
 
-    public MessagingException(Throwable cause) {
+    public MessagingSytemException(Throwable cause) {
         super(cause);
     }
 }
