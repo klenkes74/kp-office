@@ -29,6 +29,14 @@ import de.kaiserpfalzedv.office.common.init.Closeable;
 public interface MessageInfo<T extends Serializable> extends Closeable, MessageListener {
     boolean hasResponse();
 
+    String getCorrelationId();
+
+    String getWorkflowId();
+
+    String getActionId();
+
+    String getActionType();
+
     T retrieveResponse() throws NoResponseException, ResponseOfWrongTypeException;
 
     T waitForResponse() throws NoResponseException, ResponseOfWrongTypeException, InterruptedException;

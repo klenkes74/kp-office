@@ -53,20 +53,29 @@ public class TenantMDB implements MessageListener {
     @Override
     public void onMessage(Message message) {
         try {
+            String actionType = message.getStringProperty("action-type");
+            MDC.put("action-type", actionType);
             MDC.put("action-id", message.getStringProperty("action-id"));
+            MDC.put("workflow-id", message.getStringProperty("workflow-id"));
             MDC.put("message-id", message.getJMSMessageID());
             MDC.put("correlation-id", message.getJMSCorrelationID());
 
-            String text = "reply";
+            String reply = generateReply(actionType, message.getBody(String.class));
 
-            sendReply(message, text);
+            sendReply(message, reply);
         } catch (JMSException e) {
             LOG.error(e.getClass().getSimpleName() + " caught: " + e.getMessage(), e);
         } finally {
-            MDC.remove("message-id");
             MDC.remove("correlation-id");
+            MDC.remove("message-id");
+            MDC.remove("workflow-id");
             MDC.remove("action-id");
+            MDC.remove("action-type");
         }
+    }
+
+    private String generateReply(final String actionType, final String payload) {
+
     }
 
     private void sendReply(Message message, String text) throws JMSException {

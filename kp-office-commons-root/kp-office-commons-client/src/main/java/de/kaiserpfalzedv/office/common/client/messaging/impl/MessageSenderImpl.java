@@ -53,6 +53,9 @@ public class MessageSenderImpl<T extends Serializable, R extends Serializable> i
     private T payload;
     private String destination;
     private String messageId;
+    private String workflowId;
+    private String actionId;
+    private String actionType;
     private String correlationId;
     private boolean response = true;
     private long ttl = -1L;
@@ -71,10 +74,8 @@ public class MessageSenderImpl<T extends Serializable, R extends Serializable> i
 
     @Override
     public MessageInfo<R> sendMessage() throws NoBrokerException {
+        setDefaults();
         validate();
-
-        if (isBlank(correlationId))
-            correlationId = UUID.randomUUID().toString();
 
         Connection connection = null;
         Session session = null;
@@ -100,6 +101,9 @@ public class MessageSenderImpl<T extends Serializable, R extends Serializable> i
             setCustomHeadersToMessage(message);
             setDeliveryModeToMessage(message);
             setPriorityToMessage(message);
+            setWorkflowIdToMessage(message);
+            setActionIdToMessage(message);
+            setActionTypeToMessage(message);
 
 
             producer = session.createProducer(target);
@@ -116,6 +120,25 @@ public class MessageSenderImpl<T extends Serializable, R extends Serializable> i
             closeProducer(producer);
             closeSession(session);
             returnConnection(connection);
+        }
+    }
+
+
+    private void setDefaults() {
+        if (isBlank(correlationId)) {
+            correlationId = UUID.randomUUID().toString();
+        }
+
+        if (isBlank(workflowId)) {
+            workflowId = UUID.randomUUID().toString();
+        }
+
+        if (isBlank(actionId)) {
+            actionId = UUID.randomUUID().toString();
+        }
+
+        if (isBlank(actionType) && payload != null) {
+            actionType = payload.getClass().getCanonicalName();
         }
     }
 
@@ -144,7 +167,6 @@ public class MessageSenderImpl<T extends Serializable, R extends Serializable> i
     private void setClientIdToMessage(Message message) throws JMSException {
         message.setStringProperty("client-id", core.getClientId().toString());
     }
-
 
     private void setMessageIdToMessage(Message message) throws JMSException {
         if (isNotBlank(messageId)) {
@@ -202,6 +224,18 @@ public class MessageSenderImpl<T extends Serializable, R extends Serializable> i
 
             message.setJMSPriority(priority);
         }
+    }
+
+    private void setWorkflowIdToMessage(Message message) throws JMSException {
+        message.setStringProperty("workflow-id", workflowId);
+    }
+
+    private void setActionIdToMessage(Message message) throws JMSException {
+        message.setStringProperty("action-id", actionId);
+    }
+
+    private void setActionTypeToMessage(Message message) throws JMSException {
+        message.setStringProperty("action-type:", payload.getClass().getSimpleName());
     }
 
     private void closeProducer(final MessageProducer producer) {
@@ -330,5 +364,20 @@ public class MessageSenderImpl<T extends Serializable, R extends Serializable> i
     @Override
     public String getCorrelationId() {
         return correlationId;
+    }
+
+    public MessageSenderImpl withWorkflowId(String workflowId) {
+        this.workflowId = workflowId;
+        return this;
+    }
+
+    public MessageSenderImpl withActionId(String actionId) {
+        this.actionId = actionId;
+        return this;
+    }
+
+    public MessageSenderImpl withActionType(String actionType) {
+        this.actionType = actionType;
+        return this;
     }
 }

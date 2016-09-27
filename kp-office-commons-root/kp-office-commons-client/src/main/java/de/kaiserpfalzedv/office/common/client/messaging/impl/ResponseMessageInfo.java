@@ -23,6 +23,7 @@ import javax.jms.Message;
 import javax.jms.ObjectMessage;
 import javax.jms.TextMessage;
 
+import de.kaiserpfalzedv.office.common.BaseSystemException;
 import de.kaiserpfalzedv.office.common.client.messaging.MessageInfo;
 import de.kaiserpfalzedv.office.common.client.messaging.MessageMultiplexer;
 import de.kaiserpfalzedv.office.common.client.messaging.NoResponseException;
@@ -59,6 +60,38 @@ public class ResponseMessageInfo<T extends Serializable> implements MessageInfo<
     @Override
     public boolean hasResponse() {
         return message != null;
+    }
+
+    @Override
+    public String getCorrelationId() {
+        return correlationId;
+    }
+
+    @Override
+    public String getWorkflowId() {
+        try {
+            return message.getStringProperty("workflow-id");
+        } catch (JMSException e) {
+            throw new BaseSystemException(e);
+        }
+    }
+
+    @Override
+    public String getActionId() {
+        try {
+            return message.getStringProperty("action-id");
+        } catch (JMSException e) {
+            throw new BaseSystemException(e);
+        }
+    }
+
+    @Override
+    public String getActionType() {
+        try {
+            return message.getStringProperty("action-type");
+        } catch (JMSException e) {
+            throw new BaseSystemException(e);
+        }
     }
 
     @Override

@@ -69,5 +69,9 @@
             <groupId>de.kaiserpfalz-edv.office</groupId>
             <artifactId>kp-office-commons-api</artifactId>
         </dependency>
+        <dependency>
+            <groupId>de.kaiserpfalz-edv.office</groupId>
+            <artifactId>kp-office-commons-shared</artifactId>
+        </dependency>
     </dependencies>
 </project>

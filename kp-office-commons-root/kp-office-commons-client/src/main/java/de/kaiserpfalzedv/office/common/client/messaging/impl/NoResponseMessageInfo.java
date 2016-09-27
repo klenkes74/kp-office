@@ -30,9 +30,21 @@ import de.kaiserpfalzedv.office.common.client.messaging.ResponseOfWrongTypeExcep
  */
 public class NoResponseMessageInfo implements MessageInfo {
     private String correlationId;
+    private String workflowId;
+    private String actionId;
+    private String actionType;
 
-    public NoResponseMessageInfo(final String correlationId) {
+
+    public NoResponseMessageInfo(
+            final String correlationId,
+            final String workflowId,
+            final String actionId,
+            final String actionType
+    ) {
         this.correlationId = correlationId;
+        this.workflowId = workflowId;
+        this.actionId = actionId;
+        this.actionType = actionType;
     }
 
     @Override
@@ -43,6 +55,26 @@ public class NoResponseMessageInfo implements MessageInfo {
     @Override
     public boolean hasResponse() {
         return false;
+    }
+
+    @Override
+    public String getCorrelationId() {
+        return correlationId;
+    }
+
+    @Override
+    public String getWorkflowId() {
+        return workflowId;
+    }
+
+    @Override
+    public String getActionId() {
+        return actionId;
+    }
+
+    @Override
+    public String getActionType() {
+        return actionType;
     }
 
     @Override
