@@ -112,7 +112,7 @@ public class TenantJpaDataAdapterTest {
         assertTrue(result.equals(data));
         assertTrue(TenantImpl.class.isAssignableFrom(result.getClass()));
 
-        assertEquals(data.getTenantId(), result.getTenantId());
+        assertEquals(data.getTenant(), result.getTenant());
         assertEquals(data.getId(), result.getId());
         assertEquals(data.getDisplayName(), result.getDisplayName());
         assertEquals(data.getFullName(), result.getFullName());
@@ -123,7 +123,7 @@ public class TenantJpaDataAdapterTest {
         Tenant result = service.retrieve(ID);
         LOG.debug("Result: {}", result);
 
-        assertEquals(TENANT_ID, result.getTenantId());
+        assertEquals(TENANT_ID, result.getTenant());
         assertEquals(DISPLAY_NAME, result.getDisplayName());
         assertEquals(FULL_NAME, result.getFullName());
     }

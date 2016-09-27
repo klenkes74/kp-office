@@ -18,6 +18,12 @@ package de.kaiserpfalzedv.office.tenant.commands;
 
 import java.util.UUID;
 
+import javax.validation.constraints.NotNull;
+
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import de.kaiserpfalzedv.office.common.commands.CrudCommands;
+
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
  * @version 1.0.0
@@ -25,13 +31,14 @@ import java.util.UUID;
  */
 public class TenantRetrieveAllCommand extends TenantBaseCommand {
     private static final long serialVersionUID = 1L;
+    private static final CrudCommands TYPE = CrudCommands.RETRIEVE_ALL;
 
 
-    @SuppressWarnings({"unused", "deprecation", "WeakerAccess"})
-    @Deprecated // Only for framework usage
-    protected TenantRetrieveAllCommand() { }
-
-    TenantRetrieveAllCommand(final UUID source, final UUID commandId) {
-        super(source, commandId);
+    @JsonCreator
+    public TenantRetrieveAllCommand(
+            @JsonProperty("source") @NotNull final UUID source,
+            @JsonProperty("command") @NotNull final UUID commandId
+    ) {
+        super(TYPE, source, commandId);
     }
 }

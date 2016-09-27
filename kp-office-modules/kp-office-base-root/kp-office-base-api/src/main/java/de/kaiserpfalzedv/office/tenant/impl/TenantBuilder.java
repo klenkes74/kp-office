@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzedv.office.tenant.client;
+package de.kaiserpfalzedv.office.tenant.impl;
 
 import java.util.ArrayList;
 import java.util.UUID;
@@ -62,7 +62,7 @@ public class TenantBuilder implements Builder<Tenant> {
         }
     }
 
-    public void validate() {
+    private void validate() {
         ArrayList<String> failures = new ArrayList<>(2);
 
         if (isBlank(displayName)) {
@@ -80,7 +80,7 @@ public class TenantBuilder implements Builder<Tenant> {
 
 
     public TenantBuilder withTenant(final Tenant orig) {
-        withTenantId(orig.getTenantId());
+        withTenantId(orig.getTenant());
         withId(orig.getId());
         withDisplayName(orig.getDisplayName());
         withFullName(orig.getFullName());

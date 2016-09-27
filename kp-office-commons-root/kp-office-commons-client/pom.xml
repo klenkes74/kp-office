@@ -47,10 +47,6 @@
             <groupId>de.kaiserpfalz-edv.office</groupId>
             <artifactId>kp-office-commons-api</artifactId>
         </dependency>
-        <dependency>
-            <groupId>de.kaiserpfalz-edv.office</groupId>
-            <artifactId>kp-office-commons-shared</artifactId>
-        </dependency>
 
         <dependency>
             <groupId>org.apache.commons</groupId>

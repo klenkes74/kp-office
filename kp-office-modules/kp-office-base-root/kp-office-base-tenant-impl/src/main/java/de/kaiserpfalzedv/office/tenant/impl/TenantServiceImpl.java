@@ -20,6 +20,9 @@ import java.util.Collection;
 import java.util.Properties;
 import java.util.UUID;
 
+import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
+
 import de.kaiserpfalzedv.office.common.init.InitializationException;
 import de.kaiserpfalzedv.office.tenant.Tenant;
 import de.kaiserpfalzedv.office.tenant.TenantDoesNotExistException;
@@ -34,11 +37,13 @@ import org.slf4j.LoggerFactory;
  * @version 1.0.0
  * @since 2016-09-24
  */
+@ApplicationScoped
 public class TenantServiceImpl implements TenantService {
     private static final Logger LOG = LoggerFactory.getLogger(TenantServiceImpl.class);
 
     private TenantDataAdapter repository;
 
+    @Inject
     public TenantServiceImpl(final TenantDataAdapter repository) {
         this.repository = repository;
     }

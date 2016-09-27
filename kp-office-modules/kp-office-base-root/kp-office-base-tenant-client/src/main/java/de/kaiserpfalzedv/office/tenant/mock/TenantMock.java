@@ -27,8 +27,8 @@ import de.kaiserpfalzedv.office.tenant.Tenant;
 import de.kaiserpfalzedv.office.tenant.TenantDoesNotExistException;
 import de.kaiserpfalzedv.office.tenant.TenantExistsException;
 import de.kaiserpfalzedv.office.tenant.TenantService;
-import de.kaiserpfalzedv.office.tenant.client.NullTenant;
-import de.kaiserpfalzedv.office.tenant.client.TenantBuilder;
+import de.kaiserpfalzedv.office.tenant.impl.NullTenant;
+import de.kaiserpfalzedv.office.tenant.impl.TenantBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

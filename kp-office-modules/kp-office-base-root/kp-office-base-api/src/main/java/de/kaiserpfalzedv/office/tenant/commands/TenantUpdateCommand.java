@@ -20,6 +20,9 @@ import java.util.UUID;
 
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import de.kaiserpfalzedv.office.common.commands.CrudCommands;
 import de.kaiserpfalzedv.office.tenant.Tenant;
 
 /**
@@ -29,12 +32,15 @@ import de.kaiserpfalzedv.office.tenant.Tenant;
  */
 public class TenantUpdateCommand extends TenantContainingBaseCommand {
     private static final long serialVersionUID = 1L;
+    private static final CrudCommands CRUD_TYPE = CrudCommands.UPDATE;
 
-    @SuppressWarnings({"unused", "deprecation"})
-    @Deprecated // Only for framework usage
-    protected TenantUpdateCommand() {}
 
-    TenantUpdateCommand(@NotNull UUID source, @NotNull UUID commandId, @NotNull Tenant tenant) {
-        super(source, commandId, tenant);
+    @JsonCreator
+    TenantUpdateCommand(
+            @JsonProperty("source") @NotNull UUID source,
+            @JsonProperty("command") @NotNull UUID commandId,
+            @JsonProperty("tenant") @NotNull Tenant tenant
+    ) {
+        super(CRUD_TYPE, source, commandId, tenant);
     }
 }

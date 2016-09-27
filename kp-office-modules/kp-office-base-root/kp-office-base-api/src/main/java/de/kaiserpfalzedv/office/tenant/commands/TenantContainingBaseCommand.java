@@ -20,7 +20,14 @@ import java.util.UUID;
 
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import de.kaiserpfalzedv.office.common.commands.CrudCommands;
 import de.kaiserpfalzedv.office.tenant.Tenant;
+import de.kaiserpfalzedv.office.tenant.impl.TenantImpl;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+
+import static com.fasterxml.jackson.annotation.JsonTypeInfo.As.PROPERTY;
 
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
@@ -30,20 +37,30 @@ import de.kaiserpfalzedv.office.tenant.Tenant;
 public abstract class TenantContainingBaseCommand extends TenantBaseCommand {
     private static final long serialVersionUID = 1L;
 
-
+    @JsonTypeInfo(defaultImpl = TenantImpl.class, use = JsonTypeInfo.Id.NAME, include = PROPERTY)
     protected Tenant tenant;
 
-    @SuppressWarnings({"unused", "deprecation", "WeakerAccess"})
-    @Deprecated // Only for framework usage
-    protected TenantContainingBaseCommand() {}
-
-    TenantContainingBaseCommand(@NotNull final UUID source, @NotNull final UUID commandId, @NotNull final Tenant tenant) {
-        super(source, commandId);
+    protected TenantContainingBaseCommand(
+            @NotNull final CrudCommands type,
+            @NotNull final UUID source,
+            @NotNull final UUID commandId,
+            @NotNull final Tenant tenant
+    ) {
+        super(type, source, commandId);
 
         this.tenant = tenant;
     }
 
     public Tenant getTenant() {
         return tenant;
+    }
+
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE)
+                .appendSuper(super.toString())
+                .append("tenant", tenant.getId())
+                .toString();
     }
 }

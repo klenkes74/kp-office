@@ -57,6 +57,6 @@ public class NullTenantTest {
 
     @Test
     public void testGetTenantId() throws Exception {
-        Assert.assertEquals("The tenant id should be only 0s!", NULL_ID, tenant.getTenantId());
+        Assert.assertEquals("The tenant id should be only 0s!", NULL_ID, tenant.getTenant());
     }
 }

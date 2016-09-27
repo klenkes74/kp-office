@@ -18,29 +18,26 @@ package de.kaiserpfalzedv.office.tenant.commands;
 
 import java.util.UUID;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import de.kaiserpfalzedv.office.common.commands.CrudCommands;
+
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
  * @version 1.0.0
  * @since 2016-09-25
  */
-public class TenantDeleteCommand extends TenantBaseCommand {
-    private static final long serialVersionUID = 1L;
+public class TenantDeleteCommand extends TenantIdContainingBaseCommand {
+    private static final long serialVersionUID = 3433560321699584058L;
 
-    private UUID tenantId;
+    private static final CrudCommands CRUD_TYPE = CrudCommands.DELETE;
 
-
-    @SuppressWarnings({"unused", "deprecation", "WeakerAccess"})
-    @Deprecated // Only for framework usage
-    protected TenantDeleteCommand() {}
-
-    TenantDeleteCommand(final UUID source, final UUID commandId, final UUID tenantId) {
-        super(source, commandId);
-
-        this.tenantId = tenantId;
-    }
-
-
-    public UUID getTenantId() {
-        return tenantId;
+    @JsonCreator
+    TenantDeleteCommand(
+            @JsonProperty("source") final UUID source,
+            @JsonProperty("command") final UUID commandId,
+            @JsonProperty("tenant") final UUID tenant
+    ) {
+        super(CRUD_TYPE, source, commandId, tenant);
     }
 }

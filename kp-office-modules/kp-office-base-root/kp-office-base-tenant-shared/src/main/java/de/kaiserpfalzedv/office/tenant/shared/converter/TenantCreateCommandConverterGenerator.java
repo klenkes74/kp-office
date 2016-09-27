@@ -14,25 +14,22 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzedv.office.tenant.client;
+package de.kaiserpfalzedv.office.tenant.shared.converter;
 
-import java.util.UUID;
-
-import de.kaiserpfalzedv.office.tenant.Tenant;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import de.kaiserpfalzedv.office.commons.shared.converter.ConverterGenerator;
 
 /**
- * The null tenant for all objects that don't have a tenant.
- *
- * @author klenkes
- * @version 2015Q1
- * @since 27.12.15 11:41
+ * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
+ * @version 1.0.0
+ * @since 2016-09-27
  */
-public class NullTenant extends TenantImpl implements Tenant {
-    private static final long serialVersionUID = 1751230514524921614L;
+public class TenantCreateCommandConverterGenerator implements ConverterGenerator<TenantCreateCommandConverter> {
+    @Override
+    public TenantCreateCommandConverter createInstance(ObjectMapper mapper) {
+        TenantCreateCommandConverter result = new TenantCreateCommandConverter();
+        result.setMapper(mapper);
 
-    private static final UUID NULL_ID          = UUID.fromString("00000000-0000-0000-0000-000000000000");
-
-    public NullTenant() {
-        super(NULL_ID, NULL_ID, "", "");
+        return result;
     }
 }

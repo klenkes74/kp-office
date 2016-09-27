@@ -23,8 +23,8 @@ import de.kaiserpfalzedv.office.tenant.Tenant;
 import de.kaiserpfalzedv.office.tenant.TenantDoesNotExistException;
 import de.kaiserpfalzedv.office.tenant.TenantExistsException;
 import de.kaiserpfalzedv.office.tenant.TenantService;
-import de.kaiserpfalzedv.office.tenant.client.NullTenant;
-import de.kaiserpfalzedv.office.tenant.client.TenantBuilder;
+import de.kaiserpfalzedv.office.tenant.impl.NullTenant;
+import de.kaiserpfalzedv.office.tenant.impl.TenantBuilder;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -55,7 +55,7 @@ public abstract class AbstractTenantServiceTestClass {
 
         assertEquals(data, result);
         assertNotEquals(System.identityHashCode(result), System.identityHashCode(data));
-        assertEquals(data.getTenantId(), result.getTenantId());
+        assertEquals(data.getTenant(), result.getTenant());
         assertEquals(data.getId(), result.getId());
         assertEquals(data.getDisplayName(), result.getDisplayName());
         assertEquals(data.getFullName(), result.getFullName());
@@ -140,7 +140,7 @@ public abstract class AbstractTenantServiceTestClass {
 
         assertEquals(data, result);
         assertNotEquals(System.identityHashCode(result), System.identityHashCode(data));
-        assertEquals(data.getTenantId(), result.getTenantId());
+        assertEquals(data.getTenant(), result.getTenant());
         assertEquals(data.getId(), result.getId());
         assertEquals(data.getDisplayName(), result.getDisplayName());
         assertEquals(data.getFullName(), result.getFullName());

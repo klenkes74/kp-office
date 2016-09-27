@@ -29,7 +29,7 @@
             <id name="id">
                 <column name="ID_" nullable="false" unique="true" updatable="false"/>
             </id>
-            <basic name="tenantId">
+            <basic name="tenant">
                 <column name="TENANT_" nullable="false"/>
             </basic>
 

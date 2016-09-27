@@ -26,5 +26,6 @@ public enum CrudCommands {
     RETRIEVE,
     RETRIEVE_ALL,
     UPDATE,
-    DELETE
+    DELETE,
+    UNSPECIFIED
 }

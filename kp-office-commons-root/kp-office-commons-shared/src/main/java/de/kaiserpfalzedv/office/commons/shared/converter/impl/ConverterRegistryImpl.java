@@ -16,6 +16,8 @@
 
 package de.kaiserpfalzedv.office.commons.shared.converter.impl;
 
+import javax.enterprise.context.ApplicationScoped;
+
 import de.kaiserpfalzedv.office.commons.shared.converter.Converter;
 import de.kaiserpfalzedv.office.commons.shared.converter.ConverterGenerator;
 import de.kaiserpfalzedv.office.commons.shared.converter.ConverterPoolFactory;
@@ -31,9 +33,11 @@ import org.slf4j.LoggerFactory;
  * @version 1.0.0
  * @since 2016-09-27
  */
+@ApplicationScoped
 public class ConverterRegistryImpl implements ConverterRegistry {
     private static final Logger LOG = LoggerFactory.getLogger(ConverterRegistryImpl.class);
-    KeyedObjectPool<String, Converter> converters;
+
+    private KeyedObjectPool<String, Converter> converters;
     private ConverterPoolFactory factory;
 
 

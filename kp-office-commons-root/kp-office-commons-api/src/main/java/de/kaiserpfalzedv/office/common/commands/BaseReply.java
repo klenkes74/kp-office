@@ -16,55 +16,23 @@
 
 package de.kaiserpfalzedv.office.common.commands;
 
-import java.util.EventObject;
+import java.io.Serializable;
 import java.util.UUID;
 
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
  * @version 1.0.0
- * @since 2016-09-25
+ * @since 2016-09-27
  */
-public abstract class BaseReply extends EventObject {
-    private static final long serialVersionUID = 1L;
+public interface BaseReply extends Serializable {
+    UUID getCommandId();
 
-    private UUID commandId;
-    private UUID replyId;
-
-    @SuppressWarnings({"unused", "deprecation"})
-    @Deprecated // Only for framework usage
-    public BaseReply() {
-        super(UUID.randomUUID());
-    }
-
-    /**
-     * Constructs a prototypical Event.
-     *
-     * @param source    The object on which the Event initially occurred.
-     * @param commandId The unique ID of this command.
-     * @param replyId   The unique ID of this reply.
-     *
-     * @throws IllegalArgumentException if source is null.
-     */
-    public BaseReply(final UUID source, final UUID commandId, final UUID replyId) {
-        super(source);
-
-        this.commandId = commandId;
-        this.replyId = replyId;
-    }
-
-    public UUID getCommandId() {
-        return commandId;
-    }
-
-    public UUID getReplyId() {
-        return replyId;
-    }
+    UUID getReplyId();
 
     /**
      * @return The UUID of the source.
      */
-    @Override
-    public UUID getSource() {
-        return (UUID) super.getSource();
-    }
+    UUID getSource();
+
+    String getActionType();
 }

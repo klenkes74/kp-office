@@ -16,61 +16,24 @@
 
 package de.kaiserpfalzedv.office.commons.shared.converter.test;
 
-import java.io.IOException;
 import java.util.Map;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import de.kaiserpfalzedv.office.commons.shared.converter.Converter;
-import de.kaiserpfalzedv.office.commons.shared.converter.ConverterSystemException;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import de.kaiserpfalzedv.office.commons.shared.converter.impl.AbstractConverterImpl;
+
+import static org.apache.commons.lang3.Validate.notNull;
 
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
  * @version 1.0.0
  * @since 2016-09-27
  */
-class TestConverter implements Converter<TestObject> {
-    private static final Logger LOG = LoggerFactory.getLogger(TestConverter.class);
-
-    private ObjectMapper mapper;
-
+class TestConverter extends AbstractConverterImpl<TestObject> implements Converter<TestObject> {
     @Override
-    public void setMapper(ObjectMapper mapper) {
-        this.mapper = mapper;
-    }
+    public TestObject createConversionResult(Map<String, Object> map) {
+        notNull(map.get("id"), "No Id for the object given!");
+        notNull(map.get("data"), "No data for the object given!");
 
-
-    @Override
-    public TestObject unmarshal(String data) {
-        LOG.trace("Converting: {}", data);
-        try {
-            Map<String, Object> map = mapper.readValue(data, new TypeReference<Map<String, Object>>() {});
-
-            TestObject result = new TestObject((Integer) map.get("id"), (String) map.get("data"));
-            LOG.trace("Converted: {}", result);
-            return result;
-        } catch (IOException e) {
-            LOG.error(e.getClass().getSimpleName() + " caught: " + e.getMessage());
-
-            throw new ConverterSystemException(TestObject.class, e);
-        }
-    }
-
-    @Override
-    public String marshal(TestObject data) {
-        LOG.trace("Converting: {}", data);
-
-        try {
-            String result = mapper.writeValueAsString(data);
-            LOG.trace("Converted: {}", result);
-            return result;
-        } catch (JsonProcessingException e) {
-            LOG.error(e.getClass().getSimpleName() + " caught: " + e.getMessage());
-
-            throw new ConverterSystemException(TestObject.class, e);
-        }
+        return new TestObject((Integer) map.get("id"), (String) map.get("data"));
     }
 }

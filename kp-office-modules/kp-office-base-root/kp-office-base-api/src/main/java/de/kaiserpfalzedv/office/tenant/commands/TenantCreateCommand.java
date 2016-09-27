@@ -20,6 +20,9 @@ import java.util.UUID;
 
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import de.kaiserpfalzedv.office.common.commands.CrudCommands;
 import de.kaiserpfalzedv.office.tenant.Tenant;
 
 /**
@@ -28,13 +31,19 @@ import de.kaiserpfalzedv.office.tenant.Tenant;
  * @since 2016-09-25
  */
 public class TenantCreateCommand extends TenantContainingBaseCommand {
+    public static final CrudCommands CRUD_TYPE = CrudCommands.CREATE;
     private static final long serialVersionUID = 1L;
 
-    @SuppressWarnings({"unused", "deprecation"})
-    @Deprecated // Only for framework usage
-    protected TenantCreateCommand() {}
+    @JsonCreator
+    public TenantCreateCommand(
+            @JsonProperty("source") @NotNull UUID source,
+            @JsonProperty("command") @NotNull UUID commandId,
+            @JsonProperty("tenant") @NotNull Tenant tenant
+    ) {
+        super(CRUD_TYPE, source, commandId, tenant);
+    }
 
-    TenantCreateCommand(@NotNull UUID source, @NotNull UUID commandId, @NotNull Tenant tenant) {
-        super(source, commandId, tenant);
+    public void execute(TenantCommandExecutor commandExecutor) throws TenantCommandExecutionException {
+        commandExecutor.execute(this);
     }
 }

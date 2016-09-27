@@ -79,7 +79,7 @@ public class TenantReplyBuilderTest {
                 .build();
         LOG.debug("Reply: {}", reply);
 
-        assertEquals(reply.getCommandId(), command.getCommandId());
+        assertEquals(reply.getCommandId(), command.getCommand());
         assertEquals(reply.getTenant(), data);
     }
 
@@ -106,23 +106,6 @@ public class TenantReplyBuilderTest {
         LOG.debug("Reply: {}", reply);
 
         assertEquals(reply.getReplyId(), id);
-    }
-
-    @Test
-    public void checkCreateReplyWithCommandId() {
-        UUID id = UUID.randomUUID();
-        Tenant data = new TestTenant();
-        TenantCreateCommand command = createCreateTenantCommand(data);
-
-        TenantCreateReply reply = (TenantCreateReply) service
-                .withSource(SOURCE_ID)
-                .withTenant(data)
-                .withCommand(command)
-                .withCommandId(id)
-                .build();
-        LOG.debug("Reply: {}", reply);
-
-        assertEquals(reply.getCommandId(), id);
     }
 
     @Test
@@ -172,7 +155,7 @@ public class TenantReplyBuilderTest {
                 .build();
         LOG.debug("Reply: {}", reply);
 
-        assertEquals(reply.getCommandId(), command.getCommandId());
+        assertEquals(reply.getCommandId(), command.getCommand());
         assertEquals(reply.getTenant(), data);
     }
 
@@ -284,7 +267,7 @@ public class TenantReplyBuilderTest {
                 .build();
         LOG.debug("Reply: {}", reply);
 
-        assertEquals(reply.getCommandId(), command.getCommandId());
+        assertEquals(reply.getCommandId(), command.getCommand());
         assertEquals(reply.getTenant(), data);
     }
 
@@ -329,7 +312,7 @@ public class TenantReplyBuilderTest {
                 .build();
         LOG.debug("Reply: {}", reply);
 
-        assertEquals(reply.getCommandId(), command.getCommandId());
+        assertEquals(reply.getCommandId(), command.getCommand());
     }
 
 

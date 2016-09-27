@@ -26,7 +26,6 @@ import de.kaiserpfalzedv.office.tenant.commands.TenantDeleteCommand;
 import de.kaiserpfalzedv.office.tenant.commands.TenantRetrieveAllCommand;
 import de.kaiserpfalzedv.office.tenant.commands.TenantRetrieveCommand;
 import de.kaiserpfalzedv.office.tenant.commands.TenantUpdateCommand;
-import org.junit.Before;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -85,7 +84,7 @@ public class TenantCommandBuilderTest {
                 .build();
         LOG.debug("Result: {}", result);
 
-        assertEquals(id, result.getCommandId());
+        assertEquals(id, result.getCommand());
         assertEquals(SOURCE_ID, result.getSource());
     }
 
@@ -125,7 +124,7 @@ public class TenantCommandBuilderTest {
                 .build();
         LOG.debug("Result: {}", result);
 
-        assertEquals(tenantId, result.getTenantId());
+        assertEquals(tenantId, result.getTenant());
     }
 
     @Test
@@ -227,7 +226,7 @@ public class TenantCommandBuilderTest {
                 .build();
         LOG.debug("Result: {}", result);
 
-        assertEquals(tenantId, result.getTenantId());
+        assertEquals(tenantId, result.getTenant());
     }
 
     @Test
@@ -255,37 +254,4 @@ public class TenantCommandBuilderTest {
         }
         // No assert since we check for the exception.
     }
-
-
-    /**
-     * Only way to get the test coverage for the default constructors. Objects are not usable that way ...
-     */
-    @Test
-    public void checkDefaultConstructors() {
-        new TestTenantCreateCommand();
-        new TestTenantRetrieveCommand();
-        new TestTenantRetrieveAllCommand();
-        new TestTenantUpdateCommand();
-        new TestTenantDeleteCommand();
-    }
-
-    @Before
-    public void setupService() {
-        service = new TenantCommandBuilder();
-    }
-
-    @SuppressWarnings("deprecation")
-    private class TestTenantCreateCommand extends TenantCreateCommand {}
-
-    @SuppressWarnings("deprecation")
-    private class TestTenantRetrieveCommand extends TenantRetrieveCommand {}
-
-    @SuppressWarnings("deprecation")
-    private class TestTenantRetrieveAllCommand extends TenantRetrieveAllCommand {}
-
-    @SuppressWarnings("deprecation")
-    private class TestTenantUpdateCommand extends TenantUpdateCommand {}
-
-    @SuppressWarnings("deprecation")
-    private class TestTenantDeleteCommand extends TenantDeleteCommand {}
 }

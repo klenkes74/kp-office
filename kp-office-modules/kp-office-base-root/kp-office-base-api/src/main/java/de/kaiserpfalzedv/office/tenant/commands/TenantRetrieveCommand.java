@@ -18,30 +18,30 @@ package de.kaiserpfalzedv.office.tenant.commands;
 
 import java.util.UUID;
 
+import javax.validation.constraints.NotNull;
+
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import de.kaiserpfalzedv.office.common.commands.CrudCommands;
+
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
  * @version 1.0.0
  * @since 2016-09-25
  */
-public class TenantRetrieveCommand extends TenantBaseCommand {
-    private static final long serialVersionUID = 1L;
+public class TenantRetrieveCommand extends TenantIdContainingBaseCommand {
+    private static final long serialVersionUID = -7475899714924531990L;
+    private static final CrudCommands CRUD_TYPE = CrudCommands.RETRIEVE;
 
-    private UUID tenantId;
-
-
-    @SuppressWarnings({"unused", "deprecation", "WeakerAccess"})
-    @Deprecated // Only for framework usage
-    protected TenantRetrieveCommand() {
-    }
-
-    TenantRetrieveCommand(final UUID source, final UUID commandId, final UUID tenantId) {
-        super(source, commandId);
-
-        this.tenantId = tenantId;
-    }
+    private UUID tenant;
 
 
-    public UUID getTenantId() {
-        return tenantId;
+    @JsonCreator
+    TenantRetrieveCommand(
+            @JsonProperty("source") @NotNull final UUID source,
+            @JsonProperty("command") @NotNull final UUID commandId,
+            @JsonProperty("tenant") @NotNull final UUID tenant
+    ) {
+        super(CRUD_TYPE, source, commandId, tenant);
     }
 }

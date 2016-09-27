@@ -16,88 +16,54 @@
 
 package de.kaiserpfalzedv.office.tenant;
 
-import java.util.Enumeration;
-
 import javax.ejb.ActivationConfigProperty;
 import javax.ejb.MessageDriven;
 import javax.inject.Inject;
-import javax.jms.Destination;
-import javax.jms.JMSConnectionFactory;
-import javax.jms.JMSContext;
 import javax.jms.JMSException;
-import javax.jms.JMSProducer;
 import javax.jms.Message;
 import javax.jms.MessageListener;
 
+import de.kaiserpfalzedv.office.common.BaseSystemException;
+import de.kaiserpfalzedv.office.common.MessageInfo;
+import de.kaiserpfalzedv.office.commons.shared.converter.NoMatchingConverterFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.slf4j.MDC;
 
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
  * @version 1.0.0
  * @since 2016-09-25
  */
-@MessageDriven(activationConfig = {
-        @ActivationConfigProperty(propertyName = "connectionFactoryLookup", propertyValue = "jms/tenantCF"),
-        @ActivationConfigProperty(propertyName = "destinationLookup", propertyValue = "jms/tenant"),
-        @ActivationConfigProperty(propertyName = "destinationType", propertyValue = "javax.jms.Queue")
-})
+@MessageDriven(
+        activationConfig = {
+                @ActivationConfigProperty(propertyName = "connectionFactoryLookup", propertyValue = "jms/tenantCF"),
+                @ActivationConfigProperty(propertyName = "destinationLookup", propertyValue = "jms/tenant"),
+                @ActivationConfigProperty(propertyName = "destinationType", propertyValue = "javax.jms.Queue")
+        }
+)
 public class TenantMDB implements MessageListener {
     private static final Logger LOG = LoggerFactory.getLogger(TenantMDB.class);
 
+    private TenantWorker worker;
+
     @Inject
-    @JMSConnectionFactory("jms/tenantCF")
-    private JMSContext context;
+    public TenantMDB(final TenantWorker worker) {
+        this.worker = worker;
+    }
 
     @Override
     public void onMessage(Message message) {
+        MessageInfo info = new MessageInfo(message);
+        info.setMDC();
+
         try {
-            String actionType = message.getStringProperty("action-type");
-            MDC.put("action-type", actionType);
-            MDC.put("action-id", message.getStringProperty("action-id"));
-            MDC.put("workflow-id", message.getStringProperty("workflow-id"));
-            MDC.put("message-id", message.getJMSMessageID());
-            MDC.put("correlation-id", message.getJMSCorrelationID());
-
-            String reply = generateReply(actionType, message.getBody(String.class));
-
-            sendReply(message, reply);
-        } catch (JMSException e) {
+            worker.workOn(info, message.getBody(String.class));
+        } catch (JMSException | NoMatchingConverterFoundException e) {
             LOG.error(e.getClass().getSimpleName() + " caught: " + e.getMessage(), e);
+
+            throw new BaseSystemException(e);
         } finally {
-            MDC.remove("correlation-id");
-            MDC.remove("message-id");
-            MDC.remove("workflow-id");
-            MDC.remove("action-id");
-            MDC.remove("action-type");
+            info.removeMDC();
         }
-    }
-
-    private String generateReply(final String actionType, final String payload) {
-
-    }
-
-    private void sendReply(Message message, String text) throws JMSException {
-        Destination replyTo = message.getJMSReplyTo();
-
-        if (replyTo == null) {
-            LOG.info("No reply-to set. Don't need to answer!");
-
-        }
-
-        JMSProducer producer = context.createProducer();
-
-        @SuppressWarnings("unchecked")
-        Enumeration<String> props = (Enumeration<String>) message.getPropertyNames();
-        while (props.hasMoreElements()) {
-            String key = props.nextElement();
-
-            producer.setProperty(key, message.getStringProperty(key));
-        }
-
-        producer
-                .setJMSCorrelationID(message.getJMSCorrelationID())
-                .send(replyTo, text);
     }
 }

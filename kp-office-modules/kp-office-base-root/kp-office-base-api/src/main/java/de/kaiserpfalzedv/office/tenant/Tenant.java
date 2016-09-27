@@ -16,7 +16,11 @@
 
 package de.kaiserpfalzedv.office.tenant;
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import de.kaiserpfalzedv.office.common.data.Identifyable;
+import de.kaiserpfalzedv.office.tenant.impl.TenantImpl;
+
+import static com.fasterxml.jackson.annotation.JsonTypeInfo.As.PROPERTY;
 
 /**
  * A tenant is used for data based access rights. All data belongs to a certain tenant. The security will check the
@@ -31,4 +35,5 @@ import de.kaiserpfalzedv.office.common.data.Identifyable;
  * @version 1.0.0
  * @since 2016-09-04
  */
+@JsonTypeInfo(defaultImpl = TenantImpl.class, use = JsonTypeInfo.Id.NAME, include = PROPERTY)
 public interface Tenant extends Identifyable {}

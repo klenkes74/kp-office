@@ -96,47 +96,47 @@ public class TenantCommandBuilder<T extends TenantBaseCommand> implements Builde
     }
 
 
-    public TenantCommandBuilder withSource(UUID source) {
+    public TenantCommandBuilder<T> withSource(UUID source) {
         this.source = source;
         return this;
     }
 
-    public TenantCommandBuilder withId(UUID id) {
+    public TenantCommandBuilder<T> withId(UUID id) {
         this.id = id;
         return this;
     }
 
-    public TenantCommandBuilder withTenantId(UUID tenantId) {
+    public TenantCommandBuilder<T> withTenantId(UUID tenantId) {
         this.tenantId = tenantId;
         return this;
     }
 
-    public TenantCommandBuilder withTenant(final Tenant tenant) {
+    public TenantCommandBuilder<T> withTenant(final Tenant tenant) {
         this.tenant = tenant;
         return this;
     }
 
-    public TenantCommandBuilder create() {
+    public TenantCommandBuilder<T> create() {
         command = CREATE;
         return this;
     }
 
-    public TenantCommandBuilder retrieve() {
+    public TenantCommandBuilder<T> retrieve() {
         command = RETRIEVE;
         return this;
     }
 
-    public TenantCommandBuilder retrieveAll() {
+    public TenantCommandBuilder<T> retrieveAll() {
         command = RETRIEVE_ALL;
         return this;
     }
 
-    public TenantCommandBuilder update() {
+    public TenantCommandBuilder<T> update() {
         command = UPDATE;
         return this;
     }
 
-    public TenantCommandBuilder delete() {
+    public TenantCommandBuilder<T> delete() {
         command = DELETE;
         return this;
     }

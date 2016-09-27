@@ -22,18 +22,11 @@ import java.util.HashSet;
 import java.util.UUID;
 
 import de.kaiserpfalzedv.office.common.BuilderException;
-import de.kaiserpfalzedv.office.common.commands.CrudCommands;
 import de.kaiserpfalzedv.office.tenant.Tenant;
 import de.kaiserpfalzedv.office.tenant.commands.TenantBaseCommand;
-import de.kaiserpfalzedv.office.tenant.commands.TenantCreateCommand;
-import de.kaiserpfalzedv.office.tenant.commands.TenantDeleteCommand;
-import de.kaiserpfalzedv.office.tenant.commands.TenantRetrieveAllCommand;
-import de.kaiserpfalzedv.office.tenant.commands.TenantRetrieveCommand;
-import de.kaiserpfalzedv.office.tenant.commands.TenantUpdateCommand;
 import org.apache.commons.lang3.builder.Builder;
 
 import static de.kaiserpfalzedv.office.common.commands.CrudCommands.CREATE;
-import static de.kaiserpfalzedv.office.common.commands.CrudCommands.DELETE;
 import static de.kaiserpfalzedv.office.common.commands.CrudCommands.RETRIEVE;
 import static de.kaiserpfalzedv.office.common.commands.CrudCommands.RETRIEVE_ALL;
 import static de.kaiserpfalzedv.office.common.commands.CrudCommands.UPDATE;
@@ -45,10 +38,9 @@ import static de.kaiserpfalzedv.office.common.commands.CrudCommands.UPDATE;
  */
 public class TenantReplyBuilder<T extends TenantBaseReply> implements Builder<T> {
     private UUID source;
-    private UUID commandId;
     private UUID replyId;
 
-    private CrudCommands command;
+    private TenantBaseCommand command;
     private Tenant tenant;
     private HashSet<Tenant> tenants;
 
@@ -58,7 +50,8 @@ public class TenantReplyBuilder<T extends TenantBaseReply> implements Builder<T>
         setDefaults();
         validate();
 
-        switch (command) {
+        UUID commandId = command.getCommand();
+        switch (command.getCrudType()) {
             case CREATE:
                 return (T) new TenantCreateReply(source, commandId, replyId, tenant);
             case RETRIEVE:
@@ -83,16 +76,17 @@ public class TenantReplyBuilder<T extends TenantBaseReply> implements Builder<T>
     private void validate() {
         ArrayList<String> failures = new ArrayList<>(2);
 
-        if (tenant == null && (CREATE.equals(command) || RETRIEVE.equals(command) || UPDATE.equals(command))) {
+        if (command == null) {
+            failures.add("No command specified");
+        }
+
+        if (tenant == null && command != null
+                && (CREATE.equals(command.getCrudType()) || RETRIEVE.equals(command.getCrudType()) || UPDATE.equals(command.getCrudType()))) {
             failures.add("No tenant data given for the " + command + " command");
         }
 
-        if (tenants == null && RETRIEVE_ALL.equals(command)) {
+        if (tenants == null && command != null && RETRIEVE_ALL.equals(command.getCrudType())) {
             failures.add("No set of tenants given for the " + command + " command");
-        }
-
-        if (command == null) {
-            failures.add("No command specified");
         }
 
         if (source == null) {
@@ -104,43 +98,13 @@ public class TenantReplyBuilder<T extends TenantBaseReply> implements Builder<T>
         }
     }
 
-    public TenantReplyBuilder withCommand(final TenantCreateCommand command) {
-        this.command = CREATE;
-        this.commandId = command.getCommandId();
-        return this;
-    }
-
-    public TenantReplyBuilder withCommand(final TenantRetrieveCommand command) {
-        this.command = RETRIEVE;
-        this.commandId = command.getCommandId();
-        return this;
-    }
-
-    public TenantReplyBuilder withCommand(final TenantRetrieveAllCommand command) {
-        this.command = RETRIEVE_ALL;
-        this.commandId = command.getCommandId();
-        return this;
-    }
-
-    public TenantReplyBuilder withCommand(final TenantUpdateCommand command) {
-        this.command = UPDATE;
-        this.commandId = command.getCommandId();
-        return this;
-    }
-
-    public TenantReplyBuilder withCommand(final TenantDeleteCommand command) {
-        this.command = DELETE;
-        this.commandId = command.getCommandId();
+    public TenantReplyBuilder withCommand(final TenantBaseCommand command) {
+        this.command = command;
         return this;
     }
 
     public TenantReplyBuilder withSource(UUID source) {
         this.source = source;
-        return this;
-    }
-
-    public TenantReplyBuilder withCommandId(UUID commandId) {
-        this.commandId = commandId;
         return this;
     }
 

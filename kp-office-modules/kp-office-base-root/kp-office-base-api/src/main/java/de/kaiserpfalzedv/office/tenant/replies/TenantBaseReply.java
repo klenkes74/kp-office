@@ -18,14 +18,14 @@ package de.kaiserpfalzedv.office.tenant.replies;
 
 import java.util.UUID;
 
-import de.kaiserpfalzedv.office.common.commands.BaseReply;
+import de.kaiserpfalzedv.office.common.commands.BaseSuccess;
 
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
  * @version 1.0.0
  * @since 2016-09-25
  */
-public abstract class TenantBaseReply extends BaseReply {
+public abstract class TenantBaseReply extends BaseSuccess {
     private static final long serialVersionUID = 1L;
 
 

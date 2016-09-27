@@ -46,7 +46,7 @@ public class TestTenant implements Tenant {
     }
 
     @Override
-    public UUID getTenantId() {
+    public UUID getTenant() {
         return NULL_ID;
     }
 }

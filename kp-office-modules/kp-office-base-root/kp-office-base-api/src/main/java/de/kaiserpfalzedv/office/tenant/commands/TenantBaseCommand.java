@@ -18,7 +18,13 @@ package de.kaiserpfalzedv.office.tenant.commands;
 
 import java.util.UUID;
 
+import javax.validation.constraints.NotNull;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import de.kaiserpfalzedv.office.common.commands.BaseCommand;
+import de.kaiserpfalzedv.office.common.commands.CrudCommands;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
 
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
@@ -26,14 +32,36 @@ import de.kaiserpfalzedv.office.common.commands.BaseCommand;
  * @since 2016-09-25
  */
 public abstract class TenantBaseCommand extends BaseCommand {
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = -953913734050792152L;
 
-    @SuppressWarnings({"unused", "deprecation", "WeakerAccess"})
-    @Deprecated // Only for framework usage
-    protected TenantBaseCommand() {}
+    @JsonIgnore
+    private CrudCommands crudType;
 
-
-    public TenantBaseCommand(final UUID source, final UUID commandId) {
+    TenantBaseCommand(
+            @NotNull final CrudCommands type,
+            @NotNull final UUID source,
+            @NotNull final UUID commandId
+    ) {
         super(source, commandId);
+
+        crudType = type;
+    }
+
+    public void execute(TenantCommandExecutor executor) throws TenantCommandExecutionException {
+
+    }
+
+    @JsonIgnore
+    public CrudCommands getCrudType() {
+        return crudType;
+    }
+
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE)
+                .appendSuper(super.toString())
+                .append("crudType", crudType)
+                .toString();
     }
 }
