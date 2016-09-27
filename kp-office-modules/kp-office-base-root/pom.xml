@@ -41,5 +41,6 @@
         -->
         <module>kp-office-base-tenant-impl</module>
         <module>kp-office-base-tenant-client</module>
+        <module>kp-office-base-adapter-jpa</module>
     </modules>
 </project>

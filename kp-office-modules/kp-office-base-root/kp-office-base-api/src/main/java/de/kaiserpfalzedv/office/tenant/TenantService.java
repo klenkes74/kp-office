@@ -17,8 +17,10 @@
 package de.kaiserpfalzedv.office.tenant;
 
 import java.util.Collection;
-import java.util.Set;
 import java.util.UUID;
+
+import de.kaiserpfalzedv.office.common.init.Closeable;
+import de.kaiserpfalzedv.office.common.init.Initializable;
 
 /**
  * The tenant service manages the tenant data within the system. It's a simple crud service.
@@ -27,7 +29,7 @@ import java.util.UUID;
  * @version 1.0.0
  * @since 2016-09-04
  */
-public interface TenantService {
+public interface TenantService extends Initializable, Closeable {
     /**
      * Saves a tenant to the database.
      *
@@ -35,7 +37,7 @@ public interface TenantService {
      *
      * @throws TenantExistsException A tenant with the given UUID, full or display name already exists on the system.
      */
-    Tenant createTenant(final Tenant data) throws TenantExistsException;
+    Tenant create(final Tenant data) throws TenantExistsException;
 
 
     /**
@@ -47,7 +49,7 @@ public interface TenantService {
      *
      * @throws TenantDoesNotExistException If the tenant does not exist.
      */
-    Tenant retrieveTenant(final UUID id) throws TenantDoesNotExistException;
+    Tenant retrieve(final UUID id) throws TenantDoesNotExistException;
 
 
     /**
@@ -55,7 +57,7 @@ public interface TenantService {
      *
      * @return A set of tenants available.
      */
-    Collection<Tenant> retrieveTenants();
+    Collection<Tenant> retrieve();
 
 
     /**
@@ -68,7 +70,7 @@ public interface TenantService {
      * @throws TenantDoesNotExistException If there is no tentant with the UUID to be updated.
      * @throws TenantExistsException If the new data would break a constraint (unique full or display name).
      */
-    Tenant updateTenant(final Tenant data) throws TenantDoesNotExistException, TenantExistsException;
+    Tenant update(final Tenant data) throws TenantDoesNotExistException, TenantExistsException;
 
 
     /**
@@ -77,5 +79,5 @@ public interface TenantService {
      *
      * @param id The UUID of the tenant to be removed.
      */
-    void deleteTenant(final UUID id);
+    void delete(final UUID id);
 }

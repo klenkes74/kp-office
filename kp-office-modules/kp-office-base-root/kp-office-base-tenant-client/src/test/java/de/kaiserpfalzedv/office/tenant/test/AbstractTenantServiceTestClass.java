@@ -12,10 +12,12 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- *
  */
 
 package de.kaiserpfalzedv.office.tenant.test;
+
+import java.util.Collection;
+import java.util.UUID;
 
 import de.kaiserpfalzedv.office.tenant.Tenant;
 import de.kaiserpfalzedv.office.tenant.TenantDoesNotExistException;
@@ -25,9 +27,6 @@ import de.kaiserpfalzedv.office.tenant.impl.NullTenant;
 import de.kaiserpfalzedv.office.tenant.impl.TenantBuilder;
 import org.junit.Before;
 import org.junit.Test;
-
-import java.util.Collection;
-import java.util.UUID;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
@@ -52,26 +51,35 @@ public abstract class AbstractTenantServiceTestClass {
     public void checkCreateNewTenant() throws TenantExistsException {
         Tenant data = createDefaultTenant();
 
-        Tenant result = service.createTenant(data);
+        Tenant result = service.create(data);
 
         assertEquals(data, result);
         assertNotEquals(System.identityHashCode(result), System.identityHashCode(data));
-        assertEquals(data.getTenantId(), result.getTenantId());
+        assertEquals(data.getTenant(), result.getTenant());
         assertEquals(data.getId(), result.getId());
         assertEquals(data.getDisplayName(), result.getDisplayName());
         assertEquals(data.getFullName(), result.getFullName());
+    }
+
+    private Tenant createDefaultTenant() {
+        return new TenantBuilder()
+                .withTenantId(TENANT_ID)
+                .withId(ID)
+                .withDisplayName(DISPLAY_NAME)
+                .withFullName(FULL_NAME)
+                .build();
     }
 
     @Test
     public void checkCreateExistingTenant() throws TenantExistsException {
         Tenant data = createDefaultTenant();
 
-        service.createTenant(data);
+        service.create(data);
 
         try {
-            service.createTenant(data);
+            service.create(data);
 
-            fail("The second createTenant should have thrown a TenantExistsException!");
+            fail("The second create should have thrown a TenantExistsException!");
         } catch (TenantExistsException e) {
             // every thing worked out as expected!
         }
@@ -82,7 +90,7 @@ public abstract class AbstractTenantServiceTestClass {
     @Test
     public void checkCreateTenantWithSameDisplayName() throws TenantExistsException {
         Tenant data = createDefaultTenant();
-        service.createTenant(data);
+        service.create(data);
 
         try {
             Tenant second = new TenantBuilder()
@@ -91,9 +99,9 @@ public abstract class AbstractTenantServiceTestClass {
                     .withId(UUID.randomUUID())
                     .build();
 
-            service.createTenant(second);
+            service.create(second);
 
-            fail("The second createTenant should have thrown a TenantExistsException!");
+            fail("The second create should have thrown a TenantExistsException!");
         } catch (TenantExistsException e) {
             // every thing worked out as expected!
         }
@@ -104,7 +112,7 @@ public abstract class AbstractTenantServiceTestClass {
     @Test
     public void checkCreateTenantWithSameFullName() throws TenantExistsException {
         Tenant data = createDefaultTenant();
-        service.createTenant(data);
+        service.create(data);
 
         try {
             Tenant second = new TenantBuilder()
@@ -113,9 +121,9 @@ public abstract class AbstractTenantServiceTestClass {
                     .withId(UUID.randomUUID())
                     .build();
 
-            service.createTenant(second);
+            service.create(second);
 
-            fail("The second createTenant should have thrown a TenantExistsException!");
+            fail("The second create should have thrown a TenantExistsException!");
         } catch (TenantExistsException e) {
             // every thing worked out as expected!
         }
@@ -126,13 +134,13 @@ public abstract class AbstractTenantServiceTestClass {
     @Test
     public void checkRetrieveExistingTenant() throws TenantExistsException, TenantDoesNotExistException {
         Tenant data = createDefaultTenant();
-        service.createTenant(data);
+        service.create(data);
 
-        Tenant result = service.retrieveTenant(data.getId());
+        Tenant result = service.retrieve(data.getId());
 
         assertEquals(data, result);
         assertNotEquals(System.identityHashCode(result), System.identityHashCode(data));
-        assertEquals(data.getTenantId(), result.getTenantId());
+        assertEquals(data.getTenant(), result.getTenant());
         assertEquals(data.getId(), result.getId());
         assertEquals(data.getDisplayName(), result.getDisplayName());
         assertEquals(data.getFullName(), result.getFullName());
@@ -141,12 +149,12 @@ public abstract class AbstractTenantServiceTestClass {
     @Test
     public void checkRetrieveNonExistingTenant() throws TenantExistsException {
         Tenant data = createDefaultTenant();
-        service.createTenant(data);
+        service.create(data);
 
         UUID randomId = UUID.randomUUID();
 
         try {
-            service.retrieveTenant(randomId);
+            service.retrieve(randomId);
             fail("There should be no tenant with Id #" + randomId.toString() + "!");
         } catch (TenantDoesNotExistException e) {
             // every thing worked out as expected!
@@ -159,7 +167,7 @@ public abstract class AbstractTenantServiceTestClass {
     public void checkRetrieveNullTenant() throws TenantDoesNotExistException {
         Tenant nullTenant = new NullTenant();
 
-        Tenant result = service.retrieveTenant(nullTenant.getId());
+        Tenant result = service.retrieve(nullTenant.getId());
 
         assertEquals(result, nullTenant);
     }
@@ -172,10 +180,10 @@ public abstract class AbstractTenantServiceTestClass {
                     .withFullName("Tenant Nr. " + i)
                     .build();
 
-            service.createTenant(data);
+            service.create(data);
         }
 
-        Collection<Tenant> result = service.retrieveTenants();
+        Collection<Tenant> result = service.retrieve();
 
         assertEquals(result.size(), 51); // The null tenant will be returned in any case.
     }
@@ -183,10 +191,10 @@ public abstract class AbstractTenantServiceTestClass {
     @Test
     public void checkUpdateExistingTenant() throws TenantExistsException, TenantDoesNotExistException {
         Tenant orig = createDefaultTenant();
-        service.createTenant(orig);
+        service.create(orig);
 
         Tenant change = new TenantBuilder().withTenant(orig).withDisplayName("new display name").build();
-        Tenant result = service.updateTenant(change);
+        Tenant result = service.update(change);
 
         assertEquals(result, orig);
         assertNotEquals(result.getDisplayName(), orig.getDisplayName());
@@ -195,13 +203,13 @@ public abstract class AbstractTenantServiceTestClass {
     @Test
     public void checkUpdateTenantWithDisplayName() throws TenantExistsException, TenantDoesNotExistException {
         Tenant orig = createDefaultTenant();
-        service.createTenant(orig);
+        service.create(orig);
 
         Tenant change = new TenantBuilder().withTenant(orig).withDisplayName("new display name").build();
-        service.updateTenant(change);
+        service.update(change);
 
         Tenant second = new TenantBuilder().withTenant(orig).withFullName("another full name").withId(UUID.randomUUID()).build();
-        Tenant result = service.createTenant(second);
+        Tenant result = service.create(second);
 
         assertEquals(result, second);
         assertEquals(result.getDisplayName(), second.getDisplayName());
@@ -210,20 +218,20 @@ public abstract class AbstractTenantServiceTestClass {
     @Test
     public void checkUpdateTenantWithFullName() throws TenantExistsException, TenantDoesNotExistException {
         Tenant orig = createDefaultTenant();
-        service.createTenant(orig);
+        service.create(orig);
 
         Tenant change = new TenantBuilder()
                 .withTenant(orig)
                 .withFullName("new full name")
                 .build();
-        service.updateTenant(change);
+        service.update(change);
 
         Tenant second = new TenantBuilder()
                 .withTenant(orig)
                 .withDisplayName("another display name")
                 .withId(UUID.randomUUID())
                 .build();
-        Tenant result = service.createTenant(second);
+        Tenant result = service.create(second);
 
         assertEquals(result, second);
         assertEquals(result.getFullName(), second.getFullName());
@@ -234,7 +242,7 @@ public abstract class AbstractTenantServiceTestClass {
         Tenant change = createDefaultTenant();
 
         try {
-            service.updateTenant(change);
+            service.update(change);
 
             fail("The TenantDoesNotExistException should have been thrown while updating a non-existant tenant!");
         } catch (TenantDoesNotExistException e) {
@@ -247,12 +255,12 @@ public abstract class AbstractTenantServiceTestClass {
     @Test
     public void checkDeleteExistingTenant() throws TenantExistsException {
         Tenant data = createDefaultTenant();
-        service.createTenant(data);
+        service.create(data);
 
-        service.deleteTenant(data.getId());
+        service.delete(data.getId());
 
         try {
-            service.retrieveTenant(data.getId());
+            service.retrieve(data.getId());
 
             fail("There should be no tenant with id #" + data.getId());
         } catch (TenantDoesNotExistException e) {
@@ -265,11 +273,11 @@ public abstract class AbstractTenantServiceTestClass {
     @Test
     public void checkDeleteAndRecreateTenantWithSameData() throws TenantExistsException, TenantDoesNotExistException {
         Tenant orig = createDefaultTenant();
-        service.createTenant(orig);
+        service.create(orig);
 
-        service.deleteTenant(orig.getId());
+        service.delete(orig.getId());
 
-        Tenant result = service.createTenant(orig);
+        Tenant result = service.create(orig);
 
         assertEquals(result, orig);
         assertEquals(result.getDisplayName(), orig.getDisplayName());
@@ -279,10 +287,10 @@ public abstract class AbstractTenantServiceTestClass {
     public void checkDeleteNonexistingTenant() throws TenantExistsException {
         UUID randomId = UUID.randomUUID();
 
-        service.deleteTenant(randomId);
+        service.delete(randomId);
 
         try {
-            service.retrieveTenant(randomId);
+            service.retrieve(randomId);
 
             fail("There should be no tenant with id #" + randomId);
         } catch (TenantDoesNotExistException e) {
@@ -290,15 +298,6 @@ public abstract class AbstractTenantServiceTestClass {
         }
 
         // No assert needed. A failure will be thrown inside the try-catch-block if the expected exception is missing.
-    }
-
-    private Tenant createDefaultTenant() {
-        return new TenantBuilder()
-                .withTenantId(TENANT_ID)
-                .withId(ID)
-                .withDisplayName(DISPLAY_NAME)
-                .withFullName(FULL_NAME)
-                .build();
     }
 
     @Before

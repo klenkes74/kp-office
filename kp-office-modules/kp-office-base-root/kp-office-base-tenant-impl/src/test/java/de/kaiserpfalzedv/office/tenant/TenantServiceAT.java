@@ -18,19 +18,18 @@ package de.kaiserpfalzedv.office.tenant;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
-import java.util.Set;
 import java.util.UUID;
-
-import javax.inject.Inject;
 
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import cucumber.runtime.arquillian.CukeSpace;
 import cucumber.runtime.arquillian.api.Features;
+import de.kaiserpfalzedv.office.tenant.client.TenantClientImpl;
 import de.kaiserpfalzedv.office.tenant.impl.TenantBuilder;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.shrinkwrap.api.Node;
@@ -38,6 +37,8 @@ import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.exporter.ZipExporter;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.jboss.shrinkwrap.resolver.api.maven.Maven;
+import org.junit.After;
+import org.junit.Before;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -56,170 +57,10 @@ import static org.junit.Assert.fail;
 public class TenantServiceAT {
     private static final Logger LOG = LoggerFactory.getLogger(TenantServiceAT.class);
 
-    @Inject
     private TenantService service;
 
     private ArrayList<Exception> exceptions = new ArrayList<>();
-    private Set<? extends Tenant> tenants = new HashSet<>();
-
-    private Tenant tenant;
-    @Given(".*tenant '([a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12})' does not exist in the system.*")
-    public void ensureTenantDoesNotExist(final String id) {
-        UUID tenant = UUID.fromString(id);
-
-        service.deleteTenant(tenant);
-    }
-
-    @Given(".*tenant '([a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12})' with name '(.+)' is existing.*")
-    public void ensureTenantDoesExist(final String id, final String name) throws TenantExistsException {
-        UUID uuid = UUID.fromString(id);
-
-        Tenant tenant = new TenantBuilder()
-                .withId(uuid)
-                .withDisplayName(name)
-                .build();
-
-        service.createTenant(tenant);
-    }
-
-
-    @When(".*tenant '([a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12})' with name '(.+)' should be created.*")
-    public void createTenant(final String id, final String name) {
-        Tenant tenant = new TenantBuilder()
-                .withId(UUID.fromString(id))
-                .withFullName(name)
-                .build();
-
-        try {
-            service.createTenant(tenant);
-        } catch (TenantExistsException e) {
-            LOG.error(e.getClass().getSimpleName() + " caught: " + e.getMessage(), e);
-
-            exceptions.add(e);
-        }
-    }
-
-    @When(".*retrieving the set of tenants.*")
-    public void retrieveAllTenants() {
-        tenants = service.retrieveTenants();
-    }
-
-
-    @When(".*retrieving tenant '([a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12})'.*")
-    public void retrieveTenant(final UUID id) {
-        try {
-            tenant = service.retrieveTenant(id);
-        } catch (TenantDoesNotExistException e) {
-            LOG.error(e.getClass().getSimpleName() + " caught: " + e.getMessage(), e);
-
-            exceptions.add(e);
-        }
-    }
-
-    @When("updating tenant '([a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12})' with the name '(.+)'")
-    public void updateTenant(final UUID id, final String name) {
-        try {
-            Tenant orig = service.retrieveTenant(id);
-
-            Tenant tenant = new TenantBuilder()
-                    .withTenant(orig)
-                    .withDisplayName(name)
-                    .build();
-
-            service.updateTenant(tenant);
-        } catch (TenantDoesNotExistException e) {
-            LOG.error(e.getClass().getSimpleName() + " caught: " + e.getMessage(), e);
-
-            exceptions.add(e);
-        }
-    }
-
-
-    @When(".*deleting tenant '([a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12})'.*")
-    public void deleteTenant(final String id) {
-        UUID uuid = UUID.fromString(id);
-
-        service.deleteTenant(uuid);
-    }
-
-
-    @Then(".+ tenant '([a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12})' should exist.*")
-    public void checkForExistingTenant(final String id) throws TenantDoesNotExistException {
-        UUID uuid = UUID.fromString(id);
-
-        service.retrieveTenant(uuid);
-    }
-
-    @Then(".*should be no tenant '([a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12})' in the system.*")
-    public void checkThatTenantDoesNotExist(final String id) {
-        UUID uuid = UUID.fromString(id);
-
-        try {
-            service.retrieveTenant(uuid);
-        } catch (TenantDoesNotExistException e) {
-            return;
-        }
-
-        fail("The tenant with id '" + id + "' does exist.");
-    }
-
-
-    @Then(".*tenant '([a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12})' should have the name '(.+)'.*")
-    public void checkTenantData(final String id, final String name) throws TenantDoesNotExistException {
-        UUID uuid = UUID.fromString(id);
-
-        Tenant tenant = service.retrieveTenant(uuid);
-
-        if (!name.equals(tenant.getDisplayName())) {
-            fail("The name '" + tenant.getDisplayName() + "' does not match the wanted name '" + name + "'.");
-        }
-    }
-
-
-    @Then(".*failure should be generated pointing to tenant '([a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12})'.*")
-    public void checkForException(final String id) {
-        UUID uuid = UUID.fromString(id);
-
-        TenantExistsException tee = null;
-        for (Exception e : exceptions) {
-            if (TenantExistsException.class.isAssignableFrom(e.getClass())) {
-                tee = (TenantExistsException) e;
-
-                if (tee.getObjectId().equals(uuid)) {
-                    break;
-                } else {
-                    tee = null;
-                }
-            }
-        }
-
-        if (tee != null) {
-            exceptions.remove(tee);
-            return;
-        }
-
-        fail("There should have been an exception for tenant with id '" + id + "'.");
-    }
-
-    @Then(".*'(\\d+)' tenants should be returned.*")
-    public void checkNumberOfResults(final long count) {
-        if (tenants.size() != count) {
-            fail("There should have been " + count + " results instead of the current " + tenants.size()
-                         + " results in the result set!");
-        }
-    }
-
-    @Then(".*tenant '([a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12})' should be in the result set.*")
-    public void checkResultSet(final UUID id) {
-        for (Tenant t : tenants) {
-            if (t.getId().equals(id))
-                return;
-        }
-
-        fail("The tenant with id '" + id.toString() + "' has not been found in result set!");
-    }
-
-
+    private Collection<Tenant> tenants = new HashSet<>();
 
     @Deployment
     public static WebArchive createDeployment() {
@@ -227,14 +68,14 @@ public class TenantServiceAT {
         LOG.info("Loading POM pomFile: {}", pomFile.getAbsolutePath());
 
         File[] lib = Maven.resolver()
-                .loadPomFromFile(pomFile)
-                .resolve(
-                        "de.kaiserpfalz-edv.office:kp-office-base-api",
-                        "de.kaiserpfalz-edv.office:kp-office-commons-impl",
-                        "ch.qos.logback:logback-classic"
-                )
-                .withTransitivity()
-                .as(File.class);
+                          .loadPomFromFile(pomFile)
+                          .resolve(
+                                  "de.kaiserpfalz-edv.office:kp-office-base-api",
+                                  "de.kaiserpfalz-edv.office:kp-office-commons-impl",
+                                  "ch.qos.logback:logback-classic"
+                          )
+                          .withTransitivity()
+                          .as(File.class);
 
         WebArchive war = ShrinkWrap.create(WebArchive.class, "tenant.war").addManifest();
 
@@ -311,5 +152,167 @@ public class TenantServiceAT {
         result.append("+->");
 
         return result.toString();
+    }
+
+    @Given(".*tenant '([a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12})' does not exist in the system.*")
+    public void ensureTenantDoesNotExist(final String id) {
+        UUID tenant = UUID.fromString(id);
+
+        service.delete(tenant);
+    }
+
+    @Given(".*tenant '([a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12})' with name '(.+)' is existing.*")
+    public void ensureTenantDoesExist(final String id, final String name) throws TenantExistsException {
+        UUID uuid = UUID.fromString(id);
+
+        Tenant tenant = new TenantBuilder()
+                .withId(uuid)
+                .withDisplayName(name)
+                .build();
+
+        service.create(tenant);
+    }
+
+    @When(".*tenant '([a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12})' with name '(.+)' should be created.*")
+    public void createTenant(final String id, final String name) {
+        Tenant tenant = new TenantBuilder()
+                .withId(UUID.fromString(id))
+                .withFullName(name)
+                .build();
+
+        try {
+            service.create(tenant);
+        } catch (TenantExistsException e) {
+            LOG.error(e.getClass().getSimpleName() + " caught: " + e.getMessage(), e);
+
+            exceptions.add(e);
+        }
+    }
+
+    @When(".*retrieving the set of tenants.*")
+    public void retrieveAllTenants() {
+        tenants = service.retrieve();
+    }
+
+    @When(".*retrieving tenant '([a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12})'.*")
+    public void retrieveTenant(final UUID id) {
+        try {
+            service.retrieve(id);
+        } catch (TenantDoesNotExistException e) {
+            LOG.error(e.getClass().getSimpleName() + " caught: " + e.getMessage(), e);
+
+            exceptions.add(e);
+        }
+    }
+
+    @When("updating tenant '([a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12})' with the name '(.+)'")
+    public void updateTenant(final UUID id, final String name) {
+        try {
+            Tenant orig = service.retrieve(id);
+
+            Tenant tenant = new TenantBuilder()
+                    .withTenant(orig)
+                    .withDisplayName(name)
+                    .build();
+
+            service.update(tenant);
+        } catch (TenantDoesNotExistException | TenantExistsException e) {
+            LOG.error(e.getClass().getSimpleName() + " caught: " + e.getMessage(), e);
+
+            exceptions.add(e);
+        }
+    }
+
+    @When(".*deleting tenant '([a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12})'.*")
+    public void deleteTenant(final String id) {
+        UUID uuid = UUID.fromString(id);
+
+        service.delete(uuid);
+    }
+
+    @Then(".+ tenant '([a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12})' should exist.*")
+    public void checkForExistingTenant(final String id) throws TenantDoesNotExistException {
+        UUID uuid = UUID.fromString(id);
+
+        service.retrieve(uuid);
+    }
+
+    @Then(".*should be no tenant '([a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12})' in the system.*")
+    public void checkThatTenantDoesNotExist(final String id) {
+        UUID uuid = UUID.fromString(id);
+
+        try {
+            service.retrieve(uuid);
+        } catch (TenantDoesNotExistException e) {
+            return;
+        }
+
+        fail("The tenant with id '" + id + "' does exist.");
+    }
+
+    @Then(".*tenant '([a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12})' should have the name '(.+)'.*")
+    public void checkTenantData(final String id, final String name) throws TenantDoesNotExistException {
+        UUID uuid = UUID.fromString(id);
+
+        Tenant tenant = service.retrieve(uuid);
+
+        if (!name.equals(tenant.getDisplayName())) {
+            fail("The name '" + tenant.getDisplayName() + "' does not match the wanted name '" + name + "'.");
+        }
+    }
+
+    @Then(".*failure should be generated pointing to tenant '([a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12})'.*")
+    public void checkForException(final String id) {
+        UUID uuid = UUID.fromString(id);
+
+        TenantExistsException tee = null;
+        for (Exception e : exceptions) {
+            if (TenantExistsException.class.isAssignableFrom(e.getClass())) {
+                tee = (TenantExistsException) e;
+
+                if (tee.getObjectId().equals(uuid)) {
+                    break;
+                } else {
+                    tee = null;
+                }
+            }
+        }
+
+        if (tee != null) {
+            exceptions.remove(tee);
+            return;
+        }
+
+        fail("There should have been an exception for tenant with id '" + id + "'.");
+    }
+
+    @Then(".*'(\\d+)' tenants should be returned.*")
+    public void checkNumberOfResults(final long count) {
+        if (tenants.size() != count) {
+            fail("There should have been " + count + " results instead of the current " + tenants.size()
+                         + " results in the result set!");
+        }
+    }
+
+    @Then(".*tenant '([a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12})' should be in the result set.*")
+    public void checkResultSet(final UUID id) {
+        for (Tenant t : tenants) {
+            if (t.getId().equals(id))
+                return;
+        }
+
+        fail("The tenant with id '" + id.toString() + "' has not been found in result set!");
+    }
+
+    @Before
+    public void setupService() {
+        service = new TenantClientImpl();
+    }
+
+    @After
+    public void teardownService() {
+        if (service != null) {
+            service.close();
+        }
     }
 }
