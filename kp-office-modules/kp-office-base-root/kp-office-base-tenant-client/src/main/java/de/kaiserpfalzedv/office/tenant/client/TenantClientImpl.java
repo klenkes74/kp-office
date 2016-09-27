@@ -71,6 +71,7 @@ public class TenantClientImpl implements TenantClient {
         ((ActiveMQMessagingCoreImpl) messaging).init(config);
     }
 
+    @SuppressWarnings("unused") // For unit testing or other purposes.
     public TenantClientImpl(final ConfigReader config, final MessagingCore messaging) {
         this.config = config;
         this.messaging = messaging;
@@ -79,7 +80,7 @@ public class TenantClientImpl implements TenantClient {
 
     @Override
     public Tenant create(Tenant data) throws TenantExistsException {
-        TenantCreateCommand command = (TenantCreateCommand) new TenantCommandBuilder<TenantCreateCommand>()
+        TenantCreateCommand command = new TenantCommandBuilder<TenantCreateCommand>()
                 .withSource(clientId)
                 .withTenant(data)
                 .build();
@@ -117,7 +118,7 @@ public class TenantClientImpl implements TenantClient {
 
     @Override
     public Tenant retrieve(UUID id) throws TenantDoesNotExistException {
-        TenantRetrieveCommand command = (TenantRetrieveCommand) new TenantCommandBuilder<TenantRetrieveCommand>()
+        TenantRetrieveCommand command = new TenantCommandBuilder<TenantRetrieveCommand>()
                 .withSource(clientId)
                 .withTenantId(id)
                 .build();
@@ -130,7 +131,7 @@ public class TenantClientImpl implements TenantClient {
 
     @Override
     public Collection<Tenant> retrieve() {
-        TenantRetrieveAllCommand command = (TenantRetrieveAllCommand) new TenantCommandBuilder<TenantRetrieveAllCommand>()
+        TenantRetrieveAllCommand command = new TenantCommandBuilder<TenantRetrieveAllCommand>()
                 .withSource(clientId)
                 .build();
 
@@ -162,7 +163,7 @@ public class TenantClientImpl implements TenantClient {
 
     @Override
     public Tenant update(Tenant data) throws TenantDoesNotExistException {
-        TenantUpdateCommand command = (TenantUpdateCommand) new TenantCommandBuilder<TenantUpdateCommand>()
+        TenantUpdateCommand command = new TenantCommandBuilder<TenantUpdateCommand>()
                 .withSource(clientId)
                 .withTenant(data)
                 .build();
@@ -175,7 +176,7 @@ public class TenantClientImpl implements TenantClient {
 
     @Override
     public void delete(UUID id) {
-        TenantDeleteCommand command = (TenantDeleteCommand) new TenantCommandBuilder<TenantDeleteCommand>()
+        TenantDeleteCommand command = new TenantCommandBuilder<TenantDeleteCommand>()
                 .withSource(clientId)
                 .withTenantId(id)
                 .build();

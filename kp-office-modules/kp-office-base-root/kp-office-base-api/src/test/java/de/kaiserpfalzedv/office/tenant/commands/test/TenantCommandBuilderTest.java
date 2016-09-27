@@ -27,6 +27,7 @@ import de.kaiserpfalzedv.office.tenant.commands.TenantRetrieveAllCommand;
 import de.kaiserpfalzedv.office.tenant.commands.TenantRetrieveCommand;
 import de.kaiserpfalzedv.office.tenant.commands.TenantUpdateCommand;
 import de.kaiserpfalzedv.office.tenant.impl.TenantBuilder;
+import org.junit.Before;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -259,5 +260,11 @@ public class TenantCommandBuilderTest {
             // everything is fine.
         }
         // No assert since we check for the exception.
+    }
+
+
+    @Before
+    public void setupService() {
+        service = new TenantCommandBuilder();
     }
 }

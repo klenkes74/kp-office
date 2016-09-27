@@ -16,28 +16,11 @@
 
 package de.kaiserpfalzedv.office.tenant.client;
 
-import java.util.Collection;
-import java.util.UUID;
-
-import de.kaiserpfalzedv.office.common.init.Closeable;
-import de.kaiserpfalzedv.office.common.init.Initializable;
-import de.kaiserpfalzedv.office.tenant.Tenant;
-import de.kaiserpfalzedv.office.tenant.TenantDoesNotExistException;
-import de.kaiserpfalzedv.office.tenant.TenantExistsException;
+import de.kaiserpfalzedv.office.tenant.TenantService;
 
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
  * @version 1.0.0
  * @since 2016-09-27
  */
-public interface TenantClient extends Initializable, Closeable {
-    Tenant create(Tenant data) throws TenantExistsException;
-
-    Tenant retrieve(UUID id) throws TenantDoesNotExistException;
-
-    Collection<Tenant> retrieve();
-
-    Tenant update(Tenant data) throws TenantDoesNotExistException;
-
-    void delete(UUID id);
-}
+public interface TenantClient extends TenantService {}

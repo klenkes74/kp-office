@@ -80,7 +80,7 @@ public class TenantMock implements TenantService {
         fullNames.clear();
     }
 
-    public Tenant createTenant(final Tenant tenant) throws TenantExistsException {
+    public Tenant create(final Tenant tenant) throws TenantExistsException {
         checkDuplicateId(tenant);
         checkDuplicateDisplayName(tenant);
         checkDuplicateFullName(tenant);
@@ -126,7 +126,7 @@ public class TenantMock implements TenantService {
         }
     }
 
-    public Tenant retrieveTenant(final UUID id) throws TenantDoesNotExistException {
+    public Tenant retrieve(final UUID id) throws TenantDoesNotExistException {
         if (!tenants.containsKey(id)) {
             throw new TenantDoesNotExistException(id);
         }
@@ -135,11 +135,11 @@ public class TenantMock implements TenantService {
     }
 
     @Override
-    public Collection<Tenant> retrieveTenants() {
+    public Collection<Tenant> retrieve() {
         return tenants.values();
     }
 
-    public Tenant updateTenant(final Tenant tenant) throws TenantDoesNotExistException, TenantExistsException {
+    public Tenant update(final Tenant tenant) throws TenantDoesNotExistException, TenantExistsException {
         checkForNonexistingTenant(tenant);
         checkDuplicateDisplayName(tenant);
         checkDuplicateFullName(tenant);
@@ -165,7 +165,7 @@ public class TenantMock implements TenantService {
         }
     }
 
-    public void deleteTenant(final UUID id) {
+    public void delete(final UUID id) {
         if (tenants.containsKey(id)) {
             Tenant oldTenant = tenants.get(id);
 

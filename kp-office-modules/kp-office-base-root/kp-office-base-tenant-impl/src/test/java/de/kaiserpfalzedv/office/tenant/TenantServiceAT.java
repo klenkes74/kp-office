@@ -158,7 +158,7 @@ public class TenantServiceAT {
     public void ensureTenantDoesNotExist(final String id) {
         UUID tenant = UUID.fromString(id);
 
-        service.deleteTenant(tenant);
+        service.delete(tenant);
     }
 
     @Given(".*tenant '([a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12})' with name '(.+)' is existing.*")
@@ -170,7 +170,7 @@ public class TenantServiceAT {
                 .withDisplayName(name)
                 .build();
 
-        service.createTenant(tenant);
+        service.create(tenant);
     }
 
     @When(".*tenant '([a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12})' with name '(.+)' should be created.*")
@@ -181,7 +181,7 @@ public class TenantServiceAT {
                 .build();
 
         try {
-            service.createTenant(tenant);
+            service.create(tenant);
         } catch (TenantExistsException e) {
             LOG.error(e.getClass().getSimpleName() + " caught: " + e.getMessage(), e);
 
@@ -191,13 +191,13 @@ public class TenantServiceAT {
 
     @When(".*retrieving the set of tenants.*")
     public void retrieveAllTenants() {
-        tenants = service.retrieveTenants();
+        tenants = service.retrieve();
     }
 
     @When(".*retrieving tenant '([a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12})'.*")
     public void retrieveTenant(final UUID id) {
         try {
-            service.retrieveTenant(id);
+            service.retrieve(id);
         } catch (TenantDoesNotExistException e) {
             LOG.error(e.getClass().getSimpleName() + " caught: " + e.getMessage(), e);
 
@@ -208,14 +208,14 @@ public class TenantServiceAT {
     @When("updating tenant '([a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12})' with the name '(.+)'")
     public void updateTenant(final UUID id, final String name) {
         try {
-            Tenant orig = service.retrieveTenant(id);
+            Tenant orig = service.retrieve(id);
 
             Tenant tenant = new TenantBuilder()
                     .withTenant(orig)
                     .withDisplayName(name)
                     .build();
 
-            service.updateTenant(tenant);
+            service.update(tenant);
         } catch (TenantDoesNotExistException | TenantExistsException e) {
             LOG.error(e.getClass().getSimpleName() + " caught: " + e.getMessage(), e);
 
@@ -227,14 +227,14 @@ public class TenantServiceAT {
     public void deleteTenant(final String id) {
         UUID uuid = UUID.fromString(id);
 
-        service.deleteTenant(uuid);
+        service.delete(uuid);
     }
 
     @Then(".+ tenant '([a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12})' should exist.*")
     public void checkForExistingTenant(final String id) throws TenantDoesNotExistException {
         UUID uuid = UUID.fromString(id);
 
-        service.retrieveTenant(uuid);
+        service.retrieve(uuid);
     }
 
     @Then(".*should be no tenant '([a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12})' in the system.*")
@@ -242,7 +242,7 @@ public class TenantServiceAT {
         UUID uuid = UUID.fromString(id);
 
         try {
-            service.retrieveTenant(uuid);
+            service.retrieve(uuid);
         } catch (TenantDoesNotExistException e) {
             return;
         }
@@ -254,7 +254,7 @@ public class TenantServiceAT {
     public void checkTenantData(final String id, final String name) throws TenantDoesNotExistException {
         UUID uuid = UUID.fromString(id);
 
-        Tenant tenant = service.retrieveTenant(uuid);
+        Tenant tenant = service.retrieve(uuid);
 
         if (!name.equals(tenant.getDisplayName())) {
             fail("The name '" + tenant.getDisplayName() + "' does not match the wanted name '" + name + "'.");

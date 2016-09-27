@@ -23,9 +23,9 @@ import javax.jms.JMSException;
 import javax.jms.Message;
 import javax.jms.MessageListener;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import de.kaiserpfalzedv.office.common.BaseSystemException;
 import de.kaiserpfalzedv.office.common.MessageInfo;
-import de.kaiserpfalzedv.office.commons.shared.converter.NoMatchingConverterFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -58,7 +58,7 @@ public class TenantMDB implements MessageListener {
 
         try {
             worker.workOn(info, message.getBody(String.class));
-        } catch (JMSException | NoMatchingConverterFoundException e) {
+        } catch (JMSException | JsonProcessingException e) {
             LOG.error(e.getClass().getSimpleName() + " caught: " + e.getMessage(), e);
 
             throw new BaseSystemException(e);

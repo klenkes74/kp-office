@@ -18,8 +18,8 @@ package de.kaiserpfalzedv.office.tenant;
 
 import javax.jms.JMSException;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import de.kaiserpfalzedv.office.common.MessageInfo;
-import de.kaiserpfalzedv.office.commons.shared.converter.NoMatchingConverterFoundException;
 import de.kaiserpfalzedv.office.tenant.commands.TenantCommandExecutor;
 
 /**
@@ -28,5 +28,5 @@ import de.kaiserpfalzedv.office.tenant.commands.TenantCommandExecutor;
  * @since 2016-09-27
  */
 public interface TenantWorker extends TenantCommandExecutor {
-    void workOn(MessageInfo info, String message) throws NoMatchingConverterFoundException, JMSException;
+    void workOn(MessageInfo info, String message) throws JMSException, JsonProcessingException;
 }

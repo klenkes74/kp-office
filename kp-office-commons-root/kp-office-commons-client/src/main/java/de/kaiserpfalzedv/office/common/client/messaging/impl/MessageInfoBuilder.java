@@ -27,13 +27,16 @@ import org.apache.commons.lang3.builder.Builder;
 public class MessageInfoBuilder implements Builder<MessageInfo> {
     private MessageMultiplexer multiplexer;
     private String correlationId;
+    private String workflowId;
+    private String actionId;
+    private String actionType;
 
     @Override
     public MessageInfo build() {
         if (multiplexer != null)
             return new ResponseMessageInfo(multiplexer, correlationId);
         else
-            return new NoResponseMessageInfo(correlationId);
+            return new NoResponseMessageInfo(correlationId, workflowId, actionId, actionType);
     }
 
     public MessageInfoBuilder withMultiplexer(MessageMultiplexer multiplexer) {
@@ -43,6 +46,21 @@ public class MessageInfoBuilder implements Builder<MessageInfo> {
 
     public MessageInfoBuilder withCorrelationId(String correlationId) {
         this.correlationId = correlationId;
+        return this;
+    }
+
+    public MessageInfoBuilder withWorkflowId(String workflowId) {
+        this.workflowId = workflowId;
+        return this;
+    }
+
+    public MessageInfoBuilder withActionId(String actionId) {
+        this.actionId = actionId;
+        return this;
+    }
+
+    public MessageInfoBuilder withActionType(String actionType) {
+        this.actionType = actionType;
         return this;
     }
 }

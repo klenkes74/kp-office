@@ -37,7 +37,7 @@ public interface TenantService extends Initializable, Closeable {
      *
      * @throws TenantExistsException A tenant with the given UUID, full or display name already exists on the system.
      */
-    Tenant createTenant(final Tenant data) throws TenantExistsException;
+    Tenant create(final Tenant data) throws TenantExistsException;
 
 
     /**
@@ -49,7 +49,7 @@ public interface TenantService extends Initializable, Closeable {
      *
      * @throws TenantDoesNotExistException If the tenant does not exist.
      */
-    Tenant retrieveTenant(final UUID id) throws TenantDoesNotExistException;
+    Tenant retrieve(final UUID id) throws TenantDoesNotExistException;
 
 
     /**
@@ -57,7 +57,7 @@ public interface TenantService extends Initializable, Closeable {
      *
      * @return A set of tenants available.
      */
-    Collection<Tenant> retrieveTenants();
+    Collection<Tenant> retrieve();
 
 
     /**
@@ -70,7 +70,7 @@ public interface TenantService extends Initializable, Closeable {
      * @throws TenantDoesNotExistException If there is no tentant with the UUID to be updated.
      * @throws TenantExistsException If the new data would break a constraint (unique full or display name).
      */
-    Tenant updateTenant(final Tenant data) throws TenantDoesNotExistException, TenantExistsException;
+    Tenant update(final Tenant data) throws TenantDoesNotExistException, TenantExistsException;
 
 
     /**
@@ -79,5 +79,5 @@ public interface TenantService extends Initializable, Closeable {
      *
      * @param id The UUID of the tenant to be removed.
      */
-    void deleteTenant(final UUID id);
+    void delete(final UUID id);
 }

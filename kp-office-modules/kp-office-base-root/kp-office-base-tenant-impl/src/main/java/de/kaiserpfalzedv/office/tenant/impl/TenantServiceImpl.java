@@ -69,27 +69,27 @@ public class TenantServiceImpl implements TenantService {
 
 
     @Override
-    public Tenant createTenant(Tenant data) throws TenantExistsException {
+    public Tenant create(Tenant data) throws TenantExistsException {
         return repository.create(data);
     }
 
     @Override
-    public Tenant retrieveTenant(UUID id) throws TenantDoesNotExistException {
+    public Tenant retrieve(UUID id) throws TenantDoesNotExistException {
         return repository.retrieve(id);
     }
 
     @Override
-    public Collection<Tenant> retrieveTenants() {
+    public Collection<Tenant> retrieve() {
         return repository.retrieve();
     }
 
     @Override
-    public Tenant updateTenant(Tenant data) throws TenantDoesNotExistException, TenantExistsException {
+    public Tenant update(Tenant data) throws TenantDoesNotExistException, TenantExistsException {
         return repository.update(data);
     }
 
     @Override
-    public void deleteTenant(UUID id) {
+    public void delete(UUID id) {
         try {
             repository.delete(id);
         } catch (TenantDoesNotExistException e) {
