@@ -30,7 +30,7 @@ import cucumber.api.java.en.When;
 import cucumber.runtime.arquillian.CukeSpace;
 import cucumber.runtime.arquillian.api.Features;
 import de.kaiserpfalzedv.office.tenant.client.TenantBuilder;
-import de.kaiserpfalzedv.office.tenant.client.TenantClient;
+import de.kaiserpfalzedv.office.tenant.client.TenantClientImpl;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.shrinkwrap.api.Node;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
@@ -306,7 +306,7 @@ public class TenantServiceAT {
 
     @Before
     public void setupService() {
-        service = new TenantClient();
+        service = new TenantClientImpl();
     }
 
     @After

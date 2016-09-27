@@ -17,8 +17,6 @@
 package de.kaiserpfalzedv.office.common.client.config.impl;
 
 import de.kaiserpfalzedv.office.common.client.config.ConfigReader;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
@@ -26,12 +24,12 @@ import org.slf4j.LoggerFactory;
  * @since 2016-09-24
  */
 public class DefaultKPOfficeConfiguration {
-    private static final Logger LOG = LoggerFactory.getLogger(DefaultKPOfficeConfiguration.class);
+    public static ConfigReader config = new ConfigReaderBuilder()
+            .withEnvironmentPropertyFileName("KP_OFFICE_CONFIGURATION")
+            .withSystemPropertyFileName("de.kaiserpfalzedv.office.configuration")
+            .build();
 
     public static ConfigReader getInstance() {
-        return new ConfigReaderBuilder()
-                .withEnvironmentPropertyFileName("KP_OFFICE_CONFIGURATION")
-                .withSystemPropertyFileName("de.kaiserpfalzedv.office.configuration")
-                .build();
+        return config;
     }
 }

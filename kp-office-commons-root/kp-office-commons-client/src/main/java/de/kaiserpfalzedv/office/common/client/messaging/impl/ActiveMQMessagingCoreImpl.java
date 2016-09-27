@@ -29,7 +29,6 @@ import de.kaiserpfalzedv.office.common.client.config.impl.DefaultKPOfficeConfigu
 import de.kaiserpfalzedv.office.common.client.messaging.MessageListener;
 import de.kaiserpfalzedv.office.common.client.messaging.MessageMultiplexer;
 import de.kaiserpfalzedv.office.common.client.messaging.MessagingCore;
-import de.kaiserpfalzedv.office.common.init.InitializationException;
 import org.apache.activemq.ActiveMQConnectionFactory;
 import org.apache.commons.pool2.ObjectPool;
 import org.apache.commons.pool2.impl.GenericObjectPool;
@@ -55,16 +54,16 @@ public class ActiveMQMessagingCoreImpl implements MessagingCore {
 
 
     @Override
-    public void init() throws InitializationException {
+    public void init() {
         init(DefaultKPOfficeConfiguration.getInstance());
     }
 
     @Override
-    public void init(final Properties config) throws InitializationException {
+    public void init(final Properties config) {
         init(new ConfigReaderBuilder().withProperties(config).build());
     }
 
-    private void init(final ConfigReader config) throws InitializationException {
+    public void init(final ConfigReader config) {
         String clientId = config.getEntry("messaging.client-id", UUID.randomUUID().toString());
         String broker = config.getEntry("messaging.activemq.broker", "vm://localhost?broker.persistence=false");
         String user = config.getEntry("messaging.activemq.user", null);
