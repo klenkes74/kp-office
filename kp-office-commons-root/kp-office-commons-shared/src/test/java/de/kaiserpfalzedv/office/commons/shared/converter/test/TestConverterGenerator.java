@@ -16,6 +16,7 @@
 
 package de.kaiserpfalzedv.office.commons.shared.converter.test;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import de.kaiserpfalzedv.office.commons.shared.converter.ConverterGenerator;
 
 /**
@@ -25,7 +26,10 @@ import de.kaiserpfalzedv.office.commons.shared.converter.ConverterGenerator;
  */
 public class TestConverterGenerator implements ConverterGenerator<TestConverter> {
     @Override
-    public TestConverter createInstance() {
-        return new TestConverter();
+    public TestConverter createInstance(ObjectMapper mapper) {
+        TestConverter result = new TestConverter();
+        result.setMapper(mapper);
+
+        return result;
     }
 }

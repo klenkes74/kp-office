@@ -35,7 +35,13 @@ import org.slf4j.LoggerFactory;
 class TestConverter implements Converter<TestObject> {
     private static final Logger LOG = LoggerFactory.getLogger(TestConverter.class);
 
-    private final ObjectMapper mapper = new ObjectMapper();
+    private ObjectMapper mapper;
+
+    @Override
+    public void setMapper(ObjectMapper mapper) {
+        this.mapper = mapper;
+    }
+
 
     @Override
     public TestObject unmarshal(String data) {

@@ -16,11 +16,13 @@
 
 package de.kaiserpfalzedv.office.commons.shared.converter;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
  * @version 1.0.0
  * @since 2016-09-27
  */
 public interface ConverterGenerator<T extends Converter> {
-    T createInstance();
+    T createInstance(ObjectMapper mapper);
 }

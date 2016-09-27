@@ -16,10 +16,13 @@
 
 package de.kaiserpfalzedv.office.commons.shared.converter;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
  * @version 1.0.0
  * @since 2016-09-27
  */
 public interface Converter<T> extends Marshaller<T>, Unmarshaller<T> {
+    void setMapper(ObjectMapper mapper);
 }

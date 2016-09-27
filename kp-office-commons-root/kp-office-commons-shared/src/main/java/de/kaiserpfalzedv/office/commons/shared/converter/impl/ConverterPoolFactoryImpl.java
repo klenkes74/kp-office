@@ -18,6 +18,7 @@ package de.kaiserpfalzedv.office.commons.shared.converter.impl;
 
 import java.util.HashMap;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import de.kaiserpfalzedv.office.commons.shared.converter.Converter;
 import de.kaiserpfalzedv.office.commons.shared.converter.ConverterGenerator;
 import de.kaiserpfalzedv.office.commons.shared.converter.ConverterPoolFactory;
@@ -37,6 +38,7 @@ public class ConverterPoolFactoryImpl extends BaseKeyedPooledObjectFactory<Strin
     private static final Logger LOG = LoggerFactory.getLogger(ConverterPoolFactoryImpl.class);
 
     private final HashMap<String, ConverterGenerator<? extends Converter>> factories = new HashMap<>();
+    private final ObjectMapper mapper = new ObjectMapper();
 
 
     @Override
@@ -45,7 +47,7 @@ public class ConverterPoolFactoryImpl extends BaseKeyedPooledObjectFactory<Strin
             throw new NoMatchingConverterFoundException(key);
         }
 
-        Converter result = factories.get(key).createInstance();
+        Converter result = factories.get(key).createInstance(mapper);
 
         LOG.trace("Created new converter: {}", result);
         return result;
