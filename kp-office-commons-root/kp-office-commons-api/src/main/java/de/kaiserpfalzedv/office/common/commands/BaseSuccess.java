@@ -18,18 +18,16 @@ package de.kaiserpfalzedv.office.common.commands;
 
 import java.util.UUID;
 
+import javax.validation.constraints.NotNull;
+
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
  * @version 1.0.0
  * @since 2016-09-25
  */
 public abstract class BaseSuccess extends BaseReplyImpl {
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 5596535699868587163L;
 
-
-    @SuppressWarnings({"unused", "deprecation"})
-    @Deprecated // Only for framework usage
-    protected BaseSuccess() { }
 
     /**
      * Constructs a prototypical Event.
@@ -40,7 +38,11 @@ public abstract class BaseSuccess extends BaseReplyImpl {
      *
      * @throws IllegalArgumentException if source is null.
      */
-    public BaseSuccess(final UUID source, final UUID commandId, final UUID replyId) {
+    public BaseSuccess(
+            @NotNull final UUID source,
+            @NotNull final UUID commandId,
+            @NotNull final UUID replyId
+    ) {
         super(source, commandId, replyId);
     }
 }

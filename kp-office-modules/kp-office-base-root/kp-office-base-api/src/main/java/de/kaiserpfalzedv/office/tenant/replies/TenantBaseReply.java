@@ -18,6 +18,8 @@ package de.kaiserpfalzedv.office.tenant.replies;
 
 import java.util.UUID;
 
+import javax.validation.constraints.NotNull;
+
 import de.kaiserpfalzedv.office.common.commands.BaseSuccess;
 
 /**
@@ -26,15 +28,13 @@ import de.kaiserpfalzedv.office.common.commands.BaseSuccess;
  * @since 2016-09-25
  */
 public abstract class TenantBaseReply extends BaseSuccess {
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = -3065183286439515955L;
 
-
-    @SuppressWarnings({"unused", "deprecation", "WeakerAccess"})
-    @Deprecated // Only for framework usage
-    protected TenantBaseReply() {}
-
-
-    TenantBaseReply(UUID source, UUID commandId, UUID replyId) {
+    TenantBaseReply(
+            @NotNull final UUID source,
+            @NotNull final UUID commandId,
+            @NotNull final UUID replyId
+    ) {
         super(source, commandId, replyId);
     }
 }

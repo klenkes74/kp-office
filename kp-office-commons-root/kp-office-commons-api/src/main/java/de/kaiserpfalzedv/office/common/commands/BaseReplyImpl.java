@@ -19,42 +19,49 @@ package de.kaiserpfalzedv.office.common.commands;
 import java.util.EventObject;
 import java.util.UUID;
 
+import javax.validation.constraints.NotNull;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
  * @version 1.0.0
  * @since 2016-09-27
  */
+@JsonTypeInfo(use = JsonTypeInfo.Id.NONE, include = JsonTypeInfo.As.PROPERTY)
 public class BaseReplyImpl extends EventObject implements BaseReply {
     private static final long serialVersionUID = 1L;
 
 
-    protected UUID commandId;
-    protected UUID replyId;
+    protected UUID command;
+    protected UUID reply;
 
 
-    @SuppressWarnings({"unused", "deprecation"})
-    @Deprecated // Only for framework usage
-    public BaseReplyImpl() {
-        super(UUID.randomUUID());
-    }
-
-    public BaseReplyImpl(Object source, final UUID commandId, final UUID replyId) {
+    public BaseReplyImpl(
+            @NotNull final Object source,
+            @NotNull final UUID command,
+            @NotNull final UUID reply
+    ) {
         super(source);
 
-        this.commandId = commandId;
-        this.replyId = replyId;
+        this.command = command;
+        this.reply = reply;
     }
 
-    @Override
-    public UUID getCommandId() {
-        return commandId;
+    public UUID getCommand() {
+        return command;
     }
 
-    @Override
-    public UUID getReplyId() {
-        return replyId;
+    public UUID getReply() {
+        return reply;
     }
 
+    @JsonIgnore
     @Override
     public String getActionType() {
         return getClass().getCanonicalName();
@@ -63,5 +70,38 @@ public class BaseReplyImpl extends EventObject implements BaseReply {
     @Override
     public UUID getSource() {
         return (UUID) super.getSource();
+    }
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE)
+                .append(System.identityHashCode(this))
+                .append("command", command)
+                .append("reply", reply)
+                .toString();
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder()
+                .append(reply)
+                .toHashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (obj == this) {
+            return true;
+        }
+        if (!BaseReplyImpl.class.isAssignableFrom(obj.getClass())) {
+            return false;
+        }
+        BaseReplyImpl rhs = (BaseReplyImpl) obj;
+        return new EqualsBuilder()
+                .append(this.reply, rhs.getReply())
+                .isEquals();
     }
 }

@@ -98,27 +98,27 @@ public class TenantReplyBuilder<T extends TenantBaseReply> implements Builder<T>
         }
     }
 
-    public TenantReplyBuilder withCommand(final TenantBaseCommand command) {
+    public TenantReplyBuilder<T> withCommand(final TenantBaseCommand command) {
         this.command = command;
         return this;
     }
 
-    public TenantReplyBuilder withSource(UUID source) {
+    public TenantReplyBuilder<T> withSource(UUID source) {
         this.source = source;
         return this;
     }
 
-    public TenantReplyBuilder withReplyId(UUID replyId) {
+    public TenantReplyBuilder<T> withReplyId(UUID replyId) {
         this.replyId = replyId;
         return this;
     }
 
-    public TenantReplyBuilder withTenant(Tenant tenant) {
+    public TenantReplyBuilder<T> withTenant(Tenant tenant) {
         this.tenant = tenant;
         return this;
     }
 
-    public TenantReplyBuilder withTenants(Collection<Tenant> tenants) {
+    public TenantReplyBuilder<T> withTenants(Collection<Tenant> tenants) {
         this.tenants = new HashSet<>(tenants.size());
         this.tenants.addAll(tenants);
         return this;

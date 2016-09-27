@@ -27,6 +27,7 @@ import de.kaiserpfalzedv.office.tenant.commands.TenantDeleteCommand;
 import de.kaiserpfalzedv.office.tenant.commands.TenantRetrieveAllCommand;
 import de.kaiserpfalzedv.office.tenant.commands.TenantRetrieveCommand;
 import de.kaiserpfalzedv.office.tenant.commands.TenantUpdateCommand;
+import de.kaiserpfalzedv.office.tenant.impl.TenantBuilder;
 import de.kaiserpfalzedv.office.tenant.replies.TenantCreateReply;
 import de.kaiserpfalzedv.office.tenant.replies.TenantDeleteReply;
 import de.kaiserpfalzedv.office.tenant.replies.TenantReplyBuilder;
@@ -51,6 +52,18 @@ public class TenantReplyBuilderTest {
 
     private static final UUID SOURCE_ID = UUID.randomUUID();
 
+    private static final UUID TENANT_ID = UUID.randomUUID();
+    private static final UUID TENANT_TENANT = UUID.randomUUID();
+    private static final String DISPLAY_NAME = "Display Name";
+    private static final String FULL_NAME = "Full Name";
+    private static final Tenant TENANT = new TenantBuilder()
+            .withTenantId(TENANT_TENANT)
+            .withId(TENANT_ID)
+            .withDisplayName(DISPLAY_NAME)
+            .withFullName(FULL_NAME)
+            .build();
+
+
     private TenantCommandBuilder commandBuilder;
     private TenantReplyBuilder service;
 
@@ -69,18 +82,17 @@ public class TenantReplyBuilderTest {
 
     @Test
     public void checkCreateReply() {
-        Tenant data = new TestTenant();
-        TenantCreateCommand command = createCreateTenantCommand(data);
+        TenantCreateCommand command = createCreateTenantCommand(TENANT);
 
         TenantCreateReply reply = (TenantCreateReply) service
                 .withSource(SOURCE_ID)
-                .withTenant(data)
+                .withTenant(TENANT)
                 .withCommand(command)
                 .build();
         LOG.debug("Reply: {}", reply);
 
-        assertEquals(reply.getCommandId(), command.getCommand());
-        assertEquals(reply.getTenant(), data);
+        assertEquals(reply.getCommand(), command.getCommand());
+        assertEquals(reply.getTenant(), TENANT);
     }
 
     private TenantCreateCommand createCreateTenantCommand(Tenant data) {
@@ -94,25 +106,23 @@ public class TenantReplyBuilderTest {
     @Test
     public void checkCreateReplyWithReplyId() {
         UUID id = UUID.randomUUID();
-        Tenant data = new TestTenant();
-        TenantCreateCommand command = createCreateTenantCommand(data);
+        TenantCreateCommand command = createCreateTenantCommand(TENANT);
 
         TenantCreateReply reply = (TenantCreateReply) service
                 .withSource(SOURCE_ID)
                 .withReplyId(id)
-                .withTenant(data)
+                .withTenant(TENANT)
                 .withCommand(command)
                 .build();
         LOG.debug("Reply: {}", reply);
 
-        assertEquals(reply.getReplyId(), id);
+        assertEquals(reply.getReply(), id);
     }
 
     @Test
     public void checkCreateReplyWithoutTenant() {
         UUID id = UUID.randomUUID();
-        Tenant data = new TestTenant();
-        TenantCreateCommand command = createCreateTenantCommand(data);
+        TenantCreateCommand command = createCreateTenantCommand(TENANT);
 
         try {
             service
@@ -128,12 +138,11 @@ public class TenantReplyBuilderTest {
 
     @Test
     public void checkCreateReplyWithoutSource() {
-        Tenant data = new TestTenant();
-        TenantCreateCommand command = createCreateTenantCommand(data);
+        TenantCreateCommand command = createCreateTenantCommand(TENANT);
 
         try {
             service
-                    .withTenant(data)
+                    .withTenant(TENANT)
                     .withCommand(command)
                     .build();
         } catch (BuilderException e) {
@@ -145,18 +154,17 @@ public class TenantReplyBuilderTest {
 
     @Test
     public void checkRetrieveReply() {
-        Tenant data = new TestTenant();
-        TenantRetrieveCommand command = createRetrieveTenantCommand(data);
+        TenantRetrieveCommand command = createRetrieveTenantCommand(TENANT);
 
         TenantRetrieveReply reply = (TenantRetrieveReply) service
                 .withSource(SOURCE_ID)
-                .withTenant(data)
+                .withTenant(TENANT)
                 .withCommand(command)
                 .build();
         LOG.debug("Reply: {}", reply);
 
-        assertEquals(reply.getCommandId(), command.getCommand());
-        assertEquals(reply.getTenant(), data);
+        assertEquals(reply.getCommand(), command.getCommand());
+        assertEquals(reply.getTenant(), TENANT);
     }
 
     private TenantRetrieveCommand createRetrieveTenantCommand(Tenant data) {
@@ -170,8 +178,7 @@ public class TenantReplyBuilderTest {
     @Test
     public void checkRetrieveReplyWithoutTenant() {
         UUID id = UUID.randomUUID();
-        Tenant data = new TestTenant();
-        TenantRetrieveCommand command = createRetrieveTenantCommand(data);
+        TenantRetrieveCommand command = createRetrieveTenantCommand(TENANT);
 
         try {
             service
@@ -187,12 +194,11 @@ public class TenantReplyBuilderTest {
 
     @Test
     public void checkRetrieveReplyWithoutSource() {
-        Tenant data = new TestTenant();
-        TenantRetrieveCommand command = createRetrieveTenantCommand(data);
+        TenantRetrieveCommand command = createRetrieveTenantCommand(TENANT);
 
         try {
             service
-                    .withTenant(data)
+                    .withTenant(TENANT)
                     .withCommand(command)
                     .build();
         } catch (BuilderException e) {
@@ -257,18 +263,17 @@ public class TenantReplyBuilderTest {
 
     @Test
     public void checkUpdateReply() {
-        Tenant data = new TestTenant();
-        TenantUpdateCommand command = createUpdateTenantCommand(data);
+        TenantUpdateCommand command = createUpdateTenantCommand(TENANT);
 
         TenantUpdateReply reply = (TenantUpdateReply) service
                 .withSource(SOURCE_ID)
-                .withTenant(data)
+                .withTenant(TENANT)
                 .withCommand(command)
                 .build();
         LOG.debug("Reply: {}", reply);
 
-        assertEquals(reply.getCommandId(), command.getCommand());
-        assertEquals(reply.getTenant(), data);
+        assertEquals(reply.getCommand(), command.getCommand());
+        assertEquals(reply.getTenant(), TENANT);
     }
 
     private TenantUpdateCommand createUpdateTenantCommand(Tenant data) {
@@ -281,8 +286,7 @@ public class TenantReplyBuilderTest {
 
     @Test
     public void checkUpdateReplyWithoutTenant() {
-        Tenant data = new TestTenant();
-        TenantUpdateCommand command = createUpdateTenantCommand(data);
+        TenantUpdateCommand command = createUpdateTenantCommand(TENANT);
 
         try {
             service
@@ -312,40 +316,13 @@ public class TenantReplyBuilderTest {
                 .build();
         LOG.debug("Reply: {}", reply);
 
-        assertEquals(reply.getCommandId(), command.getCommand());
+        assertEquals(reply.getCommand(), command.getCommand());
     }
 
-
-    /**
-     * Only way to get the test coverage for the default constructors. Objects are not usable that way ...
-     */
-    @Test
-    public void checkDefaultConstructors() {
-        new TestTenantCreateReply();
-        new TestTenantRetrieveReply();
-        new TestTenantRetrieveAllReply();
-        new TestTenantUpdateReply();
-        new TestTenantDeleteReply();
-    }
 
     @Before
     public void setupService() {
         commandBuilder = new TenantCommandBuilder();
         service = new TenantReplyBuilder();
     }
-
-    @SuppressWarnings("deprecation")
-    private class TestTenantCreateReply extends TenantCreateReply {}
-
-    @SuppressWarnings("deprecation")
-    private class TestTenantRetrieveReply extends TenantRetrieveReply {}
-
-    @SuppressWarnings("deprecation")
-    private class TestTenantRetrieveAllReply extends TenantRetrieveAllReply {}
-
-    @SuppressWarnings("deprecation")
-    private class TestTenantUpdateReply extends TenantUpdateReply {}
-
-    @SuppressWarnings("deprecation")
-    private class TestTenantDeleteReply extends TenantDeleteReply {}
 }

@@ -25,9 +25,9 @@ import java.util.UUID;
  * @since 2016-09-27
  */
 public interface BaseReply extends Serializable {
-    UUID getCommandId();
+    UUID getCommand();
 
-    UUID getReplyId();
+    UUID getReply();
 
     /**
      * @return The UUID of the source.

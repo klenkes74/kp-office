@@ -18,24 +18,21 @@ package de.kaiserpfalzedv.office.common.commands;
 
 import java.util.UUID;
 
+import javax.validation.constraints.NotNull;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
  * @version 1.0.0
  * @since 2016-09-27
  */
 public class BaseError extends BaseReplyImpl {
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 2825378875380581840L;
 
-    private UUID commandId;
-    private UUID replyId;
-
+    @JsonIgnore
     private Throwable cause;
-
-    @SuppressWarnings({"unused", "deprecation"})
-    @Deprecated // Only for framework usage
-    protected BaseError() {
-        super();
-    }
 
     /**
      * Constructs a prototypical Event.
@@ -46,12 +43,18 @@ public class BaseError extends BaseReplyImpl {
      *
      * @throws IllegalArgumentException if source is null.
      */
-    public BaseError(final UUID source, final UUID commandId, final UUID replyId, final Throwable cause) {
+    public BaseError(
+            @JsonProperty("source") @NotNull final UUID source,
+            @JsonProperty("command") @NotNull final UUID commandId,
+            @JsonProperty("reply") @NotNull final UUID replyId,
+            final Throwable cause
+    ) {
         super(source, commandId, replyId);
 
         this.cause = cause;
     }
 
+    @JsonIgnore
     public Throwable getCause() {
         return cause;
     }

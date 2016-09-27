@@ -91,10 +91,25 @@ public class TenantCommandTest {
         return command;
     }
 
+    private String marshalAndUnmarshalCommand(TenantBaseCommand command) throws JsonProcessingException {
+        String json = mapper.writeValueAsString(command);
+        LOG.trace("JSon: {}", json);
+        return json;
+    }
+
     private void checkCommand(final TenantContainingBaseCommand command, final TenantContainingBaseCommand result) {
-        checkCommand(command, result);
+        //noinspection RedundantCast
+        checkCommand((TenantBaseCommand) command, (TenantBaseCommand) result);
 
         checkTenant(result.getTenant(), command.getTenant());
+    }
+
+    private void checkCommand(final TenantBaseCommand command, final TenantBaseCommand result) {
+        LOG.trace("Checking result: {}", result);
+
+        assertTrue(command.equals(result));
+        assertEquals(result.getSource(), command.getSource());
+        assertEquals(result.getCommand(), command.getCommand());
     }
 
     private void checkTenant(final Tenant actual, final Tenant expected) {
@@ -103,7 +118,6 @@ public class TenantCommandTest {
         assertEquals(actual.getDisplayName(), expected.getDisplayName());
         assertEquals(actual.getFullName(), expected.getFullName());
     }
-
 
     @Test
     public void checkTenantRetrieveCommand() throws IOException {
@@ -128,7 +142,8 @@ public class TenantCommandTest {
     }
 
     private void checkCommand(final TenantIdContainingBaseCommand command, final TenantIdContainingBaseCommand result) {
-        checkCommand(command, result);
+        //noinspection RedundantCast
+        checkCommand((TenantBaseCommand) command, (TenantBaseCommand) result);
 
         assertEquals(result.getTenant(), command.getTenant());
     }
@@ -152,20 +167,6 @@ public class TenantCommandTest {
 
         LOG.trace("Command: {}", command);
         return command;
-    }
-
-    private String marshalAndUnmarshalCommand(TenantBaseCommand command) throws JsonProcessingException {
-        String json = mapper.writeValueAsString(command);
-        LOG.trace("JSon: {}", json);
-        return json;
-    }
-
-    private void checkCommand(final TenantBaseCommand command, final TenantBaseCommand result) {
-        LOG.trace("Checking result: {}", result);
-
-        assertTrue(command.equals(result));
-        assertEquals(result.getSource(), command.getSource());
-        assertEquals(result.getCommand(), command.getCommand());
     }
 
     @Test

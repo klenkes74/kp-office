@@ -20,6 +20,10 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
 
+import javax.validation.constraints.NotNull;
+
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import de.kaiserpfalzedv.office.tenant.Tenant;
 
 /**
@@ -28,16 +32,17 @@ import de.kaiserpfalzedv.office.tenant.Tenant;
  * @since 2016-09-25
  */
 public class TenantRetrieveAllReply extends TenantBaseReply {
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 8344737895442602079L;
 
     private HashSet<Tenant> tenants;
 
-
-    @SuppressWarnings({"unused", "deprecation", "WeakerAccess"})
-    @Deprecated // Only for framework usage
-    protected TenantRetrieveAllReply() {}
-
-    TenantRetrieveAllReply(final UUID source, final UUID commandId, final UUID replyId, final HashSet<Tenant> tenants) {
+    @JsonCreator
+    public TenantRetrieveAllReply(
+            @NotNull @JsonProperty("source") final UUID source,
+            @NotNull @JsonProperty("command") final UUID commandId,
+            @NotNull @JsonProperty("reply") final UUID replyId,
+            @NotNull @JsonProperty("tenants") final HashSet<Tenant> tenants
+    ) {
         super(source, commandId, replyId);
 
         this.tenants = new HashSet<>(tenants.size());

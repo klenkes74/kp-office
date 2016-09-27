@@ -18,7 +18,15 @@ package de.kaiserpfalzedv.office.tenant.replies;
 
 import java.util.UUID;
 
+import javax.validation.constraints.NotNull;
+
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import de.kaiserpfalzedv.office.tenant.Tenant;
+import de.kaiserpfalzedv.office.tenant.impl.TenantImpl;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+
+import static com.fasterxml.jackson.annotation.JsonTypeInfo.As.PROPERTY;
 
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
@@ -26,16 +34,19 @@ import de.kaiserpfalzedv.office.tenant.Tenant;
  * @since 2016-09-25
  */
 public abstract class TenantContainingBaseReply extends TenantBaseReply {
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 298502452426137159L;
 
+
+    @JsonTypeInfo(defaultImpl = TenantImpl.class, use = JsonTypeInfo.Id.NAME, include = PROPERTY)
     private Tenant tenant;
 
 
-    @SuppressWarnings({"unused", "deprecation", "WeakerAccess"})
-    @Deprecated // Only for framework usage
-    protected TenantContainingBaseReply() {}
-
-    TenantContainingBaseReply(final UUID source, final UUID commandId, final UUID replyId, final Tenant tenant) {
+    public TenantContainingBaseReply(
+            @NotNull final UUID source,
+            @NotNull final UUID commandId,
+            @NotNull final UUID replyId,
+            @NotNull final Tenant tenant
+    ) {
         super(source, commandId, replyId);
 
         this.tenant = tenant;
@@ -43,5 +54,14 @@ public abstract class TenantContainingBaseReply extends TenantBaseReply {
 
     public Tenant getTenant() {
         return tenant;
+    }
+
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE)
+                .appendSuper(super.toString())
+                .append("tenant", tenant.getId())
+                .toString();
     }
 }

@@ -18,20 +18,26 @@ package de.kaiserpfalzedv.office.tenant.replies;
 
 import java.util.UUID;
 
+import javax.validation.constraints.NotNull;
+
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
  * @version 1.0.0
  * @since 2016-09-25
  */
 public class TenantDeleteReply extends TenantBaseReply {
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 2122125363043482567L;
 
 
-    @SuppressWarnings({"unused", "deprecation", "WeakerAccess"})
-    @Deprecated // Only for framework usage
-    protected TenantDeleteReply() {}
-
-    TenantDeleteReply(final UUID source, final UUID commandId, final UUID replyId) {
+    @JsonCreator
+    public TenantDeleteReply(
+            @NotNull @JsonProperty("source") final UUID source,
+            @NotNull @JsonProperty("command") final UUID commandId,
+            @NotNull @JsonProperty("reply") final UUID replyId
+    ) {
         super(source, commandId, replyId);
     }
 

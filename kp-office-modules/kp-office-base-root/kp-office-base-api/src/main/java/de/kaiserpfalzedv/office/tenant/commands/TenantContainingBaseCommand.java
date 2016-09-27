@@ -35,7 +35,7 @@ import static com.fasterxml.jackson.annotation.JsonTypeInfo.As.PROPERTY;
  * @since 2016-09-25
  */
 public abstract class TenantContainingBaseCommand extends TenantBaseCommand {
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 669911125527091539L;
 
     @JsonTypeInfo(defaultImpl = TenantImpl.class, use = JsonTypeInfo.Id.NAME, include = PROPERTY)
     protected Tenant tenant;

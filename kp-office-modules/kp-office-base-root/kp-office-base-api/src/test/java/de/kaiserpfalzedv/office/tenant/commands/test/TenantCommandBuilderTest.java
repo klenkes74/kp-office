@@ -26,6 +26,7 @@ import de.kaiserpfalzedv.office.tenant.commands.TenantDeleteCommand;
 import de.kaiserpfalzedv.office.tenant.commands.TenantRetrieveAllCommand;
 import de.kaiserpfalzedv.office.tenant.commands.TenantRetrieveCommand;
 import de.kaiserpfalzedv.office.tenant.commands.TenantUpdateCommand;
+import de.kaiserpfalzedv.office.tenant.impl.TenantBuilder;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -44,6 +45,18 @@ public class TenantCommandBuilderTest {
 
     private static final UUID SOURCE_ID = UUID.randomUUID();
 
+    private static final UUID TENANT_ID = UUID.randomUUID();
+    private static final UUID TENANT_TENANT = UUID.randomUUID();
+    private static final String DISPLAY_NAME = "Display Name";
+    private static final String FULL_NAME = "Full Name";
+    private static final Tenant TENANT = new TenantBuilder()
+            .withTenantId(TENANT_TENANT)
+            .withId(TENANT_ID)
+            .withDisplayName(DISPLAY_NAME)
+            .withFullName(FULL_NAME)
+            .build();
+
+
     private TenantCommandBuilder service;
 
     @Test
@@ -60,26 +73,24 @@ public class TenantCommandBuilderTest {
 
     @Test
     public void checkCreateCommand() {
-        Tenant data = new TestTenant();
         TenantCreateCommand result = (TenantCreateCommand) service
                 .withSource(SOURCE_ID)
-                .withTenant(data)
+                .withTenant(TENANT)
                 .create()
                 .build();
         LOG.debug("Result: {}", result);
 
-        assertEquals(data.getId(), result.getTenant().getId());
+        assertEquals(TENANT.getId(), result.getTenant().getId());
     }
 
     @Test
     public void checkCreateCommandWithId() {
         UUID id = UUID.randomUUID();
-        Tenant data = new TestTenant();
 
         TenantCreateCommand result = (TenantCreateCommand) service
                 .withSource(SOURCE_ID)
                 .withId(id)
-                .withTenant(data)
+                .withTenant(TENANT)
                 .create()
                 .build();
         LOG.debug("Result: {}", result);
@@ -102,10 +113,8 @@ public class TenantCommandBuilderTest {
 
     @Test
     public void checkCreateCommandWithoutSource() {
-        Tenant data = new TestTenant();
-
         try {
-            service.withTenant(data).create().build();
+            service.withTenant(TENANT).create().build();
 
             fail("A BuilderException should be thrown!");
         } catch (BuilderException e) {
@@ -179,15 +188,14 @@ public class TenantCommandBuilderTest {
 
     @Test
     public void checkUpdateCommand() {
-        Tenant data = new TestTenant();
         TenantUpdateCommand result = (TenantUpdateCommand) service
                 .withSource(SOURCE_ID)
-                .withTenant(data)
+                .withTenant(TENANT)
                 .update()
                 .build();
         LOG.debug("Result: {}", result);
 
-        assertEquals(data.getId(), result.getTenant().getId());
+        assertEquals(TENANT.getId(), result.getTenant().getId());
     }
 
     @Test
@@ -204,10 +212,8 @@ public class TenantCommandBuilderTest {
 
     @Test
     public void checkUpdateCommandWithoutSource() {
-        Tenant data = new TestTenant();
-
         try {
-            service.withTenant(data).update().build();
+            service.withTenant(TENANT).update().build();
 
             fail("A BuilderException should be thrown!");
         } catch (BuilderException e) {

@@ -18,6 +18,10 @@ package de.kaiserpfalzedv.office.tenant.replies;
 
 import java.util.UUID;
 
+import javax.validation.constraints.NotNull;
+
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import de.kaiserpfalzedv.office.tenant.Tenant;
 
 /**
@@ -26,14 +30,16 @@ import de.kaiserpfalzedv.office.tenant.Tenant;
  * @since 2016-09-25
  */
 public class TenantCreateReply extends TenantContainingBaseReply {
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = -1525644608280007282L;
 
 
-    @SuppressWarnings({"unused", "deprecation", "WeakerAccess"})
-    @Deprecated // Only for framework usage
-    protected TenantCreateReply() {}
-
-    TenantCreateReply(final UUID source, final UUID commandId, final UUID replyId, final Tenant tenant) {
+    @JsonCreator
+    TenantCreateReply(
+            @JsonProperty("source") @NotNull final UUID source,
+            @JsonProperty("command") @NotNull final UUID commandId,
+            @JsonProperty("reply") @NotNull final UUID replyId,
+            @JsonProperty("tenant") @NotNull final Tenant tenant
+    ) {
         super(source, commandId, replyId, tenant);
     }
 }
