@@ -19,13 +19,17 @@ package de.kaiserpfalzedv.office.common.client.messaging.impl;
 import java.util.Properties;
 import java.util.UUID;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
 import javax.jms.Connection;
 import javax.jms.ConnectionFactory;
 import javax.jms.Destination;
+import javax.validation.constraints.NotNull;
 
 import de.kaiserpfalzedv.office.common.client.config.ConfigReader;
 import de.kaiserpfalzedv.office.common.client.config.impl.ConfigReaderBuilder;
-import de.kaiserpfalzedv.office.common.client.config.impl.DefaultKPOfficeConfiguration;
 import de.kaiserpfalzedv.office.common.client.messaging.MessageListener;
 import de.kaiserpfalzedv.office.common.client.messaging.MessageMultiplexer;
 import de.kaiserpfalzedv.office.common.client.messaging.MessagingCore;
@@ -41,6 +45,7 @@ import static org.apache.commons.lang3.StringUtils.isNotBlank;
  * @author rlichti {@literal <rlichti@kaiserpfalz-edv.de>}
  * @since 2016-09-22
  */
+@ApplicationScoped
 public class ActiveMQMessagingCoreImpl implements MessagingCore {
     static private final Logger LOG = LoggerFactory.getLogger(ActiveMQMessagingCoreImpl.class);
 
@@ -49,13 +54,20 @@ public class ActiveMQMessagingCoreImpl implements MessagingCore {
     private MessageListener listener;
     private UUID clientId = UUID.randomUUID();
 
+    private ConfigReader config;
 
-    public ActiveMQMessagingCoreImpl() { }
+    @Inject
+    public ActiveMQMessagingCoreImpl(
+            @NotNull ConfigReader config
+    ) {
+        this.config = config;
+    }
 
 
+    @PostConstruct
     @Override
     public void init() {
-        init(DefaultKPOfficeConfiguration.getInstance());
+        init(config);
     }
 
     @Override
@@ -94,6 +106,7 @@ public class ActiveMQMessagingCoreImpl implements MessagingCore {
     }
 
 
+    @PreDestroy
     @Override
     public void close() {
         listener.close();

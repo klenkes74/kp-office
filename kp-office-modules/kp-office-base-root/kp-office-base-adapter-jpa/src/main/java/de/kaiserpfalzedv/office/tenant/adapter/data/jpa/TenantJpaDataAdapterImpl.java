@@ -52,7 +52,9 @@ public class TenantJpaDataAdapterImpl implements TenantDataAdapter {
 
     public TenantJpaDataAdapterImpl() {}
 
-    public TenantJpaDataAdapterImpl(@NotNull final EntityManager em) {
+    public TenantJpaDataAdapterImpl(
+            @NotNull final EntityManager em
+    ) {
         this.em = em;
     }
 

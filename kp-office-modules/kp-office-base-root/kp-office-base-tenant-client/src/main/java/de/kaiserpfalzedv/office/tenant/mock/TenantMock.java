@@ -21,12 +21,14 @@ import java.util.HashMap;
 import java.util.Properties;
 import java.util.UUID;
 
+import javax.enterprise.context.ApplicationScoped;
+
 import de.kaiserpfalzedv.office.common.cdi.Mock;
 import de.kaiserpfalzedv.office.common.init.InitializationException;
 import de.kaiserpfalzedv.office.tenant.Tenant;
 import de.kaiserpfalzedv.office.tenant.TenantDoesNotExistException;
 import de.kaiserpfalzedv.office.tenant.TenantExistsException;
-import de.kaiserpfalzedv.office.tenant.TenantService;
+import de.kaiserpfalzedv.office.tenant.client.TenantClient;
 import de.kaiserpfalzedv.office.tenant.impl.NullTenant;
 import de.kaiserpfalzedv.office.tenant.impl.TenantBuilder;
 import org.slf4j.Logger;
@@ -40,7 +42,8 @@ import org.slf4j.LoggerFactory;
  * @since 2016-09-20
  */
 @Mock
-public class TenantMock implements TenantService {
+@ApplicationScoped
+public class TenantMock implements TenantClient {
     private static final Logger LOG = LoggerFactory.getLogger(TenantMock.class);
 
 

@@ -18,6 +18,7 @@ package de.kaiserpfalzedv.office.common.client.messaging.test;
 
 import java.util.UUID;
 
+import de.kaiserpfalzedv.office.common.client.config.impl.DefaultKPOfficeConfiguration;
 import de.kaiserpfalzedv.office.common.client.messaging.MessageInfo;
 import de.kaiserpfalzedv.office.common.client.messaging.MessageSender;
 import de.kaiserpfalzedv.office.common.client.messaging.MessagingCore;
@@ -49,7 +50,9 @@ public class MessageSenderTest {
     private MessageSender<String, String> service;
 
     public MessageSenderTest() throws Exception {
-        core = new ActiveMQMessagingCoreImpl();
+        DefaultKPOfficeConfiguration producer = new DefaultKPOfficeConfiguration();
+
+        core = new ActiveMQMessagingCoreImpl(producer.getConfig());
         core.init();
 
         reflector = new MessageReflector(core.getConnectionPool(), "reflector");
@@ -60,7 +63,9 @@ public class MessageSenderTest {
             reflector.close();
         }
 
-        core.close();
+        if (core != null) {
+            core.close();
+        }
 
         super.finalize();
     }

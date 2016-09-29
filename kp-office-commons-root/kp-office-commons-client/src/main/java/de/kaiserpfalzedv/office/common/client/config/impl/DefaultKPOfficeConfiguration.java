@@ -16,6 +16,9 @@
 
 package de.kaiserpfalzedv.office.common.client.config.impl;
 
+import javax.enterprise.context.ApplicationScoped;
+import javax.enterprise.inject.Produces;
+
 import de.kaiserpfalzedv.office.common.client.config.ConfigReader;
 
 /**
@@ -23,13 +26,15 @@ import de.kaiserpfalzedv.office.common.client.config.ConfigReader;
  * @version 1.0.0
  * @since 2016-09-24
  */
+@ApplicationScoped
 public class DefaultKPOfficeConfiguration {
-    public static ConfigReader config = new ConfigReaderBuilder()
+    private static ConfigReader config = new ConfigReaderBuilder()
             .withEnvironmentPropertyFileName("KP_OFFICE_CONFIGURATION")
             .withSystemPropertyFileName("de.kaiserpfalzedv.office.configuration")
             .build();
 
-    public static ConfigReader getInstance() {
+    @Produces
+    public ConfigReader getConfig() {
         return config;
     }
 }

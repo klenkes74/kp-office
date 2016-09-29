@@ -20,17 +20,19 @@ import java.util.Collection;
 import java.util.Properties;
 import java.util.UUID;
 
+import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
+import javax.validation.constraints.NotNull;
+
 import de.kaiserpfalzedv.office.common.cdi.Implementation;
 import de.kaiserpfalzedv.office.common.client.config.ConfigReader;
 import de.kaiserpfalzedv.office.common.client.config.impl.ConfigReaderBuilder;
-import de.kaiserpfalzedv.office.common.client.config.impl.DefaultKPOfficeConfiguration;
 import de.kaiserpfalzedv.office.common.client.messaging.MessageInfo;
 import de.kaiserpfalzedv.office.common.client.messaging.MessageSender;
 import de.kaiserpfalzedv.office.common.client.messaging.MessagingCore;
 import de.kaiserpfalzedv.office.common.client.messaging.NoBrokerException;
 import de.kaiserpfalzedv.office.common.client.messaging.NoResponseException;
 import de.kaiserpfalzedv.office.common.client.messaging.ResponseOfWrongTypeException;
-import de.kaiserpfalzedv.office.common.client.messaging.impl.ActiveMQMessagingCoreImpl;
 import de.kaiserpfalzedv.office.common.client.messaging.impl.MessageSenderImpl;
 import de.kaiserpfalzedv.office.tenant.Tenant;
 import de.kaiserpfalzedv.office.tenant.TenantDoesNotExistException;
@@ -55,8 +57,8 @@ import static de.kaiserpfalzedv.office.common.commands.CrudCommands.CREATE;
  * @since 2016-09-20
  */
 @Implementation
+@ApplicationScoped
 public class TenantClientImpl implements TenantClient {
-
     private MessagingCore messaging;
     private ConfigReader config;
     private UUID clientId = UUID.randomUUID();
@@ -64,15 +66,11 @@ public class TenantClientImpl implements TenantClient {
     private String destination;
 
 
-    public TenantClientImpl() {
-        config = DefaultKPOfficeConfiguration.getInstance();
-
-        messaging = new ActiveMQMessagingCoreImpl();
-        ((ActiveMQMessagingCoreImpl) messaging).init(config);
-    }
-
-    @SuppressWarnings("unused") // For unit testing or other purposes.
-    public TenantClientImpl(final ConfigReader config, final MessagingCore messaging) {
+    @Inject
+    public TenantClientImpl(
+            @NotNull final ConfigReader config,
+            @NotNull final MessagingCore messaging
+    ) {
         this.config = config;
         this.messaging = messaging;
     }

@@ -22,6 +22,7 @@ import java.util.UUID;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
+import javax.validation.constraints.NotNull;
 
 import de.kaiserpfalzedv.office.common.init.InitializationException;
 import de.kaiserpfalzedv.office.tenant.Tenant;
@@ -44,7 +45,9 @@ public class TenantServiceImpl implements TenantService {
     private TenantDataAdapter repository;
 
     @Inject
-    public TenantServiceImpl(final TenantDataAdapter repository) {
+    public TenantServiceImpl(
+            @NotNull final TenantDataAdapter repository
+    ) {
         this.repository = repository;
     }
 

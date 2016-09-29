@@ -24,6 +24,8 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.UUID;
 
+import javax.inject.Inject;
+
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -35,7 +37,7 @@ import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.shrinkwrap.api.Node;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.exporter.ZipExporter;
-import org.jboss.shrinkwrap.api.spec.WebArchive;
+import org.jboss.shrinkwrap.api.spec.EnterpriseArchive;
 import org.jboss.shrinkwrap.resolver.api.maven.Maven;
 import org.junit.After;
 import org.junit.Before;
@@ -57,13 +59,14 @@ import static org.junit.Assert.fail;
 public class TenantServiceAT {
     private static final Logger LOG = LoggerFactory.getLogger(TenantServiceAT.class);
 
+    @Inject
     private TenantService service;
 
     private ArrayList<Exception> exceptions = new ArrayList<>();
     private Collection<Tenant> tenants = new HashSet<>();
 
     @Deployment
-    public static WebArchive createDeployment() {
+    public static EnterpriseArchive createDeployment() {
         File pomFile = new File("pom.xml");
         LOG.info("Loading POM pomFile: {}", pomFile.getAbsolutePath());
 
@@ -77,7 +80,9 @@ public class TenantServiceAT {
                           .withTransitivity()
                           .as(File.class);
 
-        WebArchive war = ShrinkWrap.create(WebArchive.class, "tenant.war").addManifest();
+        EnterpriseArchive war = ShrinkWrap
+                .create(EnterpriseArchive.class, "tenant.ear")
+                .addManifest();
 
         LOG.info("Created {}.", war.getName());
 
@@ -306,6 +311,7 @@ public class TenantServiceAT {
 
     @Before
     public void setupService() {
+
         service = new TenantClientImpl();
     }
 

@@ -48,8 +48,8 @@ import static org.junit.Assert.fail;
  * @version 1.0.0
  * @since 2016-09-24
  */
-public class TenantJpaDataAdapterTest {
-    private static final Logger LOG = LoggerFactory.getLogger(TenantJpaDataAdapterTest.class);
+public class TenantJpaDataAdapterIT {
+    private static final Logger LOG = LoggerFactory.getLogger(TenantJpaDataAdapterIT.class);
 
     private static final UUID TENANT_ID = UUID.randomUUID();
     private static final UUID ID = UUID.randomUUID();
@@ -153,16 +153,16 @@ public class TenantJpaDataAdapterTest {
     @Test
     public void checkUpdateExisting() throws TenantExistsException, TenantDoesNotExistException {
         Tenant data = new TenantBuilder()
-                .withTenant(TenantJpaDataAdapterTest.data)
+                .withTenant(TenantJpaDataAdapterIT.data)
                 .withFullName("Fullname changed!")
                 .build();
 
         Tenant result = service.update(data);
         LOG.debug("Result: {}", result);
 
-        assertTrue(TenantJpaDataAdapterTest.data.equals(result));
-        assertTrue(TenantJpaDataAdapterTest.data.equals(data));
-        assertNotEquals(result.getFullName(), TenantJpaDataAdapterTest.data.getFullName());
+        assertTrue(TenantJpaDataAdapterIT.data.equals(result));
+        assertTrue(TenantJpaDataAdapterIT.data.equals(data));
+        assertNotEquals(result.getFullName(), TenantJpaDataAdapterIT.data.getFullName());
     }
 
     @Test

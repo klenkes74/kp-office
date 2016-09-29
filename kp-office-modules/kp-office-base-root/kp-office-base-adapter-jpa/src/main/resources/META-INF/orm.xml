@@ -23,7 +23,7 @@
             class="de.kaiserpfalzedv.office.tenant.impl.TenantImpl"
             cacheable="true"
             access="FIELD">
-        <table name="TENANTS"/>
+        <table name="TENANTS" schema="TENANT"/>
 
         <attributes>
             <id name="id">
@@ -40,7 +40,5 @@
                 <column name="DISPLAY_NAME_" nullable="false" length="200"/>
             </basic>
         </attributes>
-
-
     </entity>
 </entity-mappings>

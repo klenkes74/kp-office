@@ -37,5 +37,7 @@
         <module>kp-office-parent-api</module>
         <module>kp-office-parent-impl</module>
         <module>kp-office-parent-client</module>
+        <module>kp-office-parent-test</module>
+        <module>kp-office-parent-adapter-jpa</module>
     </modules>
 </project>
