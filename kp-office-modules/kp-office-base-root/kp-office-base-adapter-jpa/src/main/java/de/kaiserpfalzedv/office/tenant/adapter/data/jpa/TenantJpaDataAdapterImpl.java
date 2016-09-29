@@ -17,7 +17,6 @@
 package de.kaiserpfalzedv.office.tenant.adapter.data.jpa;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
@@ -35,7 +34,6 @@ import de.kaiserpfalzedv.office.tenant.Tenant;
 import de.kaiserpfalzedv.office.tenant.TenantDoesNotExistException;
 import de.kaiserpfalzedv.office.tenant.TenantExistsException;
 import de.kaiserpfalzedv.office.tenant.adapter.data.TenantDataAdapter;
-import de.kaiserpfalzedv.office.tenant.impl.TenantImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -104,8 +102,7 @@ public class TenantJpaDataAdapterImpl implements TenantDataAdapter {
     public Set<Tenant> retrieve() {
         HashSet<Tenant> result = new HashSet<>();
 
-        //noinspection unchecked,JpaQlInspection
-        ((List<TenantImpl>) em.createNamedQuery("fetch-all").getResultList()).forEach(
+        em.createNamedQuery("fetch-all", TenantJpaImpl.class).getResultList().forEach(
                 e -> {
                     em.detach(e);
 

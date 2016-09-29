@@ -89,9 +89,9 @@ public class TenantImpl implements Tenant {
     public boolean equals(Object o) {
         if (this == o) return true;
 
-        if (!(o instanceof TenantImpl)) return false;
+        if (!(o instanceof Tenant)) return false;
 
-        TenantImpl tenant = (TenantImpl) o;
+        Tenant tenant = (Tenant) o;
 
         return new EqualsBuilder()
                 .append(getId(), tenant.getId())

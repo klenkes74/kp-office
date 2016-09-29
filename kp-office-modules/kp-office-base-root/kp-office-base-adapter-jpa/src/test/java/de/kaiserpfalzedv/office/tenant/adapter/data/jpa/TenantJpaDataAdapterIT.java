@@ -16,9 +16,11 @@
 
 package de.kaiserpfalzedv.office.tenant.adapter.data.jpa;
 
+import java.sql.SQLException;
 import java.util.Set;
 import java.util.UUID;
 
+import javax.naming.NamingException;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -28,7 +30,6 @@ import de.kaiserpfalzedv.office.tenant.TenantDoesNotExistException;
 import de.kaiserpfalzedv.office.tenant.TenantExistsException;
 import de.kaiserpfalzedv.office.tenant.adapter.data.TenantDataAdapter;
 import de.kaiserpfalzedv.office.tenant.impl.TenantBuilder;
-import de.kaiserpfalzedv.office.tenant.impl.TenantImpl;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -51,42 +52,31 @@ import static org.junit.Assert.fail;
 public class TenantJpaDataAdapterIT {
     private static final Logger LOG = LoggerFactory.getLogger(TenantJpaDataAdapterIT.class);
 
-    private static final UUID TENANT_ID = UUID.randomUUID();
-    private static final UUID ID = UUID.randomUUID();
-    private static final String DISPLAY_NAME = "Display Name";
-    private static final String FULL_NAME = "Full Name";
+    private static final UUID TENANT_ID = UUID.fromString("37575f5e-9742-417b-812a-ba5ef32470ba");
+    private static final UUID ID = UUID.fromString("37575f5e-9742-417b-812a-ba5ef32470ba");
+    private static final String DISPLAY_NAME = "Display Name 1";
+    private static final String FULL_NAME = "Full Name 1";
+    private static TenantJpaImpl TENANT = new TenantJpaImpl(TENANT_ID, ID, DISPLAY_NAME, FULL_NAME);
 
     private static EntityManagerFactory emf;
-    private static TenantImpl data;
 
     static {
         if (!SLF4JBridgeHandler.isInstalled()) {
             SLF4JBridgeHandler.install();
         }
+
     }
 
     private EntityManager em;
     private TenantDataAdapter service;
 
     @BeforeClass
-    public static void createEntityManagerFactory() {
+    public static void createEntityManagerFactory() throws NamingException, SQLException {
         emf = Persistence.createEntityManagerFactory("tenant");
-
-        EntityManager em = emf.createEntityManager();
-        em.getTransaction().begin();
-
-        data = (TenantImpl) new TenantBuilder()
-                .withId(ID)
-                .withTenantId(TENANT_ID)
-                .withDisplayName(DISPLAY_NAME)
-                .withFullName(FULL_NAME)
-                .build();
-        em.persist(data);
-        em.getTransaction().commit();
     }
 
     @AfterClass
-    public static void destroyEntityManagerFactory() {
+    public static void destroyEntityManagerFactory() throws SQLException {
         if (emf != null) {
             emf.close();
         }
@@ -97,8 +87,8 @@ public class TenantJpaDataAdapterIT {
         Tenant data = new TenantBuilder()
                 .withId(UUID.randomUUID())
                 .withTenantId(TENANT_ID)
-                .withFullName(FULL_NAME + " 2")
-                .withDisplayName(DISPLAY_NAME + " 2")
+                .withFullName(FULL_NAME + " X")
+                .withDisplayName(DISPLAY_NAME + " X")
                 .build();
 
 
@@ -110,7 +100,7 @@ public class TenantJpaDataAdapterIT {
 
         assertTrue(data.equals(result));
         assertTrue(result.equals(data));
-        assertTrue(TenantImpl.class.isAssignableFrom(result.getClass()));
+        assertTrue(Tenant.class.isAssignableFrom(result.getClass()));
 
         assertEquals(data.getTenant(), result.getTenant());
         assertEquals(data.getId(), result.getId());
@@ -143,26 +133,27 @@ public class TenantJpaDataAdapterIT {
 
     @Test
     public void checkRetrieveAll() {
-        Set<Tenant> list = service.retrieve();
-        Tenant result = list.iterator().next();
+        Set<Tenant> result = service.retrieve();
+
         LOG.debug("Result: {}", result);
 
-        assertTrue(result.equals(data));
+        assertTrue(result.size() >= 30);
+        assertTrue(result.contains(TENANT));
     }
 
     @Test
     public void checkUpdateExisting() throws TenantExistsException, TenantDoesNotExistException {
         Tenant data = new TenantBuilder()
-                .withTenant(TenantJpaDataAdapterIT.data)
+                .withTenant(TENANT)
                 .withFullName("Fullname changed!")
                 .build();
 
         Tenant result = service.update(data);
         LOG.debug("Result: {}", result);
 
-        assertTrue(TenantJpaDataAdapterIT.data.equals(result));
-        assertTrue(TenantJpaDataAdapterIT.data.equals(data));
-        assertNotEquals(result.getFullName(), TenantJpaDataAdapterIT.data.getFullName());
+        assertTrue(TENANT.equals(result));
+        assertTrue(TENANT.equals(data));
+        assertNotEquals(result.getFullName(), TENANT.getFullName());
     }
 
     @Test
@@ -202,7 +193,7 @@ public class TenantJpaDataAdapterIT {
     }
 
     @Before
-    public void setupService() throws TenantExistsException {
+    public void setupService() throws TenantExistsException, NamingException {
         em = emf.createEntityManager();
         em.getTransaction().begin();
 

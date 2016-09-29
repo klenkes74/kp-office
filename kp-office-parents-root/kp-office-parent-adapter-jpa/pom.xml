@@ -42,7 +42,6 @@
 
         <jdbc.dbunit.dataTypeFactoryName>org.dbunit.ext.h2.H2DataTypeFactory</jdbc.dbunit.dataTypeFactoryName>
 
-        <!--suppress MavenModelInspection --><!-- Will be set by the build-helper -->
         <jdbc.url>jdbc:h2:tcp://localhost:${h2port}/testdb;AUTO_RECONNECT=TRUE;DB_CLOSE_DELAY=-1</jdbc.url>
         <jdbc.driver>org.h2.Driver</jdbc.driver>
         <jdbc.user>sa</jdbc.user>
@@ -288,6 +287,7 @@
             <version>${h2.version}</version>
             <scope>provided</scope>
         </dependency>
+        <!--
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
@@ -312,6 +312,7 @@
             <version>${derby.version}</version>
             <scope>provided</scope>
         </dependency>
+-->
 
         <!-- testing -->
         <dependency>
