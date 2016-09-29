@@ -254,6 +254,12 @@
                 <version>2.4.2</version>
             </dependency>
 
+            <dependency>
+                <groupId>simple-jndi</groupId>
+                <artifactId>simple-jndi</artifactId>
+                <version>0.11.4.1</version>
+            </dependency>
+
             <!-- Serialzing/JSon/XML -->
             <dependency>
                 <groupId>com.fasterxml.jackson.core</groupId>

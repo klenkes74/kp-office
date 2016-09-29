@@ -249,8 +249,20 @@
                 </plugin>
             </plugins>
         </pluginManagement>
+
     </build>
 
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>de.kaiserpfalz-edv.office</groupId>
+                <artifactId>kp-office-bom</artifactId>
+                <version>${project.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <dependencies>
         <dependency>
@@ -269,7 +281,6 @@
             <artifactId>log4jdbc-remix</artifactId>
             <version>${log4jdbc-remix.version}</version>
         </dependency>
-
 
         <dependency>
             <groupId>com.h2database</groupId>
@@ -303,6 +314,12 @@
         </dependency>
 
         <!-- testing -->
+        <dependency>
+            <groupId>simple-jndi</groupId>
+            <artifactId>simple-jndi</artifactId>
+            <scope>test</scope>
+        </dependency>
+
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>

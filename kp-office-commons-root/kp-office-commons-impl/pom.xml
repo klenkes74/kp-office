@@ -69,5 +69,18 @@
             <groupId>de.kaiserpfalz-edv.office</groupId>
             <artifactId>kp-office-commons-api</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>simple-jndi</groupId>
+            <artifactId>simple-jndi</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- Testing -->
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 </project>

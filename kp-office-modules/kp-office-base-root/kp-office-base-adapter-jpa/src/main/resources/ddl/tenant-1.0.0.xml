@@ -21,30 +21,20 @@
             http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd
         ">
 
-    <changeSet id="tenant-schema-create-h2" author="klenkes74">
-        <preConditions>
-            <dbms type="H2"/>
-        </preConditions>
-
-        <comment>Creates the schema needed for the database.</comment>
-
-        <sql>CREATE SCHEMA IF NOT EXISTS ${db.schema};</sql>
-
-        <rollback>
-            <sql>DROP SCHEMA ${db.schema}</sql>
-        </rollback>
-    </changeSet>
-
     <changeSet id="tenant-initial" author="klenkes74">
         <comment>The initial data base tables.</comment>
 
-        <createTable tableName="TENANTS" schemaName="${db.schema}">
-            <column name="ID_" type="BINARY">
+        <createTable tableName="TENANTS">
+            <column name="ID_" type="VARCHAR(40)">
                 <constraints nullable="false"
                              primaryKey="true" primaryKeyName="TENANTS_PK"/>
             </column>
 
-            <column name="TENANT_" type="BINARY">
+            <column name="VERSION_" type="BIGINT" defaultValue="0">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="TENANT_" type="VARCHAR(40)">
                 <constraints nullable="false"/>
             </column>
 
@@ -58,36 +48,36 @@
         </createTable>
 
         <createIndex indexName="TENANTS_TENANT_IDX"
-                     tableName="TENANTS" schemaName="${db.schema}">
+                     tableName="TENANTS">
             <column name="TENANT_"/>
         </createIndex>
 
         <createIndex indexName="TENANTS_DISPLAY_NAME_UK" unique="true"
-                     tableName="TENANTS" schemaName="${db.schema}">
+                     tableName="TENANTS">
             <column name="TENANT_"/>
             <column name="DISPLAY_NAME_"/>
         </createIndex>
 
         <createIndex indexName="TENANTS_FULL_NAME_UK" unique="true"
-                     tableName="TENANTS" schemaName="${db.schema}">
+                     tableName="TENANTS">
             <column name="TENANT_"/>
             <column name="FULL_NAME_"/>
         </createIndex>
 
         <rollback>
             <dropIndex indexName="TENANTS_FULL_NAME_UK"
-                       tableName="TENANTS" schemaName="${db.schema}"/>
+                       tableName="TENANTS"/>
         </rollback>
         <rollback>
             <dropIndex indexName="TENANTS_DISPLAY_NAME_UK"
-                       tableName="TENANTS" schemaName="${db.schema}"/>
+                       tableName="TENANTS"/>
         </rollback>
         <rollback>
             <dropIndex indexName="TENANTS_TENANT_IDX"
-                       tableName="TENANTS" schemaName="${db.schema}"/>
+                       tableName="TENANTS"/>
         </rollback>
         <rollback>
-            <dropTable tableName="TENANTS" schemaName="${db.schema}"/>
+            <dropTable tableName="TENANTS"/>
         </rollback>
     </changeSet>
 </databaseChangeLog>
