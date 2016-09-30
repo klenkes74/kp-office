@@ -24,6 +24,7 @@ import de.kaiserpfalzedv.office.tenant.commands.TenantCommandBuilder;
 import de.kaiserpfalzedv.office.tenant.commands.TenantCreateCommand;
 import de.kaiserpfalzedv.office.tenant.commands.TenantDeleteCommand;
 import de.kaiserpfalzedv.office.tenant.commands.TenantRetrieveAllCommand;
+import de.kaiserpfalzedv.office.tenant.commands.TenantRetrieveByKeyCommand;
 import de.kaiserpfalzedv.office.tenant.commands.TenantRetrieveCommand;
 import de.kaiserpfalzedv.office.tenant.commands.TenantUpdateCommand;
 import de.kaiserpfalzedv.office.tenant.impl.TenantBuilder;
@@ -48,11 +49,13 @@ public class TenantCommandBuilderTest {
 
     private static final UUID TENANT_ID = UUID.randomUUID();
     private static final UUID TENANT_TENANT = UUID.randomUUID();
+    private static final String KEY = "KEY-002";
     private static final String DISPLAY_NAME = "Display Name";
     private static final String FULL_NAME = "Full Name";
     private static final Tenant TENANT = new TenantBuilder()
             .withTenantId(TENANT_TENANT)
             .withId(TENANT_ID)
+            .withKey(KEY)
             .withDisplayName(DISPLAY_NAME)
             .withFullName(FULL_NAME)
             .build();
@@ -125,6 +128,42 @@ public class TenantCommandBuilderTest {
     }
 
     @Test
+    public void checkRetrieveByKeyCommand() {
+        TenantRetrieveByKeyCommand result = (TenantRetrieveByKeyCommand) service
+                .withSource(SOURCE_ID)
+                .withKey(KEY)
+                .retrieveByKey()
+                .build();
+        LOG.debug("Result: {}", result);
+
+        assertEquals(KEY, result.getKey());
+    }
+
+    @Test
+    public void checkRetrieveByKeyCommandWithoutKey() {
+        try {
+            service.withSource(SOURCE_ID).retrieveByKey().build();
+
+            fail("A BuilderException should be thrown!");
+        } catch (BuilderException e) {
+            // everything is fine.
+        }
+        // No assert since we check for the exception.
+    }
+
+    @Test
+    public void checkRetrieveByKeyCommandWithoutSource() {
+        try {
+            service.withKey(KEY).retrieveByKey().build();
+
+            fail("A BuilderException should be thrown!");
+        } catch (BuilderException e) {
+            // everything is fine.
+        }
+        // No assert since we check for the exception.
+    }
+
+    @Test
     public void checkRetrieveCommand() {
         UUID tenantId = UUID.randomUUID();
         TenantRetrieveCommand result = (TenantRetrieveCommand) service
@@ -165,7 +204,6 @@ public class TenantCommandBuilderTest {
 
     @Test
     public void checkRetrieveAllCommand() {
-        UUID tenantId = UUID.randomUUID();
         TenantRetrieveAllCommand result = (TenantRetrieveAllCommand) service
                 .withSource(SOURCE_ID)
                 .retrieveAll()

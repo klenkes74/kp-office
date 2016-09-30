@@ -19,6 +19,8 @@ package de.kaiserpfalzedv.office.tenant;
 import java.util.Collection;
 import java.util.UUID;
 
+import de.kaiserpfalzedv.office.common.data.BaseService;
+import de.kaiserpfalzedv.office.common.data.BusinessKeyBaseService;
 import de.kaiserpfalzedv.office.common.init.Closeable;
 import de.kaiserpfalzedv.office.common.init.Initializable;
 
@@ -29,7 +31,7 @@ import de.kaiserpfalzedv.office.common.init.Initializable;
  * @version 1.0.0
  * @since 2016-09-04
  */
-public interface TenantService extends Initializable, Closeable {
+public interface TenantService extends BaseService<Tenant>, BusinessKeyBaseService<Tenant>, Initializable, Closeable {
     /**
      * Saves a tenant to the database.
      *
@@ -37,6 +39,7 @@ public interface TenantService extends Initializable, Closeable {
      *
      * @throws TenantExistsException A tenant with the given UUID, full or display name already exists on the system.
      */
+    @Override
     Tenant create(final Tenant data) throws TenantExistsException;
 
 
@@ -49,16 +52,16 @@ public interface TenantService extends Initializable, Closeable {
      *
      * @throws TenantDoesNotExistException If the tenant does not exist.
      */
+    @Override
     Tenant retrieve(final UUID id) throws TenantDoesNotExistException;
-
 
     /**
      * Retrieve all tenants from the database.
      *
      * @return A set of tenants available.
      */
+    @Override
     Collection<Tenant> retrieve();
-
 
     /**
      * Saves new tenant data to the database.
@@ -70,8 +73,8 @@ public interface TenantService extends Initializable, Closeable {
      * @throws TenantDoesNotExistException If there is no tentant with the UUID to be updated.
      * @throws TenantExistsException If the new data would break a constraint (unique full or display name).
      */
+    @Override
     Tenant update(final Tenant data) throws TenantDoesNotExistException, TenantExistsException;
-
 
     /**
      * Deletes the tenant. If it doesn't existed, then no error is given, since that's exactly the state wanted by the
@@ -79,5 +82,9 @@ public interface TenantService extends Initializable, Closeable {
      *
      * @param id The UUID of the tenant to be removed.
      */
+    @Override
     void delete(final UUID id);
+
+    @Override
+    Tenant retrieve(final String businessKey) throws TenantDoesNotExistException;
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 Kaiserpfalz EDV-Service, Roland T. Lichti
+ * Copyright 2016 Kaiserpfalz EDV-Service, Roland T. Lichti
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,19 +16,15 @@
 
 package de.kaiserpfalzedv.office.common.data;
 
-import java.util.UUID;
-
 /**
- * The interface for writing and retrieving identification information.
+ * The <em>key</em> is the human readable identifier of an object. Since KPO uses UUID for internal IDs instead of
+ * the formerly used database sequence number, the identifiers are not really helpful for humans. So the business key,
+ * normally a number (like the account number) is the human readable identifier of the objects.
  *
- * @author klenkes
- * @version 2015Q1
- * @since 27.12.15 11:31
+ * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
+ * @version 1.0.0
+ * @since 2016-09-30
  */
-public interface WritableIdentifyable extends Identifyable, WriteableTenantable {
-    void setId(final UUID id);
-
-    void setDisplayName(final String displayName);
-
-    void setFullName(final String fullName);
+public interface Keyable {
+    String getKey();
 }

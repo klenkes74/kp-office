@@ -26,7 +26,7 @@ import java.util.UUID;
  * @version 2015Q1
  * @since 27.12.15 11:31
  */
-public interface Identifyable extends Tenantable, Nameable, Serializable {
+public interface Identifiable extends Tenantable, Serializable {
     /**
      * @return The UUID of this object.
      */

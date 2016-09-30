@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 Kaiserpfalz EDV-Service, Roland T. Lichti
+ * Copyright 2016 Kaiserpfalz EDV-Service, Roland T. Lichti
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,33 +16,32 @@
 
 package de.kaiserpfalzedv.office.common.data;
 
-import de.kaiserpfalzedv.office.common.BaseBusinessException;
-
 import java.util.UUID;
 
+import de.kaiserpfalzedv.office.common.BaseBusinessException;
+
 /**
- * The object that should be created already exists in the dataset. This exception contains the existing object.
+ * The object that should be created already exists in the dataset.
  *
  * @author klenkes
  * @version 2015Q1
  * @since 29.12.15 20:08
  */
 public class ObjectDoesNotExistException extends BaseBusinessException {
-    private static final long serialVersionUID = -5695559745278478649L;
+    private static final long serialVersionUID = -8241326009224188810L;
 
 
     private Class<?> clasz;
     private UUID     id;
+    private String key;
 
     public ObjectDoesNotExistException(final Class<?> clasz, final UUID objectId) {
-        super(generateMessage(clasz, objectId));
-
-        this.clasz = clasz;
-        this.id = objectId;
+        super("An object of type '" + clasz.getSimpleName() + "' with id '" + objectId.toString() + "' does not exist.");
     }
 
-    private static String generateMessage(final Class<?> clasz, final UUID id) {
-        return "An object of type '" + clasz.getSimpleName() + "' with id '" + id.toString() + "' does not exists.";
+
+    public ObjectDoesNotExistException(final Class<?> clasz, final String key) {
+        super("An object of type '" + clasz.getSimpleName() + "' with key '" + key + "' does not exist.");
     }
 
 
@@ -52,5 +51,9 @@ public class ObjectDoesNotExistException extends BaseBusinessException {
 
     public UUID getObjectId() {
         return id;
+    }
+
+    public String getKey() {
+        return key;
     }
 }

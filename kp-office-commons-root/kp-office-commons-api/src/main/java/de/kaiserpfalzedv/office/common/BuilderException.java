@@ -12,12 +12,11 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- *
  */
 
 package de.kaiserpfalzedv.office.common;
 
-import de.kaiserpfalzedv.office.common.BaseSystemException;
+import java.util.ArrayList;
 
 /**
  * This exception is thrown when a KP defined Builder for any object failes.
@@ -27,13 +26,20 @@ import de.kaiserpfalzedv.office.common.BaseSystemException;
  * @since 29.12.15 19:16
  */
 public class BuilderException extends BaseSystemException {
-    private static final long serialVersionUID = 1483860261806629962L;
+    private static final long serialVersionUID = -6007850304051908139L;
 
     private Class<?> clasz;
     private String[] failures;
 
+    public BuilderException(Class<?> clasz, ArrayList<String> failures) {
+        this(clasz, failures.toArray(new String[1]));
+    }
+
     public BuilderException(Class<?> clasz, String[] failures) {
         super(generateMessage(clasz, failures));
+
+        this.clasz = clasz;
+        this.failures = failures;
     }
 
     private static String generateMessage(Class<?> clasz, String[] failures) {

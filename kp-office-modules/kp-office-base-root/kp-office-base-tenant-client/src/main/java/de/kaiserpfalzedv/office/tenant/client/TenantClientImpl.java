@@ -207,6 +207,13 @@ public class TenantClientImpl implements TenantClient {
     }
 
     @Override
+    public Tenant retrieve(String businessKey) throws TenantDoesNotExistException {
+
+        // TODO klenkes Auto defined stub for: de.kaiserpfalzedv.office.tenant.client.TenantClientImpl.retrieve
+        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
     public void close() {
         // TODO klenkes Auto defined stub for: de.kaiserpfalzedv.office.tenant.client.TenantClient.close
         //To change body of implemented methods use File | Settings | File Templates.

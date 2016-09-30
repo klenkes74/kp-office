@@ -32,8 +32,17 @@ import static org.apache.commons.lang3.StringUtils.isBlank;
 public class TenantBuilder implements Builder<Tenant> {
     private UUID tenant;
     private UUID id;
+    private String key;
     private String displayName;
     private String fullName;
+
+    private Builder<String> keygenerator;
+
+    public TenantBuilder() {}
+
+    public TenantBuilder(final Builder<String> keygenerator) {
+        this.keygenerator = keygenerator;
+    }
 
 
     @Override
@@ -41,7 +50,7 @@ public class TenantBuilder implements Builder<Tenant> {
         defaultValues();
         validate();
 
-        return new TenantImpl(tenant, id, displayName, fullName);
+        return new TenantImpl(tenant, id, key, displayName, fullName);
     }
 
     private void defaultValues() {
@@ -51,6 +60,10 @@ public class TenantBuilder implements Builder<Tenant> {
 
         if (id == null) {
             id = UUID.randomUUID();
+        }
+
+        if (isBlank(key) && keygenerator != null) {
+            key = keygenerator.build();
         }
 
         if (isBlank(displayName)) {
@@ -63,7 +76,11 @@ public class TenantBuilder implements Builder<Tenant> {
     }
 
     private void validate() {
-        ArrayList<String> failures = new ArrayList<>(2);
+        ArrayList<String> failures = new ArrayList<>(3);
+
+        if (isBlank(key)) {
+            failures.add("A tenant needs a key. No Key given or key generator failed.");
+        }
 
         if (isBlank(displayName)) {
             failures.add("A tenant needs a display name. No name given.");
@@ -74,14 +91,20 @@ public class TenantBuilder implements Builder<Tenant> {
         }
 
         if (! failures.isEmpty()) {
-            throw new BuilderException(Tenant.class, failures.toArray(new String[1]));
+            throw new BuilderException(Tenant.class, failures);
         }
+    }
+
+    public TenantBuilder withKeyGenerator(final Builder<String> keygenerator) {
+        this.keygenerator = keygenerator;
+        return this;
     }
 
 
     public TenantBuilder withTenant(final Tenant orig) {
         withTenantId(orig.getTenant());
         withId(orig.getId());
+        withKey(orig.getKey());
         withDisplayName(orig.getDisplayName());
         withFullName(orig.getFullName());
 
@@ -96,6 +119,11 @@ public class TenantBuilder implements Builder<Tenant> {
 
     public TenantBuilder withId(final UUID id) {
         this.id = id;
+        return this;
+    }
+
+    public TenantBuilder withKey(String key) {
+        this.key = key;
         return this;
     }
 

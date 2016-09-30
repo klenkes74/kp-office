@@ -49,6 +49,7 @@ public class TenantMock implements TenantClient {
 
     private static final int DEFAULT_HASHMAPSIZE = 50;
     private final HashMap<UUID, Tenant> tenants = new HashMap<>(DEFAULT_HASHMAPSIZE);
+    private final HashMap<String, Tenant> tenantsByKey = new HashMap<>(DEFAULT_HASHMAPSIZE);
     private final HashMap<String, UUID> displayNames = new HashMap<>(DEFAULT_HASHMAPSIZE);
     private final HashMap<String, UUID> fullNames = new HashMap<>(DEFAULT_HASHMAPSIZE);
 
@@ -67,6 +68,7 @@ public class TenantMock implements TenantClient {
         NullTenant nullTenant = new NullTenant();
 
         tenants.put(nullTenant.getId(), nullTenant);
+        tenantsByKey.put(nullTenant.getKey(), nullTenant);
         displayNames.put(nullTenant.getDisplayName(), nullTenant.getId());
         fullNames.put(nullTenant.getFullName(), nullTenant.getId());
     }
@@ -79,16 +81,20 @@ public class TenantMock implements TenantClient {
     @Override
     public void close() {
         tenants.clear();
+        tenantsByKey.clear();
         displayNames.clear();
         fullNames.clear();
     }
 
     public Tenant create(final Tenant tenant) throws TenantExistsException {
         checkDuplicateId(tenant);
+        checkDuplicateKey(tenant);
         checkDuplicateDisplayName(tenant);
         checkDuplicateFullName(tenant);
 
         tenants.put(tenant.getId(), new TenantBuilder().withTenant(tenant).build());
+        tenantsByKey.put(tenant.getKey(), tenants.get(tenant.getId()));
+
         displayNames.put(tenant.getDisplayName(), tenant.getId());
         fullNames.put(tenant.getFullName(), tenant.getId());
         LOG.info("Saved new tenant with id #{}: {}", tenant.getId(), tenants.get(tenant.getId()));
@@ -101,6 +107,14 @@ public class TenantMock implements TenantClient {
             LOG.info("Tenant with id #{} already exists: {}", tenant.getId(), tenants.get(tenant.getId()));
 
             throw new TenantExistsException(tenants.get(tenant.getId()));
+        }
+    }
+
+    private void checkDuplicateKey(Tenant tenant) throws TenantExistsException {
+        if (tenantsByKey.containsKey(tenant.getKey()) && !tenant.equals(tenantsByKey.get(tenant.getKey()))) {
+            LOG.info("Tenant with key '{}' already exists: {}", tenant.getKey(), tenant);
+
+            throw new TenantExistsException(tenantsByKey.get(tenant.getKey()));
         }
     }
 
@@ -144,6 +158,7 @@ public class TenantMock implements TenantClient {
 
     public Tenant update(final Tenant tenant) throws TenantDoesNotExistException, TenantExistsException {
         checkForNonexistingTenant(tenant);
+        checkDuplicateKey(tenant);
         checkDuplicateDisplayName(tenant);
         checkDuplicateFullName(tenant);
 
@@ -151,8 +166,10 @@ public class TenantMock implements TenantClient {
         displayNames.remove(oldTenant.getDisplayName());
         fullNames.remove(oldTenant.getFullName());
         tenants.remove(tenant.getId());
+        tenantsByKey.remove(tenant.getKey());
 
         tenants.put(tenant.getId(), new TenantBuilder().withTenant(tenant).build());
+        tenantsByKey.put(tenant.getKey(), tenants.get(tenant.getId()));
         displayNames.put(tenant.getDisplayName(), tenant.getId());
         fullNames.put(tenant.getFullName(), tenant.getId());
 
@@ -174,10 +191,19 @@ public class TenantMock implements TenantClient {
 
             displayNames.remove(oldTenant.getDisplayName());
             fullNames.remove(oldTenant.getFullName());
+            tenantsByKey.remove(oldTenant.getKey());
         }
 
         tenants.remove(id);
 
         LOG.info("Deleted tenant with id #{}.", id);
+    }
+
+    public Tenant retrieve(final String key) throws TenantDoesNotExistException {
+        if (!tenantsByKey.containsKey(key)) {
+            throw new TenantDoesNotExistException(key);
+        }
+
+        return tenantsByKey.get(key);
     }
 }

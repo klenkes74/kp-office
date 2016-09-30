@@ -93,10 +93,11 @@ public class TenantServiceImpl implements TenantService {
 
     @Override
     public void delete(UUID id) {
-        try {
-            repository.delete(id);
-        } catch (TenantDoesNotExistException e) {
-            LOG.info("tenant to be deleted did not exist: {}", id);
-        }
+        repository.delete(id);
+    }
+
+    @Override
+    public Tenant retrieve(String businessKey) throws TenantDoesNotExistException {
+        return repository.retrieve(businessKey);
     }
 }

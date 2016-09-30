@@ -31,10 +31,11 @@ import org.apache.commons.lang3.builder.ToStringStyle;
  * @since 2016-09-20
  */
 public class TenantImpl implements Tenant {
-    private static final long serialVersionUID = 1642609469012701167L;
+    private static final long serialVersionUID = 1065912149569391908L;
 
     private UUID id;
     private UUID tenant;
+    private String key;
 
     private String displayName;
     private String fullName;
@@ -48,11 +49,13 @@ public class TenantImpl implements Tenant {
     protected TenantImpl(
             @JsonProperty("tenant") final UUID tenant,
             @JsonProperty("id") final UUID id,
+            @JsonProperty("key") final String key,
             @JsonProperty("displayName") final String displayName,
             @JsonProperty("fullName") final String fullName
     ) {
         this.tenant = tenant;
         this.id = id;
+        this.key = key;
         this.displayName = displayName;
         this.fullName = fullName;
     }
@@ -71,6 +74,11 @@ public class TenantImpl implements Tenant {
     @Override
     public String getFullName() {
         return fullName;
+    }
+
+    @Override
+    public String getKey() {
+        return key;
     }
 
     @Override
@@ -103,6 +111,7 @@ public class TenantImpl implements Tenant {
         return new ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE)
                 .append("id", id)
                 .append("tenant", tenant)
+                .append("key", key)
                 .append("displayName", displayName)
                 .toString();
     }

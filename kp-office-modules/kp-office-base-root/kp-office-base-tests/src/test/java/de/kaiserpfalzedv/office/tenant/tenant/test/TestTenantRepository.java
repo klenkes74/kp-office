@@ -16,12 +16,16 @@
 
 package de.kaiserpfalzedv.office.tenant.tenant.test;
 
+import java.util.Properties;
 import java.util.Set;
 import java.util.UUID;
 
+import javax.annotation.PostConstruct;
 import javax.inject.Inject;
+import javax.persistence.PreRemove;
 
 import com.google.common.collect.Sets;
+import de.kaiserpfalzedv.office.common.init.InitializationException;
 import de.kaiserpfalzedv.office.tenant.Tenant;
 import de.kaiserpfalzedv.office.tenant.TenantDoesNotExistException;
 import de.kaiserpfalzedv.office.tenant.TenantExistsException;
@@ -62,16 +66,32 @@ public class TestTenantRepository implements TenantDataAdapter {
     }
 
     @Override
-    public Tenant delete(UUID id) {
+    public void delete(UUID id) {
         try {
             Tenant result = retrieve(id);
             mock.delete(id);
-
-            return result;
         } catch (TenantDoesNotExistException e) {
             LOG.error(e.getClass().getSimpleName() + " caught: " + e.getMessage(), e);
-
-            return null;
         }
+    }
+
+    @Override
+    public Tenant retrieve(String businessKey) throws TenantDoesNotExistException {
+        return mock.retrieve(businessKey);
+    }
+
+    @PreRemove
+    @Override
+    public void close() {
+    }
+
+    @PostConstruct
+    @Override
+    public void init() throws InitializationException {
+    }
+
+    @Override
+    public void init(Properties properties) throws InitializationException {
+        init();
     }
 }

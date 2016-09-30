@@ -242,50 +242,6 @@
         <appender-ref ref="DEVELOPMENT"/>
         <appender-ref ref="STDOUT"/>
     </logger>
-
-    <logger name="org.hibernate" level="WARN" additivity="false">
-        <appender-ref ref="DEVELOPMENT"/>
-        <appender-ref ref="STDOUT"/>
-    </logger>
-    <logger name="org.hibernate.jpa.internal.util.LogHelper" level="TRACE" additivity="false">
-        <appender-ref ref="DEVELOPMENT"/>
-        <appender-ref ref="STDOUT"/>
-    </logger>
-    <logger name="org.hibernate.cfg.annotations.EntityBinder" level="DEBUG" additivity="false">
-        <appender-ref ref="DEVELOPMENT"/>
-        <appender-ref ref="STDOUT"/>
-    </logger>
-    <logger name="org.hibernate.SQL" level="WARN" additivity="false">
-        <appender-ref ref="DEVELOPMENT"/>
-        <appender-ref ref="STDOUT"/>
-    </logger>
-    <logger name="com.mchange.v2.c3p0" level="INFO" additivity="false">
-        <appender-ref ref="DEVELOPMENT"/>
-        <appender-ref ref="STDOUT"/>
-    </logger>
-
-    <logger name="jdbc.sqlonly" level="WARN" additivity="false">
-        <appender-ref ref="DEVELOPMENT"/>
-        <appender-ref ref="STDOUT"/>
-    </logger>
-    <logger name="jdbc.sqltiming" level="INFO" additivity="false">
-        <appender-ref ref="DEVELOPMENT"/>
-        <appender-ref ref="STDOUT"/>
-    </logger>
-    <logger name="jdbc.audit" level="WARN" additivity="false">
-        <appender-ref ref="DEVELOPMENT"/>
-        <appender-ref ref="STDOUT"/>
-    </logger>
-    <logger name="jdbc.resultset" level="WARN" additivity="false">
-        <appender-ref ref="DEVELOPMENT"/>
-        <appender-ref ref="STDOUT"/>
-    </logger>
-    <logger name="jdbc.connection" level="WARN" additivity="false">
-        <appender-ref ref="DEVELOPMENT"/>
-        <appender-ref ref="STDOUT"/>
-    </logger>
-
-
     <root level="WARN">
         <appender-ref ref="DEVELOPMENT"/>
         <appender-ref ref="STDOUT"/>

@@ -17,7 +17,9 @@
 package de.kaiserpfalzedv.office.tenant;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import de.kaiserpfalzedv.office.common.data.Identifyable;
+import de.kaiserpfalzedv.office.common.data.Identifiable;
+import de.kaiserpfalzedv.office.common.data.Keyable;
+import de.kaiserpfalzedv.office.common.data.Nameable;
 import de.kaiserpfalzedv.office.tenant.impl.TenantImpl;
 
 import static com.fasterxml.jackson.annotation.JsonTypeInfo.As.PROPERTY;
@@ -36,4 +38,4 @@ import static com.fasterxml.jackson.annotation.JsonTypeInfo.As.PROPERTY;
  * @since 2016-09-04
  */
 @JsonTypeInfo(defaultImpl = TenantImpl.class, use = JsonTypeInfo.Id.NAME, include = PROPERTY)
-public interface Tenant extends Identifyable {}
+public interface Tenant extends Identifiable, Nameable, Keyable {}

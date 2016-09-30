@@ -42,11 +42,11 @@
 
         <jdbc.dbunit.dataTypeFactoryName>org.dbunit.ext.h2.H2DataTypeFactory</jdbc.dbunit.dataTypeFactoryName>
 
-        <jdbc.url>jdbc:h2:tcp://localhost:${h2port}/testdb;AUTO_RECONNECT=TRUE;DB_CLOSE_DELAY=-1</jdbc.url>
+        <jdbc.url>jdbc:log4jdbc:h2:tcp://localhost:${h2port}/testdb;AUTO_RECONNECT=TRUE;DB_CLOSE_DELAY=-1</jdbc.url>
         <jdbc.driver>org.h2.Driver</jdbc.driver>
         <jdbc.user>sa</jdbc.user>
         <jdbc.password>password</jdbc.password>
-        <jdbc.driver>org.h2.Driver</jdbc.driver>
+        <jdbc.driver>net.sf.log4jdbc.DriverSpy</jdbc.driver>
         <jdbc.dialect>org.hibernate.dialect.H2Dialect</jdbc.dialect>
 
         <h2-maven-plugin.version>1.0</h2-maven-plugin.version>
@@ -127,6 +127,16 @@
                             <groupId>com.h2database</groupId>
                             <artifactId>h2</artifactId>
                             <version>${h2.version}</version>
+                        </dependency>
+                        <dependency>
+                            <groupId>org.slf4j</groupId>
+                            <artifactId>slf4j-api</artifactId>
+                            <version>1.7.13</version>
+                        </dependency>
+                        <dependency>
+                            <groupId>ch.qos.logback</groupId>
+                            <artifactId>logback-classic</artifactId>
+                            <version>1.1.3</version>
                         </dependency>
                     </dependencies>
                     <executions>

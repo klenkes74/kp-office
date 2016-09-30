@@ -14,19 +14,24 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzedv.office.common.commands;
+package de.kaiserpfalzedv.office.common.data;
 
 /**
+ * The retrieving method for retrieving objects via their business keys.
+ *
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
  * @version 1.0.0
- * @since 2016-09-25
+ * @since 2016-09-30
  */
-public enum CrudCommands {
-    CREATE,
-    RETRIEVE,
-    RETRIEVE_BY_KEY,
-    RETRIEVE_ALL,
-    UPDATE,
-    DELETE,
-    UNSPECIFIED
+public interface BusinessKeyBaseService<T> {
+    /**
+     * Retrieves an object via its business key.
+     *
+     * @param businessKey The human readable business key. Commonly a number is used.
+     *
+     * @return The object associated with the business key.
+     *
+     * @throws ObjectDoesNotExistException If no object of the class has the business number.
+     */
+    T retrieve(String businessKey) throws ObjectDoesNotExistException;
 }

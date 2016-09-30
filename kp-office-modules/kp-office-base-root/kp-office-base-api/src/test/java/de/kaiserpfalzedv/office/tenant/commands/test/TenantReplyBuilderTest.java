@@ -54,11 +54,13 @@ public class TenantReplyBuilderTest {
 
     private static final UUID TENANT_ID = UUID.randomUUID();
     private static final UUID TENANT_TENANT = UUID.randomUUID();
+    private static final String KEY = "KEY-001";
     private static final String DISPLAY_NAME = "Display Name";
     private static final String FULL_NAME = "Full Name";
     private static final Tenant TENANT = new TenantBuilder()
             .withTenantId(TENANT_TENANT)
             .withId(TENANT_ID)
+            .withKey(KEY)
             .withDisplayName(DISPLAY_NAME)
             .withFullName(FULL_NAME)
             .build();

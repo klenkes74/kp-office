@@ -14,19 +14,16 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzedv.office.common.commands;
+package de.kaiserpfalzedv.office.common.data;
+
+import org.apache.commons.lang3.builder.Builder;
 
 /**
+ * Generates a new key for the given object type.
+ *
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
  * @version 1.0.0
- * @since 2016-09-25
+ * @since 2016-09-30
  */
-public enum CrudCommands {
-    CREATE,
-    RETRIEVE,
-    RETRIEVE_BY_KEY,
-    RETRIEVE_ALL,
-    UPDATE,
-    DELETE,
-    UNSPECIFIED
+public interface KeyGenerator<T> extends Builder<String> {
 }

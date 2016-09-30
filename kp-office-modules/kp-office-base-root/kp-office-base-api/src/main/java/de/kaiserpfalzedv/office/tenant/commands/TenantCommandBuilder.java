@@ -28,6 +28,7 @@ import static de.kaiserpfalzedv.office.common.commands.CrudCommands.CREATE;
 import static de.kaiserpfalzedv.office.common.commands.CrudCommands.DELETE;
 import static de.kaiserpfalzedv.office.common.commands.CrudCommands.RETRIEVE;
 import static de.kaiserpfalzedv.office.common.commands.CrudCommands.RETRIEVE_ALL;
+import static de.kaiserpfalzedv.office.common.commands.CrudCommands.RETRIEVE_BY_KEY;
 import static de.kaiserpfalzedv.office.common.commands.CrudCommands.UPDATE;
 
 /**
@@ -42,6 +43,7 @@ public class TenantCommandBuilder<T extends TenantBaseCommand> implements Builde
     private CrudCommands command;
     private UUID tenantId;
     private Tenant tenant;
+    private String key;
 
     @SuppressWarnings("unchecked")
     @Override
@@ -54,6 +56,8 @@ public class TenantCommandBuilder<T extends TenantBaseCommand> implements Builde
                 return (T) new TenantCreateCommand(source, id, tenant);
             case RETRIEVE:
                 return (T) new TenantRetrieveCommand(source, id, tenantId);
+            case RETRIEVE_BY_KEY:
+                return (T) new TenantRetrieveByKeyCommand(source, id, key);
             case RETRIEVE_ALL:
                 return (T) new TenantRetrieveAllCommand(source, id);
             case UPDATE:
@@ -82,6 +86,10 @@ public class TenantCommandBuilder<T extends TenantBaseCommand> implements Builde
             failures.add("No tenant id given for the " + command + " command");
         }
 
+        if (key == null && RETRIEVE_BY_KEY.equals(command)) {
+            failures.add("No key given for the " + command + " command");
+        }
+
         if (command == null) {
             failures.add("No command specified");
         }
@@ -91,7 +99,7 @@ public class TenantCommandBuilder<T extends TenantBaseCommand> implements Builde
         }
 
         if (!failures.isEmpty()) {
-            throw new BuilderException(TenantBaseCommand.class, failures.toArray(new String[1]));
+            throw new BuilderException(TenantBaseCommand.class, failures);
         }
     }
 
@@ -111,6 +119,11 @@ public class TenantCommandBuilder<T extends TenantBaseCommand> implements Builde
         return this;
     }
 
+    public TenantCommandBuilder<T> withKey(final String key) {
+        this.key = key;
+        return this;
+    }
+
     public TenantCommandBuilder<T> withTenant(final Tenant tenant) {
         this.tenant = tenant;
         return this;
@@ -123,6 +136,11 @@ public class TenantCommandBuilder<T extends TenantBaseCommand> implements Builde
 
     public TenantCommandBuilder<T> retrieve() {
         command = RETRIEVE;
+        return this;
+    }
+
+    public TenantCommandBuilder<T> retrieveByKey() {
+        command = RETRIEVE_BY_KEY;
         return this;
     }
 

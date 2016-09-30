@@ -24,13 +24,17 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.UUID;
 
-import javax.inject.Inject;
-
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import cucumber.runtime.arquillian.CukeSpace;
 import cucumber.runtime.arquillian.api.Features;
+import de.kaiserpfalzedv.office.common.BaseSystemException;
+import de.kaiserpfalzedv.office.common.client.config.ConfigReader;
+import de.kaiserpfalzedv.office.common.client.config.impl.ConfigReaderBuilder;
+import de.kaiserpfalzedv.office.common.client.messaging.MessagingCore;
+import de.kaiserpfalzedv.office.common.client.messaging.impl.ActiveMQMessagingCoreImpl;
+import de.kaiserpfalzedv.office.common.init.InitializationException;
 import de.kaiserpfalzedv.office.tenant.client.TenantClientImpl;
 import de.kaiserpfalzedv.office.tenant.impl.TenantBuilder;
 import org.jboss.arquillian.container.test.api.Deployment;
@@ -59,7 +63,19 @@ import static org.junit.Assert.fail;
 public class TenantServiceAT {
     private static final Logger LOG = LoggerFactory.getLogger(TenantServiceAT.class);
 
-    @Inject
+    private static ConfigReader config = new ConfigReaderBuilder().build();
+    private static MessagingCore core = new ActiveMQMessagingCoreImpl(config);
+
+    static {
+        try {
+            core.init();
+        } catch (InitializationException e) {
+            LOG.error(e.getClass().getSimpleName() + " caught: " + e.getMessage(), e);
+
+            throw new BaseSystemException(e);
+        }
+    }
+
     private TenantService service;
 
     private ArrayList<Exception> exceptions = new ArrayList<>();
@@ -87,8 +103,8 @@ public class TenantServiceAT {
         LOG.info("Created {}.", war.getName());
 
         war
-                .addAsLibraries(lib)
-                .addPackages(true, "de.kaiserpfalzedv.office.tenant");
+                .addAsLibraries(lib);
+        // .addPackages(true, "de.kaiserpfalzedv.office.tenant");
 
         LOG.info("Added libraries and packages.");
 
@@ -106,7 +122,7 @@ public class TenantServiceAT {
         addResource(resources, "/classes/", webinfClasses);
 
         for (Map.Entry<String, File> r : resources.entrySet()) {
-            war.addAsWebInfResource(r.getValue(), r.getKey());
+            // war.addAsWebInfResource(r.getValue(), r.getKey());
         }
 
         LOG.info("Added resources to WEB-INF/");
@@ -310,9 +326,8 @@ public class TenantServiceAT {
     }
 
     @Before
-    public void setupService() {
-
-        service = new TenantClientImpl();
+    public void setupService() throws InitializationException {
+        service = new TenantClientImpl(config, core);
     }
 
     @After

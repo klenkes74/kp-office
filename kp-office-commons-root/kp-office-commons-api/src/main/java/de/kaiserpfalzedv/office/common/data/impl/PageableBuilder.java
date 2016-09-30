@@ -16,13 +16,13 @@
 
 package de.kaiserpfalzedv.office.common.data.impl;
 
+import java.util.ArrayList;
+
 import de.kaiserpfalzedv.office.common.BuilderException;
 import de.kaiserpfalzedv.office.common.data.Pageable;
 import org.apache.commons.lang3.builder.Builder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.util.ArrayList;
 
 /**
  * Builds a page definition object.

@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 Kaiserpfalz EDV-Service, Roland T. Lichti
+ * Copyright 2016 Kaiserpfalz EDV-Service, Roland T. Lichti
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,6 +16,8 @@
 
 package de.kaiserpfalzedv.office.common.data.test;
 
+import java.util.ArrayList;
+
 import de.kaiserpfalzedv.office.common.BuilderException;
 import de.kaiserpfalzedv.office.common.data.Pageable;
 import de.kaiserpfalzedv.office.common.data.PagedListable;
@@ -23,8 +25,6 @@ import de.kaiserpfalzedv.office.common.data.impl.PageableBuilder;
 import de.kaiserpfalzedv.office.common.data.impl.PagedListBuilder;
 import org.junit.Before;
 import org.junit.Test;
-
-import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
 

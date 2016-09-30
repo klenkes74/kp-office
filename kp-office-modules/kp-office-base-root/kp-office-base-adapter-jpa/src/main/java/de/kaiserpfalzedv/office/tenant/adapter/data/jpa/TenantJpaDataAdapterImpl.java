@@ -17,6 +17,7 @@
 package de.kaiserpfalzedv.office.tenant.adapter.data.jpa;
 
 import java.util.HashSet;
+import java.util.Properties;
 import java.util.Set;
 import java.util.UUID;
 
@@ -30,13 +31,13 @@ import javax.persistence.QueryTimeoutException;
 import javax.transaction.Transactional;
 import javax.validation.constraints.NotNull;
 
+import de.kaiserpfalzedv.office.common.init.InitializationException;
 import de.kaiserpfalzedv.office.tenant.Tenant;
 import de.kaiserpfalzedv.office.tenant.TenantDoesNotExistException;
 import de.kaiserpfalzedv.office.tenant.TenantExistsException;
 import de.kaiserpfalzedv.office.tenant.adapter.data.TenantDataAdapter;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
+import static javax.persistence.LockModeType.PESSIMISTIC_WRITE;
 import static javax.transaction.Transactional.TxType.REQUIRED;
 import static javax.transaction.Transactional.TxType.SUPPORTS;
 
@@ -49,16 +50,13 @@ import static javax.transaction.Transactional.TxType.SUPPORTS;
  */
 @ApplicationScoped
 public class TenantJpaDataAdapterImpl implements TenantDataAdapter {
-    private static final Logger LOG = LoggerFactory.getLogger(TenantJpaDataAdapterImpl.class);
-
     @PersistenceContext
     private EntityManager em;
 
+    @SuppressWarnings("unused") // Used for CDI
     public TenantJpaDataAdapterImpl() {}
 
-    public TenantJpaDataAdapterImpl(
-            @NotNull final EntityManager em
-    ) {
+    TenantJpaDataAdapterImpl(@NotNull final EntityManager em) {
         this.em = em;
     }
 
@@ -85,15 +83,27 @@ public class TenantJpaDataAdapterImpl implements TenantDataAdapter {
     @Transactional(SUPPORTS)
     public Tenant retrieve(final UUID id) throws TenantDoesNotExistException {
         try {
-            Tenant result = em.createNamedQuery("find-by-id", TenantJpaImpl.class)
-                              .setParameter("id", id.toString())
-                              .getSingleResult();
+            Tenant result = em.find(TenantJpaImpl.class, id.toString());
+
+            em.detach(result);
+
+            return result;
+        } catch (NoResultException | QueryTimeoutException e) {
+            throw new TenantDoesNotExistException(id);
+        }
+    }
+
+    @Override
+    public Tenant retrieve(String businessKey) throws TenantDoesNotExistException {
+        try {
+            TenantJpaImpl result = em.createNamedQuery("find-by-key", TenantJpaImpl.class)
+                                     .getSingleResult();
 
             em.detach(result);
 
             return result;
         } catch (NoResultException | NonUniqueResultException | QueryTimeoutException e) {
-            throw new TenantDoesNotExistException(id);
+            throw new TenantDoesNotExistException(businessKey);
         }
     }
 
@@ -119,10 +129,8 @@ public class TenantJpaDataAdapterImpl implements TenantDataAdapter {
         try {
             TenantJpaImpl db;
             try {
-                db = em.createNamedQuery("find-by-id", TenantJpaImpl.class)
-                       .setParameter("id", data.getId().toString())
-                       .getSingleResult();
-            } catch (NoResultException | NonUniqueResultException | QueryTimeoutException e) {
+                db = em.find(TenantJpaImpl.class, data.getId().toString(), PESSIMISTIC_WRITE);
+            } catch (NoResultException | QueryTimeoutException e) {
                 throw new TenantDoesNotExistException(data.getId());
             }
 
@@ -139,17 +147,26 @@ public class TenantJpaDataAdapterImpl implements TenantDataAdapter {
 
     @Override
     @Transactional(REQUIRED)
-    public Tenant delete(final UUID id) throws TenantDoesNotExistException {
-        try {
-            TenantJpaImpl db = em.createNamedQuery("find-by-id", TenantJpaImpl.class)
-                                 .setParameter("id", id.toString())
-                                 .getSingleResult();
+    public void delete(final UUID id) {
+        TenantJpaImpl db = em.find(TenantJpaImpl.class, id.toString());
 
-            em.remove(db);
+        em.remove(db);
+    }
 
-            return db;
-        } catch (NoResultException | NonUniqueResultException | QueryTimeoutException e) {
-            throw new TenantDoesNotExistException(id);
-        }
+    @Override
+    public void close() {
+        // TODO klenkes Auto defined stub for: de.kaiserpfalzedv.office.tenant.adapter.data.jpa.TenantJpaDataAdapterImpl.close
+        //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    public void init() throws InitializationException {
+        // TODO klenkes Auto defined stub for: de.kaiserpfalzedv.office.tenant.adapter.data.jpa.TenantJpaDataAdapterImpl.init
+        //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    public void init(Properties properties) throws InitializationException {
+        init();
     }
 }

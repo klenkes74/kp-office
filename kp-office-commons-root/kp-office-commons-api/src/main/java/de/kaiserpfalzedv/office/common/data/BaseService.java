@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 Kaiserpfalz EDV-Service, Roland T. Lichti
+ * Copyright 2016 Kaiserpfalz EDV-Service, Roland T. Lichti
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,15 +16,22 @@
 
 package de.kaiserpfalzedv.office.common.data;
 
-import de.kaiserpfalzedv.office.common.data.Tenantable;
-
+import java.util.Collection;
 import java.util.UUID;
 
 /**
- * @author klenkes
- * @version 2015Q1
- * @since 29.12.15 19:10
+ * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
+ * @version 1.0.0
+ * @since 2016-09-30
  */
-public interface WriteableTenantable extends Tenantable {
-    void setTenantId(final UUID tenantId);
+public interface BaseService<T> {
+    T create(final T data) throws ObjectExistsException;
+
+    T retrieve(final UUID id) throws ObjectDoesNotExistException;
+
+    Collection<T> retrieve();
+
+    T update(final T data) throws ObjectExistsException, ObjectDoesNotExistException;
+
+    void delete(final UUID id);
 }

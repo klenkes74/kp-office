@@ -22,13 +22,14 @@
 
     <parent>
         <groupId>de.kaiserpfalz-edv.office</groupId>
-        <artifactId>kp-office-parent-api</artifactId>
+        <artifactId>kp-office-parent-adapter-jpa</artifactId>
         <version>1.0.0-SNAPSHOT</version>
-        <relativePath>../../kp-office-parents-root/kp-office-parent-api/pom.xml</relativePath>
+        <relativePath>../../kp-office-parents-root/kp-office-parent-impl/pom.xml</relativePath>
     </parent>
 
-    <artifactId>kp-office-commons-api</artifactId>
-    <name>KP Office :: Commons :: API</name>
+    <artifactId>kp-office-commons-jpa</artifactId>
+    <name>KP Office :: Commons :: JPA</name>
+
 
     <dependencyManagement>
         <dependencies>
@@ -52,7 +53,7 @@
                         <Bundle-SymbolixName>${project.artifactId}</Bundle-SymbolixName>
                         <Bundle-Version>${project.version}</Bundle-Version>
                         <Export-Package>
-                            de.kaiserpfalzedv.office.common.*;version=${project.version}
+                            de.kaiserpfalzedv.office.common.impl.*;version=${project.version}
                         </Export-Package>
                         <Import-Package>
                             *
@@ -63,31 +64,11 @@
         </plugins>
     </build>
 
+
     <dependencies>
         <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-annotations</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <scope>test</scope>
-        </dependency>
-
-        <!-- Testing -->
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
+            <groupId>de.kaiserpfalz-edv.office</groupId>
+            <artifactId>kp-office-commons-impl</artifactId>
         </dependency>
     </dependencies>
 </project>

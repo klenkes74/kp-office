@@ -80,4 +80,26 @@
             <dropTable tableName="TENANTS"/>
         </rollback>
     </changeSet>
+
+    <changeSet id="20160930125519.0" author="klenkes74">
+        <comment>Adding key colmn to tenant.</comment>
+
+        <addColumn tableName="TENANTS">
+            <column name="KEY_" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+
+        <createIndex indexName="TENANTS_KEY_UK" unique="true"
+                     tableName="TENANTS">
+            <column name="KEY_"/>
+        </createIndex>
+
+        <rollback>
+            <dropIndex tableName="TENANTS" indexName="TENANTS_KEY_UK"/>
+        </rollback>
+        <rollback>
+            <dropColumn tableName="TENANTS" columnName="KEY"/>
+        </rollback>
+    </changeSet>
 </databaseChangeLog>

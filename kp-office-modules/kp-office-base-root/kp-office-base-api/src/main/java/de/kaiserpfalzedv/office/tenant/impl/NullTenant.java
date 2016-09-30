@@ -28,11 +28,11 @@ import de.kaiserpfalzedv.office.tenant.Tenant;
  * @since 27.12.15 11:41
  */
 public class NullTenant extends TenantImpl implements Tenant {
-    private static final long serialVersionUID = 1751230514524921614L;
+    private static final long serialVersionUID = -7307075644371348105L;
 
     private static final UUID NULL_ID          = UUID.fromString("00000000-0000-0000-0000-000000000000");
 
     public NullTenant() {
-        super(NULL_ID, NULL_ID, "", "");
+        super(NULL_ID, NULL_ID, "", "", "");
     }
 }

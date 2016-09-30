@@ -17,7 +17,7 @@
 package de.kaiserpfalzedv.office.tenant.adapter.data.jpa;
 
 import java.sql.SQLException;
-import java.util.Set;
+import java.util.Collection;
 import java.util.UUID;
 
 import javax.naming.NamingException;
@@ -54,9 +54,10 @@ public class TenantJpaDataAdapterIT {
 
     private static final UUID TENANT_ID = UUID.fromString("37575f5e-9742-417b-812a-ba5ef32470ba");
     private static final UUID ID = UUID.fromString("37575f5e-9742-417b-812a-ba5ef32470ba");
+    private static final String KEY = "01";
     private static final String DISPLAY_NAME = "Display Name 1";
     private static final String FULL_NAME = "Full Name 1";
-    private static TenantJpaImpl TENANT = new TenantJpaImpl(TENANT_ID, ID, DISPLAY_NAME, FULL_NAME);
+    private static TenantJpaImpl TENANT = new TenantJpaImpl(TENANT_ID, ID, KEY, DISPLAY_NAME, FULL_NAME);
 
     private static EntityManagerFactory emf;
 
@@ -87,6 +88,7 @@ public class TenantJpaDataAdapterIT {
         Tenant data = new TenantBuilder()
                 .withId(UUID.randomUUID())
                 .withTenantId(TENANT_ID)
+                .withKey(KEY + " X")
                 .withFullName(FULL_NAME + " X")
                 .withDisplayName(DISPLAY_NAME + " X")
                 .build();
@@ -104,6 +106,7 @@ public class TenantJpaDataAdapterIT {
 
         assertEquals(data.getTenant(), result.getTenant());
         assertEquals(data.getId(), result.getId());
+        assertEquals(data.getKey(), result.getKey());
         assertEquals(data.getDisplayName(), result.getDisplayName());
         assertEquals(data.getFullName(), result.getFullName());
     }
@@ -133,12 +136,21 @@ public class TenantJpaDataAdapterIT {
 
     @Test
     public void checkRetrieveAll() {
-        Set<Tenant> result = service.retrieve();
+        Collection<Tenant> result = service.retrieve();
 
         LOG.debug("Result: {}", result);
 
         assertTrue(result.size() >= 30);
         assertTrue(result.contains(TENANT));
+    }
+
+
+    @Test
+    public void checkRetrieveWithKey() throws TenantDoesNotExistException {
+        Tenant result = service.retrieve(KEY);
+        LOG.debug("Result: {}", result);
+
+        assertEquals(ID, result.getId());
     }
 
     @Test
@@ -175,25 +187,20 @@ public class TenantJpaDataAdapterIT {
     }
 
     @Test
-    public void checkDeleteExisting() throws TenantDoesNotExistException {
-        service.delete(ID);
+    public void checkDeleteExisting() throws TenantExistsException {
+        Tenant data = new TenantBuilder()
+                .withDisplayName("To be deleted")
+                .withFullName("Full to be deleted")
+                .build();
+
+        Tenant tenant = service.create(data);
+
+        service.delete(tenant.getId());
     }
 
-    @Test
-    public void checkDeleteNotExisting() {
-        try {
-            service.delete(UUID.randomUUID());
-
-            fail("A TenantDoesNotExistException should have been thrown!");
-        } catch (TenantDoesNotExistException e) {
-            // Nothing to do. Everything as expected!
-        }
-
-        // No asserts. We are checking the exception!
-    }
 
     @Before
-    public void setupService() throws TenantExistsException, NamingException {
+    public void setupService() throws NamingException {
         em = emf.createEntityManager();
         em.getTransaction().begin();
 
@@ -202,15 +209,14 @@ public class TenantJpaDataAdapterIT {
 
     @After
     public void teardownService() {
-        try {
-            service.delete(ID);
-        } catch (TenantDoesNotExistException e) {
-            // it's ok, if it not there any more!
-        }
-
         if (em != null) {
-            em.getTransaction().rollback();
+            if (em.getTransaction().isActive() && !em.getTransaction().getRollbackOnly()) {
+                em.getTransaction().commit();
+            } else {
+                em.getTransaction().rollback();
+            }
             em.close();
+            em = null;
         }
 
         service = null;

@@ -42,6 +42,7 @@ import static org.junit.Assert.fail;
 public abstract class AbstractTenantServiceTestClass {
     private static final UUID TENANT_ID = UUID.randomUUID();
     private static final UUID ID = UUID.randomUUID();
+    private static final String KEY = "KEY-006";
     private static final String DISPLAY_NAME = "display name";
     private static final String FULL_NAME = "full name";
 
@@ -65,6 +66,7 @@ public abstract class AbstractTenantServiceTestClass {
         return new TenantBuilder()
                 .withTenantId(TENANT_ID)
                 .withId(ID)
+                .withKey(KEY)
                 .withDisplayName(DISPLAY_NAME)
                 .withFullName(FULL_NAME)
                 .build();
@@ -88,6 +90,30 @@ public abstract class AbstractTenantServiceTestClass {
     }
 
     @Test
+    public void checkCreateTenantWithExistingKey() throws TenantExistsException {
+        Tenant data = createDefaultTenant();
+
+        service.create(data);
+
+        try {
+            Tenant second = new TenantBuilder()
+                    .withDisplayName("another name")
+                    .withFullName("another full name")
+                    .withId(UUID.randomUUID())
+                    .withKey(KEY)
+                    .build();
+
+            service.create(second);
+
+            fail("The second create should have thrown a TenantExistsException!");
+        } catch (TenantExistsException e) {
+            // every thing worked out as expected!
+        }
+
+        // No assert needed. A failure will be thrown inside the try-catch-block if the expected exception is missing.
+    }
+
+    @Test
     public void checkCreateTenantWithSameDisplayName() throws TenantExistsException {
         Tenant data = createDefaultTenant();
         service.create(data);
@@ -97,6 +123,7 @@ public abstract class AbstractTenantServiceTestClass {
                     .withDisplayName(DISPLAY_NAME)
                     .withFullName("another full name")
                     .withId(UUID.randomUUID())
+                    .withKey(UUID.randomUUID().toString())
                     .build();
 
             service.create(second);
@@ -119,6 +146,7 @@ public abstract class AbstractTenantServiceTestClass {
                     .withDisplayName("another display name")
                     .withFullName(FULL_NAME)
                     .withId(UUID.randomUUID())
+                    .withKey(UUID.randomUUID().toString())
                     .build();
 
             service.create(second);
@@ -176,6 +204,7 @@ public abstract class AbstractTenantServiceTestClass {
     public void checkRetrieveAllTenants() throws TenantExistsException {
         for (int i=1001; i <= 1050; i++) {
             Tenant data = new TenantBuilder()
+                    .withKey("K" + i)
                     .withDisplayName("Tenant #" + i)
                     .withFullName("Tenant Nr. " + i)
                     .build();
@@ -208,7 +237,9 @@ public abstract class AbstractTenantServiceTestClass {
         Tenant change = new TenantBuilder().withTenant(orig).withDisplayName("new display name").build();
         service.update(change);
 
-        Tenant second = new TenantBuilder().withTenant(orig).withFullName("another full name").withId(UUID.randomUUID()).build();
+        Tenant second = new TenantBuilder().withTenant(orig).withFullName("another full name")
+                                           .withId(UUID.randomUUID()).withKey(UUID.randomUUID().toString())
+                                           .build();
         Tenant result = service.create(second);
 
         assertEquals(result, second);
@@ -230,6 +261,7 @@ public abstract class AbstractTenantServiceTestClass {
                 .withTenant(orig)
                 .withDisplayName("another display name")
                 .withId(UUID.randomUUID())
+                .withKey(UUID.randomUUID().toString())
                 .build();
         Tenant result = service.create(second);
 

@@ -61,6 +61,10 @@
     <dependencies>
         <dependency>
             <groupId>de.kaiserpfalz-edv.office</groupId>
+            <artifactId>kp-office-commons-jpa</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>de.kaiserpfalz-edv.office</groupId>
             <artifactId>kp-office-base-tenant-impl</artifactId>
             <scope>provided</scope>
         </dependency>

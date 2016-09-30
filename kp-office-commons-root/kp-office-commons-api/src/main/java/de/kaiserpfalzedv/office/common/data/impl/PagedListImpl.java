@@ -16,12 +16,12 @@
 
 package de.kaiserpfalzedv.office.common.data.impl;
 
-import de.kaiserpfalzedv.office.common.data.Pageable;
-import de.kaiserpfalzedv.office.common.data.PagedListable;
-
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+
+import de.kaiserpfalzedv.office.common.data.Pageable;
+import de.kaiserpfalzedv.office.common.data.PagedListable;
 
 /**
  * @author klenkes

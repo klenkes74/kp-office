@@ -29,7 +29,13 @@ import de.kaiserpfalzedv.office.common.data.ObjectDoesNotExistException;
  * @since 2016-09-04
  */
 public class TenantDoesNotExistException extends ObjectDoesNotExistException {
+    private static final long serialVersionUID = 2194497152285502736L;
+
     public TenantDoesNotExistException(final UUID id) {
         super(Tenant.class, id);
+    }
+
+    public TenantDoesNotExistException(final String key) {
+        super(Tenant.class, key);
     }
 }

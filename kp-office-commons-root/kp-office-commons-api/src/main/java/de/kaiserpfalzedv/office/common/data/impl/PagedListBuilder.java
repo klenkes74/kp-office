@@ -16,13 +16,13 @@
 
 package de.kaiserpfalzedv.office.common.data.impl;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
 import de.kaiserpfalzedv.office.common.BuilderException;
 import de.kaiserpfalzedv.office.common.data.Pageable;
 import de.kaiserpfalzedv.office.common.data.PagedListable;
 import org.apache.commons.lang3.builder.Builder;
-
-import java.util.ArrayList;
-import java.util.Collection;
 
 /**
  * @author klenkes
