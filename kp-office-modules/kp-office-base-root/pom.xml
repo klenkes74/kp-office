@@ -34,11 +34,12 @@
     <modules>
         <module>kp-office-base-api</module>
         <!--
-        <module>kp-office-base-access-impl</module>
         <module>kp-office-base-contacts-impl</module>
         <module>kp-office-base-files-impl</module>
         <module>kp-office-base-license-impl</module>
         -->
+        <module>kp-office-base-access-impl</module>
+        <module>kp-office-base-access-client</module>
         <module>kp-office-base-tenant-impl</module>
         <module>kp-office-base-tenant-client</module>
         <module>kp-office-base-adapter-jpa</module>

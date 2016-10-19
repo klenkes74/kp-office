@@ -22,11 +22,9 @@ import javax.persistence.Access;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
-import javax.persistence.Index;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
 
 import de.kaiserpfalzedv.office.commons.jpa.impl.AbstractIdentifiableImpl;
 import de.kaiserpfalzedv.office.commons.jpa.impl.NameableImpl;
@@ -44,15 +42,7 @@ import static org.apache.commons.lang3.builder.ToStringStyle.SHORT_PREFIX_STYLE;
  */
 @Entity(name = "Tenant")
 @Table(
-        name = "TENANTS",
-        indexes = {
-                @Index(name = "TENANTS_TENANT_IDX", columnList = "TENANT_")
-        },
-        uniqueConstraints = {
-                @UniqueConstraint(name = "TENANTS_DISPLAY_NAME_UK", columnNames = {"TENANT_", "DISPLAY_NAME_"}),
-                @UniqueConstraint(name = "TENANTS_FULL_NAME_UK", columnNames = {"TENANT_", "FULL_NAME_"}),
-                @UniqueConstraint(name = "TENANTS_KEY_UK", columnNames = {"TENANT_", "KEY_"})
-        }
+        name = "TENANTS"
 )
 @Access(FIELD)
 @NamedQueries({
