@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Kaiserpfalz EDV-Service, Roland T. Lichti
+ * Copyright 2017 Kaiserpfalz EDV-Service, Roland T. Lichti
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -139,20 +139,20 @@ public class AbstractIdentifiableImpl implements Identifiable {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Identifiable)) return false;
-        Identifiable that = (Identifiable) o;
-        return Objects.equals(getId(), that.getId());
-    }
-
-    @Override
     public UUID getId() {
         return idCache;
     }
 
     protected void setId(UUID id) {
         idCache = id;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Identifiable)) return false;
+        Identifiable that = (Identifiable) o;
+        return Objects.equals(getId(), that.getId());
     }
 
     @Override

@@ -1,0 +1,157 @@
+<!--
+  ~ Copyright 2017 Kaiserpfalz EDV-Service, Roland T. Lichti
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="
+            http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd
+        ">
+
+    <changeSet id="contacts-initial" author="klenkes74">
+        <comment>The initial data base tables.</comment>
+
+        <createTable tableName="CITIES">
+            <!--
+            country code      : iso country code, 2 characters
+            postal code       : varchar(20)
+            place name        : varchar(180)
+            admin name1       : 1. order subdivision (state) varchar(100)
+            admin code1       : 1. order subdivision (state) varchar(20)
+            admin name2       : 2. order subdivision (county/province) varchar(100)
+            admin code2       : 2. order subdivision (county/province) varchar(20)
+            admin name3       : 3. order subdivision (community) varchar(100)
+            admin code3       : 3. order subdivision (community) varchar(20)
+            latitude          : estimated latitude (wgs84)
+            longitude         : estimated longitude (wgs84)
+            accuracy          : accuracy of lat/lng from 1=estimated to 6=centroid
+            -->
+
+            <column name="COUNTRY_" type="CHAR(2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="POSTAL_CODE_" type="VARCHAR(20)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="PLACE_NAME_" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="ADMIN1_NAME_" type="VARCHAR(100)" defaultValue="n/a"/>
+            <column name="ADMIN1_CODE_" type="VARCHAR(20)" defaultValue="n/a"/>
+
+            <column name="ADMIN2_NAME_" type="VARCHAR(100)" defaultValue="n/a"/>
+            <column name="ADMIN2_CODE_" type="VARCHAR(20)" defaultValue="n/a"/>
+
+            <column name="ADMIN3_NAME_" type="VARCHAR(100)" defaultValue="n/a"/>
+            <column name="ADMIN3_CODE_" type="VARCHAR(20)" defaultValue="n/a"/>
+
+            <column name="LATITUDE_" type="VARCHAR(8)" defaultValue="0.0000"/>
+            <column name="LONGITUDE_" type="VARCHAR(8)" defaultValue="0.0000"/>
+
+            <column name="ACCURACY_" type="SMALLINT" defaultValue="6"/>
+        </createTable>
+
+        <addPrimaryKey tableName="CITIES" columnNames="COUNTRY_,POSTAL_CODE_" constraintName="CITIES_PK"/>
+
+        <createIndex tableName="CITIES" indexName="CITIES_NAME" unique="false">
+            <column name="PLACE_NAME_"/>
+        </createIndex>
+
+        <createIndex tableName="CITIES" indexName="CITIES_ADMIN1_NAME" unique="false">
+            <column name="ADMIN1_NAME_"/>
+        </createIndex>
+
+
+        <createIndex tableName="CITIES" indexName="CITIES_ADMIN2_NAME" unique="false">
+            <column name="ADMIN2_NAME_"/>
+        </createIndex>
+
+
+        <createIndex tableName="CITIES" indexName="CITIES_ADMIN3_NAME" unique="false">
+            <column name="ADMIN3_NAME_"/>
+        </createIndex>
+
+        <createTable tableName="CONTACTS">
+            <column name="ID_" type="VARCHAR(40)">
+                <constraints nullable="false"
+                             primaryKey="true" primaryKeyName="CONTACTS_PK"/>
+            </column>
+
+            <column name="KEY_" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="VERSION_" type="BIGINT" defaultValue="0">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="TENANT_" type="VARCHAR(40)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="DISPLAY_NAME_" type="VARCHAR(200)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="FULL_NAME_" type="VARCHAR(1000)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createIndex indexName="CONTACTS_TENANT_IDX"
+                     tableName="CONTACTS">
+            <column name="TENANT_"/>
+        </createIndex>
+
+        <createIndex indexName="CONTACTS_DISPLAY_NAME_UK" unique="true"
+                     tableName="CONTACTS">
+            <column name="TENANT_"/>
+            <column name="DISPLAY_NAME_"/>
+        </createIndex>
+
+        <createIndex indexName="CONTACTS_FULL_NAME_UK" unique="true"
+                     tableName="CONTACTS">
+            <column name="TENANT_"/>
+            <column name="FULL_NAME_"/>
+        </createIndex>
+
+        <createIndex indexName="CONTACTS_KEY_UK" unique="true"
+                     tableName="CONTACTS">
+            <column name="KEY_"/>
+        </createIndex>
+
+        <rollback>
+            <dropIndex tableName="CONTACTS" indexName="CONTACTS_KEY_UK"/>
+        </rollback>
+        <rollback>
+            <dropIndex indexName="CONTACTS_FULL_NAME_UK"
+                       tableName="CONTACTS"/>
+        </rollback>
+        <rollback>
+            <dropIndex indexName="CONTACTS_DISPLAY_NAME_UK"
+                       tableName="CONTACTS"/>
+        </rollback>
+        <rollback>
+            <dropIndex indexName="CONTACTS_TENANT_IDX"
+                       tableName="CONTACTS"/>
+        </rollback>
+        <rollback>
+            <dropTable tableName="CONTACTS"/>
+        </rollback>
+    </changeSet>
+</databaseChangeLog>

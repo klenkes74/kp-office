@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  ~ Copyright 2016 Kaiserpfalz EDV-Service, Roland T. Lichti
+  ~ Copyright 2017 Kaiserpfalz EDV-Service, Roland T. Lichti
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
   ~ you may not use this file except in compliance with the License.
@@ -62,11 +62,6 @@
             <!-- Base -->
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>kp-office-base-api</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>${project.groupId}</groupId>
                 <artifactId>kp-office-base-adapter-jpa</artifactId>
                 <version>${project.version}</version>
             </dependency>
@@ -77,53 +72,63 @@
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>kp-office-base-access-impl</artifactId>
+                <artifactId>kp-office-base-tenant</artifactId>
                 <version>${project.version}</version>
+                <classifier>ejb</classifier>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>kp-office-base-access-client</artifactId>
+                <artifactId>kp-office-base-tenant</artifactId>
                 <version>${project.version}</version>
+                <classifier>client</classifier>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>kp-office-base-tenant-impl</artifactId>
+                <artifactId>kp-office-base-access</artifactId>
                 <version>${project.version}</version>
+                <classifier>ejb</classifier>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>kp-office-base-tenant-client</artifactId>
+                <artifactId>kp-office-base-access</artifactId>
                 <version>${project.version}</version>
+                <classifier>client</classifier>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>kp-office-base-contacts-impl</artifactId>
+                <artifactId>kp-office-base-contacts</artifactId>
                 <version>${project.version}</version>
+                <classifier>ejb</classifier>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>kp-office-base-contacts-client</artifactId>
+                <artifactId>kp-office-base-contacts</artifactId>
                 <version>${project.version}</version>
+                <classifier>client</classifier>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>kp-office-base-files-impl</artifactId>
+                <artifactId>kp-office-base-files</artifactId>
                 <version>${project.version}</version>
+                <classifier>ejb</classifier>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>kp-office-base-files-client</artifactId>
+                <artifactId>kp-office-base-files</artifactId>
                 <version>${project.version}</version>
+                <classifier>client</classifier>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>kp-office-base-license-impl</artifactId>
+                <artifactId>kp-office-base-license</artifactId>
                 <version>${project.version}</version>
+                <classifier>ejb</classifier>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>kp-office-base-license-client</artifactId>
+                <artifactId>kp-office-base-license</artifactId>
                 <version>${project.version}</version>
+                <classifier>client</classifier>
             </dependency>
 
             <!-- Finance -->
