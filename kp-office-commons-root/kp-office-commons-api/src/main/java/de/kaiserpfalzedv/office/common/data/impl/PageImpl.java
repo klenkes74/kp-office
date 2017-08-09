@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Kaiserpfalz EDV-Service, Roland T. Lichti
+ * Copyright 2017 Kaiserpfalz EDV-Service, Roland T. Lichti
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,6 +17,8 @@
 package de.kaiserpfalzedv.office.common.data.impl;
 
 import de.kaiserpfalzedv.office.common.data.Pageable;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
@@ -42,6 +44,36 @@ public class PageImpl implements Pageable {
         this.size = size;
         this.totalPages = totalPages;
         this.totalCount = totalCount;
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder()
+                .append(page)
+                .append(size)
+                .append(totalPages)
+                .append(totalCount)
+                .toHashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (obj == this) {
+            return true;
+        }
+        if (obj.getClass() != getClass()) {
+            return false;
+        }
+        PageImpl rhs = (PageImpl) obj;
+        return new EqualsBuilder()
+                .append(this.getPage(), rhs.getPage())
+                .append(this.getSize(), rhs.getSize())
+                .append(this.getTotalPages(), rhs.getTotalPages())
+                .append(this.getTotalCount(), rhs.getTotalCount())
+                .isEquals();
     }
 
     @Override
@@ -104,6 +136,15 @@ public class PageImpl implements Pageable {
         return new PageImpl(totalPages - 1, size, totalPages, totalCount);
     }
 
+    @Override
+    public int getFirstResult() {
+        return (int) (page * size);
+    }
+
+    @Override
+    public int getMaxResults() {
+        return (int) size;
+    }
 
     @Override
     public String toString() {

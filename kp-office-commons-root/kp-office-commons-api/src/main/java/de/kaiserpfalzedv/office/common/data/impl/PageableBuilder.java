@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Kaiserpfalz EDV-Service, Roland T. Lichti
+ * Copyright 2017 Kaiserpfalz EDV-Service, Roland T. Lichti
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -51,7 +51,8 @@ public class PageableBuilder implements Builder<Pageable> {
 
     private void setDefaultValues() {
         if (size == 0) size = DEFAULT_PAGE_SIZE;
-        if (totalPages == 0) totalPages = page + 1;
+        if (totalCount == 0) totalCount = size;
+        if (totalPages == 0) totalPages = totalCount / size + (totalCount % size > 0 ? 1 : 0);
     }
 
     private void validate() {

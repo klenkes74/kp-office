@@ -1,3 +1,4 @@
+COUNTRY_	POSTAL_CODE_	PLACE_NAME_	ADMIN1_NAME_	ADMIN1_CODE_	ADMIN2_NAME_	ADMIN2_CODE_	ADMIN3_NAME_	ADMIN3_CODE_	LATITUDE_	LONGITUDE_	ACCURACY_
 DK	7900	Nykøbing M	Region Nordjylland	81	Morsø Kommune	773			56.7619	8.6836	1
 DK	7950	Erslev	Region Nordjylland	81	Morsø Kommune	773			56.8298	8.7501	4
 DK	7960	Karby	Region Nordjylland	81	Morsø Kommune	773			56.7536	8.5613	4
@@ -248,7 +249,7 @@ DK	8660	Skanderborg	Region Midtjylland	82	Skanderborg Kommune	746			56.0399	9.92
 DK	8670	Låsby	Region Midtjylland	82	Skanderborg Kommune	746			56.1502	9.8068	4
 DK	8680	Ry	Region Midtjylland	82	Skanderborg Kommune	746			56.0904	9.7651	4
 DK	8751	Gedved	Region Midtjylland	82	Skanderborg Kommune	746			55.9308	9.846	4
-DK	8000	Aarhus C	Region Midtjylland	82	Aarhus Kommune	751			56.1567	10.2108	
+DK	8000	Aarhus C	Region Midtjylland	82	Aarhus Kommune	751			56.1567	10.2108	6
 DK	8200	Aarhus N	Region Midtjylland	82	Aarhus Kommune	751			56.1663	10.1987	1
 DK	8210	Aarhus V	Region Midtjylland	82	Aarhus Kommune	751			56.1663	10.1987	1
 DK	8220	Brabrand	Region Midtjylland	82	Aarhus Kommune	751			56.1531	10.1057	4
@@ -394,7 +395,7 @@ DK	5800	Nyborg	Region Syddanmark	83	Nyborg Kommune	450			55.3127	10.7896	4
 DK	5853	Ørbæk	Region Syddanmark	83	Nyborg Kommune	450			55.2585	10.6708	4
 DK	5871	Frørup	Region Syddanmark	83	Nyborg Kommune	450			55.2424	10.7156	4
 DK	5874	Hesselager	Region Syddanmark	83	Nyborg Kommune	450			55.1755	10.7452	4
-DK	5000	Odense C	Region Syddanmark	83	Odense Kommune	461			55.3959	10.3883	
+DK	5000	Odense C	Region Syddanmark	83	Odense Kommune	461			55.3959	10.3883	6
 DK	5200	Odense V	Region Syddanmark	83	Odense Kommune	461			55.3902	10.5201	1
 DK	5210	Odense NV	Region Syddanmark	83	Odense Kommune	461			55.3902	10.5201	1
 DK	5220	Odense SØ	Region Syddanmark	83	Odense Kommune	461			55.3902	10.5201	1
@@ -557,417 +558,417 @@ DK	7321	Gadbjerg	Region Syddanmark	83	Vejle Kommune	630			55.7715	9.3248	4
 DK	7323	Give	Region Syddanmark	83	Vejle Kommune	630			55.8398	9.25	4
 DK	7330	Brande	Region Syddanmark	83	Vejle Kommune	630			55.9381	9.1218	4
 DK	7361	Ejstrupholm	Region Syddanmark	83	Vejle Kommune	630			55.9841	9.2818	4
-DK	0900	København C	Region Hovedstaden	84	Københavns Kommune	101			57.048	9.9187	
-DK	0960	Udland	Region Hovedstaden	84	Københavns Kommune	101			56.804	9.5144	
-DK	0999	København C	Region Hovedstaden	84	Københavns Kommune	101			57.7209	10.5839	
-DK	1000	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1050	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1051	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1052	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1053	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1054	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1055	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1056	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1057	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1058	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1059	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1060	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1061	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1062	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1063	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1064	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1065	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1066	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1067	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1068	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1069	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1070	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1071	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1072	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1073	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1074	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1092	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1093	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1095	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1098	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1100	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1101	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1102	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1103	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1104	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1105	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1106	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1107	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1110	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1111	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1112	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1113	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1114	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1115	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1116	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1117	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1118	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1119	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1120	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1121	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1122	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1123	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1124	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1125	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1126	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1127	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1128	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1129	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1130	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1131	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1140	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1147	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1148	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1150	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1151	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1152	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1153	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1154	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1155	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1156	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1157	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1158	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1159	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1160	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1161	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1162	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1164	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1165	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1166	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1167	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1168	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1169	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1170	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1171	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1172	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1173	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1174	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1175	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1200	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1201	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1202	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1203	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1204	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1205	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1206	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1207	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1208	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1209	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1210	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1211	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1213	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1214	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1215	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1216	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1217	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1218	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1219	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1220	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1221	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1240	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1250	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1251	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1253	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1254	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1255	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1256	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1257	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1259	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1260	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1261	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1263	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1264	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1265	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1266	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1267	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1268	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1270	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1271	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1291	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1300	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1301	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1302	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1303	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1304	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1306	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1307	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1308	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1309	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1310	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1311	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1312	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1313	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1314	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1315	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1316	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1317	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1318	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1319	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1320	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1321	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1322	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1323	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1324	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1325	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1326	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1327	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1328	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1329	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1350	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1352	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1353	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1354	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1355	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1356	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1357	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1358	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1359	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1360	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1361	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1362	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1363	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1364	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1365	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1366	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1367	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1368	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1369	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1370	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1371	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1400	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1401	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1402	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1403	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1406	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1407	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1408	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1409	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1410	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1411	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1412	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1413	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1414	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1415	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1416	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1417	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1418	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1419	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1420	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1421	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1422	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1423	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1424	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1425	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1426	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1427	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1428	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1429	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1430	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1431	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1432	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1433	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1434	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1435	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1436	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1437	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1438	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1439	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1440	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1441	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1448	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1450	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1451	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1452	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1453	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1454	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1455	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1456	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1457	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1458	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1459	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1460	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1462	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1463	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1464	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1466	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1467	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1468	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1470	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1471	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1472	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1500	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1513	Centraltastning	Region Hovedstaden	84	Københavns Kommune	101			55.6711	12.5653	
-DK	1550	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1551	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1552	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1553	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1554	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1555	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1556	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1557	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1558	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1559	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1560	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1561	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1562	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1563	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1564	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1566	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1567	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1568	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1569	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1570	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1571	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1572	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1573	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1574	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1575	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1576	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1577	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1592	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1599	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1600	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1601	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1602	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1603	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1604	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1606	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1607	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1608	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1609	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1610	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1611	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1612	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1613	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1614	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1615	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1616	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1617	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1618	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1619	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1620	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1621	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1622	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1623	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1624	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1630	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1631	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1632	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1633	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1634	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1635	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1650	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1651	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1652	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1653	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1654	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1655	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1656	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1657	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1658	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1659	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1660	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1661	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1662	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1663	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1664	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1665	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1666	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1667	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1668	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1669	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1670	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1671	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1672	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1673	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1674	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1675	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1676	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1677	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1699	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1700	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1701	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1702	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1703	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1704	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1705	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1706	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1707	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1708	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1709	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1710	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1711	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1712	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1714	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1715	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1716	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1717	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1718	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1719	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1720	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1721	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1722	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1723	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1724	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1725	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1726	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1727	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1728	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1729	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1730	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1731	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1732	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1733	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1734	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1735	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1736	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1737	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1738	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1739	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1749	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1750	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1751	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1752	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1753	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1754	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1755	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1756	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1757	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1758	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1759	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1760	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1761	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1762	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1763	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1764	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1765	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1766	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1770	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1771	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1772	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1773	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1774	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1775	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1777	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1780	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1785	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1786	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1787	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1790	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1799	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	1810	Frederiksberg C	Region Hovedstaden	84	Københavns Kommune	101			55.6794	12.5346	
+DK	0900	København C	Region Hovedstaden	84	Københavns Kommune	101			57.048	9.9187	6
+DK	0960	Udland	Region Hovedstaden	84	Københavns Kommune	101			56.804	9.5144	6
+DK	0999	København C	Region Hovedstaden	84	Københavns Kommune	101			57.7209	10.5839	6
+DK	1000	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1050	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1051	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1052	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1053	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1054	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1055	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1056	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1057	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1058	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1059	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1060	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1061	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1062	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1063	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1064	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1065	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1066	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1067	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1068	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1069	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1070	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1071	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1072	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1073	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1074	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1092	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1093	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1095	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1098	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1100	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1101	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1102	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1103	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1104	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1105	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1106	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1107	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1110	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1111	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1112	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1113	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1114	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1115	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1116	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1117	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1118	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1119	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1120	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1121	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1122	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1123	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1124	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1125	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1126	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1127	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1128	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1129	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1130	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1131	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1140	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1147	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1148	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1150	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1151	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1152	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1153	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1154	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1155	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1156	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1157	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1158	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1159	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1160	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1161	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1162	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1164	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1165	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1166	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1167	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1168	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1169	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1170	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1171	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1172	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1173	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1174	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1175	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1200	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1201	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1202	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1203	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1204	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1205	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1206	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1207	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1208	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1209	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1210	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1211	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1213	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1214	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1215	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1216	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1217	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1218	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1219	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1220	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1221	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1240	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1250	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1251	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1253	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1254	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1255	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1256	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1257	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1259	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1260	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1261	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1263	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1264	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1265	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1266	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1267	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1268	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1270	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1271	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1291	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1300	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1301	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1302	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1303	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1304	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1306	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1307	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1308	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1309	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1310	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1311	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1312	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1313	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1314	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1315	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1316	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1317	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1318	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1319	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1320	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1321	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1322	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1323	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1324	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1325	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1326	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1327	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1328	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1329	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1350	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1352	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1353	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1354	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1355	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1356	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1357	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1358	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1359	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1360	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1361	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1362	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1363	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1364	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1365	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1366	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1367	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1368	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1369	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1370	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1371	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1400	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1401	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1402	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1403	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1406	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1407	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1408	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1409	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1410	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1411	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1412	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1413	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1414	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1415	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1416	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1417	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1418	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1419	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1420	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1421	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1422	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1423	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1424	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1425	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1426	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1427	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1428	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1429	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1430	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1431	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1432	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1433	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1434	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1435	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1436	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1437	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1438	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1439	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1440	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1441	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1448	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1450	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1451	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1452	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1453	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1454	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1455	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1456	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1457	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1458	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1459	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1460	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1462	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1463	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1464	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1466	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1467	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1468	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1470	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1471	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1472	København K	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1500	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1513	Centraltastning	Region Hovedstaden	84	Københavns Kommune	101			55.6711	12.5653	6
+DK	1550	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1551	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1552	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1553	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1554	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1555	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1556	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1557	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1558	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1559	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1560	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1561	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1562	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1563	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1564	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1566	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1567	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1568	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1569	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1570	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1571	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1572	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1573	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1574	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1575	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1576	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1577	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1592	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1599	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1600	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1601	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1602	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1603	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1604	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1606	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1607	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1608	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1609	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1610	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1611	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1612	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1613	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1614	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1615	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1616	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1617	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1618	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1619	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1620	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1621	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1622	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1623	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1624	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1630	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1631	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1632	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1633	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1634	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1635	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1650	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1651	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1652	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1653	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1654	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1655	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1656	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1657	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1658	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1659	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1660	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1661	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1662	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1663	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1664	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1665	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1666	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1667	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1668	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1669	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1670	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1671	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1672	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1673	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1674	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1675	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1676	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1677	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1699	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1700	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1701	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1702	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1703	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1704	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1705	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1706	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1707	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1708	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1709	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1710	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1711	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1712	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1714	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1715	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1716	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1717	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1718	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1719	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1720	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1721	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1722	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1723	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1724	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1725	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1726	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1727	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1728	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1729	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1730	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1731	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1732	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1733	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1734	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1735	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1736	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1737	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1738	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1739	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1749	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1750	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1751	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1752	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1753	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1754	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1755	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1756	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1757	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1758	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1759	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1760	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1761	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1762	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1763	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1764	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1765	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1766	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1770	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1771	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1772	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1773	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1774	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1775	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1777	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1780	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1785	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1786	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1787	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1790	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1799	København V	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	1810	Frederiksberg C	Region Hovedstaden	84	Københavns Kommune	101			55.6794	12.5346	6
 DK	2000	Frederiksberg	Region Hovedstaden	84	Københavns Kommune	101			55.6794	12.5346	4
-DK	2100	København Ø	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	2150	Nordhavn	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	2200	København N	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	2300	København S	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	2400	København NV	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
-DK	2450	København SV	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	
+DK	2100	København Ø	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	2150	Nordhavn	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	2200	København N	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	2300	København S	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	2400	København NV	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
+DK	2450	København SV	Region Hovedstaden	84	Københavns Kommune	101			55.6759	12.5655	6
 DK	2500	Valby	Region Hovedstaden	84	Københavns Kommune	101			55.6581	12.5241	4
 DK	2610	Rødovre	Region Hovedstaden	84	Københavns Kommune	101			55.6806	12.4537	4
 DK	2700	Brønshøj	Region Hovedstaden	84	Københavns Kommune	101			55.7057	12.4964	4
@@ -976,113 +977,113 @@ DK	2770	Kastrup	Region Hovedstaden	84	Københavns Kommune	101			55.6352	12.6489	
 DK	2860	Søborg	Region Hovedstaden	84	Københavns Kommune	101			55.7302	12.5098	4
 DK	2900	Hellerup	Region Hovedstaden	84	Københavns Kommune	101			55.732	12.5709	4
 DK	7480	Vildbjerg	Region Hovedstaden	84	Københavns Kommune	101			56.2	8.7667	4
-DK	1800	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	
-DK	1801	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	
-DK	1802	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	
-DK	1803	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	
-DK	1804	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	
-DK	1805	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	
-DK	1806	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	
-DK	1807	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	
-DK	1808	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	
-DK	1809	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	
-DK	1810	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	
-DK	1811	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	
-DK	1812	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	
-DK	1813	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	
-DK	1814	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	
-DK	1815	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	
-DK	1816	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	
-DK	1817	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	
-DK	1818	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	
-DK	1819	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	
-DK	1820	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	
-DK	1822	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	
-DK	1823	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	
-DK	1824	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	
-DK	1825	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	
-DK	1826	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	
-DK	1827	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	
-DK	1828	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	
-DK	1829	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	
-DK	1850	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	
-DK	1851	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	
-DK	1852	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	
-DK	1853	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	
-DK	1854	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	
-DK	1855	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	
-DK	1856	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	
-DK	1857	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	
-DK	1860	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	
-DK	1861	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	
-DK	1862	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	
-DK	1863	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	
-DK	1864	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	
-DK	1865	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	
-DK	1866	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	
-DK	1867	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	
-DK	1868	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	
-DK	1870	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	
-DK	1871	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	
-DK	1872	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	
-DK	1873	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	
-DK	1874	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	
-DK	1875	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	
-DK	1876	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	
-DK	1877	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	
-DK	1878	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	
-DK	1879	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	
-DK	1900	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	
-DK	1901	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	
-DK	1902	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	
-DK	1903	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	
-DK	1904	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	
-DK	1905	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	
-DK	1906	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	
-DK	1908	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	
-DK	1909	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	
-DK	1910	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	
-DK	1911	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	
-DK	1912	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	
-DK	1913	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	
-DK	1914	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	
-DK	1915	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	
-DK	1916	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	
-DK	1917	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	
-DK	1920	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	
-DK	1921	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	
-DK	1922	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	
-DK	1923	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	
-DK	1924	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	
-DK	1925	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	
-DK	1926	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	
-DK	1927	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	
-DK	1928	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	
-DK	1950	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	
-DK	1951	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	
-DK	1952	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	
-DK	1953	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	
-DK	1954	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	
-DK	1955	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	
-DK	1956	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	
-DK	1957	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	
-DK	1958	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	
-DK	1959	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	
-DK	1960	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	
-DK	1961	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	
-DK	1962	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	
-DK	1963	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	
-DK	1964	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	
-DK	1965	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	
-DK	1966	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	
-DK	1967	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	
-DK	1970	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	
-DK	1971	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	
-DK	1972	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	
-DK	1973	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	
-DK	1974	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	
+DK	1800	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	6
+DK	1801	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	6
+DK	1802	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	6
+DK	1803	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	6
+DK	1804	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	6
+DK	1805	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	6
+DK	1806	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	6
+DK	1807	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	6
+DK	1808	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	6
+DK	1809	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	6
+DK	1810	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	6
+DK	1811	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	6
+DK	1812	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	6
+DK	1813	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	6
+DK	1814	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	6
+DK	1815	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	6
+DK	1816	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	6
+DK	1817	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	6
+DK	1818	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	6
+DK	1819	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	6
+DK	1820	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	6
+DK	1822	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	6
+DK	1823	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	6
+DK	1824	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	6
+DK	1825	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	6
+DK	1826	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	6
+DK	1827	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	6
+DK	1828	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	6
+DK	1829	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	6
+DK	1850	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	6
+DK	1851	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	6
+DK	1852	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	6
+DK	1853	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	6
+DK	1854	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	6
+DK	1855	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	6
+DK	1856	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	6
+DK	1857	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	6
+DK	1860	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	6
+DK	1861	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	6
+DK	1862	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	6
+DK	1863	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	6
+DK	1864	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	6
+DK	1865	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	6
+DK	1866	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	6
+DK	1867	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	6
+DK	1868	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	6
+DK	1870	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	6
+DK	1871	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	6
+DK	1872	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	6
+DK	1873	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	6
+DK	1874	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	6
+DK	1875	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	6
+DK	1876	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	6
+DK	1877	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	6
+DK	1878	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	6
+DK	1879	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	6
+DK	1900	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	6
+DK	1901	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	6
+DK	1902	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	6
+DK	1903	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	6
+DK	1904	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	6
+DK	1905	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	6
+DK	1906	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	6
+DK	1908	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	6
+DK	1909	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	6
+DK	1910	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	6
+DK	1911	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	6
+DK	1912	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	6
+DK	1913	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	6
+DK	1914	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	6
+DK	1915	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	6
+DK	1916	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	6
+DK	1917	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	6
+DK	1920	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	6
+DK	1921	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	6
+DK	1922	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	6
+DK	1923	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	6
+DK	1924	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	6
+DK	1925	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	6
+DK	1926	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	6
+DK	1927	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	6
+DK	1928	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	6
+DK	1950	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	6
+DK	1951	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	6
+DK	1952	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	6
+DK	1953	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	6
+DK	1954	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	6
+DK	1955	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	6
+DK	1956	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	6
+DK	1957	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	6
+DK	1958	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	6
+DK	1959	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	6
+DK	1960	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	6
+DK	1961	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	6
+DK	1962	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	6
+DK	1963	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	6
+DK	1964	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	6
+DK	1965	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	6
+DK	1966	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	6
+DK	1967	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	6
+DK	1970	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	6
+DK	1971	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	6
+DK	1972	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	6
+DK	1973	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	6
+DK	1974	Frederiksberg C	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	6
 DK	2000	Frederiksberg	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6794	12.5346	4
-DK	2200	København N	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6759	12.5655	
+DK	2200	København N	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6759	12.5655	6
 DK	2500	Valby	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6581	12.5241	4
 DK	2720	Vanløse	Region Hovedstaden	84	Frederiksberg Kommune	147			55.6836	12.4871	4
 DK	2730	Herlev	Region Hovedstaden	84	Ballerup Kommune	151			55.7237	12.44	4
@@ -1090,7 +1091,7 @@ DK	2740	Skovlunde	Region Hovedstaden	84	Ballerup Kommune	151			55.7157	12.398	4
 DK	2750	Ballerup	Region Hovedstaden	84	Ballerup Kommune	151			55.7316	12.3633	4
 DK	2760	Måløv	Region Hovedstaden	84	Ballerup Kommune	151			55.7553	12.3233	4
 DK	3500	Værløse	Region Hovedstaden	84	Ballerup Kommune	151			55.7825	12.3686	4
-DK	0917	Københavns Pakkecent	Region Hovedstaden	84	Brøndby Kommune	153			55.6759	12.5655	
+DK	0917	Københavns Pakkecent	Region Hovedstaden	84	Brøndby Kommune	153			55.6759	12.5655	6
 DK	2600	Glostrup	Region Hovedstaden	84	Brøndby Kommune	153			55.6666	12.4038	4
 DK	2605	Brøndby	Region Hovedstaden	84	Brøndby Kommune	153			55.6503	12.41	4
 DK	2620	Albertslund	Region Hovedstaden	84	Brøndby Kommune	153			55.6569	12.3638	4
@@ -1132,9 +1133,9 @@ DK	2610	Rødovre	Region Hovedstaden	84	Rødovre Kommune	175			55.6806	12.4537	4
 DK	2730	Herlev	Region Hovedstaden	84	Rødovre Kommune	175			55.7237	12.44	4
 DK	2635	Ishøj	Region Hovedstaden	84	Ishøj Kommune	183			55.6154	12.3518	4
 DK	2640	Hedehusene	Region Hovedstaden	84	Ishøj Kommune	183			55.647	12.1936	4
-DK	1532	København V	Region Hovedstaden	84	Tårnby Kommune	185			55.6759	12.5655	
-DK	1533	København V	Region Hovedstaden	84	Tårnby Kommune	185			55.6759	12.5655	
-DK	2300	København S	Region Hovedstaden	84	Tårnby Kommune	185			55.6759	12.5655	
+DK	1532	København V	Region Hovedstaden	84	Tårnby Kommune	185			55.6759	12.5655	6
+DK	1533	København V	Region Hovedstaden	84	Tårnby Kommune	185			55.6759	12.5655	6
+DK	2300	København S	Region Hovedstaden	84	Tårnby Kommune	185			55.6759	12.5655	6
 DK	2770	Kastrup	Region Hovedstaden	84	Tårnby Kommune	185			55.6352	12.6489	4
 DK	2791	Dragør	Region Hovedstaden	84	Tårnby Kommune	185			55.5945	12.6664	4
 DK	2625	Vallensbæk	Region Hovedstaden	84	Vallensbæk Kommune	187			55.6333	12.3667	4

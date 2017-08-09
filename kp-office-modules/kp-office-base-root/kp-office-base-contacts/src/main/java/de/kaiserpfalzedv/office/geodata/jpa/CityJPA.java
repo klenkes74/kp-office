@@ -20,9 +20,12 @@ import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.persistence.Version;
 
 import de.kaiserpfalzedv.office.geodata.api.AdministrativeEntity;
 import de.kaiserpfalzedv.office.geodata.api.City;
@@ -41,12 +44,31 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 @SuppressWarnings("unused")
 @Entity
 @Table(name = "CITIES")
+@NamedQueries({
+        @NamedQuery(name = "City.ByPostalCode", query = "select c from CityJPA c where c.postalCode.country=:country and c.postalCode.code=:code"),
+        @NamedQuery(name = "City.ByPostalCode.count", query = "select count(c) from CityJPA c where c.postalCode.country=:country and c.postalCode.code=:code"),
+        @NamedQuery(name = "City.ByCountry", query = "select c from CityJPA c where c.postalCode.country=:country"),
+        @NamedQuery(name = "City.ByCountry.count", query = "select count(c) from CityJPA c where c.postalCode.country=:country"),
+        @NamedQuery(name = "City.ByCityNme", query = "select c from CityJPA c where c.name=:cityName"),
+        @NamedQuery(name = "City.ByCityNme.count", query = "select count(c) from CityJPA c where c.name=:cityName"),
+})
 public class CityJPA implements City {
     private static final long serialVersionUID = -7856052277648326779L;
 
+    @Id
+    @Column(name = "ID_", updatable = false, nullable = false, unique = true)
+    private Long id;
 
-    @EmbeddedId
-    private CityId id;
+    @Version
+    @Column(name = "VERSION_", nullable = false)
+    private Long version = 0L;
+
+    @Embedded
+    private PostalCode postalCode;
+
+    @Column(name = "PLACE_NAME_", length = 100, updatable = false, insertable = false)
+    private String name;
+
 
     @Embedded
     @AttributeOverrides({
@@ -78,13 +100,19 @@ public class CityJPA implements City {
     }
 
     public CityJPA(
-            final CityId id,
+            final Long id,
+            final Long version,
+            final PostalCode postalCode,
+            final String cityName,
             final AdministrativeEntityJPA state,
             final AdministrativeEntityJPA province,
             final AdministrativeEntityJPA community,
             final PositionJPA position
     ) {
         this.id = id;
+        this.version = version;
+        this.postalCode = postalCode;
+        this.name = cityName;
         this.state = state;
         this.province = province;
         this.community = community;
@@ -113,7 +141,7 @@ public class CityJPA implements City {
             return false;
         }
 
-        City rhs = (City) obj;
+        CityJPA rhs = (CityJPA) obj;
         return new EqualsBuilder()
                 .append(this.getCountry().getLocale(), rhs.getCountry().getLocale())
                 .append(this.getCountry().getPostalName(), rhs.getCountry().getPostalName())
@@ -123,18 +151,46 @@ public class CityJPA implements City {
     }
 
     @Override
+    public String toString() {
+        ToStringBuilder result = new ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE)
+                .append(System.identityHashCode(this))
+                .append("id", id)
+                .append("version", version)
+                .append(postalCode)
+                .append("name", name);
+
+        if (position != null) {
+            result.append(position);
+        }
+
+        if (state != null) {
+            result.append("state", state);
+        }
+
+        if (province != null) {
+            result.append("province", province);
+        }
+
+        if (community != null) {
+            result.append("community", community);
+        }
+
+        return result.toString();
+    }
+
+    @Override
     public Country getCountry() {
-        return id.getCountry();
+        return postalCode.getCountry();
     }
 
     @Override
     public String getCode() {
-        return id.getCode();
+        return postalCode.getCode();
     }
 
     @Override
     public String getName() {
-        return id.getName();
+        return name;
     }
 
     /**
@@ -166,27 +222,11 @@ public class CityJPA implements City {
         return position;
     }
 
-    @Override
-    public String toString() {
-        ToStringBuilder result = new ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE)
-                .append(id);
+    public Long getId() {
+        return id;
+    }
 
-        if (position != null) {
-            result.append(position);
-        }
-
-        if (state != null) {
-            result.append("state", state);
-        }
-
-        if (province != null) {
-            result.append("province", province);
-        }
-
-        if (community != null) {
-            result.append("community", community);
-        }
-
-        return result.toString();
+    public Long getVersion() {
+        return version;
     }
 }

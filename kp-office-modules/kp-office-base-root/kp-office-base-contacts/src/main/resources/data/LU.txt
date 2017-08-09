@@ -1,3 +1,4 @@
+COUNTRY_	POSTAL_CODE_	PLACE_NAME_	ADMIN1_NAME_	ADMIN1_CODE_	ADMIN2_NAME_	ADMIN2_CODE_	ADMIN3_NAME_	ADMIN3_CODE_	LATITUDE_	LONGITUDE_	ACCURACY_
 LU	L-1009	Luxembourg							49.6117	6.13	4
 LU	L-1010	Luxembourg							49.6117	6.13	4
 LU	L-1011	Luxembourg							49.6117	6.13	4
@@ -49,7 +50,7 @@ LU	L-1133	Luxembourg							49.6117	6.13	4
 LU	L-1134	Luxembourg							49.6117	6.13	4
 LU	L-1135	Luxembourg							49.6117	6.13	4
 LU	L-1136	Luxembourg							49.6117	6.13	4
-LU	L-1137	Howald							49.6117	6.13	
+LU	L-1137	Howald							49.6117	6.13	6
 LU	L-1138	Luxembourg							49.6117	6.13	4
 LU	L-1139	Luxembourg							49.6117	6.13	4
 LU	L-1140	Luxembourg							49.6117	6.13	4
@@ -68,43 +69,43 @@ LU	L-1152	Luxembourg							49.6117	6.13	4
 LU	L-1159	Luxembourg							49.6117	6.13	4
 LU	L-1160	Luxembourg							49.6117	6.13	4
 LU	L-1208	Luxembourg							49.6117	6.13	4
-LU	L-1209	Senningerberg							49.6117	6.13	
+LU	L-1209	Senningerberg							49.6117	6.13	6
 LU	L-1210	Luxembourg							49.6117	6.13	4
 LU	L-1211	Luxembourg							49.6117	6.13	4
 LU	L-1212	Luxembourg							49.6117	6.13	4
 LU	L-1213	Luxembourg							49.6117	6.13	4
 LU	L-1214	Luxembourg							49.6117	6.13	4
 LU	L-1215	Luxembourg							49.6117	6.13	4
-LU	L-1216	Howald							49.6117	6.13	
+LU	L-1216	Howald							49.6117	6.13	6
 LU	L-1217	Luxembourg							49.6117	6.13	4
 LU	L-1218	Luxembourg							49.6117	6.13	4
 LU	L-1219	Luxembourg							49.6117	6.13	4
 LU	L-1220	Luxembourg							49.6117	6.13	4
 LU	L-1221	Luxembourg							49.6117	6.13	4
 LU	L-1222	Luxembourg							49.6117	6.13	4
-LU	L-1223	Howald							49.6117	6.13	
+LU	L-1223	Howald							49.6117	6.13	6
 LU	L-1224	Luxembourg							49.6117	6.13	4
 LU	L-1225	Luxembourg							49.6117	6.13	4
 LU	L-1226	Luxembourg							49.6117	6.13	4
 LU	L-1227	Luxembourg							49.6117	6.13	4
-LU	L-1228	Howald							49.6117	6.13	
+LU	L-1228	Howald							49.6117	6.13	6
 LU	L-1229	Luxembourg							49.6117	6.13	4
 LU	L-1230	Luxembourg							49.6117	6.13	4
-LU	L-1231	Howald							49.6117	6.13	
-LU	L-1232	Howald							49.6117	6.13	
+LU	L-1231	Howald							49.6117	6.13	6
+LU	L-1232	Howald							49.6117	6.13	6
 LU	L-1233	Luxembourg							49.6117	6.13	4
 LU	L-1234	Luxembourg							49.6117	6.13	4
 LU	L-1235	Luxembourg							49.6117	6.13	4
 LU	L-1236	Luxembourg							49.6117	6.13	4
 LU	L-1237	Luxembourg							49.6117	6.13	4
 LU	L-1238	Luxembourg							49.6117	6.13	4
-LU	L-1239	Senningerberg							49.6117	6.13	
+LU	L-1239	Senningerberg							49.6117	6.13	6
 LU	L-1240	Luxembourg							49.6117	6.13	4
 LU	L-1241	Luxembourg							49.6117	6.13	4
 LU	L-1242	Luxembourg							49.6117	6.13	4
 LU	L-1243	Luxembourg							49.6117	6.13	4
 LU	L-1244	Luxembourg							49.6117	6.13	4
-LU	L-1245	Senningerberg							49.6117	6.13	
+LU	L-1245	Senningerberg							49.6117	6.13	6
 LU	L-1246	Luxembourg							49.6117	6.13	4
 LU	L-1247	Luxembourg							49.6117	6.13	4
 LU	L-1248	Luxembourg							49.6117	6.13	4
@@ -118,7 +119,7 @@ LU	L-1255	Luxembourg							49.6117	6.13	4
 LU	L-1256	Luxembourg							49.6117	6.13	4
 LU	L-1257	Luxembourg							49.6117	6.13	4
 LU	L-1258	Luxembourg							49.6117	6.13	4
-LU	L-1259	Senningerberg							49.6117	6.13	
+LU	L-1259	Senningerberg							49.6117	6.13	6
 LU	L-1260	Luxembourg							49.6117	6.13	4
 LU	L-1261	Luxembourg							49.6117	6.13	4
 LU	L-1262	Luxembourg							49.6117	6.13	4
@@ -133,7 +134,7 @@ LU	L-1270	Luxembourg							49.6117	6.13	4
 LU	L-1271	Luxembourg							49.6117	6.13	4
 LU	L-1272	Luxembourg							49.6117	6.13	4
 LU	L-1273	Luxembourg							49.6117	6.13	4
-LU	L-1274	Howald							49.6117	6.13	
+LU	L-1274	Howald							49.6117	6.13	6
 LU	L-1275	Luxembourg							49.6117	6.13	4
 LU	L-1276	Luxembourg							49.6117	6.13	4
 LU	L-1277	Luxembourg							49.6117	6.13	4
@@ -180,21 +181,21 @@ LU	L-1346	Luxembourg							49.6117	6.13	4
 LU	L-1347	Luxembourg							49.6117	6.13	4
 LU	L-1348	Luxembourg							49.6117	6.13	4
 LU	L-1349	Luxembourg							49.6117	6.13	4
-LU	L-1350	Howald							49.6117	6.13	
+LU	L-1350	Howald							49.6117	6.13	6
 LU	L-1350	Luxembourg							49.6117	6.13	4
 LU	L-1351	Luxembourg							49.6117	6.13	4
 LU	L-1352	Luxembourg							49.6117	6.13	4
-LU	L-1353	Howald							49.6117	6.13	
+LU	L-1353	Howald							49.6117	6.13	6
 LU	L-1354	Luxembourg							49.6117	6.13	4
 LU	L-1355	Luxembourg							49.6117	6.13	4
 LU	L-1356	Luxembourg							49.6117	6.13	4
 LU	L-1357	Luxembourg							49.6117	6.13	4
 LU	L-1358	Luxembourg							49.6117	6.13	4
 LU	L-1359	Luxembourg							49.6117	6.13	4
-LU	L-1360	Senningerberg							49.6117	6.13	
+LU	L-1360	Senningerberg							49.6117	6.13	6
 LU	L-1361	Luxembourg							49.6117	6.13	4
 LU	L-1362	Luxembourg							49.6117	6.13	4
-LU	L-1363	Howald							49.6117	6.13	
+LU	L-1363	Howald							49.6117	6.13	6
 LU	L-1364	Luxembourg							49.6117	6.13	4
 LU	L-1365	Luxembourg							49.6117	6.13	4
 LU	L-1366	Luxembourg							49.6117	6.13	4
@@ -218,7 +219,7 @@ LU	L-1419	Luxembourg							49.6117	6.13	4
 LU	L-1420	Luxembourg							49.6117	6.13	4
 LU	L-1421	Luxembourg							49.6117	6.13	4
 LU	L-1422	Luxembourg							49.6117	6.13	4
-LU	L-1423	Howald							49.6117	6.13	
+LU	L-1423	Howald							49.6117	6.13	6
 LU	L-1424	Luxembourg							49.6117	6.13	4
 LU	L-1425	Luxembourg							49.6117	6.13	4
 LU	L-1426	Luxembourg							49.6117	6.13	4
@@ -230,14 +231,14 @@ LU	L-1431	Luxembourg							49.6117	6.13	4
 LU	L-1432	Luxembourg							49.6117	6.13	4
 LU	L-1445	Luxembourg							49.6117	6.13	4
 LU	L-1445	Strassen							49.6206	6.0733	4
-LU	L-1448	Senningerberg							49.6146	6.1111	
+LU	L-1448	Senningerberg							49.6146	6.1111	6
 LU	L-1449	Luxembourg							49.6117	6.13	4
 LU	L-1450	Luxembourg							49.6117	6.13	4
 LU	L-1451	Luxembourg							49.6117	6.13	4
 LU	L-1452	Luxembourg							49.6117	6.13	4
 LU	L-1453	Luxembourg							49.6117	6.13	4
 LU	L-1454	Luxembourg							49.6117	6.13	4
-LU	L-1455	Howald							49.6117	6.13	
+LU	L-1455	Howald							49.6117	6.13	6
 LU	L-1456	Luxembourg							49.6117	6.13	4
 LU	L-1457	Luxembourg							49.6117	6.13	4
 LU	L-1458	Luxembourg							49.6117	6.13	4
@@ -249,7 +250,7 @@ LU	L-1463	Luxembourg							49.6117	6.13	4
 LU	L-1464	Luxembourg							49.6117	6.13	4
 LU	L-1465	Luxembourg							49.6117	6.13	4
 LU	L-1466	Luxembourg							49.6397	6.1471	4
-LU	L-1467	Howald							49.6117	6.13	
+LU	L-1467	Howald							49.6117	6.13	6
 LU	L-1468	Luxembourg							49.6117	6.13	4
 LU	L-1469	Luxembourg							49.6117	6.13	4
 LU	L-1470	Luxembourg							49.6117	6.13	4
@@ -267,7 +268,7 @@ LU	L-1481	Luxembourg							49.6117	6.13	4
 LU	L-1482	Luxembourg							49.6117	6.13	4
 LU	L-1490	Luxembourg							49.6117	6.13	4
 LU	L-1499	Luxembourg							49.6117	6.13	4
-LU	L-1508	Howald							49.6117	6.13	
+LU	L-1508	Howald							49.6117	6.13	6
 LU	L-1509	Luxembourg							49.6117	6.13	4
 LU	L-1510	Luxembourg							49.6117	6.13	4
 LU	L-1511	Luxembourg							49.6117	6.13	4
@@ -324,7 +325,7 @@ LU	L-1621	Luxembourg							49.6117	6.13	4
 LU	L-1622	Luxembourg							49.6117	6.13	4
 LU	L-1623	Luxembourg							49.6117	6.13	4
 LU	L-1624	Luxembourg							49.6117	6.13	4
-LU	L-1625	Howald							49.6117	6.13	
+LU	L-1625	Howald							49.6117	6.13	6
 LU	L-1626	Luxembourg							49.6117	6.13	4
 LU	L-1627	Luxembourg							49.6117	6.13	4
 LU	L-1628	Luxembourg							49.6117	6.13	4
@@ -337,7 +338,7 @@ LU	L-1634	Luxembourg							49.6117	6.13	4
 LU	L-1635	Luxembourg							49.6117	6.13	4
 LU	L-1636	Luxembourg							49.6117	6.13	4
 LU	L-1637	Luxembourg							49.6117	6.13	4
-LU	L-1638	Senningerberg							49.6117	6.13	
+LU	L-1638	Senningerberg							49.6117	6.13	6
 LU	L-1639	Luxembourg							49.6117	6.13	4
 LU	L-1640	Luxembourg							49.6117	6.13	4
 LU	L-1641	Luxembourg							49.6117	6.13	4
@@ -345,7 +346,7 @@ LU	L-1642	Luxembourg							49.6117	6.13	4
 LU	L-1643	Luxembourg							49.6117	6.13	4
 LU	L-1644	Luxembourg							49.6117	6.13	4
 LU	L-1645	Luxembourg							49.6117	6.13	4
-LU	L-1646	Senningerberg							49.6117	6.13	
+LU	L-1646	Senningerberg							49.6117	6.13	6
 LU	L-1647	Luxembourg							49.6117	6.13	4
 LU	L-1648	Luxembourg							49.611	6.1303	4
 LU	L-1649	Luxembourg							49.6117	6.13	4
@@ -354,8 +355,8 @@ LU	L-1651	Luxembourg							49.6117	6.13	4
 LU	L-1652	Luxembourg							49.6117	6.13	4
 LU	L-1660	Luxembourg							49.6117	6.13	4
 LU	L-1661	Luxembourg							49.6117	6.13	4
-LU	L-1670	Senningerberg							49.6106	6.1305	
-LU	L-1709	Senningerberg							49.612	6.1319	
+LU	L-1670	Senningerberg							49.6106	6.1305	6
+LU	L-1709	Senningerberg							49.612	6.1319	6
 LU	L-1710	Luxembourg							49.6117	6.13	4
 LU	L-1711	Luxembourg							49.6117	6.13	4
 LU	L-1712	Luxembourg							49.6117	6.13	4
@@ -382,7 +383,7 @@ LU	L-1732	Luxembourg							49.6117	6.13	4
 LU	L-1733	Luxembourg							49.6117	6.13	4
 LU	L-1734	Luxembourg							49.6117	6.13	4
 LU	L-1735	Luxembourg							49.6117	6.13	4
-LU	L-1736	Senningerberg							49.6117	6.13	
+LU	L-1736	Senningerberg							49.6117	6.13	6
 LU	L-1737	Luxembourg							49.6117	6.13	4
 LU	L-1738	Luxembourg							49.6117	6.13	4
 LU	L-1739	Luxembourg							49.6117	6.13	4
@@ -395,16 +396,16 @@ LU	L-1745	Luxembourg							49.6117	6.13	4
 LU	L-1746	Luxembourg							49.6117	6.13	4
 LU	L-1747	Luxembourg							49.6117	6.13	4
 LU	L-1748	Findel							49.6239	6.2028	4
-LU	L-1749	Howald							49.613	6.1381	
+LU	L-1749	Howald							49.613	6.1381	6
 LU	L-1750	Luxembourg							49.6186	6.1251	4
 LU	L-1811	Luxembourg							49.6117	6.13	4
 LU	L-1812	Luxembourg							49.6117	6.13	4
-LU	L-1813	Howald							49.6117	6.13	
+LU	L-1813	Howald							49.6117	6.13	6
 LU	L-1814	Luxembourg							49.6117	6.13	4
 LU	L-1815	Luxembourg							49.6117	6.13	4
 LU	L-1816	Luxembourg							49.6117	6.13	4
 LU	L-1817	Luxembourg							49.6117	6.13	4
-LU	L-1818	Howald							49.6117	6.13	
+LU	L-1818	Howald							49.6117	6.13	6
 LU	L-1820	Luxembourg							49.6117	6.13	4
 LU	L-1831	Luxembourg							49.6117	6.13	4
 LU	L-1832	Luxembourg							49.6117	6.13	4
@@ -417,7 +418,7 @@ LU	L-1838	Luxembourg							49.6117	6.13	4
 LU	L-1839	Luxembourg							49.6007	6.1309	4
 LU	L-1840	Luxembourg							49.6117	6.13	4
 LU	L-1841	Luxembourg							49.6117	6.13	4
-LU	L-1842	Howald							49.6157	6.1543	
+LU	L-1842	Howald							49.6157	6.1543	6
 LU	L-1843	Findel							49.6239	6.2028	4
 LU	L-1850	Luxembourg							49.6117	6.13	4
 LU	L-1851	Luxembourg							49.6117	6.13	4
@@ -436,7 +437,7 @@ LU	L-1863	Luxembourg							49.6117	6.13	4
 LU	L-1864	Luxembourg							49.6117	6.13	4
 LU	L-1865	Luxembourg							49.6117	6.13	4
 LU	L-1866	Luxembourg							49.6117	6.13	4
-LU	L-1867	Howald							49.6117	6.13	
+LU	L-1867	Howald							49.6117	6.13	6
 LU	L-1868	Luxembourg							49.6117	6.13	4
 LU	L-1869	Luxembourg							49.6117	6.13	4
 LU	L-1870	Luxembourg							49.6117	6.13	4
@@ -486,7 +487,7 @@ LU	L-1945	Luxembourg							49.6117	6.13	4
 LU	L-1946	Luxembourg							49.6117	6.13	4
 LU	L-1947	Luxembourg							49.6117	6.13	4
 LU	L-1948	Luxembourg							49.6117	6.13	4
-LU	L-1949	Howald							49.6117	6.13	
+LU	L-1949	Howald							49.6117	6.13	6
 LU	L-1950	Luxembourg							49.6117	6.13	4
 LU	L-1951	Luxembourg							49.6117	6.13	4
 LU	L-1952	Luxembourg							49.6117	6.13	4
@@ -519,7 +520,7 @@ LU	L-2097	Luxembourg							49.6117	6.13	4
 LU	L-2098	Luxembourg							49.6117	6.13	4
 LU	L-2099	Luxembourg							49.6117	6.13	4
 LU	L-2111	Luxembourg							49.6117	6.13	4
-LU	L-2112	Howald							49.6117	6.13	
+LU	L-2112	Howald							49.6117	6.13	6
 LU	L-2113	Luxembourg							49.6117	6.13	4
 LU	L-2114	Luxembourg							49.6117	6.13	4
 LU	L-2115	Luxembourg							49.6117	6.13	4
@@ -535,7 +536,7 @@ LU	L-2124	Luxembourg							49.6117	6.13	4
 LU	L-2125	Luxembourg							49.6117	6.13	4
 LU	L-2127	Luxembourg							49.6117	6.13	4
 LU	L-2128	Luxembourg							49.6117	6.13	4
-LU	L-2129	Howald							49.6117	6.13	
+LU	L-2129	Howald							49.6117	6.13	6
 LU	L-2130	Luxembourg							49.6117	6.13	4
 LU	L-2131	Luxembourg							49.6117	6.13	4
 LU	L-2132	Luxembourg							49.6065	6.121	4
@@ -574,7 +575,7 @@ LU	L-2166	Luxembourg							49.6117	6.13	4
 LU	L-2167	Luxembourg							49.6117	6.13	4
 LU	L-2168	Luxembourg							49.6117	6.13	4
 LU	L-2169	Luxembourg							49.6117	6.13	4
-LU	L-2170	Senningerberg							49.6117	6.13	
+LU	L-2170	Senningerberg							49.6117	6.13	6
 LU	L-2171	Luxembourg							49.6117	6.13	4
 LU	L-2172	Luxembourg							49.6117	6.13	4
 LU	L-2173	Luxembourg							49.6117	6.13	4
@@ -618,7 +619,7 @@ LU	L-2268	Luxembourg							49.6117	6.13	4
 LU	L-2269	Luxembourg							49.6117	6.13	4
 LU	L-2270	Luxembourg							49.6117	6.13	4
 LU	L-2271	Luxembourg							49.6117	6.13	4
-LU	L-2272	Howald							49.6117	6.13	
+LU	L-2272	Howald							49.6117	6.13	6
 LU	L-2273	Luxembourg							49.6117	6.13	4
 LU	L-2308	Luxembourg							49.6117	6.13	4
 LU	L-2309	Luxembourg							49.6117	6.13	4
@@ -627,11 +628,11 @@ LU	L-2311	Luxembourg							49.6117	6.13	4
 LU	L-2312	Luxembourg							49.6117	6.13	4
 LU	L-2313	Luxembourg							49.6117	6.13	4
 LU	L-2314	Luxembourg							49.6117	6.13	4
-LU	L-2315	Senningerberg							49.6117	6.13	
+LU	L-2315	Senningerberg							49.6117	6.13	6
 LU	L-2316	Luxembourg							49.6117	6.13	4
-LU	L-2317	Howald							49.6117	6.13	
+LU	L-2317	Howald							49.6117	6.13	6
 LU	L-2318	Luxembourg							49.6117	6.13	4
-LU	L-2319	Howald							49.6117	6.13	
+LU	L-2319	Howald							49.6117	6.13	6
 LU	L-2320	Luxembourg							49.6117	6.13	4
 LU	L-2322	Luxembourg							49.6117	6.13	4
 LU	L-2323	Luxembourg							49.6117	6.13	4
@@ -667,13 +668,13 @@ LU	L-2353	Luxembourg							49.6117	6.13	4
 LU	L-2354	Luxembourg							49.6117	6.13	4
 LU	L-2355	Luxembourg							49.6117	6.13	4
 LU	L-2356	Luxembourg							49.6117	6.13	4
-LU	L-2357	Senningerberg							49.6117	6.13	
+LU	L-2357	Senningerberg							49.6117	6.13	6
 LU	L-2358	Luxembourg							49.6117	6.13	4
 LU	L-2359	Luxembourg							49.6117	6.13	4
 LU	L-2360	Luxembourg							49.6117	6.13	4
 LU	L-2361	Strassen							49.6206	6.0733	4
 LU	L-2361	Luxembourg							49.6117	6.13	4
-LU	L-2370	Howald							49.6118	6.1289	
+LU	L-2370	Howald							49.6118	6.1289	6
 LU	L-2380	Luxembourg							49.6117	6.13	4
 LU	L-2381	Luxembourg							49.6117	6.13	4
 LU	L-2409	Luxembourg							49.6117	6.13	4
@@ -681,12 +682,12 @@ LU	L-2409	Strassen							49.6206	6.0733	4
 LU	L-2410	Strassen							49.6206	6.0733	4
 LU	L-2410	Luxembourg							49.6117	6.13	4
 LU	L-2411	Luxembourg							49.6117	6.13	4
-LU	L-2412	Howald							49.6117	6.13	
+LU	L-2412	Howald							49.6117	6.13	6
 LU	L-2412	Luxembourg							49.6117	6.13	4
 LU	L-2413	Luxembourg							49.6117	6.13	4
 LU	L-2414	Luxembourg							49.6117	6.13	4
 LU	L-2415	Luxembourg							49.6117	6.13	4
-LU	L-2416	Howald							49.6126	6.1243	
+LU	L-2416	Howald							49.6126	6.1243	6
 LU	L-2417	Luxembourg							49.6117	6.13	4
 LU	L-2418	Luxembourg							49.6117	6.13	4
 LU	L-2419	Luxembourg							49.6117	6.13	4
@@ -694,7 +695,7 @@ LU	L-2420	Luxembourg							49.6117	6.13	4
 LU	L-2422	Luxembourg							49.6117	6.13	4
 LU	L-2423	Luxembourg							49.6117	6.13	4
 LU	L-2424	Luxembourg							49.6117	6.13	4
-LU	L-2425	Howald							49.6117	6.13	
+LU	L-2425	Howald							49.6117	6.13	6
 LU	L-2426	Luxembourg							49.6117	6.13	4
 LU	L-2427	Luxembourg							49.6117	6.13	4
 LU	L-2428	Luxembourg							49.6117	6.13	4
@@ -703,15 +704,15 @@ LU	L-2430	Luxembourg							49.6117	6.13	4
 LU	L-2431	Luxembourg							49.6117	6.13	4
 LU	L-2432	Luxembourg							49.6117	6.13	4
 LU	L-2433	Luxembourg							49.6117	6.13	4
-LU	L-2434	Senningerberg							49.6117	6.13	
+LU	L-2434	Senningerberg							49.6117	6.13	6
 LU	L-2435	Luxembourg							49.6117	6.13	4
 LU	L-2440	Luxembourg							49.6117	6.13	4
 LU	L-2441	Luxembourg							49.6117	6.13	4
 LU	L-2442	Luxembourg							49.6117	6.13	4
-LU	L-2443	Senningerberg							49.6117	6.13	
+LU	L-2443	Senningerberg							49.6117	6.13	6
 LU	L-2444	Luxembourg							49.6117	6.13	4
 LU	L-2445	Luxembourg							49.6117	6.13	4
-LU	L-2446	Howald							49.6117	6.13	
+LU	L-2446	Howald							49.6117	6.13	6
 LU	L-2447	Luxembourg							49.6117	6.13	4
 LU	L-2448	Luxembourg							49.6117	6.13	4
 LU	L-2449	Luxembourg							49.6134	6.126	4
@@ -722,7 +723,7 @@ LU	L-2453	Luxembourg							49.6117	6.13	4
 LU	L-2510	Strassen							49.6206	6.0733	4
 LU	L-2511	Luxembourg							49.6117	6.13	4
 LU	L-2512	Luxembourg							49.6117	6.13	4
-LU	L-2513	Senningerberg							49.6127	6.1237	
+LU	L-2513	Senningerberg							49.6127	6.1237	6
 LU	L-2514	Luxembourg							49.6117	6.13	4
 LU	L-2515	Luxembourg							49.6117	6.13	4
 LU	L-2516	Luxembourg							49.6117	6.13	4
@@ -733,12 +734,12 @@ LU	L-2520	Luxembourg							49.6117	6.13	4
 LU	L-2521	Luxembourg							49.6117	6.13	4
 LU	L-2522	Luxembourg							49.6117	6.13	4
 LU	L-2523	Luxembourg							49.6117	6.13	4
-LU	L-2524	Howald							49.6117	6.13	
+LU	L-2524	Howald							49.6117	6.13	6
 LU	L-2525	Luxembourg							49.6117	6.13	4
 LU	L-2526	Luxembourg							49.6117	6.13	4
 LU	L-2527	Luxembourg							49.6117	6.13	4
 LU	L-2528	Luxembourg							49.6117	6.13	4
-LU	L-2529	Howald							49.6117	6.13	
+LU	L-2529	Howald							49.6117	6.13	6
 LU	L-2530	Luxembourg							49.6117	6.13	4
 LU	L-2531	Luxembourg							49.6117	6.13	4
 LU	L-2532	Luxembourg							49.6117	6.13	4
@@ -754,7 +755,7 @@ LU	L-2541	Luxembourg							49.6117	6.13	4
 LU	L-2542	Luxembourg							49.6117	6.13	4
 LU	L-2543	Luxembourg							49.6117	6.13	4
 LU	L-2544	Luxembourg							49.6117	6.13	4
-LU	L-2545	Howald							49.6117	6.13	
+LU	L-2545	Howald							49.6117	6.13	6
 LU	L-2546	Luxembourg							49.6117	6.13	4
 LU	L-2547	Luxembourg							49.6117	6.13	4
 LU	L-2548	Luxembourg							49.6117	6.13	4
@@ -777,9 +778,9 @@ LU	L-2564	Luxembourg							49.6117	6.13	4
 LU	L-2565	Luxembourg							49.6117	6.13	4
 LU	L-2566	Luxembourg							49.6117	6.13	4
 LU	L-2609	Luxembourg							49.6117	6.13	4
-LU	L-2610	Howald							49.6117	6.13	
+LU	L-2610	Howald							49.6117	6.13	6
 LU	L-2610	Luxembourg							49.6117	6.13	4
-LU	L-2611	Howald							49.6117	6.13	
+LU	L-2611	Howald							49.6117	6.13	6
 LU	L-2611	Luxembourg							49.6117	6.13	4
 LU	L-2612	Luxembourg							49.6117	6.13	4
 LU	L-2613	Luxembourg							49.6117	6.13	4
@@ -800,7 +801,7 @@ LU	L-2629	Luxembourg							49.6117	6.13	4
 LU	L-2630	Luxembourg							49.6117	6.13	4
 LU	L-2631	Luxembourg							49.6117	6.13	4
 LU	L-2632	Findel							49.634	6.2091	4
-LU	L-2633	Senningerberg							49.6137	6.1421	
+LU	L-2633	Senningerberg							49.6137	6.1421	6
 LU	L-2634	Luxembourg							49.6117	6.13	4
 LU	L-2635	Luxembourg							49.6117	6.13	4
 LU	L-2636	Luxembourg							49.6117	6.13	4
@@ -822,8 +823,8 @@ LU	L-2672	Luxembourg							49.6117	6.13	4
 LU	L-2673	Luxembourg							49.6117	6.13	4
 LU	L-2680	Luxembourg							49.6117	6.13	4
 LU	L-2711	Luxembourg							49.6117	6.13	4
-LU	L-2712	Staffelstein							49.6117	6.13	
-LU	L-2712	Waldhof							49.6117	6.13	
+LU	L-2712	Staffelstein							49.6117	6.13	6
+LU	L-2712	Waldhof							49.6117	6.13	6
 LU	L-2712	Luxembourg							49.6117	6.13	4
 LU	L-2713	Luxembourg							49.6117	6.13	4
 LU	L-2714	Luxembourg							49.6117	6.13	4
@@ -835,11 +836,11 @@ LU	L-2719	Luxembourg							49.6117	6.13	4
 LU	L-2720	Luxembourg							49.6117	6.13	4
 LU	L-2721	Luxembourg							49.6117	6.13	4
 LU	L-2722	Luxembourg							49.6117	6.13	4
-LU	L-2723	Howald							49.6117	6.13	
+LU	L-2723	Howald							49.6117	6.13	6
 LU	L-2724	Luxembourg							49.6117	6.13	4
 LU	L-2725	Luxembourg							49.6117	6.13	4
 LU	L-2726	Luxembourg							49.6117	6.13	4
-LU	L-2727	Howald							49.6117	6.13	
+LU	L-2727	Howald							49.6117	6.13	6
 LU	L-2728	Luxembourg							49.6117	6.13	4
 LU	L-2729	Luxembourg							49.6117	6.13	4
 LU	L-2730	Luxembourg							49.6117	6.13	4
@@ -2136,14 +2137,14 @@ LU	L-4991	Sanem							49.5481	5.9289	4
 LU	L-4992	Sanem							49.5481	5.9289	4
 LU	L-4993	Sanem							49.5481	5.9289	4
 LU	L-4994	Schouweiler							49.5825	5.9564	4
-LU	L-4994	Sprinkange							49.5825	5.9564	
+LU	L-4994	Sprinkange							49.5825	5.9564	6
 LU	L-4995	Schouweiler							49.5825	5.9564	4
 LU	L-4996	Schouweiler							49.5825	5.9564	4
 LU	L-4997	Schouweiler							49.5825	5.9564	4
 LU	L-4998	Schouweiler							49.5825	5.9564	4
-LU	L-4998	Sprinkange							49.5825	5.9564	
+LU	L-4998	Sprinkange							49.5825	5.9564	6
 LU	L-4999	Schouweiler							49.5825	5.9564	4
-LU	L-4999	Sprinkange							49.5825	5.9564	
+LU	L-4999	Sprinkange							49.5825	5.9564	6
 LU	L-5201	Sandweiler							49.6133	6.2189	4
 LU	L-5211	Sandweiler							49.6133	6.2189	4
 LU	L-5212	Sandweiler							49.6133	6.2189	4
@@ -2256,7 +2257,7 @@ LU	L-5424	Gostingen							49.6192	6.3544	4
 LU	L-5425	Gostingen							49.6192	6.3544	4
 LU	L-5426	Greiveldange							49.5839	6.3592	4
 LU	L-5427	Greiveldange							49.5839	6.3592	4
-LU	L-5429	Hettermillen							49.5628	6.3644	
+LU	L-5429	Hettermillen							49.5628	6.3644	6
 LU	L-5429	Stadtbredimus							49.5628	6.3644	4
 LU	L-5430	Lenningen							49.5986	6.3681	4
 LU	L-5431	Lenningen							49.5986	6.3681	4
@@ -2283,7 +2284,7 @@ LU	L-5480	Wormeldange							49.6083	6.4058	4
 LU	L-5481	Wormeldange							49.6083	6.4058	4
 LU	L-5482	Wormeldange							49.6083	6.4058	4
 LU	L-5483	Wormeldange							49.6083	6.4058	4
-LU	L-5485	Wormeldange-Haut							49.6062	6.4013	
+LU	L-5485	Wormeldange-Haut							49.6062	6.4013	6
 LU	L-5488	Wormeldange							49.6083	6.4058	4
 LU	L-5488	Ehnen							49.5997	6.3878	4
 LU	L-5489	Ehnen							49.5997	6.3878	4
@@ -2439,7 +2440,7 @@ LU	L-5817	Fentange							49.5628	6.1539	4
 LU	L-5818	Alzingen							49.565	6.1636	4
 LU	L-5819	Alzingen							49.565	6.1636	4
 LU	L-5820	Fentange							49.5628	6.1539	4
-LU	L-5821	Howald							49.565	6.1552	
+LU	L-5821	Howald							49.565	6.1552	6
 LU	L-5822	Hesperange							49.5681	6.1514	4
 LU	L-5823	Fentange							49.5628	6.1539	4
 LU	L-5824	Alzingen							49.565	6.1636	4
@@ -2461,7 +2462,7 @@ LU	L-5839	Fentange							49.5628	6.1539	4
 LU	L-5840	Hesperange							49.5681	6.1514	4
 LU	L-5841	Hesperange							49.5681	6.1514	4
 LU	L-5842	Hesperange							49.5681	6.1514	4
-LU	L-5850	Howald							49.5667	6.1538	
+LU	L-5850	Howald							49.5667	6.1538	6
 LU	L-5852	Hesperange							49.5681	6.1514	4
 LU	L-5853	Fentange							49.5628	6.1539	4
 LU	L-5854	Alzingen							49.565	6.1636	4
@@ -2488,9 +2489,9 @@ LU	L-5874	Hesperange							49.5681	6.1514	4
 LU	L-5876	Hesperange							49.5681	6.1514	4
 LU	L-5878	Hesperange							49.5681	6.1514	4
 LU	L-5880	Hesperange							49.5681	6.1514	4
-LU	L-5884	Howald							49.5681	6.1514	
+LU	L-5884	Howald							49.5681	6.1514	6
 LU	L-5884	Hesperange							49.5681	6.1514	4
-LU	L-5885	Howald							49.5681	6.1514	
+LU	L-5885	Howald							49.5681	6.1514	6
 LU	L-5885	Hesperange							49.5681	6.1514	4
 LU	L-5886	Alzingen							49.565	6.1636	4
 LU	L-5886	Hesperange							49.5681	6.1514	4
@@ -2566,17 +2567,17 @@ LU	L-6150	Altlinster							49.7156	6.2167	4
 LU	L-6155	Koedange							49.7283	6.2103	4
 LU	L-6155	Weyer							49.7197	6.2	4
 LU	L-6155	Junglinster							49.7072	6.2531	4
-LU	L-6155	Stuppicht							49.7184	6.2211	
+LU	L-6155	Stuppicht							49.7184	6.2211	6
 LU	L-6160	Bourglinster							49.6978	6.2197	4
 LU	L-6161	Bourglinster							49.6978	6.2197	4
 LU	L-6162	Bourglinster							49.6978	6.2197	4
 LU	L-6163	Bourglinster							49.6978	6.2197	4
 LU	L-6165	Ernster							49.6756	6.2472	4
 LU	L-6166	Ernster							49.6756	6.2472	4
-LU	L-6169	Eschweiler (Junglinster)							49.6904	6.2289	
+LU	L-6169	Eschweiler (Junglinster)							49.6904	6.2289	6
 LU	L-6170	Godbrange							49.7289	6.2319	4
 LU	L-6171	Godbrange							49.7289	6.2319	4
-LU	L-6175	Schiltzberg							49.7289	6.2319	
+LU	L-6175	Schiltzberg							49.7289	6.2319	6
 LU	L-6180	Gonderange							49.6889	6.2483	4
 LU	L-6181	Gonderange							49.6889	6.2483	4
 LU	L-6182	Gonderange							49.6911	6.2396	4
@@ -2594,7 +2595,7 @@ LU	L-6210	Consdorf							49.7731	6.3383	4
 LU	L-6211	Consdorf							49.7807	6.3234	4
 LU	L-6212	Consdorf							49.7731	6.3383	4
 LU	L-6213	Consdorf							49.7731	6.3383	4
-LU	L-6214	Kalkesbach							49.7731	6.3383	
+LU	L-6214	Kalkesbach							49.7731	6.3383	6
 LU	L-6214	Consdorf							49.7731	6.3383	4
 LU	L-6225	Altrier							49.7442	6.3283	4
 LU	L-6225	Hersberg							49.7503	6.3286	4
@@ -2604,7 +2605,7 @@ LU	L-6231	Bech							49.7461	6.3636	4
 LU	L-6235	Beidweiler							49.7233	6.3025	4
 LU	L-6238	Breidweiler							49.7708	6.3042	4
 LU	L-6239	Breidweiler							49.7708	6.3042	4
-LU	L-6239	Marscherwald							49.7664	6.3037	
+LU	L-6239	Marscherwald							49.7664	6.3037	6
 LU	L-6239	Colbette							49.7619	6.3033	4
 LU	L-6240	Graulinster							49.7347	6.2872	4
 LU	L-6243	Hemstal							49.7344	6.3361	4
@@ -2710,12 +2711,12 @@ LU	L-6496	Echternach							49.8056	6.4222	4
 LU	L-6497	Echternach							49.8056	6.4222	4
 LU	L-6499	Echternach							49.8056	6.4222	4
 LU	L-6550	Berdorf							49.8136	6.3503	4
-LU	L-6551	Heisbich							49.8136	6.3503	
+LU	L-6551	Heisbich							49.8136	6.3503	6
 LU	L-6551	Berdorf							49.8211	6.3497	4
 LU	L-6552	Berdorf							49.8136	6.3503	4
-LU	L-6552	Birkelt							49.8136	6.3503	
+LU	L-6552	Birkelt							49.8136	6.3503	6
 LU	L-6553	Berdorf							49.8136	6.3503	4
-LU	L-6555	Bollendorf-Pont							49.7968	6.422	
+LU	L-6555	Bollendorf-Pont							49.7968	6.422	6
 LU	L-6557	Dickweiler							49.7775	6.4722	4
 LU	L-6558	Girsterklaus							49.7778	6.4994	4
 LU	L-6558	Rosport							49.7978	6.5042	4
@@ -2723,7 +2724,7 @@ LU	L-6559	Girst							49.7672	6.4989	4
 LU	L-6560	Hinkel							49.7764	6.5153	4
 LU	L-6562	Berdorf							49.8136	6.3503	4
 LU	L-6562	Echternach							49.8056	6.4222	4
-LU	L-6562	Posselt							49.8031	6.3869	
+LU	L-6562	Posselt							49.8031	6.3869	6
 LU	L-6562	Lauterborn							49.79	6.3883	4
 LU	L-6570	Osweiler							49.7789	6.4414	4
 LU	L-6571	Osweiler							49.7789	6.4414	4
@@ -2874,7 +2875,7 @@ LU	L-6831	Berbourg							49.7272	6.3939	4
 LU	L-6832	Betzdorf							49.6833	6.35	4
 LU	L-6833	Biwer							49.7028	6.3747	4
 LU	L-6834	Biwer							49.7028	6.3747	4
-LU	L-6835	Boudlerbach							49.7178	6.355	
+LU	L-6835	Boudlerbach							49.7178	6.355	6
 LU	L-6835	Boudler							49.7178	6.355	4
 LU	L-6836	Breinert							49.7067	6.3406	4
 LU	L-6837	Brouch (Biwer)							49.7236	6.3425	4
@@ -2891,7 +2892,7 @@ LU	L-6868	Wecker							49.6914	6.3883	4
 LU	L-6869	Wecker							49.6914	6.3883	4
 LU	L-6870	Wecker							49.6914	6.3883	4
 LU	L-6871	Wecker							49.6914	6.3883	4
-LU	L-6880	Weydig							49.696	6.3962	
+LU	L-6880	Weydig							49.696	6.3962	6
 LU	L-6901	Roodt-Sur-Syre							49.6625	6.3028	4
 LU	L-6905	Niederanven							49.6475	6.26	4
 LU	L-6906	Niederanven							49.6475	6.26	4
@@ -2906,7 +2907,7 @@ LU	L-6917	Roodt-Sur-Syre							49.6625	6.3028	4
 LU	L-6918	Mensdorf							49.6508	6.3036	4
 LU	L-6919	Roodt-Sur-Syre							49.6625	6.3028	4
 LU	L-6921	Roodt-Sur-Syre							49.6625	6.3028	4
-LU	L-6922	Berg (Betzdorf)							49.6619	6.33	
+LU	L-6922	Berg (Betzdorf)							49.6619	6.33	6
 LU	L-6925	Flaxweiler							49.6617	6.3436	4
 LU	L-6926	Flaxweiler							49.6617	6.3436	4
 LU	L-6930	Mensdorf							49.6508	6.3036	4
@@ -2930,35 +2931,35 @@ LU	L-6960	Senningen							49.6419	6.2394	4
 LU	L-6961	Senningen							49.6419	6.2394	4
 LU	L-6962	Senningen							49.6419	6.2394	4
 LU	L-6969	Oberanven							49.6536	6.2411	4
-LU	L-6970	Hostert (Niederanven)							49.6536	6.2411	
+LU	L-6970	Hostert (Niederanven)							49.6536	6.2411	6
 LU	L-6970	Oberanven							49.6536	6.2411	4
-LU	L-6971	Hostert (Niederanven)							49.6557	6.2364	
+LU	L-6971	Hostert (Niederanven)							49.6557	6.2364	6
 LU	L-6972	Rameldange							49.6569	6.2336	4
 LU	L-6973	Rameldange							49.6569	6.2336	4
 LU	L-6974	Rameldange							49.6569	6.2336	4
 LU	L-6975	Rameldange							49.6569	6.2336	4
 LU	L-6976	Oberanven							49.6536	6.2411	4
 LU	L-6977	Oberanven							49.6536	6.2411	4
-LU	L-6978	Hostert (Niederanven)							49.6557	6.2364	
+LU	L-6978	Hostert (Niederanven)							49.6557	6.2364	6
 LU	L-6979	Rameldange							49.6569	6.2336	4
 LU	L-6980	Rameldange							49.6569	6.2336	4
 LU	L-6981	Rameldange							49.6569	6.2336	4
 LU	L-6982	Oberanven							49.6536	6.2411	4
-LU	L-6985	Hostert (Niederanven)							49.6556	6.2366	
+LU	L-6985	Hostert (Niederanven)							49.6556	6.2366	6
 LU	L-6986	Oberanven							49.6536	6.2411	4
 LU	L-6987	Rameldange							49.6569	6.2336	4
-LU	L-6988	Hostert (Niederanven)							49.6556	6.2366	
-LU	L-6989	Hostert (Niederanven)							49.6556	6.2366	
-LU	L-6990	Hostert (Niederanven)							49.6569	6.2336	
+LU	L-6988	Hostert (Niederanven)							49.6556	6.2366	6
+LU	L-6989	Hostert (Niederanven)							49.6556	6.2366	6
+LU	L-6990	Hostert (Niederanven)							49.6569	6.2336	6
 LU	L-6990	Rameldange							49.6569	6.2336	4
 LU	L-6991	Rameldange							49.6569	6.2336	4
 LU	L-6992	Oberanven							49.6536	6.2411	4
 LU	L-6995	Rameldange							49.6569	6.2336	4
 LU	L-6996	Rameldange							49.6569	6.2336	4
-LU	L-6996	Hostert (Niederanven)							49.6553	6.2374	
+LU	L-6996	Hostert (Niederanven)							49.6553	6.2374	6
 LU	L-6996	Oberanven							49.6536	6.2411	4
 LU	L-6997	Oberanven							49.6536	6.2411	4
-LU	L-6998	Hostert (Niederanven)							49.6553	6.2374	
+LU	L-6998	Hostert (Niederanven)							49.6553	6.2374	6
 LU	L-6999	Oberanven							49.6536	6.2411	4
 LU	L-7201	Walferdange							49.6583	6.1372	4
 LU	L-7205	Lorentzweiler							49.6947	6.1425	4
@@ -3027,23 +3028,23 @@ LU	L-7274	Walferdange							49.6583	6.1372	4
 LU	L-7302	Steinsel							49.6769	6.1239	4
 LU	L-7302	Mullendorf							49.6803	6.13	4
 LU	L-7303	Steinsel							49.6769	6.1239	4
-LU	L-7304	Heisdorf							49.6784	6.1265	
+LU	L-7304	Heisdorf							49.6784	6.1265	6
 LU	L-7305	Mullendorf							49.6803	6.13	4
 LU	L-7306	Mullendorf							49.6803	6.13	4
 LU	L-7307	Steinsel							49.6769	6.1239	4
-LU	L-7308	Heisdorf							49.6784	6.1265	
+LU	L-7308	Heisdorf							49.6784	6.1265	6
 LU	L-7309	Steinsel							49.6769	6.1239	4
-LU	L-7310	Heisdorf							49.6779	6.1256	
-LU	L-7311	Heisdorf							49.6779	6.1256	
+LU	L-7310	Heisdorf							49.6779	6.1256	6
+LU	L-7311	Heisdorf							49.6779	6.1256	6
 LU	L-7312	Mullendorf							49.6803	6.13	4
 LU	L-7312	Steinsel							49.6769	6.1239	4
-LU	L-7313	Heisdorf							49.6779	6.1256	
-LU	L-7314	Heisdorf							49.6779	6.1256	
+LU	L-7313	Heisdorf							49.6779	6.1256	6
+LU	L-7314	Heisdorf							49.6779	6.1256	6
 LU	L-7315	Steinsel							49.6769	6.1239	4
 LU	L-7316	Steinsel							49.6769	6.1239	4
 LU	L-7317	Mullendorf							49.6803	6.13	4
 LU	L-7317	Steinsel							49.6769	6.1239	4
-LU	L-7318	Heisdorf							49.6779	6.1256	
+LU	L-7318	Heisdorf							49.6779	6.1256	6
 LU	L-7319	Steinsel							49.6769	6.1239	4
 LU	L-7320	Steinsel							49.6769	6.1239	4
 LU	L-7321	Steinsel							49.6769	6.1239	4
@@ -3051,31 +3052,31 @@ LU	L-7321	Mullendorf							49.6803	6.13	4
 LU	L-7322	Steinsel							49.6769	6.1239	4
 LU	L-7323	Steinsel							49.6769	6.1239	4
 LU	L-7324	Mullendorf							49.6803	6.13	4
-LU	L-7325	Heisdorf							49.6781	6.1259	
+LU	L-7325	Heisdorf							49.6781	6.1259	6
 LU	L-7326	Mullendorf							49.6803	6.13	4
 LU	L-7326	Steinsel							49.6769	6.1239	4
 LU	L-7327	Steinsel							49.6769	6.1239	4
-LU	L-7328	Heisdorf							49.6781	6.1259	
-LU	L-7329	Heisdorf							49.6781	6.1259	
-LU	L-7330	Heisdorf							49.6776	6.1251	
+LU	L-7328	Heisdorf							49.6781	6.1259	6
+LU	L-7329	Heisdorf							49.6781	6.1259	6
+LU	L-7330	Heisdorf							49.6776	6.1251	6
 LU	L-7331	Steinsel							49.6769	6.1239	4
 LU	L-7332	Mullendorf							49.6803	6.13	4
 LU	L-7333	Steinsel							49.6769	6.1239	4
-LU	L-7334	Heisdorf							49.6776	6.1251	
-LU	L-7335	Heisdorf							49.6776	6.1251	
+LU	L-7334	Heisdorf							49.6776	6.1251	6
+LU	L-7335	Heisdorf							49.6776	6.1251	6
 LU	L-7336	Steinsel							49.6769	6.1239	4
-LU	L-7337	Heisdorf							49.6776	6.1251	
-LU	L-7338	Heisdorf							49.6776	6.1251	
+LU	L-7337	Heisdorf							49.6776	6.1251	6
+LU	L-7338	Heisdorf							49.6776	6.1251	6
 LU	L-7339	Steinsel							49.6769	6.1239	4
-LU	L-7340	Heisdorf							49.6769	6.1239	
-LU	L-7341	Heisdorf							49.6769	6.1239	
-LU	L-7342	Heisdorf							49.6769	6.1239	
+LU	L-7340	Heisdorf							49.6769	6.1239	6
+LU	L-7341	Heisdorf							49.6769	6.1239	6
+LU	L-7342	Heisdorf							49.6769	6.1239	6
 LU	L-7343	Steinsel							49.6769	6.1239	4
 LU	L-7344	Steinsel							49.6769	6.1239	4
-LU	L-7345	Heisdorf							49.6769	6.1239	
+LU	L-7345	Heisdorf							49.6769	6.1239	6
 LU	L-7346	Steinsel							49.6769	6.1239	4
-LU	L-7348	Heisdorf							49.6769	6.1239	
-LU	L-7349	Heisdorf							49.6769	6.1239	
+LU	L-7348	Heisdorf							49.6769	6.1239	6
+LU	L-7349	Heisdorf							49.6769	6.1239	6
 LU	L-7350	Lorentzweiler							49.6947	6.1425	4
 LU	L-7351	Helmdange							49.6872	6.1436	4
 LU	L-7352	Helmdange							49.6872	6.1436	4
@@ -3111,7 +3112,7 @@ LU	L-7381	Bofferdange							49.6831	6.1417	4
 LU	L-7382	Helmdange							49.6872	6.1436	4
 LU	L-7390	Blaschette							49.6972	6.1706	4
 LU	L-7391	Blaschette							49.6972	6.1706	4
-LU	L-7392	Asselscheuer							49.6972	6.1706	
+LU	L-7392	Asselscheuer							49.6972	6.1706	6
 LU	L-7392	Blaschette							49.6972	6.1706	4
 LU	L-7395	Hunsdorf							49.6967	6.1317	4
 LU	L-7396	Hunsdorf							49.6967	6.1317	4
@@ -3123,20 +3124,20 @@ LU	L-7410	Angelsberg							49.7564	6.1608	4
 LU	L-7411	Marienthal							49.71	6.0617	4
 LU	L-7411	Ansembourg							49.7025	6.0433	4
 LU	L-7412	Bour							49.7014	6.0189	4
-LU	L-7415	Brouch (Boevange-Sur-Attert)							49.7283	6.0665	
-LU	L-7416	Brouch (Boevange-Sur-Attert)							49.7283	6.0665	
-LU	L-7417	Brouch (Boevange-Sur-Attert)							49.7283	6.0665	
+LU	L-7415	Brouch (Boevange-Sur-Attert)							49.7283	6.0665	6
+LU	L-7416	Brouch (Boevange-Sur-Attert)							49.7283	6.0665	6
+LU	L-7417	Brouch (Boevange-Sur-Attert)							49.7283	6.0665	6
 LU	L-7418	Buschdorf							49.7508	6.0083	4
 LU	L-7420	Cruchten							49.7919	6.1328	4
 LU	L-7421	Cruchten							49.7919	6.1328	4
-LU	L-7423	Dondelange							49.7743	6.1013	
+LU	L-7423	Dondelange							49.7743	6.1013	6
 LU	L-7424	Essingen							49.7789	6.1167	4
 LU	L-7425	Reckange (Mersch)							49.7497	6.0831	4
-LU	L-7425	Bill							49.7544	6.0621	
-LU	L-7425	Openthalt							49.7544	6.0621	
+LU	L-7425	Bill							49.7544	6.0621	6
+LU	L-7425	Openthalt							49.7544	6.0621	6
 LU	L-7425	Finsterthal							49.7592	6.0411	4
 LU	L-7430	Fischbach							49.7397	6.1872	4
-LU	L-7431	Glabach							49.7354	6.0972	
+LU	L-7431	Glabach							49.7354	6.0972	6
 LU	L-7432	Gosseldange							49.7264	6.1169	4
 LU	L-7433	Grevenknapp							49.7625	6.0339	4
 LU	L-7435	Hollenfels							49.7131	6.0508	4
@@ -3160,10 +3161,10 @@ LU	L-7456	Lintgen							49.7158	6.1336	4
 LU	L-7457	Lintgen							49.7158	6.1336	4
 LU	L-7460	Prettingen							49.7175	6.1203	4
 LU	L-7461	Meysembourg							49.7617	6.1889	4
-LU	L-7462	Moesdorf (Mersch)							49.7589	6.142	
+LU	L-7462	Moesdorf (Mersch)							49.7589	6.142	6
 LU	L-7463	Pettingen							49.7703	6.1092	4
 LU	L-7464	Beringen							49.7583	6.1169	4
-LU	L-7464	Moesdorf (Mersch)							49.7583	6.1169	
+LU	L-7464	Moesdorf (Mersch)							49.7583	6.1169	6
 LU	L-7465	Nommern							49.7869	6.1747	4
 LU	L-7470	Saeul							49.7272	5.9864	4
 LU	L-7471	Saeul							49.7272	5.9864	4
@@ -3269,7 +3270,7 @@ LU	L-7636	Ernzen							49.7658	6.2219	4
 LU	L-7639	Blumenthal							49.7383	6.2672	4
 LU	L-7640	Christnach							49.7811	6.2736	4
 LU	L-7641	Christnach							49.7899	6.2746	4
-LU	L-7649	Freckeisen							49.7811	6.2736	
+LU	L-7649	Freckeisen							49.7811	6.2736	6
 LU	L-7650	Heffingen							49.7625	6.2414	4
 LU	L-7651	Heffingen							49.7625	6.2414	4
 LU	L-7652	Heffingen							49.7625	6.2414	4
@@ -3283,36 +3284,36 @@ LU	L-7670	Reuland							49.7467	6.2603	4
 LU	L-7673	Heffingen							49.7625	6.2414	4
 LU	L-7680	Waldbillig							49.7889	6.2867	4
 LU	L-7681	Waldbillig							49.7889	6.2867	4
-LU	L-7701	Colmar-Berg							49.7875	6.0694	
+LU	L-7701	Colmar-Berg							49.7875	6.0694	6
 LU	L-7703	Bissen							49.7875	6.0694	4
-LU	L-7710	Colmar-Berg							49.8169	6.0881	
-LU	L-7711	Colmar-Berg							49.8169	6.0881	
-LU	L-7712	Colmar-Berg							49.8169	6.0881	
+LU	L-7710	Colmar-Berg							49.8169	6.0881	6
+LU	L-7711	Colmar-Berg							49.8169	6.0881	6
+LU	L-7712	Colmar-Berg							49.8169	6.0881	6
 LU	L-7713	Welsdorf							49.8169	6.0881	4
-LU	L-7713	Colmar-Berg							49.8169	6.0881	
-LU	L-7714	Colmar-Berg							49.8169	6.0881	
-LU	L-7715	Colmar-Berg							49.8169	6.0881	
-LU	L-7716	Colmar-Berg							49.8169	6.0881	
-LU	L-7720	Colmar-Berg							49.8169	6.0881	
-LU	L-7721	Colmar-Berg							49.8169	6.0881	
-LU	L-7722	Colmar-Berg							49.8169	6.0881	
+LU	L-7713	Colmar-Berg							49.8169	6.0881	6
+LU	L-7714	Colmar-Berg							49.8169	6.0881	6
+LU	L-7715	Colmar-Berg							49.8169	6.0881	6
+LU	L-7716	Colmar-Berg							49.8169	6.0881	6
+LU	L-7720	Colmar-Berg							49.8169	6.0881	6
+LU	L-7721	Colmar-Berg							49.8169	6.0881	6
+LU	L-7722	Colmar-Berg							49.8169	6.0881	6
 LU	L-7723	Welsdorf							49.8169	6.0881	4
-LU	L-7724	Colmar-Berg							49.8169	6.0881	
-LU	L-7726	Colmar-Berg							49.8169	6.0881	
-LU	L-7727	Colmar-Berg							49.8169	6.0881	
-LU	L-7730	Colmar-Berg							49.8306	6.0986	
-LU	L-7731	Colmar-Berg							49.8306	6.0986	
-LU	L-7732	Colmar-Berg							49.8306	6.0986	
-LU	L-7733	Colmar-Berg							49.8306	6.0986	
-LU	L-7734	Colmar-Berg							49.8306	6.0986	
-LU	L-7735	Colmar-Berg							49.8306	6.0986	
-LU	L-7737	Colmar-Berg							49.8306	6.0986	
+LU	L-7724	Colmar-Berg							49.8169	6.0881	6
+LU	L-7726	Colmar-Berg							49.8169	6.0881	6
+LU	L-7727	Colmar-Berg							49.8169	6.0881	6
+LU	L-7730	Colmar-Berg							49.8306	6.0986	6
+LU	L-7731	Colmar-Berg							49.8306	6.0986	6
+LU	L-7732	Colmar-Berg							49.8306	6.0986	6
+LU	L-7733	Colmar-Berg							49.8306	6.0986	6
+LU	L-7734	Colmar-Berg							49.8306	6.0986	6
+LU	L-7735	Colmar-Berg							49.8306	6.0986	6
+LU	L-7737	Colmar-Berg							49.8306	6.0986	6
 LU	L-7738	Schieren							49.8306	6.0986	4
-LU	L-7738	Colmar-Berg							49.8306	6.0986	
-LU	L-7739	Colmar-Berg							49.8306	6.0986	
-LU	L-7740	Colmar-Berg							49.7924	6.0731	
-LU	L-7741	Colmar-Berg							49.7924	6.0731	
-LU	L-7750	Colmar-Berg							49.8152	6.0935	
+LU	L-7738	Colmar-Berg							49.8306	6.0986	6
+LU	L-7739	Colmar-Berg							49.8306	6.0986	6
+LU	L-7740	Colmar-Berg							49.7924	6.0731	6
+LU	L-7741	Colmar-Berg							49.7924	6.0731	6
+LU	L-7750	Colmar-Berg							49.8152	6.0935	6
 LU	L-7758	Birtrange							49.8269	6.0914	4
 LU	L-7758	Grentzingen							49.8319	6.0931	4
 LU	L-7759	Roost							49.7867	6.0961	4
@@ -3629,7 +3630,7 @@ LU	L-8359	Goeblange							49.6697	5.9653	4
 LU	L-8360	Goetzingen							49.6603	5.9817	4
 LU	L-8361	Goetzingen							49.6603	5.9817	4
 LU	L-8362	Grass							49.6308	5.8914	4
-LU	L-8363	Leesbach							49.7054	5.9778	
+LU	L-8363	Leesbach							49.7054	5.9778	6
 LU	L-8363	Greisch							49.7097	5.9883	4
 LU	L-8363	Septfontaines							49.7011	5.9672	4
 LU	L-8365	Hagen							49.6494	5.9317	4
@@ -3661,8 +3662,8 @@ LU	L-8393	Olm							49.6572	6.0003	4
 LU	L-8394	Olm							49.6572	6.0003	4
 LU	L-8395	Septfontaines							49.7011	5.9672	4
 LU	L-8396	Septfontaines							49.7011	5.9672	4
-LU	L-8398	Roodt (Septfontaines)							49.6734	5.9933	
-LU	L-8399	Windhof (Koerich)							49.6444	5.9844	
+LU	L-8398	Roodt (Septfontaines)							49.6734	5.9933	6
+LU	L-8399	Windhof (Koerich)							49.6444	5.9844	6
 LU	L-8399	Cap							49.6444	5.9844	4
 LU	L-8401	Steinfort							49.6614	5.9192	4
 LU	L-8410	Steinfort							49.6614	5.9192	4
@@ -3735,7 +3736,7 @@ LU	L-8530	Ell							49.7639	5.8572	4
 LU	L-8531	Ell							49.7639	5.8572	4
 LU	L-8533	Elvange (Beckerich)							49.7247	5.9178	4
 LU	L-8537	Folschette							49.8142	5.8747	4
-LU	L-8537	Hostert (Rambrouch)							49.8142	5.8747	
+LU	L-8537	Hostert (Rambrouch)							49.8142	5.8747	6
 LU	L-8538	Hovelange							49.7225	5.9072	4
 LU	L-8539	Huttange							49.7361	5.8986	4
 LU	L-8540	Ospern							49.7839	5.9044	4
@@ -3745,7 +3746,7 @@ LU	L-8542	Lannen							49.7894	5.8397	4
 LU	L-8543	Levelange							49.7397	5.8567	4
 LU	L-8544	Nagem							49.7892	5.8578	4
 LU	L-8545	Niederpallen							49.7553	5.9122	4
-LU	L-8546	Hostert (Rambrouch)							49.7679	5.8909	
+LU	L-8546	Hostert (Rambrouch)							49.7679	5.8909	6
 LU	L-8550	Noerdange							49.7422	5.9261	4
 LU	L-8551	Noerdange							49.7422	5.9261	4
 LU	L-8552	Oberpallen							49.7303	5.8439	4
@@ -3791,7 +3792,7 @@ LU	L-8818	Grevels							49.8531	5.9158	4
 LU	L-8818	Wahl							49.8367	5.9064	4
 LU	L-8819	Heispelt (Wahl)							49.8572	5.8806	4
 LU	L-8820	Holtz							49.8072	5.7917	4
-LU	L-8821	Riesenhof							49.8381	5.8403	
+LU	L-8821	Riesenhof							49.8381	5.8403	6
 LU	L-8821	Koetschette							49.8381	5.8403	4
 LU	L-8822	Kuborn							49.8706	5.9031	4
 LU	L-8823	Martelange-Haut							49.825	5.7511	4
@@ -3901,12 +3902,12 @@ LU	L-9135	Schieren							49.8306	6.0986	4
 LU	L-9136	Schieren							49.8306	6.0986	4
 LU	L-9140	Bourscheid							49.9067	6.0609	4
 LU	L-9142	Buerden							49.8831	6.0989	4
-LU	L-9144	Lehrhof							49.8661	5.9463	
+LU	L-9144	Lehrhof							49.8661	5.9463	6
 LU	L-9144	Dellen							49.8592	5.9614	4
 LU	L-9144	Hierheck							49.8731	5.9311	4
-LU	L-9145	Erpeldange							49.8813	6.0147	
-LU	L-9146	Erpeldange							49.8813	6.0147	
-LU	L-9147	Erpeldange							49.8813	6.0147	
+LU	L-9145	Erpeldange							49.8813	6.0147	6
+LU	L-9146	Erpeldange							49.8813	6.0147	6
+LU	L-9147	Erpeldange							49.8813	6.0147	6
 LU	L-9150	Eschdorf							49.8831	5.9387	4
 LU	L-9151	Eschdorf							49.8861	5.9367	4
 LU	L-9153	Dirbach							49.9211	6.0383	4
@@ -3931,7 +3932,7 @@ LU	L-9170	Mertzig							49.8339	6.0075	4
 LU	L-9171	Michelau							49.9	6.0919	4
 LU	L-9172	Michelau							49.9	6.0919	4
 LU	L-9172	Bourscheid							49.91	6.0672	4
-LU	L-9172	Erpeldange							49.905	6.0796	
+LU	L-9172	Erpeldange							49.905	6.0796	6
 LU	L-9173	Michelbouch							49.8186	6.0203	4
 LU	L-9173	Vichten							49.8031	6	4
 LU	L-9175	Niederfeulen							49.8556	6.0472	4
@@ -3942,7 +3943,7 @@ LU	L-9180	Oberfeulen							49.8481	6.0356	4
 LU	L-9181	Ringel							49.9169	6.0119	4
 LU	L-9181	Tadler							49.9114	5.9956	4
 LU	L-9182	Scheidel							49.8936	6.0447	4
-LU	L-9183	Ennerschlenner							49.9331	6.0636	
+LU	L-9183	Ennerschlenner							49.9331	6.0636	6
 LU	L-9183	Schlindermanderscheid							49.9331	6.0636	4
 LU	L-9184	Schieren							49.8306	6.0986	4
 LU	L-9184	Schrondweiler							49.7978	6.1592	4
@@ -4043,10 +4044,10 @@ LU	L-9357	Bettendorf							49.8767	6.2181	4
 LU	L-9359	Bastendorf							49.8919	6.1653	4
 LU	L-9359	Diekirch							49.8678	6.1558	4
 LU	L-9359	Bettendorf							49.8767	6.2181	4
-LU	L-9359	Selz							49.8788	6.1797	
+LU	L-9359	Selz							49.8788	6.1797	6
 LU	L-9360	Brandenbourg							49.9125	6.14	4
 LU	L-9361	Brandenbourg							49.9125	6.14	4
-LU	L-9364	Keiwelbach							49.8369	6.2363	
+LU	L-9364	Keiwelbach							49.8369	6.2363	6
 LU	L-9364	Ermsdorf							49.8294	6.2228	4
 LU	L-9364	Eppeldorf							49.8444	6.2497	4
 LU	L-9365	Eppeldorf							49.8444	6.2497	4
@@ -4072,7 +4073,7 @@ LU	L-9381	Moestroff							49.8678	6.2394	4
 LU	L-9382	Moestroff							49.8678	6.2394	4
 LU	L-9390	Reisdorf							49.8686	6.2678	4
 LU	L-9391	Reisdorf							49.8686	6.2678	4
-LU	L-9392	Wallendorf-Pont							49.8782	6.2396	
+LU	L-9392	Wallendorf-Pont							49.8782	6.2396	6
 LU	L-9395	Tandel							49.8975	6.1833	4
 LU	L-9401	Vianden							49.9336	6.2043	4
 LU	L-9405	Vianden							49.935	6.2089	4
@@ -4107,8 +4108,8 @@ LU	L-9457	Landscheid							49.9244	6.1303	4
 LU	L-9458	Landscheid							49.9244	6.1303	4
 LU	L-9459	Longsdorf							49.8989	6.2053	4
 LU	L-9461	Nachtmanderscheid							49.9483	6.1294	4
-LU	L-9461	Puetscheid							49.9483	6.1294	
-LU	L-9462	Puetscheid							49.9546	6.1526	
+LU	L-9461	Puetscheid							49.9483	6.1294	6
+LU	L-9462	Puetscheid							49.9546	6.1526	6
 LU	L-9463	Stolzembourg							49.9672	6.1678	4
 LU	L-9464	Stolzembourg							49.9672	6.1678	4
 LU	L-9465	Walsdorf							49.9267	6.1736	4
@@ -4171,7 +4172,7 @@ LU	L-9633	Boulaide							49.8878	5.8164	4
 LU	L-9633	Baschleiden							49.8983	5.8203	4
 LU	L-9635	Bavigne							49.9219	5.8494	4
 LU	L-9636	Berle							49.9522	5.8561	4
-LU	L-9637	Bockholtz (Goesdorf)							49.9395	5.8625	
+LU	L-9637	Bockholtz (Goesdorf)							49.9395	5.8625	6
 LU	L-9638	Pommerloch							49.9603	5.8608	4
 LU	L-9639	Boulaide							49.8878	5.8164	4
 LU	L-9640	Boulaide							49.8878	5.8164	4
@@ -4181,7 +4182,7 @@ LU	L-9644	Dahl							49.9353	5.9758	4
 LU	L-9645	Derenbach							50.015	5.8897	4
 LU	L-9647	Doncols							49.97	5.8372	4
 LU	L-9647	Sonlez							49.965	5.8267	4
-LU	L-9648	Erpeldange (Eschweiler)							49.9612	5.8856	
+LU	L-9648	Erpeldange (Eschweiler)							49.9612	5.8856	6
 LU	L-9650	Esch-Sur-Sure							49.9117	5.9352	4
 LU	L-9651	Eschweiler							49.9978	5.9489	4
 LU	L-9653	Goesdorf							49.9217	5.9683	4
@@ -4199,7 +4200,7 @@ LU	L-9663	Kautenbach							49.9528	6.02	4
 LU	L-9665	Liefrange							49.91	5.8775	4
 LU	L-9666	Lultzhausen							49.9094	5.8908	4
 LU	L-9668	Masseler							49.9308	6.0372	4
-LU	L-9669	Mecher (Haute Sure)							49.9282	5.9462	
+LU	L-9669	Mecher (Haute Sure)							49.9282	5.9462	6
 LU	L-9670	Merkholtz							49.9625	5.9817	4
 LU	L-9671	Neunhausen							49.8775	5.8872	4
 LU	L-9672	Niederwampach							50.0117	5.8436	4
@@ -4238,11 +4239,11 @@ LU	L-9745	Doennange							50.0622	5.9558	4
 LU	L-9746	Drauffelt							50.0178	6.0061	4
 LU	L-9747	Enscherange							49.9994	5.9928	4
 LU	L-9748	Eselborn							50.0628	6.0036	4
-LU	L-9749	Fischbach (Heinerscheid)							50.0533	5.971	
+LU	L-9749	Fischbach (Heinerscheid)							50.0533	5.971	6
 LU	L-9751	Grindhausen							50.0833	6.06	4
 LU	L-9752	Hamiville							50.0461	5.9042	4
 LU	L-9753	Heinerscheid							50.0961	6.0881	4
-LU	L-9754	Hinter-Hassel							50.0729	6.0366	
+LU	L-9754	Hinter-Hassel							50.0729	6.0366	6
 LU	L-9755	Hupperdange							50.0961	6.0592	4
 LU	L-9756	Hupperdange							50.0961	6.0592	4
 LU	L-9757	Kalborn							50.1028	6.1131	4
@@ -4282,12 +4283,12 @@ LU	L-9830	Bockholtz (Hosingen)							50.0122	6.0528	4
 LU	L-9831	Consthum							49.9747	6.0542	4
 LU	L-9833	Dorscheid							50.0361	6.0714	4
 LU	L-9834	Holzthum							49.985	6.0733	4
-LU	L-9835	Hoscheid-Dickt							50.0096	6.0837	
+LU	L-9835	Hoscheid-Dickt							50.0096	6.0837	6
 LU	L-9836	Hosingen							50.0178	6.0933	4
 LU	L-9836	Wahlhausen							49.9853	6.1267	4
 LU	L-9837	Neidhausen							50.0289	6.0667	4
-LU	L-9838	Eisenbach							50.0096	6.0837	
-LU	L-9839	Eisenbach							50.0367	6.1311	
+LU	L-9838	Eisenbach							50.0096	6.0837	6
+LU	L-9839	Eisenbach							50.0367	6.1311	6
 LU	L-9839	Rodershausen							50.0367	6.1311	4
 LU	L-9840	Siebenaler							50.0106	6.0267	4
 LU	L-9841	Wahlhausen							49.9853	6.1267	4
@@ -4305,7 +4306,7 @@ LU	L-9912	Troisvierges							50.1211	6.0003	4
 LU	L-9913	Troisvierges							50.1211	6.0003	4
 LU	L-9940	Asselborn							50.0972	5.9731	4
 LU	L-9942	Basbellain							50.1458	5.9839	4
-LU	L-9942	Besslingen							50.1458	5.9839	
+LU	L-9942	Besslingen							50.1458	5.9839	6
 LU	L-9943	Hautbellain							50.1567	5.9786	4
 LU	L-9944	Beiler							50.1656	6.0889	4
 LU	L-9946	Binsfeld							50.1189	6.0386	4
@@ -4317,16 +4318,16 @@ LU	L-9956	Hachiville							50.1081	5.9233	4
 LU	L-9960	Hoffelt							50.0997	5.9233	4
 LU	L-9962	Holler							50.1236	6.0494	4
 LU	L-9964	Huldange							50.1647	6.015	4
-LU	L-9966	Kaesfurt (Beiler)							50.1207	6.0318	
+LU	L-9966	Kaesfurt (Beiler)							50.1207	6.0318	6
 LU	L-9968	Heinerscheid							50.0961	6.0881	4
 LU	L-9968	Lausdorn							50.1192	6.0833	4
-LU	L-9968	Hollermillen							50.1076	6.0857	
+LU	L-9968	Hollermillen							50.1076	6.0857	6
 LU	L-9970	Leithum							50.1608	6.1089	4
 LU	L-9972	Lieler							50.1244	6.11	4
-LU	L-9974	Maulusmuehle							50.1282	6.0721	
+LU	L-9974	Maulusmuehle							50.1282	6.0721	6
 LU	L-9976	Sassel							50.0994	5.9975	4
 LU	L-9980	Wilwerdange							50.1406	6.0239	4
-LU	L-9982	Weiler (Wincrange)							50.1406	6.0239	
+LU	L-9982	Weiler (Wincrange)							50.1406	6.0239	6
 LU	L-9990	Weiswampach							50.1372	6.075	4
 LU	L-9991	Weiswampach							50.1372	6.075	4
 LU	L-9992	Weiswampach							50.1372	6.075	4

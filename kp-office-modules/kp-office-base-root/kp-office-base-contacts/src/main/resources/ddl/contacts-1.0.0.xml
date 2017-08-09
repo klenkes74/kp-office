@@ -40,6 +40,14 @@
             accuracy          : accuracy of lat/lng from 1=estimated to 6=centroid
             -->
 
+            <column name="ID_" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" primaryKeyName="CITIES_PK" unique="true" nullable="false"/>
+            </column>
+
+            <column name="VERSION_" type="BIGINT" defaultValue="0">
+                <constraints nullable="false" unique="false"/>
+            </column>
+
             <column name="COUNTRY_" type="CHAR(2)">
                 <constraints nullable="false"/>
             </column>
@@ -60,13 +68,11 @@
             <column name="ADMIN3_NAME_" type="VARCHAR(100)" defaultValue="n/a"/>
             <column name="ADMIN3_CODE_" type="VARCHAR(20)" defaultValue="n/a"/>
 
-            <column name="LATITUDE_" type="VARCHAR(8)" defaultValue="0.0000"/>
-            <column name="LONGITUDE_" type="VARCHAR(8)" defaultValue="0.0000"/>
+            <column name="LATITUDE_" type="VARCHAR(9)" defaultValue="0.0000"/>
+            <column name="LONGITUDE_" type="VARCHAR(9)" defaultValue="0.0000"/>
 
             <column name="ACCURACY_" type="SMALLINT" defaultValue="6"/>
         </createTable>
-
-        <addPrimaryKey tableName="CITIES" columnNames="COUNTRY_,POSTAL_CODE_" constraintName="CITIES_PK"/>
 
         <createIndex tableName="CITIES" indexName="CITIES_NAME" unique="false">
             <column name="PLACE_NAME_"/>

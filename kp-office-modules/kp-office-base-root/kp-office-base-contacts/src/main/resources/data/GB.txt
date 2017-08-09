@@ -1,3 +1,4 @@
+COUNTRY_	POSTAL_CODE_	PLACE_NAME_	ADMIN1_NAME_	ADMIN1_CODE_	ADMIN2_NAME_	ADMIN2_CODE_	ADMIN3_NAME_	ADMIN3_CODE_	LATITUDE_	LONGITUDE_	ACCURACY_
 GB	DN14	Faxfleet	England	ENG	East Riding of Yorkshire	11609011			53.7067	-0.6939	4
 GB	DN14	Reedness	England	ENG	East Riding of Yorkshire	11609011			53.6993	-0.7986	4
 GB	DN14	Goole	England	ENG	East Riding of Yorkshire	11609011			53.7167	-0.8667	4
@@ -19255,8 +19256,8 @@ GB	EH99	City of Edinburgh	Scotland	SCT			City of Edinburgh	S12000036	55.9521	-3.
 GB	G58	Glasgow City	Scotland	SCT			Glasgow City	S12000046	55.8519	-4.2971	1
 GB	G70	North Lanarkshire	Scotland	SCT			North Lanarkshire	S12000044	55.9496	-3.9885	1
 GB	G79	South Lanarkshire	Scotland	SCT			South Lanarkshire	S12000029	55.771	-4.2231	1
-GB	G9	Glasgow City	Scotland	SCT			Glasgow City	S12000046	55.8667	-4.25	
-GB	G90	Glasgow City	Scotland	SCT			Glasgow City	S12000046	55.8667	-4.25	
+GB	G9	Glasgow City	Scotland	SCT			Glasgow City	S12000046	55.8667	-4.25	6
+GB	G90	Glasgow City	Scotland	SCT			Glasgow City	S12000046	55.8667	-4.25	6
 GB	IV99	Highland	Scotland	SCT			Highland	S12000017	57.4813	-4.224	1
 GB	KY99	Fife	Scotland	SCT			Fife	S12000015	56.0548	-3.4377	1
 GB	PA69	Argyll and Bute	Scotland	SCT			Argyll and Bute	S12000035	56.3795	-6.0777	1

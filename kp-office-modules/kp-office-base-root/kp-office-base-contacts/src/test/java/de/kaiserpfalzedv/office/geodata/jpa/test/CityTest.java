@@ -18,9 +18,9 @@ package de.kaiserpfalzedv.office.geodata.jpa.test;
 
 import de.kaiserpfalzedv.office.geodata.api.Country;
 import de.kaiserpfalzedv.office.geodata.jpa.AdministrativeEntityJPA;
-import de.kaiserpfalzedv.office.geodata.jpa.CityId;
 import de.kaiserpfalzedv.office.geodata.jpa.CityJPA;
 import de.kaiserpfalzedv.office.geodata.jpa.PositionJPA;
+import de.kaiserpfalzedv.office.geodata.jpa.PostalCode;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -42,10 +42,14 @@ import static org.junit.Assert.assertTrue;
 public class CityTest {
     private static final Logger LOG = LoggerFactory.getLogger(CityTest.class);
 
+    private static final Long ID = 1L;
+    private static final Long VERSION = 0L;
+
     private static final Country COUNTRY = Country.DE;
     private static final String POSTAL_CODE = "12345";
+    private static final PostalCode FULL_POSTAL_CODE = new PostalCode(COUNTRY, POSTAL_CODE);
+
     private static final String CITY_NAME = "City";
-    private static final CityId CITY_ID = new CityId(COUNTRY, POSTAL_CODE, CITY_NAME);
 
     private static final String STATE_CODE = "123";
     private static final String STATE_NAME = "State";
@@ -138,10 +142,14 @@ public class CityTest {
         MDC.put("test", "to-string-with-minimum-data");
         LOG.trace("Checking the toString() result with minimum data");
 
-        cut = new CityJPA(CITY_ID, null, null, null, null);
+        cut = new CityJPA(ID, VERSION, FULL_POSTAL_CODE, CITY_NAME, null, null, null, null);
 
         String expected = new StringBuilder()
-                .append("CityJPA[").append(CITY_ID.toString())
+                .append("CityJPA[").append(System.identityHashCode(cut))
+                .append(",id=").append(ID)
+                .append(",version=").append(VERSION)
+                .append(",").append(FULL_POSTAL_CODE.toString())
+                .append(",name=").append(CITY_NAME)
                 .append("]").toString();
 
         String result = cut.toString();
@@ -156,7 +164,11 @@ public class CityTest {
         LOG.trace("Checking the toString() result");
 
         String expected = new StringBuilder()
-                .append("CityJPA[").append(CITY_ID.toString())
+                .append("CityJPA[").append(System.identityHashCode(cut))
+                .append(",id=").append(ID)
+                .append(",version=").append(VERSION)
+                .append(",").append(FULL_POSTAL_CODE.toString())
+                .append(",name=").append(CITY_NAME)
                 .append(",").append(POSITION.toString())
                 .append(",state=").append(STATE.toString())
                 .append(",province=").append(PROVINCE.toString())
@@ -174,10 +186,14 @@ public class CityTest {
         MDC.put("test", "to-string-without-administrative-data");
         LOG.trace("Checking the toString() result without administrative data");
 
-        cut = new CityJPA(CITY_ID, null, null, null, POSITION);
+        cut = new CityJPA(ID, VERSION, FULL_POSTAL_CODE, CITY_NAME, null, null, null, POSITION);
 
         String expected = new StringBuilder()
-                .append("CityJPA[").append(CITY_ID.toString())
+                .append("CityJPA[").append(System.identityHashCode(cut))
+                .append(",id=").append(ID)
+                .append(",version=").append(VERSION)
+                .append(",").append(FULL_POSTAL_CODE.toString())
+                .append(",name=").append(CITY_NAME)
                 .append(",").append(POSITION.toString())
                 .append("]").toString();
 
@@ -192,10 +208,14 @@ public class CityTest {
         MDC.put("test", "to-string-state-data");
         LOG.trace("Checking the toString() result with state data");
 
-        cut = new CityJPA(CITY_ID, STATE, null, null, POSITION);
+        cut = new CityJPA(ID, VERSION, FULL_POSTAL_CODE, CITY_NAME, STATE, null, null, POSITION);
 
         String expected = new StringBuilder()
-                .append("CityJPA[").append(CITY_ID.toString())
+                .append("CityJPA[").append(System.identityHashCode(cut))
+                .append(",id=").append(ID)
+                .append(",version=").append(VERSION)
+                .append(",").append(FULL_POSTAL_CODE.toString())
+                .append(",name=").append(CITY_NAME)
                 .append(",").append(POSITION.toString())
                 .append(",state=").append(STATE.toString())
                 .append("]").toString();
@@ -211,10 +231,14 @@ public class CityTest {
         MDC.put("test", "to-string-state-and-province-data");
         LOG.trace("Checking the toString() result with state and province data");
 
-        cut = new CityJPA(CITY_ID, STATE, PROVINCE, null, POSITION);
+        cut = new CityJPA(ID, VERSION, FULL_POSTAL_CODE, CITY_NAME, STATE, PROVINCE, null, POSITION);
 
         String expected = new StringBuilder()
-                .append("CityJPA[").append(CITY_ID.toString())
+                .append("CityJPA[").append(System.identityHashCode(cut))
+                .append(",id=").append(ID)
+                .append(",version=").append(VERSION)
+                .append(",").append(FULL_POSTAL_CODE.toString())
+                .append(",name=").append(CITY_NAME)
                 .append(",").append(POSITION.toString())
                 .append(",state=").append(STATE.toString())
                 .append(",province=").append(PROVINCE.toString())
@@ -226,6 +250,7 @@ public class CityTest {
         assertEquals("Wrong to-string representation!", expected, result);
     }
 
+    @SuppressWarnings("EqualsWithItself")
     @Test
     public void checkEqualsWithSameObject() {
         MDC.put("test", "equals-same");
@@ -234,6 +259,7 @@ public class CityTest {
         assertTrue(cut.equals(cut));
     }
 
+    @SuppressWarnings("ObjectEqualsNull")
     @Test
     public void checkEqualsWithNull() {
         MDC.put("test", "equals-null");
@@ -242,6 +268,7 @@ public class CityTest {
         assertFalse(cut.equals(null));
     }
 
+    @SuppressWarnings("EqualsBetweenInconvertibleTypes")
     @Test
     public void checkEqualsWithNonAssignableClass() {
         MDC.put("test", "equals-wrong-type");
@@ -253,9 +280,9 @@ public class CityTest {
     @Test
     public void checkEqualsWithSameId() {
         MDC.put("test", "equals-same-id");
-        LOG.trace("Checking equals() with same CityId");
+        LOG.trace("Checking equals() with same PostalCode");
 
-        CityJPA second = new CityJPA(CITY_ID, null, null, null, null);
+        CityJPA second = new CityJPA(ID, VERSION, FULL_POSTAL_CODE, CITY_NAME, null, null, null, null);
 
         assertTrue(cut.equals(second));
     }
@@ -263,40 +290,41 @@ public class CityTest {
     @Test
     public void checkCityIdEqualsWithSame() {
         MDC.put("test", "city-id-equals-same");
-        LOG.trace("Checking CityId.equals() with same object");
+        LOG.trace("Checking PostalCode.equals() with same object");
 
-        assertTrue(CITY_ID.equals(CITY_ID));
+        assertTrue(FULL_POSTAL_CODE.equals(FULL_POSTAL_CODE));
     }
 
     @Test
     public void checkCityIdEqualsWithNull() {
         MDC.put("test", "city-id-equals-with-null");
-        LOG.trace("Checking CityId.equals() with null");
+        LOG.trace("Checking PostalCode.equals() with null");
 
-        assertFalse(CITY_ID.equals(null));
+        assertFalse(FULL_POSTAL_CODE.equals(null));
     }
 
     @Test
     public void checkCityIdEqualsWithWrongType() {
         MDC.put("test", "city-id-equals-with-wrong-type");
-        LOG.trace("Checking CityId.equals() with wrong type");
+        LOG.trace("Checking PostalCode.equals() with wrong type");
 
-        assertFalse(CITY_ID.equals(this));
+        assertFalse(FULL_POSTAL_CODE.equals(this));
     }
 
     @Test
     public void checkCityIdEqualsWithIdenticalObjet() {
         MDC.put("test", "city-id-equals-with-identical");
-        LOG.trace("Checking CityId.equals() with identical object");
+        LOG.trace("Checking PostalCode.equals() with identical object");
 
-        CityId second = new CityId(COUNTRY, POSTAL_CODE, CITY_NAME);
+        PostalCode second = new PostalCode(COUNTRY, POSTAL_CODE);
 
-        assertFalse(CITY_ID.equals(second));
+        assertTrue(FULL_POSTAL_CODE.equals(second));
     }
+
 
     @Before
     public void setUp() {
-        cut = new CityJPA(CITY_ID, STATE, PROVINCE, COMMUNITY, POSITION);
+        cut = new CityJPA(ID, VERSION, FULL_POSTAL_CODE, CITY_NAME, STATE, PROVINCE, COMMUNITY, POSITION);
     }
 
     @After

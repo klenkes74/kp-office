@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Kaiserpfalz EDV-Service, Roland T. Lichti
+ * Copyright 2017 Kaiserpfalz EDV-Service, Roland T. Lichti
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -165,5 +165,57 @@ public class PageableBuilderTest {
         assertEquals(DEFAULT_TOTAL_PAGES - 1, result.getPage());
         assertTrue(result.isLastPage());
         assertFalse(result.hasNextPage());
+    }
+
+    @Test
+    public void testStringRepresentation() {
+        String result = service.toString();
+
+        String expected = new StringBuilder()
+                .append("PageImpl[").append(System.identityHashCode(service))
+                .append(",page=").append(DEFAULT_PAGE)
+                .append(",size=").append(DEFAULT_SIZE)
+                .append(",totalPages=").append(DEFAULT_TOTAL_PAGES)
+                .append(",totalCount=").append(DEFAULT_TOTAL_COUNT)
+                .append("]").toString();
+
+        assertEquals(expected, result);
+    }
+
+    @Test
+    public void testFirstResult() {
+        int result = service.getFirstResult();
+
+        assertEquals(DEFAULT_SIZE * DEFAULT_PAGE, result);
+    }
+
+    @Test
+    public void testMaxResults() {
+        int result = service.getMaxResults();
+
+        assertEquals(DEFAULT_SIZE, result);
+    }
+
+    @Test
+    public void testPagingDuplicator() {
+        Pageable second = new PageableBuilder().withPaging(service).build();
+
+        assertTrue(service.equals(second));
+    }
+
+
+    @Test
+    public void testEqualSameObject() {
+        assertTrue(service.equals(service));
+    }
+
+    @Test
+    public void testEqualWithNull() {
+        assertFalse(service.equals(null));
+    }
+
+    @Test
+    public void testEqualWithWrongType() {
+        assertFalse(service.equals(this));
     }
 }

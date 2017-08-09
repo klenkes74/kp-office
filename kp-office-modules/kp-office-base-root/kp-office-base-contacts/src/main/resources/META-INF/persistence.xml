@@ -29,7 +29,7 @@
         <class>de.kaiserpfalzedv.office.commons.jpa.impl.AbstractIdentifiableImpl</class>
 
         <class>de.kaiserpfalzedv.office.geodata.jpa.AdministrativeEntityJPA</class>
-        <class>de.kaiserpfalzedv.office.geodata.jpa.CityId</class>
+        <class>de.kaiserpfalzedv.office.geodata.jpa.PostalCode</class>
         <class>de.kaiserpfalzedv.office.geodata.jpa.CityJPA</class>
         <class>de.kaiserpfalzedv.office.geodata.jpa.PositionJPA</class>
 
