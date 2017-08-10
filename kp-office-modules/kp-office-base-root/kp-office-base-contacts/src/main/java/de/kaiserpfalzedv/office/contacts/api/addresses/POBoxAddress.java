@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzedv.office.contacts.api;
+package de.kaiserpfalzedv.office.contacts.api.addresses;
 
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}

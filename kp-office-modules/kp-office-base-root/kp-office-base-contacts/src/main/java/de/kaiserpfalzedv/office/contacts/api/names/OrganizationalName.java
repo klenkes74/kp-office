@@ -14,15 +14,17 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzedv.office.contacts.api;
-
-import de.kaiserpfalzedv.office.geodata.api.City;
+package de.kaiserpfalzedv.office.contacts.api.names;
 
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
  * @version 1.0.0
- * @since 2017-08-08
+ * @since 2017-08-10
  */
-public interface PostalAddress extends Address {
-    City getCity();
+public interface OrganizationalName extends Name {
+    default String getOrganizationName() {
+        return format();
+    }
+
+
 }

@@ -14,17 +14,18 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzedv.office.contacts.api;
+package de.kaiserpfalzedv.office.contacts.api.names;
+
+import java.io.Serializable;
 
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
  * @version 1.0.0
  * @since 2017-08-10
  */
-public interface PostalStreetAddress extends PostalAddress {
-    String getStreet();
-
-    String getHouseNumber();
-
-    String getHouseNumberAdd();
+public interface Name extends Serializable {
+    /**
+     * @return the printable name.
+     */
+    String format();
 }

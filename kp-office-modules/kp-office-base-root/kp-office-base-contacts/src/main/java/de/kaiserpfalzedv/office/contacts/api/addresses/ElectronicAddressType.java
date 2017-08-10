@@ -14,14 +14,36 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzedv.office.contacts.api;
-
-import de.kaiserpfalzedv.office.common.data.Identifiable;
+package de.kaiserpfalzedv.office.contacts.api.addresses;
 
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
  * @version 1.0.0
- * @since 2017-08-08
+ * @since 2017-08-10
  */
-public interface Address extends Identifiable {
+public enum ElectronicAddressType {
+    PHONE("Tel", "%s"),
+    FAX("Fax", "%s"),
+    EMAIL("Email", "%s"),
+    HTTP("Web", "http://%s"),
+    HTTPS("Secure Web", "https://%s"),
+    SIP("SIP", "sip://%s");
+
+    private String type;
+    private String format;
+
+
+    ElectronicAddressType(final String type, final String format) {
+        this.type = type;
+        this.format = format;
+    }
+
+
+    String getName() {
+        return type;
+    }
+
+    String format(final ElectronicAddress address) {
+        return String.format(format, address);
+    }
 }
