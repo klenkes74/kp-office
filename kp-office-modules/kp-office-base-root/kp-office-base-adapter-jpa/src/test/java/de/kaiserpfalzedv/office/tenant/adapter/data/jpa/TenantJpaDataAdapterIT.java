@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Kaiserpfalz EDV-Service, Roland T. Lichti
+ * Copyright 2017 Kaiserpfalz EDV-Service, Roland T. Lichti
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,11 +25,11 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-import de.kaiserpfalzedv.office.tenant.Tenant;
-import de.kaiserpfalzedv.office.tenant.TenantDoesNotExistException;
-import de.kaiserpfalzedv.office.tenant.TenantExistsException;
 import de.kaiserpfalzedv.office.tenant.adapter.data.TenantDataAdapter;
-import de.kaiserpfalzedv.office.tenant.impl.TenantBuilder;
+import de.kaiserpfalzedv.office.tenant.api.Tenant;
+import de.kaiserpfalzedv.office.tenant.api.TenantDoesNotExistException;
+import de.kaiserpfalzedv.office.tenant.api.TenantExistsException;
+import de.kaiserpfalzedv.office.tenant.api.impl.TenantBuilder;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;

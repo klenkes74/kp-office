@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Kaiserpfalz EDV-Service, Roland T. Lichti
+ * Copyright 2017 Kaiserpfalz EDV-Service, Roland T. Lichti
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,10 +26,10 @@ import javax.persistence.PreRemove;
 
 import com.google.common.collect.Sets;
 import de.kaiserpfalzedv.office.common.init.InitializationException;
-import de.kaiserpfalzedv.office.tenant.Tenant;
-import de.kaiserpfalzedv.office.tenant.TenantDoesNotExistException;
-import de.kaiserpfalzedv.office.tenant.TenantExistsException;
 import de.kaiserpfalzedv.office.tenant.adapter.data.TenantDataAdapter;
+import de.kaiserpfalzedv.office.tenant.api.Tenant;
+import de.kaiserpfalzedv.office.tenant.api.TenantDoesNotExistException;
+import de.kaiserpfalzedv.office.tenant.api.TenantExistsException;
 import de.kaiserpfalzedv.office.tenant.mock.TenantMock;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

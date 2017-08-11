@@ -16,11 +16,15 @@
 
 package de.kaiserpfalzedv.office.contacts.api;
 
+import java.io.Serializable;
+
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
  * @version 1.0.0
  * @since 2017-08-10
  */
-public interface Representative extends Contact {
+public interface Representative extends Serializable {
     RepresentativeType getRepresentativeType();
+
+    Contact getContact();
 }

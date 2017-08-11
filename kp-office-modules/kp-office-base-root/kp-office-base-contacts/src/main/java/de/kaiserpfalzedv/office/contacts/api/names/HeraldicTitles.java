@@ -24,25 +24,7 @@ import de.kaiserpfalzedv.office.contacts.api.Gender;
  * @since 2017-08-10
  */
 public enum HeraldicTitles implements Title {
-    KAISER("Kaiser", "Kaiserin"),
-    ZAR("Zar", "Zarin"),
-    KOENIG("König", "Königin"),
-    ERZHERZOG("Erzherzog", "Erzherzogin"),
-    GROSSHERZOG("Großherzog", "Großherzogin"),
-    KURFUERST("Kurfürst", "Kurfürstin"),
-    HERZOG("Herzog", "Herzog"),
-    LANDGRAF("Landgraf", "Landgräfin"),
-    PFALZGRAF("Pfalzgraf", "Pfalzgräfin"),
-    MARKGRAF("Markgraf", "Markgraf"),
-    FUERST("Fürst", "Fürstin"),
-    GRAF("Graf", "Gräfin"),
-    FREIHERR("Freiherr", "Freifrau"),
-    BARON("Baron", "Baronin"),
-    RITTER("Ritter", "Ritter"),
-    EDLER("Edler", "Edle"),
-    JUNKER("Junker", "Junkfrau"),
-    LANDMANN("Landmann", "Frau"),
-
+    // Belgium
     BURGGRAAF("Burggraf", "Burggräfin"),
     VICOMTE("Burggraf", "Burggräfin"),
     GRAAF("Graf", "Gräfin"),
@@ -54,6 +36,7 @@ public enum HeraldicTitles implements Title {
     HERTOG("Herzog", "Herzogin"),
     DUC("Herzog", "Herzogin"),
 
+    // Netherlands (additional to some belgian titles)
     JONKHEER("Junker", "Junkfrau"),
     RIDDER("Ritter", "Ritter"),;
 

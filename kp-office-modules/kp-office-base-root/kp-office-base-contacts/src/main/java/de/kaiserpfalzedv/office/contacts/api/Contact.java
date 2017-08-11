@@ -43,11 +43,11 @@ public interface Contact extends Nameable, Identifiable {
      * @return The legal representatives of the contact. May be parents in case of a natural person or the chairs of
      * a corporation.
      */
-    List<Representative> getRepresentatives();
+    List<? extends Representative> getRepresentatives();
 
     /**
      * @return The addresses of the contact. May be any address (postal or electronic). Phone numbers are electronic
      * addresses.
      */
-    List<Address> getAddresses();
+    List<? extends Address> getAddresses();
 }

@@ -27,5 +27,7 @@ public interface Name extends Serializable {
     /**
      * @return the printable name.
      */
-    String format();
+    String getDisplayName();
+
+    String getFullName();
 }

@@ -65,7 +65,7 @@ public class JPACityRepository implements CityRepository, Serializable {
     public PagedListable<? extends City> retrieve(final Country country, final String postalCode, final Pageable page) {
         long totalCount = page.getTotalCount();
 
-        List<CityJPA> data = em.createNamedQuery("City.ByPostalCode", CityJPA.class)
+        List<JPACity> data = em.createNamedQuery("City.ByPostalCode", JPACity.class)
                                .setParameter("country", country)
                                .setParameter("code", postalCode)
                                .setFirstResult(page.getFirstResult())
@@ -92,7 +92,7 @@ public class JPACityRepository implements CityRepository, Serializable {
             resultPage = new PageableBuilder().withPaging(page).build();
         }
 
-        return new PagedListBuilder<CityJPA>().withData(data).withPageable(resultPage).build();
+        return new PagedListBuilder<JPACity>().withData(data).withPageable(resultPage).build();
     }
 
 
@@ -100,7 +100,7 @@ public class JPACityRepository implements CityRepository, Serializable {
     public PagedListable<? extends City> retrieve(final Country country, final Pageable page) {
         long totalCount = page.getTotalCount();
 
-        List<CityJPA> data = em.createNamedQuery("City.ByCountry", CityJPA.class)
+        List<JPACity> data = em.createNamedQuery("City.ByCountry", JPACity.class)
                                .setParameter("country", country)
                                .setFirstResult(page.getFirstResult())
                                .setMaxResults(page.getMaxResults())
@@ -123,14 +123,14 @@ public class JPACityRepository implements CityRepository, Serializable {
             resultPage = new PageableBuilder().withPaging(page).build();
         }
 
-        return new PagedListBuilder<CityJPA>().withData(data).withPageable(resultPage).build();
+        return new PagedListBuilder<JPACity>().withData(data).withPageable(resultPage).build();
     }
 
     @Override
     public PagedListable<? extends City> retrieve(final String cityName, final Pageable page) {
         long totalCount = page.getTotalCount();
 
-        List<CityJPA> data = em.createNamedQuery("City.ByCityNme", CityJPA.class)
+        List<JPACity> data = em.createNamedQuery("City.ByCityNme", JPACity.class)
                                .setParameter("cityName", cityName)
                                .setFirstResult(page.getFirstResult())
                                .setMaxResults(page.getMaxResults())
@@ -153,6 +153,6 @@ public class JPACityRepository implements CityRepository, Serializable {
             resultPage = new PageableBuilder().withPaging(page).build();
         }
 
-        return new PagedListBuilder<CityJPA>().withData(data).withPageable(resultPage).build();
+        return new PagedListBuilder<JPACity>().withData(data).withPageable(resultPage).build();
     }
 }

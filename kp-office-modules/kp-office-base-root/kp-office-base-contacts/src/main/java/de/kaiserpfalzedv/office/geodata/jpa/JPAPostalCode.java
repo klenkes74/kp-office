@@ -30,14 +30,14 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
 /**
- * The PostalCode consists of the two-letter country code and the postal code of the city.
+ * The JPAPostalCode consists of the two-letter country code and the postal code of the city.
  *
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
  * @version 1.0.0
  * @since 2017-08-08
  */
 @Embeddable
-public class PostalCode implements Serializable {
+public class JPAPostalCode implements Serializable {
     private static final long serialVersionUID = -7472355432056014008L;
 
     @Column(name = "COUNTRY_", length = 2, updatable = false, insertable = false)
@@ -48,9 +48,9 @@ public class PostalCode implements Serializable {
     private String code;
 
     @Deprecated // only JPA
-    public PostalCode() {}
+    public JPAPostalCode() {}
 
-    public PostalCode(final Country country, final String code) {
+    public JPAPostalCode(final Country country, final String code) {
         this.country = country;
         this.code = code;
     }
@@ -75,7 +75,7 @@ public class PostalCode implements Serializable {
             return false;
         }
 
-        PostalCode rhs = (PostalCode) obj;
+        JPAPostalCode rhs = (JPAPostalCode) obj;
         return new EqualsBuilder()
                 .append(this.getCode(), rhs.getCode())
                 .append(this.getCountry(), rhs.getCountry())

@@ -34,7 +34,7 @@ import org.apache.commons.lang3.builder.ToStringStyle;
  * @since 2017-08-08
  */
 @Embeddable
-public class PositionJPA implements Position {
+public class JPAPosition implements Position {
     @Transient
     private Double longitude;
 
@@ -51,9 +51,9 @@ public class PositionJPA implements Position {
     private String latitudeData;
 
     @Deprecated
-    public PositionJPA() {}
+    public JPAPosition() {}
 
-    public PositionJPA(final Double longitude, final Double latitude, final int accuracy) {
+    public JPAPosition(final Double longitude, final Double latitude, final int accuracy) {
         this.accuracy = accuracy;
 
         this.longitude = longitude;

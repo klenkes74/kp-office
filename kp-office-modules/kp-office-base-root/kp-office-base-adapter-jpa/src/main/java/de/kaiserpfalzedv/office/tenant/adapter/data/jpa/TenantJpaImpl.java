@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Kaiserpfalz EDV-Service, Roland T. Lichti
+ * Copyright 2017 Kaiserpfalz EDV-Service, Roland T. Lichti
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,9 +26,9 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
-import de.kaiserpfalzedv.office.commons.jpa.impl.AbstractIdentifiableImpl;
-import de.kaiserpfalzedv.office.commons.jpa.impl.NameableImpl;
-import de.kaiserpfalzedv.office.tenant.Tenant;
+import de.kaiserpfalzedv.office.commons.jpa.impl.JPAAbstractIdentifiable;
+import de.kaiserpfalzedv.office.commons.jpa.impl.JPANameable;
+import de.kaiserpfalzedv.office.tenant.api.Tenant;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import static javax.persistence.AccessType.FIELD;
@@ -50,11 +50,11 @@ import static org.apache.commons.lang3.builder.ToStringStyle.SHORT_PREFIX_STYLE;
         @NamedQuery(name = "find-by-tenant", query = "SELECT t from Tenant t WHERE tenant=:id", lockMode = OPTIMISTIC),
         @NamedQuery(name = "fetch-all", query = "SELECT t FROM Tenant t", lockMode = NONE)
 })
-public class TenantJpaImpl extends AbstractIdentifiableImpl implements Tenant {
+public class TenantJpaImpl extends JPAAbstractIdentifiable implements Tenant {
     private static final long serialVersionUID = -7636795197921084792L;
 
     @Embedded
-    private NameableImpl name;
+    private JPANameable name;
 
     @Column(name = "KEY_", length = 50, nullable = false)
     private String key;
@@ -78,7 +78,7 @@ public class TenantJpaImpl extends AbstractIdentifiableImpl implements Tenant {
     ) {
         super(id, tenant);
 
-        name = new NameableImpl(displayName, fullName);
+        name = new JPANameable(displayName, fullName);
 
         this.key = key;
     }

@@ -29,7 +29,7 @@ import org.apache.commons.lang3.builder.ToStringStyle;
  * @since 2017-08-08
  */
 @Embeddable
-public class AdministrativeEntityJPA implements AdministrativeEntity {
+public class JPAAdministrativeEntity implements AdministrativeEntity {
     @Column(name = "ADMIN_CODE_", length = 20)
     private String code;
 
@@ -38,9 +38,9 @@ public class AdministrativeEntityJPA implements AdministrativeEntity {
 
 
     @Deprecated
-    public AdministrativeEntityJPA() {}
+    public JPAAdministrativeEntity() {}
 
-    public AdministrativeEntityJPA(final String code, final String name) {
+    public JPAAdministrativeEntity(final String code, final String name) {
         this.code = code;
         this.name = name;
     }

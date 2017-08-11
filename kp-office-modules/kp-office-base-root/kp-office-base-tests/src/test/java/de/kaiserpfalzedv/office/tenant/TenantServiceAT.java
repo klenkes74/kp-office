@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Kaiserpfalz EDV-Service, Roland T. Lichti
+ * Copyright 2017 Kaiserpfalz EDV-Service, Roland T. Lichti
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -35,8 +35,12 @@ import de.kaiserpfalzedv.office.common.client.config.impl.ConfigReaderBuilder;
 import de.kaiserpfalzedv.office.common.client.messaging.MessagingCore;
 import de.kaiserpfalzedv.office.common.client.messaging.impl.ActiveMQMessagingCoreImpl;
 import de.kaiserpfalzedv.office.common.init.InitializationException;
-import de.kaiserpfalzedv.office.tenant.client.TenantClientImpl;
-import de.kaiserpfalzedv.office.tenant.impl.TenantBuilder;
+import de.kaiserpfalzedv.office.tenant.api.Tenant;
+import de.kaiserpfalzedv.office.tenant.api.TenantDoesNotExistException;
+import de.kaiserpfalzedv.office.tenant.api.TenantExistsException;
+import de.kaiserpfalzedv.office.tenant.api.TenantService;
+import de.kaiserpfalzedv.office.tenant.api.impl.TenantBuilder;
+import de.kaiserpfalzedv.office.tenant.client.impl.TenantClientImpl;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.shrinkwrap.api.Node;
 import org.jboss.shrinkwrap.api.ShrinkWrap;

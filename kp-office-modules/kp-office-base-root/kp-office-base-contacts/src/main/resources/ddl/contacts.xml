@@ -22,32 +22,4 @@
         ">
 
     <include file="contacts-1.0.0.xml" relativeToChangelogFile="true"/>
-
-    <changeSet id="load-postal-code-data" author="klenkes74">
-        <comment>Load postal codes from http://www.geonames.org/ (data provided under creative commons attribution 3.0
-            license)
-        </comment>
-
-        <loadData tableName="CITIES" file="${project.build.outputDirectory}/data/AT.txt" encoding="UTF-8"
-                  quotchar="&quot;" separator="\t"/>
-        <loadData tableName="CITIES" file="${project.build.outputDirectory}/data/CH.txt" encoding="UTF-8"
-                  quotchar="&quot;" separator="\t"/>
-        <loadData tableName="CITIES" file="${project.build.outputDirectory}/data/BE.txt" encoding="UTF-8"
-                  quotchar="&quot;" separator="\t"/>
-        <loadData tableName="CITIES" file="${project.build.outputDirectory}/data/DE.txt" encoding="UTF-8"
-                  quotchar="&quot;" separator="\t"/>
-        <loadData tableName="CITIES" file="${project.build.outputDirectory}/data/DK.txt" encoding="UTF-8"
-                  quotchar="&quot;" separator="\t"/>
-        <loadData tableName="CITIES" file="${project.build.outputDirectory}/data/FR.txt" encoding="UTF-8"
-                  quotchar="&quot;" separator="\t"/>
-        <loadData tableName="CITIES" file="${project.build.outputDirectory}/data/LI.txt" encoding="UTF-8"
-                  quotchar="&quot;" separator="\t"/>
-        <loadData tableName="CITIES" file="${project.build.outputDirectory}/data/LU.txt" encoding="UTF-8"
-                  quotchar="&quot;" separator="\t"/>
-        <loadData tableName="CITIES" file="${project.build.outputDirectory}/data/NL.txt" encoding="UTF-8"
-                  quotchar="&quot;" separator="\t"/>
-        <loadData tableName="CITIES" file="${project.build.outputDirectory}/data/PL.txt" encoding="UTF-8"
-                  quotchar="&quot;" separator="\t"/>
-    </changeSet>
-
 </databaseChangeLog>

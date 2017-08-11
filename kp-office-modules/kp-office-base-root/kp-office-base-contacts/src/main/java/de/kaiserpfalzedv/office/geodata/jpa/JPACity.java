@@ -26,6 +26,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Version;
+import javax.validation.constraints.NotNull;
 
 import de.kaiserpfalzedv.office.geodata.api.AdministrativeEntity;
 import de.kaiserpfalzedv.office.geodata.api.City;
@@ -45,14 +46,14 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 @Entity
 @Table(name = "CITIES")
 @NamedQueries({
-        @NamedQuery(name = "City.ByPostalCode", query = "select c from CityJPA c where c.postalCode.country=:country and c.postalCode.code=:code"),
-        @NamedQuery(name = "City.ByPostalCode.count", query = "select count(c) from CityJPA c where c.postalCode.country=:country and c.postalCode.code=:code"),
-        @NamedQuery(name = "City.ByCountry", query = "select c from CityJPA c where c.postalCode.country=:country"),
-        @NamedQuery(name = "City.ByCountry.count", query = "select count(c) from CityJPA c where c.postalCode.country=:country"),
-        @NamedQuery(name = "City.ByCityNme", query = "select c from CityJPA c where c.name=:cityName"),
-        @NamedQuery(name = "City.ByCityNme.count", query = "select count(c) from CityJPA c where c.name=:cityName"),
+        @NamedQuery(name = "City.ByPostalCode", query = "select c from JPACity c where c.postalCode.country=:country and c.postalCode.code=:code"),
+        @NamedQuery(name = "City.ByPostalCode.count", query = "select count(c) from JPACity c where c.postalCode.country=:country and c.postalCode.code=:code"),
+        @NamedQuery(name = "City.ByCountry", query = "select c from JPACity c where c.postalCode.country=:country"),
+        @NamedQuery(name = "City.ByCountry.count", query = "select count(c) from JPACity c where c.postalCode.country=:country"),
+        @NamedQuery(name = "City.ByCityNme", query = "select c from JPACity c where c.name=:cityName"),
+        @NamedQuery(name = "City.ByCityNme.count", query = "select count(c) from JPACity c where c.name=:cityName"),
 })
-public class CityJPA implements City {
+public class JPACity implements City {
     private static final long serialVersionUID = -7856052277648326779L;
 
     @Id
@@ -64,7 +65,7 @@ public class CityJPA implements City {
     private Long version = 0L;
 
     @Embedded
-    private PostalCode postalCode;
+    private JPAPostalCode postalCode;
 
     @Column(name = "PLACE_NAME_", length = 100, updatable = false, insertable = false)
     private String name;
@@ -75,39 +76,39 @@ public class CityJPA implements City {
             @AttributeOverride(name = "name", column = @Column(name = "ADMIN1_NAME_")),
             @AttributeOverride(name = "code", column = @Column(name = "ADMIN1_CODE_")),
     })
-    private AdministrativeEntityJPA state;
+    private JPAAdministrativeEntity state;
 
     @Embedded
     @AttributeOverrides({
             @AttributeOverride(name = "name", column = @Column(name = "ADMIN2_NAME_")),
             @AttributeOverride(name = "code", column = @Column(name = "ADMIN2_CODE_")),
     })
-    private AdministrativeEntityJPA province;
+    private JPAAdministrativeEntity province;
 
     @Embedded
     @AttributeOverrides({
             @AttributeOverride(name = "name", column = @Column(name = "ADMIN3_NAME_")),
             @AttributeOverride(name = "code", column = @Column(name = "ADMIN3_CODE_")),
     })
-    private AdministrativeEntityJPA community;
+    private JPAAdministrativeEntity community;
 
     @Embedded
-    private PositionJPA position;
+    private JPAPosition position;
 
     @Deprecated // only for JPA
-    public CityJPA() {
+    public JPACity() {
 
     }
 
-    public CityJPA(
-            final Long id,
-            final Long version,
-            final PostalCode postalCode,
-            final String cityName,
-            final AdministrativeEntityJPA state,
-            final AdministrativeEntityJPA province,
-            final AdministrativeEntityJPA community,
-            final PositionJPA position
+    public JPACity(
+            @NotNull final Long id,
+            @NotNull final Long version,
+            @NotNull final JPAPostalCode postalCode,
+            @NotNull final String cityName,
+            @NotNull final JPAAdministrativeEntity state,
+            @NotNull final JPAAdministrativeEntity province,
+            @NotNull final JPAAdministrativeEntity community,
+            @NotNull final JPAPosition position
     ) {
         this.id = id;
         this.version = version;
@@ -141,7 +142,7 @@ public class CityJPA implements City {
             return false;
         }
 
-        CityJPA rhs = (CityJPA) obj;
+        JPACity rhs = (JPACity) obj;
         return new EqualsBuilder()
                 .append(this.getCountry().getLocale(), rhs.getCountry().getLocale())
                 .append(this.getCountry().getPostalName(), rhs.getCountry().getPostalName())

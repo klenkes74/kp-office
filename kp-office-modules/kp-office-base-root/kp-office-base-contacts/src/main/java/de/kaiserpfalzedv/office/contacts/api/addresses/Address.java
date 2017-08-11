@@ -25,4 +25,8 @@ import de.kaiserpfalzedv.office.common.data.Identifiable;
  */
 public interface Address extends Identifiable {
     AddressType getAddressType();
+
+    boolean isBillabaleAddress();
+
+    boolean isNotBillableAddress();
 }

@@ -25,13 +25,20 @@
 
         <non-jta-data-source>java:comp/env/datasources/contacts</non-jta-data-source>
 
-        <class>de.kaiserpfalzedv.office.commons.jpa.impl.NameableImpl</class>
-        <class>de.kaiserpfalzedv.office.commons.jpa.impl.AbstractIdentifiableImpl</class>
+        <class>de.kaiserpfalzedv.office.commons.jpa.impl.JPANameable</class>
+        <class>de.kaiserpfalzedv.office.commons.jpa.impl.JPAAbstractIdentifiable</class>
 
-        <class>de.kaiserpfalzedv.office.geodata.jpa.AdministrativeEntityJPA</class>
-        <class>de.kaiserpfalzedv.office.geodata.jpa.PostalCode</class>
-        <class>de.kaiserpfalzedv.office.geodata.jpa.CityJPA</class>
-        <class>de.kaiserpfalzedv.office.geodata.jpa.PositionJPA</class>
+        <class>de.kaiserpfalzedv.office.contacts.jpa.JPAContact</class>
+        <class>de.kaiserpfalzedv.office.contacts.jpa.JPARepresentative</class>
+        <class>de.kaiserpfalzedv.office.contacts.jpa.addresses.JPAAddress</class>
+        <class>de.kaiserpfalzedv.office.contacts.jpa.addresses.JPAPostalAddress</class>
+        <class>de.kaiserpfalzedv.office.contacts.jpa.addresses.JPAStreetAddress</class>
+        <class>de.kaiserpfalzedv.office.contacts.jpa.addresses.JPAPOBoxAddress</class>
+
+        <class>de.kaiserpfalzedv.office.geodata.jpa.JPACity</class>
+        <class>de.kaiserpfalzedv.office.geodata.jpa.JPAPostalCode</class>
+        <class>de.kaiserpfalzedv.office.geodata.jpa.JPAPosition</class>
+        <class>de.kaiserpfalzedv.office.geodata.jpa.JPAAdministrativeEntity</class>
 
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
         <validation-mode>AUTO</validation-mode>

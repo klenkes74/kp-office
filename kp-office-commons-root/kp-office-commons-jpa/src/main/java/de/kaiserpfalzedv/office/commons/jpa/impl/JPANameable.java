@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Kaiserpfalz EDV-Service, Roland T. Lichti
+ * Copyright 2017 Kaiserpfalz EDV-Service, Roland T. Lichti
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -58,7 +58,7 @@ import de.kaiserpfalzedv.office.common.data.Nameable;
  * @since 2016-09-30
  */
 @Embeddable
-public class NameableImpl implements Nameable, Serializable {
+public class JPANameable implements Nameable, Serializable {
     private static final long serialVersionUID = 10597843536045535L;
 
 
@@ -67,9 +67,9 @@ public class NameableImpl implements Nameable, Serializable {
 
 
     @Deprecated // Only for JPA
-    protected NameableImpl() {}
+    protected JPANameable() {}
 
-    public NameableImpl(
+    public JPANameable(
             @NotNull final String displayName,
             @NotNull final String fullName
     ) {

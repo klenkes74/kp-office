@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Kaiserpfalz EDV-Service, Roland T. Lichti
+ * Copyright 2017 Kaiserpfalz EDV-Service, Roland T. Lichti
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -32,10 +32,10 @@ import javax.transaction.Transactional;
 import javax.validation.constraints.NotNull;
 
 import de.kaiserpfalzedv.office.common.init.InitializationException;
-import de.kaiserpfalzedv.office.tenant.Tenant;
-import de.kaiserpfalzedv.office.tenant.TenantDoesNotExistException;
-import de.kaiserpfalzedv.office.tenant.TenantExistsException;
 import de.kaiserpfalzedv.office.tenant.adapter.data.TenantDataAdapter;
+import de.kaiserpfalzedv.office.tenant.api.Tenant;
+import de.kaiserpfalzedv.office.tenant.api.TenantDoesNotExistException;
+import de.kaiserpfalzedv.office.tenant.api.TenantExistsException;
 
 import static javax.persistence.LockModeType.PESSIMISTIC_WRITE;
 import static javax.transaction.Transactional.TxType.REQUIRED;
@@ -94,20 +94,6 @@ public class TenantJpaDataAdapterImpl implements TenantDataAdapter {
     }
 
     @Override
-    public Tenant retrieve(String businessKey) throws TenantDoesNotExistException {
-        try {
-            TenantJpaImpl result = em.createNamedQuery("find-by-key", TenantJpaImpl.class)
-                                     .getSingleResult();
-
-            em.detach(result);
-
-            return result;
-        } catch (NoResultException | NonUniqueResultException | QueryTimeoutException e) {
-            throw new TenantDoesNotExistException(businessKey);
-        }
-    }
-
-    @Override
     @Transactional(SUPPORTS)
     public Set<Tenant> retrieve() {
         HashSet<Tenant> result = new HashSet<>();
@@ -151,6 +137,20 @@ public class TenantJpaDataAdapterImpl implements TenantDataAdapter {
         TenantJpaImpl db = em.find(TenantJpaImpl.class, id.toString());
 
         em.remove(db);
+    }
+
+    @Override
+    public Tenant retrieve(String businessKey) throws TenantDoesNotExistException {
+        try {
+            TenantJpaImpl result = em.createNamedQuery("find-by-key", TenantJpaImpl.class)
+                                     .getSingleResult();
+
+            em.detach(result);
+
+            return result;
+        } catch (NoResultException | NonUniqueResultException | QueryTimeoutException e) {
+            throw new TenantDoesNotExistException(businessKey);
+        }
     }
 
     @Override

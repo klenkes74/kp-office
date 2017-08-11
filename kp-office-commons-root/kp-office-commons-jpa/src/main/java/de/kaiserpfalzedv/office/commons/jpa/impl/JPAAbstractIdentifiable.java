@@ -67,7 +67,7 @@ import static org.apache.commons.lang3.builder.ToStringStyle.SHORT_PREFIX_STYLE;
  * @since 2016-09-30
  */
 @MappedSuperclass
-public class AbstractIdentifiableImpl implements Identifiable {
+public class JPAAbstractIdentifiable implements Identifiable {
     private static final long serialVersionUID = -3877652992892910022L;
 
 
@@ -91,10 +91,10 @@ public class AbstractIdentifiableImpl implements Identifiable {
 
 
     @Deprecated // Only for JPA
-    protected AbstractIdentifiableImpl() {}
+    protected JPAAbstractIdentifiable() {}
 
 
-    public AbstractIdentifiableImpl(
+    public JPAAbstractIdentifiable(
             @NotNull final UUID id,
             @NotNull final UUID tenant
     ) {

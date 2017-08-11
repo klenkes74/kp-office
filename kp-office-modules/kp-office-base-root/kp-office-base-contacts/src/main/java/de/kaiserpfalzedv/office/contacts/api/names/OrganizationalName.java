@@ -23,7 +23,7 @@ package de.kaiserpfalzedv.office.contacts.api.names;
  */
 public interface OrganizationalName extends Name {
     default String getOrganizationName() {
-        return format();
+        return getFullName();
     }
 
 
