@@ -57,12 +57,6 @@
 
     <dependencies>
         <dependency>
-            <groupId>javax</groupId>
-            <artifactId>javaee-api</artifactId>
-        </dependency>
-
-
-        <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
         </dependency>
@@ -587,7 +581,7 @@
 
                 <!-- testing -->
                 <dependency>
-                    <groupId>simple-jndi</groupId>
+                    <groupId>com.github.h-thurow</groupId>
                     <artifactId>simple-jndi</artifactId>
                     <scope>test</scope>
                 </dependency>

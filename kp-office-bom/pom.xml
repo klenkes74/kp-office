@@ -40,31 +40,19 @@
             <!-- Commons -->
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>kp-office-commons-api</artifactId>
+                <artifactId>kp-office-commons</artifactId>
                 <version>${project.version}</version>
+                <classifier>ejb</classifier>
+                <scope>provided</scope>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>kp-office-commons-client</artifactId>
+                <artifactId>kp-office-commons</artifactId>
                 <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>${project.groupId}</groupId>
-                <artifactId>kp-office-commons-impl</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>${project.groupId}</groupId>
-                <artifactId>kp-office-commons-jpa</artifactId>
-                <version>${project.version}</version>
+                <classifier>client</classifier>
             </dependency>
 
             <!-- Base -->
-            <dependency>
-                <groupId>${project.groupId}</groupId>
-                <artifactId>kp-office-base-adapter-jpa</artifactId>
-                <version>${project.version}</version>
-            </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
                 <artifactId>kp-office-base-tests</artifactId>
@@ -75,6 +63,7 @@
                 <artifactId>kp-office-base-tenant</artifactId>
                 <version>${project.version}</version>
                 <classifier>ejb</classifier>
+                <scope>provided</scope>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
@@ -87,6 +76,7 @@
                 <artifactId>kp-office-base-access</artifactId>
                 <version>${project.version}</version>
                 <classifier>ejb</classifier>
+                <scope>provided</scope>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
@@ -99,6 +89,7 @@
                 <artifactId>kp-office-base-contacts</artifactId>
                 <version>${project.version}</version>
                 <classifier>ejb</classifier>
+                <scope>provided</scope>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
@@ -111,6 +102,7 @@
                 <artifactId>kp-office-base-files</artifactId>
                 <version>${project.version}</version>
                 <classifier>ejb</classifier>
+                <scope>provided</scope>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
@@ -123,6 +115,7 @@
                 <artifactId>kp-office-base-license</artifactId>
                 <version>${project.version}</version>
                 <classifier>ejb</classifier>
+                <scope>provided</scope>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
@@ -134,48 +127,68 @@
             <!-- Finance -->
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>kp-office-finance-api</artifactId>
+                <artifactId>kp-office-finance</artifactId>
                 <version>${project.version}</version>
+                <classifier>ejb</classifier>
+                <scope>provided</scope>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>kp-office-finance-accounting-impl</artifactId>
+                <artifactId>kp-office-finance</artifactId>
                 <version>${project.version}</version>
+                <classifier>client</classifier>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>kp-office-finance-accounting-client</artifactId>
+                <artifactId>kp-office-finance-accounting</artifactId>
                 <version>${project.version}</version>
+                <classifier>ejb</classifier>
+                <scope>provided</scope>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>kp-office-finance-taxexport-de-impl</artifactId>
+                <artifactId>kp-office-finance-accounting</artifactId>
                 <version>${project.version}</version>
+                <classifier>client</classifier>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>kp-office-finance-taxexport-de-client</artifactId>
+                <artifactId>kp-office-finance-taxexport-de</artifactId>
                 <version>${project.version}</version>
+                <classifier>ejb</classifier>
+                <scope>provided</scope>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>kp-office-finance-datevexport-impl</artifactId>
+                <artifactId>kp-office-finance-taxexport-de</artifactId>
                 <version>${project.version}</version>
+                <classifier>client</classifier>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>kp-office-finance-datevexport-client</artifactId>
+                <artifactId>kp-office-finance-datevexport</artifactId>
                 <version>${project.version}</version>
+                <classifier>ejb</classifier>
+                <scope>provided</scope>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>kp-office-finance-reporting-impl</artifactId>
+                <artifactId>kp-office-finance-datevexport</artifactId>
                 <version>${project.version}</version>
+                <classifier>client</classifier>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>kp-office-finance-reporting-client</artifactId>
+                <artifactId>kp-office-finance-reporting</artifactId>
                 <version>${project.version}</version>
+                <classifier>ejb</classifier>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>kp-office-finance-reporting</artifactId>
+                <version>${project.version}</version>
+                <classifier>client</classifier>
             </dependency>
 
 
@@ -265,9 +278,9 @@
             </dependency>
 
             <dependency>
-                <groupId>simple-jndi</groupId>
+                <groupId>com.github.h-thurow</groupId>
                 <artifactId>simple-jndi</artifactId>
-                <version>0.11.4.1</version>
+                <version>0.15.0</version>
             </dependency>
 
             <!-- Serialzing/JSon/XML -->
@@ -286,15 +299,18 @@
             <!-- Messaging -->
             <dependency>
                 <groupId>org.apache.activemq</groupId>
-                <artifactId>activemq-client</artifactId>
-                <version>5.14.0</version>
+                <artifactId>artemis-server</artifactId>
+                <version>2.2.0</version>
             </dependency>
-
             <dependency>
                 <groupId>org.apache.activemq</groupId>
-                <artifactId>activemq-broker</artifactId>
-                <version>5.14.0</version>
-                <scope>test</scope>
+                <artifactId>artemis-jms-server</artifactId>
+                <version>2.2.0</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.activemq</groupId>
+                <artifactId>artemis-jms-client</artifactId>
+                <version>2.2.0</version>
             </dependency>
 
 
