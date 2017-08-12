@@ -139,11 +139,6 @@ public class JMSMessagingCoreImpl implements MessagingCore {
     }
 
     @Override
-    public ConnectionFactory getConnectionFactory() {
-        return connectionFactory;
-    }
-
-    @Override
     public String getClientId() {
         return clientId;
     }

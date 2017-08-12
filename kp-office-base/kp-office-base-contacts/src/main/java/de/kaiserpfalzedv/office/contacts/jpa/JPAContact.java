@@ -33,7 +33,7 @@ import javax.persistence.OrderColumn;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
-import de.kaiserpfalzedv.office.commons.jpa.impl.JPAAbstractIdentifiable;
+import de.kaiserpfalzedv.office.common.jpa.JPAAbstractIdentifiable;
 import de.kaiserpfalzedv.office.contacts.api.Contact;
 import de.kaiserpfalzedv.office.contacts.api.Representative;
 import de.kaiserpfalzedv.office.contacts.api.addresses.Address;

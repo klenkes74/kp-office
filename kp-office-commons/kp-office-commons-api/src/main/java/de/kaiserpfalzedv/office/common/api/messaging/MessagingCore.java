@@ -14,27 +14,25 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzedv.office.common.impl.cdi;
+package de.kaiserpfalzedv.office.common.api.messaging;
 
-import java.lang.annotation.Retention;
-import java.lang.annotation.Target;
+import javax.jms.Connection;
+import javax.jms.Destination;
 
-import javax.inject.Qualifier;
-
-import static java.lang.annotation.ElementType.FIELD;
-import static java.lang.annotation.ElementType.PARAMETER;
-import static java.lang.annotation.ElementType.TYPE;
-import static java.lang.annotation.RetentionPolicy.RUNTIME;
+import de.kaiserpfalzedv.office.common.api.init.Closeable;
+import de.kaiserpfalzedv.office.common.api.init.Initializable;
+import org.apache.commons.pool2.ObjectPool;
 
 /**
- * This is the qualifier for the default implementation of the service.
- *
- * @author klenkes
- * @version 2015Q1
- * @since 03.01.16 09:48
+ * @author rlichti {@literal <rlichti@kaiserpfalz-edv.de>}
+ * @since 2016-09-22
  */
-@Qualifier
-@Retention(RUNTIME)
-@Target({TYPE, FIELD, PARAMETER})
-public @interface Implementation {
+public interface MessagingCore extends Initializable, Closeable {
+    ObjectPool<Connection> getConnectionPool();
+
+    MessageMultiplexer getMultiplexer();
+
+    Destination getReplyTo();
+
+    String getClientId();
 }

@@ -40,16 +40,18 @@
             <!-- Commons -->
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>kp-office-commons</artifactId>
+                <artifactId>kp-office-commons-api</artifactId>
                 <version>${project.version}</version>
-                <classifier>ejb</classifier>
-                <scope>provided</scope>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>kp-office-commons</artifactId>
+                <artifactId>kp-office-commons-client</artifactId>
                 <version>${project.version}</version>
-                <classifier>client</classifier>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>kp-office-commons-ejb</artifactId>
+                <version>${project.version}</version>
             </dependency>
 
             <!-- Base -->
@@ -63,7 +65,12 @@
                 <artifactId>kp-office-base-tenant</artifactId>
                 <version>${project.version}</version>
                 <classifier>ejb</classifier>
-                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>kp-office-base-tenant</artifactId>
+                <version>${project.version}</version>
+                <classifier>api</classifier>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
@@ -76,7 +83,12 @@
                 <artifactId>kp-office-base-access</artifactId>
                 <version>${project.version}</version>
                 <classifier>ejb</classifier>
-                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>kp-office-base-access</artifactId>
+                <version>${project.version}</version>
+                <classifier>api</classifier>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
@@ -89,7 +101,12 @@
                 <artifactId>kp-office-base-contacts</artifactId>
                 <version>${project.version}</version>
                 <classifier>ejb</classifier>
-                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>kp-office-base-contacts</artifactId>
+                <version>${project.version}</version>
+                <classifier>api</classifier>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
@@ -102,7 +119,12 @@
                 <artifactId>kp-office-base-files</artifactId>
                 <version>${project.version}</version>
                 <classifier>ejb</classifier>
-                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>kp-office-base-files</artifactId>
+                <version>${project.version}</version>
+                <classifier>api</classifier>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
@@ -115,7 +137,12 @@
                 <artifactId>kp-office-base-license</artifactId>
                 <version>${project.version}</version>
                 <classifier>ejb</classifier>
-                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>kp-office-base-license</artifactId>
+                <version>${project.version}</version>
+                <classifier>api</classifier>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
@@ -130,7 +157,6 @@
                 <artifactId>kp-office-finance</artifactId>
                 <version>${project.version}</version>
                 <classifier>ejb</classifier>
-                <scope>provided</scope>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
@@ -143,7 +169,6 @@
                 <artifactId>kp-office-finance-accounting</artifactId>
                 <version>${project.version}</version>
                 <classifier>ejb</classifier>
-                <scope>provided</scope>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>

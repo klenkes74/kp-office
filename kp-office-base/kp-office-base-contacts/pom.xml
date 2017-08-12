@@ -34,19 +34,19 @@
     <dependencies>
         <dependency>
             <groupId>de.kaiserpfalz-edv.office</groupId>
-            <artifactId>kp-office-commons</artifactId>
-            <classifier>ejb</classifier>
+            <artifactId>kp-office-commons-ejb</artifactId>
+            <scope>provided</scope>
         </dependency>
 
         <dependency>
             <groupId>de.kaiserpfalz-edv.office</groupId>
             <artifactId>kp-office-base-access</artifactId>
-            <classifier>client</classifier>
+            <classifier>api</classifier>
         </dependency>
         <dependency>
             <groupId>de.kaiserpfalz-edv.office</groupId>
             <artifactId>kp-office-base-tenant</artifactId>
-            <classifier>client</classifier>
+            <classifier>api</classifier>
         </dependency>
 
 

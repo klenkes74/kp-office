@@ -26,8 +26,8 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
-import de.kaiserpfalzedv.office.commons.jpa.impl.JPAAbstractIdentifiable;
-import de.kaiserpfalzedv.office.commons.jpa.impl.JPANameable;
+import de.kaiserpfalzedv.office.common.jpa.JPAAbstractIdentifiable;
+import de.kaiserpfalzedv.office.common.jpa.JPANameable;
 import de.kaiserpfalzedv.office.tenant.api.Tenant;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 

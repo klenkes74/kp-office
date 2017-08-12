@@ -24,7 +24,7 @@ import javax.jms.ObjectMessage;
 import javax.jms.TextMessage;
 
 import de.kaiserpfalzedv.office.common.api.BaseSystemException;
-import de.kaiserpfalzedv.office.common.client.messaging.MessageInfo;
+import de.kaiserpfalzedv.office.common.api.messaging.MessageInfo;
 import de.kaiserpfalzedv.office.common.client.messaging.MessageMultiplexer;
 import de.kaiserpfalzedv.office.common.client.messaging.NoResponseException;
 import de.kaiserpfalzedv.office.common.client.messaging.ResponseOfWrongTypeException;
@@ -79,7 +79,7 @@ public class ResponseMessageInfo<T extends Serializable> implements MessageInfo<
     @Override
     public String getActionId() {
         try {
-            return message.getStringProperty("action-id");
+            return message.getStringProperty("actionId");
         } catch (JMSException e) {
             throw new BaseSystemException(e);
         }
@@ -88,7 +88,7 @@ public class ResponseMessageInfo<T extends Serializable> implements MessageInfo<
     @Override
     public String getActionType() {
         try {
-            return message.getStringProperty("action-type");
+            return message.getStringProperty("actionType");
         } catch (JMSException e) {
             throw new BaseSystemException(e);
         }

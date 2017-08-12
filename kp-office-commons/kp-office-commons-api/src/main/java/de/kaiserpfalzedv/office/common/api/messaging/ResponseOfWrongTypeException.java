@@ -14,29 +14,18 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzedv.office.common.client.messaging;
-
-import java.io.Closeable;
-import java.io.Serializable;
-
-import javax.jms.MessageListener;
+package de.kaiserpfalzedv.office.common.api.messaging;
 
 /**
  * @author rlichti {@literal <rlichti@kaiserpfalz-edv.de>}
- * @since 2016-09-22
+ * @since 2016-09-23
  */
-public interface MessageInfo<T extends Serializable> extends Closeable, MessageListener {
-    boolean hasResponse();
+public class ResponseOfWrongTypeException extends MessagingBusinessException {
+    public ResponseOfWrongTypeException(final String correlationId) {
+        super("Response for correlation-id '" + correlationId + "' is of wrong type!");
+    }
 
-    String getCorrelationId();
-
-    String getWorkflowId();
-
-    String getActionId();
-
-    String getActionType();
-
-    T retrieveResponse() throws NoResponseException, ResponseOfWrongTypeException;
-
-    T waitForResponse() throws NoResponseException, ResponseOfWrongTypeException, InterruptedException;
+    public ResponseOfWrongTypeException(final String correlationId, final Throwable cause) {
+        super("Response for correlation-id '" + correlationId + "' is of wrong type!", cause);
+    }
 }

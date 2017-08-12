@@ -16,7 +16,7 @@
 
 package de.kaiserpfalzedv.office.common.client.messaging.impl;
 
-import de.kaiserpfalzedv.office.common.client.messaging.MessageInfo;
+import de.kaiserpfalzedv.office.common.api.messaging.MessageInfo;
 import de.kaiserpfalzedv.office.common.client.messaging.MessageMultiplexer;
 import org.apache.commons.lang3.builder.Builder;
 

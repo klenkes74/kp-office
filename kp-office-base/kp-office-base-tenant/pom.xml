@@ -34,8 +34,13 @@
     <dependencies>
         <dependency>
             <groupId>de.kaiserpfalz-edv.office</groupId>
-            <artifactId>kp-office-commons</artifactId>
-            <classifier>ejb</classifier>
+            <artifactId>kp-office-commons-ejb</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>de.kaiserpfalz-edv.office</groupId>
+            <artifactId>kp-office-commons-client</artifactId>
+            <scope>provided</scope>
         </dependency>
 
         <dependency>

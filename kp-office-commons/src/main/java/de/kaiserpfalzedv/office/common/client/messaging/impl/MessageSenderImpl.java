@@ -31,7 +31,7 @@ import javax.jms.MessageProducer;
 import javax.jms.Session;
 
 import de.kaiserpfalzedv.office.common.api.BuilderException;
-import de.kaiserpfalzedv.office.common.client.messaging.MessageInfo;
+import de.kaiserpfalzedv.office.common.api.messaging.MessageInfo;
 import de.kaiserpfalzedv.office.common.client.messaging.MessageSender;
 import de.kaiserpfalzedv.office.common.client.messaging.MessagingCore;
 import de.kaiserpfalzedv.office.common.client.messaging.NoBrokerException;

@@ -20,7 +20,7 @@ import java.io.Serializable;
 
 import javax.jms.Message;
 
-import de.kaiserpfalzedv.office.common.client.messaging.MessageInfo;
+import de.kaiserpfalzedv.office.common.api.messaging.MessageInfo;
 import de.kaiserpfalzedv.office.common.client.messaging.NoResponseException;
 import de.kaiserpfalzedv.office.common.client.messaging.ResponseOfWrongTypeException;
 

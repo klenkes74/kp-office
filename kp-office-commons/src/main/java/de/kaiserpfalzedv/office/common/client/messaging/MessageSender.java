@@ -19,6 +19,8 @@ package de.kaiserpfalzedv.office.common.client.messaging;
 import java.io.Serializable;
 import java.util.Map;
 
+import de.kaiserpfalzedv.office.common.api.messaging.MessageInfo;
+
 /**
  * @author rlichti {@literal <rlichti@kaiserpfalz-edv.de>}
  * @since 2016-09-22

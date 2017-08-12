@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzedv.office.common.impl.cdi;
+package de.kaiserpfalzedv.office.common.api.config;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
@@ -22,19 +22,20 @@ import java.lang.annotation.Target;
 import javax.inject.Qualifier;
 
 import static java.lang.annotation.ElementType.FIELD;
+import static java.lang.annotation.ElementType.METHOD;
 import static java.lang.annotation.ElementType.PARAMETER;
 import static java.lang.annotation.ElementType.TYPE;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 /**
- * This is the qualifier for a mock implementation of the service.
+ * The qualifier for a property file based configuration.
  *
- * @author klenkes
- * @version 2015Q1
- * @since 03.01.16 09:48
+ * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
+ * @version 1.0.0
+ * @since 2017-08-12
  */
 @Qualifier
 @Retention(RUNTIME)
-@Target({TYPE, FIELD, PARAMETER})
-public @interface Mock {
+@Target({TYPE, FIELD, PARAMETER, METHOD})
+public @interface Properties {
 }

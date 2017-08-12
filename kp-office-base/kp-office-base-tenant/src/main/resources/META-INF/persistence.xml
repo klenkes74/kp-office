@@ -25,7 +25,7 @@
 
         <non-jta-data-source>java:comp/env/datasources/tenants</non-jta-data-source>
 
-        <class>de.kaiserpfalzedv.office.tenant.adapter.data.jpa.TenantJpaImpl</class>
+        <class>de.kaiserpfalzedv.office.tenant.jpa.JPATenant</class>
 
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
         <validation-mode>AUTO</validation-mode>

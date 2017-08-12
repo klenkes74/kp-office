@@ -20,8 +20,8 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.UUID;
 
+import de.kaiserpfalzedv.office.common.api.messaging.MessageInfo;
 import de.kaiserpfalzedv.office.common.client.config.DefaultKPOfficeConfiguration;
-import de.kaiserpfalzedv.office.common.client.messaging.MessageInfo;
 import de.kaiserpfalzedv.office.common.client.messaging.MessageSender;
 import de.kaiserpfalzedv.office.common.client.messaging.MessagingCore;
 import de.kaiserpfalzedv.office.common.client.messaging.NoBrokerException;

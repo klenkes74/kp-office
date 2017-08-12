@@ -23,8 +23,8 @@ import java.util.UUID;
 
 import javax.enterprise.context.ApplicationScoped;
 
+import de.kaiserpfalzedv.office.common.api.cdi.Mock;
 import de.kaiserpfalzedv.office.common.api.init.InitializationException;
-import de.kaiserpfalzedv.office.common.impl.cdi.Mock;
 import de.kaiserpfalzedv.office.tenant.api.Tenant;
 import de.kaiserpfalzedv.office.tenant.api.TenantDoesNotExistException;
 import de.kaiserpfalzedv.office.tenant.api.TenantExistsException;

@@ -16,6 +16,8 @@
 
 package de.kaiserpfalzedv.office.tenant.client.impl;
 
+import java.io.IOException;
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.Properties;
 import java.util.UUID;
@@ -24,16 +26,16 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.validation.constraints.NotNull;
 
+import de.kaiserpfalzedv.office.common.api.cdi.Implementation;
 import de.kaiserpfalzedv.office.common.api.config.ConfigReader;
+import de.kaiserpfalzedv.office.common.api.messaging.MessageInfo;
+import de.kaiserpfalzedv.office.common.api.messaging.MessageSender;
+import de.kaiserpfalzedv.office.common.api.messaging.MessagingCore;
+import de.kaiserpfalzedv.office.common.api.messaging.NoBrokerException;
+import de.kaiserpfalzedv.office.common.api.messaging.NoResponseException;
+import de.kaiserpfalzedv.office.common.api.messaging.ResponseOfWrongTypeException;
 import de.kaiserpfalzedv.office.common.client.config.ConfigReaderBuilder;
-import de.kaiserpfalzedv.office.common.client.messaging.MessageInfo;
-import de.kaiserpfalzedv.office.common.client.messaging.MessageSender;
-import de.kaiserpfalzedv.office.common.client.messaging.MessagingCore;
-import de.kaiserpfalzedv.office.common.client.messaging.NoBrokerException;
-import de.kaiserpfalzedv.office.common.client.messaging.NoResponseException;
-import de.kaiserpfalzedv.office.common.client.messaging.ResponseOfWrongTypeException;
-import de.kaiserpfalzedv.office.common.client.messaging.impl.MessageSenderImpl;
-import de.kaiserpfalzedv.office.common.impl.cdi.Implementation;
+import de.kaiserpfalzedv.office.common.client.messaging.MessageSenderImpl;
 import de.kaiserpfalzedv.office.tenant.api.Tenant;
 import de.kaiserpfalzedv.office.tenant.api.TenantDoesNotExistException;
 import de.kaiserpfalzedv.office.tenant.api.TenantExistsException;
@@ -51,8 +53,11 @@ import de.kaiserpfalzedv.office.tenant.api.replies.TenantRetrieveReply;
 import de.kaiserpfalzedv.office.tenant.api.replies.TenantUpdateReply;
 import de.kaiserpfalzedv.office.tenant.client.TenantClient;
 import de.kaiserpfalzedv.office.tenant.client.TenantClientCommunicationException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import static de.kaiserpfalzedv.office.common.api.commands.CrudCommands.CREATE;
+import static de.kaiserpfalzedv.office.common.api.commands.CrudCommands.RETRIEVE;
 
 /**
  * @author rlichti {@literal <rlichti@kaiserpfalz-edv.de>}
@@ -60,7 +65,10 @@ import static de.kaiserpfalzedv.office.common.api.commands.CrudCommands.CREATE;
  */
 @Implementation
 @ApplicationScoped
-public class TenantClientImpl implements TenantClient {
+public class TenantClientImpl implements TenantClient, Serializable {
+    private static final Logger LOG = LoggerFactory.getLogger(TenantClientImpl.class);
+
+
     private MessagingCore messaging;
     private ConfigReader config;
     private UUID clientId = UUID.randomUUID();
@@ -111,7 +119,11 @@ public class TenantClientImpl implements TenantClient {
             );
         } finally {
             if (response != null) {
-                response.close();
+                try {
+                    response.close();
+                } catch (IOException e) {
+                    LOG.error(e.getClass().getSimpleName() + " caught: " + e.getMessage(), e);
+                }
             }
         }
     }
@@ -149,14 +161,18 @@ public class TenantClientImpl implements TenantClient {
             return response.waitForResponse().getTenants();
         } catch (NoBrokerException | ResponseOfWrongTypeException | NoResponseException | InterruptedException e) {
             throw new TenantClientCommunicationException(
-                    CREATE,
+                    RETRIEVE,
                     UUID.fromString(sender.getCorrelationId()),
                     "",
                     e
             );
         } finally {
             if (response != null) {
-                response.close();
+                try {
+                    response.close();
+                } catch (IOException e) {
+                    LOG.error(e.getClass().getSimpleName() + " caught: " + e.getMessage(), e);
+                }
             }
         }
     }
@@ -203,7 +219,11 @@ public class TenantClientImpl implements TenantClient {
             );
         } finally {
             if (response != null) {
-                response.close();
+                try {
+                    response.close();
+                } catch (IOException e) {
+                    LOG.error(e.getClass().getSimpleName() + " caught: " + e.getMessage(), e);
+                }
             }
         }
     }

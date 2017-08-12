@@ -34,7 +34,9 @@
 
     <modules>
         <module>kp-office-parent</module>
+        <module>kp-office-parent-api</module>
         <module>kp-office-parent-impl</module>
+        <module>kp-office-parent-ejb</module>
         <module>kp-office-parent-test</module>
     </modules>
 </project>

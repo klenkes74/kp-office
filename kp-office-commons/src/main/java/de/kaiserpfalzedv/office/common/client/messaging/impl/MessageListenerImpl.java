@@ -65,7 +65,6 @@ class MessageListenerImpl implements MessageListener {
             multiplexer.multiplex(message);
         } catch (NoCorrelationInMessageException | NoListenerForCorrelationId e) {
             LOG.error(e.getMessage(), e);
-
         }
     }
 
@@ -76,6 +75,10 @@ class MessageListenerImpl implements MessageListener {
 
     public MessageMultiplexer getMultiplexer() {
         return multiplexer;
+    }
+
+    public void setMultiplexer(final MessageMultiplexer multiplexer) {
+        this.multiplexer = multiplexer;
     }
 
     @Override
@@ -97,9 +100,6 @@ class MessageListenerImpl implements MessageListener {
         LOG.info("Started messaging listener: {}", multiplexer);
     }
 
-    public void setMultiplexer(final MessageMultiplexer multiplexer) {
-        this.multiplexer = multiplexer;
-    }
 
     @Override
     public void init(Properties properties) throws InitializationException {

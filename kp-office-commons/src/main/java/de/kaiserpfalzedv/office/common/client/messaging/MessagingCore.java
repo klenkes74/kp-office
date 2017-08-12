@@ -17,7 +17,6 @@
 package de.kaiserpfalzedv.office.common.client.messaging;
 
 import javax.jms.Connection;
-import javax.jms.ConnectionFactory;
 import javax.jms.Destination;
 
 import de.kaiserpfalzedv.office.common.api.init.Closeable;
@@ -33,8 +32,6 @@ public interface MessagingCore extends Initializable, Closeable {
 
     MessageMultiplexer getMultiplexer();
     Destination getReplyTo();
-
-    ConnectionFactory getConnectionFactory();
 
     String getClientId();
 }
