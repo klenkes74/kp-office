@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  ~ Copyright 2016 Kaiserpfalz EDV-Service, Roland T. Lichti
+  ~ Copyright 2017 Kaiserpfalz EDV-Service, Roland T. Lichti
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
   ~ you may not use this file except in compliance with the License.
@@ -36,6 +36,7 @@
         <module>kp-office-parent</module>
         <module>kp-office-parent-api</module>
         <module>kp-office-parent-impl</module>
-        <module>kp-office-parent-client</module>
+        <module>kp-office-parent-ejb</module>
+        <module>kp-office-parent-test</module>
     </modules>
 </project>

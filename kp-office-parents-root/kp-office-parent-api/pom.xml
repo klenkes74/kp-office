@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  ~ Copyright 2016 Kaiserpfalz EDV-Service, Roland T. Lichti
+  ~ Copyright 2017 Kaiserpfalz EDV-Service, Roland T. Lichti
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
   ~ you may not use this file except in compliance with the License.
@@ -31,4 +31,22 @@
     <packaging>pom</packaging>
 
     <name>KP Office :: Parents :: API</name>
+
+    <properties>
+        <skip.unit.tests>${skipTests}</skip.unit.tests>
+        <skip.it.tests>${skipTests}</skip.it.tests>
+        <skip.at.tests>${skipTests}</skip.at.tests>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+        </dependency>
+    </dependencies>
 </project>
