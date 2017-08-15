@@ -57,6 +57,24 @@
             <!-- Base -->
             <dependency>
                 <groupId>${project.groupId}</groupId>
+                <artifactId>kp-office-base-monitoring-jmx</artifactId>
+                <version>${project.version}</version>
+                <classifier>ejb</classifier>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>kp-office-base-monitoring-jmx</artifactId>
+                <version>${project.version}</version>
+                <classifier>api</classifier>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>kp-office-base-monitoring-jmx</artifactId>
+                <version>${project.version}</version>
+                <classifier>client</classifier>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
                 <artifactId>kp-office-base-tests</artifactId>
                 <version>${project.version}</version>
             </dependency>
@@ -403,6 +421,32 @@
                 <version>4.12</version>
                 <scope>test</scope>
             </dependency>
+
+            <dependency>
+                <groupId>org.powermock</groupId>
+                <artifactId>powermock-api-easymock</artifactId>
+                <version>1.7.1</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.powermock</groupId>
+                <artifactId>powermock-core</artifactId>
+                <version>1.7.1</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.powermock</groupId>
+                <artifactId>powermock-module-junit4</artifactId>
+                <version>1.7.1</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.easymock</groupId>
+                <artifactId>easymock</artifactId>
+                <version>3.4</version>
+                <scope>test</scope>
+            </dependency>
+
 
             <dependency>
                 <groupId>ch.qos.logback</groupId>

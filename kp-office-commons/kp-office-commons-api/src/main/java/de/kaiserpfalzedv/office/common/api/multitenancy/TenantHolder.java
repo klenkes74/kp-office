@@ -14,30 +14,24 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzedv.office.access.api;
+package de.kaiserpfalzedv.office.common.api.multitenancy;
 
-import java.security.Principal;
-import java.util.Set;
+import java.util.Optional;
 import java.util.UUID;
 
-import de.kaiserpfalzedv.office.common.api.data.Keyable;
-import de.kaiserpfalzedv.office.common.api.data.Nameable;
-
 /**
+ * The tenant holder holds the current tenant. It has to be stored by the first recieving service and can
+ * be retrieved during the call. After the call it has to be cleared so the next call to the same thread won't receive
+ * the old tenant.
+ *
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
  * @version 1.0.0
- * @since 2016-10-16
+ * @since 2017-08-13
  */
-public interface OfficePrincipal extends Principal, Nameable, Keyable {
-    UUID getTenant();
+public interface TenantHolder {
+    Optional<UUID> getTenant();
 
-    Set<UUID> getPossibleTenants();
+    void setTenant(final UUID tenant);
 
-    void switchTenant(UUID tenant);
-
-    Set<OfficeRole> getRoles();
-
-    boolean isInRole(OfficeRole role);
-
-    boolean hasPermission(OfficePermission permission);
+    void clearTenant();
 }

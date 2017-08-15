@@ -33,16 +33,27 @@ import org.slf4j.LoggerFactory;
 public class OfficePrincipalImpl implements OfficePrincipal {
     private static final Logger LOG = LoggerFactory.getLogger(OfficePrincipalImpl.class);
 
-    @Override
-    public UUID getId() {
-        // TODO klenkes Auto defined stub for: de.kaiserpfalzedv.office.access.api.OfficePrincipalImplImpl.getId
+    public UUID getTenant() {
+        // TODO klenkes Auto defined stub for: de.kaiserpfalzedv.office.access.api.implOfficePrincipalImpl.getTenant
         return null;  //To change body of implemented methods use File | Settings | File Templates.
     }
 
     @Override
-    public UUID getTenant() {
-        // TODO klenkes Auto defined stub for: de.kaiserpfalzedv.office.access.api.implOfficePrincipalImpl.getTenant
+    public Set<OfficeRole> getRoles() {
+        // TODO klenkes Auto defined stub for: de.kaiserpfalzedv.office.access.api.implOfficePrincipalImpl.getRoles
         return null;  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    public boolean isInRole(OfficeRole role) {
+        // TODO klenkes Auto defined stub for: de.kaiserpfalzedv.office.access.api.implOfficePrincipalImpl.isInRole
+        return false;  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    public boolean hasPermission(OfficePermission permission) {
+        // TODO klenkes Auto defined stub for: de.kaiserpfalzedv.office.access.api.OfficePrincipalImplImpl.hasPermission
+        return false;  //To change body of implemented methods use File | Settings | File Templates.
     }
 
     @Override
@@ -67,23 +78,5 @@ public class OfficePrincipalImpl implements OfficePrincipal {
     public String getFullName() {
         // TODO klenkes Auto defined stub for: de.kaiserpfalzedv.office.access.api.OfficePrincipalImplImpl.getFullName
         return null;  //To change body of implemented methods use File | Settings | File Templates.
-    }
-
-    @Override
-    public Set<OfficeRole> getRoles() {
-        // TODO klenkes Auto defined stub for: de.kaiserpfalzedv.office.access.api.implOfficePrincipalImpl.getRoles
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
-    }
-
-    @Override
-    public boolean isInRole(OfficeRole role) {
-        // TODO klenkes Auto defined stub for: de.kaiserpfalzedv.office.access.api.implOfficePrincipalImpl.isInRole
-        return false;  //To change body of implemented methods use File | Settings | File Templates.
-    }
-
-    @Override
-    public boolean hasPermission(OfficePermission permission) {
-        // TODO klenkes Auto defined stub for: de.kaiserpfalzedv.office.access.api.OfficePrincipalImplImpl.hasPermission
-        return false;  //To change body of implemented methods use File | Settings | File Templates.
     }
 }

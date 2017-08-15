@@ -22,24 +22,16 @@
 
     <parent>
         <groupId>de.kaiserpfalz-edv.office</groupId>
-        <artifactId>kp-office-parent-ejb</artifactId>
+        <artifactId>kp-office-base</artifactId>
         <version>1.0.0-SNAPSHOT</version>
-        <relativePath>../kp-office-parents-root/kp-office-parent-ejb/pom.xml</relativePath>
+        <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>kp-office-base</artifactId>
+    <artifactId>kp-office-base-monitoring</artifactId>
     <packaging>pom</packaging>
-    <name>KP Office :: Base</name>
+    <name>KP Office :: Base :: Monitoring</name>
 
     <modules>
-        <module>kp-office-base-access</module>
-        <module>kp-office-base-tenant</module>
-        <module>kp-office-base-contacts</module>
-        <module>kp-office-base-monitoring</module>
-        <!--
-        <module>kp-office-base-files-impl</module>
-        <module>kp-office-base-license-impl</module>
-        <module>kp-office-base-tests</module>
-        -->
+        <module>kp-office-base-monitoring-jmx</module>
     </modules>
 </project>

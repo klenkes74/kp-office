@@ -27,4 +27,5 @@ import de.kaiserpfalzedv.office.common.api.init.Initializable;
  * @since 2016-10-16
  */
 public interface AccessService extends BaseService<OfficePrincipal>, BusinessKeyBaseService<OfficePrincipal>, Initializable, Closeable {
+
 }

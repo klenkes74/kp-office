@@ -14,30 +14,26 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzedv.office.access.api;
+package de.kaiserpfalzedv.office.common.api.multitenancy;
 
-import java.security.Principal;
-import java.util.Set;
-import java.util.UUID;
+import java.lang.annotation.Retention;
+import java.lang.annotation.Target;
 
-import de.kaiserpfalzedv.office.common.api.data.Keyable;
-import de.kaiserpfalzedv.office.common.api.data.Nameable;
+import javax.interceptor.InterceptorBinding;
+
+import static java.lang.annotation.ElementType.METHOD;
+import static java.lang.annotation.ElementType.TYPE;
+import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 /**
- * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
- * @version 1.0.0
- * @since 2016-10-16
+ * This is the qualifier for a mock implementation of the service.
+ *
+ * @author klenkes
+ * @version 2015Q1
+ * @since 03.01.16 09:48
  */
-public interface OfficePrincipal extends Principal, Nameable, Keyable {
-    UUID getTenant();
-
-    Set<UUID> getPossibleTenants();
-
-    void switchTenant(UUID tenant);
-
-    Set<OfficeRole> getRoles();
-
-    boolean isInRole(OfficeRole role);
-
-    boolean hasPermission(OfficePermission permission);
+@InterceptorBinding
+@Retention(RUNTIME)
+@Target({TYPE, METHOD})
+public @interface TenantHoldingServiceRequest {
 }

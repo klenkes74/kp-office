@@ -14,30 +14,27 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzedv.office.access.api;
+package de.kaiserpfalzedv.office.monitoring.jmx.impl;
 
-import java.security.Principal;
-import java.util.Set;
-import java.util.UUID;
+import java.lang.management.ManagementFactory;
 
-import de.kaiserpfalzedv.office.common.api.data.Keyable;
-import de.kaiserpfalzedv.office.common.api.data.Nameable;
+import javax.enterprise.context.ApplicationScoped;
+import javax.enterprise.inject.Produces;
+import javax.management.MBeanServer;
 
 /**
+ * A small class providing the {@link MBeanServer} from {@link ManagementFactory#getPlatformMBeanServer()} as injectable
+ * bean.
+ *
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
  * @version 1.0.0
- * @since 2016-10-16
+ * @since 2017-08-15
  */
-public interface OfficePrincipal extends Principal, Nameable, Keyable {
-    UUID getTenant();
+@ApplicationScoped
+public class MBeanPlatformserverProvider {
 
-    Set<UUID> getPossibleTenants();
-
-    void switchTenant(UUID tenant);
-
-    Set<OfficeRole> getRoles();
-
-    boolean isInRole(OfficeRole role);
-
-    boolean hasPermission(OfficePermission permission);
+    @Produces
+    public MBeanServer provideMBeanServer() {
+        return ManagementFactory.getPlatformMBeanServer();
+    }
 }

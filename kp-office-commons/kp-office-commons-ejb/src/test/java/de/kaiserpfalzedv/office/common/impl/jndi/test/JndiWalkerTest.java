@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzedv.office.common.jndi;
+package de.kaiserpfalzedv.office.common.impl.jndi.test;
 
 import javax.naming.InitialContext;
 import javax.naming.NamingException;

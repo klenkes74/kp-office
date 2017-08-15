@@ -22,33 +22,28 @@
 
     <parent>
         <groupId>de.kaiserpfalz-edv.office</groupId>
-        <artifactId>kp-office-parent-impl</artifactId>
+        <artifactId>kp-office-base-monitoring</artifactId>
         <version>1.0.0-SNAPSHOT</version>
-        <relativePath>../../kp-office-parents-root/kp-office-parent-impl/pom.xml</relativePath>
+        <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>kp-office-commons-ejb</artifactId>
-    <name>KP Office :: Commons :: EJB</name>
-    <packaging>jar</packaging>
+    <artifactId>kp-office-base-monitoring-jmx</artifactId>
+    <name>KP Office :: Base :: Monitoring :: JMX</name>
+    <packaging>ejb</packaging>
+
+    <description>
+        The statistics collector for JMX statistics that may be used for live monitoring of the application.
+    </description>
 
     <dependencies>
         <dependency>
             <groupId>de.kaiserpfalz-edv.office</groupId>
-            <artifactId>kp-office-commons-api</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.github.h-thurow</groupId>
-            <artifactId>simple-jndi</artifactId>
+            <artifactId>kp-office-commons-ejb</artifactId>
             <scope>provided</scope>
         </dependency>
 
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-annotations</artifactId>
-        </dependency>
 
-        <!-- Testing -->
+        <!-- Tests -->
         <dependency>
             <groupId>org.powermock</groupId>
             <artifactId>powermock-api-easymock</artifactId>
@@ -64,12 +59,6 @@
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
             <scope>test</scope>
         </dependency>
     </dependencies>
