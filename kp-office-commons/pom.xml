@@ -33,7 +33,7 @@
 
     <modules>
         <module>kp-office-commons-api</module>
-        <module>kp-office-commons-client</module>
+        <module>kp-office-commons-impl</module>
         <module>kp-office-commons-ejb</module>
     </modules>
 </project>

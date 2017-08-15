@@ -39,7 +39,7 @@
         </dependency>
         <dependency>
             <groupId>de.kaiserpfalz-edv.office</groupId>
-            <artifactId>kp-office-commons-client</artifactId>
+            <artifactId>kp-office-commons-impl</artifactId>
             <scope>provided</scope>
         </dependency>
         <dependency>

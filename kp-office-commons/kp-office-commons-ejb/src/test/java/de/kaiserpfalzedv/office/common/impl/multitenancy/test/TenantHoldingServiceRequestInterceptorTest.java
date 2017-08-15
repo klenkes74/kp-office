@@ -35,7 +35,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.MDC;
 
-import static org.mockito.Mockito.when;
+import static org.easymock.EasyMock.expect;
 import static org.powermock.api.easymock.PowerMock.createMock;
 import static org.powermock.api.easymock.PowerMock.expectLastCall;
 import static org.powermock.api.easymock.PowerMock.replay;
@@ -85,20 +85,21 @@ public class TenantHoldingServiceRequestInterceptorTest {
         MDC.put("test", "w/-tenant-w/o-oldvalue");
         LOG.debug("Checking a call with tenant: {}", DEFAULT_TENANT);
 
-        when(extractor.extract(ctx)).thenReturn(Optional.of(DEFAULT_TENANT));
+        expect(extractor.extract(ctx)).andReturn(Optional.of(DEFAULT_TENANT));
 
-        when(holder.getTenant()).thenReturn(Optional.empty());
+        expect(holder.getTenant()).andReturn(Optional.empty());
 
         holder.setTenant(DEFAULT_TENANT);
         expectLastCall();
 
-        when(holder.getTenant()).thenReturn(Optional.of(DEFAULT_TENANT));
+        expect(holder.getTenant()).andReturn(Optional.of(DEFAULT_TENANT));
 
         holder.clearTenant();
+        expectLastCall().times(2);
 
-        when(holder.getTenant()).thenReturn(Optional.empty());
+        expect(holder.getTenant()).andReturn(Optional.empty());
 
-        when(ctx.proceed()).thenReturn("ok");
+        expect(ctx.proceed()).andReturn("ok");
 
         replay(holder, extractor, ctx);
 
@@ -111,24 +112,24 @@ public class TenantHoldingServiceRequestInterceptorTest {
         UUID oldValue = UUID.randomUUID();
         LOG.debug("Checking a call with: tenant={}, oldValue={}", DEFAULT_TENANT, oldValue);
 
-        when(extractor.extract(ctx)).thenReturn(Optional.of(DEFAULT_TENANT));
+        expect(extractor.extract(ctx)).andReturn(Optional.of(DEFAULT_TENANT));
 
-        when(holder.getTenant()).thenReturn(Optional.of(oldValue));
+        expect(holder.getTenant()).andReturn(Optional.of(oldValue));
 
         holder.setTenant(DEFAULT_TENANT);
         expectLastCall();
 
-        when(holder.getTenant()).thenReturn(Optional.of(DEFAULT_TENANT));
+        expect(holder.getTenant()).andReturn(Optional.of(DEFAULT_TENANT));
 
         holder.clearTenant();
-        expectLastCall();
+        expectLastCall().times(2);
 
         holder.setTenant(oldValue);
         expectLastCall();
 
-        when(holder.getTenant()).thenReturn(Optional.of(oldValue));
+        expect(holder.getTenant()).andReturn(Optional.of(oldValue));
 
-        when(ctx.proceed()).thenReturn("ok");
+        expect(ctx.proceed()).andReturn("ok");
 
         replay(holder, extractor, ctx);
 
@@ -140,18 +141,18 @@ public class TenantHoldingServiceRequestInterceptorTest {
         MDC.put("test", "w/o-tenant-w/o-oldvalue");
         LOG.debug("Checking a call without data");
 
-        when(extractor.extract(ctx)).thenReturn(Optional.empty());
+        expect(extractor.extract(ctx)).andReturn(Optional.empty());
 
-        when(holder.getTenant()).thenReturn(Optional.empty());
+        expect(holder.getTenant()).andReturn(Optional.empty());
 
-        when(holder.getTenant()).thenReturn(Optional.empty());
+        expect(holder.getTenant()).andReturn(Optional.empty());
 
         holder.clearTenant();
-        expectLastCall();
+        expectLastCall().times(2);
 
-        when(holder.getTenant()).thenReturn(Optional.empty());
+        expect(holder.getTenant()).andReturn(Optional.empty());
 
-        when(ctx.proceed()).thenReturn("ok");
+        expect(ctx.proceed()).andReturn("ok");
 
         replay(holder, extractor, ctx);
 
@@ -163,21 +164,21 @@ public class TenantHoldingServiceRequestInterceptorTest {
         MDC.put("test", "w/o-tenant-w/-oldvalue");
         LOG.debug("Checking a call with oldValue: {}", DEFAULT_TENANT);
 
-        when(extractor.extract(ctx)).thenReturn(Optional.empty());
+        expect(extractor.extract(ctx)).andReturn(Optional.empty());
 
-        when(holder.getTenant()).thenReturn(Optional.of(DEFAULT_TENANT));
+        expect(holder.getTenant()).andReturn(Optional.of(DEFAULT_TENANT));
 
-        when(holder.getTenant()).thenReturn(Optional.empty());
+        expect(holder.getTenant()).andReturn(Optional.empty());
 
         holder.clearTenant();
-        expectLastCall();
+        expectLastCall().times(2);
 
         holder.setTenant(DEFAULT_TENANT);
         expectLastCall();
 
-        when(holder.getTenant()).thenReturn(Optional.of(DEFAULT_TENANT));
+        expect(holder.getTenant()).andReturn(Optional.of(DEFAULT_TENANT));
 
-        when(ctx.proceed()).thenReturn("ok");
+        expect(ctx.proceed()).andReturn("ok");
 
         replay(holder, extractor, ctx);
 

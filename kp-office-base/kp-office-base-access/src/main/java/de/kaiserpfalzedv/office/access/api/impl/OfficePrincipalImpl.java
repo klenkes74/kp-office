@@ -39,6 +39,18 @@ public class OfficePrincipalImpl implements OfficePrincipal {
     }
 
     @Override
+    public Set<UUID> getPossibleTenants() {
+        // TODO klenkes Auto defined stub for: de.kaiserpfalzedv.office.access.api.impl.OfficePrincipalImpl.getPossibleTenants
+        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    public void switchTenant(UUID tenant) {
+        // TODO klenkes Auto defined stub for: de.kaiserpfalzedv.office.access.api.impl.OfficePrincipalImpl.switchTenant
+        //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
     public Set<OfficeRole> getRoles() {
         // TODO klenkes Auto defined stub for: de.kaiserpfalzedv.office.access.api.implOfficePrincipalImpl.getRoles
         return null;  //To change body of implemented methods use File | Settings | File Templates.

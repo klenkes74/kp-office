@@ -27,10 +27,10 @@
         <relativePath>../kp-office-parent/pom.xml</relativePath>
     </parent>
 
-    <artifactId>kp-office-parent-impl</artifactId>
+    <artifactId>kp-office-parent-libraries</artifactId>
     <packaging>pom</packaging>
 
-    <name>KP Office :: Parents :: Client</name>
+    <name>KP Office :: Parents :: Libraries</name>
 
     <properties>
         <skip.unit.tests>${skipTests}</skip.unit.tests>
