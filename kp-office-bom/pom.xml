@@ -29,7 +29,7 @@
 
 
     <properties>
-        <slf4j-api.version>1.7.13</slf4j-api.version>
+        <slf4j-api.version>1.7.25</slf4j-api.version>
         <logback-classic.version>1.1.3</logback-classic.version>
         <osgi.version>6.0.0</osgi.version>
         <jackson.version>2.6.3</jackson.version>
@@ -150,24 +150,6 @@
                 <version>${project.version}</version>
                 <classifier>client</classifier>
             </dependency>
-            <dependency>
-                <groupId>${project.groupId}</groupId>
-                <artifactId>kp-office-base-license</artifactId>
-                <version>${project.version}</version>
-                <classifier>ejb</classifier>
-            </dependency>
-            <dependency>
-                <groupId>${project.groupId}</groupId>
-                <artifactId>kp-office-base-license</artifactId>
-                <version>${project.version}</version>
-                <classifier>api</classifier>
-            </dependency>
-            <dependency>
-                <groupId>${project.groupId}</groupId>
-                <artifactId>kp-office-base-license</artifactId>
-                <version>${project.version}</version>
-                <classifier>client</classifier>
-            </dependency>
 
             <!-- Finance -->
             <dependency>
@@ -232,6 +214,36 @@
                 <artifactId>kp-office-finance-reporting</artifactId>
                 <version>${project.version}</version>
                 <classifier>client</classifier>
+            </dependency>
+
+            <!-- License Management -->
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>kp-office-modules-license-impl</artifactId>
+                <version>${project.version}</version>
+                <classifier>ejb</classifier>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>kp-office-modules-license-impl</artifactId>
+                <version>${project.version}</version>
+                <classifier>api</classifier>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>kp-office-modules-license-impl</artifactId>
+                <version>${project.version}</version>
+                <classifier>client</classifier>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>kp-office-modules-license-ui</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>kp-office-modules-license-ear</artifactId>
+                <version>${project.version}</version>
             </dependency>
 
 
@@ -305,7 +317,7 @@
             <dependency>
                 <groupId>com.google.guava</groupId>
                 <artifactId>guava</artifactId>
-                <version>19.0</version>
+                <version>23.0</version>
             </dependency>
 
             <dependency>
@@ -336,6 +348,23 @@
                 <groupId>com.fasterxml.jackson.core</groupId>
                 <artifactId>jackson-annotations</artifactId>
                 <version>${jackson.version}</version>
+            </dependency>
+
+            <!-- License Management -->
+            <dependency>
+                <groupId>com.verhas</groupId>
+                <artifactId>license3j</artifactId>
+                <version>1.0.7</version>
+            </dependency>
+            <dependency>
+                <groupId>org.bouncycastle</groupId>
+                <artifactId>bcpg-jdk15on</artifactId>
+                <version>1.57</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jasypt</groupId>
+                <artifactId>jasypt</artifactId>
+                <version>1.9.2</version>
             </dependency>
 
 

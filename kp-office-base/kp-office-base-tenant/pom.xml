@@ -39,11 +39,6 @@
         </dependency>
         <dependency>
             <groupId>de.kaiserpfalz-edv.office</groupId>
-            <artifactId>kp-office-commons-impl</artifactId>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>de.kaiserpfalz-edv.office</groupId>
             <artifactId>kp-office-base-monitoring-jmx</artifactId>
             <classifier>api</classifier>
             <scope>provided</scope>

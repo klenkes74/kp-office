@@ -555,17 +555,20 @@
                     <groupId>org.hibernate</groupId>
                     <artifactId>hibernate-entitymanager</artifactId>
                     <version>${hibernate.version}</version>
+                    <scope>provided</scope>
                 </dependency>
                 <dependency>
                     <groupId>org.hibernate</groupId>
                     <artifactId>hibernate-c3p0</artifactId>
                     <version>${hibernate.version}</version>
+                    <scope>provided</scope>
                 </dependency>
 
                 <dependency>
                     <groupId>org.lazyluke</groupId>
                     <artifactId>log4jdbc-remix</artifactId>
                     <version>${log4jdbc-remix.version}</version>
+                    <scope>provided</scope>
                 </dependency>
 
                 <dependency>

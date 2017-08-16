@@ -36,9 +36,8 @@
         <module>kp-office-base-tenant</module>
         <module>kp-office-base-contacts</module>
         <module>kp-office-base-monitoring</module>
+        <module>kp-office-base-files</module>
         <!--
-        <module>kp-office-base-files-impl</module>
-        <module>kp-office-base-license-impl</module>
         <module>kp-office-base-tests</module>
         -->
     </modules>

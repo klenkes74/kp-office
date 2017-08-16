@@ -22,35 +22,33 @@
 
     <parent>
         <groupId>de.kaiserpfalz-edv.office</groupId>
-        <artifactId>kp-office-parent-libraries</artifactId>
+        <artifactId>kp-office-base</artifactId>
         <version>1.0.0-SNAPSHOT</version>
-        <relativePath>../../kp-office-parents-root/kp-office-parent-libraries/pom.xml</relativePath>
+        <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>kp-office-commons-ejb</artifactId>
-    <name>KP Office :: Commons :: EJB</name>
-    <packaging>jar</packaging>
+    <artifactId>kp-office-modules-license-ui</artifactId>
+    <name>KP Office :: Modules :: License :: UI</name>
+    <packaging>war</packaging>
 
     <dependencies>
         <dependency>
             <groupId>de.kaiserpfalz-edv.office</groupId>
-            <artifactId>kp-office-commons-api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>de.kaiserpfalz-edv.office</groupId>
-            <artifactId>kp-office-commons-impl</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.github.h-thurow</groupId>
-            <artifactId>simple-jndi</artifactId>
+            <artifactId>kp-office-commons-ejb</artifactId>
             <scope>provided</scope>
         </dependency>
-
         <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-annotations</artifactId>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>kp-office-modules-license-impl</artifactId>
+            <classifier>client</classifier>
         </dependency>
+
+        <!-- license management/security -->
+        <dependency>
+            <groupId>org.jasypt</groupId>
+            <artifactId>jasypt</artifactId>
+        </dependency>
+
 
         <!-- Testing -->
         <dependency>
@@ -66,15 +64,13 @@
             <artifactId>powermock-module-junit4</artifactId>
         </dependency>
         <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-            <scope>test</scope>
+            <groupId>org.jboss.arquillian.testenricher</groupId>
+            <artifactId>arquillian-testenricher-ejb</artifactId>
         </dependency>
 
         <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <scope>test</scope>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jul-to-slf4j</artifactId>
         </dependency>
     </dependencies>
 </project>

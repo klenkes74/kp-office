@@ -41,6 +41,10 @@
             <artifactId>kp-office-commons-ejb</artifactId>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>de.kaiserpfalz-edv.office</groupId>
+            <artifactId>kp-office-commons-impl</artifactId>
+        </dependency>
 
 
         <!-- Tests -->

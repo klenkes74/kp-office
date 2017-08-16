@@ -22,22 +22,19 @@
 
     <parent>
         <groupId>de.kaiserpfalz-edv.office</groupId>
-        <artifactId>kp-office-root</artifactId>
+        <artifactId>kp-office-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>kp-office-parents-root</artifactId>
+    <artifactId>kp-office-license-root</artifactId>
     <packaging>pom</packaging>
 
-    <name>KP Office :: Parents</name>
+    <name>KP Office :: Modules :: License</name>
 
     <modules>
-        <module>kp-office-parent</module>
-        <module>kp-office-parent-api</module>
-        <module>kp-office-parent-libraries</module>
-        <module>kp-office-parent-ejb</module>
-        <module>kp-office-parent-ear</module>
-        <module>kp-office-parent-test</module>
+        <module>kp-office-modules-license-impl</module>
+        <module>kp-office-modules-license-ui</module>
+        <module>kp-office-modules-license-ear</module>
     </modules>
 </project>
