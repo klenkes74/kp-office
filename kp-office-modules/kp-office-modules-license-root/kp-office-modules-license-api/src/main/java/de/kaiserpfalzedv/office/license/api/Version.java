@@ -18,9 +18,10 @@ package de.kaiserpfalzedv.office.license.api;
 
 import java.io.Serializable;
 
-import com.google.common.base.Strings;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
+
+import static org.apache.commons.lang3.StringUtils.isEmpty;
 
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
@@ -111,7 +112,7 @@ public class Version implements Serializable {
             result.append(".").append(l);
         }
 
-        if (!Strings.isNullOrEmpty(versionAddition)) {
+        if (!isEmpty(versionAddition)) {
             result.append("-").append(versionAddition);
         }
 

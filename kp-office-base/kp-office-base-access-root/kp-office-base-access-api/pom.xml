@@ -29,7 +29,6 @@
 
     <artifactId>kp-office-base-access-api</artifactId>
     <name>KP Office :: Base :: Access :: API</name>
-    <packaging>jar</packaging>
 
     <dependencies>
         <dependency>

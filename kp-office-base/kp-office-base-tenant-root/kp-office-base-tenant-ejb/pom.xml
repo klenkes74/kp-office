@@ -31,6 +31,10 @@
     <name>KP Office :: Base :: Tenant :: EJB</name>
     <packaging>ejb</packaging>
 
+    <properties>
+        <skip.jpa>false</skip.jpa>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>${project.groupId}</groupId>
@@ -43,7 +47,7 @@
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>kp-office-base-monitoring-jmx</artifactId>
-            <classifier>client</classifier>
+            <type>ejb-client</type>
         </dependency>
 
         <dependency>

@@ -49,7 +49,13 @@
         <skip.it.tests>${skipTests}</skip.it.tests>
         <skip.ct.tests>${skipTests}</skip.ct.tests>
         <skip.at.tests>${skipTests}</skip.at.tests>
+        <skip.jpa>true</skip.jpa>
         <dontSign>true</dontSign>
+
+        <!-- JEE -->
+        <application-name>${project.artifactId}</application-name>
+        <application-display-name>${project.name}</application-display-name>
+        <application-description>${project.description}</application-description>
     </properties>
 
     <distributionManagement>
@@ -137,23 +143,193 @@
         <pluginManagement>
             <plugins>
                 <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-scm-plugin</artifactId>
+                    <version>1.9.4</version>
+                </plugin>
+
+                <plugin>
                     <artifactId>maven-resources-plugin</artifactId>
                     <version>2.7</version>
                 </plugin>
 
+                <!-- ===[Java]============================================================================[BEGIN]=== -->
                 <plugin>
                     <artifactId>maven-jar-plugin</artifactId>
                     <version>2.6</version>
+                </plugin>
+
+                <plugin>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.3</version>
+                    <configuration>
+                        <source>${maven.compiler.source}</source>
+                        <target>${maven.compiler.target}</target>
+                    </configuration>
+                </plugin>
+
+                <!-- ===[Java Testing]====================================================================[BEGIN]=== -->
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>findbugs-maven-plugin</artifactId>
+                    <version>3.0.2</version>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.jacoco</groupId>
+                    <artifactId>jacoco-maven-plugin</artifactId>
+                    <version>0.7.5.201505241946</version>
+                    <executions>
+                        <!--
+                            Prepares the property pointing to the JaCoCo runtime agent which
+                            is passed as VM argument when Maven the Surefire plugin is executed.
+                        -->
+                        <execution>
+                            <id>pre-unit-test</id>
+                            <goals>
+                                <goal>prepare-agent</goal>
+                            </goals>
+                            <configuration>
+                                <destFile>${project.build.directory}/coverage-reports/jacoco-ut.exec</destFile>
+                                <propertyName>surefireArgLine</propertyName>
+                            </configuration>
+                        </execution>
+                        <execution>
+                            <id>post-unit-test</id>
+                            <phase>test</phase>
+                            <goals>
+                                <goal>report</goal>
+                            </goals>
+                            <configuration>
+                                <dataFile>${project.build.directory}/coverage-reports/jacoco-ut.exec</dataFile>
+                                <outputDirectory>${project.reporting.outputDirectory}/jacoco-ut
+                                </outputDirectory>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+
+                <plugin>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>2.18.1</version>
+                    <configuration>
+                        <!--suppress MavenModelInspection --><!-- It's ok, it will be set by a plugin at build time -->
+                        <argLine>${surefireArgLine}</argLine>
+                        <!--suppress MavenModelInspection --><!-- it's boolean, I hope ... -->
+                        <skipTests>${skip.unit.tests}</skipTests>
+                        <excludes>
+                            <exclude>**/IT*.java</exclude>
+                            <exclude>**/*IT.java</exclude>
+                        </excludes>
+                    </configuration>
+                </plugin>
+
+                <plugin>
+                    <artifactId>maven-failsafe-plugin</artifactId>
+                    <version>2.18.1</version>
+                    <configuration>
+                        <!--suppress MavenModelInspection --><!-- It's ok, it will be set by a plugin at build time -->
+                        <argLine>${surefireArgLine}</argLine>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <id>integration-tests</id>
+                            <goals>
+                                <goal>integration-test</goal>
+                            </goals>
+                            <configuration>
+                                <skipTests>${skip.it.tests}</skipTests>
+                                <includes>
+                                    <include>**/*IT.java</include>
+                                    <include>**/IT*.java</include>
+                                </includes>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+
+
+                <!-- ===[JEE]=============================================================================[BEGIN]=== -->
+                <plugin>
+                    <artifactId>maven-ejb-plugin</artifactId>
+                    <version>2.5.1</version>
+                    <configuration>
+                        <ejbVersion>3.2</ejbVersion>
+                        <generateClient>true</generateClient>
+                        <archive>
+                            <manifest>
+                                <addClasspath>true</addClasspath>
+                                <classpathPrefix>lib/</classpathPrefix>
+                            </manifest>
+                        </archive>
+                        <filterDeploymentDescriptor>true</filterDeploymentDescriptor>
+                        <clientIncludes>
+                            <include>**/client/*</include>
+                            <include>**/mock/*</include>
+                        </clientIncludes>
+                    </configuration>
+                </plugin>
+
+                <plugin>
+                    <artifactId>maven-war-plugin</artifactId>
+                    <version>3.1.0</version>
+                </plugin>
+
+                <plugin>
+                    <artifactId>maven-ear-plugin</artifactId>
+                    <version>2.10.1</version>
+
+                    <configuration>
+                        <version>7</version>
+                        <defaultLibBundleDir>/lib</defaultLibBundleDir>
+                        <filtering>true</filtering>
+                        <skinnyWars>true</skinnyWars>
+
+                        <applicationName>${application-name}</applicationName>
+                        <displayName>${application-display-name}</displayName>
+                        <description>${application-description}</description>
+                    </configuration>
                 </plugin>
             </plugins>
         </pluginManagement>
 
         <plugins>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-scm-plugin</artifactId>
                 <version>1.9.4</version>
+            </plugin>
+
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>findbugs-maven-plugin</artifactId>
+            </plugin>
+
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+            </plugin>
+
+            <plugin>
+                <artifactId>maven-surefire-plugin</artifactId>
+            </plugin>
+
+            <plugin>
+                <artifactId>maven-failsafe-plugin</artifactId>
+            </plugin>
+
+            <plugin>
+                <artifactId>maven-ejb-plugin</artifactId>
+            </plugin>
+
+            <plugin>
+                <artifactId>maven-ear-plugin</artifactId>
+            </plugin>
+
+            <plugin>
+                <artifactId>maven-war-plugin</artifactId>
             </plugin>
         </plugins>
     </build>
@@ -209,288 +385,68 @@
         </dependencies>
     </dependencyManagement>
 
+    <dependencies>
+        <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-api</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jul-to-slf4j</artifactId>
+        </dependency>
+
+
+        <!-- Testing helpers -->
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.h-thurow</groupId>
+            <artifactId>simple-jndi</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.powermock</groupId>
+            <artifactId>powermock-api-easymock</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.easymock</groupId>
+            <artifactId>easymock</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.powermock</groupId>
+            <artifactId>powermock-module-junit4</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.arquillian.testenricher</groupId>
+            <artifactId>arquillian-testenricher-ejb</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
     <profiles>
         <profile>
-            <id>ear</id>
-
-            <activation>
-                <property>
-                    <name>application-name</name>
-                </property>
-            </activation>
-
-            <properties>
-                <application-display-name>${project.name}</application-display-name>
-                <application-description>${project.description}</application-description>
-            </properties>
-
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-ear-plugin</artifactId>
-                        <version>2.10.1</version>
-
-                        <configuration>
-                            <version>7</version>
-                            <defaultLibBundleDir>/lib</defaultLibBundleDir>
-                            <filtering>true</filtering>
-                            <skinnyWars>true</skinnyWars>
-
-                            <applicationName>${application-name}</applicationName>
-                            <displayName>${application-display-name}</displayName>
-                            <description>${application-description}</description>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-
-        <profile>
-            <id>ejb</id>
-
-            <activation>
-                <file>
-                    <exists>src/main/resources/META-INF/ejb-jar.xml</exists>
-                </file>
-            </activation>
-
-            <build>
-                <pluginManagement>
-                    <plugins>
-                        <plugin>
-                            <artifactId>maven-ejb-plugin</artifactId>
-                            <version>2.5.1</version>
-                            <configuration>
-                                <ejbVersion>3.2</ejbVersion>
-                                <generateClient>true</generateClient>
-                                <archive>
-                                    <manifest>
-                                        <addClasspath>true</addClasspath>
-                                        <classpathPrefix>lib/</classpathPrefix>
-                                    </manifest>
-                                </archive>
-                                <filterDeploymentDescriptor>true</filterDeploymentDescriptor>
-                                <clientIncludes>
-                                    <include>**/client/*</include>
-                                    <include>**/mock/*</include>
-                                </clientIncludes>
-                            </configuration>
-                        </plugin>
-                    </plugins>
-                </pluginManagement>
-
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-ejb-plugin</artifactId>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-
-        <profile>
-            <id>war</id>
-
-            <activation>
-                <file>
-                    <exists>src/main/webapp</exists>
-                </file>
-            </activation>
-        </profile>
-
-
-        <profile>
-            <id>java</id>
-
-            <activation>
-                <file>
-                    <exists>src/main/java</exists>
-                </file>
-            </activation>
-
-            <build>
-                <pluginManagement>
-                    <plugins>
-                        <plugin>
-                            <groupId>org.apache.maven.plugins</groupId>
-                            <artifactId>maven-compiler-plugin</artifactId>
-                            <version>3.3</version>
-                            <configuration>
-                                <source>${maven.compiler.source}</source>
-                                <target>${maven.compiler.target}</target>
-                            </configuration>
-                        </plugin>
-
-                        <!-- ===[Testing]=============================================================================[BEGIN]=== -->
-                        <plugin>
-                            <groupId>org.codehaus.mojo</groupId>
-                            <artifactId>findbugs-maven-plugin</artifactId>
-                            <version>3.0.2</version>
-                        </plugin>
-
-                        <plugin>
-                            <groupId>org.jacoco</groupId>
-                            <artifactId>jacoco-maven-plugin</artifactId>
-                            <version>0.7.5.201505241946</version>
-                            <executions>
-                                <!--
-                                    Prepares the property pointing to the JaCoCo runtime agent which
-                                    is passed as VM argument when Maven the Surefire plugin is executed.
-                                -->
-                                <execution>
-                                    <id>pre-unit-test</id>
-                                    <goals>
-                                        <goal>prepare-agent</goal>
-                                    </goals>
-                                    <configuration>
-                                        <destFile>${project.build.directory}/coverage-reports/jacoco-ut.exec</destFile>
-                                        <propertyName>surefireArgLine</propertyName>
-                                    </configuration>
-                                </execution>
-                                <execution>
-                                    <id>post-unit-test</id>
-                                    <phase>test</phase>
-                                    <goals>
-                                        <goal>report</goal>
-                                    </goals>
-                                    <configuration>
-                                        <dataFile>${project.build.directory}/coverage-reports/jacoco-ut.exec</dataFile>
-                                        <outputDirectory>${project.reporting.outputDirectory}/jacoco-ut
-                                        </outputDirectory>
-                                    </configuration>
-                                </execution>
-                            </executions>
-                        </plugin>
-
-                        <plugin>
-                            <groupId>org.apache.maven.plugins</groupId>
-                            <artifactId>maven-surefire-plugin</artifactId>
-                            <version>2.18.1</version>
-                            <configuration>
-                                <!--suppress MavenModelInspection --><!-- It's ok, it will be set by a plugin at build time -->
-                                <argLine>${surefireArgLine}</argLine>
-                                <!--suppress MavenModelInspection --><!-- it's boolean, I hope ... -->
-                                <skipTests>${skip.unit.tests}</skipTests>
-                                <excludes>
-                                    <exclude>**/IT*.java</exclude>
-                                    <exclude>**/*IT.java</exclude>
-                                </excludes>
-                            </configuration>
-                        </plugin>
-
-                        <plugin>
-                            <groupId>org.apache.maven.plugins</groupId>
-                            <artifactId>maven-failsafe-plugin</artifactId>
-                            <version>2.18.1</version>
-                            <configuration>
-                                <!--suppress MavenModelInspection --><!-- It's ok, it will be set by a plugin at build time -->
-                                <argLine>${surefireArgLine}</argLine>
-                            </configuration>
-                            <executions>
-                                <execution>
-                                    <id>integration-tests</id>
-                                    <goals>
-                                        <goal>integration-test</goal>
-                                    </goals>
-                                    <configuration>
-                                        <skipTests>${skip.it.tests}</skipTests>
-                                        <includes>
-                                            <include>**/*IT.java</include>
-                                            <include>**/IT*.java</include>
-                                        </includes>
-                                    </configuration>
-                                </execution>
-                            </executions>
-                        </plugin>
-                    </plugins>
-                </pluginManagement>
-
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-compiler-plugin</artifactId>
-                    </plugin>
-
-
-                    <!-- ===[Testing]=============================================================================[BEGIN]=== -->
-                    <plugin>
-                        <groupId>org.codehaus.mojo</groupId>
-                        <artifactId>findbugs-maven-plugin</artifactId>
-                    </plugin>
-
-                    <plugin>
-                        <groupId>org.jacoco</groupId>
-                        <artifactId>jacoco-maven-plugin</artifactId>
-                    </plugin>
-
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-surefire-plugin</artifactId>
-                    </plugin>
-
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-failsafe-plugin</artifactId>
-                    </plugin>
-                </plugins>
-            </build>
-
-            <dependencies>
-                <dependency>
-                    <groupId>javax</groupId>
-                    <artifactId>javaee-api</artifactId>
-                </dependency>
-
-                <dependency>
-                    <groupId>org.slf4j</groupId>
-                    <artifactId>slf4j-api</artifactId>
-                </dependency>
-
-                <dependency>
-                    <groupId>org.apache.commons</groupId>
-                    <artifactId>commons-lang3</artifactId>
-                </dependency>
-
-                <dependency>
-                    <groupId>org.slf4j</groupId>
-                    <artifactId>jul-to-slf4j</artifactId>
-                </dependency>
-
-
-                <!-- Testing helpers -->
-                <dependency>
-                    <groupId>ch.qos.logback</groupId>
-                    <artifactId>logback-classic</artifactId>
-                    <scope>test</scope>
-                </dependency>
-
-                <dependency>
-                    <groupId>junit</groupId>
-                    <artifactId>junit</artifactId>
-                </dependency>
-                <dependency>
-                    <groupId>org.powermock</groupId>
-                    <artifactId>powermock-api-easymock</artifactId>
-                </dependency>
-                <dependency>
-                    <groupId>org.easymock</groupId>
-                    <artifactId>easymock</artifactId>
-                </dependency>
-                <dependency>
-                    <groupId>org.powermock</groupId>
-                    <artifactId>powermock-module-junit4</artifactId>
-                </dependency>
-                <dependency>
-                    <groupId>org.jboss.arquillian.testenricher</groupId>
-                    <artifactId>arquillian-testenricher-ejb</artifactId>
-                    <scope>test</scope>
-                </dependency>
-            </dependencies>
-        </profile>
-
-        <profile>
-            <id>full-release</id>
+            <id>release-build</id>
 
             <build>
                 <plugins>
@@ -525,18 +481,19 @@
             </build>
         </profile>
 
+
         <profile>
             <id>jpa</id>
 
             <activation>
-                <file>
-                    <exists>src/main/resources/ddl/changelog-master.xml</exists>
-                </file>
+                <property>
+                    <name>skip.jpa</name>
+                    <value>false</value>
+                </property>
             </activation>
 
             <properties>
                 <h2port>9092</h2port>
-                <skipDatabaseSetup>${skipTests}</skipDatabaseSetup>
                 <database.changelog>${project.build.testOutputDirectory}/ddl/changelog-test.xml</database.changelog>
 
                 <db.schema>undefined</db.schema>
@@ -564,7 +521,6 @@
                 <mysql-connector-java.version>6.0.4</mysql-connector-java.version>
                 <postgresql.version>9.4.1211.jre7</postgresql.version>
             </properties>
-
 
             <build>
                 <pluginManagement>
@@ -621,7 +577,7 @@
                                 <verbose>true</verbose>
                                 <logging>warning</logging>
                                 <promptOnNonLocalDatabase>false</promptOnNonLocalDatabase>
-                                <skip>${skipDatabaseSetup}</skip>
+                                <skip>${skip.jpa}</skip>
                                 <dropFirst>false</dropFirst>
                             </configuration>
                             <dependencies>
@@ -654,7 +610,7 @@
                                         <verbose>true</verbose>
                                         <logging>warning</logging>
                                         <promptOnNonLocalDatabase>false</promptOnNonLocalDatabase>
-                                        <skip>${skipDatabaseSetup}</skip>
+                                        <skip>${skip.jpa}</skip>
                                         <dropFirst>false</dropFirst>
                                     </configuration>
                                     <goals>
@@ -677,7 +633,7 @@
                                 <password>${jdbc.password}</password>
                                 <format>xml</format>
                                 <src>${project.build.testOutputDirectory}/testdata.xml</src>
-                                <skip>${skipDatabaseSetup}</skip>
+                                <skip>${skip.jpa}</skip>
                                 <useQualifiedTableNames>true</useQualifiedTableNames>
                                 <schema>${db.schema}</schema>
                                 <format>FlatXmlDataFile</format>
@@ -707,7 +663,7 @@
                                         <password>${jdbc.password}</password>
                                         <format>xml</format>
                                         <src>${project.build.testOutputDirectory}/testdata.xml</src>
-                                        <skip>${skipDatabaseSetup}</skip>
+                                        <skip>${skip.jpa}</skip>
                                     </configuration>
                                 </execution>
                             </executions>
@@ -754,82 +710,31 @@
                 </plugins>
             </build>
 
-            <dependencyManagement>
-                <dependencies>
-                    <dependency>
-                        <groupId>de.kaiserpfalz-edv.office</groupId>
-                        <artifactId>kp-office-bom</artifactId>
-                        <version>${project.version}</version>
-                        <type>pom</type>
-                        <scope>import</scope>
-                    </dependency>
-                </dependencies>
-            </dependencyManagement>
-
             <dependencies>
                 <dependency>
                     <groupId>org.hibernate</groupId>
                     <artifactId>hibernate-entitymanager</artifactId>
                     <version>${hibernate.version}</version>
-                    <scope>provided</scope>
+                    <scope>test</scope>
                 </dependency>
                 <dependency>
                     <groupId>org.hibernate</groupId>
                     <artifactId>hibernate-c3p0</artifactId>
                     <version>${hibernate.version}</version>
-                    <scope>provided</scope>
+                    <scope>test</scope>
                 </dependency>
 
                 <dependency>
                     <groupId>org.lazyluke</groupId>
                     <artifactId>log4jdbc-remix</artifactId>
                     <version>${log4jdbc-remix.version}</version>
-                    <scope>provided</scope>
+                    <scope>test</scope>
                 </dependency>
 
                 <dependency>
                     <groupId>com.h2database</groupId>
                     <artifactId>h2</artifactId>
                     <version>${h2.version}</version>
-                    <scope>provided</scope>
-                </dependency>
-                <!--
-                <dependency>
-                    <groupId>mysql</groupId>
-                    <artifactId>mysql-connector-java</artifactId>
-                    <version>${mysql-connector-java.version}</version>
-                    <scope>provided</scope>
-                </dependency>
-                <dependency>
-                    <groupId>org.postgresql</groupId>
-                    <artifactId>postgresql</artifactId>
-                    <version>${postgresql.version}</version>
-                    <scope>provided</scope>
-                </dependency>
-                <dependency>
-                    <groupId>org.xerial</groupId>
-                    <artifactId>sqlite-jdbc</artifactId>
-                    <version>${sqlite-jdbc.version}</version>
-                    <scope>provided</scope>
-                </dependency>
-                <dependency>
-                    <groupId>org.apache.derby</groupId>
-                    <artifactId>derby</artifactId>
-                    <version>${derby.version}</version>
-                    <scope>provided</scope>
-                </dependency>
-                -->
-
-                <!-- testing -->
-                <dependency>
-                    <groupId>com.github.h-thurow</groupId>
-                    <artifactId>simple-jndi</artifactId>
-                    <scope>test</scope>
-                </dependency>
-
-                <dependency>
-                    <groupId>ch.qos.logback</groupId>
-                    <artifactId>logback-classic</artifactId>
                     <scope>test</scope>
                 </dependency>
             </dependencies>

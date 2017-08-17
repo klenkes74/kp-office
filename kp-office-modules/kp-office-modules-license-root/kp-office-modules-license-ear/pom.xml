@@ -27,7 +27,7 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>kp-office-license-ear</artifactId>
+    <artifactId>kp-office-modules-license-ear</artifactId>
     <name>KP Office :: Modules :: License :: EnterpriseApplication</name>
     <packaging>ear</packaging>
 
@@ -48,12 +48,13 @@
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>kp-office-modules-license-ejb</artifactId>
-            <classifier>ejb</classifier>
+            <type>ejb</type>
         </dependency>
 
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>kp-office-modules-license-ui</artifactId>
+            <type>war</type>
         </dependency>
     </dependencies>
 

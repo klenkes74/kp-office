@@ -31,6 +31,10 @@
     <name>KP Office :: Base :: Access :: EJB</name>
     <packaging>ejb</packaging>
 
+    <properties>
+        <skip.jpa>false</skip.jpa>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>${project.groupId}</groupId>

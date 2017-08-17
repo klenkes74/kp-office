@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzedv.office.tenant.api.test;
+package de.kaiserpfalzedv.office.tenant.mock.test;
 
 import java.util.Collection;
 import java.util.UUID;

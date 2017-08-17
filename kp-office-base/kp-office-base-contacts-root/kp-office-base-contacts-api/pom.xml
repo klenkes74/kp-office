@@ -29,7 +29,6 @@
 
     <artifactId>kp-office-base-contacts-api</artifactId>
     <name>KP Office :: Base :: Contacts :: API</name>
-    <packaging>ejb</packaging>
 
     <dependencies>
         <dependency>

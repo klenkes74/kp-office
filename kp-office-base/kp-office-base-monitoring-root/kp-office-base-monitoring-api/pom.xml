@@ -29,7 +29,6 @@
 
     <artifactId>kp-office-base-monitoring-api</artifactId>
     <name>KP Office :: Base :: Monitoring :: API</name>
-    <packaging>ejb</packaging>
 
     <description>
         The statistics collector for JMX statistics that may be used for live monitoring of the application.

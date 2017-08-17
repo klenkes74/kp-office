@@ -29,7 +29,6 @@
 
     <artifactId>kp-office-modules-license-api</artifactId>
     <name>KP Office :: Modules :: License :: API</name>
-    <packaging>ejb</packaging>
 
     <dependencies>
         <dependency>

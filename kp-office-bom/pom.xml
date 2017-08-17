@@ -62,13 +62,13 @@
                 <groupId>${project.groupId}</groupId>
                 <artifactId>kp-office-base-monitoring-jmx</artifactId>
                 <version>${project.version}</version>
-                <classifier>ejb</classifier>
+                <type>ejb</type>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
                 <artifactId>kp-office-base-monitoring-jmx</artifactId>
                 <version>${project.version}</version>
-                <classifier>client</classifier>
+                <type>ejb-client</type>
             </dependency>
 
             <dependency>
@@ -80,13 +80,13 @@
                 <groupId>${project.groupId}</groupId>
                 <artifactId>kp-office-base-tenant</artifactId>
                 <version>${project.version}</version>
-                <classifier>ejb</classifier>
+                <type>ejb</type>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
                 <artifactId>kp-office-base-tenant</artifactId>
                 <version>${project.version}</version>
-                <classifier>client</classifier>
+                <type>ejb-client</type>
             </dependency>
 
             <dependency>
@@ -98,13 +98,13 @@
                 <groupId>${project.groupId}</groupId>
                 <artifactId>kp-office-base-access-ejb</artifactId>
                 <version>${project.version}</version>
-                <classifier>ejb</classifier>
+                <type>ejb</type>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
                 <artifactId>kp-office-base-access-ejb</artifactId>
                 <version>${project.version}</version>
-                <classifier>client</classifier>
+                <type>ejb-client</type>
             </dependency>
 
             <dependency>
@@ -116,25 +116,25 @@
                 <groupId>${project.groupId}</groupId>
                 <artifactId>kp-office-base-contacts-ejb</artifactId>
                 <version>${project.version}</version>
-                <classifier>ejb</classifier>
+                <type>ejb</type>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
                 <artifactId>kp-office-base-contacts-ejb</artifactId>
                 <version>${project.version}</version>
-                <classifier>client</classifier>
+                <type>ejb-client</type>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
                 <artifactId>kp-office-base-contacts-gis</artifactId>
                 <version>${project.version}</version>
-                <classifier>ejb</classifier>
+                <type>ejb</type>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
                 <artifactId>kp-office-base-contacts-gis</artifactId>
                 <version>${project.version}</version>
-                <classifier>client</classifier>
+                <type>ejb-client</type>
             </dependency>
 
             <dependency>
@@ -146,13 +146,13 @@
                 <groupId>${project.groupId}</groupId>
                 <artifactId>kp-office-base-files-ejb</artifactId>
                 <version>${project.version}</version>
-                <classifier>ejb</classifier>
+                <type>ejb</type>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
                 <artifactId>kp-office-base-files-ejb</artifactId>
                 <version>${project.version}</version>
-                <classifier>client</classifier>
+                <type>ejb-client</type>
             </dependency>
 
             <!-- Finance -->
@@ -160,61 +160,61 @@
                 <groupId>${project.groupId}</groupId>
                 <artifactId>kp-office-finance</artifactId>
                 <version>${project.version}</version>
-                <classifier>ejb</classifier>
+                <type>ejb</type>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
                 <artifactId>kp-office-finance</artifactId>
                 <version>${project.version}</version>
-                <classifier>client</classifier>
+                <type>ejb-client</type>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
                 <artifactId>kp-office-finance-accounting</artifactId>
                 <version>${project.version}</version>
-                <classifier>ejb</classifier>
+                <type>ejb</type>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
                 <artifactId>kp-office-finance-accounting</artifactId>
                 <version>${project.version}</version>
-                <classifier>client</classifier>
+                <type>ejb-client</type>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
                 <artifactId>kp-office-finance-taxexport-de</artifactId>
                 <version>${project.version}</version>
-                <classifier>ejb</classifier>
+                <type>ejb</type>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
                 <artifactId>kp-office-finance-taxexport-de</artifactId>
                 <version>${project.version}</version>
-                <classifier>client</classifier>
+                <type>ejb-client</type>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
                 <artifactId>kp-office-finance-datevexport</artifactId>
                 <version>${project.version}</version>
-                <classifier>ejb</classifier>
+                <type>ejb</type>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
                 <artifactId>kp-office-finance-datevexport</artifactId>
                 <version>${project.version}</version>
-                <classifier>client</classifier>
+                <type>ejb-client</type>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
                 <artifactId>kp-office-finance-reporting</artifactId>
                 <version>${project.version}</version>
-                <classifier>ejb</classifier>
+                <type>ejb</type>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
                 <artifactId>kp-office-finance-reporting</artifactId>
                 <version>${project.version}</version>
-                <classifier>client</classifier>
+                <type>ejb-client</type>
             </dependency>
 
             <!-- License Management -->
@@ -227,18 +227,19 @@
                 <groupId>${project.groupId}</groupId>
                 <artifactId>kp-office-modules-license-ejb</artifactId>
                 <version>${project.version}</version>
-                <classifier>ejb</classifier>
+                <type>ejb</type>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
                 <artifactId>kp-office-modules-license-ejb</artifactId>
                 <version>${project.version}</version>
-                <classifier>client</classifier>
+                <type>ejb-client</type>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
                 <artifactId>kp-office-modules-license-ui</artifactId>
                 <version>${project.version}</version>
+                <type>war</type>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>

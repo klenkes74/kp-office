@@ -29,7 +29,6 @@
 
     <artifactId>kp-office-base-tenant-api</artifactId>
     <name>KP Office :: Base :: Tenant :: API</name>
-    <packaging>ejb</packaging>
 
     <dependencies>
         <dependency>
