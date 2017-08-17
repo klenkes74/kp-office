@@ -214,13 +214,12 @@
             <id>ear</id>
 
             <activation>
-                <file>
-                    <exists>target/application.xml</exists>
-                </file>
+                <property>
+                    <name>application-name</name>
+                </property>
             </activation>
 
             <properties>
-                <application-name>${project.artifactId}</application-name>
                 <application-display-name>${project.name}</application-display-name>
                 <application-description>${project.description}</application-description>
             </properties>
@@ -273,32 +272,10 @@
                                 </archive>
                                 <filterDeploymentDescriptor>true</filterDeploymentDescriptor>
                                 <clientIncludes>
-                                    <include>**/api/*</include>
                                     <include>**/client/*</include>
                                     <include>**/mock/*</include>
                                 </clientIncludes>
                             </configuration>
-                        </plugin>
-
-                        <plugin>
-                            <groupId>org.apache.maven.plugins</groupId>
-                            <artifactId>maven-jar-plugin</artifactId>
-                            <version>3.0.2</version>
-                            <configuration>
-                                <classifier>api</classifier>
-                                <includes>
-                                    <include>**/api/*</include>
-                                </includes>
-                            </configuration>
-                            <executions>
-                                <execution>
-                                    <id>api</id>
-                                    <goals>
-                                        <goal>jar</goal>
-                                    </goals>
-                                    <phase>package</phase>
-                                </execution>
-                            </executions>
                         </plugin>
                     </plugins>
                 </pluginManagement>
@@ -307,11 +284,6 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-ejb-plugin</artifactId>
-                    </plugin>
-
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-jar-plugin</artifactId>
                     </plugin>
                 </plugins>
             </build>
@@ -473,11 +445,6 @@
                 <dependency>
                     <groupId>org.slf4j</groupId>
                     <artifactId>slf4j-api</artifactId>
-                </dependency>
-
-                <dependency>
-                    <groupId>com.google.guava</groupId>
-                    <artifactId>guava</artifactId>
                 </dependency>
 
                 <dependency>

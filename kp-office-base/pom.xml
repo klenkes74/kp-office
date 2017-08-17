@@ -32,11 +32,11 @@
     <name>KP Office :: Base</name>
 
     <modules>
-        <module>kp-office-base-access</module>
-        <module>kp-office-base-tenant</module>
-        <module>kp-office-base-contacts</module>
-        <module>kp-office-base-monitoring</module>
-        <module>kp-office-base-files</module>
+        <module>kp-office-base-monitoring-root</module>
+        <module>kp-office-base-tenant-root</module>
+        <module>kp-office-base-access-root</module>
+        <module>kp-office-base-contacts-root</module>
+        <module>kp-office-base-files-root</module>
         <!--
         <module>kp-office-base-tests</module>
         -->

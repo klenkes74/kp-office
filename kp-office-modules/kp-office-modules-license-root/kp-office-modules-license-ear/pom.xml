@@ -28,7 +28,7 @@
     </parent>
 
     <artifactId>kp-office-license-ear</artifactId>
-    <name>KP Office :: Modules :: License :: Application</name>
+    <name>KP Office :: Modules :: License :: EnterpriseApplication</name>
     <packaging>ear</packaging>
 
     <properties>
@@ -47,9 +47,10 @@
 
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>kp-office-modules-license-impl</artifactId>
+            <artifactId>kp-office-modules-license-ejb</artifactId>
             <classifier>ejb</classifier>
         </dependency>
+
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>kp-office-modules-license-ui</artifactId>

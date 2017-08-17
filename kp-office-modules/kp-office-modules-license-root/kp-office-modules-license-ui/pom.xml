@@ -35,12 +35,10 @@
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>kp-office-commons-ejb</artifactId>
-            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>kp-office-modules-license-impl</artifactId>
-            <classifier>api</classifier>
+            <artifactId>kp-office-modules-license-api</artifactId>
         </dependency>
 
         <!-- license management/security -->

@@ -33,7 +33,8 @@
     <name>KP Office :: Modules :: License</name>
 
     <modules>
-        <module>kp-office-modules-license-impl</module>
+        <module>kp-office-modules-license-api</module>
+        <module>kp-office-modules-license-ejb</module>
         <module>kp-office-modules-license-ui</module>
         <module>kp-office-modules-license-ear</module>
     </modules>
