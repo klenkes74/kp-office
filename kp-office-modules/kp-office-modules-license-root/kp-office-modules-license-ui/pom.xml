@@ -22,21 +22,31 @@
 
     <parent>
         <groupId>de.kaiserpfalz-edv.office</groupId>
-        <artifactId>kp-office-parent</artifactId>
+        <artifactId>kp-office-modules-license-root</artifactId>
         <version>1.0.0-SNAPSHOT</version>
-        <relativePath>../kp-office-parent/pom.xml</relativePath>
+        <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>kp-office-modules</artifactId>
-    <packaging>pom</packaging>
+    <artifactId>kp-office-modules-license-ui</artifactId>
+    <name>KP Office :: Modules :: License :: UI</name>
+    <packaging>war</packaging>
 
-    <name>KP Office :: Modules</name>
+    <dependencies>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>kp-office-commons-ejb</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>kp-office-modules-license-impl</artifactId>
+            <classifier>api</classifier>
+        </dependency>
 
-    <modules>
-        <module>kp-office-modules-license-root</module>
-        <!--
-        <module>kp-office-finance-root</module>
-        <module>kp-office-dms-root</module>
-        -->
-    </modules>
+        <!-- license management/security -->
+        <dependency>
+            <groupId>org.jasypt</groupId>
+            <artifactId>jasypt</artifactId>
+        </dependency>
+    </dependencies>
 </project>

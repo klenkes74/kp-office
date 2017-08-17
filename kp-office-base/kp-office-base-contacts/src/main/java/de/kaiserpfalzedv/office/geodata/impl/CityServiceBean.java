@@ -32,6 +32,7 @@ import de.kaiserpfalzedv.office.common.api.init.InitializationException;
 import de.kaiserpfalzedv.office.geodata.api.City;
 import de.kaiserpfalzedv.office.geodata.api.CityService;
 import de.kaiserpfalzedv.office.geodata.api.Country;
+import de.kaiserpfalzedv.office.license.api.Licensed;
 
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
@@ -41,6 +42,7 @@ import de.kaiserpfalzedv.office.geodata.api.Country;
 @Stateless
 @Local
 @TransactionAttribute(TransactionAttributeType.SUPPORTS)
+@Licensed("geodata")
 public class CityServiceBean implements CityService, Serializable {
     private static final long serialVersionUID = -8716761228420348131L;
 

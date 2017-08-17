@@ -22,25 +22,55 @@
 
     <parent>
         <groupId>de.kaiserpfalz-edv.office</groupId>
-        <artifactId>kp-office-base</artifactId>
+        <artifactId>kp-office-modules-license-root</artifactId>
         <version>1.0.0-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>kp-office-base-files</artifactId>
-    <name>KP Office :: Base :: Files</name>
-    <packaging>ejb</packaging>
+    <artifactId>kp-office-license-ear</artifactId>
+    <name>KP Office :: Modules :: License :: Application</name>
+    <packaging>ear</packaging>
+
+    <properties>
+        <application-name>licenses</application-name>
+    </properties>
+
+    <description>
+        License management server for KP Office.
+    </description>
 
     <dependencies>
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>kp-office-commons-ejb</artifactId>
-            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>kp-office-modules-license-impl</artifactId>
+            <classifier>ejb</classifier>
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>kp-office-base-tenant</artifactId>
-            <classifier>api</classifier>
+            <artifactId>kp-office-modules-license-ui</artifactId>
         </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-ear-plugin</artifactId>
+                <configuration>
+                    <modules>
+                        <webModule>
+                            <groupId>${project.groupId}</groupId>
+                            <artifactId>kp-office-modules-license-ui</artifactId>
+                            <contextRoot>/licenses</contextRoot>
+                        </webModule>
+                    </modules>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>

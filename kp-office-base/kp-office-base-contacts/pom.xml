@@ -33,32 +33,25 @@
 
     <dependencies>
         <dependency>
-            <groupId>de.kaiserpfalz-edv.office</groupId>
+            <groupId>${project.groupId}</groupId>
             <artifactId>kp-office-commons-ejb</artifactId>
             <scope>provided</scope>
         </dependency>
 
         <dependency>
-            <groupId>de.kaiserpfalz-edv.office</groupId>
+            <groupId>${project.groupId}</groupId>
             <artifactId>kp-office-base-access</artifactId>
             <classifier>api</classifier>
         </dependency>
         <dependency>
-            <groupId>de.kaiserpfalz-edv.office</groupId>
+            <groupId>${project.groupId}</groupId>
             <artifactId>kp-office-base-tenant</artifactId>
             <classifier>api</classifier>
         </dependency>
-
-
-        <!-- Testing -->
         <dependency>
-            <groupId>org.jboss.arquillian.testenricher</groupId>
-            <artifactId>arquillian-testenricher-ejb</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>jul-to-slf4j</artifactId>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>kp-office-modules-license-impl</artifactId>
+            <classifier>api</classifier>
         </dependency>
     </dependencies>
 </project>

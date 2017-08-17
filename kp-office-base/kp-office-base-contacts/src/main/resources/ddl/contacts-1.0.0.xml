@@ -147,6 +147,12 @@
             </column>
         </createTable>
 
+        <createTable tableName="CONTACTS_PERSONS">
+            <column name="ID_" type="VARCHAR(40)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="CONTACTS_PERSONS_PK"/>
+            </column>
+        </createTable>
+
         <createTable tableName="REPRESENTATIVES">
             <column name="ID_" type="VARCHAR(40)">
                 <constraints nullable="false" primaryKey="true" primaryKeyName="REPRESENTATIVES_PK"/>
@@ -177,7 +183,7 @@
 
         <createTable tableName="ADDRESSES">
             <column name="ID_" type="VARCHAR(40)">
-                <constraints nullable="false" primaryKey="true" primaryKeyName="REPRESENTATIVES_PK"/>
+                <constraints nullable="false" primaryKey="true" primaryKeyName="ADDRESSES_PK"/>
             </column>
 
             <column name="VERSION_" type="BIGINT" defaultValue="0">
@@ -199,7 +205,7 @@
             <column name="CONTACT_ID_" type="VARCHAR(40)">
                 <constraints nullable="false"
                              references="CONTACTS(ID_)"
-                             foreignKeyName="REPRESENTATIVES_CONTACTS_FK"/>
+                             foreignKeyName="ADDRESSES_CONTACTS_FK"/>
             </column>
         </createTable>
 
@@ -244,7 +250,7 @@
             <column name="TYPE_"/>
         </createIndex>
 
-        <createIndex tableName="CONTACTS" indexName="CONTACTS_TENANT_IDX">
+        <createIndex tableName="ADDRESSES" indexName="ADDRESSES_TENANT_IDX">
             <column name="TENANT_"/>
         </createIndex>
 
@@ -260,10 +266,6 @@
         <createIndex tableName="ADDRESSES" indexName="ADDRESSES_CONTACTS_UK">
             <column name="CONTACT_ID_"/>
             <column name="INDEX_"/>
-        </createIndex>
-
-        <createIndex tableName="ADDRESSES" indexName="ADDRESSES_TENANT_IDX">
-            <column name="TENANT_"/>
         </createIndex>
 
         <createIndex tableName="ADDRESSES" indexName="ADDRESS_TYPE_IDX">
@@ -312,6 +314,9 @@
         </rollback>
         <rollback>
             <dropTable tableName="REPRESENTATIVES"/>
+        </rollback>
+        <rollback>
+            <dropTable tableName="CONTACTS_PERSONS"/>
         </rollback>
         <rollback>
             <dropTable tableName="CONTACTS"/>

@@ -21,6 +21,7 @@ import java.util.UUID;
 
 import javax.persistence.CascadeType;
 import javax.persistence.ConstraintMode;
+import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -48,6 +49,7 @@ import de.kaiserpfalzedv.office.contacts.jpa.addresses.JPAAddress;
 @Table(name = "CONTACTS")
 @Inheritance(strategy = InheritanceType.JOINED)
 @DiscriminatorValue("BASE")
+@DiscriminatorColumn(name = "TYPE_")
 public abstract class JPAContact extends JPAAbstractIdentifiable implements Contact {
     private static final long serialVersionUID = 5035198090734413726L;
 

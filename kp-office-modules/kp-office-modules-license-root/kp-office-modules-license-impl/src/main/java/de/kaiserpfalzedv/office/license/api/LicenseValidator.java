@@ -14,22 +14,13 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzedv.office.contacts.api;
-
-import de.kaiserpfalzedv.office.contacts.api.names.PersonalName;
+package de.kaiserpfalzedv.office.license.api;
 
 /**
- * A natural person as contact.
- *
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
  * @version 1.0.0
- * @since 2017-08-10
+ * @since 2017-08-16
  */
-public interface PersonContact extends Contact {
-    PersonalName getPersonName();
-
-    /**
-     * @return The (social) gender of this person.
-     */
-    Gender getGender();
+public interface LicenseValidator {
+    boolean validate(OfficeLicense license);
 }

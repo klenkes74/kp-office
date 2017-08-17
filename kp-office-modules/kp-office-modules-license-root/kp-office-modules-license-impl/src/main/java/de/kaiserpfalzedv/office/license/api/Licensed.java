@@ -14,22 +14,28 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzedv.office.contacts.api;
+package de.kaiserpfalzedv.office.license.api;
 
-import de.kaiserpfalzedv.office.contacts.api.names.PersonalName;
+import java.lang.annotation.Retention;
+import java.lang.annotation.Target;
+
+import javax.inject.Qualifier;
+
+import static java.lang.annotation.ElementType.METHOD;
+import static java.lang.annotation.ElementType.TYPE;
+import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 /**
- * A natural person as contact.
+ * This annotation is used to mark licensed modules. The optional value is the name of the license option to check. If
+ * no value is set, then the name of the class ({@link Class#getSimpleName()}) is used instead.
  *
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
  * @version 1.0.0
- * @since 2017-08-10
+ * @since 2017-08-16
  */
-public interface PersonContact extends Contact {
-    PersonalName getPersonName();
-
-    /**
-     * @return The (social) gender of this person.
-     */
-    Gender getGender();
+@Qualifier
+@Retention(RUNTIME)
+@Target({TYPE, METHOD})
+public @interface Licensed {
+    String value() default "";
 }

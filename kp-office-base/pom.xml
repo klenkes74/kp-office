@@ -22,9 +22,9 @@
 
     <parent>
         <groupId>de.kaiserpfalz-edv.office</groupId>
-        <artifactId>kp-office-parent-ejb</artifactId>
+        <artifactId>kp-office-parent</artifactId>
         <version>1.0.0-SNAPSHOT</version>
-        <relativePath>../kp-office-parents-root/kp-office-parent-ejb/pom.xml</relativePath>
+        <relativePath>../kp-office-parent/pom.xml</relativePath>
     </parent>
 
     <artifactId>kp-office-base</artifactId>
