@@ -24,7 +24,7 @@
         <groupId>de.kaiserpfalz-edv.office</groupId>
         <artifactId>kp-office-parent</artifactId>
         <version>1.0.0-SNAPSHOT</version>
-        <relativePath>../kp-office-parent/pom.xml</relativePath>
+        <relativePath>../kp-office-commons/kp-office-parent/pom.xml</relativePath>
     </parent>
 
     <artifactId>kp-office-modules</artifactId>
@@ -35,8 +35,8 @@
     <modules>
         <module>kp-office-modules-license-root</module>
         <!--
-        <module>kp-office-finance-root</module>
-        <module>kp-office-dms-root</module>
+        <module>kp-office-modules-finance-root</module>
+        <module>kp-office-modules-dms-root</module>
         -->
     </modules>
 </project>

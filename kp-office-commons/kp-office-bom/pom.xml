@@ -25,7 +25,7 @@
     <packaging>pom</packaging>
     <version>1.0.0-SNAPSHOT</version>
 
-    <name>KP Office:: Bill Of Materials</name>
+    <name>KP Office :: Commons :: Bill Of Materials</name>
 
     <properties>
         <slf4j-api.version>1.7.25</slf4j-api.version>

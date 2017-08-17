@@ -24,7 +24,7 @@
         <groupId>de.kaiserpfalz-edv.office</groupId>
         <artifactId>kp-office-parent</artifactId>
         <version>1.0.0-SNAPSHOT</version>
-        <relativePath>../kp-office-parent/pom.xml</relativePath>
+        <relativePath>kp-office-parent/pom.xml</relativePath>
     </parent>
 
     <artifactId>kp-office-commons</artifactId>
@@ -32,6 +32,8 @@
     <packaging>pom</packaging>
 
     <modules>
+        <module>kp-office-bom</module>
+        <module>kp-office-parent</module>
         <module>kp-office-commons-api</module>
         <module>kp-office-commons-impl</module>
         <module>kp-office-commons-ejb</module>
