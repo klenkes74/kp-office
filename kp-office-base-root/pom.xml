@@ -24,19 +24,21 @@
         <groupId>de.kaiserpfalz-edv.office</groupId>
         <artifactId>kp-office-parent</artifactId>
         <version>1.0.0-SNAPSHOT</version>
-        <relativePath>../kp-office-commons/kp-office-parent/pom.xml</relativePath>
+        <relativePath>../kp-office-commons-root/kp-office-parent/pom.xml</relativePath>
     </parent>
 
-    <artifactId>kp-office-modules</artifactId>
+    <artifactId>kp-office-base</artifactId>
     <packaging>pom</packaging>
-
-    <name>KP Office :: Modules</name>
+    <name>KP Office :: Base</name>
 
     <modules>
-        <module>kp-office-modules-license-root</module>
+        <module>kp-office-base-monitoring-root</module>
+        <module>kp-office-base-tenant-root</module>
+        <module>kp-office-base-access-root</module>
+        <module>kp-office-base-contacts-root</module>
+        <module>kp-office-base-files-root</module>
         <!--
-        <module>kp-office-modules-finance-root</module>
-        <module>kp-office-modules-dms-root</module>
+        <module>kp-office-base-tests</module>
         -->
     </modules>
 </project>

@@ -93,16 +93,16 @@ public abstract class BaseCommand extends EventObject {
                 .isEquals();
     }
 
+    public UUID getCommand() {
+        return command;
+    }
+
     /**
      * @return The UUID of the source.
      */
     @Override
     public UUID getSource() {
         return (UUID) super.getSource();
-    }
-
-    public UUID getCommand() {
-        return command;
     }
 
 
