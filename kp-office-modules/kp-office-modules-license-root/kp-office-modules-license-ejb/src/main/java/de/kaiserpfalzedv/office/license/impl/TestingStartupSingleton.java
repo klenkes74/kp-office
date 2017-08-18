@@ -14,28 +14,40 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzedv.office.license.api;
+package de.kaiserpfalzedv.office.license.impl;
 
-import java.lang.annotation.Retention;
-import java.lang.annotation.Target;
+import java.util.UUID;
 
-import javax.interceptor.InterceptorBinding;
+import javax.annotation.PostConstruct;
+import javax.ejb.EJB;
+import javax.ejb.Singleton;
+import javax.ejb.Startup;
 
-import static java.lang.annotation.ElementType.METHOD;
-import static java.lang.annotation.ElementType.TYPE;
-import static java.lang.annotation.RetentionPolicy.RUNTIME;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
- * This annotation is used to mark licensed modules. The optional value is the name of the license option to check. If
- * no value is set, then the name of the class ({@link Class#getSimpleName()}) is used instead.
- *
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
  * @version 1.0.0
- * @since 2017-08-16
+ * @since 2017-08-18
  */
-@InterceptorBinding
-@Retention(RUNTIME)
-@Target({TYPE, METHOD})
-public @interface Licensed {
-    String value() default "";
+@Singleton
+@Startup
+public class TestingStartupSingleton {
+    private static final Logger LOG = LoggerFactory.getLogger(TestingStartupSingleton.class);
+
+    @EJB
+    private InterceptorTestBean bean;
+
+
+    @PostConstruct
+    public void init() {
+        LOG.info("***** Test start ...");
+
+        bean.first();
+        bean.second(UUID.randomUUID());
+        bean.third("Message");
+
+        LOG.info("***** Test end.");
+    }
 }

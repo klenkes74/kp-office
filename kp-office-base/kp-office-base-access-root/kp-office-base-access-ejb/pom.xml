@@ -32,7 +32,7 @@
     <packaging>ejb</packaging>
 
     <properties>
-        <skip.jpa>false</skip.jpa>
+        <skip.jpa>true</skip.jpa>
     </properties>
 
     <dependencies>

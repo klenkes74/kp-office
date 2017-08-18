@@ -23,12 +23,4 @@
 
     <!-- Import the real changelog -->
     <include file="${project.build.outputDirectory}/ddl/changelog-master.xml" relativeToChangelogFile="false"/>
-
-    <changeSet id="load-test-data" author="klenkes74">
-        <comment>Load test data for integration tests</comment>
-        <loadData tableName="CONTACTS" file="${project.build.testOutputDirectory}/data/CONTACTS.csv"
-                  encoding="UTF-8" quotchar="&quot;" separator=";"/>
-        <loadData tableName="CONTACTS_PERSONS" file="${project.build.testOutputDirectory}/data/CONTACTS_PERSONS.csv"
-                  encoding="UTF-8" quotchar="&quot;" separator=";"/>
-    </changeSet>
 </databaseChangeLog>

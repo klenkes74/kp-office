@@ -53,6 +53,16 @@
 
         <dependency>
             <groupId>${project.groupId}</groupId>
+            <artifactId>kp-office-base-monitoring-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>kp-office-base-monitoring-jmx</artifactId>
+            <type>ejb</type>
+        </dependency>
+
+        <dependency>
+            <groupId>${project.groupId}</groupId>
             <artifactId>kp-office-modules-license-ui</artifactId>
             <type>war</type>
         </dependency>

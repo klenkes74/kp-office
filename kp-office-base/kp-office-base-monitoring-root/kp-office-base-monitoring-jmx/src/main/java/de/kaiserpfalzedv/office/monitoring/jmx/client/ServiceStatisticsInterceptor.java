@@ -23,7 +23,7 @@ import javax.interceptor.AroundInvoke;
 import javax.interceptor.Interceptor;
 import javax.interceptor.InvocationContext;
 
-import de.kaiserpfalzedv.office.common.api.multitenancy.TenantHoldingServiceRequest;
+import de.kaiserpfalzedv.office.common.api.cdi.OfficeService;
 import de.kaiserpfalzedv.office.monitoring.jmx.api.StatisticsCollector;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -34,7 +34,7 @@ import org.slf4j.LoggerFactory;
  * @since 2017-08-15
  */
 @Interceptor
-@TenantHoldingServiceRequest
+@OfficeService
 public class ServiceStatisticsInterceptor {
     private static final Logger LOG = LoggerFactory.getLogger(ServiceStatisticsInterceptor.class);
     private static final Logger OPLOG = LoggerFactory.getLogger("operations");

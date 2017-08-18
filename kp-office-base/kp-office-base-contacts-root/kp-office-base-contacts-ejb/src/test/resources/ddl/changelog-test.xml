@@ -21,7 +21,7 @@
             http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd
         ">
 
-    <include file="../../../kp-office-base-contacts-gis/target/classes/ddl/changelog-master.xml"
+    <include file="../../../../kp-office-base-contacts-gis/target/classes/ddl/changelog-master.xml"
              relativeToChangelogFile="true"/>
 
     <!-- Import the real changelog -->

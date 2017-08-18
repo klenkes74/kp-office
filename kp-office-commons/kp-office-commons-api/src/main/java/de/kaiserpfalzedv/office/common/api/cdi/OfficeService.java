@@ -19,7 +19,7 @@ package de.kaiserpfalzedv.office.common.api.cdi;
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 
-import javax.inject.Qualifier;
+import javax.interceptor.InterceptorBinding;
 
 import static java.lang.annotation.ElementType.METHOD;
 import static java.lang.annotation.ElementType.TYPE;
@@ -32,8 +32,11 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
  * @version 2015Q1
  * @since 03.01.16 09:48
  */
-@Qualifier
+@InterceptorBinding
 @Retention(RUNTIME)
 @Target({TYPE, METHOD})
 public @interface OfficeService {
+    String region() default "";
+
+    String measurement() default "";
 }

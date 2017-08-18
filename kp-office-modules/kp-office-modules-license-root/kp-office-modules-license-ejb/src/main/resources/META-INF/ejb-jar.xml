@@ -22,4 +22,19 @@
     <module-name>office-licenses</module-name>
     <description>${project.description}</description>
     <display-name>${project.name}</display-name>
+
+    <enterprise-beans>
+        <session>
+            <ejb-name>LiquibaseConfigurationProvider</ejb-name>
+            <ejb-class>de.kaiserpfalzedv.office.common.impl.config.LiquibaseConfigurationProvider</ejb-class>
+            <session-type>Singleton</session-type>
+            <init-on-startup>true</init-on-startup>
+
+            <resource-env-ref>
+                <resource-env-ref-name>jdbc/datasource</resource-env-ref-name>
+                <resource-env-ref-type>javax.sql.DataSource</resource-env-ref-type>
+                <lookup-name>java:jboss/datasources/ExampleDS</lookup-name>
+            </resource-env-ref>
+        </session>
+    </enterprise-beans>
 </ejb-jar>

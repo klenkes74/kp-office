@@ -14,28 +14,33 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzedv.office.license.api;
+package de.kaiserpfalzedv.office.license.impl;
 
-import java.lang.annotation.Retention;
-import java.lang.annotation.Target;
+import java.sql.SQLException;
 
-import javax.interceptor.InterceptorBinding;
+import javax.annotation.Resource;
+import javax.enterprise.context.ApplicationScoped;
+import javax.enterprise.inject.Produces;
+import javax.sql.DataSource;
 
-import static java.lang.annotation.ElementType.METHOD;
-import static java.lang.annotation.ElementType.TYPE;
-import static java.lang.annotation.RetentionPolicy.RUNTIME;
+import de.kaiserpfalzedv.office.common.impl.config.LiquibaseConfigurationProvider;
+import liquibase.integration.cdi.annotations.LiquibaseType;
 
 /**
- * This annotation is used to mark licensed modules. The optional value is the name of the license option to check. If
- * no value is set, then the name of the class ({@link Class#getSimpleName()}) is used instead.
- *
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
  * @version 1.0.0
- * @since 2017-08-16
+ * @since 2017-08-17
  */
-@InterceptorBinding
-@Retention(RUNTIME)
-@Target({TYPE, METHOD})
-public @interface Licensed {
-    String value() default "";
+@ApplicationScoped
+public class LiquibaseConfiguration extends LiquibaseConfigurationProvider {
+    @Resource(lookup = "java:comp/env/jdbc/datasource")
+    private DataSource dataSource;
+
+    @Produces
+    @LiquibaseType
+    public DataSource createDataSource() throws SQLException {
+        return dataSource;
+    }
+
+
 }

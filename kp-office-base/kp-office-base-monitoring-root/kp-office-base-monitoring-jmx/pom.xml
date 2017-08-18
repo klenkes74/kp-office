@@ -44,9 +44,10 @@
             <groupId>${project.groupId}</groupId>
             <artifactId>kp-office-commons-ejb</artifactId>
         </dependency>
+
         <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>kp-office-commons-impl</artifactId>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
         </dependency>
     </dependencies>
 </project>
