@@ -25,7 +25,7 @@ import javax.interceptor.InvocationContext;
 import de.kaiserpfalzedv.office.common.api.multitenancy.Tenant;
 import de.kaiserpfalzedv.office.common.api.multitenancy.TenantExtractor;
 import de.kaiserpfalzedv.office.common.api.multitenancy.TenantHoldingServiceRequest;
-import de.kaiserpfalzedv.office.common.impl.multitenancy.TenantExtractorImpl;
+import de.kaiserpfalzedv.office.common.ejb.multitenancy.TenantExtractorImpl;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;

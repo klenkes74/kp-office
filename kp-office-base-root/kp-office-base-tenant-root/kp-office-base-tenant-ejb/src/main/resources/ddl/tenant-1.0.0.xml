@@ -18,7 +18,7 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
         xsi:schemaLocation="
-            http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd
+            http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd
         ">
 
     <changeSet id="tenant-initial" author="klenkes74">
@@ -38,6 +38,10 @@
                 <constraints nullable="false"/>
             </column>
 
+            <column name="KEY_" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+
             <column name="DISPLAY_NAME_" type="VARCHAR(200)">
                 <constraints nullable="false"/>
             </column>
@@ -46,6 +50,9 @@
                 <constraints nullable="false"/>
             </column>
         </createTable>
+
+        <loadData tableName="TENANTS" file="../data/TENANTS.csv" relativeToChangelogFile="true" encoding="UTF-8"
+                  quotchar="&quot;" separator=";"/>
 
         <createIndex indexName="TENANTS_TENANT_IDX"
                      tableName="TENANTS">
@@ -64,6 +71,17 @@
             <column name="FULL_NAME_"/>
         </createIndex>
 
+        <createIndex indexName="TENANTS_KEY_UK" unique="true"
+                     tableName="TENANTS">
+            <column name="KEY_"/>
+        </createIndex>
+
+        <rollback>
+            <dropIndex tableName="TENANTS" indexName="TENANTS_KEY_UK"/>
+        </rollback>
+        <rollback>
+            <dropColumn tableName="TENANTS" columnName="KEY"/>
+        </rollback>
         <rollback>
             <dropIndex indexName="TENANTS_FULL_NAME_UK"
                        tableName="TENANTS"/>
@@ -78,28 +96,6 @@
         </rollback>
         <rollback>
             <dropTable tableName="TENANTS"/>
-        </rollback>
-    </changeSet>
-
-    <changeSet id="20160930125519.0" author="klenkes74">
-        <comment>Adding key colmn to tenant.</comment>
-
-        <addColumn tableName="TENANTS">
-            <column name="KEY_" type="VARCHAR(50)">
-                <constraints nullable="false"/>
-            </column>
-        </addColumn>
-
-        <createIndex indexName="TENANTS_KEY_UK" unique="true"
-                     tableName="TENANTS">
-            <column name="KEY_"/>
-        </createIndex>
-
-        <rollback>
-            <dropIndex tableName="TENANTS" indexName="TENANTS_KEY_UK"/>
-        </rollback>
-        <rollback>
-            <dropColumn tableName="TENANTS" columnName="KEY"/>
         </rollback>
     </changeSet>
 </databaseChangeLog>

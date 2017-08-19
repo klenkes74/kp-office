@@ -19,7 +19,7 @@ package de.kaiserpfalzedv.office.common.impl.jndi.test;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
-import de.kaiserpfalzedv.office.common.impl.jndi.JndiWalker;
+import de.kaiserpfalzedv.office.common.ejb.jndi.JndiWalker;
 import org.junit.Before;
 import org.junit.Test;
 import org.slf4j.Logger;

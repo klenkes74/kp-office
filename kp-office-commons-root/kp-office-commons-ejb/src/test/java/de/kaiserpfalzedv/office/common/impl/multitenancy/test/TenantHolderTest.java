@@ -22,7 +22,7 @@ import java.util.Set;
 import java.util.UUID;
 
 import de.kaiserpfalzedv.office.common.api.multitenancy.TenantHolder;
-import de.kaiserpfalzedv.office.common.impl.multitenancy.TenantHolderImpl;
+import de.kaiserpfalzedv.office.common.ejb.multitenancy.TenantHolderImpl;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;

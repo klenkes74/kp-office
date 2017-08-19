@@ -23,7 +23,7 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.Produces;
 import javax.sql.DataSource;
 
-import de.kaiserpfalzedv.office.common.impl.config.LiquibaseConfigurationProvider;
+import de.kaiserpfalzedv.office.common.ejb.config.LiquibaseConfigurationProvider;
 import liquibase.integration.cdi.annotations.LiquibaseType;
 
 /**

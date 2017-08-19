@@ -20,7 +20,7 @@ package de.kaiserpfalzedv.office.common.api.init;
  * @author rlichti {@literal <rlichti@kaiserpfalz-edv.de>}
  * @since 2016-09-21
  */
-public interface Closeable {
+public interface Closeable extends AutoCloseable {
     /**
      * Closes the resources of the class.
      */

@@ -23,7 +23,7 @@
     <persistence-unit name="tenant">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
-        <non-jta-data-source>java:comp/env/datasources/tenants</non-jta-data-source>
+        <non-jta-data-source>java:global/jdbc/tenants</non-jta-data-source>
 
         <class>de.kaiserpfalzedv.office.tenant.jpa.JPATenant</class>
 

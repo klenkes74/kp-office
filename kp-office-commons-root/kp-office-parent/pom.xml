@@ -486,10 +486,9 @@
             <id>jpa</id>
 
             <activation>
-                <property>
-                    <name>skip.jpa</name>
-                    <value>false</value>
-                </property>
+                <file>
+                    <exists>src/main/resources/changelog-master.xml</exists>
+                </file>
             </activation>
 
             <properties>

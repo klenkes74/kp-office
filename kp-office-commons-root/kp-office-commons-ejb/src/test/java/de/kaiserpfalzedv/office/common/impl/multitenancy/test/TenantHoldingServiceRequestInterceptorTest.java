@@ -23,7 +23,7 @@ import javax.interceptor.InvocationContext;
 
 import de.kaiserpfalzedv.office.common.api.multitenancy.TenantExtractor;
 import de.kaiserpfalzedv.office.common.api.multitenancy.TenantHolder;
-import de.kaiserpfalzedv.office.common.impl.multitenancy.TenantHoldingServiceRequestInterceptor;
+import de.kaiserpfalzedv.office.common.ejb.multitenancy.TenantHoldingServiceRequestInterceptor;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;

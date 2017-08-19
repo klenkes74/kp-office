@@ -38,12 +38,19 @@
     <dependencies>
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>kp-office-commons-ejb</artifactId>
+            <artifactId>kp-office-base-tenant-api</artifactId>
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>kp-office-base-tenant-api</artifactId>
+            <artifactId>kp-office-commons-ejb</artifactId>
+            <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>kp-office-commons-client</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>kp-office-base-monitoring-jmx</artifactId>

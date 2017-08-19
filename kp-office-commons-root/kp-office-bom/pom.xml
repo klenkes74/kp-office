@@ -51,6 +51,11 @@
                 <artifactId>kp-office-commons-ejb</artifactId>
                 <version>${project.version}</version>
             </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>kp-office-commons-client</artifactId>
+                <version>${project.version}</version>
+            </dependency>
 
             <!-- Base -->
             <dependency>

@@ -29,7 +29,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import de.kaiserpfalzedv.office.common.api.MessageInfo;
 import de.kaiserpfalzedv.office.common.api.commands.BaseCommand;
 import de.kaiserpfalzedv.office.common.api.commands.CommandExecutionException;
-import de.kaiserpfalzedv.office.common.impl.ResponseSender;
+import de.kaiserpfalzedv.office.common.ejb.ResponseSender;
 import de.kaiserpfalzedv.office.tenant.api.Tenant;
 import de.kaiserpfalzedv.office.tenant.api.TenantDoesNotExistException;
 import de.kaiserpfalzedv.office.tenant.api.TenantExistsException;

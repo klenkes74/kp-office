@@ -18,7 +18,7 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
         xsi:schemaLocation="
-            http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd
+            http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd
         ">
 
     <changeSet id="geodata-initial" author="klenkes74">
@@ -74,25 +74,25 @@
             <column name="ACCURACY_" type="SMALLINT" defaultValue="6"/>
         </createTable>
 
-        <loadData tableName="CITIES" file="${project.build.outputDirectory}/data/AT.txt" encoding="UTF-8"
+        <loadData tableName="CITIES" file="../data/AT.txt" relativeToChangelogFile="true" encoding="UTF-8"
                   quotchar="&quot;" separator="\t"/>
-        <loadData tableName="CITIES" file="${project.build.outputDirectory}/data/CH.txt" encoding="UTF-8"
+        <loadData tableName="CITIES" file="../data/CH.txt" relativeToChangelogFile="true" encoding="UTF-8"
                   quotchar="&quot;" separator="\t"/>
-        <loadData tableName="CITIES" file="${project.build.outputDirectory}/data/BE.txt" encoding="UTF-8"
+        <loadData tableName="CITIES" file="../data/BE.txt" relativeToChangelogFile="true" encoding="UTF-8"
                   quotchar="&quot;" separator="\t"/>
-        <loadData tableName="CITIES" file="${project.build.outputDirectory}/data/DE.txt" encoding="UTF-8"
+        <loadData tableName="CITIES" file="../data/DE.txt" relativeToChangelogFile="true" encoding="UTF-8"
                   quotchar="&quot;" separator="\t"/>
-        <loadData tableName="CITIES" file="${project.build.outputDirectory}/data/DK.txt" encoding="UTF-8"
+        <loadData tableName="CITIES" file="../data/DK.txt" relativeToChangelogFile="true" encoding="UTF-8"
                   quotchar="&quot;" separator="\t"/>
-        <loadData tableName="CITIES" file="${project.build.outputDirectory}/data/FR.txt" encoding="UTF-8"
+        <loadData tableName="CITIES" file="../data/FR.txt" relativeToChangelogFile="true" encoding="UTF-8"
                   quotchar="&quot;" separator="\t"/>
-        <loadData tableName="CITIES" file="${project.build.outputDirectory}/data/LI.txt" encoding="UTF-8"
+        <loadData tableName="CITIES" file="../data/LI.txt" relativeToChangelogFile="true" encoding="UTF-8"
                   quotchar="&quot;" separator="\t"/>
-        <loadData tableName="CITIES" file="${project.build.outputDirectory}/data/LU.txt" encoding="UTF-8"
+        <loadData tableName="CITIES" file="../data/LU.txt" relativeToChangelogFile="true" encoding="UTF-8"
                   quotchar="&quot;" separator="\t"/>
-        <loadData tableName="CITIES" file="${project.build.outputDirectory}/data/NL.txt" encoding="UTF-8"
+        <loadData tableName="CITIES" file="../data/NL.txt" relativeToChangelogFile="true" encoding="UTF-8"
                   quotchar="&quot;" separator="\t"/>
-        <loadData tableName="CITIES" file="${project.build.outputDirectory}/data/PL.txt" encoding="UTF-8"
+        <loadData tableName="CITIES" file="../data/PL.txt" relativeToChangelogFile="true" encoding="UTF-8"
                   quotchar="&quot;" separator="\t"/>
 
         <createIndex tableName="CITIES" indexName="CITIES_NAME" unique="false">
