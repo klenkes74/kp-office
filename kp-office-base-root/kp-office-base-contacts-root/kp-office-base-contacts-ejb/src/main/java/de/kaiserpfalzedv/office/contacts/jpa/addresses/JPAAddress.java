@@ -30,7 +30,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
-import de.kaiserpfalzedv.office.common.jpa.JPAAbstractIdentifiable;
+import de.kaiserpfalzedv.office.common.jpa.JPAAbstractTenantIdentifiable;
 import de.kaiserpfalzedv.office.contacts.api.Contact;
 import de.kaiserpfalzedv.office.contacts.api.addresses.Address;
 import de.kaiserpfalzedv.office.contacts.api.addresses.AddressType;
@@ -44,7 +44,7 @@ import de.kaiserpfalzedv.office.contacts.jpa.JPAContact;
 @Entity
 @Table(name = "ADDRESSES")
 @Inheritance(strategy = InheritanceType.JOINED)
-public abstract class JPAAddress extends JPAAbstractIdentifiable implements Address {
+public abstract class JPAAddress extends JPAAbstractTenantIdentifiable implements Address {
     private static final long serialVersionUID = 2005983615694473019L;
 
     @Enumerated(EnumType.STRING)

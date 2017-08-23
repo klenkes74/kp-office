@@ -16,14 +16,14 @@
 
 package de.kaiserpfalzedv.office.contacts.api.addresses;
 
-import de.kaiserpfalzedv.office.common.api.data.Identifiable;
+import de.kaiserpfalzedv.office.common.api.data.TenantIdentifiable;
 
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
  * @version 1.0.0
  * @since 2017-08-08
  */
-public interface Address extends Identifiable {
+public interface Address extends TenantIdentifiable {
     AddressType getAddressType();
 
     boolean isBillabaleAddress();

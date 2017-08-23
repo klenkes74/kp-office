@@ -24,7 +24,7 @@ package de.kaiserpfalzedv.office.contacts.api.addresses;
 public enum ElectronicAddressType {
     PHONE("Tel", "%s"),
     FAX("Fax", "%s"),
-    EMAIL("Email", "%s"),
+    EMAIL("EmailImpl", "%s"),
     HTTP("Web", "http://%s"),
     HTTPS("Secure Web", "https://%s"),
     SIP("SIP", "sip://%s");

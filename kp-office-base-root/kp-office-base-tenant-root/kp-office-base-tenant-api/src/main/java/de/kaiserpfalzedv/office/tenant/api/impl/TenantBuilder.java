@@ -54,8 +54,17 @@ public class TenantBuilder implements Builder<Tenant> {
     }
 
     private void defaultValues() {
-        if (tenant == null) {
-            tenant = new NullTenant().getId();
+        Tenant tenant = new DefaultTenant();
+
+        if (this.tenant == null) {
+            this.tenant = tenant.getId();
+        }
+
+        if ("DEFAULT".equals(key)) {
+
+            id = tenant.getId();
+            displayName = tenant.getDisplayName();
+            fullName = tenant.getFullName();
         }
 
         if (id == null) {

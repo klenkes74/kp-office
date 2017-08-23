@@ -20,6 +20,10 @@ import java.time.OffsetDateTime;
 import java.util.Set;
 import java.util.UUID;
 
+import de.kaiserpfalzedv.office.common.api.data.ValidityDuration;
+import de.kaiserpfalzedv.office.common.api.data.Version;
+import de.kaiserpfalzedv.office.common.api.data.VersionRange;
+
 /**
  * The logical view on a license.
  *

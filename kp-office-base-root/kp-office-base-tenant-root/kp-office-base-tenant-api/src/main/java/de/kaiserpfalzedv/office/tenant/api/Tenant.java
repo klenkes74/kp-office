@@ -16,10 +16,12 @@
 
 package de.kaiserpfalzedv.office.tenant.api;
 
+import java.util.UUID;
+
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import de.kaiserpfalzedv.office.common.api.data.Identifiable;
 import de.kaiserpfalzedv.office.common.api.data.Keyable;
 import de.kaiserpfalzedv.office.common.api.data.Nameable;
+import de.kaiserpfalzedv.office.common.api.data.TenantIdentifiable;
 import de.kaiserpfalzedv.office.tenant.api.impl.TenantImpl;
 
 import static com.fasterxml.jackson.annotation.JsonTypeInfo.As.PROPERTY;
@@ -38,4 +40,9 @@ import static com.fasterxml.jackson.annotation.JsonTypeInfo.As.PROPERTY;
  * @since 2016-09-04
  */
 @JsonTypeInfo(defaultImpl = TenantImpl.class, use = JsonTypeInfo.Id.NAME, include = PROPERTY)
-public interface Tenant extends Identifiable, Nameable, Keyable {}
+public interface Tenant extends TenantIdentifiable, Nameable, Keyable {
+    /**
+     * Default tenant id used if no other tenant has been set.
+     */
+    UUID DEFAULT_TENANT_ID = UUID.fromString("0fde851e-0179-4c02-8c43-7f9f267c6ffa");
+}

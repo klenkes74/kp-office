@@ -20,7 +20,7 @@ import java.util.Collection;
 import java.util.Properties;
 import java.util.UUID;
 
-import de.kaiserpfalzedv.office.access.api.OfficePrincipal;
+import de.kaiserpfalzedv.office.access.api.users.OfficePrincipal;
 import de.kaiserpfalzedv.office.access.client.AccessClient;
 import de.kaiserpfalzedv.office.common.api.data.ObjectDoesNotExistException;
 import de.kaiserpfalzedv.office.common.api.data.ObjectExistsException;

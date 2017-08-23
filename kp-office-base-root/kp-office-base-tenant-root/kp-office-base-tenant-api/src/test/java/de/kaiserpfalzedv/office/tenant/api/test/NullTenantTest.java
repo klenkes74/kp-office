@@ -16,13 +16,12 @@
 
 package de.kaiserpfalzedv.office.tenant.api.test;
 
-import java.util.UUID;
-
 import de.kaiserpfalzedv.office.tenant.api.Tenant;
 import de.kaiserpfalzedv.office.tenant.api.impl.NullTenant;
 import org.junit.Before;
 import org.junit.Test;
 
+import static de.kaiserpfalzedv.office.tenant.api.Tenant.DEFAULT_TENANT_ID;
 import static org.junit.Assert.assertEquals;
 
 /**
@@ -31,8 +30,6 @@ import static org.junit.Assert.assertEquals;
  * @since 27.12.15 11:48
  */
 public class NullTenantTest {
-    private static UUID NULL_ID = UUID.fromString("00000000-0000-0000-0000-000000000000");
-
     private Tenant tenant;
 
 
@@ -44,7 +41,12 @@ public class NullTenantTest {
 
     @Test
     public void testGetId() throws Exception {
-        assertEquals("The id should be only 0s!", NULL_ID, tenant.getId());
+        assertEquals("The id should be only 0s!", DEFAULT_TENANT_ID, tenant.getId());
+    }
+
+    @Test
+    public void testGetKey() {
+        assertEquals("The key should be DEFAULT!", "DEFAULT", tenant.getKey());
     }
 
     @Test
@@ -59,6 +61,6 @@ public class NullTenantTest {
 
     @Test
     public void testGetTenantId() throws Exception {
-        assertEquals("The tenant id should be only 0s!", NULL_ID, tenant.getTenant());
+        assertEquals("The tenant id should be only 0s!", DEFAULT_TENANT_ID, tenant.getTenant());
     }
 }

@@ -26,7 +26,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
-import de.kaiserpfalzedv.office.common.jpa.JPAAbstractIdentifiable;
+import de.kaiserpfalzedv.office.common.jpa.JPAAbstractTenantIdentifiable;
 import de.kaiserpfalzedv.office.common.jpa.JPANameable;
 import de.kaiserpfalzedv.office.tenant.api.Tenant;
 import org.apache.commons.lang3.builder.ToStringBuilder;
@@ -50,7 +50,7 @@ import static org.apache.commons.lang3.builder.ToStringStyle.SHORT_PREFIX_STYLE;
         @NamedQuery(name = "find-by-tenant", query = "SELECT t from Tenant t WHERE tenant=:id", lockMode = OPTIMISTIC),
         @NamedQuery(name = "fetch-all", query = "SELECT t FROM Tenant t", lockMode = NONE)
 })
-public class JPATenant extends JPAAbstractIdentifiable implements Tenant {
+public class JPATenant extends JPAAbstractTenantIdentifiable implements Tenant {
     private static final long serialVersionUID = -7636795197921084792L;
 
     @Embedded

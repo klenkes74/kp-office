@@ -16,6 +16,7 @@
 
 package de.kaiserpfalzedv.office.common.api.data;
 
+import java.io.Serializable;
 import java.util.UUID;
 
 /**
@@ -25,7 +26,7 @@ import java.util.UUID;
  * @version 2015Q1
  * @since 27.12.15 11:36
  */
-public interface Tenantable {
+public interface Tenantable extends Serializable {
     /**
      * Returns only the id of the tenant. The data of the tenant may be retrieved by the appropriate service.
      *

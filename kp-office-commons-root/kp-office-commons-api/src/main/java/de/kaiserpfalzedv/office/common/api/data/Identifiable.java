@@ -20,16 +20,13 @@ import java.io.Serializable;
 import java.util.UUID;
 
 /**
- * The interface for retrieving identification information.
- *
- * @author klenkes
- * @version 2015Q1
- * @since 27.12.15 11:31
+ * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
+ * @version 1.0.0
+ * @since 2017-08-19
  */
-public interface Identifiable extends Tenantable, Serializable {
+public interface Identifiable extends Serializable {
     /**
      * @return The UUID of this object.
      */
     UUID getId();
-
 }

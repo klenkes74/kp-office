@@ -83,13 +83,13 @@
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>kp-office-base-tenant</artifactId>
+                <artifactId>kp-office-base-tenant-ejb</artifactId>
                 <version>${project.version}</version>
                 <type>ejb</type>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>kp-office-base-tenant</artifactId>
+                <artifactId>kp-office-base-tenant-ejb</artifactId>
                 <version>${project.version}</version>
                 <type>ejb-client</type>
             </dependency>
@@ -110,6 +110,11 @@
                 <artifactId>kp-office-base-access-ejb</artifactId>
                 <version>${project.version}</version>
                 <type>ejb-client</type>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>kp-office-base-access-jaspic</artifactId>
+                <version>${project.version}</version>
             </dependency>
 
             <dependency>

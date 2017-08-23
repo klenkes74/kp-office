@@ -26,7 +26,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
-import de.kaiserpfalzedv.office.common.jpa.JPAAbstractIdentifiable;
+import de.kaiserpfalzedv.office.common.jpa.JPAAbstractTenantIdentifiable;
 import de.kaiserpfalzedv.office.contacts.api.Contact;
 import de.kaiserpfalzedv.office.contacts.api.Representative;
 import de.kaiserpfalzedv.office.contacts.api.RepresentativeType;
@@ -38,7 +38,7 @@ import de.kaiserpfalzedv.office.contacts.api.RepresentativeType;
  */
 @Entity
 @Table(name = "REPRESENTATIVES")
-public class JPARepresentative extends JPAAbstractIdentifiable implements Representative {
+public class JPARepresentative extends JPAAbstractTenantIdentifiable implements Representative {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "REPRESENTATIVE_TYPE_", nullable = false)

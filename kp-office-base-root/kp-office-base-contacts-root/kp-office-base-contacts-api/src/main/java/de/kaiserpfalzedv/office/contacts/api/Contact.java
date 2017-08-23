@@ -18,8 +18,8 @@ package de.kaiserpfalzedv.office.contacts.api;
 
 import java.util.List;
 
-import de.kaiserpfalzedv.office.common.api.data.Identifiable;
 import de.kaiserpfalzedv.office.common.api.data.Nameable;
+import de.kaiserpfalzedv.office.common.api.data.TenantIdentifiable;
 import de.kaiserpfalzedv.office.contacts.api.addresses.Address;
 import de.kaiserpfalzedv.office.contacts.api.names.Name;
 
@@ -30,7 +30,7 @@ import de.kaiserpfalzedv.office.contacts.api.names.Name;
  * @version 1.0.0
  * @since 2017-08-08
  */
-public interface Contact extends Nameable, Identifiable {
+public interface Contact extends Nameable, TenantIdentifiable {
     /**
      * @param <T> A name type. Normally a {@link de.kaiserpfalzedv.office.contacts.api.names.PersonalName} or
      *            an {@link de.kaiserpfalzedv.office.contacts.api.names.OrganizationalName}.

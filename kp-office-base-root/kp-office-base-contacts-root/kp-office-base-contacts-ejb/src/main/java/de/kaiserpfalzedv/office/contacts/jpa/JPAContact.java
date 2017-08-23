@@ -34,7 +34,7 @@ import javax.persistence.OrderColumn;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
-import de.kaiserpfalzedv.office.common.jpa.JPAAbstractIdentifiable;
+import de.kaiserpfalzedv.office.common.jpa.JPAAbstractTenantIdentifiable;
 import de.kaiserpfalzedv.office.contacts.api.Contact;
 import de.kaiserpfalzedv.office.contacts.api.Representative;
 import de.kaiserpfalzedv.office.contacts.api.addresses.Address;
@@ -50,8 +50,8 @@ import de.kaiserpfalzedv.office.contacts.jpa.addresses.JPAAddress;
 @Inheritance(strategy = InheritanceType.JOINED)
 @DiscriminatorValue("BASE")
 @DiscriminatorColumn(name = "TYPE_")
-public abstract class JPAContact extends JPAAbstractIdentifiable implements Contact {
-    private static final long serialVersionUID = 5035198090734413726L;
+public abstract class JPAContact extends JPAAbstractTenantIdentifiable implements Contact {
+    private static final long serialVersionUID = -1627383431970226551L;
 
 
     @OneToMany(

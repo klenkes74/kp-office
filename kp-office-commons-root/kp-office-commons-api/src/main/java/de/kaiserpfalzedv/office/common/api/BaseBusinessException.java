@@ -38,6 +38,10 @@ public class BaseBusinessException extends Exception {
         super(cause.getMessage(), cause);
     }
 
+    public BaseBusinessException(final String message, final Throwable cause, final boolean enableSuppression, final boolean writableStackTrace) {
+        super(message, cause, enableSuppression, writableStackTrace);
+    }
+
 
     /**
      * @return The unique ID of this exception.
