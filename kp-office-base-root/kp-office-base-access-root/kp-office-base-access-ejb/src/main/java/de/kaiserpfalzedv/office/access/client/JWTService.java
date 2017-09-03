@@ -16,12 +16,18 @@
 
 package de.kaiserpfalzedv.office.access.client;
 
-import de.kaiserpfalzedv.office.access.api.AccessService;
+import java.util.Optional;
+
+import javax.validation.constraints.NotNull;
+
+import com.nimbusds.jose.JWSAlgorithm;
+import de.kaiserpfalzedv.office.access.api.users.OfficePrincipal;
 
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
  * @version 1.0.0
- * @since 2016-10-16
+ * @since 2017-08-24
  */
-public interface AccessClient extends AccessService {
+public interface JWTService {
+    Optional<OfficePrincipal> readToken(@NotNull final String jwt, @NotNull final String provider, @NotNull JWSAlgorithm algorithm);
 }

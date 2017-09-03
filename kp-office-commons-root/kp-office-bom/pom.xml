@@ -116,6 +116,16 @@
                 <artifactId>kp-office-base-access-jaspic</artifactId>
                 <version>${project.version}</version>
             </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>kp-office-base-access-openidconnect</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>kp-office-base-access-ui</artifactId>
+                <version>${project.version}</version>
+            </dependency>
 
             <dependency>
                 <groupId>${project.groupId}</groupId>
@@ -302,6 +312,14 @@
                         <artifactId>pax-cdi-extender</artifactId>
                     </exclusion>
                 </exclusions>
+            </dependency>
+
+
+            <!-- === OpenID Connect ================================================================================ -->
+            <dependency>
+                <groupId>com.nimbusds</groupId>
+                <artifactId>oauth2-oidc-sdk</artifactId>
+                <version>5.35</version>
             </dependency>
 
             <!-- === Third parties ================================================================================= -->

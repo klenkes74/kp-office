@@ -27,9 +27,9 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>kp-office-base-access-ejb</artifactId>
-    <name>KP Office :: Base :: Access :: EJB</name>
-    <packaging>ejb</packaging>
+    <artifactId>kp-office-base-access-openidconnect</artifactId>
+    <name>KP Office :: Base :: Access :: OpenIDConnect</name>
+    <packaging>war</packaging>
 
     <properties>
         <skip.jpa>true</skip.jpa>
@@ -38,17 +38,8 @@
     <dependencies>
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>kp-office-base-access-api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>kp-office-commons-ejb</artifactId>
-        </dependency>
-
-        <!-- OpenID Connect -->
-        <dependency>
-            <groupId>com.nimbusds</groupId>
-            <artifactId>oauth2-oidc-sdk</artifactId>
+            <artifactId>kp-office-base-access-ejb</artifactId>
+            <type>ejb-client</type>
         </dependency>
     </dependencies>
 </project>

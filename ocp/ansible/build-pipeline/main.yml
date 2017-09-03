@@ -1,0 +1,15 @@
+---
+- name: Create a build pipeline project
+  hosts: controlhost
+  gather_facts: no
+  become: no
+
+  roles:
+  - ocp-project
+#  - postgresql
+#  - git
+#  - nexus
+#  - jenkins
+#  - sonarcube
+#  - mediawiki
+#  - wordpress

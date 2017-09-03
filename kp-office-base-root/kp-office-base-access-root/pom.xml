@@ -35,6 +35,7 @@
         <module>kp-office-base-access-api</module>
         <module>kp-office-base-access-ejb</module>
         <module>kp-office-base-access-jaspic</module>
+        <module>kp-office-base-access-openidconnect</module>
         <module>kp-office-base-access-ui</module>
     </modules>
 </project>

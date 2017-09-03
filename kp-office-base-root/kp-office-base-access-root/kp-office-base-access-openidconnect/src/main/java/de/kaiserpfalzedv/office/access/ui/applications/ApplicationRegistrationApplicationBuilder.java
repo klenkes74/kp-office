@@ -66,11 +66,6 @@ public class ApplicationRegistrationApplicationBuilder implements Builder<Office
         return this;
     }
 
-    public ApplicationRegistrationApplicationBuilder withId(@NotNull final UUID requestId) {
-        this.requestId = requestId;
-        return this;
-    }
-
     public ApplicationRegistrationApplicationBuilder withType(@NotNull final String type) {
         this.type = type;
         return this;
@@ -93,6 +88,11 @@ public class ApplicationRegistrationApplicationBuilder implements Builder<Office
 
     public ApplicationRegistrationApplicationBuilder withRedirectUrl(@NotNull final String redirectUrl) {
         this.redirectUrl = redirectUrl;
+        return this;
+    }
+
+    public ApplicationRegistrationApplicationBuilder withId(@NotNull final UUID requestId) {
+        this.requestId = requestId;
         return this;
     }
 
