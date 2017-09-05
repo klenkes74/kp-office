@@ -1,0 +1,7 @@
+---
+nfs_volume_user: nobody
+nfs_volume_group: nogroup
+nfs_volume_mode: 1777
+
+nfs_volume_base: /srv/nfs
+nfs_export_options: rw,no_root_squash

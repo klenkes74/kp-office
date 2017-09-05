@@ -5,8 +5,12 @@ ocp_project_admin_group=builder-admin
 ocp_project_user_group=builder-user
 ocp_project_ro_group=builder-ro
 
-ocp_limit_project_pods=15
 
+
+ocp_limit_project_pods=15
 
 [controlhost]
 localhost ansible_connection=local
+
+[nfs-server]
+colosssos

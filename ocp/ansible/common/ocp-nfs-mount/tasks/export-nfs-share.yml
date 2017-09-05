@@ -1,0 +1,27 @@
+---
+- name: Check parameters
+  with_items:
+    - nfs_volume_base
+    - nfs_volume_names
+    - nfs_network
+    - nfs_export_options
+    - nfs_volume_user
+    - nfs_volume_group
+    - nfs_volume_mode
+
+- name: Create volumes
+  file:
+    path: "{{ nfs_volume_base }}/{{ item }}"
+    state: directory
+    owner: "{{ nfs_volume_owner }}"
+    group: "{{ nfs_volume_group }}"
+    mode: "{{ nfs_volume_group }}"
+  with_items: "{{ nfs_volume_names }}"
+
+- name: Export volumes
+  lineinfile:
+    path: /etc/exports
+    line: "{{ nfs_volume_base }}/{{ item }} {{ nfs_network }}({{ nfs_export_options }})"
+    regexp: "^{{ nfs_volume_base }}/{{ item }}"
+  with_items: "{{ nfs_volume_names }}"
+  notify: nfs-server
