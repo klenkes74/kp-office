@@ -2,18 +2,18 @@
 - name: Create NFS-PV Templates
   template:
     src: nfs-pv.yml
-    dest: /tmp/nfs-pv-{{ item }}.yml
-  with_items: "{{ volume_names }}"
-  when: "'controlserver' in group_names"
+    dest: /tmp/nfs-pv-{{ item.name }}.yml
+  with_items: "{{ nfs_volumes }}"
+  when: "'controlhost' in group_names"
 
-- name: Execute Templates
-  shell: oc create -f /tmp/nfs-pv-{{ item }}.yml
-  with_items: "{{ volume_names }}"
-  when: "'controlserver' in group_names"
+- name: Execute NFS-PV Templates
+  shell: oc create -f /tmp/nfs-pv-{{ item.name }}.yml
+  with_items: "{{ nfs_volumes }}"
+  when: "'controlhost' in group_names"
 
 - name: Remove NFS-PV Templates
   file:
-    path: /tmp/nfs-pv-{{ item }}.yml
+    path: /tmp/nfs-pv-{{ item.name }}.yml
     state: absent
-  with_items: "{{ volume_names }}"
-  when: "'controlserver' in group_names"
+  with_items: "{{ nfs_volumes }}"
+  when: "'controlhost' in group_names"

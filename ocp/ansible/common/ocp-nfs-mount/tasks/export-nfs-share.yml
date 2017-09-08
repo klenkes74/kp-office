@@ -15,7 +15,7 @@
   group:
     name: "{{ item.item.group | default(nfs_default_group) }}"
     state: present
-  when: "'nfs-server' in group_names and item.stat.exists == True"
+  when: "'nfs-server' in group_names"
   with_items: "{{ nfs_volumes_pre_check.results }}"
   register: groupinfo
 
@@ -30,7 +30,7 @@
     owner: "{{ item.item.owner | default(nfs_default_owner) }}"
     group: "{{ item.item.group | default(nfs_default_group) }}"
     mode: "{{ item.item.mode   | default(nfs_default_mode) }}"
-  when: "'nfs-server' in group_names and item.stat.exists == Falses"
+  when: "'nfs-server' in group_names and item.stat.exists == False"
   with_items: "{{ nfs_volumes_pre_check.results }}"
 
 - name: Export volumes

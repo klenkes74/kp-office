@@ -1,4 +1,5 @@
 [controlhost:vars]
+ocp_project_name=builder
 ocp_project_requester=rlichti@kaiserpfalz-edv.de
 
 ocp_project_admin_group=builder-admin
@@ -6,6 +7,8 @@ ocp_project_user_group=builder-user
 ocp_project_ro_group=builder-ro
 
 ocp_limit_project_pods=15
+
+git_server_domain=gogs.apps.hq.kaiserpfalz-edv.de
 
 [nfs-server:vars]
 nfs_default_base='/srv/nfs'

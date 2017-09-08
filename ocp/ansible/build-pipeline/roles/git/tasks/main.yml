@@ -1,0 +1,15 @@
+---
+- include: gogs-sa.yml
+
+- name: Add priviledged rights to system account
+  shell: oadm policy add-scc-to-user privileged system:serviceaccount:{{ ocp_project_name }}:gogs
+
+- include: gogs-mysql-template.yml
+
+- name: Create GOGS deployment with defined domain
+  shell: oc new-app --template=gogs-mysql-template -p APPLICATION_DOMAIN={{ git_server_domain }}
+  when: git_server_domain is defined
+
+- name: Create GOGS deployment
+  shell: oc new-app --template=gogs-mysql-template
+  when: git_server_domain is not defined

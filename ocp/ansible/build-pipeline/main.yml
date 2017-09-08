@@ -16,9 +16,10 @@
   roles:
     - ocp-nfs-mount
     - ocp-project
+    - git
+    - jenkins
+    - nexus
 
-
-#  - gogs
 #  - postgresql
 #  - nexus
 #  - jenkins

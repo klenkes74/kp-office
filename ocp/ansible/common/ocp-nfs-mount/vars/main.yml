@@ -2,7 +2,7 @@
 nfs_default_base: '/srv/nfs'
 nfs_default_owner: 'nfsnobody'
 nfs_default_group: 'nfsnobody'
-nfs_default_mode: 0777
+nfs_default_mode: 'u=rwx,g=rwx,o='
 nfs_default_export_mode: rw,root_squash
 
 # That's a tech review. If you want it, set it in [nfs-server:vars] section of the hosts inventory file.

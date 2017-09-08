@@ -1,0 +1,9 @@
+---
+- name: Selecting correct project
+  shell: oc project {{ ocp_project_name }}
+
+- name: Creating jenkins
+  shell: oc new-app jenkins-persistent
+
+- name: Add persistence to jenkins
+  shell: oc volumes dc/nexus --add --name 'jenkins-volume-1' --type 'pvc' --mount-path '/sonatype-work/' --claim-name 'nexus-pv' --claim-size '1G' --selector 'pv=build-pipeline-nexus' --overwrite

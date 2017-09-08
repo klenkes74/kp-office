@@ -24,3 +24,9 @@ nfs_volumes:
     access_mode:
       - ReadWriteOnce
     reclaim_policy: Retain
+  - name: 'build-pipeline-mysqld'
+    size: 50Gi
+    group: 'ocpbp'
+    access_mode:
+      - ReadWriteOnce
+    reclaim_policy: Retain

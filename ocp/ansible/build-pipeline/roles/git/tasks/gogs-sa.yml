@@ -1,0 +1,13 @@
+---
+- name: Create GOGS system account creation template
+  template:
+    src: gogs-sa.yml
+    dest: /tmp/gogs-sa.yml
+
+- name: Execute GOGS system account creation template
+  shell: oc create -f /tmp/gogs-sa.yml
+
+- name: Remove GOGS system account creation template
+  file:
+    path: /tmp/gogs-sa.yml
+    state: absent
