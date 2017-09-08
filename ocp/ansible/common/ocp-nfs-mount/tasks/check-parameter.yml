@@ -1,7 +1,0 @@
----
-- name: Check parameters
-  fail: msg="Parameter '{{ item }}' is not defined. Will not create any PersistentVolumes (PV)!"
-  when: item not defined
-  with_items:
-    - nfs_volumes
-    - nfs_export_options

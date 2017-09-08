@@ -1,4 +1,3 @@
 ---
-- import: check-parameter.yml
 - include: export-nfs-share.yml
 - include: create-pv.yml
