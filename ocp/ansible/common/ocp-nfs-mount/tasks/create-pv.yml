@@ -4,13 +4,16 @@
     src: nfs-pv.yml
     dest: /tmp/nfs-pv-{{ item }}.yml
   with_items: "{{ volume_names }}"
+  when: 'controlserver' in group_names
 
 - name: Execute Templates
   shell: oc create -f /tmp/nfs-pv-{{ item }}.yml
   with_items: "{{ volume_names }}"
+  when: 'controlserver' in group_names
 
 - name: Remove NFS-PV Templates
   file:
     path: /tmp/nfs-pv-{{ item }}.yml
     state: absent
   with_items: "{{ volume_names }}"
+  when: 'controlserver' in group_names
