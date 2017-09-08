@@ -3,17 +3,14 @@
   template:
     src: nfs-pv.yml
     dest: /tmp/nfs-pv-{{ item }}.yml
-  delegate_to: controlhost
   with_items: "{{ volume_names }}"
 
 - name: Execute Templates
   shell: oc create -f /tmp/nfs-pv-{{ item }}.yml
-  delegate_to: controlhost
   with_items: "{{ volume_names }}"
 
 - name: Remove NFS-PV Templates
   file:
     path: /tmp/nfs-pv-{{ item }}.yml
     state: absent
-  delegate_to: controlhost
   with_items: "{{ volume_names }}"

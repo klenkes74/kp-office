@@ -9,10 +9,9 @@
     - "{{ ocp_project_ro_group }}"
 
 - name: Fail for not existing group
-  fail: msg="The group '{{ item.item }}' does not exist!"
+  debug: msg="The group '{{ item.item }}' does not exist!"
   when: item.rc != 0
   with_items: "{{ existing_groups.results }}"
-
 
 - name: Check for labels
   shell: oc get group -l "project={{ ocp_project_label }}"

@@ -1,17 +1,7 @@
 ---
 - name: Check parameters
-  fail: msg="Variable '{{ item }}' is not defined"
+  fail: msg="Parameter '{{ item }}' is not defined. Will not create any PersistentVolumes (PV)!"
   when: item not defined
   with_items:
-    - nfs_volume_base
-    - nfs_volume_names
-    - nfs_server
-    - nfs_network
+    - nfs_volumes
     - nfs_export_options
-    - nfs_volume_user
-    - nfs_volume_group
-    - nfs_volume_mode
-    - pv_size
-    - pv_reclaim_policy
-    - pv_capacity
-    - pv_access_mode

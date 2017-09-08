@@ -1,4 +1,10 @@
 ---
-- include: check-parameter.yml
+- import: check-parameter.yml
+
+{% if 'nfs-server' in group_names %}
 - include: export-nfs-share.yml
+{% endif %}
+
+{% if 'controlserver' in group_names %}
 - include: create-pv.yml
+{% endif %}

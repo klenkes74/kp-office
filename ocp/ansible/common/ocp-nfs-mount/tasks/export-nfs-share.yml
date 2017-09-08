@@ -1,27 +1,38 @@
 ---
 - name: Check parameters
+  fail: msg="Configuration paramater {{ item }} is missing."
+  when: item is not defined
   with_items:
-    - nfs_volume_base
-    - nfs_volume_names
-    - nfs_network
+    - nfs_volumes
     - nfs_export_options
-    - nfs_volume_user
-    - nfs_volume_group
-    - nfs_volume_mode
+
+- name: Check volume already existing
+  stat:
+    path: "{{ item.base | default(nfs_default_base) }}/{{ item.name }}"
+  with_items: "{{ nfs_volumes }}"
+  register: nfs_volumes_pre_check
+
+- name: Message about skipping
+  fail: msg="Volume {{ item.item.base | default(nfs_default_base) }}/{{ item.item.name }} already existing on filesystem. Won't change it!"
+  when: item.stat.exists == True
+  with_items: "{{ nfs_volumes_pre_check.results }}"
 
 - name: Create volumes
   file:
-    path: "{{ nfs_volume_base }}/{{ item }}"
+    path: "{{ item.item.base | default(nfs_default_base) }}/{{ item.item.name }}"
     state: directory
-    owner: "{{ nfs_volume_owner }}"
-    group: "{{ nfs_volume_group }}"
-    mode: "{{ nfs_volume_group }}"
-  with_items: "{{ nfs_volume_names }}"
+    owner: "{{ item.item.owner | default(nfs_default_owner) }}"
+    group: "{{ item.item.group | default(nfs_default_group) }}"
+    mode: "{{ item.item.mode   | default(nfs_default_mode) }}"
+  when: item.stat.exists == False
+  with_items: "{{ nfs_volumes_pre_check.results }}"
 
 - name: Export volumes
   lineinfile:
     path: /etc/exports
-    line: "{{ nfs_volume_base }}/{{ item }} {{ nfs_network }}({{ nfs_export_options }})"
-    regexp: "^{{ nfs_volume_base }}/{{ item }}"
-  with_items: "{{ nfs_volume_names }}"
-  notify: nfs-server
+    line: "{{ item.item.base | default(nfs_default_base) }}/{{ item.item.name }} *({{ item.item.nfs_export_options | default(nfs_default_export_mode) }})"
+    regexp: "^{{ item.item.base | default(nfs_default_base) }}/{{ item.item.name }}"
+  when: item.stat.exists == False
+  with_items: "{{ nfs_volumes_pre_check.results }}"
+  notify:
+    - restart nfs-server

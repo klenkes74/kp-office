@@ -1,0 +1,26 @@
+---
+nfs_volumes:
+  - name: 'build-pipeline-jenkins'
+    size: 5Gi
+    group: 'ocpbp'
+    access_mode:
+      - ReadWriteOnce
+    reclaim_policy: Retain
+  - name: 'build-pipeline-gogs'
+    size: 5Gi
+    group: 'ocpbp'
+    access_mode:
+      - ReadWriteOnce
+    reclaim_policy: Retain
+  - name: 'build-pipeline-nexus'
+    size: 50Gi
+    group: 'ocpbp'
+    access_mode:
+      - ReadWriteMany
+    reclaim_policy: Retain
+  - name: 'build-pipeline-postgres'
+    size: 50Gi
+    group: 'ocpbp'
+    access_mode:
+      - ReadWriteOnce
+    reclaim_policy: Retain

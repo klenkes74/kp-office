@@ -1,13 +1,25 @@
 ---
-- name: Create a build pipeline project
+- name: Prepare NFS shares
+  hosts: nfs-server
+  gather_facts: no
+  become: true
+  become_user: root
+
+  roles:
+    - ocp-nfs-mount
+
+- name: Create a build OCP pipeline project
   hosts: controlhost
   gather_facts: no
   become: no
 
   roles:
-  - ocp-project
+    - ocp-nfs-mount
+    - ocp-project
+
+
+#  - gogs
 #  - postgresql
-#  - git
 #  - nexus
 #  - jenkins
 #  - sonarcube

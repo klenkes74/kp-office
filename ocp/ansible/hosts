@@ -5,9 +5,32 @@ ocp_project_admin_group=builder-admin
 ocp_project_user_group=builder-user
 ocp_project_ro_group=builder-ro
 
-
-
 ocp_limit_project_pods=15
+
+[nfs-server:vars]
+nfs_default_base='/srv/nfs'
+nfs_default_owner='nfsnobody'
+nfs_default_group='nfsnobody'
+nfs_default_mode=0777
+nfs_default_export_mode=rw,root_squash
+
+# Unlike the other parameters, nfs_default_mount_options don't have a role default. It is a tech review feature that
+# you may not want to use. So, if you want it, you have to activate it here.
+#nfs_default_mount_options=rw,nfsvers=4,noexec
+
+# Sets the default size of the PV. Will have no impact on the NFS until you use the groups and set quota to the groups
+# outside of this playbook.
+#nfs_default_size=1Gi
+
+# Default mode is to recycle the PVs. You may set it to "Retain" instead.
+nfs_default_reclaim_policy=Recycle
+
+# The default access mode. It's an array. You may remove the ones you don't like.
+nfs_default_access_mode=['ReadWriteOnce','ReadOnlyMany','ReadWriteMany']
+
+# The storage class used as default. If none is set, there is no default.
+#nfs_default_storage_class=standard
+
 
 [controlhost]
 localhost ansible_connection=local
