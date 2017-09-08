@@ -4,12 +4,24 @@
     path: "{{ item.base | default(nfs_default_base) }}/{{ item.name }}"
   with_items: "{{ nfs_volumes }}"
   register: nfs_volumes_pre_check
-  when: 'nfs-server' in group_names
+  when: "'nfs-server' in group_names"
 
 - name: Message about skipping
   fail: msg="Volume {{ item.item.base | default(nfs_default_base) }}/{{ item.item.name }} already existing on filesystem. Won't change it!"
   when: "item.stat.exists == True and 'nfs-server' in group_names"
   with_items: "{{ nfs_volumes_pre_check.results }}"
+
+- name: Create groups for NFS exports
+  group:
+    name: "{{ item.item.group | default(nfs_default_group) }}"
+    state: present
+  when: "item.stat.exists == True and 'nfs-server' in group_names"
+  with_items: "{{ nfs_volumes_pre_check.results }}"
+  register: groupinfo
+
+- debug: msg="GID for {{ item.item.group }} is: {{ item.gid }}"
+  when: "item.stat.exists == True and 'nfs-server' in group_names"
+  with_items: "{{ groupinfo.results }}"
 
 - name: Create volumes
   file:
@@ -23,7 +35,7 @@
 
 - name: Export volumes
   lineinfile:
-    path: /etc/exports
+    dest: /etc/exports
     line: "{{ item.item.base | default(nfs_default_base) }}/{{ item.item.name }} *({{ item.item.nfs_export_options | default(nfs_default_export_mode) }})"
     regexp: "^{{ item.item.base | default(nfs_default_base) }}/{{ item.item.name }}"
   when: "item.stat.exists == False and 'nfs-server' in group_names"
