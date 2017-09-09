@@ -1,7 +1,7 @@
 ---
 - name: Create GOGS deployment configuration
   template:
-    src: gogs-sa.yml
+    src: gogs-mysql-template.yml
     dest: /tmp/gogs-mysql-template.yml
 
 - name: Execute GOGS deployment configuration
