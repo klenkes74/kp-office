@@ -6,8 +6,14 @@ nfs_volumes:
     access_mode:
       - ReadWriteOnce
     reclaim_policy: Retain
-  - name: 'build-pipeline-gogs'
+  - name: 'build-pipeline-gogs-data'
     size: 5Gi
+    group: 'ocpbp'
+    access_mode:
+      - ReadWriteOnce
+    reclaim_policy: Retain
+  - name: 'build-pipeline-gogs-mysql'
+    size: 1Gi
     group: 'ocpbp'
     access_mode:
       - ReadWriteOnce

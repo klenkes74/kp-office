@@ -64,6 +64,46 @@ metadata:
     sessionAffinity: None
     type: ClusterIP
 - apiVersion: v1
+  kind: PersistentVolumeClaim
+  metadata:
+    labels:
+      app: gogs-persistent
+{% if ocp_project_label is defined %}
+      project: {{ ocp_project_label }}
+{% endif %}
+    name: gogs-data
+    namespace: builder
+  spec:
+    accessModes:
+    - ReadWriteOnce
+    resources:
+      requests:
+        storage: 5Gi
+    volumeName: build-pipeline-gogs-data
+    selector:
+      matchLabels:
+        pv=build-pipeline-gogs-data
+- apiVersion: v1
+  kind: PersistentVolumeClaim
+  metadata:
+    labels:
+      app: gogs-persistent
+{% if ocp_project_label is defined %}
+      project: {{ ocp_project_label }}
+{% endif %}
+    name: gogs-mysql
+    namespace: builder
+  spec:
+    accessModes:
+    - ReadWriteOnce
+    resources:
+      requests:
+        storage: 1Gi
+    volumeName: build-pipeline-gogs-mysql
+    selector:
+      matchLabels:
+        pv=build-pipeline-gogs-mysql
+- apiVersion: v1
   kind: DeploymentConfig
   metadata:
     labels:
@@ -118,30 +158,11 @@ metadata:
         serviceAccount: gogs
         serviceAccountName: gogs
         volumes:
-        - emptyDir: {}
-          name: gogs-volume
+        - name: "gogs-volume"
+          persistentVolumeClaim:
+            claimName: gogs-data
     triggers:
     - type: ConfigChange
-- apiVersion: v1
-  kind: PersistentVolumeClaim
-  metadata:
-    labels:
-      app: gogs-persistent
-      template: gogs-mysql-template
-  {% if ocp_project_label is defined %}
-      project: {{ ocp_project_label }}
-  {% endif %}  name: jenkins
-    namespace: builder
-  spec:
-    accessModes:
-    - ReadWriteOnce
-    resources:
-      requests:
-        storage: 5Gi
-    volumeName: build-pipeline-gogs
-    selector:
-      matchLabels:
-        pv=build-pipeline-gogs
 - apiVersion: v1
   kind: DeploymentConfig
   metadata: 
@@ -171,7 +192,8 @@ metadata:
       spec:
         volumes: 
           - name: "data"
-            emptyDir: {}
+            persistentVolumeClaim:
+              claimName: gogs-mysql
         containers: 
           - name: mysql
             image: mysql:5.6
