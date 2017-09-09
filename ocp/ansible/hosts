@@ -39,4 +39,4 @@ nfs_default_access_mode=['ReadWriteOnce','ReadOnlyMany','ReadWriteMany']
 localhost ansible_connection=local
 
 [nfs-server]
-colosssos
+ocp.hq

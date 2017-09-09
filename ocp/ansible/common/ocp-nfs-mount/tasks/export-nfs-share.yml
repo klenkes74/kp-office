@@ -7,7 +7,7 @@
   when: "'nfs-server' in group_names"
 
 - name: Message about skipping
-  fail: msg="Volume {{ item.item.base | default(nfs_default_base) }}/{{ item.item.name }} already existing on filesystem. Won't change it!"
+  debug: msg="Volume {{ item.item.base | default(nfs_default_base) }}/{{ item.item.name }} already existing on filesystem. Won't change it!"
   when: "'nfs-server' in group_names and item.stat.exists == True"
   with_items: "{{ nfs_volumes_pre_check.results }}"
 
