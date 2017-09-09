@@ -123,6 +123,26 @@ metadata:
     triggers:
     - type: ConfigChange
 - apiVersion: v1
+  kind: PersistentVolumeClaim
+  metadata:
+    labels:
+      app: gogs-persistent
+      template: gogs-mysql-template
+  {% if ocp_project_label is defined %}
+      project: {{ ocp_project_label }}
+  {% endif %}  name: jenkins
+    namespace: builder
+  spec:
+    accessModes:
+    - ReadWriteOnce
+    resources:
+      requests:
+        storage: 5Gi
+    volumeName: build-pipeline-gogs
+    selector:
+      matchLabels:
+        pv=build-pipeline-gogs
+- apiVersion: v1
   kind: DeploymentConfig
   metadata: 
     name: mysql
