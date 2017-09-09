@@ -2,7 +2,7 @@
 - include: gogs-sa.yml
 
 - name: Add priviledged rights to system account
-  shell: oadm policy add-scc-to-user privileged system:serviceaccount:{{ ocp_project_name }}:gogs
+  shell: oc adm policy add-scc-to-user privileged system:serviceaccount:{{ ocp_project_name }}:gogs
 
 - include: gogs-mysql-template.yml
 

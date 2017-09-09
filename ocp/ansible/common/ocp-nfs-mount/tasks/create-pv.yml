@@ -1,19 +1,26 @@
 ---
+- name: Check existing NFS-PVs
+  shell: oc get pv {{ item.name }}
+  ignore_errors: yes
+  when: "'controlhost' in group_names"
+  with_items: "{{ nfs_volumes }}"
+  register: existing_pvs
+
 - name: Create NFS-PV Templates
   template:
     src: nfs-pv.yml
-    dest: /tmp/nfs-pv-{{ item.name }}.yml
-  with_items: "{{ nfs_volumes }}"
-  when: "'controlhost' in group_names"
+    dest: /tmp/nfs-pv-{{ item.item.name }}.yml
+  when: "'controlhost' in group_names and item.rc != 0"
+  with_items: "{{ existing_pvs.results }}"
 
 - name: Execute NFS-PV Templates
-  shell: oc create -f /tmp/nfs-pv-{{ item.name }}.yml
-  with_items: "{{ nfs_volumes }}"
-  when: "'controlhost' in group_names"
+  shell: oc create -f /tmp/nfs-pv-{{ item.item.name }}.yml
+  when: "'controlhost' in group_names and item.rc != 0"
+  with_items: "{{ existing_pvs.results }}"
 
 - name: Remove NFS-PV Templates
   file:
-    path: /tmp/nfs-pv-{{ item.name }}.yml
+    path: /tmp/nfs-pv-{{ item.item.name }}.yml
     state: absent
-  with_items: "{{ nfs_volumes }}"
-  when: "'controlhost' in group_names"
+  when: "'controlhost' in group_names and item.rc != 0"
+  with_items: "{{ existing_pvs.results }}"

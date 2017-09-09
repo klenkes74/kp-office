@@ -4,6 +4,8 @@
   gather_facts: no
   become: true
   become_user: root
+  tags:
+    - nfs
 
   roles:
     - ocp-nfs-mount
@@ -12,6 +14,12 @@
   hosts: controlhost
   gather_facts: no
   become: no
+  tags:
+    - pv
+    - project
+    - git
+    - jenkins
+    - nexus
 
   roles:
     - ocp-nfs-mount
