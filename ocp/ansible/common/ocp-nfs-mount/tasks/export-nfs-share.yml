@@ -23,6 +23,16 @@
   when: "'nfs-server' in group_names and item.changed == True"
   with_items: "{{ groupinfo.results }}"
 
+- name: Saving the groupid of the group
+  set_fact:
+    project_nfs_groupId:
+      - {{ groupinfo.results.0.gid }}
+      - {{ groupinfo.results.1.gid }}
+      - {{ groupinfo.results.2.gid }}
+      - {{ groupinfo.results.3.gid }}
+      - {{ groupinfo.results.4.gid }}
+      - {{ groupinfo.results.5.gid }}
+
 - name: Create volumes
   file:
     path: "{{ item.item.base | default(nfs_default_base) }}/{{ item.item.name }}"

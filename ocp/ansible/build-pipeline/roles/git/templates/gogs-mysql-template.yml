@@ -83,7 +83,7 @@ metadata:
     volumeName: build-pipeline-gogs-data
     selector:
       matchLabels:
-        pv=build-pipeline-gogs-data
+        pv: build-pipeline-gogs-data
 - apiVersion: v1
   kind: PersistentVolumeClaim
   metadata:
@@ -103,7 +103,7 @@ metadata:
     volumeName: build-pipeline-gogs-mysql
     selector:
       matchLabels:
-        pv=build-pipeline-gogs-mysql
+        pv: build-pipeline-gogs-mysql
 - apiVersion: v1
   kind: DeploymentConfig
   metadata:
@@ -113,6 +113,7 @@ metadata:
       project: {{ ocp_project_label }}
 {% endif %}
     name: gogs
+    
   spec:
     replicas: 1
     selector:
@@ -154,15 +155,16 @@ metadata:
             privileged: true
         dnsPolicy: ClusterFirst
         restartPolicy: Always
-        securityContext: {}
-        terminationGracePeriodSeconds: 30
+       securityContext:
+           supplementalGroups: [{{ project_nfs_groupId.2 }}]
+         terminationGracePeriodSeconds: 30
         serviceAccount: gogs
         serviceAccountName: gogs
         volumes:
         - name: "gogs-volume"
           persistentVolumeClaim:
             claimName: gogs-data
-    triggers:
+     triggers:
     - type: ConfigChange
 - apiVersion: v1
   kind: DeploymentConfig
@@ -195,7 +197,7 @@ metadata:
           - name: "data"
             persistentVolumeClaim:
               claimName: gogs-mysql
-        containers: 
+       containers:
           - name: mysql
             image: mysql:5.6
             ports: 
@@ -229,7 +231,9 @@ metadata:
             resources: 
               limits: 
                 memory: "${MEMORY_MYSQL_LIMIT}"
-parameters: 
+        securityContext:
+          supplementalGroups: [{{ project_nfs_groupId.2 }}]
+ parameters:
   - name: "APPLICATION_DOMAIN"
     displayName: "Application Hostname"
     description: "The exposed hostname that will route to the Gogs service, if left blank a value will be defaulted."
