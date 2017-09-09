@@ -3,6 +3,7 @@
   template:
     src: gogs-mysql-template.yml
     dest: /tmp/gogs-mysql-template.yml
+    force: yes
 
 - name: Execute GOGS deployment configuration
   shell: oc create -f /tmp/gogs-mysql-template.yml
