@@ -1,4 +1,7 @@
 ---
+- name: Switch to builder project
+  shell: oc project {{ ocp_project_name }}
+
 - name: Create nexus app
   shell: oc new-app sonatype/nexus
 

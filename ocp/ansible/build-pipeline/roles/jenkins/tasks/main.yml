@@ -1,5 +1,5 @@
 ---
-- name: Selecting correct project
+- name: Switch to builder project
   shell: oc project {{ ocp_project_name }}
 
 - name: Creating jenkins

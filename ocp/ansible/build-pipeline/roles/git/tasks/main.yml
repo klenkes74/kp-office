@@ -1,4 +1,7 @@
 ---
+- name: Switch to builder project
+  shell: oc project {{ ocp_project_name }}
+
 - include: gogs-sa.yml
 
 - name: Add priviledged rights to system account
