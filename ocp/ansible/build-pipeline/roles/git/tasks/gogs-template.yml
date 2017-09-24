@@ -1,0 +1,14 @@
+---
+- name: Create GOGS deployment configuration
+  template:
+    src: gogs-template.yml
+    dest: /tmp/gogs-template.yml
+    force: yes
+
+- name: Create GOGS deployment template
+  shell: oc create -f /tmp/gogs-template.yml
+
+- name: Remove GOGS deployment configuration
+  file:
+    path: /tmp/gogs-template.yml
+    state: absent

@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: List
+items:
+- kind: PersistentVolumeClaim
+  apiVersion: v1
+  metadata:
+    labels:
+      template: mysql-template
+      app: {{ ocp_application }}
+{% if ocp_project_label is defined %}
+      project: {{ ocp_project_label }}
+{% endif %}
+    name: {{ mysql_pvc_name }}
+    namespace: {{ ocp_project_name }}
+  spec:
+    accessModes:
+    - ReadWriteOnce
+    resources:
+      requests:
+        storage: {{ mysql_size }}
+    volumeName: {{ mysql_pv_volume }}

@@ -50,7 +50,20 @@ spec:
 {% if item.item.storage_class is defined %}
   storageClassName: {{ item.item.storage_class }}
 {% else %}
+{% if item.item.lv is defined %}
+  storageClassName: dedicated
+{% else %}
 {% if nfs_default_storage_class is defined %}
   storageClassName: {{ nfs_default_storage_class }}
+{% endif %}
+{% endif %}
+{% endif %}
+{% if item.item.claimRef is defined %}
+  claimRef:
+    claimName: {{ item.item.claimRef.claim }}
+{% if item.item.claimRef.namespace is defined %}
+    namespace: {{ item.item.claimRef.namespace }}
+{% else %}
+    namespace: {{ ocp_project_label }}
 {% endif %}
 {% endif %}

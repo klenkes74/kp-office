@@ -17,7 +17,6 @@ items:
 - apiVersion: v1
   kind: RoleBinding
   metadata:
-    creationTimestamp: null
     name: system:image-pullers
     namespace: {{ ocp_project_name }}
   roleRef:
@@ -30,7 +29,6 @@ items:
 - apiVersion: v1
   kind: RoleBinding
   metadata:
-    creationTimestamp: null
     name: system:image-builders
     namespace: {{ ocp_project_name }}
   roleRef:
@@ -46,7 +44,6 @@ items:
   groupNames:
   - {{ ocp_project_admin_group }}
   metadata:
-    creationTimestamp: null
     name: system:deployers
     namespace: {{ ocp_project_name }}
   roleRef:
@@ -61,7 +58,6 @@ items:
   groupNames:
   - {{ ocp_project_admin_group }}
   metadata:
-    creationTimestamp: null
     name: admin
     namespace: {{ ocp_project_name }}
   roleRef:
@@ -72,26 +68,24 @@ items:
 - apiVersion: v1
   kind: RoleBinding
   metadata:
-    creationTimestamp: null
     name: edit
     namespace: {{ ocp_project_name }}
   roleRef:
     name: edit
   subjects:
   - kind: Group
-    name: {{ ocp_project_user_group }}
+    name: {{ ocp_project_edit_group }}
   groupNames:
-  - {{ ocp_project_user_group }}
+  - {{ ocp_project_edit_group }}
 - apiVersion: v1
   kind: RoleBinding
   metadata:
-    creationTimestamp: null
-    name: basic-user
+    name: view
     namespace: {{ ocp_project_name }}
   roleRef:
-    name: basic-user
+    name: view
   subjects:
   - kind: Group
-    name: {{ ocp_project_ro_group }}
+    name: {{ ocp_project_view_group }}
   groupNames:
-  - {{ ocp_project_ro_group }}
+  - {{ ocp_project_view_group }}

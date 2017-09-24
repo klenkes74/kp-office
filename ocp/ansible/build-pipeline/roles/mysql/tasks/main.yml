@@ -1,0 +1,10 @@
+---
+- name: Switch to builder project
+  shell: oc project {{ ocp_project_name }}
+
+- include: prepare-project.yml
+
+- include: mysql-pv.yml
+
+- name: Create mysql deployment
+  shell: oc new-app --template=mysql-template

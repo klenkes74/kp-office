@@ -2,5 +2,19 @@
 - name: Switch to builder project
   shell: oc project {{ ocp_project_name }}
 
+- name: Create Jenkins persistent volume configuration
+  template:
+    src: pv-jenkins.yml
+    dest: /tmp/pv-jenkins.yml
+    force: yes
+
+- name: Execute Jenkins persistent volume configuration
+  shell: oc process -f /tmp/pv-jenkins.yml
+
+- name: Remove Jenkins persistent volume configuration
+  file:
+    path: /tmp/pv-jenkins.yml
+    state: absent
+
 - name: Creating jenkins
   shell: oc new-app jenkins-persistent

@@ -5,7 +5,8 @@
   become: true
   become_user: root
   tags:
-    - nfs
+  - lvm
+  - nfs
 
   roles:
     - ocp-nfs-mount
@@ -17,16 +18,17 @@
   tags:
     - pv
     - project
-    - git
-    - jenkins
-    - nexus
 
   roles:
     - ocp-nfs-mount
     - ocp-project
+    - mysql
+
+- name: Create GOGS server
+    - mysql
     - git
-    - jenkins
-    - nexus
+#    - jenkins
+#    - nexus
 
 #  - postgresql
 #  - nexus

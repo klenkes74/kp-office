@@ -6,7 +6,8 @@ metadata:
     template: jenkins-persistent-template
 {% if ocp_project_label is defined %}
     project: {{ ocp_project_label }}
-{% endif %}  name: jenkins
+{% endif %}
+  name: jenkins
   namespace: builder
 spec:
   accessModes:

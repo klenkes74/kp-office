@@ -1,38 +1,50 @@
 ---
 nfs_volumes:
-  - name: 'build-pipeline-jenkins'
-    size: 5Gi
+  - name: 'builder-jenkins'
+    lv: 'builder-jenkins'
+    size: 5G
     group: 'ocpbp'
     access_mode:
       - ReadWriteOnce
-    reclaim_policy: Retain
-  - name: 'build-pipeline-gogs-data'
-    size: 5Gi
+    claimRef:
+      claimName: jenkins-data
+  - name: 'builder-gogs-data'
+    lv: 'builder-gogs-data'
+    size: 5G
     group: 'ocpbp'
     access_mode:
       - ReadWriteOnce
-    reclaim_policy: Retain
-  - name: 'build-pipeline-gogs-mysql'
-    size: 1Gi
+    claimRef:
+      claimName: gogs-data
+  - name: 'builder-gogs-mysql'
+    lv: 'builder-gogs-mysql'
+    size: 1G
     group: 'ocpbp'
     access_mode:
       - ReadWriteOnce
-    reclaim_policy: Retain
-  - name: 'build-pipeline-nexus'
-    size: 50Gi
+    claimRef:
+      claimName: gogs-mysql
+  - name: 'builder-nexus'
+    lv: 'builder-nexus'
+    size: 50G
     group: 'ocpbp'
     access_mode:
       - ReadWriteMany
-    reclaim_policy: Retain
-  - name: 'build-pipeline-postgres'
-    size: 50Gi
+    claimRef:
+      claimName: nexus-data
+  - name: 'builder-postgres'
+    lv: 'builder-postgres'
+    size: 50G
     group: 'ocpbp'
     access_mode:
       - ReadWriteOnce
-    reclaim_policy: Retain
-  - name: 'build-pipeline-mysqld'
-    size: 50Gi
+    claimRef:
+      claimName: postgres-data
+  - name: 'builder-mysql'
+    lv: 'builder-mysql'
+    size: 50G
     group: 'ocpbp'
     access_mode:
       - ReadWriteOnce
-    reclaim_policy: Retain
+    claimRef:
+      claimName: mysql-data

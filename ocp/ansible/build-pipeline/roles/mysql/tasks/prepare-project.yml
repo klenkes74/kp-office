@@ -1,0 +1,14 @@
+---
+- include: mysql-sa.yml
+  when: "mysqlprepared not defined"
+
+- name: Add priviledged rights to system account
+  shell: oc adm policy add-scc-to-user privileged system:serviceaccount:{{ ocp_project_name }}:mysql
+  when: "mysqlprepared not defined"
+
+- include: mysql-template.yml
+  when: "mysqlprepared not defined"
+
+- name: Set marker for prepared project
+  set_fact:
+    mysqlprepared: "{{ ocp_project_name }}"

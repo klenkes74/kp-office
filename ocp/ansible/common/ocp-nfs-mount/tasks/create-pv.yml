@@ -5,6 +5,8 @@
   when: "'controlhost' in group_names"
   with_items: "{{ nfs_volumes }}"
   register: existing_pvs
+  loop_control:
+    label: "{{ item.name }}"
 
 - name: Create NFS-PV Templates
   template:
@@ -12,11 +14,15 @@
     dest: /tmp/nfs-pv-{{ item.item.name }}.yml
   when: "'controlhost' in group_names and item.rc != 0"
   with_items: "{{ existing_pvs.results }}"
+  loop_control:
+    label: "{{ item.item.name }}"
 
 - name: Execute NFS-PV Templates
   shell: oc create -f /tmp/nfs-pv-{{ item.item.name }}.yml
   when: "'controlhost' in group_names and item.rc != 0"
   with_items: "{{ existing_pvs.results }}"
+  loop_control:
+    label: "{{ item.item.name }}"
 
 - name: Remove NFS-PV Templates
   file:
@@ -24,3 +30,5 @@
     state: absent
   when: "'controlhost' in group_names and item.rc != 0"
   with_items: "{{ existing_pvs.results }}"
+  loop_control:
+    label: "{{ item.item.name }}"
