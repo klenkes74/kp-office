@@ -40,10 +40,9 @@
             <groupId>${project.groupId}</groupId>
             <artifactId>kp-office-commons-ejb</artifactId>
         </dependency>
-
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>kp-office-module-contacts</artifactId>
+            <artifactId>kp-office-base-license</artifactId>
             <type>ejb-client</type>
         </dependency>
     </dependencies>

@@ -44,7 +44,12 @@
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>kp-office-module-gis</artifactId>
-            <type>ejb-client</type>
+            <classifier>api</classifier>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>kp-office-module-gis</artifactId>
+            <classifier>jpa</classifier>
         </dependency>
     </dependencies>
 </project>

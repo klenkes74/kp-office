@@ -41,6 +41,12 @@
             <artifactId>kp-office-commons-ejb</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>kp-office-base-tenant</artifactId>
+            <type>ejb-client</type>
+        </dependency>
+
         <!-- OpenID Connect -->
         <dependency>
             <groupId>com.nimbusds</groupId>
