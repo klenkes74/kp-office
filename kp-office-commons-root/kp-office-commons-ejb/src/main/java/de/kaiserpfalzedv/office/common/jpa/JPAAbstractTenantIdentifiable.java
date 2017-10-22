@@ -68,7 +68,7 @@ import static org.apache.commons.lang3.builder.ToStringStyle.SHORT_PREFIX_STYLE;
  */
 @MappedSuperclass
 public class JPAAbstractTenantIdentifiable implements TenantIdentifiable {
-    private static final long serialVersionUID = -3583109805820593411L;
+    private static final long serialVersionUID = 7439383548404101736L;
 
 
     @Id

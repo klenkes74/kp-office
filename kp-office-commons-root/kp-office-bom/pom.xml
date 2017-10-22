@@ -60,117 +60,77 @@
             <!-- Base -->
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>kp-office-base-monitoring-api</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>${project.groupId}</groupId>
-                <artifactId>kp-office-base-monitoring-jmx</artifactId>
+                <artifactId>kp-office-base-monitoring</artifactId>
                 <version>${project.version}</version>
                 <type>ejb</type>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>kp-office-base-monitoring-jmx</artifactId>
+                <artifactId>kp-office-base-monitoring</artifactId>
                 <version>${project.version}</version>
                 <type>ejb-client</type>
             </dependency>
 
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>kp-office-base-tenant-api</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>${project.groupId}</groupId>
-                <artifactId>kp-office-base-tenant-ejb</artifactId>
+                <artifactId>kp-office-base-tenant</artifactId>
                 <version>${project.version}</version>
                 <type>ejb</type>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>kp-office-base-tenant-ejb</artifactId>
+                <artifactId>kp-office-base-tenant</artifactId>
                 <version>${project.version}</version>
                 <type>ejb-client</type>
             </dependency>
 
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>kp-office-base-access-api</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>${project.groupId}</groupId>
-                <artifactId>kp-office-base-access-ejb</artifactId>
+                <artifactId>kp-office-base-access</artifactId>
                 <version>${project.version}</version>
                 <type>ejb</type>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>kp-office-base-access-ejb</artifactId>
-                <version>${project.version}</version>
-                <type>ejb-client</type>
-            </dependency>
-            <dependency>
-                <groupId>${project.groupId}</groupId>
-                <artifactId>kp-office-base-access-jaspic</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>${project.groupId}</groupId>
-                <artifactId>kp-office-base-access-openidconnect</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>${project.groupId}</groupId>
-                <artifactId>kp-office-base-access-ui</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>${project.groupId}</groupId>
-                <artifactId>kp-office-base-contacts-api</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>${project.groupId}</groupId>
-                <artifactId>kp-office-base-contacts-ejb</artifactId>
-                <version>${project.version}</version>
-                <type>ejb</type>
-            </dependency>
-            <dependency>
-                <groupId>${project.groupId}</groupId>
-                <artifactId>kp-office-base-contacts-ejb</artifactId>
-                <version>${project.version}</version>
-                <type>ejb-client</type>
-            </dependency>
-            <dependency>
-                <groupId>${project.groupId}</groupId>
-                <artifactId>kp-office-base-contacts-gis</artifactId>
-                <version>${project.version}</version>
-                <type>ejb</type>
-            </dependency>
-            <dependency>
-                <groupId>${project.groupId}</groupId>
-                <artifactId>kp-office-base-contacts-gis</artifactId>
+                <artifactId>kp-office-base-access</artifactId>
                 <version>${project.version}</version>
                 <type>ejb-client</type>
             </dependency>
 
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>kp-office-base-files-api</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>${project.groupId}</groupId>
-                <artifactId>kp-office-base-files-ejb</artifactId>
+                <artifactId>kp-office-module-contacts</artifactId>
                 <version>${project.version}</version>
                 <type>ejb</type>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>kp-office-base-files-ejb</artifactId>
+                <artifactId>kp-office-module-contacts</artifactId>
+                <version>${project.version}</version>
+                <type>ejb-client</type>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>kp-office-module-gis</artifactId>
+                <version>${project.version}</version>
+                <type>ejb</type>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>kp-office-module-gis</artifactId>
+                <version>${project.version}</version>
+                <type>ejb-client</type>
+            </dependency>
+
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>kp-office-module-files</artifactId>
+                <version>${project.version}</version>
+                <type>ejb</type>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>kp-office-module-files</artifactId>
                 <version>${project.version}</version>
                 <type>ejb-client</type>
             </dependency>
@@ -240,31 +200,15 @@
             <!-- License Management -->
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>kp-office-modules-license-api</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>${project.groupId}</groupId>
-                <artifactId>kp-office-modules-license-ejb</artifactId>
+                <artifactId>kp-office-base-license</artifactId>
                 <version>${project.version}</version>
                 <type>ejb</type>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>kp-office-modules-license-ejb</artifactId>
+                <artifactId>kp-office-base-license</artifactId>
                 <version>${project.version}</version>
                 <type>ejb-client</type>
-            </dependency>
-            <dependency>
-                <groupId>${project.groupId}</groupId>
-                <artifactId>kp-office-modules-license-ui</artifactId>
-                <version>${project.version}</version>
-                <type>war</type>
-            </dependency>
-            <dependency>
-                <groupId>${project.groupId}</groupId>
-                <artifactId>kp-office-modules-license-ear</artifactId>
-                <version>${project.version}</version>
             </dependency>
 
 

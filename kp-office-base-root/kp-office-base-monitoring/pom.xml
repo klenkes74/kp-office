@@ -22,23 +22,28 @@
 
     <parent>
         <groupId>de.kaiserpfalz-edv.office</groupId>
-        <artifactId>kp-office-parent</artifactId>
+        <artifactId>kp-office-base</artifactId>
         <version>1.0.0-SNAPSHOT</version>
-        <relativePath>../kp-office-commons-root/kp-office-parent/pom.xml</relativePath>
+        <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>kp-office-modules</artifactId>
-    <packaging>pom</packaging>
+    <artifactId>kp-office-base-monitoring</artifactId>
+    <name>KP Office :: Base :: Monitoring</name>
+    <packaging>ejb</packaging>
 
-    <name>KP Office :: Modules</name>
+    <description>
+        The statistics collector for JMX statistics that may be used for live monitoring of the application.
+    </description>
 
-    <modules>
-        <module>kp-office-module-contacts</module>
-        <module>kp-office-module-files</module>
-        <module>kp-office-module-gis</module>
-        <!--
-        <module>kp-office-modules-finance-root</module>
-        <module>kp-office-modules-dms-root</module>
-        -->
-    </modules>
+    <dependencies>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>kp-office-commons-ejb</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+        </dependency>
+    </dependencies>
 </project>

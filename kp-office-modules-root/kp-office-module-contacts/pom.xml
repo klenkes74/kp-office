@@ -22,23 +22,29 @@
 
     <parent>
         <groupId>de.kaiserpfalz-edv.office</groupId>
-        <artifactId>kp-office-parent</artifactId>
+        <artifactId>kp-office-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
-        <relativePath>../kp-office-commons-root/kp-office-parent/pom.xml</relativePath>
+        <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>kp-office-modules</artifactId>
-    <packaging>pom</packaging>
+    <artifactId>kp-office-module-contacts</artifactId>
+    <name>KP Office :: Module :: Contacts</name>
+    <packaging>ejb</packaging>
 
-    <name>KP Office :: Modules</name>
+    <properties>
+        <skip.jpa>false</skip.jpa>
+    </properties>
 
-    <modules>
-        <module>kp-office-module-contacts</module>
-        <module>kp-office-module-files</module>
-        <module>kp-office-module-gis</module>
-        <!--
-        <module>kp-office-modules-finance-root</module>
-        <module>kp-office-modules-dms-root</module>
-        -->
-    </modules>
+    <dependencies>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>kp-office-commons-ejb</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>kp-office-module-gis</artifactId>
+            <type>ejb-client</type>
+        </dependency>
+    </dependencies>
 </project>

@@ -263,6 +263,7 @@
                         </archive>
                         <filterDeploymentDescriptor>true</filterDeploymentDescriptor>
                         <clientIncludes>
+                            <include>**/api/*</include>
                             <include>**/client/*</include>
                             <include>**/mock/*</include>
                         </clientIncludes>
