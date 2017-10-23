@@ -14,15 +14,16 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzedv.office.finance.accounting;
+package de.kaiserpfalzedv.office.finance.accounting.api;
 
-import de.kaiserpfalzedv.office.finance.accounting.accounts.Account;
-import de.kaiserpfalzedv.office.finance.accounting.accounts.CostCenter;
-
-import javax.money.MonetaryAmount;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
+
+import javax.money.MonetaryAmount;
+
+import de.kaiserpfalzedv.office.finance.accounting.api.accounts.Account;
+import de.kaiserpfalzedv.office.finance.accounting.api.accounts.CostCenter;
 
 /**
  * @author klenkes
