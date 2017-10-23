@@ -25,11 +25,11 @@ import javax.enterprise.context.ApplicationScoped;
 
 import de.kaiserpfalzedv.office.common.api.cdi.Mock;
 import de.kaiserpfalzedv.office.common.api.init.InitializationException;
+import de.kaiserpfalzedv.office.tenant.api.NullTenant;
 import de.kaiserpfalzedv.office.tenant.api.Tenant;
+import de.kaiserpfalzedv.office.tenant.api.TenantBuilder;
 import de.kaiserpfalzedv.office.tenant.api.TenantDoesNotExistException;
 import de.kaiserpfalzedv.office.tenant.api.TenantExistsException;
-import de.kaiserpfalzedv.office.tenant.api.impl.NullTenant;
-import de.kaiserpfalzedv.office.tenant.api.impl.TenantBuilder;
 import de.kaiserpfalzedv.office.tenant.client.TenantClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

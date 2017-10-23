@@ -16,7 +16,6 @@
 
 package de.kaiserpfalzedv.office.tenant.api;
 
-import de.kaiserpfalzedv.office.tenant.api.impl.NullTenant;
 import org.junit.Before;
 import org.junit.Test;
 

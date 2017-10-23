@@ -27,9 +27,9 @@ import javax.persistence.Persistence;
 
 import de.kaiserpfalzedv.office.tenant.adapter.data.TenantDataAdapter;
 import de.kaiserpfalzedv.office.tenant.api.Tenant;
+import de.kaiserpfalzedv.office.tenant.api.TenantBuilder;
 import de.kaiserpfalzedv.office.tenant.api.TenantDoesNotExistException;
 import de.kaiserpfalzedv.office.tenant.api.TenantExistsException;
-import de.kaiserpfalzedv.office.tenant.api.impl.TenantBuilder;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;

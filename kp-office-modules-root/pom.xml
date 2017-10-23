@@ -36,8 +36,8 @@
         <module>kp-office-module-contacts</module>
         <module>kp-office-module-files</module>
         <module>kp-office-module-gis</module>
-        <!--
         <module>kp-office-modules-finance-root</module>
+        <!--
         <module>kp-office-modules-dms-root</module>
         -->
     </modules>

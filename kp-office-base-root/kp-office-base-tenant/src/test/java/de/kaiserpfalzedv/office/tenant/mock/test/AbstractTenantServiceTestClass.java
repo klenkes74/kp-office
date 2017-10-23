@@ -19,12 +19,12 @@ package de.kaiserpfalzedv.office.tenant.mock.test;
 import java.util.Collection;
 import java.util.UUID;
 
+import de.kaiserpfalzedv.office.tenant.api.NullTenant;
 import de.kaiserpfalzedv.office.tenant.api.Tenant;
+import de.kaiserpfalzedv.office.tenant.api.TenantBuilder;
 import de.kaiserpfalzedv.office.tenant.api.TenantDoesNotExistException;
 import de.kaiserpfalzedv.office.tenant.api.TenantExistsException;
 import de.kaiserpfalzedv.office.tenant.api.TenantService;
-import de.kaiserpfalzedv.office.tenant.api.impl.NullTenant;
-import de.kaiserpfalzedv.office.tenant.api.impl.TenantBuilder;
 import org.junit.Before;
 import org.junit.Test;
 

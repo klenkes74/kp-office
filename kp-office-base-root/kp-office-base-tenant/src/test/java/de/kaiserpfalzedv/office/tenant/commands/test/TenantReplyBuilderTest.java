@@ -21,13 +21,13 @@ import java.util.UUID;
 
 import de.kaiserpfalzedv.office.common.api.BuilderException;
 import de.kaiserpfalzedv.office.tenant.api.Tenant;
+import de.kaiserpfalzedv.office.tenant.api.TenantBuilder;
 import de.kaiserpfalzedv.office.tenant.api.commands.TenantCommandBuilder;
 import de.kaiserpfalzedv.office.tenant.api.commands.TenantCreateCommand;
 import de.kaiserpfalzedv.office.tenant.api.commands.TenantDeleteCommand;
 import de.kaiserpfalzedv.office.tenant.api.commands.TenantRetrieveAllCommand;
 import de.kaiserpfalzedv.office.tenant.api.commands.TenantRetrieveCommand;
 import de.kaiserpfalzedv.office.tenant.api.commands.TenantUpdateCommand;
-import de.kaiserpfalzedv.office.tenant.api.impl.TenantBuilder;
 import de.kaiserpfalzedv.office.tenant.api.replies.TenantCreateReply;
 import de.kaiserpfalzedv.office.tenant.api.replies.TenantDeleteReply;
 import de.kaiserpfalzedv.office.tenant.api.replies.TenantReplyBuilder;

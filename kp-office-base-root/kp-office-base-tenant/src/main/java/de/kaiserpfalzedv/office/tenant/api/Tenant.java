@@ -22,7 +22,6 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import de.kaiserpfalzedv.office.common.api.data.Keyable;
 import de.kaiserpfalzedv.office.common.api.data.Nameable;
 import de.kaiserpfalzedv.office.common.api.data.TenantIdentifiable;
-import de.kaiserpfalzedv.office.tenant.api.impl.TenantImpl;
 
 import static com.fasterxml.jackson.annotation.JsonTypeInfo.As.PROPERTY;
 

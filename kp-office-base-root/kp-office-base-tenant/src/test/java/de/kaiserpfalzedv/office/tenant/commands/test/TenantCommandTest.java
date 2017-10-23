@@ -22,6 +22,7 @@ import java.util.UUID;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import de.kaiserpfalzedv.office.tenant.api.Tenant;
+import de.kaiserpfalzedv.office.tenant.api.TenantBuilder;
 import de.kaiserpfalzedv.office.tenant.api.commands.TenantBaseCommand;
 import de.kaiserpfalzedv.office.tenant.api.commands.TenantCommandBuilder;
 import de.kaiserpfalzedv.office.tenant.api.commands.TenantContainingBaseCommand;
@@ -31,7 +32,6 @@ import de.kaiserpfalzedv.office.tenant.api.commands.TenantIdContainingBaseComman
 import de.kaiserpfalzedv.office.tenant.api.commands.TenantRetrieveAllCommand;
 import de.kaiserpfalzedv.office.tenant.api.commands.TenantRetrieveCommand;
 import de.kaiserpfalzedv.office.tenant.api.commands.TenantUpdateCommand;
-import de.kaiserpfalzedv.office.tenant.api.impl.TenantBuilder;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.slf4j.Logger;

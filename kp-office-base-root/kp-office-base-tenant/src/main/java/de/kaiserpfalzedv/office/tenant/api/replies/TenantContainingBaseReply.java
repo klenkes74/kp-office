@@ -22,7 +22,7 @@ import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import de.kaiserpfalzedv.office.tenant.api.Tenant;
-import de.kaiserpfalzedv.office.tenant.api.impl.TenantImpl;
+import de.kaiserpfalzedv.office.tenant.api.TenantImpl;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
