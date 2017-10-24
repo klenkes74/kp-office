@@ -33,13 +33,13 @@ public class PagedListImpl<T> implements PagedListable<T> {
 
 
     private final ArrayList<T> data = new ArrayList<>();
-    private PageImpl paging;
+    private Pageable paging;
 
 
     PagedListImpl(Collection<T> data, Pageable pageable) {
         if (data != null) this.data.addAll(data);
 
-        paging = new PageableBuilder().withPaging(pageable).build();
+        paging = pageable;
     }
 
 

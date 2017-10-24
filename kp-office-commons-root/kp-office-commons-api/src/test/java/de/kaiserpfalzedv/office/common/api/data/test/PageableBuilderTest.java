@@ -18,7 +18,6 @@ package de.kaiserpfalzedv.office.common.api.data.test;
 
 import de.kaiserpfalzedv.office.common.api.BuilderException;
 import de.kaiserpfalzedv.office.common.api.data.Pageable;
-import de.kaiserpfalzedv.office.common.api.data.impl.PageImpl;
 import de.kaiserpfalzedv.office.common.api.data.impl.PageableBuilder;
 import org.junit.Before;
 import org.junit.Test;
@@ -41,7 +40,7 @@ public class PageableBuilderTest {
     private static final long DEFAULT_TOTAL_PAGES = 20;
     private static final long DEFAULT_TOTAL_COUNT = 394;
 
-    private PageImpl service;
+    private Pageable service;
 
     @Before
     public void setUp() throws Exception {
@@ -67,16 +66,6 @@ public class PageableBuilderTest {
     public void testNegativePage() {
         new PageableBuilder()
                 .withPage(-1)
-                .withSize(DEFAULT_SIZE)
-                .withTotalPages(DEFAULT_TOTAL_PAGES)
-                .withTotalCount(DEFAULT_TOTAL_COUNT)
-                .build();
-    }
-
-    @Test(expected = BuilderException.class)
-    public void testDataSetToBig() {
-        new PageableBuilder()
-                .withPage(DEFAULT_TOTAL_PAGES)
                 .withSize(DEFAULT_SIZE)
                 .withTotalPages(DEFAULT_TOTAL_PAGES)
                 .withTotalCount(DEFAULT_TOTAL_COUNT)
@@ -111,6 +100,17 @@ public class PageableBuilderTest {
                 .withTotalPages(DEFAULT_TOTAL_PAGES)
                 .withTotalCount(-1)
                 .build();
+    }
+
+    @Test
+    public void regressionBuildPageWithSizeAndPageWorks() {
+        Pageable page = new PageableBuilder()
+                .withPage(DEFAULT_PAGE)
+                .withSize(DEFAULT_SIZE)
+                .build();
+
+        assertEquals(DEFAULT_PAGE, page.getPage());
+        assertEquals(0, page.getTotalPages());
     }
 
 

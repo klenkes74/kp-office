@@ -38,7 +38,7 @@ public class PagedListBuilder<T> implements Builder<PagedListable<T>> {
         setDefaultData();
         validate();
 
-        return new PagedListImpl<>(data, pageable);
+        return new PagedListImpl<T>(data, pageable);
     }
 
     private void setDefaultData() {
@@ -67,6 +67,10 @@ public class PagedListBuilder<T> implements Builder<PagedListable<T>> {
 
     public PagedListBuilder<T> withData(Collection<T> data) {
         this.data = data;
+        if (pageable == null) {
+            pageable = new PageImpl(0, data.size(), 1, data.size());
+        }
+        
         return this;
     }
 

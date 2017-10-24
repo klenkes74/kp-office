@@ -42,20 +42,26 @@ public class PageableBuilder implements Builder<Pageable> {
     private long totalCount;
 
     @Override
-    public PageImpl build() {
+    public Pageable build() {
         setDefaultValues();
-        validate();
 
-        return new PageImpl(page, size, totalPages, totalCount);
+        if (totalCount > 0) {
+            validatePage();
+
+            return new PageImpl(page, size, totalPages, totalCount);
+        } else {
+            validatePageRequest();
+
+            return new PageRequestImpl(page, size);
+        }
     }
 
     private void setDefaultValues() {
         if (size == 0) size = DEFAULT_PAGE_SIZE;
-        if (totalCount == 0) totalCount = size;
         if (totalPages == 0) totalPages = totalCount / size + (totalCount % size > 0 ? 1 : 0);
     }
 
-    private void validate() {
+    private void validatePage() {
         ArrayList<String> failures = new ArrayList<>(5);
 
         if (page < 0) failures.add("Page 0 is the first page!");
@@ -63,6 +69,18 @@ public class PageableBuilder implements Builder<Pageable> {
         if (size <= 0) failures.add("Can't build a page with page size 0 or less!");
         if (totalPages < 0) failures.add("Can't build a page with no pages!");
         if (totalCount < 0) failures.add("A list can be empty but not contain less than 0 entries!");
+
+        if (failures.size() > 0)
+            throw new BuilderException(Pageable.class, failures.toArray(new String[1]));
+    }
+
+    private void validatePageRequest() {
+        ArrayList<String> failures = new ArrayList<>(4);
+
+        if (page < 0) failures.add("Page 0 is the first page!");
+        if (size <= 0) failures.add("Can't build a page with page size 0 or less!");
+        if (totalPages != 0) failures.add("Can't build a pagerequest with pages!");
+        if (totalCount != 0) failures.add("A page request can't contain entries!");
 
         if (failures.size() > 0)
             throw new BuilderException(Pageable.class, failures.toArray(new String[1]));
