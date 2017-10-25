@@ -14,27 +14,54 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzedv.office.finance.chartofaccounts.impl;
+package de.kaiserpfalzedv.office.finance.chartofaccounts.impl.chartofaccounts;
 
 import java.util.HashMap;
+import java.util.Set;
 import java.util.UUID;
 
-import de.kaiserpfalzedv.office.finance.chartofaccounts.api.Account;
-import de.kaiserpfalzedv.office.finance.chartofaccounts.api.AccountNotMappedException;
-import de.kaiserpfalzedv.office.finance.chartofaccounts.api.ChartOfAccounts;
-import de.kaiserpfalzedv.office.finance.chartofaccounts.api.ChartOfAccountsAlreadyExistsException;
-import de.kaiserpfalzedv.office.finance.chartofaccounts.api.ChartOfAccountsDoesNotExistException;
-import de.kaiserpfalzedv.office.finance.chartofaccounts.api.ChartedAccount;
-import de.kaiserpfalzedv.office.finance.chartofaccounts.api.ChartsOfAccounts;
+import javax.annotation.PostConstruct;
+import javax.ejb.PostActivate;
+import javax.ejb.Singleton;
+import javax.inject.Inject;
+
+import de.kaiserpfalzedv.office.finance.chartofaccounts.api.account.Account;
+import de.kaiserpfalzedv.office.finance.chartofaccounts.api.account.AccountNotMappedException;
+import de.kaiserpfalzedv.office.finance.chartofaccounts.api.chartofaccounts.ChartOfAccounts;
+import de.kaiserpfalzedv.office.finance.chartofaccounts.api.chartofaccounts.ChartOfAccountsAlreadyExistsException;
+import de.kaiserpfalzedv.office.finance.chartofaccounts.api.chartofaccounts.ChartOfAccountsDoesNotExistException;
+import de.kaiserpfalzedv.office.finance.chartofaccounts.api.chartofaccounts.ChartedAccount;
+import de.kaiserpfalzedv.office.finance.chartofaccounts.api.chartofaccounts.ChartsOfAccountStore;
+import de.kaiserpfalzedv.office.finance.chartofaccounts.api.chartofaccounts.ChartsOfAccounts;
 
 /**
  * @author klenkes
  * @version 2015Q1
  * @since 04.01.16 04:37
  */
+@Singleton
 public class ChartsOfAccountsImpl implements ChartsOfAccounts {
     private final HashMap<String, ChartOfAccounts> data = new HashMap<>(3);
 
+
+    private ChartsOfAccountStore store;
+
+    @Inject
+    public ChartsOfAccountsImpl(final ChartsOfAccountStore store) {
+        this.store = store;
+    }
+
+
+    @PostConstruct
+    @PostActivate
+    public void loadChartOfAccounts() {
+        Set<ChartOfAccounts> plans = store.load();
+
+        plans.clear();
+        plans.forEach(p -> data.put(p.getDisplayName(), p));
+    }
+
+    
     public void createChartOfAccount(final String chartOfAccount, final UUID tenantId, final UUID id, final String displayName, final String fullName) throws ChartOfAccountsAlreadyExistsException {
         if (data.containsKey(chartOfAccount))
             throw new ChartOfAccountsAlreadyExistsException(chartOfAccount);

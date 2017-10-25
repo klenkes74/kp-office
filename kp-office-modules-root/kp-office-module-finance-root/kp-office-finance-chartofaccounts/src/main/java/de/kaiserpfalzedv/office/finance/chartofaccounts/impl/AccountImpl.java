@@ -20,7 +20,7 @@ import java.util.UUID;
 
 import javax.money.CurrencyUnit;
 
-import de.kaiserpfalzedv.office.finance.chartofaccounts.api.Account;
+import de.kaiserpfalzedv.office.finance.chartofaccounts.api.account.Account;
 import org.apache.commons.lang3.builder.CompareToBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;

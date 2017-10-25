@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzedv.office.finance.chartofaccounts.api;
+package de.kaiserpfalzedv.office.finance.chartofaccounts.api.account;
 
 import javax.money.CurrencySupplier;
 import javax.money.CurrencyUnit;

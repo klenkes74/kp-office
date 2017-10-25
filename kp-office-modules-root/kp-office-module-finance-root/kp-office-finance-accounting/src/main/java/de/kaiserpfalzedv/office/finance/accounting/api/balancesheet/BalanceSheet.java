@@ -19,7 +19,7 @@ package de.kaiserpfalzedv.office.finance.accounting.api.balancesheet;
 import javax.money.MonetaryAmount;
 
 import de.kaiserpfalzedv.office.finance.accounting.api.PagedPostingRecordList;
-import de.kaiserpfalzedv.office.finance.chartofaccounts.api.Account;
+import de.kaiserpfalzedv.office.finance.chartofaccounts.api.account.Account;
 
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}

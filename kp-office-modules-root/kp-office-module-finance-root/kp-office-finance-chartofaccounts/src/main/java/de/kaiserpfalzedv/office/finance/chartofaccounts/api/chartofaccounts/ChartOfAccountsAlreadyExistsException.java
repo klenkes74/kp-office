@@ -14,12 +14,25 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzedv.office.finance.chartofaccounts.api;
+package de.kaiserpfalzedv.office.finance.chartofaccounts.api.chartofaccounts;
 
 /**
  * @author klenkes
  * @version 2015Q1
- * @since 27.12.15 18:15
+ * @since 04.01.16 04:42
  */
-public interface CostCenter extends Account {
+public class ChartOfAccountsAlreadyExistsException extends ChartOfAccountsException {
+    private static final long serialVersionUID = -4403712558954899958L;
+
+    private String chartOfAccounts;
+
+    public ChartOfAccountsAlreadyExistsException(final String chartOfAccounts) {
+        super("Chart of account '" + chartOfAccounts + "' does not exist.");
+
+        this.chartOfAccounts = chartOfAccounts;
+    }
+
+    public String getChartOfAccounts() {
+        return chartOfAccounts;
+    }
 }

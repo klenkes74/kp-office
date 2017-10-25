@@ -22,8 +22,8 @@ import java.time.OffsetDateTime;
 
 import javax.money.MonetaryAmount;
 
-import de.kaiserpfalzedv.office.finance.chartofaccounts.api.Account;
-import de.kaiserpfalzedv.office.finance.chartofaccounts.api.CostCenter;
+import de.kaiserpfalzedv.office.finance.chartofaccounts.api.account.Account;
+import de.kaiserpfalzedv.office.finance.chartofaccounts.api.account.CostCenter;
 
 /**
  * @author klenkes

@@ -14,11 +14,13 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzedv.office.finance.chartofaccounts.api;
+package de.kaiserpfalzedv.office.finance.chartofaccounts.api.account;
 
 import java.util.Set;
 
 import javax.security.auth.login.AccountException;
+
+import de.kaiserpfalzedv.office.finance.chartofaccounts.api.chartofaccounts.ChartedAccount;
 
 /**
  * This exception is thrown if a mapping of an unmapped account is requested.

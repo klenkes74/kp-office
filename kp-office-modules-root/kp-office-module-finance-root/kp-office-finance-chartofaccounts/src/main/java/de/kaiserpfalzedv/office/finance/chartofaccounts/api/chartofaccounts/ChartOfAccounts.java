@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzedv.office.finance.chartofaccounts.api;
+package de.kaiserpfalzedv.office.finance.chartofaccounts.api.chartofaccounts;
 
 import java.io.Serializable;
 import java.util.Set;
@@ -23,6 +23,8 @@ import java.util.UUID;
 import de.kaiserpfalzedv.office.common.api.data.Identifiable;
 import de.kaiserpfalzedv.office.common.api.data.Nameable;
 import de.kaiserpfalzedv.office.common.api.data.Tenantable;
+import de.kaiserpfalzedv.office.finance.chartofaccounts.api.account.Account;
+import de.kaiserpfalzedv.office.finance.chartofaccounts.api.account.AccountNotMappedException;
 
 /**
  * This is the chart of accounts as used by humans to order the accounts. Normally the accounts get numbers attached. In
@@ -68,11 +70,15 @@ public interface ChartOfAccounts extends Identifiable, Nameable, Tenantable, Ser
      * Removes the charted account from this chart of accounts.
      *
      * @param accountNumber The reference of the charted account to be removed from the chart of accounts.
+     *
+     * @return if the account has been removed.
      */
-    void remove(final String accountNumber);
+    boolean remove(final String accountNumber);
 
     /**
      * Remove all accounts from this chart.
+     *
+     * @return If all accounts have been wiped out.
      */
-    void clear();
+    boolean clear();
 }

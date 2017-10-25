@@ -14,13 +14,13 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzedv.office.finance.chartofaccounts.test;
+package de.kaiserpfalzedv.office.finance.chartofaccounts.account.test;
 
 import java.util.UUID;
 
 import de.kaiserpfalzedv.office.common.api.BuilderException;
-import de.kaiserpfalzedv.office.finance.chartofaccounts.api.Account;
-import de.kaiserpfalzedv.office.finance.chartofaccounts.impl.AccountBuilder;
+import de.kaiserpfalzedv.office.finance.chartofaccounts.api.account.CostCenter;
+import de.kaiserpfalzedv.office.finance.chartofaccounts.impl.CostCenterBuilder;
 import de.kaiserpfalzedv.office.tenant.api.NullTenant;
 import org.junit.Before;
 import org.junit.Test;
@@ -34,17 +34,17 @@ import static org.junit.Assert.assertNotEquals;
  * @version 2015Q1
  * @since 29.12.15 19:36
  */
-public class AccountBuilderTest {
+public class CostCenterBuilderTest {
     private static final UUID   DEFAULT_TENANT_ID    = new NullTenant().getId();
     private static final UUID   DEFAULT_ID           = UUID.randomUUID();
     private static final String DEFAULT_DISPLAY_NAME = "Account Display Name";
     private static final String DEFAULT_FULL_NAME    = "Account Full Name";
 
-    private AccountBuilder service;
+    private CostCenterBuilder service;
 
     @Before
     public void setUp() throws Exception {
-        service = new AccountBuilder();
+        service = new CostCenterBuilder();
     }
 
     @Test(expected = BuilderException.class)
@@ -60,7 +60,7 @@ public class AccountBuilderTest {
                 .withDisplayName(DEFAULT_DISPLAY_NAME)
                 .withFullName(DEFAULT_FULL_NAME);
 
-        Account result = service.build();
+        CostCenter result = service.build();
 
         assertEquals(DEFAULT_TENANT_ID, result.getTenant());
         assertEquals(DEFAULT_ID, result.getId());
@@ -76,7 +76,7 @@ public class AccountBuilderTest {
                 .withDisplayName(DEFAULT_DISPLAY_NAME)
                 .withFullName(DEFAULT_FULL_NAME);
 
-        Account result = service.build();
+        CostCenter result = service.build();
 
         assertEquals(DEFAULT_TENANT_ID, result.getTenant());
         assertEquals(DEFAULT_ID, result.getId());
@@ -92,7 +92,7 @@ public class AccountBuilderTest {
                 .withDisplayName(DEFAULT_DISPLAY_NAME)
                 .withFullName(DEFAULT_FULL_NAME);
 
-        Account result = service.build();
+        CostCenter result = service.build();
 
         assertEquals(DEFAULT_TENANT_ID, result.getTenant());
         assertNotEquals(DEFAULT_ID, result.getId());
@@ -108,7 +108,7 @@ public class AccountBuilderTest {
                 .withId(DEFAULT_ID)
                 .withFullName(DEFAULT_FULL_NAME);
 
-        Account result = service.build();
+        CostCenter result = service.build();
 
         assertEquals(DEFAULT_TENANT_ID, result.getTenant());
         assertEquals(DEFAULT_ID, result.getId());
@@ -124,28 +124,11 @@ public class AccountBuilderTest {
                 .withId(DEFAULT_ID)
                 .withDisplayName(DEFAULT_DISPLAY_NAME);
 
-        Account result = service.build();
+        CostCenter result = service.build();
 
         assertEquals(DEFAULT_TENANT_ID, result.getTenant());
         assertEquals(DEFAULT_ID, result.getId());
         assertEquals(DEFAULT_DISPLAY_NAME, result.getDisplayName());
         assertEquals(DEFAULT_DISPLAY_NAME, result.getFullName());
-    }
-
-
-    @Test
-    public void testComaratorBothNotMapped() {
-        service
-                .withTenantId(DEFAULT_TENANT_ID)
-                .withId(DEFAULT_ID)
-                .withDisplayName(DEFAULT_DISPLAY_NAME);
-
-        Account o1 = service.build();
-
-        service.withId(UUID.randomUUID());
-        Account o2 = service.build();
-
-        assertEquals(o1.getId() + " != " + o2.getId(), o1.getId().compareTo(o2.getId()), o1.compareTo(o2));
-        assertEquals(o2.getId() + " != " + o1.getId(), o2.getId().compareTo(o1.getId()), o2.compareTo(o1));
     }
 }

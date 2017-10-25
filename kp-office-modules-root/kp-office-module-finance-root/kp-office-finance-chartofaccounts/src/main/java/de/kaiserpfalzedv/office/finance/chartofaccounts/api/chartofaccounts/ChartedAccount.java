@@ -14,13 +14,15 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzedv.office.finance.chartofaccounts.api;
+package de.kaiserpfalzedv.office.finance.chartofaccounts.api.chartofaccounts;
 
 import java.io.Serializable;
 import java.util.Set;
 
 import de.kaiserpfalzedv.office.common.api.data.Nameable;
 import de.kaiserpfalzedv.office.common.api.data.Tenantable;
+import de.kaiserpfalzedv.office.finance.chartofaccounts.api.account.Account;
+import de.kaiserpfalzedv.office.finance.chartofaccounts.api.account.AccountMultiMappedException;
 
 /**
  * @author klenkes  {@literal <rlichti@kaiserpfalz-edv.de>}

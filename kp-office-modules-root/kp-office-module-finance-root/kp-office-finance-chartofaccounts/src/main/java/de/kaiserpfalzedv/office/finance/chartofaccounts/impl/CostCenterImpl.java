@@ -20,7 +20,7 @@ import java.util.UUID;
 
 import javax.money.CurrencyUnit;
 
-import de.kaiserpfalzedv.office.finance.chartofaccounts.api.CostCenter;
+import de.kaiserpfalzedv.office.finance.chartofaccounts.api.account.CostCenter;
 
 /**
  * @author klenkes

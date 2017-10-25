@@ -22,7 +22,7 @@ import java.util.UUID;
 import javax.money.CurrencyUnit;
 
 import de.kaiserpfalzedv.office.common.api.BuilderException;
-import de.kaiserpfalzedv.office.finance.chartofaccounts.api.CostCenter;
+import de.kaiserpfalzedv.office.finance.chartofaccounts.api.account.CostCenter;
 import org.apache.commons.lang3.builder.Builder;
 
 import static org.apache.commons.lang3.StringUtils.isBlank;

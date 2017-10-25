@@ -14,10 +14,13 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzedv.office.finance.chartofaccounts.api;
+package de.kaiserpfalzedv.office.finance.chartofaccounts.api.chartofaccounts;
 
 import java.io.Serializable;
 import java.util.UUID;
+
+import de.kaiserpfalzedv.office.finance.chartofaccounts.api.account.Account;
+import de.kaiserpfalzedv.office.finance.chartofaccounts.api.account.AccountNotMappedException;
 
 /**
  * @author klenkes

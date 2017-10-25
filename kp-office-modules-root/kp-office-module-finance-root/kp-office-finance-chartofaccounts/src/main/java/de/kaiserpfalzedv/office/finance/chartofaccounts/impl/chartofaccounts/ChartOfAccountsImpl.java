@@ -14,16 +14,19 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzedv.office.finance.chartofaccounts.impl;
+package de.kaiserpfalzedv.office.finance.chartofaccounts.impl.chartofaccounts;
 
 import java.util.HashMap;
 import java.util.Set;
 import java.util.UUID;
 
-import de.kaiserpfalzedv.office.finance.chartofaccounts.api.Account;
-import de.kaiserpfalzedv.office.finance.chartofaccounts.api.AccountNotMappedException;
-import de.kaiserpfalzedv.office.finance.chartofaccounts.api.ChartOfAccounts;
-import de.kaiserpfalzedv.office.finance.chartofaccounts.api.ChartedAccount;
+import de.kaiserpfalzedv.office.finance.chartofaccounts.api.account.Account;
+import de.kaiserpfalzedv.office.finance.chartofaccounts.api.account.AccountNotMappedException;
+import de.kaiserpfalzedv.office.finance.chartofaccounts.api.chartofaccounts.ChartOfAccounts;
+import de.kaiserpfalzedv.office.finance.chartofaccounts.api.chartofaccounts.ChartedAccount;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 /**
  * @author klenkes
@@ -31,7 +34,7 @@ import de.kaiserpfalzedv.office.finance.chartofaccounts.api.ChartedAccount;
  * @since 03.01.16 17:38
  */
 public class ChartOfAccountsImpl implements ChartOfAccounts {
-    private static final long serialVersionUID = 4401304213362064032L;
+    private static final long serialVersionUID = -2800020009455576751L;
 
     private final HashMap<String, ChartedAccount> data = new HashMap<>();
     private UUID   tenantId;
@@ -91,13 +94,17 @@ public class ChartOfAccountsImpl implements ChartOfAccounts {
     }
 
     @Override
-    public void remove(final String key) {
+    public boolean remove(final String key) {
         data.remove(key);
+
+        return !data.containsKey(key);
     }
 
     @Override
-    public void clear() {
+    public boolean clear() {
         data.clear();
+
+        return data.isEmpty();
     }
 
     @Override
@@ -118,5 +125,40 @@ public class ChartOfAccountsImpl implements ChartOfAccounts {
     @Override
     public String getFullName() {
         return fullName;
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder()
+                .append(tenantId)
+                .append(id)
+                .toHashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (obj == this) {
+            return true;
+        }
+        if (obj.getClass() != getClass()) {
+            return false;
+        }
+        ChartOfAccountsImpl rhs = (ChartOfAccountsImpl) obj;
+        return new EqualsBuilder()
+                .append(this.tenantId, rhs.tenantId)
+                .append(this.id, rhs.id)
+                .isEquals();
+    }
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this)
+                .append("id", id)
+                .append("tenantId", tenantId)
+                .append("displayName", displayName)
+                .toString();
     }
 }

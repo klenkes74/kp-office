@@ -14,15 +14,15 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzedv.office.finance.chartofaccounts.impl;
+package de.kaiserpfalzedv.office.finance.chartofaccounts.impl.chartofaccounts;
 
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
 
-import de.kaiserpfalzedv.office.finance.chartofaccounts.api.Account;
-import de.kaiserpfalzedv.office.finance.chartofaccounts.api.ChartedAccount;
+import de.kaiserpfalzedv.office.finance.chartofaccounts.api.account.Account;
+import de.kaiserpfalzedv.office.finance.chartofaccounts.api.chartofaccounts.ChartedAccount;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;

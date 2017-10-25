@@ -14,13 +14,15 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzedv.office.finance.chartofaccounts.test;
+package de.kaiserpfalzedv.office.finance.chartofaccounts.chartofaccounts.test;
 
 import java.util.UUID;
 
-import de.kaiserpfalzedv.office.finance.chartofaccounts.api.ChartOfAccountsAlreadyExistsException;
-import de.kaiserpfalzedv.office.finance.chartofaccounts.api.ChartsOfAccounts;
-import de.kaiserpfalzedv.office.finance.chartofaccounts.impl.ChartsOfAccountsImpl;
+import de.kaiserpfalzedv.office.finance.chartofaccounts.api.chartofaccounts.ChartOfAccountsAlreadyExistsException;
+import de.kaiserpfalzedv.office.finance.chartofaccounts.api.chartofaccounts.ChartsOfAccountStore;
+import de.kaiserpfalzedv.office.finance.chartofaccounts.api.chartofaccounts.ChartsOfAccounts;
+import de.kaiserpfalzedv.office.finance.chartofaccounts.impl.chartofaccounts.ChartsOfAccountsImpl;
+import de.kaiserpfalzedv.office.finance.chartofaccounts.mock.ChartsOfAccountStoreMock;
 import de.kaiserpfalzedv.office.tenant.api.NullTenant;
 import org.junit.Before;
 import org.junit.Test;
@@ -37,12 +39,13 @@ public class ChartOfAccountsTest {
 
     private static final UUID TENANT_ID = new NullTenant().getId();
 
+    private ChartsOfAccountStore store = new ChartsOfAccountStoreMock();
     private ChartsOfAccounts service;
 
 
     @Before
     public void setUp() {
-        service = new ChartsOfAccountsImpl();
+        service = new ChartsOfAccountsImpl(store);
     }
 
     @Test

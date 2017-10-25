@@ -20,7 +20,7 @@ import java.io.Serializable;
 
 import javax.money.MonetaryAmount;
 
-import de.kaiserpfalzedv.office.finance.chartofaccounts.api.Account;
+import de.kaiserpfalzedv.office.finance.chartofaccounts.api.account.Account;
 
 /**
  * @author klenkes
