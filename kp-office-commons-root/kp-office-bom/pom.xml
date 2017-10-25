@@ -259,7 +259,32 @@
 
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>kp-office-finance-accounting</artifactId>
+                <artifactId>kp-office-finance-chartofaccounts</artifactId>
+                <version>${project.version}</version>
+                <type>ejb</type>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>kp-office-finance-chartofaccounts</artifactId>
+                <version>${project.version}</version>
+                <classifier>api</classifier>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>kp-office-finance-chartofaccounts</artifactId>
+                <version>${project.version}</version>
+                <classifier>jpa</classifier>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>kp-office-finance-chartofaccounts</artifactId>
+                <version>${project.version}</version>
+                <type>ejb-client</type>
+            </dependency>
+
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>kp-office-finance-chartofaccounts</artifactId>
                 <version>${project.version}</version>
                 <type>ejb</type>
             </dependency>
