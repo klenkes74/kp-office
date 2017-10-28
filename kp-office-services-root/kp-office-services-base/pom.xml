@@ -13,6 +13,7 @@
   ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
+  ~
   -->
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
@@ -25,13 +26,13 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>kp-office-service-base</artifactId>
+    <artifactId>kp-office-services-base</artifactId>
     <packaging>pom</packaging>
 
-    <name>KP Office :: Service :: Base</name>
+    <name>KP Office :: Services :: Base</name>
 
     <modules>
-        <module>kpo-base-ui</module>
-        <module>kpo-base-ear</module>
+        <module>kp-office-services-base-ui</module>
+        <module>kp-office-services-base-ear</module>
     </modules>
 </project>

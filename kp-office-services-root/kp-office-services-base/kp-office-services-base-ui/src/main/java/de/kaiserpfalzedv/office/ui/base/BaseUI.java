@@ -12,11 +12,10 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+ *
  */
 
 package de.kaiserpfalzedv.office.ui.base;
-
-import javax.inject.Inject;
 
 import com.vaadin.annotations.Push;
 import com.vaadin.annotations.Theme;
@@ -27,6 +26,8 @@ import com.vaadin.navigator.ViewProvider;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.ui.UI;
 import org.vaadin.addon.cdiproperties.TextBundle;
+
+import javax.inject.Inject;
 
 /**
  * This UI is the application entry point. A UI may either represent a browser window

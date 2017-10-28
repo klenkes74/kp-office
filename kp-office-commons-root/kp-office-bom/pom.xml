@@ -350,13 +350,13 @@
             <!-- UI and EARs -->
             <dependency>
                 <groupId>de.kaiserpfalz-edv.office</groupId>
-                <artifactId>kpo-base-ui</artifactId>
+                <artifactId>kp-office-services-base-ui</artifactId>
                 <version>${project.version}</version>
                 <type>war</type>
             </dependency>
             <dependency>
                 <groupId>de.kaiserpfalz-edv.office</groupId>
-                <artifactId>kpo-base</artifactId>
+                <artifactId>kp-office-services-base-ear</artifactId>
                 <version>${project.version}</version>
                 <type>ear</type>
             </dependency>

@@ -13,6 +13,7 @@
   ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
+  ~
   -->
 
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -27,16 +28,22 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>kpo-base</artifactId>
+    <artifactId>kp-office-services-base-ear</artifactId>
     <packaging>ear</packaging>
 
-    <name>KP Office :: Application :: Base</name>
+    <name>KP Office :: Services :: Base :: Application</name>
     <description>Base modules of the KP Office. Contains all modules needed for any function.</description>
+
+
+    <properties>
+        <application.name>kpo-base</application.name>
+    </properties>
+
 
     <dependencies>
         <dependency>
             <groupId>de.kaiserpfalz-edv.office</groupId>
-            <artifactId>kpo-base-ui</artifactId>
+            <artifactId>kp-office-services-base-ui</artifactId>
             <type>war</type>
         </dependency>
 
