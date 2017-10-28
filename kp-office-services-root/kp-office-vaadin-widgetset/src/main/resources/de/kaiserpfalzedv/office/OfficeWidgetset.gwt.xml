@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  ~ Copyright 2016 Kaiserpfalz EDV-Service, Roland T. Lichti
+  ~ Copyright 2017 Kaiserpfalz EDV-Service, Roland T. Lichti
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
   ~ you may not use this file except in compliance with the License.
@@ -39,8 +39,6 @@
     <!-- <set-configuration-property name="devModeRedirectEnabled" value="true" /> -->
 
 
-    <inherits name="org.vaadin.kim.countdownclock.CountdownClockWidgetset"/>
-
     <inherits name="com.ejt.vaadin.loginform.WidgetSet"/>
 
     <inherits name="org.vaadin.risto.stepper.widgetset.StepperWidgetset"/>
@@ -56,13 +54,8 @@
     <inherits name="fi.jasoft.qrcode.QrcodeWidgetset"/>
 
 
-    <inherits name="org.vaadin.peter.multibutton.MultibuttonWidgetset"/>
-
-    <inherits name="org.kaj.passwordcomponent.PasswordComponentWidgetset"/>
-
     <inherits name="com.vaadin.DefaultWidgetSet"/>
 
-    <inherits name="com.vaadin.addon.calendar.gwt.CalendarWidgetset"/>
 
     <inherits name="org.vaadin.easyuploads.Widgetset"/>
 </module>

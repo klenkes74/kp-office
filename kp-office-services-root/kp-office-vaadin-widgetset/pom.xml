@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  ~ Copyright 2016 Kaiserpfalz EDV-Service, Roland T. Lichti
+  ~ Copyright 2017 Kaiserpfalz EDV-Service, Roland T. Lichti
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
   ~ you may not use this file except in compliance with the License.
@@ -21,14 +21,15 @@
 
     <parent>
         <groupId>de.kaiserpfalz-edv.office</groupId>
-        <artifactId>kp-office-webui-root</artifactId>
+        <artifactId>kp-office-services-root</artifactId>
         <version>1.0.0-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>kp-office-webui-widgetset</artifactId>
+    <artifactId>kp-office-vaadin-widgetset</artifactId>
     <packaging>jar</packaging>
 
+    <name>KP Office :: Services :: Vaadin Widgetset</name>
 
     <properties>
         <vaadin.widget-set.name>de.kaiserpfalzedv.office.OfficeWidgetset</vaadin.widget-set.name>
@@ -88,10 +89,12 @@
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-collections4</artifactId>
+            <version>4.1</version>
         </dependency>
         <dependency>
             <groupId>commons-codec</groupId>
             <artifactId>commons-codec</artifactId>
+            <version>1.10</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -159,29 +162,9 @@
             <version>${vaadin-qrcode.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.vaadin.addon</groupId>
-            <artifactId>vaadin-calendar</artifactId>
-            <version>${vaadin-calendar.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.vaadin.addons</groupId>
-            <artifactId>multibutton</artifactId>
-            <version>${vaadin-multibutton.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.vaadin.addons</groupId>
-            <artifactId>countdownclock</artifactId>
-            <version>${vaadin-countdownclock.version}</version>
-        </dependency>
-        <dependency>
             <groupId>com.wcs.vaadin.addons</groupId>
             <artifactId>userinactivity</artifactId>
             <version>${vaadin-userinactivity.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>de.steinwedel.vaadin.addon</groupId>
-            <artifactId>messagebox</artifactId>
-            <version>${messagebox.version}</version>
         </dependency>
         <dependency>
             <groupId>org.vaadin.addons</groupId>
@@ -194,11 +177,6 @@
             <version>${suggestfield.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.vaadin.addons</groupId>
-            <artifactId>passwordcomponent</artifactId>
-            <version>${passwordcomponent.version}</version>
-        </dependency>
-        <dependency>
             <groupId>org.vaadin.addon</groupId>
             <artifactId>easyuploads</artifactId>
             <version>${easyuploads.version}</version>
@@ -206,6 +184,7 @@
         <dependency>
             <groupId>commons-beanutils</groupId>
             <artifactId>commons-beanutils</artifactId>
+            <version>1.9.3</version>
             <exclusions>
                 <exclusion>
                     <groupId>commons-collections</groupId>
@@ -216,6 +195,7 @@
         <dependency>
             <groupId>javax.el</groupId>
             <artifactId>javax.el-api</artifactId>
+            <version>3.0.1-b04</version>
             <scope>provided</scope>
         </dependency>
 
@@ -234,6 +214,7 @@
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
+            <version>2.5</version>
         </dependency>
     </dependencies>
 
@@ -294,4 +275,44 @@
         </plugins>
     </build>
 
+
+    <profiles>
+        <profile>
+            <!-- Vaadin pre-release repositories -->
+            <id>vaadin-prerelease</id>
+            <activation>
+            </activation>
+
+            <repositories>
+                <repository>
+                    <id>vaadin-prereleases</id>
+                    <url>http://maven.vaadin.com/vaadin-prereleases</url>
+                </repository>
+                <repository>
+                    <id>vaadin-snapshots</id>
+                    <url>https://oss.sonatype.org/content/repositories/vaadin-snapshots/</url>
+                    <releases>
+                        <enabled>false</enabled>
+                    </releases>
+                    <snapshots>
+                    </snapshots>
+                </repository>
+            </repositories>
+            <pluginRepositories>
+                <pluginRepository>
+                    <id>vaadin-prereleases</id>
+                    <url>http://maven.vaadin.com/vaadin-prereleases</url>
+                </pluginRepository>
+                <pluginRepository>
+                    <id>vaadin-snapshots</id>
+                    <url>https://oss.sonatype.org/content/repositories/vaadin-snapshots/</url>
+                    <releases>
+                        <enabled>false</enabled>
+                    </releases>
+                    <snapshots>
+                    </snapshots>
+                </pluginRepository>
+            </pluginRepositories>
+        </profile>
+    </profiles>
 </project>

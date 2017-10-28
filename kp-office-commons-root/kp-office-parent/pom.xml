@@ -53,9 +53,9 @@
         <dontSign>true</dontSign>
 
         <!-- JEE -->
-        <application-name>${project.artifactId}</application-name>
-        <application-display-name>${project.name}</application-display-name>
-        <application-description>${project.description}</application-description>
+        <application.name>${project.artifactId}</application.name>
+        <application.display-name>${project.name}</application.display-name>
+        <application.description>${project.description}</application.description>
     </properties>
 
     <distributionManagement>
@@ -274,7 +274,47 @@
                 <plugin>
                     <artifactId>maven-war-plugin</artifactId>
                     <version>3.1.0</version>
+
+                    <configuration>
+                        <failOnMissingWebXml>false</failOnMissingWebXml>
+                        <packagingExcludes>WEB-INF/classes/VAADIN/widgetsets/WEB-INF/**</packagingExcludes>
+                    </configuration>
                 </plugin>
+
+                <plugin>
+                    <groupId>com.vaadin</groupId>
+                    <artifactId>vaadin-maven-plugin</artifactId>
+                    <version>8.1.6</version>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>update-theme</goal>
+                                <goal>update-widgetset</goal>
+                                <goal>compile</goal>
+                                <!-- Comment out compile-theme goal to use on-the-fly theme compilation -->
+                                <goal>compile-theme</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-clean-plugin</artifactId>
+                    <version>3.0.0</version>
+                    <!-- Clean up also any pre-compiled themes -->
+                    <configuration>
+                        <filesets>
+                            <fileset>
+                                <directory>src/main/webapp/VAADIN/themes</directory>
+                                <includes>
+                                    <include>**/styles.css</include>
+                                    <include>**/styles.scss.cache</include>
+                                </includes>
+                            </fileset>
+                        </filesets>
+                    </configuration>
+                </plugin>
+
 
                 <plugin>
                     <artifactId>maven-ear-plugin</artifactId>
@@ -286,9 +326,9 @@
                         <filtering>true</filtering>
                         <skinnyWars>true</skinnyWars>
 
-                        <applicationName>${application-name}</applicationName>
-                        <displayName>${application-display-name}</displayName>
-                        <description>${application-description}</description>
+                        <applicationName>${application.name}</applicationName>
+                        <displayName>${application.display-name}</displayName>
+                        <description>${application.description}</description>
                     </configuration>
                 </plugin>
             </plugins>
@@ -381,6 +421,14 @@
                 <groupId>de.kaiserpfalz-edv.office</groupId>
                 <artifactId>kp-office-bom</artifactId>
                 <version>${project.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>com.vaadin</groupId>
+                <artifactId>vaadin-bom</artifactId>
+                <version>8.1.6</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
