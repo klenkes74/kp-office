@@ -13,6 +13,7 @@
   ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
+  ~
   -->
 
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -117,6 +118,25 @@
 
     <profiles>
         <profile>
+            <id>vaadin-addons</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+
+            <repositories>
+                <repository>
+                    <id>vaadin-addons</id>
+                    <url>http://maven.vaadin.com/vaadin-addons</url>
+                    <releases>
+                        <enabled>true</enabled>
+                    </releases>
+                    <snapshots>
+                        <enabled>false</enabled>
+                    </snapshots>
+                </repository>
+            </repositories>
+        </profile>
+        <profile>
             <!-- Vaadin pre-release repositories -->
             <id>vaadin-prerelease</id>
             <activation>
@@ -135,10 +155,6 @@
                     </releases>
                     <snapshots>
                     </snapshots>
-                </repository>
-                <repository>
-                    <id>vaadin-addons</id>
-                    <url>http://maven.vaadin.com/vaadin-addons</url>
                 </repository>
             </repositories>
             <pluginRepositories>
