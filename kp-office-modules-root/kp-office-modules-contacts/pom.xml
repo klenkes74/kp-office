@@ -22,17 +22,34 @@
 
     <parent>
         <groupId>de.kaiserpfalz-edv.office</groupId>
-        <artifactId>kp-office-modules</artifactId>
+        <artifactId>kp-office-modules-root</artifactId>
         <version>1.0.0-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>kp-office-finance-root</artifactId>
-    <packaging>pom</packaging>
-    <name>KP Office :: Modules :: Finance</name>
+    <artifactId>kp-office-module-contacts</artifactId>
+    <name>KP Office :: Modules :: Contacts</name>
+    <packaging>ejb</packaging>
 
-    <modules>
-        <module>kp-office-finance-chartofaccounts</module>
-        <module>kp-office-finance-accounting</module>
-    </modules>
+    <properties>
+        <skip.jpa>false</skip.jpa>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>kp-office-commons-ejb</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>kp-office-module-gis</artifactId>
+            <classifier>api</classifier>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>kp-office-module-gis</artifactId>
+            <classifier>jpa</classifier>
+        </dependency>
+    </dependencies>
 </project>

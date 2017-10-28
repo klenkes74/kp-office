@@ -22,13 +22,13 @@
 
     <parent>
         <groupId>de.kaiserpfalz-edv.office</groupId>
-        <artifactId>kp-office-modules</artifactId>
+        <artifactId>kp-office-modules-root</artifactId>
         <version>1.0.0-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>kp-office-module-files</artifactId>
-    <name>KP Office :: Module :: Files</name>
+    <artifactId>kp-office-modules-files</artifactId>
+    <name>KP Office :: Modules :: Files</name>
     <packaging>ejb</packaging>
 
     <properties>

@@ -27,7 +27,7 @@
         <relativePath>../kp-office-commons-root/kp-office-parent/pom.xml</relativePath>
     </parent>
 
-    <artifactId>kp-office-base</artifactId>
+    <artifactId>kp-office-base-root</artifactId>
     <packaging>pom</packaging>
     <name>KP Office :: Base</name>
 

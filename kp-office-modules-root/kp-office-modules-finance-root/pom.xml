@@ -22,16 +22,17 @@
 
     <parent>
         <groupId>de.kaiserpfalz-edv.office</groupId>
-        <artifactId>kp-office-modules</artifactId>
+        <artifactId>kp-office-modules-root</artifactId>
         <version>1.0.0-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>kp-office-dms-root</artifactId>
+    <artifactId>kp-office-finance-root</artifactId>
     <packaging>pom</packaging>
+    <name>KP Office :: Modules :: Finance</name>
 
     <modules>
-        <module>kp-office-dms-api</module>
-        <module>kp-office-dms-impl</module>
+        <module>kp-office-finance-chartofaccounts</module>
+        <module>kp-office-finance-accounting</module>
     </modules>
 </project>
