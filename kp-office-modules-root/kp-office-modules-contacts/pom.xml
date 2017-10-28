@@ -13,6 +13,7 @@
   ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
+  ~
   -->
 
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -27,7 +28,7 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>kp-office-module-contacts</artifactId>
+    <artifactId>kp-office-modules-contacts</artifactId>
     <name>KP Office :: Modules :: Contacts</name>
     <packaging>ejb</packaging>
 
@@ -43,12 +44,12 @@
 
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>kp-office-module-gis</artifactId>
+            <artifactId>kp-office-modules-gis</artifactId>
             <classifier>api</classifier>
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>kp-office-module-gis</artifactId>
+            <artifactId>kp-office-modules-gis</artifactId>
             <classifier>jpa</classifier>
         </dependency>
     </dependencies>

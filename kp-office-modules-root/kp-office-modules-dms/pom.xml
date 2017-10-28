@@ -29,7 +29,7 @@
     </parent>
 
     <artifactId>kp-office-modules-dms</artifactId>
-    <name>KP Office :: Module :: DMS</name>
+    <name>KP Office :: Modules :: DMS</name>
     <packaging>ejb</packaging>
 
     <properties>
