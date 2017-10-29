@@ -22,22 +22,14 @@
 
     <parent>
         <groupId>de.kaiserpfalz-edv.office</groupId>
-        <artifactId>kp-office-parent</artifactId>
+        <artifactId>kp-office-commons</artifactId>
         <version>1.0.0-SNAPSHOT</version>
-        <relativePath>kp-office-parent/pom.xml</relativePath>
+        <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>kp-office-commons</artifactId>
-    <name>KP Office :: Commons</name>
-    <packaging>pom</packaging>
+    <artifactId>kp-office-commons-ui</artifactId>
+    <name>KP Office :: Commons :: UI</name>
+    <packaging>jar</packaging>
 
-    <modules>
-        <module>kp-office-bom</module>
-        <module>kp-office-parent</module>
-        <module>kp-office-commons-api</module>
-        <module>kp-office-commons-impl</module>
-        <module>kp-office-commons-ejb</module>
-        <module>kp-office-commons-client</module>
-        <module>kp-office-commons-ui</module>
-    </modules>
+
 </project>

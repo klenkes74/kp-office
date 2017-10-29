@@ -168,85 +168,6 @@
                     </configuration>
                 </plugin>
 
-                <!-- ===[Java Testing]====================================================================[BEGIN]=== -->
-                <plugin>
-                    <groupId>org.codehaus.mojo</groupId>
-                    <artifactId>findbugs-maven-plugin</artifactId>
-                    <version>3.0.2</version>
-                </plugin>
-
-                <plugin>
-                    <groupId>org.jacoco</groupId>
-                    <artifactId>jacoco-maven-plugin</artifactId>
-                    <version>0.7.5.201505241946</version>
-                    <executions>
-                        <!--
-                            Prepares the property pointing to the JaCoCo runtime agent which
-                            is passed as VM argument when Maven the Surefire plugin is executed.
-                        -->
-                        <execution>
-                            <id>pre-unit-test</id>
-                            <goals>
-                                <goal>prepare-agent</goal>
-                            </goals>
-                            <configuration>
-                                <destFile>${project.build.directory}/coverage-reports/jacoco-ut.exec</destFile>
-                                <propertyName>surefireArgLine</propertyName>
-                            </configuration>
-                        </execution>
-                        <execution>
-                            <id>post-unit-test</id>
-                            <phase>test</phase>
-                            <goals>
-                                <goal>report</goal>
-                            </goals>
-                            <configuration>
-                                <dataFile>${project.build.directory}/coverage-reports/jacoco-ut.exec</dataFile>
-                                <outputDirectory>${project.reporting.outputDirectory}/jacoco-ut
-                                </outputDirectory>
-                            </configuration>
-                        </execution>
-                    </executions>
-                </plugin>
-
-                <plugin>
-                    <artifactId>maven-surefire-plugin</artifactId>
-                    <version>2.18.1</version>
-                    <configuration>
-                        <!--suppress MavenModelInspection --><!-- It's ok, it will be set by a plugin at build time -->
-                        <argLine>${surefireArgLine}</argLine>
-                        <!--suppress MavenModelInspection --><!-- it's boolean, I hope ... -->
-                        <skipTests>${skip.unit.tests}</skipTests>
-                        <excludes>
-                            <exclude>**/IT*.java</exclude>
-                            <exclude>**/*IT.java</exclude>
-                        </excludes>
-                    </configuration>
-                </plugin>
-
-                <plugin>
-                    <artifactId>maven-failsafe-plugin</artifactId>
-                    <version>2.18.1</version>
-                    <configuration>
-                        <!--suppress MavenModelInspection --><!-- It's ok, it will be set by a plugin at build time -->
-                        <argLine>${surefireArgLine}</argLine>
-                    </configuration>
-                    <executions>
-                        <execution>
-                            <id>integration-tests</id>
-                            <goals>
-                                <goal>integration-test</goal>
-                            </goals>
-                            <configuration>
-                                <skipTests>${skip.it.tests}</skipTests>
-                                <includes>
-                                    <include>**/*IT.java</include>
-                                    <include>**/IT*.java</include>
-                                </includes>
-                            </configuration>
-                        </execution>
-                    </executions>
-                </plugin>
 
 
                 <!-- ===[JEE]=============================================================================[BEGIN]=== -->
@@ -342,24 +263,6 @@
 
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
-            </plugin>
-
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>findbugs-maven-plugin</artifactId>
-            </plugin>
-
-            <plugin>
-                <groupId>org.jacoco</groupId>
-                <artifactId>jacoco-maven-plugin</artifactId>
-            </plugin>
-
-            <plugin>
-                <artifactId>maven-surefire-plugin</artifactId>
-            </plugin>
-
-            <plugin>
-                <artifactId>maven-failsafe-plugin</artifactId>
             </plugin>
 
             <plugin>
@@ -848,6 +751,100 @@
                     <scope>test</scope>
                 </dependency>
             </dependencies>
+        </profile>
+
+
+        <profile>
+            <id>testing</id>
+
+            <activation>
+                <file>
+                    <exists>src/test/java</exists>
+                </file>
+            </activation>
+
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>findbugs-maven-plugin</artifactId>
+                        <version>3.0.2</version>
+                    </plugin>
+
+                    <plugin>
+                        <groupId>org.jacoco</groupId>
+                        <artifactId>jacoco-maven-plugin</artifactId>
+                        <version>0.7.5.201505241946</version>
+                        <executions>
+                            <!--
+                                Prepares the property pointing to the JaCoCo runtime agent which
+                                is passed as VM argument when Maven the Surefire plugin is executed.
+                            -->
+                            <execution>
+                                <id>pre-unit-test</id>
+                                <goals>
+                                    <goal>prepare-agent</goal>
+                                </goals>
+                                <configuration>
+                                    <destFile>${project.build.directory}/coverage-reports/jacoco-ut.exec</destFile>
+                                    <propertyName>surefireArgLine</propertyName>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>post-unit-test</id>
+                                <phase>test</phase>
+                                <goals>
+                                    <goal>report</goal>
+                                </goals>
+                                <configuration>
+                                    <dataFile>${project.build.directory}/coverage-reports/jacoco-ut.exec</dataFile>
+                                    <outputDirectory>${project.reporting.outputDirectory}/jacoco-ut
+                                    </outputDirectory>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+
+                    <plugin>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <version>2.18.1</version>
+                        <configuration>
+                            <!--suppress MavenModelInspection --><!-- It's ok, it will be set by a plugin at build time -->
+                            <argLine>${surefireArgLine}</argLine>
+                            <!--suppress MavenModelInspection --><!-- it's boolean, I hope ... -->
+                            <skipTests>${skip.unit.tests}</skipTests>
+                            <excludes>
+                                <exclude>**/IT*.java</exclude>
+                                <exclude>**/*IT.java</exclude>
+                            </excludes>
+                        </configuration>
+                    </plugin>
+
+                    <plugin>
+                        <artifactId>maven-failsafe-plugin</artifactId>
+                        <version>2.18.1</version>
+                        <configuration>
+                            <!--suppress MavenModelInspection --><!-- It's ok, it will be set by a plugin at build time -->
+                            <argLine>${surefireArgLine}</argLine>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <id>integration-tests</id>
+                                <goals>
+                                    <goal>integration-test</goal>
+                                </goals>
+                                <configuration>
+                                    <skipTests>${skip.it.tests}</skipTests>
+                                    <includes>
+                                        <include>**/*IT.java</include>
+                                        <include>**/IT*.java</include>
+                                    </includes>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
         </profile>
 
 
