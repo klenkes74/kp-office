@@ -13,7 +13,6 @@
   ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
-  ~
   -->
 
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -350,7 +349,19 @@
             <!-- UI and EARs -->
             <dependency>
                 <groupId>de.kaiserpfalz-edv.office</groupId>
-                <artifactId>kp-office-services-base-ui</artifactId>
+                <artifactId>kp-office-services-access-ui</artifactId>
+                <version>${project.version}</version>
+                <type>war</type>
+            </dependency>
+            <dependency>
+                <groupId>de.kaiserpfalz-edv.office</groupId>
+                <artifactId>kp-office-services-tenant-ui</artifactId>
+                <version>${project.version}</version>
+                <type>war</type>
+            </dependency>
+            <dependency>
+                <groupId>de.kaiserpfalz-edv.office</groupId>
+                <artifactId>kp-office-services-license-ui</artifactId>
                 <version>${project.version}</version>
                 <type>war</type>
             </dependency>
@@ -388,34 +399,6 @@
             </dependency>
 
 
-            <dependency>
-                <groupId>de.kaiserpfalz-edv.vaadin</groupId>
-                <artifactId>vaadin-tools-api</artifactId>
-                <version>1.0-SNAPSHOT</version>
-            </dependency>
-            <dependency>
-                <groupId>de.kaiserpfalz-edv.vaadin</groupId>
-                <artifactId>vaadin-tools-impl</artifactId>
-                <version>1.0-SNAPSHOT</version>
-                <exclusions>
-                    <exclusion>
-                        <groupId>org.apache.felix</groupId>
-                        <artifactId>org.apache.felix.scr.ds-annotations</artifactId>
-                    </exclusion>
-                    <exclusion>
-                        <groupId>org.ops4j.pax.cdi</groupId>
-                        <artifactId>pax-cdi-extension</artifactId>
-                    </exclusion>
-                    <exclusion>
-                        <groupId>org.ops4j.pax.cdi</groupId>
-                        <artifactId>pax-cdi-api</artifactId>
-                    </exclusion>
-                    <exclusion>
-                        <groupId>org.ops4j.pax.cdi</groupId>
-                        <artifactId>pax-cdi-extender</artifactId>
-                    </exclusion>
-                </exclusions>
-            </dependency>
 
 
             <!-- === OpenID Connect ================================================================================ -->

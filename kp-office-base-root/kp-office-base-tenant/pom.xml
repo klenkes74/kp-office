@@ -33,6 +33,7 @@
 
     <properties>
         <skip.jpa>false</skip.jpa>
+        <api>true</api>
     </properties>
 
     <dependencies>

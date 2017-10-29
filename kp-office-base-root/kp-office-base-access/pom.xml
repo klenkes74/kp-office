@@ -31,10 +31,6 @@
     <name>KP Office :: Base :: Access</name>
     <packaging>ejb</packaging>
 
-    <properties>
-        <skip.jpa>true</skip.jpa>
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>${project.groupId}</groupId>

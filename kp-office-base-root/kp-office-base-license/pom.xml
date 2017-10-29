@@ -31,6 +31,10 @@
     <name>KP Office :: Base :: License</name>
     <packaging>ejb</packaging>
 
+    <properties>
+        <api>true</api>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>${project.groupId}</groupId>
