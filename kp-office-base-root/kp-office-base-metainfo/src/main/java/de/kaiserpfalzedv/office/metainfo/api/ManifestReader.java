@@ -14,33 +14,27 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzedv.office.license.impl;
+package de.kaiserpfalzedv.office.metainfo.api;
 
-import java.sql.SQLException;
+import java.io.Serializable;
+import java.util.Optional;
 
-import javax.annotation.Resource;
-import javax.enterprise.context.ApplicationScoped;
-import javax.enterprise.inject.Produces;
-import javax.sql.DataSource;
-
-import de.kaiserpfalzedv.office.common.ejb.config.LiquibaseConfigurationProvider;
-import liquibase.integration.cdi.annotations.LiquibaseType;
+import javax.validation.constraints.NotNull;
 
 /**
+ * Reads entries from the MANIFEST.MF.
+ *
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
  * @version 1.0.0
- * @since 2017-08-17
+ * @since 2017-10-30
  */
-@ApplicationScoped
-public class LiquibaseConfiguration extends LiquibaseConfigurationProvider {
-    @Resource(lookup = "java:comp/env/jdbc/datasource")
-    private DataSource dataSource;
-
-    @Produces
-    @LiquibaseType
-    public DataSource createDataSource() throws SQLException {
-        return dataSource;
-    }
-
-
+public interface ManifestReader extends Serializable {
+    /**
+     * Reads the data for the given key.
+     *
+     * @param key The key to look up inside the manifest file.
+     *
+     * @return The found value or an empty {@link Optional<String>}.
+     */
+    Optional<String> read(@NotNull final String key);
 }

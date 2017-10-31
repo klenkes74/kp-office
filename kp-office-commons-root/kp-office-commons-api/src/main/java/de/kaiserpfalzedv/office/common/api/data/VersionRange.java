@@ -18,6 +18,7 @@ package de.kaiserpfalzedv.office.common.api.data;
 
 import java.io.Serializable;
 
+import com.github.zafarkhaja.semver.Version;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
@@ -29,7 +30,7 @@ import org.apache.commons.lang3.builder.ToStringStyle;
  * @since 2017-08-16
  */
 public class VersionRange implements Serializable {
-    private static final long serialVersionUID = 6863412960273069116L;
+    private static final long serialVersionUID = 9101347589879255344L;
 
     private Version from;
     private Version till;
@@ -42,11 +43,8 @@ public class VersionRange implements Serializable {
 
 
     public boolean isValid(final Version version) {
-        boolean lower = version.isNewerAs(from);
-        boolean upper = version.isOlderAs(till);
-
-        return version.isNewerAs(from) && version.isOlderAs(till);
-
+        return version.greaterThanOrEqualTo(from)
+                && version.lessThan(till);
     }
 
     @Override

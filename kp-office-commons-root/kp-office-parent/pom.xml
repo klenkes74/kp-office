@@ -98,6 +98,8 @@
                     <exclude>**/*.tgz</exclude>
                     <exclude>**/*.png</exclude>
                     <exclude>**/*.jpg</exclude>
+                    <exclude>**/*.gpg</exclude>
+                    <exclude>**/*.license</exclude>
                 </excludes>
             </resource>
             <resource>
@@ -110,6 +112,8 @@
                     <include>**/*.tgz</include>
                     <include>**/*.png</include>
                     <include>**/*.jpg</include>
+                    <include>**/*.gpg</include>
+                    <include>**/*.license</include>
                 </includes>
             </resource>
         </resources>
@@ -124,6 +128,8 @@
                     <exclude>**/*.tgz</exclude>
                     <exclude>**/*.png</exclude>
                     <exclude>**/*.jpg</exclude>
+                    <exclude>**/*.gpg</exclude>
+                    <exclude>**/*.license</exclude>
                 </excludes>
             </testResource>
             <testResource>
@@ -136,6 +142,8 @@
                     <include>**/*.tgz</include>
                     <include>**/*.png</include>
                     <include>**/*.jpg</include>
+                    <include>**/*.gpg</include>
+                    <include>**/*.license</include>
                 </includes>
             </testResource>
         </testResources>
@@ -178,7 +186,11 @@
                         <ejbVersion>3.2</ejbVersion>
                         <generateClient>true</generateClient>
                         <archive>
+                            <manifestEntries>
+                                <KPO-Version>${project.version}</KPO-Version>
+                            </manifestEntries>
                             <manifest>
+                                <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
                                 <addClasspath>true</addClasspath>
                                 <classpathPrefix>lib/</classpathPrefix>
                             </manifest>
@@ -197,6 +209,14 @@
                     <version>3.1.0</version>
 
                     <configuration>
+                        <archive>
+                            <manifestEntries>
+                                <KPO-Version>${project.version}</KPO-Version>
+                            </manifestEntries>
+                            <manifest>
+                                <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+                            </manifest>
+                        </archive>
                         <failOnMissingWebXml>false</failOnMissingWebXml>
                         <packagingExcludes>WEB-INF/classes/VAADIN/widgetsets/WEB-INF/**</packagingExcludes>
                     </configuration>
@@ -250,6 +270,15 @@
                         <applicationName>${application.name}</applicationName>
                         <displayName>${application.display-name}</displayName>
                         <description>${application.description}</description>
+
+                        <archive>
+                            <manifestEntries>
+                                <KPO-Version>${project.version}</KPO-Version>
+                            </manifestEntries>
+                            <manifest>
+                                <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+                            </manifest>
+                        </archive>
                     </configuration>
                 </plugin>
             </plugins>
@@ -456,6 +485,14 @@
                                     <goal>jar</goal>
                                 </goals>
                                 <configuration>
+                                    <archive>
+                                        <manifestEntries>
+                                            <KPO-Version>${project.version}</KPO-Version>
+                                        </manifestEntries>
+                                        <manifest>
+                                            <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+                                        </manifest>
+                                    </archive>
                                     <includes>
                                         <include>**/api/**</include>
                                     </includes>
@@ -523,6 +560,14 @@
                                         <goal>jar</goal>
                                     </goals>
                                     <configuration>
+                                        <archive>
+                                            <manifestEntries>
+                                                <KPO-Version>${project.version}</KPO-Version>
+                                            </manifestEntries>
+                                            <manifest>
+                                                <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+                                            </manifest>
+                                        </archive>
                                         <includes>
                                             <include>**/jpa/*</include>
                                         </includes>
@@ -849,12 +894,29 @@
 
 
         <profile>
-            <id>vaadin-addons</id>
+            <id>vaadin</id>
             <activation>
                 <file>
-                    <exists>src/main/webapp</exists>
+                    <exists>src/main/webapp/VAADIN</exists>
                 </file>
             </activation>
+
+            <build>
+                <plugins>
+                    <plugin>
+                        <artifactId>maven-war-plugin</artifactId>
+                    </plugin>
+
+                    <plugin>
+                        <groupId>com.vaadin</groupId>
+                        <artifactId>vaadin-maven-plugin</artifactId>
+                    </plugin>
+
+                    <plugin>
+                        <artifactId>maven-clean-plugin</artifactId>
+                    </plugin>
+                </plugins>
+            </build>
 
             <repositories>
                 <repository>
@@ -867,19 +929,6 @@
                         <enabled>false</enabled>
                     </snapshots>
                 </repository>
-            </repositories>
-        </profile>
-
-        <profile>
-            <!-- Vaadin pre-release repositories -->
-            <id>vaadin-prerelease</id>
-            <activation>
-                <file>
-                    <exists>src/main/webapp</exists>
-                </file>
-            </activation>
-
-            <repositories>
                 <repository>
                     <id>vaadin-prereleases</id>
                     <url>http://maven.vaadin.com/vaadin-prereleases</url>

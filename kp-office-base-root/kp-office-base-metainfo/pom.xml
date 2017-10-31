@@ -22,23 +22,33 @@
 
     <parent>
         <groupId>de.kaiserpfalz-edv.office</groupId>
-        <artifactId>kp-office-parent</artifactId>
+        <artifactId>kp-office-base-root</artifactId>
         <version>1.0.0-SNAPSHOT</version>
-        <relativePath>../kp-office-commons-root/kp-office-parent/pom.xml</relativePath>
+        <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>kp-office-base-root</artifactId>
-    <packaging>pom</packaging>
-    <name>KP Office :: Base</name>
+    <artifactId>kp-office-base-metainfo</artifactId>
+    <name>KP Office :: Base :: Metainfo</name>
+    <packaging>ejb</packaging>
 
-    <modules>
-        <module>kp-office-base-metainfo</module>
-        <module>kp-office-base-monitoring</module>
-        <module>kp-office-base-tenant</module>
-        <module>kp-office-base-license</module>
-        <module>kp-office-base-access</module>
-        <!--
-        <module>kp-office-base-tests</module>
-        -->
-    </modules>
+    <description>
+        This service provides inforamtion about the current installation and environment.
+    </description>
+
+    <dependencies>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>kp-office-commons-ejb</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.jcabi</groupId>
+            <artifactId>jcabi-manifests</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+        </dependency>
+    </dependencies>
 </project>

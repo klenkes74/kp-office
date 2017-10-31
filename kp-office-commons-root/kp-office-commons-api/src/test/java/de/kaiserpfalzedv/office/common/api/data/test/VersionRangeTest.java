@@ -16,7 +16,7 @@
 
 package de.kaiserpfalzedv.office.common.api.data.test;
 
-import de.kaiserpfalzedv.office.common.api.data.Version;
+import com.github.zafarkhaja.semver.Version;
 import de.kaiserpfalzedv.office.common.api.data.VersionRange;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -39,8 +39,8 @@ import static org.junit.Assert.assertTrue;
 public class VersionRangeTest {
     private static final Logger LOG = LoggerFactory.getLogger(VersionRangeTest.class);
 
-    private static final Version DEFAULT_FROM = new Version(2L, 0L, 1L);
-    private static final Version DEFAULT_TILL = new Version(8L, 0L, 0L);
+    private static final Version DEFAULT_FROM = Version.forIntegers(2, 0, 1);
+    private static final Version DEFAULT_TILL = Version.forIntegers(8, 0, 0);
 
     private VersionRange cut;
 
@@ -67,7 +67,7 @@ public class VersionRangeTest {
 
     @Test
     public void checkOlderVersion() {
-        Version other = new Version(1L, 0L, 0L, 0L, 1L);
+        Version other = Version.forIntegers(1, 0, 0);
 
         MDC.put("test", "older-version");
         LOG.debug("Checking older: {}", other);
@@ -80,7 +80,7 @@ public class VersionRangeTest {
 
     @Test
     public void checkVersionInRange() {
-        Version other = new Version(6L, 5L, 3L);
+        Version other = Version.forIntegers(6, 5, 3);
 
         MDC.put("test", "version-in-range");
         LOG.debug("Checking version in range: version={}, range={}", other, cut);
@@ -93,7 +93,7 @@ public class VersionRangeTest {
 
     @Test
     public void checkNewerVersion() {
-        Version other = new Version(10L, 5L, 3L);
+        Version other = Version.forIntegers(10, 5, 3);
 
         MDC.put("test", "newer-version");
         LOG.debug("Checking newer (in version): {}", other);
@@ -106,7 +106,7 @@ public class VersionRangeTest {
 
     @Test
     public void checkLowerBoundary() {
-        Version other = new Version(DEFAULT_FROM);
+        Version other = Version.valueOf(DEFAULT_FROM.toString());
 
         MDC.put("test", "lower-boundary");
         LOG.debug("Checking lower boundary: {}", other);
@@ -119,7 +119,7 @@ public class VersionRangeTest {
 
     @Test
     public void checkUpperBoundary() {
-        Version other = new Version(DEFAULT_TILL);
+        Version other = Version.valueOf(DEFAULT_TILL.toString());
 
         MDC.put("test", "upper-boundary");
         LOG.debug("Checking upper boundary: {}", other);

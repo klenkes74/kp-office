@@ -31,11 +31,6 @@
     <name>KP Office :: Modules :: GeoData</name>
     <packaging>ejb</packaging>
 
-    <properties>
-        <skip.jpa>false</skip.jpa>
-        <api>true</api>
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>${project.groupId}</groupId>

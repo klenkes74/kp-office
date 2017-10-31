@@ -16,12 +16,14 @@
 
 package de.kaiserpfalzedv.office.license.api;
 
+import java.io.Serializable;
+import java.time.Instant;
 import java.time.OffsetDateTime;
 import java.util.Set;
-import java.util.UUID;
 
+import com.github.zafarkhaja.semver.Version;
+import de.kaiserpfalzedv.office.common.api.data.Identifiable;
 import de.kaiserpfalzedv.office.common.api.data.ValidityDuration;
-import de.kaiserpfalzedv.office.common.api.data.Version;
 import de.kaiserpfalzedv.office.common.api.data.VersionRange;
 
 /**
@@ -31,12 +33,7 @@ import de.kaiserpfalzedv.office.common.api.data.VersionRange;
  * @version 1.0.0
  * @since 2017-08-15
  */
-public interface OfficeLicense {
-    /**
-     * @return The license id.
-     */
-    UUID getId();
-
+public interface OfficeLicense extends Identifiable, Serializable {
     /**
      * @return to whom the software has been licensed.
      */
@@ -86,6 +83,8 @@ public interface OfficeLicense {
      * @return TRUE, if the license is currently valid.
      */
     boolean isValidDuration();
+
+    boolean isValidDuration(Instant now);
 
     /**
      * @param version the version to be checked for this license.

@@ -25,6 +25,8 @@ import java.time.ZoneId;
 import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
 
+import javax.validation.constraints.NotNull;
+
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
@@ -36,14 +38,14 @@ import org.apache.commons.lang3.builder.ToStringStyle;
  * @since 2017-08-15
  */
 public class ValidityDuration implements Serializable {
-    private static final ZoneId UTC = ZoneId.of(ZoneOffset.UTC.getId());
+    public static final ZoneId UTC = ZoneId.of(ZoneOffset.UTC.getId());
 
     private OffsetDateTime start;
     private OffsetDateTime end;
 
     public ValidityDuration() {}
 
-    public ValidityDuration(final OffsetDateTime start, final OffsetDateTime end) {
+    public ValidityDuration(@NotNull final OffsetDateTime start, @NotNull final OffsetDateTime end) {
         this.start = start;
         this.end = end;
     }
