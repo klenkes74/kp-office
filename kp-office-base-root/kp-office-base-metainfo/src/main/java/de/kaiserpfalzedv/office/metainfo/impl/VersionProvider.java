@@ -16,6 +16,7 @@
 
 package de.kaiserpfalzedv.office.metainfo.impl;
 
+import java.io.Serializable;
 import java.util.Optional;
 
 import javax.annotation.PostConstruct;
@@ -30,32 +31,50 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
+ * This small tool provides the Software version to the system. In the current implementation it reads the
+ * value of "{@value #VERSION_KEY}" (defined in {@link #VERSION_KEY}) from the MANIFEST.MF file by using the service
+ * {@link ManifestReader}.
+ *
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
  * @version 1.0.0
  * @since 2017-10-30
  */
 @Singleton
-public class VersionProvider {
+public class VersionProvider implements Serializable {
+    private static final long serialVersionUID = -1078005772736667443L;
     private static final Logger LOG = LoggerFactory.getLogger(VersionProvider.class);
 
-    private Version version;
+    /**
+     * Default key used to read the version from the MANIFEST.MF.
+     */
+    private static final String VERSION_KEY = "KPO-Version";
 
+
+    /**
+     * The service to read the manifest files with.
+     */
     private ManifestReader manifestReader;
+
+    /**
+     * The version read from the MANFEST.MF. The default MANIFEST-entry to read is
+     * "{@value #VERSION_KEY}" (defined in {@link #VERSION_KEY}).
+     */
+    private Version version;
 
 
     @Inject
-    VersionProvider(@NotNull final ManifestReader manifestReader) {
+    public VersionProvider(@NotNull final ManifestReader manifestReader) {
         this.manifestReader = manifestReader;
     }
 
     @PostConstruct
     public void init() {
-        Optional<String> versionString = manifestReader.read("Implementation-Version");
+        Optional<String> versionString = manifestReader.read(VERSION_KEY);
 
         if (versionString.isPresent()) {
             version = Version.valueOf(versionString.get());
         } else {
-            LOG.error("Could not load version of software!");
+            LOG.error("Could not load version of software (using key: '{}')!", VERSION_KEY);
         }
     }
 
