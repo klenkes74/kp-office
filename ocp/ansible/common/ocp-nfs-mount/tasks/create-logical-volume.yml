@@ -1,0 +1,55 @@
+---
+- name: Check lv already existing
+  shell: "lvdisplay /dev/{{ item.vg | default(nfs_default_vg) }}/{{ item.lv}}"
+  with_items: "{{ nfs_volumes }}"
+  register: lv_existing
+  ignore_errors: yes
+  changed_when: '"Failed to find logical volume " in lv_existing.stderr'
+  when: "'nfs-server' in group_names and item.lv is defined"
+  loop_control:
+    label: "{{ item.name }}"
+
+- name: Check vg already existing
+  shell: "vgdisplay {{ item.item.vg | default(nfs_default_vg) }}"
+  with_items: "{{ lv_existing.results }}"
+  register: vg_existing
+  when: "'nfs-server' in group_names and item.item.lv is defined and item.rc is defined"
+  changed_when: '"Failed to find volume group" in vg_existing.stderr'
+  loop_control:
+    label: "{{ item.item.name }}"
+
+- name: Create lv
+  lvol:
+    vg: "{{ item.item.vg | default(nfs_default_vg) }}"
+    lv: "{{ item.item.lv }}"
+    size: "{{ item.item.size }}"
+    force: no
+    active: yes
+    state: present
+  with_items: "{{ lv_existing.results }}"
+  when: "'nfs-server' in group_names and item.item.lv is defined and item.rc is defined"
+  loop_control:
+    label: "{{ item.item.name }}"
+
+- name: Create filesystem on logical volume
+  filesystem:
+    dev: "/dev/{{ item.vg | default(nfs_default_vg) }}/{{ item.lv }}"
+    fstype: xfs
+  with_items: "{{ nfs_volumes }}"
+  when: "'nfs-server' in group_names and item.lv is defined"
+  loop_control:
+    label: "{{ item.name }}"
+
+- name: Mount lv to exported NFS share
+  mount:
+    name: "{{ item.base | default( nfs_default_base ) }}/{{ item.name }}"
+    src: "/dev/{{ item.vg | default(nfs_default_vg) }}/{{ item.lv }}"
+    fstype: xfs
+    opts: defaults
+    state: mounted
+    passno: 0
+    dump: 0
+  with_items: "{{ nfs_volumes }}"
+  when: "'nfs-server' in group_names and item.lv is defined"
+  loop_control:
+    label: "{{ item.name }}"

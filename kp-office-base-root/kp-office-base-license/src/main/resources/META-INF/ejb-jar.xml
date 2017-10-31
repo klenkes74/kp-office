@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright 2017 Kaiserpfalz EDV-Service, Roland T. Lichti
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<ejb-jar xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         version="3.2"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/ejb-jar_3_2.xsd">
+    <module-name>office-licenses</module-name>
+    <description>${project.description}</description>
+    <display-name>${project.name}</display-name>
+
+    <enterprise-beans>
+        <session>
+            <ejb-name>LiquibaseConfigurationProvider</ejb-name>
+            <ejb-class>de.kaiserpfalzedv.office.common.ejb.config.LiquibaseConfigurationProvider</ejb-class>
+            <session-type>Singleton</session-type>
+            <init-on-startup>true</init-on-startup>
+
+            <resource-env-ref>
+                <resource-env-ref-name>jdbc/datasource</resource-env-ref-name>
+                <resource-env-ref-type>javax.sql.DataSource</resource-env-ref-type>
+                <lookup-name>java:jboss/datasources/ExampleDS</lookup-name>
+            </resource-env-ref>
+        </session>
+    </enterprise-beans>
+</ejb-jar>

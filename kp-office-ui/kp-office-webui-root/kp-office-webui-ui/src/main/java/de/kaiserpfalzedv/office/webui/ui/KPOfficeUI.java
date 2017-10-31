@@ -1,5 +1,5 @@
-/*
- * Copyright 2016 Kaiserpfalz EDV-Service, Roland T. Lichti
+    /*
+ * Copyright 2017 Kaiserpfalz EDV-Service, Roland T. Lichti
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -44,7 +44,6 @@ import static org.apache.commons.lang3.StringUtils.isNotBlank;
 @Viewport("user-scalable=no,initial-scale=1.0")
 @Push
 @Theme("mytheme")
-@Widgetset("de.kaiserpfalzedv.office.OfficeWidgetset")
 @CDIUI("")
 public class KPOfficeUI extends UI {
     @Inject

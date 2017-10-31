@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: gogs
+{% if ocp_project_label is defined %}
+  labels:
+    project: {{ ocp_project_label }}
+{% endif %}

@@ -1,0 +1,9 @@
+---
+- name: Create Project Template
+  template: src=project.yml dest=/tmp/ocp-builder-project.yml
+
+- name: Create Project
+  shell: oc create -f /tmp/ocp-builder-project.yml
+
+- name: Remove Project Template
+  file: path=/tmp/ocp-builder-project.yml state=absent

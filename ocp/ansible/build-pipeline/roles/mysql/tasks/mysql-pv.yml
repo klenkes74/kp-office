@@ -1,0 +1,14 @@
+---
+- name: Create mysql persistent volume claim configuration
+  template:
+    src: mysql-pv.yml
+    dest: /tmp/mysql-pv.yml
+    force: yes
+
+- name: Create mysql persistent volume claim template
+  shell: oc create -f /tmp/mysql-pv.yml
+
+- name: Remove mysql persistent volume claim configuration
+  file:
+    path: /tmp/mysql-pv.yml
+    state: absent

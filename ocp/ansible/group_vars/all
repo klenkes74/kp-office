@@ -1,0 +1,4 @@
+---
+ansible_ssh_user: cloud-user
+become_user: root
+become: yes

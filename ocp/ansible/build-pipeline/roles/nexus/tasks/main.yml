@@ -1,0 +1,18 @@
+---
+- name: Switch to builder project
+  shell: oc project {{ ocp_project_name }}
+
+- name: Create nexus app
+  shell: oc new-app sonatype/nexus
+
+- name: Expose nexus service
+  shell: oc expose svc/nexus
+
+- name: Setting liveness probe
+  shell: oc set probe dc/nexus --liveness --failure-threshold 3 --initial-delay-seconds 30 -- echo ok
+
+- name: Setting readyness probe
+  shell: oc set probe dc/nexus --readiness --failure-threshold 3 --initial-delay-seconds 30 --get-url=http://:8081/nexus/content/groups/public
+
+- name: Add persistence to nexus
+  shell: oc volumes dc/nexus --add --name 'nexus-volume-1' --type 'pvc' --mount-path '/sonatype-work/' --claim-name 'nexus-pv' --claim-size '1G' --selector 'pv=build-pipeline-nexus' --overwrite

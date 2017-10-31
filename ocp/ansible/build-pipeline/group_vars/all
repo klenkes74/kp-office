@@ -1,0 +1,50 @@
+---
+nfs_volumes:
+  - name: 'builder-jenkins'
+    lv: 'builder-jenkins'
+    size: 5G
+    group: 'ocpbp'
+    access_mode:
+      - ReadWriteOnce
+    claimRef:
+      claimName: jenkins-data
+  - name: 'builder-gogs-data'
+    lv: 'builder-gogs-data'
+    size: 5G
+    group: 'ocpbp'
+    access_mode:
+      - ReadWriteOnce
+    claimRef:
+      claimName: gogs-data
+  - name: 'builder-gogs-mysql'
+    lv: 'builder-gogs-mysql'
+    size: 1G
+    group: 'ocpbp'
+    access_mode:
+      - ReadWriteOnce
+    claimRef:
+      claimName: gogs-mysql
+  - name: 'builder-nexus'
+    lv: 'builder-nexus'
+    size: 50G
+    group: 'ocpbp'
+    access_mode:
+      - ReadWriteMany
+    claimRef:
+      claimName: nexus-data
+  - name: 'builder-postgres'
+    lv: 'builder-postgres'
+    size: 50G
+    group: 'ocpbp'
+    access_mode:
+      - ReadWriteOnce
+    claimRef:
+      claimName: postgres-data
+  - name: 'builder-mysql'
+    lv: 'builder-mysql'
+    size: 50G
+    group: 'ocpbp'
+    access_mode:
+      - ReadWriteOnce
+    claimRef:
+      claimName: mysql-data

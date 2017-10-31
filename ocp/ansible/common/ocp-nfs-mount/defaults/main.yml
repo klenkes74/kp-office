@@ -1,0 +1,18 @@
+---
+nfs_default_base: '/srv/nfs'
+nfs_default_vg: 'data'
+nfs_default_owner: 'nfsnobody'
+nfs_default_group: 'nfsnobody'
+nfs_default_mode: 'u=,g=rwx,o='
+nfs_default_export_mode: rw,root_squash
+
+# That's a tech review. If you want it, set it in [nfs-server:vars] section of the hosts inventory file.
+#nfs_default_mount_options: rw,nfsvers=4,noexec
+nfs_default_size: 1G
+nfs_default_reclaim_policy: Retain
+nfs_default_access_mode:
+  - ReadWriteOnce
+  - ReadOnlyMany
+  - ReadWriteMany
+# There is no default to storage class because the admin may have chosen to not use this feature.
+#nfs_default_storage_class: standard

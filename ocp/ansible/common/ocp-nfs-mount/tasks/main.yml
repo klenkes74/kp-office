@@ -1,0 +1,4 @@
+---
+- include: create-logical-volume.yml
+- include: export-nfs-share.yml
+- include: create-pv.yml

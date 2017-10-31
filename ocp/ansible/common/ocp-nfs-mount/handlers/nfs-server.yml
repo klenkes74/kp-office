@@ -1,0 +1,7 @@
+---
+- name: restart nfs-server
+  service:
+    name: "{{ item }}"
+    state: restarted
+  with_items:
+    - nfs-server

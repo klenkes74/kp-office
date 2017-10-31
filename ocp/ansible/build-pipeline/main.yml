@@ -1,0 +1,38 @@
+---
+- name: Prepare NFS shares
+  hosts: nfs-server
+  gather_facts: no
+  become: true
+  become_user: root
+  tags:
+  - lvm
+  - nfs
+
+  roles:
+    - ocp-nfs-mount
+
+- name: Create a build OCP pipeline project
+  hosts: controlhost
+  gather_facts: no
+  become: no
+  tags:
+    - pv
+    - project
+
+  roles:
+    - ocp-nfs-mount
+    - ocp-project
+    - mysql
+
+- name: Create GOGS server
+    - mysql
+    - git
+#    - jenkins
+#    - nexus
+
+#  - postgresql
+#  - nexus
+#  - jenkins
+#  - sonarcube
+#  - mediawiki
+#  - wordpress

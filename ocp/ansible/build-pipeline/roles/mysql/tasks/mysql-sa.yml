@@ -1,0 +1,13 @@
+---
+- name: Create mysql system account creation template
+  template:
+    src: mysql-sa.yml
+    dest: /tmp/mysql-sa.yml
+
+- name: Execute mysql system account creation template
+  shell: oc create -f /tmp/mysql-sa.yml
+
+- name: Remove mysql system account creation template
+  file:
+    path: /tmp/mysql-sa.yml
+    state: absent

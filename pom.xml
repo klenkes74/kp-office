@@ -28,13 +28,9 @@
     <name>KP Office</name>
 
     <modules>
-        <module>kp-office-bom</module>
-        <module>kp-office-parents-root</module>
-        <module>kp-office-commons</module>
-        <module>kp-office-base</module>
-        <module>kp-office-modules</module>
-        <!--
-        <module>kp-office-ui</module>
-        -->
+        <module>kp-office-commons-root</module>
+        <module>kp-office-base-root</module>
+        <module>kp-office-modules-root</module>
+        <module>kp-office-services-root</module>
     </modules>
 </project>

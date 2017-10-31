@@ -1,0 +1,20 @@
+---
+- name: Switch to builder project
+  shell: oc project {{ ocp_project_name }}
+
+- include: gogs-sa.yml
+
+- name: Add priviledged rights to system account
+  shell: oc adm policy add-scc-to-user privileged system:serviceaccount:{{ ocp_project_name }}:gogs
+
+- include: gogs-pv.yml
+
+- include: gogs-template.yml
+
+- name: Create GOGS deployment with defined domain
+  shell: oc new-app --template=gogs-template -p APPLICATION_DOMAIN={{ git_server_domain }}
+  when: git_server_domain is defined
+
+- name: Create GOGS deployment
+  shell: oc new-app --template=gogs-template
+  when: git_server_domain is not defined

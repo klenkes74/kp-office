@@ -1,0 +1,68 @@
+---
+- name: Check volume already existing
+  stat:
+    path: "{{ item.base | default(nfs_default_base) }}/{{ item.name }}"
+  with_items: "{{ nfs_volumes }}"
+  register: nfs_volumes_pre_check
+  when: "'nfs-server' in group_names"
+  loop_control:
+    label: "{{ item.name }}"
+
+- name: Create groups for NFS exports
+  group:
+    name: "{{ item.item.group | default(nfs_default_group) }}"
+    state: present
+  when: "'nfs-server' in group_names"
+  with_items: "{{ nfs_volumes_pre_check.results }}"
+  register: groupinfo
+  loop_control:
+    label: "{{ item.item.name }}"
+
+- name: Saving the groupid of the group
+  set_fact:
+    project_nfs_groupId:
+      - "{{ groupinfo.results.0.gid }}"
+      - "{{ groupinfo.results.1.gid }}"
+      - "{{ groupinfo.results.2.gid }}"
+      - "{{ groupinfo.results.3.gid }}"
+      - "{{ groupinfo.results.4.gid }}"
+      - "{{ groupinfo.results.5.gid }}"
+  when: "'nfs-server' in group_names"
+
+- name: Copying groupid of the group to the control host
+  set_fact:
+    project_nfs_groupId: "{{ hostvars[groups['nfs-server'][0]]['project_nfs_groupId'] }}"
+  when: "'controlhost' in group_names"
+
+- set_fact:
+    jenkins_nfs_gid: "{{ project_nfs_groupId.0 }}"
+    gogs_data_nfs_gid: "{{ project_nfs_groupId.1 }}"
+    gogs_mysql_nfs_gid: "{{ project_nfs_groupId.2 }}"
+    nexus_nfs_gid: "{{ project_nfs_groupId.3 }}"
+    postgres_nfs_gid: "{{ project_nfs_groupId.4 }}"
+    mysql_nfs_gid: "{{ project_nfs_groupId.5 }}"
+  when: "'controlhost' in group_names"
+
+- name: Create volumes
+  file:
+    path: "{{ item.item.base | default(nfs_default_base) }}/{{ item.item.name }}"
+    state: directory
+    owner: "{{ item.item.owner | default(nfs_default_owner) }}"
+    group: "{{ item.item.group | default(nfs_default_group) }}"
+    mode: "{{ item.item.mode   | default(nfs_default_mode) }}"
+  when: "'nfs-server' in group_names"
+  with_items: "{{ nfs_volumes_pre_check.results }}"
+  loop_control:
+    label: "{{ item.item.name }}"
+
+- name: Export volumes
+  lineinfile:
+    dest: /etc/exports
+    line: "{{ item.item.base | default(nfs_default_base) }}/{{ item.item.name }} *({{ item.item.nfs_export_options | default(nfs_default_export_mode) }})"
+    regexp: "^{{ item.item.base | default(nfs_default_base) }}/{{ item.item.name }}"
+  when: "'nfs-server' in group_names"
+  with_items: "{{ nfs_volumes_pre_check.results }}"
+  notify:
+    - restart nfs-server
+  loop_control:
+    label: "{{ item.item.name }}"

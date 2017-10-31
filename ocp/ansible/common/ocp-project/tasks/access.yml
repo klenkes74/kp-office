@@ -1,0 +1,22 @@
+---
+- name: Define list of groups
+  set_fact:
+    ocp_groups:
+      - "{{ ocp_project_admin_group }}"
+      - "{{ ocp_project_edit_group }}"
+      - "{{ ocp_project_view_group }}"
+
+- name: Check for groups
+  shell: oc get group {{ item }}
+  register: existing_groups
+  with_items: "{{ ocp_groups }}"
+
+- name: Check for labels
+  shell: oc get group -l "project={{ ocp_project_label }}"
+  register: existing_labels
+  ignore_errors: yes
+
+- name: Label all groups with project label
+  shell: oc label group/{{ item }} project={{ ocp_project_label }}
+  with_items: "{{ ocp_groups }}"
+  when: existing_labels.stdout.find("{{ item }}") == -1

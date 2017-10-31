@@ -1,0 +1,145 @@
+apiVersion: v1
+kind: Template
+metadata:
+  name: gogs-template
+  annotations:
+    description: "Deploy a git server in minutes: gogs!"
+    tags: quickstart,instant-app,git,gogs,database
+  labels:
+    template: gogs-template
+    app: gogs
+{% if ocp_project_label is defined %}
+    project: {{ ocp_project_label }}
+{% endif %}
+objects:
+- kind: Route
+  apiVersion: v1
+  metadata:
+    labels:
+      template: gogs-template
+      app: gogs
+{% if ocp_project_label is defined %}
+      project: {{ ocp_project_label }}
+{% endif %}
+    name: gogs
+  spec:
+    host: "${APPLICATION_DOMAIN}"
+    port:
+      targetPort: 3000
+    to:
+      kind: Service
+      name: gogs
+- kind: Service
+  apiVersion: v1
+  metadata:
+    labels:
+      template: gogs-template
+      app: gogs
+{% if ocp_project_label is defined %}
+      project: {{ ocp_project_label }}
+{% endif %}
+    name: gogs
+  spec:
+    ports:
+    - name: 3000-tcp
+      port: 3000
+      protocol: TCP
+      targetPort: 3000
+    selector:
+      app: gogs
+      deploymentconfig: gogs
+    sessionAffinity: None
+    type: ClusterIP
+- kind: DeploymentConfig
+  apiVersion: v1
+  metadata: 
+    name: gogs
+    annotations: 
+      description: "Defines how to deploy gogs and the database"
+    labels:
+      app: gogs
+      template: gogs-template
+{% if ocp_project_label is defined %}
+      project: {{ ocp_project_label }}
+{% endif %}
+  spec:
+    strategy: 
+      type: "Recreate"
+    triggers: 
+      - type: "ConfigChange"
+    replicas: 1
+    selector: 
+      name: gogs
+    template: 
+      metadata: 
+        name: gogs
+        labels:
+          template: gogs-template
+          app: gogs
+          name: gogs
+{% if ocp_project_label is defined %}
+          project: {{ ocp_project_label }}
+{% endif %}
+      spec:
+        volumes: 
+        - name: "gogs-volume"
+          persistentVolumeClaim:
+            claimName: gogs-data
+        containers:
+        - image: gogs/gogs
+          imagePullPolicy: IfNotPresent
+          name: gogs
+          ports:
+          - containerPort: 3000
+            protocol: TCP
+          resources:
+            limits:
+              cpu: "1000m"
+              memory: 2G
+            requests:
+              cpu: "500m"
+              memory: 768M
+          terminationMessagePath: /dev/termination-log
+          volumeMounts:
+          - mountPath: /data
+            name: gogs-volume
+          securityContext:
+            privileged: true
+        serviceAccount: gogs
+        serviceAccountName: gogs
+        securityContext:
+          supplementalGroups: [{{ gogs_mysql_nfs_gid }}]
+parameters:
+- name: "APPLICATION_DOMAIN"
+  displayName: "Application Hostname"
+  description: "The exposed hostname that will route to the Gogs service, if left blank a value will be defaulted."
+  value: "gogs"
+- name: "DATABASE_NAME"
+  displayName: "Database Name"
+  required: true
+  value: "default"
+- name: "DATABASE_USER"
+  displayName: "Database User"
+  required: true
+  value: "gogs"
+- name: "DATABASE_PASSWORD"
+  displayName: "Database Password"
+  generate: "expression"
+  from: "[a-zA-Z0-9]{16}"
+- name: "DATABASE_NFS_GID"
+  displayName: "Database NFS Mount GID"
+  required: true
+  value: "{{ gogs_mysql_nfs_gid }}"
+- name: "DATA_NFS_GID"
+  displayName: "Data NFS Mount GID"
+  required: true
+  value: "{{ gogs_data_nfs_gid }}"
+- name: "MEMORY_MYSQL_LIMIT"
+  displayName: "Memory Limit (MySQL)"
+  description: "Maximum amount of memory the MySQL container can use."
+  required: true
+  value: "512Mi"
+- name: "DATABASE_SERVICE_NAME"
+  displayName: "Database Service Name"
+  required: true
+  value: "mysql"

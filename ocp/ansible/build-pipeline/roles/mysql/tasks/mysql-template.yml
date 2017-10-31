@@ -1,0 +1,14 @@
+---
+- name: Create mysql deployment configuration
+  template:
+    src: mysql-template.yml
+    dest: /tmp/mysql-template.yml
+    force: yes
+
+- name: Create mysql deployment template
+  shell: oc create -f /tmp/mysql-template.yml
+
+- name: Remove mysql deployment configuration
+  file:
+    path: /tmp/mysql-template.yml
+    state: absent

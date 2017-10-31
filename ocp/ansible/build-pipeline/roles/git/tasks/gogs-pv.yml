@@ -1,0 +1,14 @@
+---
+- name: Create GOGS persistent volume claim configuration
+  template:
+    src: gogs-pv.yml
+    dest: /tmp/gogs-pv.yml
+    force: yes
+
+- name: Create GOGS persistent volume claim template
+  shell: oc create -f /tmp/gogs-pv.yml
+
+- name: Remove GOGS persistent volume claim configuration
+  file:
+    path: /tmp/gogs-pv.yml
+    state: absent
