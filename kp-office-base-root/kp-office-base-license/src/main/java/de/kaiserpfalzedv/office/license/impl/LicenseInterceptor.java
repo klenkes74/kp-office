@@ -18,15 +18,26 @@ package de.kaiserpfalzedv.office.license.impl;
 
 import java.lang.reflect.Method;
 
+import javax.inject.Inject;
 import javax.interceptor.AroundInvoke;
 import javax.interceptor.Interceptor;
 import javax.interceptor.InvocationContext;
+import javax.validation.constraints.NotNull;
 
+import de.kaiserpfalzedv.office.common.api.Logging;
+import de.kaiserpfalzedv.office.license.api.LicenseService;
 import de.kaiserpfalzedv.office.license.api.Licensed;
+import de.kaiserpfalzedv.office.license.api.NotLicensedException;
+import de.kaiserpfalzedv.office.license.api.OfficeLicense;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
+ * The licensing interceptor. It reads the license from the injected {@link LicenseService} and then checks if the
+ * feature specified by {@link Licensed} is really licensed.
+ *
+ * If the feature is not licensed, then an {@link de.kaiserpfalzedv.office.license.api.NotLicensedException} is thrown. We need an unchecked
+ *
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
  * @version 1.0.0
  * @since 2017-08-17
@@ -36,25 +47,35 @@ import org.slf4j.LoggerFactory;
 public class LicenseInterceptor {
     private static final Logger LOG = LoggerFactory.getLogger(LicenseInterceptor.class);
 
+    private OfficeLicense license;
+
+
+    @Inject
+    public LicenseInterceptor(@NotNull final LicenseService licenseService) {
+        license = licenseService.getLicense();
+    }
+
 
     @AroundInvoke
     public Object intercept(final InvocationContext ctx) throws Exception {
         try {
+            checkLicense(ctx);
+            
             return ctx.proceed();
         } finally {
-            LOG.info("Intercepted call to: method={}, license={}", getFullMethodName(ctx), getNeededLicense(ctx));
+            if (LOG.isDebugEnabled()) {
+                LOG.debug("Intercepted call to: method={}, feature={}", getFullMethodName(ctx), getFeatureFromAnnotation(ctx));
+            }
         }
     }
 
-    private String getFullMethodName(final InvocationContext ctx) {
-        return new StringBuilder()
-                .append(ctx.getMethod().getDeclaringClass().getCanonicalName())
-                .append(".")
-                .append(ctx.getMethod().getName())
-                .toString();
+
+    private void checkLicense(final InvocationContext ctx) {
+        checkAvailableLicense();
+        checkLicensedFeature(ctx);
     }
 
-    private String getNeededLicense(final InvocationContext ctx) {
+    private String getFeatureFromAnnotation(final InvocationContext ctx) {
         Method method = ctx.getMethod();
         Licensed result = method.getAnnotation(Licensed.class);
 
@@ -65,11 +86,34 @@ public class LicenseInterceptor {
         }
 
         if (LOG.isDebugEnabled()) {
-            LOG.debug("Found Annotation: {}={}", result.getClass().getSimpleName(), result.value());
+            LOG.debug("Found license Annotation: {}={}", result.getClass().getSimpleName(), result.value());
         }
 
         return result.value();
     }
 
+    private void checkAvailableLicense() {
+        if (license == null) {
+            throw new IllegalStateException("No license service running. Can't check the license");
+        }
+    }
 
+
+    private String getFullMethodName(final InvocationContext ctx) {
+        return new StringBuilder()
+                .append(ctx.getMethod().getDeclaringClass().getCanonicalName())
+                .append(".")
+                .append(ctx.getMethod().getName())
+                .toString();
+    }
+
+    private void checkLicensedFeature(InvocationContext ctx) {
+        String feature = getFeatureFromAnnotation(ctx);
+        if (!license.isLicensed(feature)) {
+            Logging.OPLOG.error("Feature not covered by license: license={}, feature={}, coveredFeatures={}",
+                                license.getId(), feature, license.getOptions()
+            );
+            throw new NotLicensedException(license, feature);
+        }
+    }
 }

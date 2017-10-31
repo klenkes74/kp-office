@@ -25,6 +25,9 @@ import com.github.zafarkhaja.semver.Version;
 import de.kaiserpfalzedv.office.common.api.data.Identifiable;
 import de.kaiserpfalzedv.office.common.api.data.ValidityDuration;
 import de.kaiserpfalzedv.office.common.api.data.VersionRange;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 /**
  * The logical view on a license.
@@ -92,4 +95,37 @@ public interface OfficeLicense extends Identifiable, Serializable {
      * @return TRUE, if the given version is licensed.
      */
     boolean isValidVersion(Version version);
+
+
+    default boolean defaultEquals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (obj == this) {
+            return true;
+        }
+        if (!OfficeLicense.class.isAssignableFrom(obj.getClass())) {
+            return false;
+        }
+        OfficeLicense rhs = (OfficeLicense) obj;
+        return new EqualsBuilder()
+                .append(getId(), rhs.getId())
+                .isEquals();
+    }
+
+    default int defaultHashCode() {
+        return new HashCodeBuilder()
+                .append(getId())
+                .toHashCode();
+    }
+
+
+    default String defaultToString() {
+        return new ToStringBuilder(this)
+                .append("id", getId())
+                .append("licensee", getLicensee())
+                .append("versions", getValidVersions())
+                .append("duration", getDuration())
+                .toString();
+    }
 }

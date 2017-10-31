@@ -17,11 +17,15 @@
 package de.kaiserpfalzedv.office.license.api;
 
 /**
+ * Retrieves the license of the software.
+ * 
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
  * @version 1.0.0
  * @since 2017-10-30
  */
 public interface LicenseService {
+    /**
+     * @return The license of this software.
+     */
     OfficeLicense getLicense();
-
 }

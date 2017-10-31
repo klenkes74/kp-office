@@ -14,20 +14,21 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzedv.office.license.impl;
+package de.kaiserpfalzedv.office.license.api;
 
 import java.time.Instant;
 import java.time.OffsetDateTime;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
 
+import javax.validation.constraints.NotNull;
+
 import com.github.zafarkhaja.semver.Version;
-import com.verhas.licensor.License;
 import de.kaiserpfalzedv.office.common.api.data.ValidityDuration;
 import de.kaiserpfalzedv.office.common.api.data.VersionRange;
-import de.kaiserpfalzedv.office.license.api.OfficeLicense;
 
 /**
  * Implementation of the OfficeLicense on basis of the License3j library.
@@ -36,43 +37,76 @@ import de.kaiserpfalzedv.office.license.api.OfficeLicense;
  * @version 1.0.0
  * @since 2017-10-30
  */
-public class OfficeLicenseImpl implements OfficeLicense {
+public class OfficeLicenseTO implements OfficeLicense {
 
     /**
-     * The base license.
+     * The licensed features.
      */
-    private License license;
-
+    private final HashSet<String> features = new HashSet<>();
+    /**
+     * The id of the license.
+     */
+    private UUID id;
+    /**
+     * The licensee granted this license.
+     */
+    private String licensee;
+    /**
+     * The issuer of the license.
+     */
+    private String issuer;
+    /**
+     * Creation date of the license.
+     */
+    private OffsetDateTime created;
     /**
      * The duration of validity for this license.
      */
     private ValidityDuration duration;
-
     /**
      * The versions this license is valid for.
      */
     private VersionRange range;
 
 
-    OfficeLicenseImpl(final License license, final ValidityDuration duration, final VersionRange versions) {
-        this.license = license;
+    OfficeLicenseTO(
+            @NotNull final UUID id,
+            @NotNull final String licensee,
+            @NotNull final String issuer,
+            @NotNull final OffsetDateTime created,
+            @NotNull final ValidityDuration duration,
+            @NotNull final VersionRange versions,
+            @NotNull final Collection<String> features
+    ) {
+        this.id = id;
+        this.licensee = licensee;
+        this.issuer = issuer;
+        this.created = created;
         this.duration = duration;
         this.range = versions;
+
+        this.features.addAll(features);
     }
+
+    /**
+     * @deprecated Only for JAXB, Json, ...
+     */
+    @Deprecated
+    public OfficeLicenseTO() {}
 
     @Override
     public String getLicensee() {
-        return license.getFeature("licensee");
+        return licensee;
     }
 
     @Override
     public String getLicensor() {
-        return license.getFeature("issuer");
+        return issuer;
     }
 
     @Override
     public OffsetDateTime getCreated() {
-        return OffsetDateTime.parse(license.getFeature("created"));
+        return created;
     }
 
     @Override
@@ -87,17 +121,12 @@ public class OfficeLicenseImpl implements OfficeLicense {
 
     @Override
     public Set<String> getOptions() {
-        HashSet<String> result = new HashSet<>();
-
-        String features = license.getFeature("features");
-        Collections.addAll(result, features.split(","));
-
-        return result;
+        return Collections.unmodifiableSet(features);
     }
 
     @Override
     public boolean isLicensed(String option) {
-        return license.getFeature(option) == "true";
+        return features.contains(option);
     }
 
     @Override
@@ -122,9 +151,8 @@ public class OfficeLicenseImpl implements OfficeLicense {
 
     @Override
     public UUID getId() {
-        return UUID.fromString(license.getFeature("id"));
+        return id;
     }
-
 
     @Override
     public int hashCode() {

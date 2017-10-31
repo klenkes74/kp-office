@@ -14,13 +14,26 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzedv.office.license.api;
+package de.kaiserpfalzedv.office.common.api;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
+ * The two default loggers. No reason to have more than one instance of these two loggers.
+ * 
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
  * @version 1.0.0
- * @since 2017-08-16
+ * @since 2017-10-31
  */
-public interface LicenseValidator {
-    boolean validate(OfficeLicense license);
+public class Logging {
+    /**
+     * The operations logger.
+     */
+    public static final Logger OPLOG = LoggerFactory.getLogger("OPERATIONS");
+
+    /**
+     * The business logger.
+     */
+    public static final Logger BUSLOG = LoggerFactory.getLogger("BUSINESS");
 }

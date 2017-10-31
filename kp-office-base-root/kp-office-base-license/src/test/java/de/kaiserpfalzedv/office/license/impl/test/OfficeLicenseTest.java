@@ -50,7 +50,7 @@ public class OfficeLicenseTest {
 
     @BeforeClass
     public static void setUpMDC() {
-        MDC.put("test-class", OfficeLicenseTest.class.getSimpleName());
+        MDC.put("test-class", "office-license");
     }
 
     @AfterClass
