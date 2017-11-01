@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Kaiserpfalz EDV-Service, Roland T. Lichti
+ * Copyright 2017 Kaiserpfalz EDV-Service, Roland T. Lichti
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,12 +14,7 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzedv.office.webui.ui.login;
-
-import javax.annotation.PostConstruct;
-import javax.annotation.security.PermitAll;
-import javax.inject.Inject;
-import javax.persistence.PreRemove;
+package de.kaiserpfalzedv.commons.webui.ui.login;
 
 import com.vaadin.cdi.CDIView;
 import com.vaadin.cdi.ViewScoped;
@@ -27,25 +22,19 @@ import com.vaadin.event.ShortcutAction;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.shared.ui.label.ContentMode;
-import com.vaadin.ui.Alignment;
-import com.vaadin.ui.Button;
-import com.vaadin.ui.CssLayout;
-import com.vaadin.ui.FormLayout;
-import com.vaadin.ui.Label;
-import com.vaadin.ui.TextField;
-import com.vaadin.ui.VerticalLayout;
+import com.vaadin.ui.*;
 import com.vaadin.ui.themes.ValoTheme;
-import de.kaiserpfalzedv.office.webui.ui.SerializableEventBus;
+import de.kaiserpfalzedv.commons.webui.ui.SerializableEventBus;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.vaadin.addon.cdimvp.AbstractMVPView;
 import org.vaadin.addon.cdiproperties.TextBundle;
-import org.vaadin.addon.cdiproperties.annotation.ButtonProperties;
-import org.vaadin.addon.cdiproperties.annotation.CssLayoutProperties;
-import org.vaadin.addon.cdiproperties.annotation.FormLayoutProperties;
-import org.vaadin.addon.cdiproperties.annotation.LabelProperties;
-import org.vaadin.addon.cdiproperties.annotation.TextFieldProperties;
-import org.vaadin.addon.cdiproperties.annotation.VerticalLayoutProperties;
+import org.vaadin.addon.cdiproperties.annotation.*;
+
+import javax.annotation.PostConstruct;
+import javax.annotation.security.PermitAll;
+import javax.inject.Inject;
+import javax.persistence.PreRemove;
 
 /**
  * UI content when the user is not logged in yet.

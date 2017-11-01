@@ -31,7 +31,7 @@
     <artifactId>kp-office-access-ui</artifactId>
     <packaging>war</packaging>
 
-    <name>KP Office :: Access UI</name>
+    <name>KP Office :: UI :: Access</name>
 
     <properties>
         <vaadin.widgetset.mode>local</vaadin.widgetset.mode>

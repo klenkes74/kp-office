@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Kaiserpfalz EDV-Service, Roland T. Lichti
+ * Copyright 2017 Kaiserpfalz EDV-Service, Roland T. Lichti
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,38 +14,37 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzedv.office.webui.ui;
-
-import java.io.Serializable;
-import java.util.UUID;
-
-import javax.annotation.PostConstruct;
-import javax.enterprise.context.RequestScoped;
-import javax.enterprise.inject.Produces;
+package de.kaiserpfalzedv.commons.webui.ui;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import javax.annotation.PostConstruct;
+import javax.enterprise.context.ApplicationScoped;
+import javax.enterprise.inject.Produces;
+import java.io.Serializable;
+import java.util.UUID;
 
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
  * @version 1.0.0
  * @since 2016-07-02
  */
-@RequestScoped
-public class RequestConfiguration implements Serializable {
-    private static final Logger LOG = LoggerFactory.getLogger(RequestConfiguration.class);
+@ApplicationScoped
+public class ApplicationConfiguration implements Serializable {
+    private static final Logger LOG = LoggerFactory.getLogger(ApplicationConfiguration.class);
 
     @Produces
-    @RequestScoped
+    @ApplicationScoped
     private UUID ui = UUID.randomUUID();
 
     @Produces
-    @RequestScoped
-    private SerializableEventBus bus = new SerializableEventBus("kpo-request-" + ui.toString());
+    @ApplicationScoped
+    private SerializableEventBus applicationBus = new SerializableEventBus("kpo-");
 
 
     @PostConstruct
     public void init() {
-        LOG.info("Created {}: ui={}, bus={}", getClass().getSimpleName(), ui, bus);
+        LOG.info("Created {}: ui={}, bus={}", getClass().getSimpleName(), ui, applicationBus);
     }
 }

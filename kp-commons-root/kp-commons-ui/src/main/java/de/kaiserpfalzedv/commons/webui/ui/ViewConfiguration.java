@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Kaiserpfalz EDV-Service, Roland T. Lichti
+ * Copyright 2017 Kaiserpfalz EDV-Service, Roland T. Lichti
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,19 +14,18 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzedv.office.webui.ui;
-
-import java.io.Serializable;
-import java.util.UUID;
-
-import javax.annotation.PostConstruct;
-import javax.enterprise.inject.Default;
-import javax.enterprise.inject.Produces;
+package de.kaiserpfalzedv.commons.webui.ui;
 
 import com.google.common.eventbus.EventBus;
 import com.vaadin.cdi.ViewScoped;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import javax.annotation.PostConstruct;
+import javax.enterprise.inject.Default;
+import javax.enterprise.inject.Produces;
+import java.io.Serializable;
+import java.util.UUID;
 
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}

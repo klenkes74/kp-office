@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Kaiserpfalz EDV-Service, Roland T. Lichti
+ * Copyright 2017 Kaiserpfalz EDV-Service, Roland T. Lichti
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,20 +14,20 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzedv.office.webui.ui.login;
-
-import javax.inject.Inject;
-import javax.servlet.ServletException;
+package de.kaiserpfalzedv.commons.webui.ui.login;
 
 import com.google.common.eventbus.Subscribe;
 import com.vaadin.cdi.access.JaasAccessControl;
 import com.vaadin.ui.Notification;
-import de.kaiserpfalzedv.office.webui.ui.boilerplate.SplashScreenView;
+import de.kaiserpfalzedv.commons.webui.ui.boilerplate.SplashScreenView;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.vaadin.addon.cdimvp.AbstractMVPPresenter;
 import org.vaadin.addon.cdimvp.AbstractMVPPresenter.ViewInterface;
 import org.vaadin.addon.cdiproperties.TextBundle;
+
+import javax.inject.Inject;
+import javax.servlet.ServletException;
 
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}

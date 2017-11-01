@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Kaiserpfalz EDV-Service, Roland T. Lichti
+ * Copyright 2017 Kaiserpfalz EDV-Service, Roland T. Lichti
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,17 +14,31 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzedv.office.webui.ui.login;
+package de.kaiserpfalzedv.commons.webui.ui.login;
 
-import org.vaadin.addon.cdimvp.MVPView;
+import java.io.Serializable;
 
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
  * @version 1.0.0
- * @since 2016-07-03
+ * @since 2016-07-10
  */
-public interface LoginScreenView extends MVPView {
-    String getUserName();
+public class LoginEvent implements Serializable {
+    private String userName;
+    private String passWord;
 
-    String getPassword();
+
+    public LoginEvent(final String userName, final String passWord) {
+        this.userName = userName;
+        this.passWord = passWord;
+    }
+
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public String getPassWord() {
+        return passWord;
+    }
 }

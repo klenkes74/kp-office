@@ -31,7 +31,7 @@
     <artifactId>kp-finance-chartofaccounts-ui</artifactId>
     <packaging>war</packaging>
 
-    <name>KP Finance :: Chart of Accounts UI</name>
+    <name>KP Finance :: UI :: Chart of Accounts</name>
 
     <properties>
         <vaadin.widgetset.mode>local</vaadin.widgetset.mode>

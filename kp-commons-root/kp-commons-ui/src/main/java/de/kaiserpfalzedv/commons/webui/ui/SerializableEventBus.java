@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Kaiserpfalz EDV-Service, Roland T. Lichti
+ * Copyright 2017 Kaiserpfalz EDV-Service, Roland T. Lichti
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,21 +14,21 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzedv.office.webui.ui;
-
-import java.io.IOException;
-import java.io.ObjectStreamException;
-import java.io.Serializable;
-import java.util.HashSet;
-
-import javax.annotation.PostConstruct;
-import javax.persistence.PreRemove;
-import javax.persistence.Transient;
+package de.kaiserpfalzedv.commons.webui.ui;
 
 import com.google.common.base.MoreObjects;
 import com.google.common.eventbus.EventBus;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+import javax.ejb.PostActivate;
+import javax.ejb.PrePassivate;
+import java.io.IOException;
+import java.io.ObjectStreamException;
+import java.io.Serializable;
+import java.util.HashSet;
 
 import static com.google.common.base.Preconditions.checkArgument;
 
@@ -46,8 +46,7 @@ public class SerializableEventBus implements Serializable {
     private final HashSet<Object> subscribers = new HashSet<>();
     private final String name;
 
-    @Transient
-    private final EventBus bus;
+    private EventBus bus;
 
 
     public SerializableEventBus() {
@@ -65,13 +64,15 @@ public class SerializableEventBus implements Serializable {
 
 
     @PostConstruct
+    @PostActivate
     public void init() {
         if (LOG.isDebugEnabled()) {
             LOG.debug("Created bus: {}", this);
         }
     }
 
-    @PreRemove
+    @PrePassivate
+    @PreDestroy
     public void close() {
         if (LOG.isDebugEnabled() && !LOG.isTraceEnabled()) {
             LOG.debug("Unregister objects while closing bus {}: {}", this, subscribers);
@@ -172,6 +173,8 @@ public class SerializableEventBus implements Serializable {
             bus.unregister(o);
         }
 
+        bus = null;
+
         out.defaultWriteObject();
     }
 
@@ -185,6 +188,9 @@ public class SerializableEventBus implements Serializable {
      */
     private void readObject(java.io.ObjectInputStream in) throws IOException, ClassNotFoundException {
         in.defaultReadObject();
+
+        // re-create the bus after loading ...
+        bus = (name != null) ? new EventBus(name) : new EventBus();
 
         if (LOG.isDebugEnabled() && !LOG.isTraceEnabled()) {
             LOG.debug("Re-Registering after deserialization objects to bus {}: {}", this, subscribers);

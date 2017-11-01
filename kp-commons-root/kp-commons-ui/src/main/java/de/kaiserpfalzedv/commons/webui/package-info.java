@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Kaiserpfalz EDV-Service, Roland T. Lichti
+ * Copyright 2017 Kaiserpfalz EDV-Service, Roland T. Lichti
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,4 +19,4 @@
  * @version 0.3.0
  * @since 2016-03-28
  */
-package de.kaiserpfalzedv.office.webui;
+package de.kaiserpfalzedv.commons.webui;

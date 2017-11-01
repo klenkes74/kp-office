@@ -32,7 +32,7 @@
     <artifactId>kp-office-metainfo-ui</artifactId>
     <packaging>war</packaging>
 
-    <name>KP Office :: Metainfo UI</name>
+    <name>KP Office :: UI :: Metainfo</name>
 
     <properties>
         <vaadin>true</vaadin>

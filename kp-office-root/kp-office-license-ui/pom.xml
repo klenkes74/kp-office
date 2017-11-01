@@ -31,7 +31,7 @@
     <artifactId>kp-office-license-ui</artifactId>
     <packaging>war</packaging>
 
-    <name>KP Office :: License UI</name>
+    <name>KP Office :: UI :: License</name>
 
     <properties>
         <vaadin.widgetset.mode>local</vaadin.widgetset.mode>

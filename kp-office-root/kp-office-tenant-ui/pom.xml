@@ -31,7 +31,7 @@
     <artifactId>kp-office-tenant-ui</artifactId>
     <packaging>war</packaging>
 
-    <name>KP Office :: Tenant UI</name>
+    <name>KP Office :: UI :: Tenant</name>
 
     <properties>
         <vaadin.widgetset.mode>local</vaadin.widgetset.mode>
