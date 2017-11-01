@@ -512,7 +512,7 @@
 
             <activation>
                 <file>
-                    <exists>src/main/resources/changelog-master.xml</exists>
+                    <exists>src/main/resources/ddl/changelog-master.xml</exists>
                 </file>
             </activation>
 

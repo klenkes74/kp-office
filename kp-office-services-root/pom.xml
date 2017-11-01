@@ -31,9 +31,22 @@
     <name>KP Office :: Services</name>
 
     <modules>
+        <module>kp-office-services-metainfo-ui</module>
         <module>kp-office-services-tenant-ui</module>
         <module>kp-office-services-access-ui</module>
-        <module>kp-office-services-license-ui</module>
+        <!--
+        <module>kp-office-services-contacts-ui</module>
+        <module>kp-office-services-files-ui</module>
+        -->
         <module>kp-office-services-base-ear</module>
+
+        <module>kp-office-services-license-ui</module>
+        <!--
+        <module>kp-office-services-license-ear</module>
+        -->
+
+        <module>kp-office-services-chartofaccounts-ui</module>
+        <module>kp-office-services-accounting-ui</module>
+        <module>kp-office-services-finance-ear</module>
     </modules>
 </project>

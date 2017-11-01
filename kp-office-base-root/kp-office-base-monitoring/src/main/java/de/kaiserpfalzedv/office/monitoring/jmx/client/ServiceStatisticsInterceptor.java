@@ -23,6 +23,7 @@ import javax.interceptor.AroundInvoke;
 import javax.interceptor.Interceptor;
 import javax.interceptor.InvocationContext;
 
+import de.kaiserpfalzedv.office.common.api.Logging;
 import de.kaiserpfalzedv.office.common.api.cdi.OfficeService;
 import de.kaiserpfalzedv.office.monitoring.jmx.api.StatisticsCollector;
 import org.slf4j.Logger;
@@ -37,7 +38,6 @@ import org.slf4j.LoggerFactory;
 @OfficeService
 public class ServiceStatisticsInterceptor {
     private static final Logger LOG = LoggerFactory.getLogger(ServiceStatisticsInterceptor.class);
-    private static final Logger OPLOG = LoggerFactory.getLogger("operations");
 
     private static final String MEASUREMENT_REGION = "services";
     private static final long FAST_MS = 500L;
@@ -70,16 +70,16 @@ public class ServiceStatisticsInterceptor {
 
             String measurementName;
             if (duration >= SLOW_MS) {
-                OPLOG.error("{\"service\":\"{}\"; \"duration\":\"{}\";}", service, duration);
+                Logging.OPLOG.error("{\"service\":\"{}\"; \"duration\":\"{}\";}", service, duration);
                 measurementName = service + ".TO_SLOW";
             } else if (duration >= MEDIUM_MS) {
-                OPLOG.warn("{\"service\":\"{}\"; \"duration\":\"{}\";}", service, duration);
+                Logging.OPLOG.warn("{\"service\":\"{}\"; \"duration\":\"{}\";}", service, duration);
                 measurementName = service + ".SLOW";
             } else if (duration >= FAST_MS) {
-                OPLOG.info("{\"service\":\"{}\"; \"duration\":\"{}\";}", service, duration);
+                Logging.OPLOG.info("{\"service\":\"{}\"; \"duration\":\"{}\";}", service, duration);
                 measurementName = service + ".MEDIUM";
             } else {
-                OPLOG.info("{\"service\":\"{}\"; \"duration\":\"{}\";}", service, duration);
+                Logging.OPLOG.info("{\"service\":\"{}\"; \"duration\":\"{}\";}", service, duration);
                 measurementName = service + ".FAST";
             }
 

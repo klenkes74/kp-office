@@ -26,10 +26,14 @@ import javax.interceptor.InvocationContext;
 
 import de.kaiserpfalzedv.office.common.api.multitenancy.Tenant;
 import de.kaiserpfalzedv.office.common.api.multitenancy.TenantExtractor;
+import de.kaiserpfalzedv.office.common.api.multitenancy.TenantHoldingServiceRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
+ * Extracts the UUID annotated with {@link Tenant} as long as the class or method is annotated with
+ * {@link TenantHoldingServiceRequest}.
+ * 
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
  * @version 1.0.0
  * @since 2017-08-13

@@ -67,6 +67,96 @@
             <!-- base -->
             <dependency>
                 <groupId>de.kaiserpfalz-edv.office</groupId>
+                <artifactId>kp-office-base-metainfo</artifactId>
+                <version>${project.version}</version>
+                <type>ejb</type>
+            </dependency>
+            <dependency>
+                <groupId>de.kaiserpfalz-edv.office</groupId>
+                <artifactId>kp-office-base-metainfo</artifactId>
+                <version>${project.version}</version>
+                <type>ejb-client</type>
+                <exclusions>
+                    <exclusion>
+                        <groupId>de.kaiserpfalz-edv.office</groupId>
+                        <artifactId>kp-office-commons-ejb</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>com.jcabi</groupId>
+                        <artifactId>jcabi-manifests</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.jasypt</groupId>
+                        <artifactId>jasypt</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>com.verhas</groupId>
+                        <artifactId>license3j</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.bouncycastle</groupId>
+                        <artifactId>bcpg-jdk15on</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>de.kaiserpfalz-edv.office</groupId>
+                <artifactId>kp-office-base-metainfo</artifactId>
+                <version>${project.version}</version>
+                <classifier>api</classifier>
+                <exclusions>
+                    <exclusion>
+                        <groupId>de.kaiserpfalz-edv.office</groupId>
+                        <artifactId>kp-office-commons-ejb</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>com.jcabi</groupId>
+                        <artifactId>jcabi-manifests</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.jasypt</groupId>
+                        <artifactId>jasypt</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>com.verhas</groupId>
+                        <artifactId>license3j</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.bouncycastle</groupId>
+                        <artifactId>bcpg-jdk15on</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>de.kaiserpfalz-edv.office</groupId>
+                <artifactId>kp-office-base-metainfo</artifactId>
+                <version>${project.version}</version>
+                <classifier>jpa</classifier>
+                <exclusions>
+                    <exclusion>
+                        <groupId>de.kaiserpfalz-edv.office</groupId>
+                        <artifactId>kp-office-commons-ejb</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>com.jcabi</groupId>
+                        <artifactId>jcabi-manifests</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.jasypt</groupId>
+                        <artifactId>jasypt</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>com.verhas</groupId>
+                        <artifactId>license3j</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.bouncycastle</groupId>
+                        <artifactId>bcpg-jdk15on</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>de.kaiserpfalz-edv.office</groupId>
                 <artifactId>kp-office-base-monitoring</artifactId>
                 <version>${project.version}</version>
                 <type>ejb</type>
@@ -76,12 +166,32 @@
                 <artifactId>kp-office-base-monitoring</artifactId>
                 <version>${project.version}</version>
                 <type>ejb-client</type>
+                <exclusions>
+                    <exclusion>
+                        <groupId>de.kaiserpfalz-edv.office</groupId>
+                        <artifactId>kp-office-commons-ejb</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>com.google.guava</groupId>
+                        <artifactId>guava</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
             <dependency>
                 <groupId>de.kaiserpfalz-edv.office</groupId>
                 <artifactId>kp-office-base-monitoring</artifactId>
                 <version>${project.version}</version>
                 <classifier>api</classifier>
+                <exclusions>
+                    <exclusion>
+                        <groupId>de.kaiserpfalz-edv.office</groupId>
+                        <artifactId>kp-office-commons-ejb</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>com.google.guava</groupId>
+                        <artifactId>guava</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
 
             <dependency>
@@ -95,18 +205,60 @@
                 <artifactId>kp-office-base-tenant</artifactId>
                 <version>${project.version}</version>
                 <type>ejb-client</type>
+                <exclusions>
+                    <exclusion>
+                        <groupId>de.kaiserpfalz-edv.office</groupId>
+                        <artifactId>kp-office-commons-ejb</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>de.kaiserpfalz-edv.office</groupId>
+                        <artifactId>kp-office-base-monitoring</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>com.fasterxml.jackson.core</groupId>
+                        <artifactId>jackson-databind</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
             <dependency>
                 <groupId>de.kaiserpfalz-edv.office</groupId>
                 <artifactId>kp-office-base-tenant</artifactId>
                 <version>${project.version}</version>
                 <classifier>api</classifier>
+                <exclusions>
+                    <exclusion>
+                        <groupId>de.kaiserpfalz-edv.office</groupId>
+                        <artifactId>kp-office-commons-ejb</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>de.kaiserpfalz-edv.office</groupId>
+                        <artifactId>kp-office-base-monitoring</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>com.fasterxml.jackson.core</groupId>
+                        <artifactId>jackson-databind</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
             <dependency>
                 <groupId>de.kaiserpfalz-edv.office</groupId>
                 <artifactId>kp-office-base-tenant</artifactId>
                 <version>${project.version}</version>
                 <classifier>jpa</classifier>
+                <exclusions>
+                    <exclusion>
+                        <groupId>de.kaiserpfalz-edv.office</groupId>
+                        <artifactId>kp-office-commons-ejb</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>de.kaiserpfalz-edv.office</groupId>
+                        <artifactId>kp-office-base-monitoring</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>com.fasterxml.jackson.core</groupId>
+                        <artifactId>jackson-databind</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
 
             <dependency>
@@ -120,18 +272,60 @@
                 <artifactId>kp-office-base-access</artifactId>
                 <version>${project.version}</version>
                 <type>ejb-client</type>
+                <exclusions>
+                    <exclusion>
+                        <groupId>de.kaiserpfalz-edv.office</groupId>
+                        <artifactId>kp-office-commons-ejb</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>de.kaiserpfalz-edv.office</groupId>
+                        <artifactId>kp-office-base-tenant</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>com.nimbusds</groupId>
+                        <artifactId>oauth2-oidc-sdk</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
             <dependency>
                 <groupId>de.kaiserpfalz-edv.office</groupId>
                 <artifactId>kp-office-base-access</artifactId>
                 <version>${project.version}</version>
                 <classifier>api</classifier>
+                <exclusions>
+                    <exclusion>
+                        <groupId>de.kaiserpfalz-edv.office</groupId>
+                        <artifactId>kp-office-commons-ejb</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>de.kaiserpfalz-edv.office</groupId>
+                        <artifactId>kp-office-base-tenant</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>com.nimbusds</groupId>
+                        <artifactId>oauth2-oidc-sdk</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
             <dependency>
                 <groupId>de.kaiserpfalz-edv.office</groupId>
                 <artifactId>kp-office-base-access</artifactId>
                 <version>${project.version}</version>
                 <classifier>jpa</classifier>
+                <exclusions>
+                    <exclusion>
+                        <groupId>de.kaiserpfalz-edv.office</groupId>
+                        <artifactId>kp-office-commons-ejb</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>de.kaiserpfalz-edv.office</groupId>
+                        <artifactId>kp-office-base-tenant</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>com.nimbusds</groupId>
+                        <artifactId>oauth2-oidc-sdk</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
 
             <dependency>
@@ -163,77 +357,88 @@
             <!-- modules -->
             <dependency>
                 <groupId>de.kaiserpfalz-edv.office</groupId>
-                <artifactId>kp-office-modules-contacts</artifactId>
+                <artifactId>kp-office-contacts</artifactId>
                 <version>${project.version}</version>
                 <type>ejb</type>
             </dependency>
             <dependency>
                 <groupId>de.kaiserpfalz-edv.office</groupId>
-                <artifactId>kp-office-modules-contacts</artifactId>
+                <artifactId>kp-office-contacts</artifactId>
                 <version>${project.version}</version>
                 <type>ejb-client</type>
+                <exclusions>
+                    <exclusion>
+                        <groupId>de.kaiserpfalz-edv.office</groupId>
+                        <artifactId>kp-office-commons-ejb</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
             <dependency>
                 <groupId>de.kaiserpfalz-edv.office</groupId>
-                <artifactId>kp-office-modules-contacts</artifactId>
+                <artifactId>kp-office-contacts</artifactId>
                 <version>${project.version}</version>
                 <classifier>api</classifier>
+                <exclusions>
+                    <exclusion>
+                        <groupId>de.kaiserpfalz-edv.office</groupId>
+                        <artifactId>kp-office-commons-ejb</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
             <dependency>
                 <groupId>de.kaiserpfalz-edv.office</groupId>
-                <artifactId>kp-office-modules-contacts</artifactId>
+                <artifactId>kp-office-contacts</artifactId>
                 <version>${project.version}</version>
                 <classifier>jpa</classifier>
+                <exclusions>
+                    <exclusion>
+                        <groupId>de.kaiserpfalz-edv.office</groupId>
+                        <artifactId>kp-office-commons-ejb</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
 
             <dependency>
                 <groupId>de.kaiserpfalz-edv.office</groupId>
-                <artifactId>kp-office-modules-gis</artifactId>
+                <artifactId>kp-office-files</artifactId>
                 <version>${project.version}</version>
                 <type>ejb</type>
             </dependency>
             <dependency>
                 <groupId>de.kaiserpfalz-edv.office</groupId>
-                <artifactId>kp-office-modules-gis</artifactId>
+                <artifactId>kp-office-files</artifactId>
                 <version>${project.version}</version>
                 <classifier>api</classifier>
+                <exclusions>
+                    <exclusion>
+                        <groupId>de.kaiserpfalz-edv.office</groupId>
+                        <artifactId>kp-office-commons-ejb</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
             <dependency>
                 <groupId>de.kaiserpfalz-edv.office</groupId>
-                <artifactId>kp-office-modules-gis</artifactId>
+                <artifactId>kp-office-files</artifactId>
                 <version>${project.version}</version>
                 <classifier>jpa</classifier>
+                <exclusions>
+                    <exclusion>
+                        <groupId>de.kaiserpfalz-edv.office</groupId>
+                        <artifactId>kp-office-commons-ejb</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
             <dependency>
                 <groupId>de.kaiserpfalz-edv.office</groupId>
-                <artifactId>kp-office-modules-gis</artifactId>
+                <artifactId>kp-office-files</artifactId>
                 <version>${project.version}</version>
                 <type>ejb-client</type>
-            </dependency>
-
-            <dependency>
-                <groupId>de.kaiserpfalz-edv.office</groupId>
-                <artifactId>kp-office-modules-files</artifactId>
-                <version>${project.version}</version>
-                <type>ejb</type>
-            </dependency>
-            <dependency>
-                <groupId>de.kaiserpfalz-edv.office</groupId>
-                <artifactId>kp-office-modules-files</artifactId>
-                <version>${project.version}</version>
-                <classifier>api</classifier>
-            </dependency>
-            <dependency>
-                <groupId>de.kaiserpfalz-edv.office</groupId>
-                <artifactId>kp-office-modules-files</artifactId>
-                <version>${project.version}</version>
-                <classifier>jpa</classifier>
-            </dependency>
-            <dependency>
-                <groupId>de.kaiserpfalz-edv.office</groupId>
-                <artifactId>kp-office-modules-files</artifactId>
-                <version>${project.version}</version>
-                <type>ejb-client</type>
+                <exclusions>
+                    <exclusion>
+                        <groupId>de.kaiserpfalz-edv.office</groupId>
+                        <artifactId>kp-office-commons-ejb</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
 
 
@@ -248,19 +453,37 @@
                 <groupId>de.kaiserpfalz-edv.office</groupId>
                 <artifactId>kp-office-finance-accounting</artifactId>
                 <version>${project.version}</version>
+                <type>ejb-client</type>
+                <exclusions>
+                    <exclusion>
+                        <groupId>de.kaiserpfalz-edv.office</groupId>
+                        <artifactId>kp-office-commons-ejb</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>de.kaiserpfalz-edv.office</groupId>
+                <artifactId>kp-office-finance-accounting</artifactId>
+                <version>${project.version}</version>
                 <classifier>api</classifier>
+                <exclusions>
+                    <exclusion>
+                        <groupId>de.kaiserpfalz-edv.office</groupId>
+                        <artifactId>kp-office-commons-ejb</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
             <dependency>
                 <groupId>de.kaiserpfalz-edv.office</groupId>
                 <artifactId>kp-office-finance-accounting</artifactId>
                 <version>${project.version}</version>
                 <classifier>jpa</classifier>
-            </dependency>
-            <dependency>
-                <groupId>de.kaiserpfalz-edv.office</groupId>
-                <artifactId>kp-office-finance-accounting</artifactId>
-                <version>${project.version}</version>
-                <type>ejb-client</type>
+                <exclusions>
+                    <exclusion>
+                        <groupId>de.kaiserpfalz-edv.office</groupId>
+                        <artifactId>kp-office-commons-ejb</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
 
             <dependency>
@@ -273,19 +496,73 @@
                 <groupId>de.kaiserpfalz-edv.office</groupId>
                 <artifactId>kp-office-finance-chartofaccounts</artifactId>
                 <version>${project.version}</version>
+                <type>ejb-client</type>
+                <exclusions>
+                    <exclusion>
+                        <groupId>de.kaiserpfalz-edv.office</groupId>
+                        <artifactId>kp-office-commons-ejb</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>de.kaiserpfalz-edv.office</groupId>
+                        <artifactId>kp-office-base-access</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>de.kaiserpfalz-edv.office</groupId>
+                        <artifactId>kp-office-base-tenant</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>de.kaiserpfalz-edv.office</groupId>
+                        <artifactId>kp-office-contacts</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>de.kaiserpfalz-edv.office</groupId>
+                <artifactId>kp-office-finance-chartofaccounts</artifactId>
+                <version>${project.version}</version>
                 <classifier>api</classifier>
+                <exclusions>
+                    <exclusion>
+                        <groupId>de.kaiserpfalz-edv.office</groupId>
+                        <artifactId>kp-office-commons-ejb</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>de.kaiserpfalz-edv.office</groupId>
+                        <artifactId>kp-office-base-access</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>de.kaiserpfalz-edv.office</groupId>
+                        <artifactId>kp-office-base-tenant</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>de.kaiserpfalz-edv.office</groupId>
+                        <artifactId>kp-office-contacts</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
             <dependency>
                 <groupId>de.kaiserpfalz-edv.office</groupId>
                 <artifactId>kp-office-finance-chartofaccounts</artifactId>
                 <version>${project.version}</version>
                 <classifier>jpa</classifier>
-            </dependency>
-            <dependency>
-                <groupId>de.kaiserpfalz-edv.office</groupId>
-                <artifactId>kp-office-finance-chartofaccounts</artifactId>
-                <version>${project.version}</version>
-                <type>ejb-client</type>
+                <exclusions>
+                    <exclusion>
+                        <groupId>de.kaiserpfalz-edv.office</groupId>
+                        <artifactId>kp-office-commons-ejb</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>de.kaiserpfalz-edv.office</groupId>
+                        <artifactId>kp-office-base-access</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>de.kaiserpfalz-edv.office</groupId>
+                        <artifactId>kp-office-base-tenant</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>de.kaiserpfalz-edv.office</groupId>
+                        <artifactId>kp-office-contacts</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
 
             <dependency>
@@ -298,19 +575,37 @@
                 <groupId>de.kaiserpfalz-edv.office</groupId>
                 <artifactId>kp-office-finance-taxexport-de</artifactId>
                 <version>${project.version}</version>
+                <type>ejb-client</type>
+                <exclusions>
+                    <exclusion>
+                        <groupId>de.kaiserpfalz-edv.office</groupId>
+                        <artifactId>kp-office-commons-ejb</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>de.kaiserpfalz-edv.office</groupId>
+                <artifactId>kp-office-finance-taxexport-de</artifactId>
+                <version>${project.version}</version>
                 <classifier>api</classifier>
+                <exclusions>
+                    <exclusion>
+                        <groupId>de.kaiserpfalz-edv.office</groupId>
+                        <artifactId>kp-office-commons-ejb</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
             <dependency>
                 <groupId>de.kaiserpfalz-edv.office</groupId>
                 <artifactId>kp-office-finance-taxexport-de</artifactId>
                 <version>${project.version}</version>
                 <classifier>jpa</classifier>
-            </dependency>
-            <dependency>
-                <groupId>de.kaiserpfalz-edv.office</groupId>
-                <artifactId>kp-office-finance-taxexport-de</artifactId>
-                <version>${project.version}</version>
-                <type>ejb-client</type>
+                <exclusions>
+                    <exclusion>
+                        <groupId>de.kaiserpfalz-edv.office</groupId>
+                        <artifactId>kp-office-commons-ejb</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
 
             <dependency>
@@ -323,13 +618,25 @@
                 <groupId>de.kaiserpfalz-edv.office</groupId>
                 <artifactId>kp-office-finance-datevexport</artifactId>
                 <version>${project.version}</version>
-                <classifier>api</classifier>
+                <type>ejb-client</type>
+                <exclusions>
+                    <exclusion>
+                        <groupId>de.kaiserpfalz-edv.office</groupId>
+                        <artifactId>kp-office-commons-ejb</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
             <dependency>
                 <groupId>de.kaiserpfalz-edv.office</groupId>
                 <artifactId>kp-office-finance-datevexport</artifactId>
                 <version>${project.version}</version>
-                <type>ejb-client</type>
+                <classifier>api</classifier>
+                <exclusions>
+                    <exclusion>
+                        <groupId>de.kaiserpfalz-edv.office</groupId>
+                        <artifactId>kp-office-commons-ejb</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
 
             <dependency>
@@ -342,13 +649,25 @@
                 <groupId>de.kaiserpfalz-edv.office</groupId>
                 <artifactId>kp-office-finance-reporting</artifactId>
                 <version>${project.version}</version>
-                <classifier>api</classifier>
+                <type>ejb-client</type>
+                <exclusions>
+                    <exclusion>
+                        <groupId>de.kaiserpfalz-edv.office</groupId>
+                        <artifactId>kp-office-commons-ejb</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
             <dependency>
                 <groupId>de.kaiserpfalz-edv.office</groupId>
                 <artifactId>kp-office-finance-reporting</artifactId>
                 <version>${project.version}</version>
-                <type>ejb-client</type>
+                <classifier>api</classifier>
+                <exclusions>
+                    <exclusion>
+                        <groupId>de.kaiserpfalz-edv.office</groupId>
+                        <artifactId>kp-office-commons-ejb</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
 
             <!-- UI and EARs -->
@@ -366,6 +685,12 @@
             </dependency>
             <dependency>
                 <groupId>de.kaiserpfalz-edv.office</groupId>
+                <artifactId>kp-office-services-metainfo-ui</artifactId>
+                <version>${project.version}</version>
+                <type>war</type>
+            </dependency>
+            <dependency>
+                <groupId>de.kaiserpfalz-edv.office</groupId>
                 <artifactId>kp-office-services-license-ui</artifactId>
                 <version>${project.version}</version>
                 <type>war</type>
@@ -373,6 +698,25 @@
             <dependency>
                 <groupId>de.kaiserpfalz-edv.office</groupId>
                 <artifactId>kp-office-services-base-ear</artifactId>
+                <version>${project.version}</version>
+                <type>ear</type>
+            </dependency>
+
+            <dependency>
+                <groupId>de.kaiserpfalz-edv.office</groupId>
+                <artifactId>kp-office-services-accounting-ui</artifactId>
+                <version>${project.version}</version>
+                <type>war</type>
+            </dependency>
+            <dependency>
+                <groupId>de.kaiserpfalz-edv.office</groupId>
+                <artifactId>kp-office-services-chartofaccounts-ui</artifactId>
+                <version>${project.version}</version>
+                <type>war</type>
+            </dependency>
+            <dependency>
+                <groupId>de.kaiserpfalz-edv.office</groupId>
+                <artifactId>kp-office-services-finance-ear</artifactId>
                 <version>${project.version}</version>
                 <type>ear</type>
             </dependency>
@@ -521,51 +865,61 @@
                 <groupId>org.slf4j</groupId>
                 <artifactId>jul-to-slf4j</artifactId>
                 <version>${slf4j-api.version}</version>
+                <scope>provided</scope>
             </dependency>
             <dependency>
                 <groupId>org.slf4j</groupId>
                 <artifactId>jcl-over-slf4j</artifactId>
                 <version>${slf4j-api.version}</version>
+                <scope>provided</scope>
             </dependency>
             <dependency>
                 <groupId>org.slf4j</groupId>
                 <artifactId>jcl104-over-slf4j</artifactId>
                 <version>${slf4j-api.version}</version>
+                <scope>provided</scope>
             </dependency>
             <dependency>
                 <groupId>org.slf4j</groupId>
                 <artifactId>osgi-over-slf4j</artifactId>
                 <version>${slf4j-api.version}</version>
+                <scope>provided</scope>
             </dependency>
             <dependency>
                 <groupId>org.slf4j</groupId>
                 <artifactId>log4j-over-slf4j</artifactId>
                 <version>${slf4j-api.version}</version>
+                <scope>provided</scope>
             </dependency>
             <dependency>
                 <groupId>org.slf4j</groupId>
                 <artifactId>slf4j-nop</artifactId>
                 <version>${slf4j-api.version}</version>
+                <scope>provided</scope>
             </dependency>
             <dependency>
                 <groupId>org.slf4j</groupId>
                 <artifactId>slf4j-simple</artifactId>
                 <version>${slf4j-api.version}</version>
+                <scope>provided</scope>
             </dependency>
             <dependency>
                 <groupId>org.slf4j</groupId>
                 <artifactId>slf4j-ext</artifactId>
                 <version>${slf4j-api.version}</version>
+                <scope>provided</scope>
             </dependency>
             <dependency>
                 <groupId>org.slf4j</groupId>
                 <artifactId>slf4j-jcl</artifactId>
                 <version>${slf4j-api.version}</version>
+                <scope>provided</scope>
             </dependency>
             <dependency>
                 <groupId>org.slf4j</groupId>
                 <artifactId>slf4j-jdk</artifactId>
                 <version>${slf4j-api.version}</version>
+                <scope>provided</scope>
             </dependency>
 
             <!-- Misc -->

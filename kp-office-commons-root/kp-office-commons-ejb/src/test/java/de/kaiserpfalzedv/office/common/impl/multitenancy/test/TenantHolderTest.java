@@ -23,6 +23,7 @@ import java.util.UUID;
 
 import de.kaiserpfalzedv.office.common.api.multitenancy.TenantHolder;
 import de.kaiserpfalzedv.office.common.ejb.multitenancy.TenantHolderImpl;
+import de.kaiserpfalzedv.office.common.ejb.multitenancy.ThereIsNoTenantException;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -34,7 +35,6 @@ import org.slf4j.MDC;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNull;
 import static org.junit.Assert.fail;
 
 /**
@@ -163,10 +163,13 @@ public class TenantHolderTest {
         MDC.put("test", "provider-failure");
         LOG.debug("Checking the producer in case there is no tenant stored.");
 
-        UUID result = ((TenantHolderImpl) cut).produceTenant();
-        LOG.trace("Result: {}", result);
+        try {
+            ((TenantHolderImpl) cut).produceTenant();
 
-        assertNull(result);
+            fail("When there is no tenant, there should be an exception: " + ThereIsNoTenantException.class.getSimpleName());
+        } catch (ThereIsNoTenantException e) {
+            // everything is fine. We wanted that exception!
+        }
     }
 
     @Before

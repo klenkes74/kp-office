@@ -34,9 +34,9 @@
     <modules>
         <module>kp-office-base-metainfo</module>
         <module>kp-office-base-monitoring</module>
+        <module>kp-office-base-access</module>
         <module>kp-office-base-tenant</module>
         <module>kp-office-base-license</module>
-        <module>kp-office-base-access</module>
         <!--
         <module>kp-office-base-tests</module>
         -->

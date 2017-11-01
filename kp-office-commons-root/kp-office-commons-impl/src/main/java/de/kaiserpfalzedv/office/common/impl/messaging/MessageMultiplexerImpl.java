@@ -84,11 +84,13 @@ public class MessageMultiplexerImpl implements MessageMultiplexer {
 
     @Override
     public void register(String correlationId, MessageListener listener) {
+        LOG.debug("Registering correlation-id '{}' for listener: {}", correlationId, listener);
         listeners.put(correlationId, listener);
     }
 
     @Override
     public void unregister(String correlationId) {
+        LOG.debug("Unregistering correlation-id: {}", correlationId);
         listeners.remove(correlationId);
     }
 }

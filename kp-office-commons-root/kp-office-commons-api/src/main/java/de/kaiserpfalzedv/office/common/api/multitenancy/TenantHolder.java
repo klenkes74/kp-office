@@ -29,9 +29,20 @@ import java.util.UUID;
  * @since 2017-08-13
  */
 public interface TenantHolder {
+    /**
+     * @return The tenant id (if one is set).
+     */
     Optional<UUID> getTenant();
 
+    /**
+     * Saves the tenant id for the current thread.
+     *
+     * @param tenant the tenant id to save for the current thread.
+     */
     void setTenant(final UUID tenant);
 
+    /**
+     * Removes the tenant from the current thread.
+     */
     void clearTenant();
 }

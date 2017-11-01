@@ -47,7 +47,7 @@
         <dependency>
             <groupId>de.kaiserpfalz-edv.office</groupId>
             <artifactId>kp-office-base-license</artifactId>
-            <type>ejb-client</type>
+            <classifier>api</classifier>
         </dependency>
         <dependency>
             <groupId>de.kaiserpfalz-edv.office</groupId>

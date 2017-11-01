@@ -29,6 +29,7 @@
 
     <artifactId>kp-office-base-license</artifactId>
     <name>KP Office :: Base :: License</name>
+    <description>License Manager for software systems.</description>
     <packaging>ejb</packaging>
 
     <dependencies>

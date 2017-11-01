@@ -46,7 +46,7 @@
         </dependency>
         <dependency>
             <groupId>de.kaiserpfalz-edv.office</groupId>
-            <artifactId>kp-office-base-license</artifactId>
+            <artifactId>kp-office-base-metainfo</artifactId>
             <classifier>api</classifier>
         </dependency>
         <dependency>
