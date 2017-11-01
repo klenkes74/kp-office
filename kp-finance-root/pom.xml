@@ -20,16 +20,25 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>de.kaiserpfalz-edv.office</groupId>
-    <artifactId>kp-office-base</artifactId>
-    <packaging>pom</packaging>
-    <version>1.0.0-SNAPSHOT</version>
+    <parent>
+        <groupId>de.kaiserpfalz-edv.office</groupId>
+        <artifactId>kp-office-base</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
 
-    <name>KP Office Base</name>
+    <artifactId>kp-finance-root</artifactId>
+    <packaging>pom</packaging>
+    <name>KP Finance</name>
 
     <modules>
-        <module>kp-commons-root</module>
-        <module>kp-office-root</module>
-        <module>kp-finance-root</module>
+        <module>kp-finance-bom</module>
+        <module>kp-finance-parent</module>
+        
+        <module>kp-finance-chartofaccounts</module>
+        <module>kp-finance-chartofaccounts-ui</module>
+        <module>kp-finance-accounting</module>
+        <module>kp-finance-accounting-ui</module>
+        <module>kp-finance</module>
     </modules>
 </project>

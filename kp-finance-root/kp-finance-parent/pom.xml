@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright 2017 Kaiserpfalz EDV-Service, Roland T. Lichti
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>de.kaiserpfalz-edv.commons</groupId>
+        <artifactId>kp-commons-parent</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+        <relativePath>../../kp-commons-root/kp-commons-parent/pom.xml</relativePath>
+    </parent>
+
+    <groupId>de.kaiserpfalz-edv.office.finance</groupId>
+    <artifactId>kp-finance-parent</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <name>KP Finance :: Parent</name>
+
+    <description>Kaiserpfalz EDV-Service Finance - An accounting and reporting package.</description>
+    <url>https://devzone.kaiserpfalz-edv.de/kp-office/kp-finance/</url>
+
+
+    <distributionManagement>
+        <repository>
+            <id>internal</id>
+            <url>https://devzone.kaiserpfalz-edv.de/ci/plugin/repository/everything/</url>
+        </repository>
+        <snapshotRepository>
+            <id>snapshot</id>
+            <url>https://devzone.kaiserpfalz-edv.de/ci/plugin/repository/everything/</url>
+        </snapshotRepository>
+        <site>
+            <id>kp-website</id>
+            <url>file://home/docu/kp-office/${project.version}/kp-finance/</url>
+        </site>
+    </distributionManagement>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>de.kaiserpfalz-edv.office.finance</groupId>
+                <artifactId>kp-finance-bom</artifactId>
+                <version>${project.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>de.kaiserpfalz-edv.office.base</groupId>
+                <artifactId>kp-office-bom</artifactId>
+                <version>${project.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>de.kaiserpfalz-edv.commons</groupId>
+                <artifactId>kp-commons-bom</artifactId>
+                <version>${project.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>com.vaadin</groupId>
+                <artifactId>vaadin-bom</artifactId>
+                <version>8.1.6</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+</project>
