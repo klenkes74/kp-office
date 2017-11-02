@@ -653,6 +653,30 @@
                 </plugins>
             </build>
 
+            <dependencies>
+                <dependency>
+                    <groupId>com.vaadin</groupId>
+                    <artifactId>vaadin-client-compiled</artifactId>
+                </dependency>
+                <dependency>
+                    <groupId>com.vaadin</groupId>
+                    <artifactId>vaadin-themes</artifactId>
+                </dependency>
+
+                <dependency>
+                    <groupId>com.vaadin</groupId>
+                    <artifactId>vaadin-cdi</artifactId>
+                </dependency>
+                <dependency>
+                    <groupId>org.vaadin.addon</groupId>
+                    <artifactId>cdi-properties</artifactId>
+                </dependency>
+                <dependency>
+                    <groupId>org.vaadin.addon</groupId>
+                    <artifactId>cdi-mvp</artifactId>
+                </dependency>
+            </dependencies>
+
             <repositories>
                 <repository>
                     <id>vaadin-addons</id>
