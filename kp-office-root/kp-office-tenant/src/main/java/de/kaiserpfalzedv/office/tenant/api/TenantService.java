@@ -16,13 +16,13 @@
 
 package de.kaiserpfalzedv.office.tenant.api;
 
+import de.kaiserpfalzedv.commons.api.data.BaseService;
+import de.kaiserpfalzedv.commons.api.data.BusinessKeyBaseService;
+import de.kaiserpfalzedv.commons.api.init.Closeable;
+import de.kaiserpfalzedv.commons.api.init.Initializable;
+
 import java.util.Collection;
 import java.util.UUID;
-
-import de.kaiserpfalzedv.office.common.api.data.BaseService;
-import de.kaiserpfalzedv.office.common.api.data.BusinessKeyBaseService;
-import de.kaiserpfalzedv.office.common.api.init.Closeable;
-import de.kaiserpfalzedv.office.common.api.init.Initializable;
 
 /**
  * The tenant service manages the tenant data within the system. It's a simple crud service.

@@ -16,7 +16,7 @@
 
 package de.kaiserpfalzedv.office.tenant.client;
 
-import de.kaiserpfalzedv.office.common.api.BaseBusinessException;
+import de.kaiserpfalzedv.commons.api.BaseBusinessException;
 
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}

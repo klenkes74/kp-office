@@ -16,19 +16,14 @@
 
 package de.kaiserpfalzedv.office.metainfo.api;
 
-import java.time.Instant;
-import java.time.OffsetDateTime;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.UUID;
+import com.github.zafarkhaja.semver.Version;
+import de.kaiserpfalzedv.commons.api.data.ValidityDuration;
+import de.kaiserpfalzedv.commons.api.data.VersionRange;
 
 import javax.validation.constraints.NotNull;
-
-import com.github.zafarkhaja.semver.Version;
-import de.kaiserpfalzedv.office.common.api.data.ValidityDuration;
-import de.kaiserpfalzedv.office.common.api.data.VersionRange;
+import java.time.Instant;
+import java.time.OffsetDateTime;
+import java.util.*;
 
 /**
  * Implementation of the OfficeLicense on basis of the License3j library.

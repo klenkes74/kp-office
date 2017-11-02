@@ -16,11 +16,11 @@
 
 package de.kaiserpfalzedv.office.access.api.applications;
 
+import de.kaiserpfalzedv.commons.api.data.Identifiable;
+import de.kaiserpfalzedv.commons.api.data.ValidityDuration;
+
 import java.io.Serializable;
 import java.time.OffsetDateTime;
-
-import de.kaiserpfalzedv.office.common.api.data.Identifiable;
-import de.kaiserpfalzedv.office.common.api.data.ValidityDuration;
 
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}

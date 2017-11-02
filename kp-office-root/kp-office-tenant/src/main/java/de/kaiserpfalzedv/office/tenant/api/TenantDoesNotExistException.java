@@ -16,9 +16,9 @@
 
 package de.kaiserpfalzedv.office.tenant.api;
 
-import java.util.UUID;
+import de.kaiserpfalzedv.commons.api.data.ObjectDoesNotExistException;
 
-import de.kaiserpfalzedv.office.common.api.data.ObjectDoesNotExistException;
+import java.util.UUID;
 
 /**
  * The tenant with the given ID does not exists. Can't be loaded/modified. Should not be thrown while deleting the

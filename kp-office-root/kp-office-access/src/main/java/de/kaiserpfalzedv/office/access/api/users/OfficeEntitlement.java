@@ -16,11 +16,11 @@
 
 package de.kaiserpfalzedv.office.access.api.users;
 
+import de.kaiserpfalzedv.commons.api.data.Identifiable;
+import de.kaiserpfalzedv.commons.api.data.Nameable;
+
 import java.io.Serializable;
 import java.security.Principal;
-
-import de.kaiserpfalzedv.office.common.api.data.Identifiable;
-import de.kaiserpfalzedv.office.common.api.data.Nameable;
 
 /**
  * A basic entitlement (in some systems called permissions).

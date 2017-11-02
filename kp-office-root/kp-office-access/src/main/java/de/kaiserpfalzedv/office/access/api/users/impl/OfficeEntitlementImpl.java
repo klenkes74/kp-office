@@ -16,10 +16,10 @@
 
 package de.kaiserpfalzedv.office.access.api.users.impl;
 
-import java.util.UUID;
-
+import de.kaiserpfalzedv.commons.api.data.Identifiable;
 import de.kaiserpfalzedv.office.access.api.users.OfficeEntitlement;
-import de.kaiserpfalzedv.office.common.api.data.Identifiable;
+
+import java.util.UUID;
 
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}

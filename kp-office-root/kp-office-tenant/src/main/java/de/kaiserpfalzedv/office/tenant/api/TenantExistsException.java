@@ -16,7 +16,7 @@
 
 package de.kaiserpfalzedv.office.tenant.api;
 
-import de.kaiserpfalzedv.office.common.api.data.ObjectExistsException;
+import de.kaiserpfalzedv.commons.api.data.ObjectExistsException;
 
 /**
  * The tenant already exists. It can't be created a second time.

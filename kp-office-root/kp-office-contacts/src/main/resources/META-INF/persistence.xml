@@ -23,8 +23,8 @@
     <persistence-unit name="CONTACTS">
         <non-jta-data-source>java:comp/env/datasources/contacts</non-jta-data-source>
 
-        <class>de.kaiserpfalzedv.office.common.jpa.JPANameable</class>
-        <class>de.kaiserpfalzedv.office.common.jpa.JPAAbstractTenantIdentifiable</class>
+        <class>de.kaiserpfalzedv.commons.jpa.JPANameable</class>
+        <class>de.kaiserpfalzedv.commons.jpa.JPAAbstractTenantIdentifiable</class>
 
         <class>de.kaiserpfalzedv.office.contacts.jpa.JPAContact</class>
         <class>de.kaiserpfalzedv.office.contacts.jpa.JPARepresentative</class>

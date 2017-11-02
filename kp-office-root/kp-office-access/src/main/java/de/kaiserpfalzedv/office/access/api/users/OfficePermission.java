@@ -16,12 +16,12 @@
 
 package de.kaiserpfalzedv.office.access.api.users;
 
-import java.io.Serializable;
+import de.kaiserpfalzedv.commons.api.data.Keyable;
+import de.kaiserpfalzedv.commons.api.data.Nameable;
+import de.kaiserpfalzedv.commons.api.data.TenantIdentifiable;
+import de.kaiserpfalzedv.commons.api.data.Tenantable;
 
-import de.kaiserpfalzedv.office.common.api.data.Keyable;
-import de.kaiserpfalzedv.office.common.api.data.Nameable;
-import de.kaiserpfalzedv.office.common.api.data.TenantIdentifiable;
-import de.kaiserpfalzedv.office.common.api.data.Tenantable;
+import java.io.Serializable;
 
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}

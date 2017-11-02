@@ -16,7 +16,13 @@
 
 package de.kaiserpfalzedv.office.metainfo.impl;
 
-import java.io.Serializable;
+import com.github.zafarkhaja.semver.Version;
+import de.kaiserpfalzedv.commons.api.BuilderException;
+import de.kaiserpfalzedv.commons.api.Logging;
+import de.kaiserpfalzedv.office.metainfo.api.LicenseService;
+import de.kaiserpfalzedv.office.metainfo.api.OfficeLicense;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.ejb.PostActivate;
 import javax.ejb.Singleton;
@@ -24,14 +30,7 @@ import javax.ejb.Startup;
 import javax.enterprise.inject.Produces;
 import javax.inject.Inject;
 import javax.validation.constraints.NotNull;
-
-import com.github.zafarkhaja.semver.Version;
-import de.kaiserpfalzedv.office.common.api.BuilderException;
-import de.kaiserpfalzedv.office.common.api.Logging;
-import de.kaiserpfalzedv.office.metainfo.api.LicenseService;
-import de.kaiserpfalzedv.office.metainfo.api.OfficeLicense;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import java.io.Serializable;
 
 /**
  * The singleton service loading the license at the system startup and provides it where it is needed. It's single

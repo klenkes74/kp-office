@@ -16,9 +16,9 @@
 
 package de.kaiserpfalzedv.office.metainfo.api;
 
-import java.io.Serializable;
+import de.kaiserpfalzedv.commons.api.data.Nameable;
 
-import de.kaiserpfalzedv.office.common.api.data.Nameable;
+import java.io.Serializable;
 
 /**
  * A legal license text.

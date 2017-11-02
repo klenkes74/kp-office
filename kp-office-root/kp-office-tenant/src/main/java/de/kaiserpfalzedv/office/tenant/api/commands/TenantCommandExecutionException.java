@@ -16,7 +16,7 @@
 
 package de.kaiserpfalzedv.office.tenant.api.commands;
 
-import de.kaiserpfalzedv.office.common.api.commands.CommandExecutionException;
+import de.kaiserpfalzedv.commons.api.commands.CommandExecutionException;
 
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}

@@ -16,19 +16,18 @@
 
 package de.kaiserpfalzedv.office.tenant.client;
 
-import java.util.Optional;
-import java.util.UUID;
+import de.kaiserpfalzedv.commons.api.multitenancy.TenantExtractor;
+import de.kaiserpfalzedv.commons.api.multitenancy.TenantHoldingServiceRequest;
+import de.kaiserpfalzedv.office.monitoring.jmx.api.StatisticsCollector;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.inject.Inject;
 import javax.interceptor.AroundInvoke;
 import javax.interceptor.Interceptor;
 import javax.interceptor.InvocationContext;
-
-import de.kaiserpfalzedv.office.common.api.multitenancy.TenantExtractor;
-import de.kaiserpfalzedv.office.common.api.multitenancy.TenantHoldingServiceRequest;
-import de.kaiserpfalzedv.office.monitoring.jmx.api.StatisticsCollector;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import java.util.Optional;
+import java.util.UUID;
 
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}

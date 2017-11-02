@@ -16,20 +16,14 @@
 
 package de.kaiserpfalzedv.office.contacts.jpa;
 
-import java.util.UUID;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
-
-import de.kaiserpfalzedv.office.common.jpa.JPAAbstractTenantIdentifiable;
+import de.kaiserpfalzedv.commons.jpa.JPAAbstractTenantIdentifiable;
 import de.kaiserpfalzedv.office.contacts.api.Contact;
 import de.kaiserpfalzedv.office.contacts.api.Representative;
 import de.kaiserpfalzedv.office.contacts.api.RepresentativeType;
+
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import java.util.UUID;
 
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}

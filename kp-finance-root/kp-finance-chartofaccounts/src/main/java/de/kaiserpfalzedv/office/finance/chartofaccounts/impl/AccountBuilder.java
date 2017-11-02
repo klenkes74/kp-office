@@ -16,14 +16,13 @@
 
 package de.kaiserpfalzedv.office.finance.chartofaccounts.impl;
 
-import java.util.ArrayList;
-import java.util.UUID;
-
-import javax.money.CurrencyUnit;
-
-import de.kaiserpfalzedv.office.common.api.BuilderException;
+import de.kaiserpfalzedv.commons.api.BuilderException;
 import de.kaiserpfalzedv.office.finance.chartofaccounts.api.account.Account;
 import org.apache.commons.lang3.builder.Builder;
+
+import javax.money.CurrencyUnit;
+import java.util.ArrayList;
+import java.util.UUID;
 
 import static org.apache.commons.lang3.StringUtils.isBlank;
 

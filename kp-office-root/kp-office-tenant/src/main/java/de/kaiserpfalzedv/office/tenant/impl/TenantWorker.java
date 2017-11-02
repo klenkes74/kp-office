@@ -16,11 +16,11 @@
 
 package de.kaiserpfalzedv.office.tenant.impl;
 
-import javax.jms.JMSException;
-
 import com.fasterxml.jackson.core.JsonProcessingException;
-import de.kaiserpfalzedv.office.common.api.MessageInfo;
+import de.kaiserpfalzedv.commons.api.MessageInfo;
 import de.kaiserpfalzedv.office.tenant.api.commands.TenantCommandExecutor;
+
+import javax.jms.JMSException;
 
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}

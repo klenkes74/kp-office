@@ -16,26 +16,18 @@
 
 package de.kaiserpfalzedv.office.tenant.commands.test;
 
-import java.util.UUID;
-
-import de.kaiserpfalzedv.office.common.api.BuilderException;
+import de.kaiserpfalzedv.commons.api.BuilderException;
 import de.kaiserpfalzedv.office.tenant.api.Tenant;
 import de.kaiserpfalzedv.office.tenant.api.TenantBuilder;
-import de.kaiserpfalzedv.office.tenant.api.commands.TenantCommandBuilder;
-import de.kaiserpfalzedv.office.tenant.api.commands.TenantCreateCommand;
-import de.kaiserpfalzedv.office.tenant.api.commands.TenantDeleteCommand;
-import de.kaiserpfalzedv.office.tenant.api.commands.TenantRetrieveAllCommand;
-import de.kaiserpfalzedv.office.tenant.api.commands.TenantRetrieveByKeyCommand;
-import de.kaiserpfalzedv.office.tenant.api.commands.TenantRetrieveCommand;
-import de.kaiserpfalzedv.office.tenant.api.commands.TenantUpdateCommand;
+import de.kaiserpfalzedv.office.tenant.api.commands.*;
 import org.junit.Before;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
+import java.util.UUID;
+
+import static org.junit.Assert.*;
 
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}

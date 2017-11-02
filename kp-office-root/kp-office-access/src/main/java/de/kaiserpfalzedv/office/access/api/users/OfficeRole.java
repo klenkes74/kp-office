@@ -16,11 +16,11 @@
 
 package de.kaiserpfalzedv.office.access.api.users;
 
+import de.kaiserpfalzedv.commons.api.data.Identifiable;
+import de.kaiserpfalzedv.commons.api.data.Nameable;
+
 import java.security.Principal;
 import java.util.Set;
-
-import de.kaiserpfalzedv.office.common.api.data.Identifiable;
-import de.kaiserpfalzedv.office.common.api.data.Nameable;
 
 /**
  * The basic role within this system. It can have entitlements and other roles attached.

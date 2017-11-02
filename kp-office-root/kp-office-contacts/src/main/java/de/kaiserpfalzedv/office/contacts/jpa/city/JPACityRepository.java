@@ -16,23 +16,22 @@
 
 package de.kaiserpfalzedv.office.contacts.jpa.city;
 
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-
-import de.kaiserpfalzedv.office.common.api.data.Pageable;
-import de.kaiserpfalzedv.office.common.api.data.PagedListable;
-import de.kaiserpfalzedv.office.common.api.data.impl.PageableBuilder;
-import de.kaiserpfalzedv.office.common.api.data.impl.PagedListBuilder;
+import de.kaiserpfalzedv.commons.api.data.Pageable;
+import de.kaiserpfalzedv.commons.api.data.PagedListable;
+import de.kaiserpfalzedv.commons.api.data.impl.PageableBuilder;
+import de.kaiserpfalzedv.commons.api.data.impl.PagedListBuilder;
 import de.kaiserpfalzedv.office.contacts.api.city.City;
 import de.kaiserpfalzedv.office.contacts.api.city.Country;
 import de.kaiserpfalzedv.office.contacts.impl.CityRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}

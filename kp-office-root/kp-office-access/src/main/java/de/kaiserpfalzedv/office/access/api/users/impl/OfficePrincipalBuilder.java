@@ -16,23 +16,16 @@
 
 package de.kaiserpfalzedv.office.access.api.users.impl;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import java.util.UUID;
-
-import javax.validation.constraints.NotNull;
-
+import de.kaiserpfalzedv.commons.api.BuilderException;
+import de.kaiserpfalzedv.commons.api.data.Email;
 import de.kaiserpfalzedv.office.access.api.users.OfficePrincipal;
 import de.kaiserpfalzedv.office.access.api.users.OfficeRole;
 import de.kaiserpfalzedv.office.access.api.users.PasswordHolding;
-import de.kaiserpfalzedv.office.common.api.BuilderException;
-import de.kaiserpfalzedv.office.common.api.data.Email;
 import de.kaiserpfalzedv.office.tenant.api.Tenant;
 import org.apache.commons.lang3.builder.Builder;
+
+import javax.validation.constraints.NotNull;
+import java.util.*;
 
 import static org.apache.commons.lang3.StringUtils.isEmpty;
 

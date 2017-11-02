@@ -16,18 +16,19 @@
 
 package de.kaiserpfalzedv.office.metainfo.impl;
 
+import com.github.zafarkhaja.semver.Version;
+import com.verhas.licensor.License;
+import de.kaiserpfalzedv.commons.api.data.ValidityDuration;
+import de.kaiserpfalzedv.commons.api.data.VersionRange;
+import de.kaiserpfalzedv.commons.api.metainfo.SoftwareLicense;
+import de.kaiserpfalzedv.office.metainfo.api.OfficeLicense;
+
 import java.time.Instant;
 import java.time.OffsetDateTime;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
-
-import com.github.zafarkhaja.semver.Version;
-import com.verhas.licensor.License;
-import de.kaiserpfalzedv.office.common.api.data.ValidityDuration;
-import de.kaiserpfalzedv.office.common.api.data.VersionRange;
-import de.kaiserpfalzedv.office.metainfo.api.OfficeLicense;
 
 /**
  * Implementation of the OfficeLicense on basis of the License3j library.
@@ -36,7 +37,7 @@ import de.kaiserpfalzedv.office.metainfo.api.OfficeLicense;
  * @version 1.0.0
  * @since 2017-10-30
  */
-public class OfficeLicenseImpl implements OfficeLicense {
+public class OfficeLicenseImpl implements OfficeLicense, SoftwareLicense {
 
     /**
      * The base license.
@@ -61,6 +62,31 @@ public class OfficeLicenseImpl implements OfficeLicense {
     }
 
     @Override
+    public String getTitle() {
+        return null;
+    }
+
+    @Override
+    public String getDisclaimer() {
+        return null;
+    }
+
+    @Override
+    public String getFullText() {
+        return null;
+    }
+
+    @Override
+    public boolean isOpenSource() {
+        return false;
+    }
+
+    @Override
+    public String getKey() {
+        return null;
+    }
+
+    @Override
     public String getLicensee() {
         return license.getFeature("licensee");
     }
@@ -78,6 +104,11 @@ public class OfficeLicenseImpl implements OfficeLicense {
     @Override
     public ValidityDuration getDuration() {
         return duration;
+    }
+
+    @Override
+    public VersionRange getVersions() {
+        return null;
     }
 
     @Override

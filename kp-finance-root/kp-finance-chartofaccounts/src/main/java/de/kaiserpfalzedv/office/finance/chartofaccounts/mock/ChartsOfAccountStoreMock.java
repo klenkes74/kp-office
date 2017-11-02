@@ -16,22 +16,10 @@
 
 package de.kaiserpfalzedv.office.finance.chartofaccounts.mock;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Properties;
-import java.util.Set;
-
-import javax.annotation.PostConstruct;
-import javax.annotation.PreDestroy;
-import javax.ejb.PostActivate;
-import javax.ejb.PrePassivate;
-import javax.ejb.Singleton;
-
-import de.kaiserpfalzedv.office.common.api.cdi.Mock;
-import de.kaiserpfalzedv.office.common.api.init.Closeable;
-import de.kaiserpfalzedv.office.common.api.init.Initializable;
-import de.kaiserpfalzedv.office.common.api.init.InitializationException;
+import de.kaiserpfalzedv.commons.api.cdi.Mock;
+import de.kaiserpfalzedv.commons.api.init.Closeable;
+import de.kaiserpfalzedv.commons.api.init.Initializable;
+import de.kaiserpfalzedv.commons.api.init.InitializationException;
 import de.kaiserpfalzedv.office.finance.chartofaccounts.api.account.AccountNotMappedException;
 import de.kaiserpfalzedv.office.finance.chartofaccounts.api.chartofaccounts.ChartOfAccounts;
 import de.kaiserpfalzedv.office.finance.chartofaccounts.api.chartofaccounts.ChartOfAccountsDoesNotExistException;
@@ -41,6 +29,13 @@ import de.kaiserpfalzedv.office.finance.chartofaccounts.impl.chartofaccounts.Cha
 import org.apache.commons.lang3.SerializationUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+import javax.ejb.PostActivate;
+import javax.ejb.PrePassivate;
+import javax.ejb.Singleton;
+import java.util.*;
 
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}

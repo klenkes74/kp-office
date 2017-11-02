@@ -16,21 +16,20 @@
 
 package de.kaiserpfalzedv.office.metainfo.impl;
 
-import java.lang.reflect.Method;
-
-import javax.inject.Inject;
-import javax.interceptor.AroundInvoke;
-import javax.interceptor.Interceptor;
-import javax.interceptor.InvocationContext;
-import javax.validation.constraints.NotNull;
-
-import de.kaiserpfalzedv.office.common.api.Logging;
+import de.kaiserpfalzedv.commons.api.Logging;
 import de.kaiserpfalzedv.office.metainfo.api.LicenseService;
 import de.kaiserpfalzedv.office.metainfo.api.Licensed;
 import de.kaiserpfalzedv.office.metainfo.api.NotLicensedException;
 import de.kaiserpfalzedv.office.metainfo.api.OfficeLicense;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import javax.inject.Inject;
+import javax.interceptor.AroundInvoke;
+import javax.interceptor.Interceptor;
+import javax.interceptor.InvocationContext;
+import javax.validation.constraints.NotNull;
+import java.lang.reflect.Method;
 
 /**
  * The licensing interceptor. It reads the license from the injected {@link LicenseService} and then checks if the

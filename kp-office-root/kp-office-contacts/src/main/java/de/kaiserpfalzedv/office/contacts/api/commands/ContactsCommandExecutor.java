@@ -16,7 +16,7 @@
 
 package de.kaiserpfalzedv.office.contacts.api.commands;
 
-import de.kaiserpfalzedv.office.common.api.commands.CommandExecutor;
+import de.kaiserpfalzedv.commons.api.commands.CommandExecutor;
 
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}

@@ -16,18 +16,18 @@
 
 package de.kaiserpfalzedv.office.metainfo.api;
 
+import com.github.zafarkhaja.semver.Version;
+import de.kaiserpfalzedv.commons.api.data.Identifiable;
+import de.kaiserpfalzedv.commons.api.data.ValidityDuration;
+import de.kaiserpfalzedv.commons.api.data.VersionRange;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+
 import java.io.Serializable;
 import java.time.Instant;
 import java.time.OffsetDateTime;
 import java.util.Set;
-
-import com.github.zafarkhaja.semver.Version;
-import de.kaiserpfalzedv.office.common.api.data.Identifiable;
-import de.kaiserpfalzedv.office.common.api.data.ValidityDuration;
-import de.kaiserpfalzedv.office.common.api.data.VersionRange;
-import org.apache.commons.lang3.builder.EqualsBuilder;
-import org.apache.commons.lang3.builder.HashCodeBuilder;
-import org.apache.commons.lang3.builder.ToStringBuilder;
 
 /**
  * The logical view on a license.

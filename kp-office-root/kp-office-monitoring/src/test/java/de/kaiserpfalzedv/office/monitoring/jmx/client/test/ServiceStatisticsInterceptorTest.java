@@ -16,21 +16,10 @@
 
 package de.kaiserpfalzedv.office.monitoring.jmx.client.test;
 
-import java.lang.reflect.Method;
-import java.util.Set;
-
-import javax.interceptor.InvocationContext;
-import javax.management.MBeanServer;
-import javax.management.MalformedObjectNameException;
-
-import de.kaiserpfalzedv.office.common.api.cdi.OfficeService;
+import de.kaiserpfalzedv.commons.api.cdi.OfficeService;
 import de.kaiserpfalzedv.office.monitoring.jmx.client.ServiceStatisticsInterceptor;
 import de.kaiserpfalzedv.office.monitoring.jmx.impl.StatisticsCollectorBean;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.*;
 import org.junit.runner.RunWith;
 import org.powermock.api.easymock.annotation.Mock;
 import org.powermock.modules.junit4.PowerMockRunner;
@@ -38,9 +27,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.MDC;
 
-import static org.easymock.EasyMock.expect;
-import static org.easymock.EasyMock.replay;
-import static org.easymock.EasyMock.verify;
+import javax.interceptor.InvocationContext;
+import javax.management.MBeanServer;
+import javax.management.MalformedObjectNameException;
+import java.lang.reflect.Method;
+import java.util.Set;
+
+import static org.easymock.EasyMock.*;
 import static org.junit.Assert.assertEquals;
 
 /**

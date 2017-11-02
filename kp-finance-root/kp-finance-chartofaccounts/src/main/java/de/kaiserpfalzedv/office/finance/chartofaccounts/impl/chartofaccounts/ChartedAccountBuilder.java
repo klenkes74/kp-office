@@ -16,16 +16,16 @@
 
 package de.kaiserpfalzedv.office.finance.chartofaccounts.impl.chartofaccounts;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.UUID;
-
-import de.kaiserpfalzedv.office.common.api.BuilderException;
+import de.kaiserpfalzedv.commons.api.BuilderException;
 import de.kaiserpfalzedv.office.finance.chartofaccounts.api.account.Account;
 import de.kaiserpfalzedv.office.finance.chartofaccounts.api.chartofaccounts.ChartedAccount;
 import de.kaiserpfalzedv.office.tenant.api.NullTenant;
 import org.apache.commons.lang3.builder.Builder;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.UUID;
 
 /**
  * This builder returns a ChartedAccount that is build from the values given.

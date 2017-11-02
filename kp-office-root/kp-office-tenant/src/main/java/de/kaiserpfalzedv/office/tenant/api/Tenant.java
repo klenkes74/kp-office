@@ -16,12 +16,12 @@
 
 package de.kaiserpfalzedv.office.tenant.api;
 
-import java.util.UUID;
-
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import de.kaiserpfalzedv.office.common.api.data.Keyable;
-import de.kaiserpfalzedv.office.common.api.data.Nameable;
-import de.kaiserpfalzedv.office.common.api.data.TenantIdentifiable;
+import de.kaiserpfalzedv.commons.api.data.Keyable;
+import de.kaiserpfalzedv.commons.api.data.Nameable;
+import de.kaiserpfalzedv.commons.api.data.TenantIdentifiable;
+
+import java.util.UUID;
 
 import static com.fasterxml.jackson.annotation.JsonTypeInfo.As.PROPERTY;
 

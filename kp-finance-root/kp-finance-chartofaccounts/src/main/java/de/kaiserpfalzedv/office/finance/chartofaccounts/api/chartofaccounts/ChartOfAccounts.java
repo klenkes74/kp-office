@@ -16,15 +16,15 @@
 
 package de.kaiserpfalzedv.office.finance.chartofaccounts.api.chartofaccounts;
 
+import de.kaiserpfalzedv.commons.api.data.Identifiable;
+import de.kaiserpfalzedv.commons.api.data.Nameable;
+import de.kaiserpfalzedv.commons.api.data.Tenantable;
+import de.kaiserpfalzedv.office.finance.chartofaccounts.api.account.Account;
+import de.kaiserpfalzedv.office.finance.chartofaccounts.api.account.AccountNotMappedException;
+
 import java.io.Serializable;
 import java.util.Set;
 import java.util.UUID;
-
-import de.kaiserpfalzedv.office.common.api.data.Identifiable;
-import de.kaiserpfalzedv.office.common.api.data.Nameable;
-import de.kaiserpfalzedv.office.common.api.data.Tenantable;
-import de.kaiserpfalzedv.office.finance.chartofaccounts.api.account.Account;
-import de.kaiserpfalzedv.office.finance.chartofaccounts.api.account.AccountNotMappedException;
 
 /**
  * This is the chart of accounts as used by humans to order the accounts. Normally the accounts get numbers attached. In

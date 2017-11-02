@@ -26,7 +26,7 @@
     <enterprise-beans>
         <session>
             <ejb-name>LiquibaseConfigurationProvider</ejb-name>
-            <ejb-class>de.kaiserpfalzedv.office.common.ejb.config.LiquibaseConfigurationProvider</ejb-class>
+            <ejb-class>de.kaiserpfalzedv.commons.ejb.config.LiquibaseConfigurationProvider</ejb-class>
             <session-type>Singleton</session-type>
             <init-on-startup>true</init-on-startup>
 

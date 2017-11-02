@@ -16,11 +16,11 @@
 
 package de.kaiserpfalzedv.office.metainfo.api;
 
+import de.kaiserpfalzedv.commons.api.data.Identifiable;
+import de.kaiserpfalzedv.commons.api.data.Nameable;
+
 import java.io.Serializable;
 import java.util.Optional;
-
-import de.kaiserpfalzedv.office.common.api.data.Identifiable;
-import de.kaiserpfalzedv.office.common.api.data.Nameable;
 
 /**
  * A bigger module of the software. May come with a {@link License software license} of its own and therefore with an

@@ -16,15 +16,14 @@
 
 package de.kaiserpfalzedv.office.tenant.api.commands;
 
-import java.util.UUID;
-
-import javax.validation.constraints.NotNull;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import de.kaiserpfalzedv.office.common.api.commands.BaseCommand;
-import de.kaiserpfalzedv.office.common.api.commands.CrudCommands;
+import de.kaiserpfalzedv.commons.api.commands.BaseCommand;
+import de.kaiserpfalzedv.commons.api.commands.CrudCommands;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
+
+import javax.validation.constraints.NotNull;
+import java.util.UUID;
 
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}

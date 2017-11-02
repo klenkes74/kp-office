@@ -16,29 +16,16 @@
 
 package de.kaiserpfalzedv.office.contacts.jpa;
 
-import java.util.List;
-import java.util.UUID;
-
-import javax.persistence.CascadeType;
-import javax.persistence.ConstraintMode;
-import javax.persistence.DiscriminatorColumn;
-import javax.persistence.DiscriminatorValue;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.ForeignKey;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-import javax.persistence.OrderColumn;
-import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
-
-import de.kaiserpfalzedv.office.common.jpa.JPAAbstractTenantIdentifiable;
+import de.kaiserpfalzedv.commons.jpa.JPAAbstractTenantIdentifiable;
 import de.kaiserpfalzedv.office.contacts.api.Contact;
 import de.kaiserpfalzedv.office.contacts.api.Representative;
 import de.kaiserpfalzedv.office.contacts.api.addresses.Address;
 import de.kaiserpfalzedv.office.contacts.jpa.addresses.JPAAddress;
+
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import java.util.List;
+import java.util.UUID;
 
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}

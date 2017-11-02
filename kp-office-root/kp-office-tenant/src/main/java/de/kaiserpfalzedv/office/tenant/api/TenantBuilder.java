@@ -16,11 +16,11 @@
 
 package de.kaiserpfalzedv.office.tenant.api;
 
+import de.kaiserpfalzedv.commons.api.BuilderException;
+import org.apache.commons.lang3.builder.Builder;
+
 import java.util.ArrayList;
 import java.util.UUID;
-
-import de.kaiserpfalzedv.office.common.api.BuilderException;
-import org.apache.commons.lang3.builder.Builder;
 
 import static org.apache.commons.lang3.StringUtils.isBlank;
 

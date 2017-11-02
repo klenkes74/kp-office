@@ -16,7 +16,7 @@
 
 package de.kaiserpfalzedv.office.metainfo.api;
 
-import de.kaiserpfalzedv.office.common.api.BaseSystemException;
+import de.kaiserpfalzedv.commons.api.BaseSystemException;
 
 /**
  * The feature is not licensed. Boom.

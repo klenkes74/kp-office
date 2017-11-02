@@ -16,14 +16,14 @@
 
 package de.kaiserpfalzedv.office.finance.chartofaccounts.account.test;
 
-import java.util.UUID;
-
-import de.kaiserpfalzedv.office.common.api.BuilderException;
+import de.kaiserpfalzedv.commons.api.BuilderException;
 import de.kaiserpfalzedv.office.finance.chartofaccounts.api.account.Account;
 import de.kaiserpfalzedv.office.finance.chartofaccounts.impl.AccountBuilder;
 import de.kaiserpfalzedv.office.tenant.api.NullTenant;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.util.UUID;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;

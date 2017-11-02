@@ -16,15 +16,15 @@
 
 package de.kaiserpfalzedv.office.access.api.users;
 
+import de.kaiserpfalzedv.commons.api.data.Email;
+import de.kaiserpfalzedv.commons.api.data.Identifiable;
+import de.kaiserpfalzedv.commons.api.data.Nameable;
+import de.kaiserpfalzedv.commons.api.data.Tenantable;
+
 import java.security.Principal;
 import java.util.Locale;
 import java.util.Set;
 import java.util.UUID;
-
-import de.kaiserpfalzedv.office.common.api.data.Email;
-import de.kaiserpfalzedv.office.common.api.data.Identifiable;
-import de.kaiserpfalzedv.office.common.api.data.Nameable;
-import de.kaiserpfalzedv.office.common.api.data.Tenantable;
 
 /**
  * Paladins Inn uses an extended principal containing some additional data of the user.

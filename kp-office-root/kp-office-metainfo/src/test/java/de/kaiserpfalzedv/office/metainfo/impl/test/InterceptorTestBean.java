@@ -16,16 +16,15 @@
 
 package de.kaiserpfalzedv.office.metainfo.impl.test;
 
-import java.util.UUID;
-
-import javax.ejb.Stateless;
-
-import de.kaiserpfalzedv.office.common.api.cdi.OfficeService;
-import de.kaiserpfalzedv.office.common.api.multitenancy.Tenant;
-import de.kaiserpfalzedv.office.common.api.multitenancy.TenantHoldingServiceRequest;
+import de.kaiserpfalzedv.commons.api.cdi.OfficeService;
+import de.kaiserpfalzedv.commons.api.multitenancy.Tenant;
+import de.kaiserpfalzedv.commons.api.multitenancy.TenantHoldingServiceRequest;
 import de.kaiserpfalzedv.office.metainfo.api.Licensed;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import javax.ejb.Stateless;
+import java.util.UUID;
 
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}

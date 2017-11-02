@@ -16,20 +16,13 @@
 
 package de.kaiserpfalzedv.office.tenant.jpa;
 
-import java.util.UUID;
-
-import javax.persistence.Access;
-import javax.persistence.Column;
-import javax.persistence.Embedded;
-import javax.persistence.Entity;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.Table;
-
-import de.kaiserpfalzedv.office.common.jpa.JPAAbstractTenantIdentifiable;
-import de.kaiserpfalzedv.office.common.jpa.JPANameable;
+import de.kaiserpfalzedv.commons.jpa.JPAAbstractTenantIdentifiable;
+import de.kaiserpfalzedv.commons.jpa.JPANameable;
 import de.kaiserpfalzedv.office.tenant.api.Tenant;
 import org.apache.commons.lang3.builder.ToStringBuilder;
+
+import javax.persistence.*;
+import java.util.UUID;
 
 import static javax.persistence.AccessType.FIELD;
 import static javax.persistence.LockModeType.NONE;

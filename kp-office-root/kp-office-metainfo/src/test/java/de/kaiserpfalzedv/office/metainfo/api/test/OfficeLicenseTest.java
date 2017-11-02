@@ -16,6 +16,17 @@
 
 package de.kaiserpfalzedv.office.metainfo.api.test;
 
+import com.github.zafarkhaja.semver.Version;
+import de.kaiserpfalzedv.commons.api.data.ValidityDuration;
+import de.kaiserpfalzedv.commons.api.data.VersionRange;
+import de.kaiserpfalzedv.office.metainfo.api.OfficeLicense;
+import de.kaiserpfalzedv.office.metainfo.api.OfficeLicenseBuilder;
+import org.junit.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.slf4j.MDC;
+
+import javax.validation.constraints.NotNull;
 import java.time.Instant;
 import java.time.OffsetDateTime;
 import java.util.Collections;
@@ -23,27 +34,7 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
 
-import javax.validation.constraints.NotNull;
-
-import com.github.zafarkhaja.semver.Version;
-import de.kaiserpfalzedv.office.common.api.data.ValidityDuration;
-import de.kaiserpfalzedv.office.common.api.data.VersionRange;
-import de.kaiserpfalzedv.office.metainfo.api.OfficeLicense;
-import de.kaiserpfalzedv.office.metainfo.api.OfficeLicenseBuilder;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.slf4j.MDC;
-
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}

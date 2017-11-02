@@ -16,11 +16,10 @@
 
 package de.kaiserpfalzedv.office.tenant.api.replies;
 
-import java.util.UUID;
+import de.kaiserpfalzedv.commons.api.commands.BaseSuccess;
 
 import javax.validation.constraints.NotNull;
-
-import de.kaiserpfalzedv.office.common.api.commands.BaseSuccess;
+import java.util.UUID;
 
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}

@@ -16,7 +16,7 @@
 
 package de.kaiserpfalzedv.office.finance.chartofaccounts.api.chartofaccounts;
 
-import de.kaiserpfalzedv.office.common.api.BaseBusinessException;
+import de.kaiserpfalzedv.commons.api.BaseBusinessException;
 
 /**
  * @author klenkes

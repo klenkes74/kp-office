@@ -16,12 +16,12 @@
 
 package de.kaiserpfalzedv.office.contacts.api;
 
-import java.util.List;
-
-import de.kaiserpfalzedv.office.common.api.data.Nameable;
-import de.kaiserpfalzedv.office.common.api.data.TenantIdentifiable;
+import de.kaiserpfalzedv.commons.api.data.Nameable;
+import de.kaiserpfalzedv.commons.api.data.TenantIdentifiable;
 import de.kaiserpfalzedv.office.contacts.api.addresses.Address;
 import de.kaiserpfalzedv.office.contacts.api.names.Name;
+
+import java.util.List;
 
 /**
  * The contact itself. May be a person or an organization.

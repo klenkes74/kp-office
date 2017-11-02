@@ -16,10 +16,10 @@
 
 package de.kaiserpfalzedv.office.contacts.api.city;
 
-import de.kaiserpfalzedv.office.common.api.data.Pageable;
-import de.kaiserpfalzedv.office.common.api.data.PagedListable;
-import de.kaiserpfalzedv.office.common.api.init.Closeable;
-import de.kaiserpfalzedv.office.common.api.init.Initializable;
+import de.kaiserpfalzedv.commons.api.data.Pageable;
+import de.kaiserpfalzedv.commons.api.data.PagedListable;
+import de.kaiserpfalzedv.commons.api.init.Closeable;
+import de.kaiserpfalzedv.commons.api.init.Initializable;
 
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}

@@ -16,18 +16,18 @@
 
 package de.kaiserpfalzedv.office.tenant.impl;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import de.kaiserpfalzedv.commons.api.BaseSystemException;
+import de.kaiserpfalzedv.commons.api.MessageInfo;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import javax.ejb.ActivationConfigProperty;
 import javax.ejb.MessageDriven;
 import javax.inject.Inject;
 import javax.jms.JMSException;
 import javax.jms.Message;
 import javax.jms.MessageListener;
-
-import com.fasterxml.jackson.core.JsonProcessingException;
-import de.kaiserpfalzedv.office.common.api.BaseSystemException;
-import de.kaiserpfalzedv.office.common.api.MessageInfo;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}

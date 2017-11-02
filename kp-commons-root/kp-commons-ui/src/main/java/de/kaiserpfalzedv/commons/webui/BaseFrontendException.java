@@ -16,7 +16,7 @@
 
 package de.kaiserpfalzedv.commons.webui;
 
-import de.kaiserpfalzedv.office.common.api.BaseBusinessException;
+import de.kaiserpfalzedv.commons.api.BaseBusinessException;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 /**

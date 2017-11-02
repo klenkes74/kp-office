@@ -17,7 +17,7 @@
 package de.kaiserpfalzedv.office.access.api;
 
 
-import de.kaiserpfalzedv.office.common.api.BaseBusinessException;
+import de.kaiserpfalzedv.commons.api.BaseBusinessException;
 
 /**
  * The abstract base class of all checked security exceptions.

@@ -17,7 +17,7 @@
 package de.kaiserpfalzedv.office.access.api;
 
 
-import de.kaiserpfalzedv.office.common.api.BaseSystemException;
+import de.kaiserpfalzedv.commons.api.BaseSystemException;
 
 /**
  * The abstract base of all runtime exceptions of the security APIs.

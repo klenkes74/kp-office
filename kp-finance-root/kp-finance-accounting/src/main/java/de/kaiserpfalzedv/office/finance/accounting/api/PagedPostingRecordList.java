@@ -16,7 +16,7 @@
 
 package de.kaiserpfalzedv.office.finance.accounting.api;
 
-import de.kaiserpfalzedv.office.common.api.data.PagedListable;
+import de.kaiserpfalzedv.commons.api.data.PagedListable;
 
 /**
  * A paged list of posting records. Every paged list of any subtype of posting records may be use this as base

@@ -16,19 +16,10 @@
 
 package de.kaiserpfalzedv.office.access.api.users.impl;
 
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Locale;
-import java.util.Set;
-import java.util.UUID;
+import de.kaiserpfalzedv.commons.api.data.Email;
+import de.kaiserpfalzedv.office.access.api.users.*;
 
-import de.kaiserpfalzedv.office.access.api.users.OfficeEntitlement;
-import de.kaiserpfalzedv.office.access.api.users.OfficePrincipal;
-import de.kaiserpfalzedv.office.access.api.users.OfficeRole;
-import de.kaiserpfalzedv.office.access.api.users.PasswordFailureException;
-import de.kaiserpfalzedv.office.access.api.users.UserIsLockedException;
-import de.kaiserpfalzedv.office.common.api.data.Email;
+import java.util.*;
 
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}

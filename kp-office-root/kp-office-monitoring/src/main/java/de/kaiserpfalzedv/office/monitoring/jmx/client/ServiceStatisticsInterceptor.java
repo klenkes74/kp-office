@@ -16,18 +16,17 @@
 
 package de.kaiserpfalzedv.office.monitoring.jmx.client;
 
-import java.time.Instant;
+import de.kaiserpfalzedv.commons.api.Logging;
+import de.kaiserpfalzedv.commons.api.cdi.OfficeService;
+import de.kaiserpfalzedv.office.monitoring.jmx.api.StatisticsCollector;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.inject.Inject;
 import javax.interceptor.AroundInvoke;
 import javax.interceptor.Interceptor;
 import javax.interceptor.InvocationContext;
-
-import de.kaiserpfalzedv.office.common.api.Logging;
-import de.kaiserpfalzedv.office.common.api.cdi.OfficeService;
-import de.kaiserpfalzedv.office.monitoring.jmx.api.StatisticsCollector;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import java.time.Instant;
 
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}

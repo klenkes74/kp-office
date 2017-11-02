@@ -16,25 +16,20 @@
 
 package de.kaiserpfalzedv.office.tenant.client.test;
 
-import java.util.Optional;
-import java.util.UUID;
-
-import javax.interceptor.InvocationContext;
-
-import de.kaiserpfalzedv.office.common.api.multitenancy.TenantExtractor;
+import de.kaiserpfalzedv.commons.api.multitenancy.TenantExtractor;
 import de.kaiserpfalzedv.office.monitoring.jmx.api.StatisticsCollector;
 import de.kaiserpfalzedv.office.tenant.client.TenantServiceInterceptor;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.*;
 import org.junit.runner.RunWith;
 import org.powermock.api.easymock.annotation.Mock;
 import org.powermock.modules.junit4.PowerMockRunner;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.MDC;
+
+import javax.interceptor.InvocationContext;
+import java.util.Optional;
+import java.util.UUID;
 
 import static org.easymock.EasyMock.expect;
 import static org.easymock.EasyMock.replay;

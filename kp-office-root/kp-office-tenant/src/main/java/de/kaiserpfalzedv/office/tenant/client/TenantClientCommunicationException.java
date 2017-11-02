@@ -16,13 +16,13 @@
 
 package de.kaiserpfalzedv.office.tenant.client;
 
-import java.util.UUID;
-
-import de.kaiserpfalzedv.office.common.api.commands.CrudCommands;
-import de.kaiserpfalzedv.office.common.api.messaging.ClientCommunicationException;
+import de.kaiserpfalzedv.commons.api.commands.CrudCommands;
+import de.kaiserpfalzedv.commons.api.messaging.ClientCommunicationException;
 import de.kaiserpfalzedv.office.tenant.api.Tenant;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.UUID;
 
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}

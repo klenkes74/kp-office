@@ -16,25 +16,24 @@
 
 package de.kaiserpfalzedv.office.metainfo.impl;
 
+import com.github.zafarkhaja.semver.Version;
+import com.verhas.licensor.License;
+import de.kaiserpfalzedv.commons.api.BuilderException;
+import de.kaiserpfalzedv.commons.api.data.ValidityDuration;
+import de.kaiserpfalzedv.commons.api.data.VersionRange;
+import de.kaiserpfalzedv.office.metainfo.api.OfficeLicense;
+import org.apache.commons.lang3.builder.Builder;
+import org.bouncycastle.openpgp.PGPException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import javax.validation.constraints.NotNull;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
-
-import javax.validation.constraints.NotNull;
-
-import com.github.zafarkhaja.semver.Version;
-import com.verhas.licensor.License;
-import de.kaiserpfalzedv.office.common.api.BuilderException;
-import de.kaiserpfalzedv.office.common.api.data.ValidityDuration;
-import de.kaiserpfalzedv.office.common.api.data.VersionRange;
-import de.kaiserpfalzedv.office.metainfo.api.OfficeLicense;
-import org.apache.commons.lang3.builder.Builder;
-import org.bouncycastle.openpgp.PGPException;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}

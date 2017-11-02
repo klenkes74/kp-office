@@ -16,48 +16,32 @@
 
 package de.kaiserpfalzedv.office.tenant.client.impl;
 
+import de.kaiserpfalzedv.commons.api.cdi.Implementation;
+import de.kaiserpfalzedv.commons.api.config.ConfigReader;
+import de.kaiserpfalzedv.commons.api.messaging.*;
+import de.kaiserpfalzedv.commons.client.messaging.MessageSenderImpl;
+import de.kaiserpfalzedv.commons.impl.config.ConfigReaderBuilder;
+import de.kaiserpfalzedv.office.tenant.api.Tenant;
+import de.kaiserpfalzedv.office.tenant.api.TenantDoesNotExistException;
+import de.kaiserpfalzedv.office.tenant.api.TenantExistsException;
+import de.kaiserpfalzedv.office.tenant.api.commands.*;
+import de.kaiserpfalzedv.office.tenant.api.replies.*;
+import de.kaiserpfalzedv.office.tenant.client.TenantClient;
+import de.kaiserpfalzedv.office.tenant.client.TenantClientCommunicationException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
+import javax.validation.constraints.NotNull;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Properties;
 import java.util.UUID;
 
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
-import javax.validation.constraints.NotNull;
-
-import de.kaiserpfalzedv.office.common.api.cdi.Implementation;
-import de.kaiserpfalzedv.office.common.api.config.ConfigReader;
-import de.kaiserpfalzedv.office.common.api.messaging.MessageInfo;
-import de.kaiserpfalzedv.office.common.api.messaging.MessageSender;
-import de.kaiserpfalzedv.office.common.api.messaging.MessagingCore;
-import de.kaiserpfalzedv.office.common.api.messaging.NoBrokerException;
-import de.kaiserpfalzedv.office.common.api.messaging.NoResponseException;
-import de.kaiserpfalzedv.office.common.api.messaging.ResponseOfWrongTypeException;
-import de.kaiserpfalzedv.office.common.client.messaging.MessageSenderImpl;
-import de.kaiserpfalzedv.office.common.impl.config.ConfigReaderBuilder;
-import de.kaiserpfalzedv.office.tenant.api.Tenant;
-import de.kaiserpfalzedv.office.tenant.api.TenantDoesNotExistException;
-import de.kaiserpfalzedv.office.tenant.api.TenantExistsException;
-import de.kaiserpfalzedv.office.tenant.api.commands.TenantCommandBuilder;
-import de.kaiserpfalzedv.office.tenant.api.commands.TenantCreateCommand;
-import de.kaiserpfalzedv.office.tenant.api.commands.TenantDeleteCommand;
-import de.kaiserpfalzedv.office.tenant.api.commands.TenantRetrieveAllCommand;
-import de.kaiserpfalzedv.office.tenant.api.commands.TenantRetrieveCommand;
-import de.kaiserpfalzedv.office.tenant.api.commands.TenantUpdateCommand;
-import de.kaiserpfalzedv.office.tenant.api.replies.TenantContainingBaseReply;
-import de.kaiserpfalzedv.office.tenant.api.replies.TenantCreateReply;
-import de.kaiserpfalzedv.office.tenant.api.replies.TenantDeleteReply;
-import de.kaiserpfalzedv.office.tenant.api.replies.TenantRetrieveAllReply;
-import de.kaiserpfalzedv.office.tenant.api.replies.TenantRetrieveReply;
-import de.kaiserpfalzedv.office.tenant.api.replies.TenantUpdateReply;
-import de.kaiserpfalzedv.office.tenant.client.TenantClient;
-import de.kaiserpfalzedv.office.tenant.client.TenantClientCommunicationException;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import static de.kaiserpfalzedv.office.common.api.commands.CrudCommands.CREATE;
-import static de.kaiserpfalzedv.office.common.api.commands.CrudCommands.RETRIEVE;
+import static de.kaiserpfalzedv.commons.api.commands.CrudCommands.CREATE;
+import static de.kaiserpfalzedv.commons.api.commands.CrudCommands.RETRIEVE;
 
 /**
  * @author rlichti {@literal <rlichti@kaiserpfalz-edv.de>}

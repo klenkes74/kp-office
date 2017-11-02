@@ -16,20 +16,15 @@
 
 package de.kaiserpfalzedv.office.tenant.api.commands;
 
-import java.util.ArrayList;
-import java.util.UUID;
-
-import de.kaiserpfalzedv.office.common.api.BuilderException;
-import de.kaiserpfalzedv.office.common.api.commands.CrudCommands;
+import de.kaiserpfalzedv.commons.api.BuilderException;
+import de.kaiserpfalzedv.commons.api.commands.CrudCommands;
 import de.kaiserpfalzedv.office.tenant.api.Tenant;
 import org.apache.commons.lang3.builder.Builder;
 
-import static de.kaiserpfalzedv.office.common.api.commands.CrudCommands.CREATE;
-import static de.kaiserpfalzedv.office.common.api.commands.CrudCommands.DELETE;
-import static de.kaiserpfalzedv.office.common.api.commands.CrudCommands.RETRIEVE;
-import static de.kaiserpfalzedv.office.common.api.commands.CrudCommands.RETRIEVE_ALL;
-import static de.kaiserpfalzedv.office.common.api.commands.CrudCommands.RETRIEVE_BY_KEY;
-import static de.kaiserpfalzedv.office.common.api.commands.CrudCommands.UPDATE;
+import java.util.ArrayList;
+import java.util.UUID;
+
+import static de.kaiserpfalzedv.commons.api.commands.CrudCommands.*;
 
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}

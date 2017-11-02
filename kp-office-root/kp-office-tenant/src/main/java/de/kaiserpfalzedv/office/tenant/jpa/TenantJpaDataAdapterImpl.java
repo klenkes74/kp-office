@@ -16,26 +16,20 @@
 
 package de.kaiserpfalzedv.office.tenant.jpa;
 
-import java.util.HashSet;
-import java.util.Properties;
-import java.util.Set;
-import java.util.UUID;
-
-import javax.enterprise.context.ApplicationScoped;
-import javax.persistence.EntityManager;
-import javax.persistence.NoResultException;
-import javax.persistence.NonUniqueResultException;
-import javax.persistence.PersistenceContext;
-import javax.persistence.PersistenceException;
-import javax.persistence.QueryTimeoutException;
-import javax.transaction.Transactional;
-import javax.validation.constraints.NotNull;
-
-import de.kaiserpfalzedv.office.common.api.init.InitializationException;
+import de.kaiserpfalzedv.commons.api.init.InitializationException;
 import de.kaiserpfalzedv.office.tenant.adapter.data.TenantDataAdapter;
 import de.kaiserpfalzedv.office.tenant.api.Tenant;
 import de.kaiserpfalzedv.office.tenant.api.TenantDoesNotExistException;
 import de.kaiserpfalzedv.office.tenant.api.TenantExistsException;
+
+import javax.enterprise.context.ApplicationScoped;
+import javax.persistence.*;
+import javax.transaction.Transactional;
+import javax.validation.constraints.NotNull;
+import java.util.HashSet;
+import java.util.Properties;
+import java.util.Set;
+import java.util.UUID;
 
 import static javax.persistence.LockModeType.PESSIMISTIC_WRITE;
 import static javax.transaction.Transactional.TxType.REQUIRED;

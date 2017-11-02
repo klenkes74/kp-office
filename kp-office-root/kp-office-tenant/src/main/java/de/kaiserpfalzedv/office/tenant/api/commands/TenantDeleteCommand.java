@@ -16,11 +16,11 @@
 
 package de.kaiserpfalzedv.office.tenant.api.commands;
 
-import java.util.UUID;
-
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import de.kaiserpfalzedv.office.common.api.commands.CrudCommands;
+import de.kaiserpfalzedv.commons.api.commands.CrudCommands;
+
+import java.util.UUID;
 
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
