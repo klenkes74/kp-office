@@ -14,37 +14,39 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzedv.commons.webui.ui;
+package de.kaiserpfalzedv.commons.webui.components;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import javax.annotation.PostConstruct;
-import javax.enterprise.context.ApplicationScoped;
-import javax.enterprise.inject.Produces;
 import java.io.Serializable;
 import java.util.UUID;
+
+import javax.annotation.PostConstruct;
+import javax.enterprise.context.SessionScoped;
+import javax.enterprise.inject.Produces;
+
+import de.kaiserpfalzedv.commons.webui.events.SerializableEventBus;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
  * @version 1.0.0
  * @since 2016-07-02
  */
-@ApplicationScoped
-public class ApplicationConfiguration implements Serializable {
-    private static final Logger LOG = LoggerFactory.getLogger(ApplicationConfiguration.class);
+@SessionScoped
+public class SessionConfiguration implements Serializable {
+    private static final Logger LOG = LoggerFactory.getLogger(SessionConfiguration.class);
 
     @Produces
-    @ApplicationScoped
+    @SessionScoped
     private UUID ui = UUID.randomUUID();
 
     @Produces
-    @ApplicationScoped
-    private SerializableEventBus applicationBus = new SerializableEventBus("kpo-");
+    @SessionScoped
+    private SerializableEventBus bus = new SerializableEventBus("kpo-session-" + ui.toString());
 
 
     @PostConstruct
     public void init() {
-        LOG.info("Created {}: ui={}, bus={}", getClass().getSimpleName(), ui, applicationBus);
+        LOG.info("Created {}: ui={}, bus={}", getClass().getSimpleName(), ui, bus);
     }
 }

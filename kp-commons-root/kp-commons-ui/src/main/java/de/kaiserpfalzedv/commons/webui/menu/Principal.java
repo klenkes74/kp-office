@@ -14,9 +14,21 @@
  * limitations under the License.
  */
 
+package de.kaiserpfalzedv.commons.webui.menu;
+
+import java.lang.annotation.Documented;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+
 /**
- * @author klenkes  {@literal <rlichti@kaiserpfalz-edv.de>}
- * @version 0.3.0
- * @since 2016-03-28
+ * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
+ * @version 1.0.0
+ * @since 2017-11-02
  */
-package de.kaiserpfalzedv.commons.webui;
+@Retention(RetentionPolicy.RUNTIME)
+@Target({ElementType.METHOD, ElementType.FIELD})
+@Documented
+public @interface Principal {
+}

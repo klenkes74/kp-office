@@ -14,7 +14,9 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzedv.commons.webui.ui.boilerplate;
+package de.kaiserpfalzedv.commons.webui.views.splash;
+
+import javax.inject.Inject;
 
 import com.vaadin.cdi.CDIView;
 import com.vaadin.cdi.ViewScoped;
@@ -28,8 +30,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.vaadin.addon.cdimvp.AbstractMVPView;
 import org.vaadin.addon.cdiproperties.annotation.CssLayoutProperties;
-
-import javax.inject.Inject;
 
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}

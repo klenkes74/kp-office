@@ -14,14 +14,16 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzedv.commons.webui.ui.login;
+package de.kaiserpfalzedv.commons.webui.menu;
 
-import java.io.Serializable;
+import com.vaadin.ui.Component;
+import com.vaadin.ui.Layout;
 
 /**
- * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
- * @version 1.0.0
- * @since 2016-07-10
+ * @author klenkes
+ * @version 2015Q1
+ * @since 28.08.15 10:35
  */
-public class ForgottPasswordEvent implements Serializable {
+public interface Menu extends Component, Layout {
+    void generate();
 }

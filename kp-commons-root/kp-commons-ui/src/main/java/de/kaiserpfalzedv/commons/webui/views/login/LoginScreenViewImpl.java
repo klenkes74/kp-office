@@ -14,27 +14,36 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzedv.commons.webui.ui.login;
+package de.kaiserpfalzedv.commons.webui.views.login;
+
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+import javax.annotation.security.PermitAll;
+import javax.inject.Inject;
 
 import com.vaadin.cdi.CDIView;
 import com.vaadin.cdi.ViewScoped;
 import com.vaadin.event.ShortcutAction;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
-import com.vaadin.shared.ui.label.ContentMode;
-import com.vaadin.ui.*;
+import com.vaadin.shared.ui.ContentMode;
+import com.vaadin.ui.Alignment;
+import com.vaadin.ui.Button;
+import com.vaadin.ui.CssLayout;
+import com.vaadin.ui.FormLayout;
+import com.vaadin.ui.Label;
+import com.vaadin.ui.TextField;
+import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.themes.ValoTheme;
-import de.kaiserpfalzedv.commons.webui.ui.SerializableEventBus;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import de.kaiserpfalzedv.commons.webui.events.SerializableEventBus;
 import org.vaadin.addon.cdimvp.AbstractMVPView;
 import org.vaadin.addon.cdiproperties.TextBundle;
-import org.vaadin.addon.cdiproperties.annotation.*;
-
-import javax.annotation.PostConstruct;
-import javax.annotation.security.PermitAll;
-import javax.inject.Inject;
-import javax.persistence.PreRemove;
+import org.vaadin.addon.cdiproperties.annotation.ButtonProperties;
+import org.vaadin.addon.cdiproperties.annotation.CssLayoutProperties;
+import org.vaadin.addon.cdiproperties.annotation.FormLayoutProperties;
+import org.vaadin.addon.cdiproperties.annotation.LabelProperties;
+import org.vaadin.addon.cdiproperties.annotation.TextFieldProperties;
+import org.vaadin.addon.cdiproperties.annotation.VerticalLayoutProperties;
 
 /**
  * UI content when the user is not logged in yet.
@@ -43,9 +52,7 @@ import javax.persistence.PreRemove;
 @PermitAll
 @CDIView(value = "login")
 public class LoginScreenViewImpl extends AbstractMVPView implements View, LoginScreenView {
-    private static final long serialVersionUID = -1379268123072026394L;
-
-    private static final Logger LOG = LoggerFactory.getLogger(LoginScreenViewImpl.class);
+    private static final long serialVersionUID = -4993146969193690319L;
 
     @Inject
     @CssLayoutProperties(styleName = {"login-screen"})
@@ -63,9 +70,6 @@ public class LoginScreenViewImpl extends AbstractMVPView implements View, LoginS
     @TextFieldProperties(
             captionKey = "login.name.caption",
             descriptionKey = "login.name.description",
-            nullRepresentation = "",
-            required = true,
-            requiredError = "login.name.missing",
             widthValue = 15, widthUnits = Unit.EM
     )
     private TextField username;
@@ -74,8 +78,6 @@ public class LoginScreenViewImpl extends AbstractMVPView implements View, LoginS
     @TextFieldProperties(
             captionKey = "login.password.caption",
             descriptionKey = "login.password.description",
-            nullRepresentation = "",
-            required = true,
             widthValue = 15, widthUnits = Unit.EM
     )
     private TextField password;
@@ -87,7 +89,6 @@ public class LoginScreenViewImpl extends AbstractMVPView implements View, LoginS
     @Inject
     @ButtonProperties(
             captionKey = "login.login-button.caption",
-            disableOnClick = true,
             styleName = {ValoTheme.BUTTON_FRIENDLY}
     )
     private Button login;
@@ -95,7 +96,6 @@ public class LoginScreenViewImpl extends AbstractMVPView implements View, LoginS
     @Inject
     @ButtonProperties(
             captionKey = "login.password-forgotten.caption",
-            disableOnClick = true,
             styleName = {ValoTheme.BUTTON_FRIENDLY}
     )
     private Button forgotPassword;
@@ -123,7 +123,7 @@ public class LoginScreenViewImpl extends AbstractMVPView implements View, LoginS
         bus.register(this);
     }
 
-    @PreRemove
+    @PreDestroy
     public void close() {
         bus.unregister(this);
     }

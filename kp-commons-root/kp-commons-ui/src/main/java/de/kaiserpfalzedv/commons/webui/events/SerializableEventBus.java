@@ -14,21 +14,22 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzedv.commons.webui.ui;
+package de.kaiserpfalzedv.commons.webui.events;
 
-import com.google.common.base.MoreObjects;
-import com.google.common.eventbus.EventBus;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import java.io.IOException;
+import java.io.ObjectStreamException;
+import java.io.Serializable;
+import java.util.HashSet;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.ejb.PostActivate;
 import javax.ejb.PrePassivate;
-import java.io.IOException;
-import java.io.ObjectStreamException;
-import java.io.Serializable;
-import java.util.HashSet;
+
+import com.google.common.base.MoreObjects;
+import com.google.common.eventbus.EventBus;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import static com.google.common.base.Preconditions.checkArgument;
 

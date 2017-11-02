@@ -14,31 +14,25 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzedv.commons.webui.ui.login;
+package de.kaiserpfalzedv.commons.webui.views.splash;
 
-import java.io.Serializable;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.vaadin.addon.cdimvp.AbstractMVPPresenter;
+import org.vaadin.addon.cdimvp.AbstractMVPPresenter.ViewInterface;
 
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
  * @version 1.0.0
- * @since 2016-07-10
+ * @since 2016-07-03
  */
-public class LoginEvent implements Serializable {
-    private String userName;
-    private String passWord;
+@ViewInterface(SplashScreenView.class)
+public class SplashScreenPresenter extends AbstractMVPPresenter<SplashScreenView> {
+    public static final String VIEW_ENTER = "SplashScreenPresenter_ve";
+    private static final Logger LOG = LoggerFactory.getLogger(SplashScreenPresenter.class);
 
-
-    public LoginEvent(final String userName, final String passWord) {
-        this.userName = userName;
-        this.passWord = passWord;
-    }
-
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public String getPassWord() {
-        return passWord;
+    @Override
+    public void viewEntered() {
+        LOG.info("Activated view: {}", view.getClass().getSimpleName());
     }
 }

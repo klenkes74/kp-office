@@ -14,17 +14,18 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzedv.commons.webui.ui.login;
-
-import org.vaadin.addon.cdimvp.MVPView;
+package de.kaiserpfalzedv.commons.webui.views.login;
 
 /**
- * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
- * @version 1.0.0
- * @since 2016-07-03
+ * The login for the user given as username failed. No further information about the reason is
+ * given.
+ *
+ * @author klenkes
+ * @version 2015Q1
+ * @since 06.09.15 07:24
  */
-public interface LoginScreenView extends MVPView {
-    String getUserName();
-
-    String getPassword();
+public class ChangePasswordFailedException extends BaseAuthenticationException {
+    public ChangePasswordFailedException(final String username) {
+        super(username);
+    }
 }

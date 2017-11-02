@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzedv.commons.webui.ui.boilerplate;
+package de.kaiserpfalzedv.commons.webui.views.login;
 
 import org.vaadin.addon.cdimvp.MVPView;
 
@@ -23,5 +23,8 @@ import org.vaadin.addon.cdimvp.MVPView;
  * @version 1.0.0
  * @since 2016-07-03
  */
-public interface SplashScreenView extends MVPView {
+public interface LoginScreenView extends MVPView {
+    String getUserName();
+
+    String getPassword();
 }

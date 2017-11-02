@@ -1,4 +1,4 @@
-    /*
+/*
  * Copyright 2017 Kaiserpfalz EDV-Service, Roland T. Lichti
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,31 +14,32 @@
  * limitations under the License.
  */
 
-    package de.kaiserpfalzedv.commons.webui.ui;
+package de.kaiserpfalzedv.commons.webui.components;
 
-    import com.vaadin.annotations.Push;
-    import com.vaadin.annotations.Theme;
-    import com.vaadin.annotations.Viewport;
-    import com.vaadin.cdi.CDIUI;
-    import com.vaadin.cdi.access.AccessControl;
-    import com.vaadin.navigator.Navigator;
-    import com.vaadin.navigator.ViewProvider;
-    import com.vaadin.server.Responsive;
-    import com.vaadin.server.VaadinRequest;
-    import com.vaadin.ui.CssLayout;
-    import com.vaadin.ui.HorizontalLayout;
-    import com.vaadin.ui.UI;
-    import com.vaadin.ui.themes.ValoTheme;
-    import de.kaiserpfalzedv.vaadin.menu.Menu;
-    import org.vaadin.addon.cdiproperties.TextBundle;
-    import org.vaadin.addon.cdiproperties.annotation.CssLayoutProperties;
-    import org.vaadin.addon.cdiproperties.annotation.HorizontalLayoutProperties;
+import javax.enterprise.context.ApplicationScoped;
+import javax.enterprise.context.SessionScoped;
+import javax.inject.Inject;
 
-    import javax.enterprise.context.ApplicationScoped;
-    import javax.enterprise.context.SessionScoped;
-    import javax.inject.Inject;
+import com.vaadin.annotations.Push;
+import com.vaadin.annotations.Theme;
+import com.vaadin.annotations.Viewport;
+import com.vaadin.cdi.CDIUI;
+import com.vaadin.cdi.access.AccessControl;
+import com.vaadin.navigator.Navigator;
+import com.vaadin.navigator.ViewProvider;
+import com.vaadin.server.Responsive;
+import com.vaadin.server.VaadinRequest;
+import com.vaadin.ui.CssLayout;
+import com.vaadin.ui.HorizontalLayout;
+import com.vaadin.ui.UI;
+import com.vaadin.ui.themes.ValoTheme;
+import de.kaiserpfalzedv.commons.webui.events.SerializableEventBus;
+import de.kaiserpfalzedv.commons.webui.menu.Menu;
+import org.vaadin.addon.cdiproperties.TextBundle;
+import org.vaadin.addon.cdiproperties.annotation.CssLayoutProperties;
+import org.vaadin.addon.cdiproperties.annotation.HorizontalLayoutProperties;
 
-    import static org.apache.commons.lang3.StringUtils.isNotBlank;
+import static org.apache.commons.lang3.StringUtils.isNotBlank;
 
 @Viewport("user-scalable=no,initial-scale=1.0")
 @Push

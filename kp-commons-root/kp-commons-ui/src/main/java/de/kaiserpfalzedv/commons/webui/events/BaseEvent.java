@@ -14,25 +14,18 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzedv.commons.webui.ui.boilerplate;
+package de.kaiserpfalzedv.commons.webui.events;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.vaadin.addon.cdimvp.AbstractMVPPresenter;
-import org.vaadin.addon.cdimvp.AbstractMVPPresenter.ViewInterface;
+import java.io.Serializable;
+import java.util.UUID;
 
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
  * @version 1.0.0
- * @since 2016-07-03
+ * @since 2016-06-04
  */
-@ViewInterface(SplashScreenView.class)
-public class SplashScreenPresenter extends AbstractMVPPresenter<SplashScreenView> {
-    public static final String VIEW_ENTER = "SplashScreenPresenter_ve";
-    private static final Logger LOG = LoggerFactory.getLogger(SplashScreenPresenter.class);
+public interface BaseEvent<T extends Serializable> extends Serializable {
+    UUID getId();
 
-    @Override
-    public void viewEntered() {
-        LOG.info("Activated view: {}", view.getClass().getSimpleName());
-    }
+    T getPayload();
 }

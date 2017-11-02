@@ -38,6 +38,27 @@
         </dependency>
 
         <dependency>
+            <groupId>de.kaiserpfalz-edv.commons</groupId>
+            <artifactId>kp-commons-api</artifactId>
+        </dependency>
+
+
+        <!-- Vaadin Components -->
+        <dependency>
+            <groupId>de.steinwedel.vaadin.addon</groupId>
+            <artifactId>messagebox</artifactId>
+            <version>4.0.21</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.vaadin</groupId>
+                    <artifactId>vaadin-server</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+
+        <!-- Vaadin -->
+        <dependency>
             <groupId>com.vaadin</groupId>
             <artifactId>vaadin-client-compiled</artifactId>
             <scope>provided</scope>

@@ -14,32 +14,52 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzedv.commons.webui.ui.login;
+package de.kaiserpfalzedv.commons.webui.views.login;
+
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+import javax.inject.Inject;
+import javax.servlet.ServletException;
 
 import com.google.common.eventbus.Subscribe;
+import com.vaadin.cdi.ViewScoped;
 import com.vaadin.cdi.access.JaasAccessControl;
 import com.vaadin.ui.Notification;
-import de.kaiserpfalzedv.commons.webui.ui.boilerplate.SplashScreenView;
+import de.kaiserpfalzedv.commons.webui.events.SerializableEventBus;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.vaadin.addon.cdimvp.AbstractMVPPresenter;
 import org.vaadin.addon.cdimvp.AbstractMVPPresenter.ViewInterface;
 import org.vaadin.addon.cdiproperties.TextBundle;
 
-import javax.inject.Inject;
-import javax.servlet.ServletException;
-
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
  * @version 1.0.0
  * @since 2016-07-03
  */
+@ViewScoped
 @ViewInterface(LoginScreenView.class)
-public class LoginScreenPresenter extends AbstractMVPPresenter<SplashScreenView> {
+public class LoginScreenPresenter extends AbstractMVPPresenter<LoginScreenView> {
     public static final String VIEW_ENTER = "LoginScreenPresenter_ve";
     private static final Logger LOG = LoggerFactory.getLogger(LoginScreenPresenter.class);
+
     @Inject
     private TextBundle i18n;
+
+    @Inject
+    @ViewScoped
+    private SerializableEventBus bus;
+
+
+    @PostConstruct
+    public void init() {
+        bus.register(this);
+    }
+
+    @PreDestroy
+    public void close() {
+        bus.unregister(this);
+    }
 
 
     @Override

@@ -14,18 +14,19 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzedv.commons.webui.ui;
+package de.kaiserpfalzedv.commons.webui.components;
+
+import java.io.Serializable;
+import java.util.UUID;
+
+import javax.annotation.PostConstruct;
+import javax.enterprise.inject.Default;
+import javax.enterprise.inject.Produces;
 
 import com.google.common.eventbus.EventBus;
 import com.vaadin.cdi.ViewScoped;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import javax.annotation.PostConstruct;
-import javax.enterprise.inject.Default;
-import javax.enterprise.inject.Produces;
-import java.io.Serializable;
-import java.util.UUID;
 
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
