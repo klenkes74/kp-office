@@ -35,7 +35,8 @@ import java.lang.reflect.Method;
  * The licensing interceptor. It reads the license from the injected {@link LicenseService} and then checks if the
  * feature specified by {@link Licensed} is really licensed.
  *
- * If the feature is not licensed, then an {@link de.kaiserpfalzedv.office.license.api.NotLicensedException} is thrown. We need an unchecked
+ * If the feature is not licensed, then an {@link de.kaiserpfalzedv.office.metainfo.api.NotLicensedException} is thrown. We
+ * need an unchecked
  *
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
  * @version 1.0.0
@@ -108,7 +109,7 @@ public class LicenseInterceptor {
 
     private void checkLicensedFeature(InvocationContext ctx) {
         String feature = getFeatureFromAnnotation(ctx);
-        if (!license.isLicensed(feature)) {
+        if (!license.isFeatureLicences(feature)) {
             Logging.OPLOG.error("Feature not covered by license: license={}, feature={}, coveredFeatures={}",
                                 license.getId(), feature, license.getOptions()
             );

@@ -43,6 +43,11 @@ public class ValidityDuration implements Serializable {
         this.end = end;
     }
 
+    public ValidityDuration(@NotNull final Instant start, @NotNull final Instant end) {
+        this.start = start.atZone(ValidityDuration.UTC).toOffsetDateTime();
+        this.end = end.atZone(ValidityDuration.UTC).toOffsetDateTime();
+    }
+
     public boolean isValid(final OffsetDateTime date) {
         return isValid(date.toInstant());
     }

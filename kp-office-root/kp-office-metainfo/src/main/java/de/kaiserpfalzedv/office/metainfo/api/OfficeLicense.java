@@ -18,8 +18,7 @@ package de.kaiserpfalzedv.office.metainfo.api;
 
 import com.github.zafarkhaja.semver.Version;
 import de.kaiserpfalzedv.commons.api.data.Identifiable;
-import de.kaiserpfalzedv.commons.api.data.ValidityDuration;
-import de.kaiserpfalzedv.commons.api.data.VersionRange;
+import de.kaiserpfalzedv.commons.api.metainfo.SoftwareLicense;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
@@ -36,7 +35,16 @@ import java.util.Set;
  * @version 1.0.0
  * @since 2017-08-15
  */
-public interface OfficeLicense extends Identifiable, Serializable {
+public interface OfficeLicense extends Identifiable, SoftwareLicense, Serializable {
+    /**
+     * Default implementation to return the UUID of the license as key.
+     *
+     * @return the UUID of the license as key.
+     */
+    default String getKey() {
+        return getId().toString();
+    }
+
     /**
      * @return to whom the software has been licensed.
      */
@@ -53,16 +61,6 @@ public interface OfficeLicense extends Identifiable, Serializable {
     OffsetDateTime getCreated();
 
     /**
-     * @return The validity range of the license.
-     */
-    ValidityDuration getDuration();
-
-    /**
-     * @return the valid versions for this license.
-     */
-    VersionRange getValidVersions();
-
-    /**
      * @return the licensed options.
      */
     Set<String> getOptions();
@@ -74,7 +72,7 @@ public interface OfficeLicense extends Identifiable, Serializable {
      *
      * @return TRUE, if the option is listed as licensed.
      */
-    boolean isLicensed(String option);
+    boolean isFeatureLicences(String option);
 
     /**
      * @return TRUE, if the license is valid (for version and duration). A combination of {@link #isValidDuration()}
@@ -124,7 +122,7 @@ public interface OfficeLicense extends Identifiable, Serializable {
         return new ToStringBuilder(this)
                 .append("id", getId())
                 .append("licensee", getLicensee())
-                .append("versions", getValidVersions())
+                .append("versions", getVersions())
                 .append("duration", getDuration())
                 .toString();
     }

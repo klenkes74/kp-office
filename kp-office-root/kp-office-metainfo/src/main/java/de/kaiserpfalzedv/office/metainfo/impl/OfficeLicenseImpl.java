@@ -21,6 +21,7 @@ import com.verhas.licensor.License;
 import de.kaiserpfalzedv.commons.api.data.ValidityDuration;
 import de.kaiserpfalzedv.commons.api.data.VersionRange;
 import de.kaiserpfalzedv.commons.api.metainfo.SoftwareLicense;
+import de.kaiserpfalzedv.commons.impl.license.LicenseBuilder;
 import de.kaiserpfalzedv.office.metainfo.api.OfficeLicense;
 
 import java.time.Instant;
@@ -37,7 +38,11 @@ import java.util.UUID;
  * @version 1.0.0
  * @since 2017-10-30
  */
-public class OfficeLicenseImpl implements OfficeLicense, SoftwareLicense {
+public class OfficeLicenseImpl implements OfficeLicense {
+    /**
+     * Our software is distributed as Apache 2.0 licensed. So we can use it as base license.
+     */
+    private static final SoftwareLicense baseLicense = new LicenseBuilder().apache2().build();
 
     /**
      * The base license.
@@ -63,27 +68,22 @@ public class OfficeLicenseImpl implements OfficeLicense, SoftwareLicense {
 
     @Override
     public String getTitle() {
-        return null;
+        return baseLicense.getTitle();
     }
 
     @Override
     public String getDisclaimer() {
-        return null;
+        return baseLicense.getDisclaimer();
     }
 
     @Override
     public String getFullText() {
-        return null;
+        return baseLicense.getFullText();
     }
 
     @Override
     public boolean isOpenSource() {
-        return false;
-    }
-
-    @Override
-    public String getKey() {
-        return null;
+        return baseLicense.isOpenSource();
     }
 
     @Override
@@ -108,11 +108,6 @@ public class OfficeLicenseImpl implements OfficeLicense, SoftwareLicense {
 
     @Override
     public VersionRange getVersions() {
-        return null;
-    }
-
-    @Override
-    public VersionRange getValidVersions() {
         return range;
     }
 
@@ -127,7 +122,7 @@ public class OfficeLicenseImpl implements OfficeLicense, SoftwareLicense {
     }
 
     @Override
-    public boolean isLicensed(String option) {
+    public boolean isFeatureLicences(String option) {
         return license.getFeature(option) == "true";
     }
 

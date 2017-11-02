@@ -120,7 +120,7 @@ public class OfficeLicenseTO implements OfficeLicense {
     }
 
     @Override
-    public boolean isLicensed(String option) {
+    public boolean isFeatureLicences(String option) {
         return features.contains(option);
     }
 

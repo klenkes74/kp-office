@@ -225,8 +225,8 @@ class OtherOfficeLicenseImplementation implements OfficeLicense {
     }
 
     @Override
-    public boolean isLicensed(String option) {
-        return data.isLicensed(option);
+    public boolean isFeatureLicences(String option) {
+        return data.isFeatureLicences(option);
     }
 
     @Override
