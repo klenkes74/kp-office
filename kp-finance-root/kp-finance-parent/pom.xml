@@ -72,6 +72,22 @@
             </dependency>
 
             <dependency>
+                <groupId>de.kaiserpfalz-edv.iam</groupId>
+                <artifactId>kp-iam-bom</artifactId>
+                <version>${project.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>de.kaiserpfalz-edv.licensing</groupId>
+                <artifactId>kp-licensing-bom</artifactId>
+                <version>${project.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
                 <groupId>de.kaiserpfalz-edv.commons</groupId>
                 <artifactId>kp-commons-bom</artifactId>
                 <version>${project.version}</version>

@@ -16,11 +16,11 @@
 
 package de.kaiserpfalzedv.commons.webui.i18n;
 
-import java.util.HashMap;
-import java.util.Locale;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.HashMap;
+import java.util.Locale;
 
 /**
  * @author rlic  (rlichti@kaiserpfalz-edv.de)
@@ -32,7 +32,7 @@ public class I18nInterceptor {
 
     private static final String LOCALE_FILE = "translations";
 
-    private final HashMap<Locale, I18NHandler> i18nCache = new HashMap<>(5);
+    private final HashMap<Locale, VaadinI18NHandler> i18nCache = new HashMap<>(5);
 
 
     public I18nInterceptor() {
@@ -69,7 +69,7 @@ public class I18nInterceptor {
 
 
     private String translate(final String key, final Locale locale) {
-        I18NHandler i18n = getI18nHandler(locale);
+        VaadinI18NHandler i18n = getI18nHandler(locale);
 
         try {
             return i18n.get(key);
@@ -80,9 +80,9 @@ public class I18nInterceptor {
         }
     }
 
-    private I18NHandler getI18nHandler(Locale locale) {
+    private VaadinI18NHandler getI18nHandler(Locale locale) {
         if (!i18nCache.containsKey(locale)) {
-            I18NHandler i18n = new I18NHandlerImpl(LOCALE_FILE, locale);
+            VaadinI18NHandler i18n = new VaadinI18NHandlerImpl(LOCALE_FILE, locale);
 
             i18nCache.put(locale, i18n);
         }

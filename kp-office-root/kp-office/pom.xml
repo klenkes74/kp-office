@@ -24,6 +24,7 @@
         <groupId>de.kaiserpfalz-edv.office.base</groupId>
         <artifactId>kp-office-parent</artifactId>
         <version>1.0.0-SNAPSHOT</version>
+        <relativePath>../kp-office-parent/pom.xml</relativePath>
     </parent>
 
     <groupId>de.kaiserpfalz-edv.office</groupId>
@@ -36,35 +37,14 @@
 
     <dependencies>
         <dependency>
-            <groupId>de.kaiserpfalz-edv.office.base</groupId>
-            <artifactId>kp-office-metainfo-ui</artifactId>
-            <type>war</type>
+            <groupId>de.kaiserpfalz-edv.iam</groupId>
+            <artifactId>kp-iam-access</artifactId>
+            <type>ejb-client</type>
         </dependency>
         <dependency>
-            <groupId>de.kaiserpfalz-edv.office.base</groupId>
-            <artifactId>kp-office-tenant-ui</artifactId>
-            <type>war</type>
-        </dependency>
-
-        <dependency>
-            <groupId>de.kaiserpfalz-edv.office.base</groupId>
-            <artifactId>kp-office-metainfo</artifactId>
-            <type>ejb</type>
-        </dependency>
-        <dependency>
-            <groupId>de.kaiserpfalz-edv.office.base</groupId>
-            <artifactId>kp-office-monitoring</artifactId>
-            <type>ejb</type>
-        </dependency>
-        <dependency>
-            <groupId>de.kaiserpfalz-edv.office.base</groupId>
-            <artifactId>kp-office-access</artifactId>
-            <type>ejb</type>
-        </dependency>
-        <dependency>
-            <groupId>de.kaiserpfalz-edv.office.base</groupId>
-            <artifactId>kp-office-tenant</artifactId>
-            <type>ejb</type>
+            <groupId>de.kaiserpfalz-edv.iam</groupId>
+            <artifactId>kp-iam-tenant</artifactId>
+            <type>ejb-client</type>
         </dependency>
     </dependencies>
 
@@ -75,17 +55,6 @@
 
                 <configuration>
                     <modules>
-                        <webModule>
-                            <groupId>de.kaiserpfalz-edv.office.base</groupId>
-                            <artifactId>kp-office-tenant-ui</artifactId>
-                            <contextRoot>/tenant</contextRoot>
-                        </webModule>
-
-                        <webModule>
-                            <groupId>de.kaiserpfalz-edv.office.base</groupId>
-                            <artifactId>kp-office-metainfo-ui</artifactId>
-                            <contextRoot>/settings</contextRoot>
-                        </webModule>
                     </modules>
                 </configuration>
             </plugin>

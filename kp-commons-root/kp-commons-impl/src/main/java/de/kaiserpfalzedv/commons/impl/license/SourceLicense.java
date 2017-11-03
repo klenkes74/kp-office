@@ -18,7 +18,7 @@ package de.kaiserpfalzedv.commons.impl.license;
 
 import de.kaiserpfalzedv.commons.api.data.ValidityDuration;
 import de.kaiserpfalzedv.commons.api.data.VersionRange;
-import de.kaiserpfalzedv.commons.api.metainfo.SoftwareLicense;
+import de.kaiserpfalzedv.commons.api.info.SoftwareLicense;
 import org.apache.commons.io.IOUtils;
 
 import javax.validation.constraints.NotNull;

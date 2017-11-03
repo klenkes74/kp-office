@@ -18,8 +18,8 @@ package de.kaiserpfalzedv.commons.webui.views.about;
 
 import com.vaadin.data.provider.DataProvider;
 import com.vaadin.ui.Grid;
-import de.kaiserpfalzedv.commons.api.metainfo.DataSchemaChange;
-import de.kaiserpfalzedv.commons.webui.i18n.I18NHandler;
+import de.kaiserpfalzedv.commons.api.info.DataSchemaChange;
+import de.kaiserpfalzedv.commons.webui.i18n.VaadinI18NHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -31,7 +31,7 @@ import org.slf4j.LoggerFactory;
 public class DatabaseVersionContainer extends Grid<DataSchemaChange> {
     private static final Logger LOG = LoggerFactory.getLogger(DatabaseVersionContainer.class);
 
-    public DatabaseVersionContainer(final I18NHandler i18n, final DataProvider<DataSchemaChange, ?> data) {
+    public DatabaseVersionContainer(final VaadinI18NHandler i18n, final DataProvider<DataSchemaChange, ?> data) {
         setSizeFull();
         setResponsive(true);
         setReadOnly(true);

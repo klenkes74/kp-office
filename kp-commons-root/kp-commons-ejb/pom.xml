@@ -49,6 +49,12 @@
         </dependency>
 
 
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+        </dependency>
+
+
         <!-- Database Updates (Liquibase) -->
         <dependency>
             <groupId>org.liquibase</groupId>

@@ -18,8 +18,8 @@ package de.kaiserpfalzedv.commons.webui.views.about;
 
 import com.vaadin.ui.Accordion;
 import com.vaadin.ui.Label;
-import de.kaiserpfalzedv.commons.api.metainfo.SoftwareLibrary;
-import de.kaiserpfalzedv.commons.webui.i18n.I18NHandler;
+import de.kaiserpfalzedv.commons.api.info.SoftwareLibrary;
+import de.kaiserpfalzedv.commons.webui.i18n.VaadinI18NHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -36,7 +36,7 @@ import java.util.Collection;
 public class SoftwareDisclaimersContainer extends Accordion {
     private static final Logger LOG = LoggerFactory.getLogger(SoftwareDisclaimersContainer.class);
 
-    public SoftwareDisclaimersContainer(final I18NHandler i18n, final Collection<? extends SoftwareLibrary> libraries) {
+    public SoftwareDisclaimersContainer(final VaadinI18NHandler i18n, final Collection<? extends SoftwareLibrary> libraries) {
         removeAllComponents();
 
         setSizeFull();

@@ -36,13 +36,13 @@
             <artifactId>kp-commons-api</artifactId>
         </dependency>
         <dependency>
-            <groupId>de.kaiserpfalz-edv.office.base</groupId>
-            <artifactId>kp-office-tenant</artifactId>
+            <groupId>de.kaiserpfalz-edv.iam</groupId>
+            <artifactId>kp-iam-tenant</artifactId>
             <classifier>api</classifier>
         </dependency>
         <dependency>
-            <groupId>de.kaiserpfalz-edv.office.base</groupId>
-            <artifactId>kp-office-access</artifactId>
+            <groupId>de.kaiserpfalz-edv.iam</groupId>
+            <artifactId>kp-iam-access</artifactId>
             <classifier>api</classifier>
         </dependency>
         <dependency>
@@ -54,13 +54,6 @@
         <dependency>
             <groupId>org.javamoney</groupId>
             <artifactId>moneta</artifactId>
-            <version>1.0</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>javax.annotation</groupId>
-                    <artifactId>javax.annotation-api</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
     </dependencies>
 </project>

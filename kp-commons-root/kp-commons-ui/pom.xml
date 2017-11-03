@@ -39,7 +39,7 @@
 
         <dependency>
             <groupId>de.kaiserpfalz-edv.commons</groupId>
-            <artifactId>kp-commons-api</artifactId>
+            <artifactId>kp-commons-impl</artifactId>
         </dependency>
 
 

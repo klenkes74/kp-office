@@ -36,17 +36,6 @@
         <module>kp-office-parent</module>
         <module>kp-office-bom</module>
         
-        <module>kp-office-metainfo</module>
-        <module>kp-office-monitoring</module>
-        <module>kp-office-access</module>
-        <module>kp-office-tenant</module>
-        <module>kp-office-license</module>
-
-        <module>kp-office-metainfo-ui</module>
-        <module>kp-office-access-ui</module>
-        <module>kp-office-tenant-ui</module>
-        <module>kp-office-license-ui</module>
-
         <module>kp-office-contacts</module>
         <module>kp-office-files</module>
         <module>kp-office-dms</module>
@@ -55,6 +44,8 @@
         <module>kp-office-contacts-ui</module>
         <module>kp-office-files-ui</module>
         <module>kp-office-dms-ui</module>
+
+        <module>kp-office</module>
 -->
     </modules>
 

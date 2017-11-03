@@ -43,85 +43,11 @@
             <artifactId>kp-finance-chartofaccounts</artifactId>
             <classifier>api</classifier>
         </dependency>
-        <dependency>
-            <groupId>de.kaiserpfalz-edv.office.base</groupId>
-            <artifactId>kp-office-files</artifactId>
-            <classifier>api</classifier>
-        </dependency>
 
 
-        <dependency>
-            <groupId>de.kaiserpfalz-edv.office.base</groupId>
-            <artifactId>kp-office-access</artifactId>
-            <classifier>api</classifier>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>de.kaiserpfalz-edv.office.base</groupId>
-            <artifactId>kp-office-metainfo</artifactId>
-            <classifier>api</classifier>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>de.kaiserpfalz-edv.office.base</groupId>
-            <artifactId>kp-office-monitoring</artifactId>
-            <classifier>api</classifier>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>de.kaiserpfalz-edv.office.base</groupId>
-            <artifactId>kp-office-tenant</artifactId>
-            <classifier>api</classifier>
-            <scope>provided</scope>
-        </dependency>
         <dependency>
             <groupId>de.kaiserpfalz-edv.commons</groupId>
             <artifactId>kp-commons-ui</artifactId>
         </dependency>
-
-
-        <dependency>
-            <groupId>com.vaadin</groupId>
-            <artifactId>vaadin-server</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.vaadin</groupId>
-            <artifactId>vaadin-push</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.vaadin</groupId>
-            <artifactId>vaadin-client-compiled</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.vaadin</groupId>
-            <artifactId>vaadin-themes</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.vaadin</groupId>
-            <artifactId>vaadin-cdi</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.vaadin.addon</groupId>
-            <artifactId>cdi-properties</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.vaadin.addon</groupId>
-            <artifactId>cdi-mvp</artifactId>
-        </dependency>
     </dependencies>
-
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>com.vaadin</groupId>
-                <artifactId>vaadin-maven-plugin</artifactId>
-            </plugin>
-
-            <plugin>
-                <artifactId>maven-clean-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
 </project>

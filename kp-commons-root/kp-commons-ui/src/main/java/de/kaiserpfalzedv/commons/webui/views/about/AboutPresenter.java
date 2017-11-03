@@ -18,9 +18,9 @@ package de.kaiserpfalzedv.commons.webui.views.about;
 
 import com.vaadin.data.provider.DataProvider;
 import com.vaadin.data.provider.ListDataProvider;
-import de.kaiserpfalzedv.commons.api.metainfo.DataSchemaChange;
-import de.kaiserpfalzedv.commons.api.metainfo.SoftwareInformation;
-import de.kaiserpfalzedv.commons.webui.i18n.I18NHandler;
+import de.kaiserpfalzedv.commons.api.info.DataSchemaChange;
+import de.kaiserpfalzedv.commons.api.info.SoftwareInformation;
+import de.kaiserpfalzedv.commons.webui.i18n.VaadinI18NHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.vaadin.addon.cdimvp.AbstractMVPPresenter;
@@ -38,12 +38,12 @@ public class AboutPresenter extends AbstractMVPPresenter<AboutView> {
     public static final String VIEW_ENTER = "AboutPresenter_ve";
     private static final Logger LOG = LoggerFactory.getLogger(AboutPresenter.class);
 
-    private I18NHandler i18n;
+    private VaadinI18NHandler i18n;
     private SoftwareInformation data;
 
     @Inject
     public AboutPresenter(
-            final I18NHandler i18n,
+            final VaadinI18NHandler i18n,
             final SoftwareInformation information
     ) {
         this.i18n = i18n;

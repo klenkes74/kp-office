@@ -16,16 +16,11 @@
 
 package de.kaiserpfalzedv.commons.webui.views;
 
-import java.io.Serializable;
-
 import com.vaadin.server.Resource;
-import com.vaadin.ui.Button;
-import com.vaadin.ui.Component;
-import com.vaadin.ui.DateField;
-import com.vaadin.ui.GridLayout;
-import com.vaadin.ui.Layout;
-import com.vaadin.ui.TextField;
-import de.kaiserpfalzedv.commons.webui.i18n.I18NHandler;
+import com.vaadin.ui.*;
+import de.kaiserpfalzedv.commons.webui.i18n.VaadinI18NHandler;
+
+import java.io.Serializable;
 
 import static com.google.common.base.Preconditions.checkArgument;
 import static com.vaadin.server.Sizeable.Unit.PERCENTAGE;
@@ -79,14 +74,14 @@ public class LayoutHelper<L extends Layout> implements Serializable {
     @SuppressWarnings("unused")
     public static final int COL_10 = 9;
     private static final long serialVersionUID = 1027995557177150809L;
-    private I18NHandler i18n;
+    private VaadinI18NHandler i18n;
     private L layout;
 
     private int maxCols, maxRows;
 
     @SuppressWarnings("unused")
     public LayoutHelper(
-            final I18NHandler ui,
+            final VaadinI18NHandler ui,
             final L layout,
             final int maxCols,
             final int maxRows

@@ -20,7 +20,7 @@ import com.github.zafarkhaja.semver.Version;
 import de.kaiserpfalzedv.commons.api.BuilderException;
 import de.kaiserpfalzedv.commons.api.data.ValidityDuration;
 import de.kaiserpfalzedv.commons.api.data.VersionRange;
-import de.kaiserpfalzedv.commons.api.metainfo.SoftwareLicense;
+import de.kaiserpfalzedv.commons.api.info.SoftwareLicense;
 import org.apache.commons.lang3.builder.Builder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -41,7 +41,7 @@ public class LicenseBuilder implements Builder<SoftwareLicense> {
 
     private String licensee = "--- ./. ---";
     private String key = "--- ./. ---";
-    private Version lowerVersion = Version.forIntegers(Integer.MIN_VALUE);
+    private Version lowerVersion = Version.forIntegers(0);
     private Version upperVersion = Version.forIntegers(Integer.MAX_VALUE);
     private OffsetDateTime from = OffsetDateTime.MIN;
     private OffsetDateTime until = OffsetDateTime.MAX;

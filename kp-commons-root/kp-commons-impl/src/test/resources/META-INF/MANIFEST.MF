@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Implementation-Title: KP Office :: Base :: Metainfo
+Implementation-Version: 1.0.0-SNAPSHOT
+KPO-Version: 1.0.0-SNAPSHOT
+KPO-URL: https://devzone.kaiserpfalz-edv.de/kp-office/kp-office/kp-off
+ ice-base-root/kp-office-base-info/
+Built-By: klenkes
+Implementation-Vendor-Id: de.kaiserpfalz-edv.office
+Created-By: Apache Maven 3.2.5
+Build-Jdk: 1.8.0_45
+Implementation-URL: https://devzone.kaiserpfalz-edv.de/kp-office/kp-of
+ fice-base-root/kp-office-base-info/
+
