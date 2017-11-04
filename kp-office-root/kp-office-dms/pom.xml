@@ -36,5 +36,22 @@
             <groupId>de.kaiserpfalz-edv.commons</groupId>
             <artifactId>kp-commons-ejb</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>javax.jcr</groupId>
+            <artifactId>jcr</artifactId>
+            <version>1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.jackrabbit</groupId>
+            <artifactId>jackrabbit-core</artifactId>
+            <version>2.15.7</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.jackrabbit</groupId>
+            <artifactId>jackrabbit-ocm</artifactId>
+            <version>1.5.3</version>
+        </dependency>
+
     </dependencies>
 </project>
