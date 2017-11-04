@@ -14,11 +14,17 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzedv.office.access.client.impl;
+package de.kaiserpfalzedv.office.access.client;
 
-import javax.net.ssl.*;
 import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
+
+import javax.net.ssl.HostnameVerifier;
+import javax.net.ssl.HttpsURLConnection;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.SSLSession;
+import javax.net.ssl.TrustManager;
+import javax.net.ssl.X509TrustManager;
 
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}

@@ -16,15 +16,18 @@
 
 package de.kaiserpfalzedv.office.access.api.users;
 
+import java.util.Locale;
+import java.util.Map;
+import java.util.Set;
+import java.util.UUID;
+
 import de.kaiserpfalzedv.commons.api.data.Email;
 import de.kaiserpfalzedv.commons.api.data.Identifiable;
 import de.kaiserpfalzedv.commons.api.data.Nameable;
 import de.kaiserpfalzedv.commons.api.data.Tenantable;
-
-import java.security.Principal;
-import java.util.Locale;
-import java.util.Set;
-import java.util.UUID;
+import de.kaiserpfalzedv.office.access.api.PasswordFailureException;
+import de.kaiserpfalzedv.office.access.api.roles.Entitlement;
+import de.kaiserpfalzedv.office.access.api.roles.Role;
 
 /**
  * Paladins Inn uses an extended principal containing some additional data of the user.
@@ -35,7 +38,7 @@ import java.util.UUID;
  * @version 1.0.0
  * @since 2017-03-11
  */
-public interface OfficePrincipal extends Principal, Identifiable, Tenantable, Nameable {
+public interface Principal extends java.security.Principal, Identifiable, Tenantable, Nameable {
 
     /**
      * @return the preferred language of the user. If not set returns default {@link Locale} of the JVM runtime.
@@ -63,26 +66,38 @@ public interface OfficePrincipal extends Principal, Identifiable, Tenantable, Na
     /**
      * @return all roles this user is in.
      */
-    Set<? extends OfficeRole> getRoles();
+    Set<? extends Role> getRoles();
+
+    /**
+     * @param tenant The tenant to return all roles for.
+     *
+     * @return all roles for the given tenant.
+     */
+    Set<? extends Role> getRoles(UUID tenant);
+
+    /**
+     * @return The direct attached roles for this user.
+     */
+    Map<UUID, Set<Role>> getRoleStructure();
 
     /**
      * @param role the role to be checked.
      *
      * @return TURE if the user is in this role.
      */
-    boolean isInRole(OfficeRole role);
+    boolean isInRole(Role role);
 
     /**
      * @return a set of all entitlments of this user.
      */
-    Set<? extends OfficeEntitlement> getEntitlements();
+    Set<? extends Entitlement> getEntitlements();
 
     /**
      * @param entitlement the entitlement to be checked.
      *
      * @return TRUE if the user has the entitlement.
      */
-    boolean isEntitled(OfficeEntitlement entitlement);
+    boolean isEntitled(Entitlement entitlement);
 
     Set<UUID> getPossibleTenants();
 

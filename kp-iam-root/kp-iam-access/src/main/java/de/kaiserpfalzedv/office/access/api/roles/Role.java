@@ -14,13 +14,13 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzedv.office.access.api.users;
-
-import de.kaiserpfalzedv.commons.api.data.Identifiable;
-import de.kaiserpfalzedv.commons.api.data.Nameable;
+package de.kaiserpfalzedv.office.access.api.roles;
 
 import java.security.Principal;
 import java.util.Set;
+
+import de.kaiserpfalzedv.commons.api.data.Identifiable;
+import de.kaiserpfalzedv.commons.api.data.Nameable;
 
 /**
  * The basic role within this system. It can have entitlements and other roles attached.
@@ -29,13 +29,13 @@ import java.util.Set;
  * @version 1.0.0
  * @since 2017-03-11
  */
-public interface OfficeRole extends Principal, Identifiable, Nameable {
+public interface Role extends Principal, Identifiable, Nameable {
     /**
      * @param role the role to be tested.
      *
      * @return TRUE if the role includes the requested role.
      */
-    boolean isInRole(OfficeRole role);
+    boolean isInRole(Role role);
 
     /**
      * @param entitlement the entitlement to be tested.
@@ -48,10 +48,10 @@ public interface OfficeRole extends Principal, Identifiable, Nameable {
     /**
      * @return a set of all directly included roles. These roles may contain other additional roles.
      */
-    Set<? extends OfficeRole> getIncludedRoles();
+    Set<? extends Role> getIncludedRoles();
 
     /**
      * @return a set of all directly attached entitlements. The entitlemens of included roles are not given back.
      */
-    Set<? extends OfficeEntitlement> getEntitlements();
+    Set<? extends Entitlement> getEntitlements();
 }

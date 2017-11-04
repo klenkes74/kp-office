@@ -16,23 +16,22 @@
 
 package de.kaiserpfalzedv.office.access.api.users;
 
-import de.kaiserpfalzedv.office.access.api.SecurityException;
+import java.util.UUID;
 
 /**
- * This exception is thrown if the password did not match during a login attempt. It is for software internal
- * measurements and it is considered good practice not to give this information to the user.
+ * The user is locked and has no access to the system.
  *
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
  * @version 1.0.0
  * @since 2017-03-14
  */
-public class PasswordFailureException extends SecurityException {
-    private static final long serialVersionUID = -6223137068380318434L;
+public class InvalidTenantException extends SecurityException {
+    private static final long serialVersionUID = 100210211841393604L;
 
     /**
-     * @param userId the user name of the user who tried to log in.
+     * @param userId The user id of the user that is locked from using the system.
      */
-    public PasswordFailureException(final String userId) {
-        super(String.format("Password for '%s' did not match!", userId));
+    public InvalidTenantException(final UUID tenantId) {
+        super(String.format("User has no access to tenant with id '%s'", tenantId.toString()));
     }
 }

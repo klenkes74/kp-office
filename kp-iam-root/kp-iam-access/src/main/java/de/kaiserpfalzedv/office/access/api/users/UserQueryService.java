@@ -34,7 +34,7 @@ public interface UserQueryService {
      *
      * @return The user with the given unique id.
      */
-    Optional<? extends OfficePrincipal> retrieve(UUID uniqueId);
+    Optional<? extends Principal> retrieve(UUID uniqueId);
 
     /**
      * Retrieves the user with the given user name.
@@ -43,5 +43,5 @@ public interface UserQueryService {
      *
      * @return The user with the unique name.
      */
-    Optional<? extends OfficePrincipal> retrieve(String login);
+    Optional<? extends Principal> retrieve(String login);
 }

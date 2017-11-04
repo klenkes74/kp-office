@@ -14,7 +14,14 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzedv.office.access.client.impl;
+package de.kaiserpfalzedv.office.access.client;
+
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.text.ParseException;
+import java.util.Optional;
+
+import javax.validation.constraints.NotNull;
 
 import com.nimbusds.jose.JOSEException;
 import com.nimbusds.jose.JWSAlgorithm;
@@ -27,16 +34,9 @@ import com.nimbusds.jose.proc.SimpleSecurityContext;
 import com.nimbusds.jwt.JWTClaimsSet;
 import com.nimbusds.jwt.proc.ConfigurableJWTProcessor;
 import com.nimbusds.jwt.proc.DefaultJWTProcessor;
-import de.kaiserpfalzedv.office.access.api.users.OfficePrincipal;
-import de.kaiserpfalzedv.office.access.client.JWTService;
+import de.kaiserpfalzedv.office.access.api.users.Principal;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import javax.validation.constraints.NotNull;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.text.ParseException;
-import java.util.Optional;
 
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
@@ -47,7 +47,7 @@ public class JWTServiceImpl implements JWTService {
     private static final Logger LOG = LoggerFactory.getLogger(JWTServiceImpl.class);
 
     @Override
-    public Optional<OfficePrincipal> readToken(@NotNull final String jwt, @NotNull final String remoteJWK, @NotNull JWSAlgorithm algorithm) {
+    public Optional<Principal> readToken(@NotNull final String jwt, @NotNull final String remoteJWK, @NotNull JWSAlgorithm algorithm) {
         LOG.trace("Converting bearer tocken to principal: token={}..., provider={}, algorithm={}",
                   jwt.substring(0, 20), remoteJWK, algorithm
         );

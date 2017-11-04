@@ -14,23 +14,37 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzedv.office.access.api.users.impl;
+package de.kaiserpfalzedv.office.access.client.users;
+
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Set;
+import java.util.UUID;
+
+import javax.validation.constraints.NotNull;
 
 import de.kaiserpfalzedv.commons.api.data.Email;
-import de.kaiserpfalzedv.office.access.api.users.*;
-
-import java.util.*;
+import de.kaiserpfalzedv.office.access.api.PasswordFailureException;
+import de.kaiserpfalzedv.office.access.api.roles.Entitlement;
+import de.kaiserpfalzedv.office.access.api.roles.Role;
+import de.kaiserpfalzedv.office.access.api.users.PasswordHolding;
+import de.kaiserpfalzedv.office.access.api.users.Principal;
+import de.kaiserpfalzedv.office.access.api.users.UserHasNoAccessToTenantException;
+import de.kaiserpfalzedv.office.access.api.users.UserIsLockedException;
 
 /**
+ *
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
  * @version 1.0.0
  * @since 2017-03-11
  */
-class OfficePrincipalImpl implements OfficePrincipal {
-    private static final long serialVersionUID = 7375303558202040469L;
+class PrincipalImpl implements Principal, PasswordHolding {
+    private static final long serialVersionUID = 6586697150416157913L;
 
-
-    private final HashSet<OfficeRole> roles = new HashSet<>();
     private UUID id;
     private UUID tenantId;
     private String login;
@@ -38,26 +52,37 @@ class OfficePrincipalImpl implements OfficePrincipal {
     private String password;
     private boolean locked = false;
 
+    private final HashSet<UUID> possibleTenants = new HashSet<>();
+    private final HashMap<UUID, HashSet<Role>> roles = new HashMap<>();
 
-    OfficePrincipalImpl(
+
+    PrincipalImpl(
             final UUID uniqueId,
             final UUID tenantId,
+            final Collection<UUID> possibleTenants,
             final String name,
             final Email emailAddress,
             final String password,
             final boolean locked,
-            final Collection<OfficeRole> roles
+            final Map<UUID, Set<Role>> roles
     ) {
         this.id = uniqueId;
+        this.tenantId = tenantId;
+        this.possibleTenants.addAll(possibleTenants);
         this.login = name;
 
         this.emailAddress = emailAddress;
         this.password = password;
         this.locked = locked;
 
-        if (roles != null) {
-            this.roles.addAll(roles);
-        }
+
+        roles.keySet().forEach(t -> {
+            if (!this.roles.containsKey(t)) {
+                this.roles.put(t, new HashSet<>());
+            }
+
+            this.roles.get(t).addAll(roles.get(t));
+        });
     }
 
 
@@ -98,44 +123,60 @@ class OfficePrincipalImpl implements OfficePrincipal {
     }
 
     @Override
-    public Set<OfficeRole> getRoles() {
-        HashSet<OfficeRole> result = new HashSet<>();
+    public Set<Role> getRoles() {
+        return getRoles(tenantId);
+    }
 
+    @Override
+    public Set<Role> getRoles(@NotNull final UUID tenant) {
+        HashSet<Role> result = new HashSet<>();
 
-        roles.forEach(r -> addRole(result, r));
+        roles.get(tenantId).forEach(r -> addRole(result, r));
+
+        return Collections.unmodifiableSet(result);
+    }
+
+    public Map<UUID, Set<Role>> getRoleStructure() {
+        HashMap<UUID, Set<Role>> result = new HashMap<>(roles.size());
+
+        roles.keySet().forEach(t -> {
+            result.put(t, Collections.unmodifiableSet(roles.get(t)));
+        });
+
+        return Collections.unmodifiableMap(result);
+    }
+
+    @Override
+    public boolean isInRole(Role role) {
+        return roles.get(tenantId).contains(role);
+    }
+
+    @Override
+    public Set<Entitlement> getEntitlements() {
+        HashSet<Entitlement> result = new HashSet<>();
+
+        roles.get(tenantId).forEach(r -> result.addAll(r.getEntitlements()));
 
         return Collections.unmodifiableSet(result);
     }
 
     @Override
-    public boolean isInRole(OfficeRole role) {
-        return getRoles().contains(role);
-    }
-
-    @Override
-    public Set<OfficeEntitlement> getEntitlements() {
-        HashSet<OfficeEntitlement> result = new HashSet<>();
-
-        getRoles().forEach(r -> result.addAll(r.getEntitlements()));
-
-        return result;
-    }
-
-    @Override
-    public boolean isEntitled(OfficeEntitlement entitlement) {
+    public boolean isEntitled(Entitlement entitlement) {
         return getEntitlements().contains(entitlement);
     }
 
     @Override
     public Set<UUID> getPossibleTenants() {
-        // TODO klenkes Auto defined stub for: de.kaiserpfalzedv.office.access.api.model.impl.OfficePrincipalImpl.getPossibleTenants
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        return Collections.unmodifiableSet(possibleTenants);
     }
 
     @Override
-    public void switchTenant(UUID tenant) {
-        // TODO klenkes Auto defined stub for: de.kaiserpfalzedv.office.access.api.model.impl.OfficePrincipalImpl.switchTenant
-        //To change body of implemented methods use File | Settings | File Templates.
+    public void switchTenant(@NotNull final UUID tenant) {
+        if (!possibleTenants.contains(tenant)) {
+            throw new UserHasNoAccessToTenantException(login, tenant);
+        }
+
+        this.tenantId = tenant;
     }
 
     @Override
@@ -161,20 +202,12 @@ class OfficePrincipalImpl implements OfficePrincipal {
         return login;
     }
 
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
-    /**
-     * This is an internal method needed for the copying builder.
-     *
-     * @return the password of this user.
-     */
+    @Override
     public String getPassword() {
         return password;
     }
 
-    private void addRole(HashSet<OfficeRole> roles, OfficeRole role) {
+    private void addRole(HashSet<Role> roles, Role role) {
         if (roles.contains(role))
             return;
 

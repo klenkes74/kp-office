@@ -14,41 +14,41 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzedv.office.access.api.users.impl;
-
-import de.kaiserpfalzedv.office.access.api.users.OfficeEntitlement;
-import de.kaiserpfalzedv.office.access.api.users.OfficeRole;
-import org.apache.commons.lang3.builder.Builder;
+package de.kaiserpfalzedv.office.access.client.roles;
 
 import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
+
+import de.kaiserpfalzedv.office.access.api.roles.Entitlement;
+import de.kaiserpfalzedv.office.access.api.roles.Role;
+import org.apache.commons.lang3.builder.Builder;
 
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
  * @version 1.0.0
  * @since 2017-03-11
  */
-public class OfficeRoleBuilder implements Builder<OfficeRole> {
-    private final HashSet<OfficeRole> roles = new HashSet<>();
-    private final HashSet<OfficeEntitlement> entitlements = new HashSet<>();
+public class RoleBuilder implements Builder<Role> {
+    private final HashSet<Role> roles = new HashSet<>();
+    private final HashSet<Entitlement> entitlements = new HashSet<>();
 
     private UUID id;
     private String displayName;
     private String fullName;
 
     @Override
-    public OfficeRoleImpl build() {
+    public RoleImpl build() {
         validateDuringBuild();
 
-        return new OfficeRoleImpl(id, displayName, fullName, roles, entitlements, getEffectiveEntitlements());
+        return new RoleImpl(id, displayName, fullName, roles, entitlements, getEffectiveEntitlements());
     }
 
     public void validateDuringBuild() {
     }
 
-    private HashSet<OfficeEntitlement> getEffectiveEntitlements() {
-        HashSet<OfficeEntitlement> roleEntitlements = new HashSet<>(entitlements);
+    private HashSet<Entitlement> getEffectiveEntitlements() {
+        HashSet<Entitlement> roleEntitlements = new HashSet<>(entitlements);
         roles.forEach(r -> roleEntitlements.addAll(r.getEntitlements()));
         return roleEntitlements;
     }
@@ -57,7 +57,7 @@ public class OfficeRoleBuilder implements Builder<OfficeRole> {
         return true;
     }
 
-    public OfficeRoleBuilder withRole(final OfficeRole role) {
+    public RoleBuilder withRole(final Role role) {
         withId(role.getId());
         withDisplayName(role.getDisplayName());
         withFullName(role.getFullName());
@@ -67,54 +67,54 @@ public class OfficeRoleBuilder implements Builder<OfficeRole> {
         return this;
     }
 
-    public OfficeRoleBuilder withId(final UUID uniqueId) {
+    public RoleBuilder withId(final UUID uniqueId) {
         this.id = uniqueId;
         return this;
     }
 
-    public OfficeRoleBuilder withDisplayName(final String name) {
+    public RoleBuilder withDisplayName(final String name) {
         this.displayName = name;
         return this;
     }
 
-    public OfficeRoleBuilder withFullName(final String name) {
+    public RoleBuilder withFullName(final String name) {
         this.fullName = name;
         return this;
     }
 
-    public OfficeRoleBuilder withRoles(final Set<? extends OfficeRole> roles) {
+    public RoleBuilder withRoles(final Set<? extends Role> roles) {
         this.roles.addAll(roles);
 
         return this;
     }
 
-    public OfficeRoleBuilder withEntitlements(final Set<? extends OfficeEntitlement> entitlements) {
+    public RoleBuilder withEntitlements(final Set<? extends Entitlement> entitlements) {
         this.entitlements.addAll(entitlements);
         return this;
     }
 
-    public OfficeRoleBuilder clearRoles() {
+    public RoleBuilder clearRoles() {
         this.roles.clear();
         return this;
     }
 
-    public <R extends OfficeRole> OfficeRoleBuilder addRole(R role) {
+    public <R extends Role> RoleBuilder addRole(R role) {
         this.roles.add(role);
         return this;
     }
 
-    public <R extends OfficeRole> OfficeRoleBuilder removeRole(R role) {
+    public <R extends Role> RoleBuilder removeRole(R role) {
         this.roles.remove(role);
         return this;
     }
 
     /**
-     * Removes all directly assigned {@link OfficeEntitlement}s. The entitlements resulting from {@link OfficeRole} memberships will
+     * Removes all directly assigned {@link Entitlement}s. The entitlements resulting from {@link Role} memberships will
      * be preserved.
      *
      * @return the builder itself.
      */
-    public OfficeRoleBuilder clearEntitlements() {
+    public RoleBuilder clearEntitlements() {
         this.entitlements.clear();
         return this;
     }
@@ -127,7 +127,7 @@ public class OfficeRoleBuilder implements Builder<OfficeRole> {
      *
      * @return the builder itself
      */
-    public <E extends OfficeEntitlement> OfficeRoleBuilder addEntitlement(E entitlement) {
+    public <E extends Entitlement> RoleBuilder addEntitlement(E entitlement) {
         this.entitlements.add(entitlement);
         return this;
     }
@@ -140,7 +140,7 @@ public class OfficeRoleBuilder implements Builder<OfficeRole> {
      *
      * @return the builder itself
      */
-    public <E extends OfficeEntitlement> OfficeRoleBuilder removeEntitlement(E entitlement) {
+    public <E extends Entitlement> RoleBuilder removeEntitlement(E entitlement) {
         this.entitlements.remove(entitlement);
         return this;
     }

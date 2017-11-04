@@ -16,17 +16,21 @@
 
 package de.kaiserpfalzedv.commons.jpa;
 
+import java.util.Objects;
 import java.util.UUID;
 
 import javax.persistence.Column;
+import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.PostLoad;
 import javax.persistence.PrePersist;
 import javax.persistence.PreRemove;
 import javax.persistence.PreUpdate;
 import javax.persistence.Transient;
+import javax.persistence.Version;
 import javax.validation.constraints.NotNull;
 
+import de.kaiserpfalzedv.commons.api.data.Identifiable;
 import de.kaiserpfalzedv.commons.api.data.TenantIdentifiable;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
@@ -64,62 +68,75 @@ import static org.apache.commons.lang3.builder.ToStringStyle.SHORT_PREFIX_STYLE;
  * @since 2016-09-30
  */
 @MappedSuperclass
-public class JPAAbstractTenantIdentifiable extends JPAAbstractIdentifiable implements TenantIdentifiable {
-    private static final long serialVersionUID = 9029901785198108689L;
+public class JPAAbstractIdentifiable implements Identifiable {
+    private static final long serialVersionUID = 2756278093916898283L;
 
-    @Column(name = "TENANT_", length = 40, nullable = false)
-    private String tenant;
+
+    @Id
+    @Column(name = "ID_", length = 40, nullable = false, unique = true, updatable = false)
+    private String id;
+
+    @SuppressWarnings("unused") // It's used for JPA optimistic locking. We don't need access to it.
+    @Version
+    @Column(name = "VERSION_", nullable = false)
+    private long version;
 
     @Transient
-    private UUID tenantCache;
+    private UUID idCache;
 
-
-    @SuppressWarnings("deprecation")
     @Deprecated // Only for JPA
-    protected JPAAbstractTenantIdentifiable() {}
+    protected JPAAbstractIdentifiable() {}
 
 
-    public JPAAbstractTenantIdentifiable(
-            @NotNull final UUID id,
-            @NotNull final UUID tenant
+    public JPAAbstractIdentifiable(
+            @NotNull final UUID id
     ) {
-        super(id);
-
-        this.tenantCache = tenant;
-    }
-
-    @Override
-    public UUID getTenant() {
-        return tenantCache;
-    }
-
-    protected void setTenant(UUID tenant) {
-        tenantCache = tenant;
+        setId(id);
     }
 
     @PrePersist
     @PreUpdate
     @PreRemove
     protected void convertIdToString() {
-        super.convertIdToString();
-        this.tenant = tenantCache.toString();
+        this.id = idCache.toString();
     }
 
     @PostLoad
     protected void convertIdFromString() {
-        super.convertIdFromString();
         try {
-            tenantCache = UUID.fromString(tenant);
+            idCache = UUID.fromString(id);
         } catch (IllegalArgumentException e) {
-            throw new IllegalStateException("Tenant ID from database could not be converted to UUID: " + tenant, e);
+            throw new IllegalStateException("ID from database could not be converted to UUID: " + id, e);
         }
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId());
+    }
+
+    @Override
+    public UUID getId() {
+        return idCache;
+    }
+
+    protected void setId(UUID id) {
+        idCache = id;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof TenantIdentifiable)) return false;
+        Identifiable that = (Identifiable) o;
+        return Objects.equals(getId(), that.getId());
     }
 
     @Override
     public String toString() {
         return new ToStringBuilder(this, SHORT_PREFIX_STYLE)
-                .appendSuper(super.toString())
-                .append("tenant", tenantCache)
+                .append(System.identityHashCode(this))
+                .append("id", id)
                 .toString();
     }
 }

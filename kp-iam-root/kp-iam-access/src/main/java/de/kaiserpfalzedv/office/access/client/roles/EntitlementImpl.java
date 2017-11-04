@@ -14,19 +14,19 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzedv.office.access.api.users.impl;
-
-import de.kaiserpfalzedv.commons.api.data.Identifiable;
-import de.kaiserpfalzedv.office.access.api.users.OfficeEntitlement;
+package de.kaiserpfalzedv.office.access.client.roles;
 
 import java.util.UUID;
+
+import de.kaiserpfalzedv.commons.api.data.Identifiable;
+import de.kaiserpfalzedv.office.access.api.roles.Entitlement;
 
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
  * @version 1.0.0
  * @since 2017-03-11
  */
-public class OfficeEntitlementImpl implements OfficeEntitlement, Identifiable {
+public class EntitlementImpl implements Entitlement, Identifiable {
     private static final long serialVersionUID = 5335949778988132237L;
 
     private UUID id;
@@ -34,7 +34,7 @@ public class OfficeEntitlementImpl implements OfficeEntitlement, Identifiable {
     private String fullName;
 
 
-    public OfficeEntitlementImpl(final UUID id, final String displayName, final String fullName) {
+    public EntitlementImpl(final UUID id, final String displayName, final String fullName) {
         this.id = id;
         this.displayName = displayName;
         this.fullName = fullName;

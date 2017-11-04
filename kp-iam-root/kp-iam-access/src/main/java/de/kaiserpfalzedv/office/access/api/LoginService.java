@@ -14,12 +14,15 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzedv.office.access.api.users;
-
-import de.kaiserpfalzedv.office.tenant.api.Tenant;
+package de.kaiserpfalzedv.office.access.api;
 
 import java.util.Set;
 import java.util.UUID;
+
+import de.kaiserpfalzedv.office.access.api.users.Principal;
+import de.kaiserpfalzedv.office.access.api.users.UserHasNoAccessToTenantException;
+import de.kaiserpfalzedv.office.access.api.users.UserIsLockedException;
+import de.kaiserpfalzedv.office.tenant.api.Tenant;
 
 /**
  * A service to log in an user. This is an internal service giving back very detailed failure information. For security
@@ -44,7 +47,7 @@ public interface LoginService {
      * @throws UserIsLockedException            The user is locked and can not log in.
      * @throws UserHasNoAccessToTenantException The user exists but is not entitled for the given tenant.
      */
-    OfficePrincipal login(Tenant tenant, String userId, String password)
+    Principal login(Tenant tenant, String userId, String password)
             throws UserNotFoundException, PasswordFailureException, UserIsLockedException,
                    UserHasNoAccessToTenantException;
 
@@ -62,7 +65,7 @@ public interface LoginService {
      * @throws UserIsLockedException            The user is locked and can not log in.
      * @throws UserHasNoAccessToTenantException The user exists but is not entitled for the given tenant.
      */
-    OfficePrincipal login(UUID tenantId, String userId, String password)
+    Principal login(UUID tenantId, String userId, String password)
             throws UserNotFoundException, PasswordFailureException, UserIsLockedException,
                    UserHasNoAccessToTenantException;
 
@@ -80,7 +83,7 @@ public interface LoginService {
      * @throws UserIsLockedException            The user is locked and can not log in.
      * @throws UserHasNoAccessToTenantException The user exists but is not entitled for the given tenant.
      */
-    OfficePrincipal login(String tenantKey, String userId, String password)
+    Principal login(String tenantKey, String userId, String password)
             throws UserNotFoundException, PasswordFailureException, UserIsLockedException,
                    UserHasNoAccessToTenantException;
 
@@ -93,7 +96,7 @@ public interface LoginService {
      * tenant specified by its name after the @-sign.</p>
      * <p>
      * <p>If the userId contains a sign <b>\</b>, the data is splitted and the first part is the {@link Tenant#getKey()}
-     * of the tenant and the {@link OfficePrincipal#getDisplayName()} is given after the |-sign.</p>
+     * of the tenant and the {@link Principal#getDisplayName()} is given after the |-sign.</p>
      *
      * @param userId   the user id to log in. May contain the tenant to be used either with the key or the full name.
      * @param password the password of the user to log in.
@@ -105,7 +108,7 @@ public interface LoginService {
      * @throws UserIsLockedException            The user is locked and can not log in.
      * @throws UserHasNoAccessToTenantException The user exists but is not entitled for the given tenant.
      */
-    OfficePrincipal login(String userId, String password)
+    Principal login(String userId, String password)
             throws UserNotFoundException, PasswordFailureException, UserIsLockedException,
                    UserHasNoAccessToTenantException;
 

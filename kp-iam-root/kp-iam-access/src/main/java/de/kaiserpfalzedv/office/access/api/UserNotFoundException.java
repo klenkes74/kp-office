@@ -14,15 +14,25 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzedv.office.access.api.users;
+package de.kaiserpfalzedv.office.access.api;
+
+import java.lang.SecurityException;
 
 /**
- * Used to calculate default user id from the data of a user.
- *
+ * The user who tried to log in does not exist. This is a software internal state that should not be communicated to
+ * the user since that would faciliate brute force attacks to check which user exist on the system.
+ * 
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
  * @version 1.0.0
- * @since 2017-03-11
+ * @since 2017-03-14
  */
-public interface UserIdGenerator {
-    String generateUserId();
+public class UserNotFoundException extends SecurityException {
+    private static final long serialVersionUID = 7103820497194994734L;
+
+    /**
+     * @param userId The user id of the user not found in the system.
+     */
+    public UserNotFoundException(String userId) {
+        super(String.format("No user with id '%s' found.", userId));
+    }
 }

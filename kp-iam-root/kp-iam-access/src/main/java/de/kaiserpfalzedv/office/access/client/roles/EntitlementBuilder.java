@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzedv.office.access.api.users.impl;
-
-import de.kaiserpfalzedv.office.access.api.users.OfficeEntitlement;
-import org.apache.commons.lang3.builder.Builder;
+package de.kaiserpfalzedv.office.access.client.roles;
 
 import java.util.UUID;
+
+import de.kaiserpfalzedv.office.access.api.roles.Entitlement;
+import org.apache.commons.lang3.builder.Builder;
 
 import static org.apache.commons.lang3.StringUtils.isEmpty;
 import static org.apache.commons.lang3.StringUtils.isNotEmpty;
@@ -30,17 +30,17 @@ import static org.apache.commons.lang3.StringUtils.isNotEmpty;
  * @version 1.0.0
  * @since 2017-03-11
  */
-public class EntitlementBuilder implements Builder<OfficeEntitlement> {
+public class EntitlementBuilder implements Builder<Entitlement> {
 
     private UUID id;
     private String fullName;
     private String displayName;
 
     @Override
-    public OfficeEntitlementImpl build() {
+    public EntitlementImpl build() {
         setDefaultsIfNeeded();
 
-        return new OfficeEntitlementImpl(id, displayName, fullName);
+        return new EntitlementImpl(id, displayName, fullName);
     }
 
     public void setDefaultsIfNeeded() {
@@ -62,7 +62,7 @@ public class EntitlementBuilder implements Builder<OfficeEntitlement> {
                 && !(isEmpty(displayName) && isEmpty(fullName));
     }
 
-    public EntitlementBuilder withEntitlement(final OfficeEntitlement data) {
+    public EntitlementBuilder withEntitlement(final Entitlement data) {
         withId(data.getId());
         withFullName(data.getFullName());
         withDisplayName(data.getDisplayName());
