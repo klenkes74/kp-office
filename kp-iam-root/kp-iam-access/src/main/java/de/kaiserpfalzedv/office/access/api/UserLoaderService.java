@@ -14,22 +14,27 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzedv.office.access.api.users;
+package de.kaiserpfalzedv.office.access.api;
+
+import java.util.Collection;
+
+import de.kaiserpfalzedv.office.access.api.users.Principal;
+import de.kaiserpfalzedv.office.tenant.api.Tenant;
 
 /**
- * The user is locked and has no access to the system.
+ * A bulk loadig interface for user data.
  *
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
  * @version 1.0.0
  * @since 2017-03-14
  */
-public class UserIsLockedException extends SecurityException {
-    private static final long serialVersionUID = -2670235418942639001L;
-
+public interface UserLoaderService {
     /**
-     * @param userId The user id of the user that is locked from using the system.
+     * Loads the users into the user database with access to the given tenant.
+     *
+     * @param tenant The tenant for the users.
+     * @param users  The users to load into the database.
      */
-    public UserIsLockedException(final String userId) {
-        super(String.format("%s is locked.", userId));
-    }
+    void loadUsersForTenant(final Tenant tenant, final Collection<Principal> users);
+
 }

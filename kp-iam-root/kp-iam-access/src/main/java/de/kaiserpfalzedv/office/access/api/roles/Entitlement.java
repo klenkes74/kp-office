@@ -14,14 +14,20 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzedv.office.access.api.sessions;
+package de.kaiserpfalzedv.office.access.api.roles;
 
 import java.io.Serializable;
+import java.security.Principal;
+
+import de.kaiserpfalzedv.commons.api.data.Identifiable;
+import de.kaiserpfalzedv.commons.api.data.Nameable;
 
 /**
+ * A basic entitlement (in some systems called permissions).
+ * 
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
  * @version 1.0.0
- * @since 2017-08-23
+ * @since 2017-03-11
  */
-public interface OfficeSession extends Serializable {
+public interface Entitlement extends Principal, Identifiable, Nameable, Serializable {
 }

@@ -14,26 +14,14 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzedv.office.access.api.users;
+package de.kaiserpfalzedv.office.access.api.sessions;
 
-import de.kaiserpfalzedv.office.tenant.api.Tenant;
-
-import java.util.Collection;
+import java.io.Serializable;
 
 /**
- * A bulk loadig interface for user data.
- *
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
  * @version 1.0.0
- * @since 2017-03-14
+ * @since 2017-08-23
  */
-public interface UserLoaderService {
-    /**
-     * Loads the users into the user database with access to the given tenant.
-     *
-     * @param tenant The tenant for the users.
-     * @param users  The users to load into the database.
-     */
-    void loadUsersForTenant(final Tenant tenant, final Collection<OfficePrincipal> users);
-
+public interface Session extends Serializable {
 }

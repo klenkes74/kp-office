@@ -14,19 +14,15 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzedv.office.access.api.users;
-
-import de.kaiserpfalzedv.commons.api.data.Keyable;
-import de.kaiserpfalzedv.commons.api.data.Nameable;
-import de.kaiserpfalzedv.commons.api.data.TenantIdentifiable;
-import de.kaiserpfalzedv.commons.api.data.Tenantable;
-
-import java.io.Serializable;
+package de.kaiserpfalzedv.office.access.api;
 
 /**
+ * Used to calculate default user id from the data of a user.
+ *
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
  * @version 1.0.0
- * @since 2016-10-16
+ * @since 2017-03-11
  */
-public interface OfficePermission extends Nameable, Keyable, TenantIdentifiable, Tenantable, Serializable {
+public interface UserIdGenerator {
+    String generateUserId();
 }

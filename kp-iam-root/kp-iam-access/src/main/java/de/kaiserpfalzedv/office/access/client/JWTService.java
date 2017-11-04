@@ -16,11 +16,12 @@
 
 package de.kaiserpfalzedv.office.access.client;
 
-import com.nimbusds.jose.JWSAlgorithm;
-import de.kaiserpfalzedv.office.access.api.users.OfficePrincipal;
+import java.util.Optional;
 
 import javax.validation.constraints.NotNull;
-import java.util.Optional;
+
+import com.nimbusds.jose.JWSAlgorithm;
+import de.kaiserpfalzedv.office.access.api.users.Principal;
 
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
@@ -28,5 +29,5 @@ import java.util.Optional;
  * @since 2017-08-24
  */
 public interface JWTService {
-    Optional<OfficePrincipal> readToken(@NotNull final String jwt, @NotNull final String provider, @NotNull JWSAlgorithm algorithm);
+    Optional<Principal> readToken(@NotNull final String jwt, @NotNull final String provider, @NotNull JWSAlgorithm algorithm);
 }

@@ -14,18 +14,27 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzedv.office.access.api.users.impl;
+package de.kaiserpfalzedv.office.access.client.users;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.UUID;
+
+import javax.validation.constraints.NotNull;
 
 import de.kaiserpfalzedv.commons.api.BuilderException;
 import de.kaiserpfalzedv.commons.api.data.Email;
-import de.kaiserpfalzedv.office.access.api.users.OfficePrincipal;
-import de.kaiserpfalzedv.office.access.api.users.OfficeRole;
+import de.kaiserpfalzedv.office.access.api.roles.Role;
 import de.kaiserpfalzedv.office.access.api.users.PasswordHolding;
+import de.kaiserpfalzedv.office.access.api.users.Principal;
 import de.kaiserpfalzedv.office.tenant.api.Tenant;
 import org.apache.commons.lang3.builder.Builder;
-
-import javax.validation.constraints.NotNull;
-import java.util.*;
 
 import static org.apache.commons.lang3.StringUtils.isEmpty;
 
@@ -36,8 +45,8 @@ import static org.apache.commons.lang3.StringUtils.isEmpty;
  * @version 1.0.0
  * @since 2017-03-11
  */
-public class OfficePrincipalBuilder implements Builder<OfficePrincipalImpl> {
-    private final HashSet<OfficeRole> roles = new HashSet<>();
+public class PrincipalBuilder implements Builder<PrincipalImpl> {
+    private final Map<UUID, Set<Role>> roles = new HashMap<>();
     /**
      * A list of errors during validation.
      */
@@ -50,12 +59,15 @@ public class OfficePrincipalBuilder implements Builder<OfficePrincipalImpl> {
     private boolean locked = false;
     private UUID tenant;
 
-    public OfficePrincipalImpl build() {
+    public PrincipalImpl build() {
         setDefaultValuesIfNeeded();
         validateDuringBuild();
 
-        return new OfficePrincipalImpl(
-                id, tenant, login,
+        return new PrincipalImpl(
+                id,
+                tenant,
+                tenants,
+                login,
                 email,
                 password,
                 locked,
@@ -75,7 +87,7 @@ public class OfficePrincipalBuilder implements Builder<OfficePrincipalImpl> {
 
     public void validateDuringBuild() {
         if (!validate()) {
-            throw new BuilderException(OfficePrincipalImpl.class, errors);
+            throw new BuilderException(PrincipalImpl.class, errors);
         }
     }
 
@@ -95,7 +107,7 @@ public class OfficePrincipalBuilder implements Builder<OfficePrincipalImpl> {
         return Collections.unmodifiableList(errors);
     }
 
-    public OfficePrincipalBuilder withUser(final OfficePrincipal user) {
+    public PrincipalBuilder withUser(final Principal user) {
         try {
             withPassword(((PasswordHolding) user).getPassword());
         } catch (ClassCastException e) {
@@ -106,33 +118,33 @@ public class OfficePrincipalBuilder implements Builder<OfficePrincipalImpl> {
         withLogin(user.getName());
         withEmailAddress(user.getEmailAddress());
         possibleTenants(user.getPossibleTenants());
-        withRoles(user.getRoles());
+        withRoles(user.getRoleStructure());
         setLocked(user.isLocked());
 
         return this;
     }
 
-    public OfficePrincipalBuilder withPassword(final String password) {
+    public PrincipalBuilder withPassword(final String password) {
         this.password = password;
         return this;
     }
 
-    public OfficePrincipalBuilder withId(final UUID uniqueId) {
+    public PrincipalBuilder withId(final UUID uniqueId) {
         this.id = uniqueId;
         return this;
     }
 
-    public OfficePrincipalBuilder withLogin(final String name) {
+    public PrincipalBuilder withLogin(final String name) {
         this.login = name;
         return this;
     }
 
-    public OfficePrincipalBuilder withEmailAddress(final Email emailAddress) {
+    public PrincipalBuilder withEmailAddress(final Email emailAddress) {
         this.email = emailAddress;
         return this;
     }
 
-    public OfficePrincipalBuilder possibleTenants(@NotNull final Set<UUID> tenants) {
+    public PrincipalBuilder possibleTenants(@NotNull final Set<UUID> tenants) {
         this.tenants.clear();
 
         if (tenants != null) {
@@ -141,55 +153,91 @@ public class OfficePrincipalBuilder implements Builder<OfficePrincipalImpl> {
         return this;
     }
 
-    public OfficePrincipalBuilder withRoles(@NotNull final Collection<? extends OfficeRole> roles) {
-        this.roles.clear();
-
-        if (roles != null) {
-            this.roles.addAll(roles);
-        }
-        return this;
-    }
-
     private void setLocked(final boolean locked) {
         this.locked = locked;
     }
 
-    public OfficePrincipalBuilder clearPossibleTenants() {
+    public PrincipalBuilder withRoles(@NotNull final Map<UUID, Set<Role>> roles) {
+        roles.keySet().forEach(t -> {
+            if (!this.roles.containsKey(t)) {
+                this.roles.put(t, new HashSet<>());
+            } else {
+                this.roles.get(t).clear();
+            }
+
+            this.roles.get(t).addAll(roles.get(t));
+        });
+        return this;
+    }
+
+    public PrincipalBuilder clearPossibleTenants() {
         this.tenants.clear();
         return this;
     }
 
-    public OfficePrincipalBuilder addPossibleTenant(@NotNull final UUID tenant) {
+    public PrincipalBuilder addPossibleTenant(@NotNull final UUID tenant) {
         this.tenants.add(tenant);
         return this;
     }
 
-    public OfficePrincipalBuilder removePossibleTenant(@NotNull final UUID tenant) {
+    public PrincipalBuilder removePossibleTenant(@NotNull final UUID tenant) {
         this.tenants.remove(tenant);
         return this;
     }
 
-    public OfficePrincipalBuilder locked() {
+    public PrincipalBuilder locked() {
         this.locked = true;
         return this;
     }
 
-    public OfficePrincipalBuilder unlocked() {
+    public PrincipalBuilder unlocked() {
         this.locked = false;
         return this;
     }
 
-    public OfficePrincipalBuilder clearRoles() {
+    public PrincipalBuilder withRoles(@NotNull final UUID tenant, @NotNull final Collection<? extends Role> roles) {
+        this.roles.clear();
+
+        if (roles != null) {
+            this.roles.get(tenant).addAll(roles);
+        }
+        return this;
+    }
+
+    public PrincipalBuilder addRoles(@NotNull final UUID tenant, final Set<Role> roles) {
+        if (!this.roles.containsKey(tenant)) {
+            this.roles.put(tenant, new HashSet<>());
+        }
+
+        this.roles.get(tenant).addAll(roles);
+        return this;
+    }
+
+    public PrincipalBuilder addRole(@NotNull final UUID tenant, final Role role) {
+        if (!roles.containsKey(tenant)) {
+            roles.put(tenant, new HashSet<>());
+        }
+
+        roles.get(tenant).add(role);
+        return this;
+    }
+
+
+    public PrincipalBuilder clearRoles() {
         this.roles.clear();
         return this;
     }
 
-    public OfficePrincipalBuilder addRole(final OfficeRole role) {
-        roles.remove(role);
+    public PrincipalBuilder removeRoles(@NotNull final UUID tenant, final Set<Role> roles) {
+        if (!this.roles.containsKey(tenant)) return this;
+
+        this.roles.get(tenant).removeAll(roles);
         return this;
     }
 
-    public OfficePrincipalBuilder removeRole(final OfficeRole role) {
+    public PrincipalBuilder removeRole(@NotNull UUID tenant, final Role role) {
+        if (!roles.containsKey(tenant)) return this;
+
         roles.remove(role);
         return this;
     }

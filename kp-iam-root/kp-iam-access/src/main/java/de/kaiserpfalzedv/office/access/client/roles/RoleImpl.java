@@ -14,36 +14,40 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzedv.office.access.api.users.impl;
-
-import de.kaiserpfalzedv.office.access.api.users.OfficeEntitlement;
-import de.kaiserpfalzedv.office.access.api.users.OfficeRole;
+package de.kaiserpfalzedv.office.access.client.roles;
 
 import java.security.Principal;
-import java.util.*;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
+import java.util.UUID;
+
+import de.kaiserpfalzedv.office.access.api.roles.Entitlement;
+import de.kaiserpfalzedv.office.access.api.roles.Role;
 
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
  * @version 1.0.0
  * @since 2017-03-11
  */
-public class OfficeRoleImpl implements OfficeRole {
+public class RoleImpl implements Role {
     private static final long serialVersionUID = 2265558473391429590L;
-    private final HashSet<OfficeRole> roles = new HashSet<>();
-    private final HashSet<OfficeEntitlement> directEntitlements = new HashSet<>();
-    private final HashSet<OfficeEntitlement> entitlements = new HashSet<>();
+    private final HashSet<Role> roles = new HashSet<>();
+    private final HashSet<Entitlement> directEntitlements = new HashSet<>();
+    private final HashSet<Entitlement> entitlements = new HashSet<>();
     private UUID id;
     private String displayName;
     private String fullName;
 
 
-    OfficeRoleImpl(
+    RoleImpl(
             final UUID id,
             final String displayName,
             final String fullName,
-            final Set<? extends OfficeRole> roles,
-            final Set<? extends OfficeEntitlement> directEntitlements,
-            final Set<? extends OfficeEntitlement> entitlements
+            final Set<? extends Role> roles,
+            final Set<? extends Entitlement> directEntitlements,
+            final Set<? extends Entitlement> entitlements
     ) {
         this.id = id;
         this.displayName = displayName;
@@ -59,10 +63,10 @@ public class OfficeRoleImpl implements OfficeRole {
         return displayName;
     }
 
-    public boolean isInRole(OfficeRole role) {
+    public boolean isInRole(Role role) {
         boolean result = equals(role);
 
-        Iterator<OfficeRole> roleIterator = roles.iterator();
+        Iterator<Role> roleIterator = roles.iterator();
         while (!result && roleIterator.hasNext()) {
             result = roleIterator.next().isInRole(role);
         }
@@ -81,12 +85,12 @@ public class OfficeRoleImpl implements OfficeRole {
     }
 
     @Override
-    public Set<? extends OfficeRole> getIncludedRoles() {
+    public Set<? extends Role> getIncludedRoles() {
         return Collections.unmodifiableSet(roles);
     }
 
     @Override
-    public Set<? extends OfficeEntitlement> getEntitlements() {
+    public Set<? extends Entitlement> getEntitlements() {
         return Collections.unmodifiableSet(directEntitlements);
     }
 

@@ -14,16 +14,19 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzedv.office.access.client.impl;
+package de.kaiserpfalzedv.office.access.client;
+
+import javax.validation.constraints.NotNull;
 
 import com.nimbusds.jose.JWSAlgorithm;
-import de.kaiserpfalzedv.office.access.client.JWTService;
-import org.junit.*;
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.MDC;
-
-import javax.validation.constraints.NotNull;
 
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}

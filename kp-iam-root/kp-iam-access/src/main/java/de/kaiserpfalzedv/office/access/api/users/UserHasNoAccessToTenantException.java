@@ -16,6 +16,8 @@
 
 package de.kaiserpfalzedv.office.access.api.users;
 
+import java.util.UUID;
+
 import de.kaiserpfalzedv.office.tenant.api.Tenant;
 
 /**
@@ -26,7 +28,7 @@ import de.kaiserpfalzedv.office.tenant.api.Tenant;
  * @since 2017-03-14
  */
 public class UserHasNoAccessToTenantException extends UserIsNotEntitledException {
-    private static final long serialVersionUID = 4738889002770992716L;
+    private static final long serialVersionUID = -3071600428438212554L;
 
     /**
      * @param userId The user id of the user without access.
@@ -34,5 +36,13 @@ public class UserHasNoAccessToTenantException extends UserIsNotEntitledException
      */
     public UserHasNoAccessToTenantException(final String userId, final Tenant tenant) {
         super("%s is not entitled for tenant %s.", userId, tenant.getDisplayName());
+    }
+
+    /**
+     * @param userId The user id of the user without access.
+     * @param tenant The tenant the user has no access to.
+     */
+    public UserHasNoAccessToTenantException(final String userId, final UUID tenant) {
+        super("%s is not entitled for tenant with id %s.", userId, tenant.toString());
     }
 }
