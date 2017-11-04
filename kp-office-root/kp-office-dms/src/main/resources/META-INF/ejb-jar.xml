@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <!--
   ~ Copyright 2017 Kaiserpfalz EDV-Service, Roland T. Lichti
   ~
@@ -14,12 +15,11 @@
   ~ limitations under the License.
   -->
 
-<databaseChangeLog
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
-        xsi:schemaLocation="
-            http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd
-        ">
-
-    <include file="contacts-1.0.0.xml" relativeToChangelogFile="true"/>
-</databaseChangeLog>
+<ejb-jar xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         version="3.2"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/ejb-jar_3_2.xsd">
+    <module-name>dms</module-name>
+    <description>${project.description}</description>
+    <display-name>${project.name}</display-name>
+</ejb-jar>
