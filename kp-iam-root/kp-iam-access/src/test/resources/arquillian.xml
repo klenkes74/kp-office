@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <!--
   ~ Copyright 2017 Kaiserpfalz EDV-Service, Roland T. Lichti
   ~
@@ -15,11 +14,15 @@
   ~ limitations under the License.
   -->
 
-<ejb-jar xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xmlns="http://xmlns.jcp.org/xml/ns/javaee"
-         version="3.2"
-         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/ejb-jar_3_2.xsd">
-    <module-name>access</module-name>
-    <description>${project.description}</description>
-    <display-name>${project.name}</display-name>
-</ejb-jar>
+<arquillian xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xmlns="http://jboss.org/schema/arquillian"
+            xsi:schemaLocation="http://jboss.org/schema/arquillian http://jboss.org/schema/arquillian/arquillian_1_0.xsd">
+
+    <container qualifier="wildfly10" default="true">
+        <configuration>
+            <property name="jbossHome">target/wildfly-10.0.0.Final/</property>
+            <property name="modulePath">target/wildfly-10.0.0.Final/modules</property>
+        </configuration>
+    </container>
+
+</arquillian>

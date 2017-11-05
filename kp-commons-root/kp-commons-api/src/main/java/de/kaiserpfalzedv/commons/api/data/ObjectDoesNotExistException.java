@@ -32,16 +32,22 @@ public class ObjectDoesNotExistException extends BaseBusinessException {
 
 
     private Class<?> clasz;
-    private UUID id;
     private String key;
+    private UUID objectId;
 
     public ObjectDoesNotExistException(final Class<?> clasz, final UUID objectId) {
         super("An object of type '" + clasz.getSimpleName() + "' with id '" + objectId.toString() + "' does not exist.");
+
+        this.clasz = clasz;
+        this.objectId = objectId;
     }
 
 
     public ObjectDoesNotExistException(final Class<?> clasz, final String key) {
         super("An object of type '" + clasz.getSimpleName() + "' with key '" + key + "' does not exist.");
+
+        this.clasz = clasz;
+        this.key = key;
     }
 
 
@@ -49,11 +55,11 @@ public class ObjectDoesNotExistException extends BaseBusinessException {
         return clasz;
     }
 
-    public UUID getObjectId() {
-        return id;
-    }
-
     public String getKey() {
         return key;
+    }
+
+    public UUID getObjectId() {
+        return objectId;
     }
 }

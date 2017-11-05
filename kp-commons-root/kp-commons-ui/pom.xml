@@ -43,7 +43,7 @@
         </dependency>
 
 
-        <!-- Vaadin Components -->
+        <!-- Additional Vaadin Components -->
         <dependency>
             <groupId>de.steinwedel.vaadin.addon</groupId>
             <artifactId>messagebox</artifactId>
@@ -54,35 +54,6 @@
                     <artifactId>vaadin-server</artifactId>
                 </exclusion>
             </exclusions>
-        </dependency>
-
-
-        <!-- Vaadin -->
-        <dependency>
-            <groupId>com.vaadin</groupId>
-            <artifactId>vaadin-client-compiled</artifactId>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.vaadin</groupId>
-            <artifactId>vaadin-themes</artifactId>
-            <scope>provided</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>com.vaadin</groupId>
-            <artifactId>vaadin-cdi</artifactId>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.vaadin.addon</groupId>
-            <artifactId>cdi-properties</artifactId>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.vaadin.addon</groupId>
-            <artifactId>cdi-mvp</artifactId>
-            <scope>provided</scope>
         </dependency>
     </dependencies>
 </project>

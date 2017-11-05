@@ -16,23 +16,14 @@
 
 package de.kaiserpfalzedv.commons.jpa;
 
-import java.util.Objects;
-import java.util.UUID;
-
-import javax.persistence.Column;
-import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
-import javax.persistence.PostLoad;
-import javax.persistence.PrePersist;
-import javax.persistence.PreRemove;
-import javax.persistence.PreUpdate;
-import javax.persistence.Transient;
-import javax.persistence.Version;
-import javax.validation.constraints.NotNull;
-
 import de.kaiserpfalzedv.commons.api.data.Identifiable;
 import de.kaiserpfalzedv.commons.api.data.TenantIdentifiable;
 import org.apache.commons.lang3.builder.ToStringBuilder;
+
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import java.util.Objects;
+import java.util.UUID;
 
 import static org.apache.commons.lang3.builder.ToStringStyle.SHORT_PREFIX_STYLE;
 
@@ -51,10 +42,6 @@ import static org.apache.commons.lang3.builder.ToStringStyle.SHORT_PREFIX_STYLE;
  *     &lt;/column&gt;
  *
  *     &lt;column name="VERSION_" type="BIGINT" defaultValue="0"&gt;
- *         &lt;constraints nullable="false"/&gt;
- *     &lt;/column&gt;
- *
- *     &lt;column name="TENANT_" type="VARCHAR(40)"&gt;
  *         &lt;constraints nullable="false"/&gt;
  *     &lt;/column&gt;
  *

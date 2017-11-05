@@ -28,7 +28,6 @@
     <name>KP Office Base</name>
 
     <modules>
-        <module>5minutes</module>
         <module>kp-commons-root</module>
         <module>kp-iam-root</module>
         <module>kp-licensing-root</module>

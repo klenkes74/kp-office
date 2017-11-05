@@ -31,6 +31,10 @@
     <name>KP IAM :: Access</name>
     <packaging>ejb</packaging>
 
+    <properties>
+        <skip.jpa>false</skip.jpa>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>de.kaiserpfalz-edv.commons</groupId>

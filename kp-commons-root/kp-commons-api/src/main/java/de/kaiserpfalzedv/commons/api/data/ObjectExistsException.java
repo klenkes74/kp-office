@@ -33,19 +33,19 @@ public class ObjectExistsException extends BaseBusinessException {
 
 
     private Class<?> clasz;
-    private UUID id;
+    private UUID objectId;
     private Serializable existingObject;
 
     public ObjectExistsException(final Class<?> clasz, final UUID objectId, final Serializable existingObject) {
         super(generateMessage(clasz, objectId));
 
         this.clasz = clasz;
-        this.id = objectId;
+        this.objectId = objectId;
         this.existingObject = existingObject;
     }
 
     private static String generateMessage(final Class<?> clasz, final UUID id) {
-        return "An object of type '" + clasz.getSimpleName() + "' with id '" + id.toString() + "' already exists.";
+        return "An object of type '" + clasz.getSimpleName() + "' with objectId '" + id.toString() + "' already exists.";
     }
 
 
@@ -54,7 +54,7 @@ public class ObjectExistsException extends BaseBusinessException {
     }
 
     public UUID getObjectId() {
-        return id;
+        return objectId;
     }
 
     public Serializable getExistingObject() {

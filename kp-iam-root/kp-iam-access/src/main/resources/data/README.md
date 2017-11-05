@@ -1,0 +1,1 @@
+All data to be loaded via Liquibase will go inside this directory as CSV file.
