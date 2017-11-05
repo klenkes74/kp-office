@@ -22,6 +22,7 @@ import de.kaiserpfalzedv.iam.access.api.roles.Entitlement;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.UUID;
 
 import static javax.persistence.AccessType.FIELD;
@@ -92,9 +93,17 @@ public class JPAEntitlement extends JPAAbstractIdentifiable implements Entitleme
         return name.getDisplayName();
     }
 
+    public void setDisplayName(@NotNull final String name) {
+        this.name.setDisplayName(name);
+    }
+
     @Override
     public String getFullName() {
         return name.getFullName();
+    }
+
+    public void setFullName(@NotNull final String name) {
+        this.name.setFullName(name);
     }
 
     @Override
@@ -102,8 +111,16 @@ public class JPAEntitlement extends JPAAbstractIdentifiable implements Entitleme
         return getDisplayName();
     }
 
+    public void setName(@NotNull final String name) {
+        this.name.setDisplayName(name);
+    }
+
     @Override
     public String getDescriptionKey() {
         return description;
+    }
+
+    public void setDescriptionKey(@NotNull final String key) {
+        this.description = key;
     }
 }

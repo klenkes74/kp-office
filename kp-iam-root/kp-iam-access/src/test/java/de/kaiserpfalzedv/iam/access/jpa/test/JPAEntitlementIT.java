@@ -16,6 +16,7 @@
 
 package de.kaiserpfalzedv.iam.access.jpa.test;
 
+import com.google.common.base.Preconditions;
 import de.kaiserpfalzedv.iam.access.jpa.roles.JPAEntitlement;
 import de.kaiserpfalzedv.iam.access.jpa.roles.JPAEntitlementRepositoryImpl;
 import org.jboss.arquillian.container.test.api.Deployment;
@@ -41,8 +42,7 @@ import javax.validation.constraints.NotNull;
 import java.util.Optional;
 import java.util.UUID;
 
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
@@ -103,7 +103,6 @@ public class JPAEntitlementIT {
 
         EnterpriseArchive ear = ShrinkWrap
                 .create(EnterpriseArchive.class, "kp-iam.ear")
-//                .addAsLibraries(mavenDependencies)
                 .addAsLibrary(commons)
                 .addAsLibrary(tenant)
                 .addAsModule(ejb)
@@ -139,6 +138,27 @@ public class JPAEntitlementIT {
         LOG.trace("Result: {}", result.isPresent() ? result.get() : "./.");
 
         assertTrue(result.isPresent());
+    }
+
+    @Test
+    public void shouldGetTheNewNameWhenTheNameHasBeenChanged() {
+        logMethod("update-name", "Change name of the entitlement.");
+
+        UUID id = UUID.fromString("11111111-1111-1111-1111-111111111111");
+
+        Optional<JPAEntitlement> data = repository.retrieve(id);
+        LOG.trace("Data: {}", data.isPresent() ? data.get() : "./.");
+        Preconditions.checkArgument("test1".equals(data.get().getName()), "The name should be 'test1'.");
+
+        JPAEntitlement changed = data.get();
+        changed.setName("changed name 1");
+
+        repository.update(changed);
+
+        Optional<JPAEntitlement> result = repository.retrieve(id);
+        LOG.trace("Result: {}", result.isPresent() ? result.get() : "./.");
+
+        assertEquals("changed name 1", result.get().getName());
     }
 
 
