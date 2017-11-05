@@ -16,18 +16,18 @@
 
 package de.kaiserpfalzedv.office.finance.chartofaccounts.chartofaccounts.test;
 
-import java.util.UUID;
-
+import de.kaiserpfalzedv.iam.tenant.api.NullTenant;
 import de.kaiserpfalzedv.office.finance.chartofaccounts.api.chartofaccounts.ChartOfAccountsAlreadyExistsException;
 import de.kaiserpfalzedv.office.finance.chartofaccounts.api.chartofaccounts.ChartsOfAccountStore;
 import de.kaiserpfalzedv.office.finance.chartofaccounts.api.chartofaccounts.ChartsOfAccounts;
 import de.kaiserpfalzedv.office.finance.chartofaccounts.impl.chartofaccounts.ChartsOfAccountsImpl;
 import de.kaiserpfalzedv.office.finance.chartofaccounts.mock.ChartsOfAccountStoreMock;
-import de.kaiserpfalzedv.office.tenant.api.NullTenant;
 import org.junit.Before;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.UUID;
 
 /**
  * @author klenkes

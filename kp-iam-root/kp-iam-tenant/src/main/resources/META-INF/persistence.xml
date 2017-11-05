@@ -16,16 +16,17 @@
 
 <persistence xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              xmlns="http://xmlns.jcp.org/xml/ns/persistence"
-             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
-             http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
              version="2.1">
 
     <persistence-unit name="tenant">
-        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <jta-data-source>java:jboss/datasources/tenants</jta-data-source>
 
-        <non-jta-data-source>java:global/jdbc/tenants</non-jta-data-source>
+        <class>de.kaiserpfalzedv.commons.jpa.JPAAbstractIdentifiable</class>
+        <class>de.kaiserpfalzedv.commons.jpa.JPAAbstractTenantIdentifiable</class>
+        <class>de.kaiserpfalzedv.commons.jpa.JPANameable</class>
 
-        <class>de.kaiserpfalzedv.office.tenant.jpa.JPATenant</class>
+        <class>de.kaiserpfalzedv.iam.tenant.jpa.JPATenant</class>
 
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
         <validation-mode>AUTO</validation-mode>
@@ -34,12 +35,7 @@
             <property name="hibernate.show_sql" value="false"/>
             <property name="hibernate.format_sql" value="true"/>
             <property name="hibernate.hbm2ddl.auto" value="validate"/>
-            <!-- Configuring Connection Pool -->
-            <property name="hibernate.c3p0.min_size" value="3"/>
-            <property name="hibernate.c3p0.max_size" value="20"/>
-            <property name="hibernate.c3p0.timeout" value="500"/>
-            <property name="hibernate.c3p0.max_statements" value="50"/>
-            <property name="hibernate.c3p0.idle_test_period" value="2000"/>
+            <property name="hibernate.transaction.flush_before_completion" value="true"/>
         </properties>
     </persistence-unit>
 </persistence>

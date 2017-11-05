@@ -41,8 +41,8 @@ import static org.apache.commons.lang3.builder.ToStringStyle.SHORT_PREFIX_STYLE;
 )
 @Access(FIELD)
 @NamedQueries({
-        @NamedQuery(name = "fetch-all", query = "SELECT t FROM Entitlement t", lockMode = NONE),
-        @NamedQuery(name = "fetch-all.count", query = "SELECT count(t) FROM Entitlement t", lockMode = NONE)
+        @NamedQuery(name = "Entitlement.fetch-all", query = "SELECT t FROM Entitlement t", lockMode = NONE),
+        @NamedQuery(name = "Entitlement.fetch-all.count", query = "SELECT count(t) FROM Entitlement t", lockMode = NONE)
 })
 public class JPAEntitlement extends JPAAbstractIdentifiable implements Entitlement {
     private static final long serialVersionUID = -6085847502814790165L;

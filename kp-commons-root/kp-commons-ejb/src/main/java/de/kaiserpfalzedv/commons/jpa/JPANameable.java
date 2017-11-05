@@ -18,10 +18,13 @@ package de.kaiserpfalzedv.commons.jpa;
 
 import de.kaiserpfalzedv.commons.api.data.Nameable;
 
+import javax.persistence.Access;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+
+import static javax.persistence.AccessType.FIELD;
 
 /**
  * This small embeddable class ensures that all tables containing nameables will look the same.
@@ -57,11 +60,15 @@ import java.io.Serializable;
  * @since 2016-09-30
  */
 @Embeddable
+@Access(FIELD)
 public class JPANameable implements Nameable, Serializable {
     private static final long serialVersionUID = 10597843536045535L;
 
 
+    @Column(name = "DISPLAY_NAME_", length = 200, nullable = false)
     private String displayName;
+
+    @Column(name = "FULL_NAME_", length = 1000, nullable = false)
     private String fullName;
 
 
@@ -77,7 +84,6 @@ public class JPANameable implements Nameable, Serializable {
     }
 
 
-    @Column(name = "DISPLAY_NAME_", length = 200, nullable = false)
     @Override
     public String getDisplayName() {
         return displayName;
@@ -88,7 +94,6 @@ public class JPANameable implements Nameable, Serializable {
     }
 
 
-    @Column(name = "FULL_NAME_", length = 1000, nullable = false)
     @Override
     public String getFullName() {
         return fullName;

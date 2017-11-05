@@ -16,26 +16,26 @@
 
 <persistence xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              xmlns="http://xmlns.jcp.org/xml/ns/persistence"
-             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
-             http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
              version="2.1">
 
     <persistence-unit name="ACCESS">
-        <non-jta-data-source>java:comp/env/datasources/iam</non-jta-data-source>
+        <jta-data-source>java:jboss/datasources/iam</jta-data-source>
 
         <class>de.kaiserpfalzedv.commons.jpa.JPANameable</class>
         <class>de.kaiserpfalzedv.commons.jpa.JPAAbstractIdentifiable</class>
         <class>de.kaiserpfalzedv.commons.jpa.JPAAbstractTenantIdentifiable</class>
 
         <class>de.kaiserpfalzedv.iam.access.jpa.roles.JPAEntitlement</class>
+        <class>de.kaiserpfalzedv.iam.access.jpa.roles.JPARole</class>
 
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
-        <validation-mode>AUTO</validation-mode>
+        <validation-mode>NONE</validation-mode>
 
         <properties>
             <property name="hibernate.show_sql" value="false"/>
             <property name="hibernate.format_sql" value="false"/>
-            <property name="hibernate.hbm2ddl.auto" value="validate"/>
+            <property name="hibernate.transaction.flush_before_completion" value="true"/>
         </properties>
     </persistence-unit>
 </persistence>

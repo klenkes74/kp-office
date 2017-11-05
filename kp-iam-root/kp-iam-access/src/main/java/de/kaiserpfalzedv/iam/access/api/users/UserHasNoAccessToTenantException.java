@@ -16,7 +16,7 @@
 
 package de.kaiserpfalzedv.iam.access.api.users;
 
-import de.kaiserpfalzedv.office.tenant.api.Tenant;
+import de.kaiserpfalzedv.iam.tenant.api.Tenant;
 
 import java.util.UUID;
 

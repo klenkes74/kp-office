@@ -17,9 +17,9 @@
 package de.kaiserpfalzedv.office.finance.chartofaccounts.account.test;
 
 import de.kaiserpfalzedv.commons.api.BuilderException;
+import de.kaiserpfalzedv.iam.tenant.api.NullTenant;
 import de.kaiserpfalzedv.office.finance.chartofaccounts.api.account.CostCenter;
 import de.kaiserpfalzedv.office.finance.chartofaccounts.impl.CostCenterBuilder;
-import de.kaiserpfalzedv.office.tenant.api.NullTenant;
 import org.junit.Before;
 import org.junit.Test;
 

@@ -19,7 +19,7 @@ package de.kaiserpfalzedv.iam.access.api;
 import de.kaiserpfalzedv.iam.access.api.users.Principal;
 import de.kaiserpfalzedv.iam.access.api.users.UserHasNoAccessToTenantException;
 import de.kaiserpfalzedv.iam.access.api.users.UserIsLockedException;
-import de.kaiserpfalzedv.office.tenant.api.Tenant;
+import de.kaiserpfalzedv.iam.tenant.api.Tenant;
 
 import java.util.Set;
 import java.util.UUID;

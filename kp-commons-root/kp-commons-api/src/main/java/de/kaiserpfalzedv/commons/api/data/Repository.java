@@ -16,6 +16,7 @@
 
 package de.kaiserpfalzedv.commons.api.data;
 
+import javax.validation.constraints.NotNull;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -29,15 +30,15 @@ import java.util.UUID;
 public interface Repository<T> {
     T create(T entitlement) throws ObjectExistsException;
 
-    Optional<T> retrieve(UUID id);
+    Optional<T> retrieve(@NotNull UUID id);
 
-    PagedListable<T> retrieve(Pageable page);
+    PagedListable<T> retrieve(@NotNull Pageable page);
 
-    PagedListable<T> retrieve(Predicate<T> predicate, Pageable page);
+    PagedListable<T> retrieve(@NotNull Predicate<T> predicate, @NotNull Pageable page);
 
-    void update(T entitlement) throws ObjectDoesNotExistException;
+    void update(@NotNull T entitlement) throws ObjectDoesNotExistException;
 
-    void delete(UUID id);
+    void delete(@NotNull UUID id);
 
-    void delete(T entitlement);
+    void delete(@NotNull T entitlement);
 }

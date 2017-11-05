@@ -598,7 +598,7 @@
                         <executions>
                             <execution>
                                 <id>unpack</id>
-                                <phase>process-test-classes</phase>
+                                <phase>pre-integration-test</phase>
                                 <goals>
                                     <goal>unpack</goal>
                                 </goals>
@@ -615,12 +615,59 @@
                                     </artifactItems>
                                 </configuration>
                             </execution>
+                            <execution>
+                                <id>copy</id>
+                                <phase>pre-integration-test</phase>
+                                <goals>
+                                    <goal>copy</goal>
+                                </goals>
+                                <configuration>
+                                    <artifactItems>
+                                        <artifactItem>
+                                            <groupId>org.lazyluke</groupId>
+                                            <artifactId>log4jdbc-remix</artifactId>
+                                            <version>0.2.7</version>
+                                            <type>jar</type>
+                                            <outputDirectory>
+                                                target/wildfly-10.0.0.Final/modules/org/lazyluke/log4jdbc/main
+                                            </outputDirectory>
+                                        </artifactItem>
+                                    </artifactItems>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <artifactId>maven-resources-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>copy-log4jdbc-module</id>
+                                <phase>pre-integration-test</phase>
+                                <goals>
+                                    <goal>copy-resources</goal>
+                                </goals>
+                                <configuration>
+                                    <outputDirectory>
+                                        ${project.build.directory}/wildfly-10.0.0.Final/modules/org/lazyluke/log4jdbc/main
+                                    </outputDirectory>
+                                    <resources>
+                                        <resource>
+                                            <directory>
+                                                ${project.build.testOutputDirectory}/wildfly-embedded/log4jdbc-module
+                                            </directory>
+                                            <includes>
+                                                <include>module.xml</include>
+                                            </includes>
+                                        </resource>
+                                    </resources>
+                                </configuration>
+                            </execution>
                         </executions>
                     </plugin>
 
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-surefire-plugin</artifactId>
+                        <artifactId>maven-failsafe-plugin</artifactId>
                         <configuration>
                             <!-- Fork every test because it will launch a separate AS instance -->
                             <forkMode>always</forkMode>
@@ -629,6 +676,14 @@
                             </systemPropertyVariables>
                             <redirectTestOutputToFile>false</redirectTestOutputToFile>
                         </configuration>
+
+                        <dependencies>
+                            <dependency>
+                                <groupId>org.jboss.logmanager</groupId>
+                                <artifactId>jboss-logmanager</artifactId>
+                                <version>2.0.3.Final</version>
+                            </dependency>
+                        </dependencies>
                     </plugin>
                 </plugins>
             </build>
@@ -646,7 +701,7 @@
                 </dependency>
                 <dependency>
                     <groupId>org.wildfly.arquillian</groupId>
-                    <artifactId>wildfly-arquillian-container-embedded</artifactId>
+                    <artifactId>wildfly-arquillian-container-managed</artifactId>
                     <version>2.0.0.Final</version>
                     <scope>test</scope>
                 </dependency>

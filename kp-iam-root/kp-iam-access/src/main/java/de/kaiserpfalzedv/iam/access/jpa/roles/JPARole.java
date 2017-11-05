@@ -20,7 +20,7 @@ import de.kaiserpfalzedv.commons.jpa.JPAAbstractTenantIdentifiable;
 import de.kaiserpfalzedv.commons.jpa.JPANameable;
 import de.kaiserpfalzedv.iam.access.api.roles.Entitlement;
 import de.kaiserpfalzedv.iam.access.api.roles.Role;
-import de.kaiserpfalzedv.office.tenant.api.Tenant;
+import de.kaiserpfalzedv.iam.tenant.api.Tenant;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
@@ -48,8 +48,8 @@ import static javax.persistence.LockModeType.OPTIMISTIC;
 )
 @Access(FIELD)
 @NamedQueries({
-        @NamedQuery(name = "find-by-tenant", query = "SELECT t from Role t WHERE tenant=:id", lockMode = OPTIMISTIC),
-        @NamedQuery(name = "fetch-all", query = "SELECT t FROM Role t", lockMode = NONE)
+        @NamedQuery(name = "Role.find-by-tenant", query = "SELECT t from Role t WHERE tenant=:id", lockMode = OPTIMISTIC),
+        @NamedQuery(name = "Role.fetch-all", query = "SELECT t FROM Role t", lockMode = NONE)
 })
 public class JPARole extends JPAAbstractTenantIdentifiable implements Role {
     private static final long serialVersionUID = -6085847502814790165L;

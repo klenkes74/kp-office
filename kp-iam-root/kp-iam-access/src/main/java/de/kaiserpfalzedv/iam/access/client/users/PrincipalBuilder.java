@@ -21,7 +21,7 @@ import de.kaiserpfalzedv.commons.api.data.Email;
 import de.kaiserpfalzedv.iam.access.api.roles.Role;
 import de.kaiserpfalzedv.iam.access.api.users.PasswordHolding;
 import de.kaiserpfalzedv.iam.access.api.users.Principal;
-import de.kaiserpfalzedv.office.tenant.api.Tenant;
+import de.kaiserpfalzedv.iam.tenant.api.Tenant;
 import org.apache.commons.lang3.builder.Builder;
 
 import javax.validation.constraints.NotNull;

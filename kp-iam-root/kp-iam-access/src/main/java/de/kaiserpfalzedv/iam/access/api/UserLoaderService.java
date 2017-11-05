@@ -17,7 +17,7 @@
 package de.kaiserpfalzedv.iam.access.api;
 
 import de.kaiserpfalzedv.iam.access.api.users.Principal;
-import de.kaiserpfalzedv.office.tenant.api.Tenant;
+import de.kaiserpfalzedv.iam.tenant.api.Tenant;
 
 import java.util.Collection;
 
