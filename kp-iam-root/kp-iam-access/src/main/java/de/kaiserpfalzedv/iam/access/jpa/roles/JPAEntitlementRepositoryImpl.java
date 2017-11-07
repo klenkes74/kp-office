@@ -16,15 +16,21 @@
 
 package de.kaiserpfalzedv.iam.access.jpa.roles;
 
-import de.kaiserpfalzedv.commons.jpa.AbstractBaseRepository;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import java.util.Optional;
+import java.util.UUID;
 
+import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.validation.constraints.NotNull;
+
+import de.kaiserpfalzedv.commons.api.data.DataUpdater;
+import de.kaiserpfalzedv.commons.api.data.ObjectExistsException;
+import de.kaiserpfalzedv.commons.api.data.Pageable;
+import de.kaiserpfalzedv.commons.api.data.PagedListable;
+import de.kaiserpfalzedv.commons.api.data.Predicate;
+import de.kaiserpfalzedv.commons.jpa.AbstractBaseRepository;
 
 /**
  * The implementation of a CRUD repository for the entitlement.
@@ -34,26 +40,50 @@ import javax.validation.constraints.NotNull;
  * @since 1.0.0
  */
 @ApplicationScoped
-public class JPAEntitlementRepositoryImpl extends AbstractBaseRepository<JPAEntitlement> implements JPAEntitlementRepository {
-    private static final Logger LOG = LoggerFactory.getLogger(JPAEntitlementRepositoryImpl.class);
-
+public class JPAEntitlementRepositoryImpl implements JPAEntitlementRepository, DataUpdater<JPAEntitlement> {
     @PersistenceContext(unitName = "ACCESS")
     private EntityManager em;
 
-    public JPAEntitlementRepositoryImpl() {
-        this(null);
+    private AbstractBaseRepository<JPAEntitlement> repo;
+
+    @PostConstruct
+    public void init() {
+        repo = new AbstractBaseRepository<>(JPAEntitlement.class, "Entitlement");
     }
 
-    @Inject
-    public JPAEntitlementRepositoryImpl(
-            @NotNull final EntityManager em
+    public JPAEntitlement create(@NotNull final JPAEntitlement entity) throws ObjectExistsException {
+        return repo.create(em, entity);
+    }
+
+    public Optional<JPAEntitlement> retrieve(@NotNull final UUID id) {
+        return repo.retrieve(em, id);
+    }
+
+    public PagedListable<JPAEntitlement> retrieve(@NotNull final Pageable page) {
+        return repo.retrieve(em, page);
+    }
+
+    public PagedListable<JPAEntitlement> retrieve(
+            @NotNull final Predicate<JPAEntitlement> predicate,
+            @NotNull final Pageable page
     ) {
-        super(JPAEntitlementRepositoryImpl.class, "Entitlement", em);
+        return repo.retrieve(em, predicate, page);
     }
 
+    public void update(@NotNull final JPAEntitlement entity) {
+        repo.update(em, entity, this);
+    }
+
+    public void delete(@NotNull final UUID id) {
+        repo.delete(em, id);
+    }
+
+    public void delete(@NotNull final JPAEntitlement entity) {
+        repo.delete(em, entity);
+    }
 
     @Override
-    protected void updateData(@NotNull JPAEntitlement old, @NotNull final JPAEntitlement data) {
+    public void update(@NotNull JPAEntitlement old, @NotNull final JPAEntitlement data) {
         old.update(data);
     }
 }

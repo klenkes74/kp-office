@@ -16,6 +16,15 @@
 
 package de.kaiserpfalzedv.commons.jpa;
 
+import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
+
+import javax.persistence.EntityExistsException;
+import javax.persistence.EntityManager;
+import javax.validation.constraints.NotNull;
+
+import de.kaiserpfalzedv.commons.api.data.DataUpdater;
 import de.kaiserpfalzedv.commons.api.data.ObjectExistsException;
 import de.kaiserpfalzedv.commons.api.data.Pageable;
 import de.kaiserpfalzedv.commons.api.data.PagedListable;
@@ -25,13 +34,6 @@ import de.kaiserpfalzedv.commons.api.data.impl.PagedListBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.persistence.EntityExistsException;
-import javax.persistence.EntityManager;
-import javax.validation.constraints.NotNull;
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
-
 /**
  * The implementation of a CRUD repository for the entitlement.
  *
@@ -40,50 +42,35 @@ import java.util.UUID;
  * @since 1.0.0
  */
 @SuppressWarnings("unchecked")
-public abstract class AbstractBaseRepository<T extends JPAAbstractIdentifiable> {
+public class AbstractBaseRepository<T extends JPAAbstractIdentifiable> {
     private static final Logger LOG = LoggerFactory.getLogger(AbstractBaseRepository.class);
 
     private Class<?> clasz;
     private String entityName;
-    private EntityManager em;
 
     public AbstractBaseRepository(
             @NotNull final Class<?> clasz,
-            @NotNull final String entityName,
-            @NotNull final EntityManager em
+            @NotNull final String entityName
     ) {
         this.clasz = clasz;
         this.entityName = entityName;
-        this.em = em;
     }
 
-    public T create(@NotNull final T entitlement) throws ObjectExistsException {
-        try {
-            em.persist(entitlement);
-        } catch (EntityExistsException e) {
-            Optional<T> result = retrieve(entitlement.getId());
+    public PagedListable<T> retrieve(
+            @NotNull final EntityManager em,
+            @NotNull final Predicate<T> predicate,
+            @NotNull final Pageable page
+    ) {
+        // TODO 2017-11-04 rlichti Implement the predicate search.
+        LOG.error(
+                "Predicate based search for '{}' not yet implemented. All data base rows will be returned!",
+                clasz.getSimpleName()
+        );
 
-            if (result.isPresent()) {
-                throw new ObjectExistsException(clasz, entitlement.getId(), result.get());
-            } else {
-                throw new IllegalStateException("While persisting, the object has been there, then when trying to " +
-                        "retrieve it, it wasn't. Won't work that way!");
-            }
-        }
-
-        //noinspection ConstantConditions
-        return retrieve(entitlement.getId()).get();
+        return retrieve(em, page);
     }
 
-
-    public Optional<T> retrieve(@NotNull final UUID id) {
-        T result = (T) em.find(clasz, id.toString());
-
-        return Optional.ofNullable(result);
-    }
-
-
-    public PagedListable<T> retrieve(@NotNull final Pageable page) {
+    public PagedListable<T> retrieve(@NotNull final EntityManager em, @NotNull final Pageable page) {
         List<T> data = (List<T>) em
                 .createNamedQuery(entityName + ".fetch-all", clasz)
                 .setFirstResult(page.getFirstResult())
@@ -107,55 +94,75 @@ public abstract class AbstractBaseRepository<T extends JPAAbstractIdentifiable> 
             resultPage = new PageableBuilder().withPaging(page).build();
         }
 
-        return new PagedListBuilder<T>().withData(data).withPageable(resultPage).build();
+        PagedListable<T> result = new PagedListBuilder<T>().withData(data).withPageable(resultPage).build();
+
+        LOG.trace("Loaded page of type '{}': {}", clasz.getSimpleName(), result);
+        return result;
     }
 
-
-    public PagedListable<T> retrieve(@NotNull final Predicate<T> predicate,
-                                     @NotNull final Pageable page) {
-        // TODO 2017-11-04 rlichti Implement the predicate search.
-        LOG.error("Predicate based search for '{}' not yet implemented. All data base rows will be returned!",
-                clasz.getSimpleName());
-
-        return retrieve(page);
-    }
-
-
-    public void update(@NotNull final T entitlement) {
-        Optional<T> orig = retrieve(entitlement.getId());
+    public void update(
+            @NotNull final EntityManager em,
+            @NotNull final T entity,
+            @NotNull final DataUpdater<T> updater
+    ) {
+        Optional<T> orig = retrieve(em, entity.getId());
 
         T data;
         if (orig.isPresent()) {
             data = orig.get();
         } else {
             try {
-                data = create(entitlement);
-                LOG.debug("Created new entitlement during update: {}", data);
+                data = create(em, entity);
+                LOG.debug("Created new entity of type '{}' during update: {}", clasz.getSimpleName(), data);
             } catch (ObjectExistsException e) {
-                LOG.warn("Duplicate object, but first it has not been found: {}", e.getObjectId());
+                LOG.warn("Duplicate object of type '{}', but first it has not been found: {}",
+                         clasz.getSimpleName(), e.getObjectId()
+                );
                 data = (T) e.getExistingObject();
             }
         }
 
-        updateData(data, entitlement);
+        updater.update(data, entity);
 
         em.merge(data);
-        LOG.info("Updated entitlement: {}", data);
+        LOG.info("Updated entity of type '{}': {}", clasz.getSimpleName(), data);
     }
 
-    protected abstract void updateData(@NotNull T old, @NotNull final T data);
+    public Optional<T> retrieve(@NotNull final EntityManager em, @NotNull final UUID id) {
+        T result = (T) em.find(clasz, id.toString());
 
+        LOG.trace("Loaded entity of type '{}': {}", clasz.getSimpleName(), result != null ? result : "./.");
+        return Optional.ofNullable(result);
+    }
 
-    public void delete(@NotNull final UUID id) {
-        Optional<T> entitlement = retrieve(id);
+    public T create(@NotNull final EntityManager em, @NotNull final T entity) throws ObjectExistsException {
+        try {
+            em.persist(entity);
+        } catch (EntityExistsException e) {
+            Optional<T> result = retrieve(em, entity.getId());
 
-        entitlement.ifPresent(this::delete);
+            if (result.isPresent()) {
+                throw new ObjectExistsException(clasz, entity.getId(), result.get());
+            } else {
+                throw new IllegalStateException("While persisting, the object has been there, then when trying to " +
+                                                        "retrieve it, it wasn't. Won't work that way!");
+            }
+        }
+
+        //noinspection ConstantConditions
+        return retrieve(em, entity.getId()).get();
+    }
+
+    public void delete(@NotNull final EntityManager em, @NotNull final UUID id) {
+        Optional<T> data = retrieve(em, id);
+
+        data.ifPresent(e -> delete(em, e));
     }
 
 
-    public void delete(@NotNull final T entitlement) {
-        LOG.info("Removing entitlement: {}", entitlement);
+    public void delete(@NotNull final EntityManager em, @NotNull final T entity) {
+        LOG.info("Removing entity of type '{}': {}", clasz.getSimpleName(), entity);
 
-        em.remove(entitlement);
+        em.remove(entity);
     }
 }

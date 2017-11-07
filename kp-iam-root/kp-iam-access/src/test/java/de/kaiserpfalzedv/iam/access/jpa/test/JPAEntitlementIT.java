@@ -16,6 +16,20 @@
 
 package de.kaiserpfalzedv.iam.access.jpa.test;
 
+import java.util.Optional;
+import java.util.UUID;
+
+import javax.inject.Inject;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.transaction.HeuristicMixedException;
+import javax.transaction.HeuristicRollbackException;
+import javax.transaction.NotSupportedException;
+import javax.transaction.RollbackException;
+import javax.transaction.SystemException;
+import javax.transaction.UserTransaction;
+import javax.validation.constraints.NotNull;
+
 import com.google.common.base.Preconditions;
 import de.kaiserpfalzedv.iam.access.jpa.roles.JPAEntitlement;
 import de.kaiserpfalzedv.iam.access.jpa.roles.JPAEntitlementRepositoryImpl;
@@ -34,15 +48,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.MDC;
 
-import javax.inject.Inject;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.transaction.*;
-import javax.validation.constraints.NotNull;
-import java.util.Optional;
-import java.util.UUID;
-
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
@@ -74,6 +82,7 @@ public class JPAEntitlementIT {
                 .addAsResource("META-INF/ejb-jar.xml", "META-INF/ejb-jar.xml")
                 .addAsResource("META-INF/beans.xml", "META-INF/beans.xml")
                 .addPackages(true, "de.kaiserpfalzedv.iam")
+                .addClass(com.google.common.base.Preconditions.class)       // used in this test class.
                 .addManifest();
         LOG.trace("Created EJB Archive: {}", ejb);
 
