@@ -68,8 +68,10 @@ public class PredicateToQueryParser<T extends Serializable> implements Predicate
 
     @Override
     public <J extends Serializable> String visit(JoinPredicate<T, J> predicate) {
-        return new StringBuilder(" and (")
-                .append(visit(predicate))
-                .append(")").toString();
+        PredicateToQueryParser<J> secondParser = new PredicateToQueryParser<>();
+
+        return new StringBuilder()
+                .append(secondParser.visit(predicate.getPredicates()))
+                .toString();
     }
 }
