@@ -16,11 +16,13 @@
 
 package de.kaiserpfalzedv.office.finance.chartofaccounts.mock.test;
 
+import java.util.UUID;
+
 import de.kaiserpfalzedv.commons.api.data.ObjectDoesNotExistException;
 import de.kaiserpfalzedv.commons.api.data.ObjectExistsException;
-import de.kaiserpfalzedv.commons.api.data.Pageable;
-import de.kaiserpfalzedv.commons.api.data.PagedListable;
-import de.kaiserpfalzedv.commons.api.data.impl.PageableBuilder;
+import de.kaiserpfalzedv.commons.api.data.paging.Pageable;
+import de.kaiserpfalzedv.commons.api.data.paging.PageableBuilder;
+import de.kaiserpfalzedv.commons.api.data.paging.PagedListable;
 import de.kaiserpfalzedv.iam.tenant.api.NullTenant;
 import de.kaiserpfalzedv.office.finance.chartofaccounts.api.account.Account;
 import de.kaiserpfalzedv.office.finance.chartofaccounts.api.account.AccountInUseException;
@@ -32,9 +34,9 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.UUID;
-
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.fail;
 
 /**
  * @author klenkes

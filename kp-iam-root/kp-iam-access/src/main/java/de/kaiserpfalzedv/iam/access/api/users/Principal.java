@@ -16,18 +16,18 @@
 
 package de.kaiserpfalzedv.iam.access.api.users;
 
-import de.kaiserpfalzedv.commons.api.data.Email;
-import de.kaiserpfalzedv.commons.api.data.Identifiable;
-import de.kaiserpfalzedv.commons.api.data.Nameable;
-import de.kaiserpfalzedv.commons.api.data.Tenantable;
-import de.kaiserpfalzedv.iam.access.api.PasswordFailureException;
-import de.kaiserpfalzedv.iam.access.api.roles.Entitlement;
-import de.kaiserpfalzedv.iam.access.api.roles.Role;
-
 import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
+
+import de.kaiserpfalzedv.commons.api.data.base.Identifiable;
+import de.kaiserpfalzedv.commons.api.data.base.Nameable;
+import de.kaiserpfalzedv.commons.api.data.tenant.Tenantable;
+import de.kaiserpfalzedv.commons.api.data.types.Email;
+import de.kaiserpfalzedv.iam.access.api.PasswordFailureException;
+import de.kaiserpfalzedv.iam.access.api.roles.Entitlement;
+import de.kaiserpfalzedv.iam.access.api.roles.Role;
 
 /**
  * Paladins Inn uses an extended principal containing some additional data of the user.

@@ -25,12 +25,13 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.validation.constraints.NotNull;
 
-import de.kaiserpfalzedv.commons.api.data.DataUpdater;
 import de.kaiserpfalzedv.commons.api.data.ObjectExistsException;
-import de.kaiserpfalzedv.commons.api.data.Pageable;
-import de.kaiserpfalzedv.commons.api.data.PagedListable;
-import de.kaiserpfalzedv.commons.api.data.Predicate;
-import de.kaiserpfalzedv.commons.jpa.AbstractBaseRepository;
+import de.kaiserpfalzedv.commons.api.data.base.DataUpdater;
+import de.kaiserpfalzedv.commons.api.data.paging.Pageable;
+import de.kaiserpfalzedv.commons.api.data.paging.PagedListable;
+import de.kaiserpfalzedv.commons.api.data.query.Predicate;
+import de.kaiserpfalzedv.commons.jpa.JPABaseRepository;
+import de.kaiserpfalzedv.iam.access.impl.roles.JPAEntitlementRepository;
 
 /**
  * The implementation of a CRUD repository for the entitlement.
@@ -44,11 +45,11 @@ public class JPAEntitlementRepositoryImpl implements JPAEntitlementRepository, D
     @PersistenceContext(unitName = "ACCESS")
     private EntityManager em;
 
-    private AbstractBaseRepository<JPAEntitlement> repo;
+    private JPABaseRepository<JPAEntitlement> repo;
 
     @PostConstruct
     public void init() {
-        repo = new AbstractBaseRepository<>(JPAEntitlement.class, "Entitlement");
+        repo = new JPABaseRepository<>(JPAEntitlement.class, "Entitlement");
     }
 
     public JPAEntitlement create(@NotNull final JPAEntitlement entity) throws ObjectExistsException {

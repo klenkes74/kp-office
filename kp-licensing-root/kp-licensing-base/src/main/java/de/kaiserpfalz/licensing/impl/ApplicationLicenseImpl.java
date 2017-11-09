@@ -16,20 +16,20 @@
 
 package de.kaiserpfalz.licensing.impl;
 
-import com.github.zafarkhaja.semver.Version;
-import com.verhas.licensor.License;
-import de.kaiserpfalzedv.commons.api.data.ValidityDuration;
-import de.kaiserpfalzedv.commons.api.data.VersionRange;
-import de.kaiserpfalzedv.commons.api.info.SoftwareLicense;
-import de.kaiserpfalzedv.commons.api.licensing.ApplicationLicense;
-import de.kaiserpfalzedv.commons.impl.license.LicenseBuilder;
-
 import java.time.Instant;
 import java.time.OffsetDateTime;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
+
+import com.github.zafarkhaja.semver.Version;
+import com.verhas.licensor.License;
+import de.kaiserpfalzedv.commons.api.data.types.ValidityDuration;
+import de.kaiserpfalzedv.commons.api.data.types.VersionRange;
+import de.kaiserpfalzedv.commons.api.info.SoftwareLicense;
+import de.kaiserpfalzedv.commons.api.licensing.ApplicationLicense;
+import de.kaiserpfalzedv.commons.impl.license.LicenseBuilder;
 
 /**
  * Implementation of the OfficeLicense on basis of the License3j library.

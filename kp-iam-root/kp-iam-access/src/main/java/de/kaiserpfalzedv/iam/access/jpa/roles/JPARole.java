@@ -16,21 +16,31 @@
 
 package de.kaiserpfalzedv.iam.access.jpa.roles;
 
-import de.kaiserpfalzedv.commons.jpa.JPAAbstractTenantIdentifiable;
-import de.kaiserpfalzedv.commons.jpa.JPANameable;
-import de.kaiserpfalzedv.iam.access.api.roles.Entitlement;
-import de.kaiserpfalzedv.iam.access.api.roles.Role;
-import de.kaiserpfalzedv.iam.tenant.api.Tenant;
-import org.apache.commons.lang3.builder.EqualsBuilder;
-import org.apache.commons.lang3.builder.HashCodeBuilder;
-
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
 
+import javax.persistence.Access;
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.Index;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+
+import de.kaiserpfalzedv.commons.jpa.JPAAbstractTenantIdentifiable;
+import de.kaiserpfalzedv.commons.jpa.JPANameable;
+import de.kaiserpfalzedv.iam.access.api.roles.Entitlement;
+import de.kaiserpfalzedv.iam.access.api.roles.Role;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+
+import static de.kaiserpfalzedv.iam.access.jpa.roles.JPARole.ENTITY_NAME;
 import static javax.persistence.AccessType.FIELD;
 import static javax.persistence.LockModeType.NONE;
 import static javax.persistence.LockModeType.OPTIMISTIC;
@@ -48,11 +58,12 @@ import static javax.persistence.LockModeType.OPTIMISTIC;
 )
 @Access(FIELD)
 @NamedQueries({
-        @NamedQuery(name = "Role.find-by-tenant", query = "SELECT t from Role t WHERE tenant=:id", lockMode = OPTIMISTIC),
-        @NamedQuery(name = "Role.fetch-all", query = "SELECT t FROM Role t", lockMode = NONE)
+        @NamedQuery(name = ENTITY_NAME + ".find-by-tenant", query = "SELECT t from Role t WHERE tenant=:id", lockMode = OPTIMISTIC),
+        @NamedQuery(name = ENTITY_NAME + ".fetch-all", query = "SELECT t FROM Role t", lockMode = NONE)
 })
 public class JPARole extends JPAAbstractTenantIdentifiable implements Role {
-    private static final long serialVersionUID = -6085847502814790165L;
+    public static final String ENTITY_NAME = "Role";
+    private static final long serialVersionUID = -740317110390170918L;
 
     @Embedded
     private JPANameable name;
@@ -94,7 +105,7 @@ public class JPARole extends JPAAbstractTenantIdentifiable implements Role {
         this.entitlements = entitlements;
     }
 
-    void update(final Tenant orig) {
+    void update(final JPARole orig) {
         // id is not updated!
 
         name.setDisplayName(orig.getDisplayName());

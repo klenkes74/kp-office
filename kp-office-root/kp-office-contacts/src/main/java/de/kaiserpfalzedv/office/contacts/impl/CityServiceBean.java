@@ -16,21 +16,22 @@
 
 package de.kaiserpfalzedv.office.contacts.impl;
 
-import de.kaiserpfalzedv.commons.api.data.Pageable;
-import de.kaiserpfalzedv.commons.api.data.PagedListable;
-import de.kaiserpfalzedv.commons.api.data.impl.PageableBuilder;
-import de.kaiserpfalzedv.commons.api.init.InitializationException;
-import de.kaiserpfalzedv.office.contacts.api.city.City;
-import de.kaiserpfalzedv.office.contacts.api.city.CityService;
-import de.kaiserpfalzedv.office.contacts.api.city.Country;
+import java.io.Serializable;
+import java.util.Properties;
 
 import javax.ejb.Local;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
 import javax.inject.Inject;
-import java.io.Serializable;
-import java.util.Properties;
+
+import de.kaiserpfalzedv.commons.api.data.paging.Pageable;
+import de.kaiserpfalzedv.commons.api.data.paging.PageableBuilder;
+import de.kaiserpfalzedv.commons.api.data.paging.PagedListable;
+import de.kaiserpfalzedv.commons.api.init.InitializationException;
+import de.kaiserpfalzedv.office.contacts.api.city.City;
+import de.kaiserpfalzedv.office.contacts.api.city.CityService;
+import de.kaiserpfalzedv.office.contacts.api.city.Country;
 
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}

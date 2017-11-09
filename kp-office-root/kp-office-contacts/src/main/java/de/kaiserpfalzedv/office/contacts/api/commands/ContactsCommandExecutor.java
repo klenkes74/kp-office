@@ -24,5 +24,5 @@ import de.kaiserpfalzedv.commons.api.commands.CommandExecutor;
  * @since 2016-09-27
  */
 public interface ContactsCommandExecutor extends CommandExecutor {
-    // void execute(TenantDeleteCommand command) throws ContactsCommandExecutionException;
+    // void host(TenantDeleteCommand command) throws ContactsCommandExecutionException;
 }

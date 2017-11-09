@@ -22,7 +22,7 @@
         <configuration>
             <property name="serverConfig">../../../test-classes/wildfly-embedded/standalone.xml</property>
 
-            <property name="jbossHome">target/wildfly-10.0.0.Final/</property>
+            <property name="jbossHome">target/wildfly-11.0.0.Final/</property>
             <!--
                         <property name="modulePath">target/wildfly-10.0.0.Final/modules</property>
             -->

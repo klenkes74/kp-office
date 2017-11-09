@@ -16,18 +16,19 @@
 
 package de.kaiserpfalzedv.commons.impl.info;
 
-import de.kaiserpfalzedv.commons.api.BuilderException;
-import de.kaiserpfalzedv.commons.api.data.ValidityDuration;
-import de.kaiserpfalzedv.commons.api.data.VersionRange;
-import de.kaiserpfalzedv.commons.api.licensing.ApplicationLicense;
-import org.apache.commons.lang3.builder.Builder;
-
-import javax.validation.constraints.NotNull;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.UUID;
+
+import javax.validation.constraints.NotNull;
+
+import de.kaiserpfalzedv.commons.api.BuilderException;
+import de.kaiserpfalzedv.commons.api.data.types.ValidityDuration;
+import de.kaiserpfalzedv.commons.api.data.types.VersionRange;
+import de.kaiserpfalzedv.commons.api.licensing.ApplicationLicense;
+import org.apache.commons.lang3.builder.Builder;
 
 import static org.apache.commons.lang3.StringUtils.isBlank;
 

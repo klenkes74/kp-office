@@ -16,13 +16,13 @@
 
 package de.kaiserpfalzedv.commons.api.info;
 
-import de.kaiserpfalzedv.commons.api.data.ValidityDuration;
-import de.kaiserpfalzedv.commons.api.data.VersionRange;
+import java.io.Serializable;
+
+import de.kaiserpfalzedv.commons.api.data.types.ValidityDuration;
+import de.kaiserpfalzedv.commons.api.data.types.VersionRange;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
-
-import java.io.Serializable;
 
 /**
  * A software license. Used for displaying it to the user.

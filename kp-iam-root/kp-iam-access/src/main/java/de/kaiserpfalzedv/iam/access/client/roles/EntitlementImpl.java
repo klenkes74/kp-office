@@ -16,10 +16,10 @@
 
 package de.kaiserpfalzedv.iam.access.client.roles;
 
-import de.kaiserpfalzedv.commons.api.data.Identifiable;
-import de.kaiserpfalzedv.iam.access.api.roles.Entitlement;
-
 import java.util.UUID;
+
+import de.kaiserpfalzedv.commons.api.data.base.Identifiable;
+import de.kaiserpfalzedv.iam.access.api.roles.Entitlement;
 
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}

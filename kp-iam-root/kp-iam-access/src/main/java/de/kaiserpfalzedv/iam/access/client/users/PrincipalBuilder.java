@@ -16,16 +16,25 @@
 
 package de.kaiserpfalzedv.iam.access.client.users;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.UUID;
+
+import javax.validation.constraints.NotNull;
+
 import de.kaiserpfalzedv.commons.api.BuilderException;
-import de.kaiserpfalzedv.commons.api.data.Email;
+import de.kaiserpfalzedv.commons.api.data.types.Email;
 import de.kaiserpfalzedv.iam.access.api.roles.Role;
 import de.kaiserpfalzedv.iam.access.api.users.PasswordHolding;
 import de.kaiserpfalzedv.iam.access.api.users.Principal;
 import de.kaiserpfalzedv.iam.tenant.api.Tenant;
 import org.apache.commons.lang3.builder.Builder;
-
-import javax.validation.constraints.NotNull;
-import java.util.*;
 
 import static org.apache.commons.lang3.StringUtils.isEmpty;
 

@@ -16,14 +16,14 @@
 
 package de.kaiserpfalzedv.commons.api.licensing;
 
-import com.github.zafarkhaja.semver.Version;
-import de.kaiserpfalzedv.commons.api.data.Identifiable;
-import de.kaiserpfalzedv.commons.api.info.SoftwareLicense;
-
 import java.io.Serializable;
 import java.time.Instant;
 import java.time.OffsetDateTime;
 import java.util.Set;
+
+import com.github.zafarkhaja.semver.Version;
+import de.kaiserpfalzedv.commons.api.data.base.Identifiable;
+import de.kaiserpfalzedv.commons.api.info.SoftwareLicense;
 
 /**
  * The logical view on a license.

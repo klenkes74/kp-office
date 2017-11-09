@@ -16,17 +16,22 @@
 
 package de.kaiserpfalzedv.commons.impl.info;
 
+import java.time.Instant;
+import java.time.OffsetDateTime;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.UUID;
+
+import javax.validation.constraints.NotNull;
+
 import com.github.zafarkhaja.semver.Version;
-import de.kaiserpfalzedv.commons.api.data.ValidityDuration;
-import de.kaiserpfalzedv.commons.api.data.VersionRange;
+import de.kaiserpfalzedv.commons.api.data.types.ValidityDuration;
+import de.kaiserpfalzedv.commons.api.data.types.VersionRange;
 import de.kaiserpfalzedv.commons.api.info.SoftwareLicense;
 import de.kaiserpfalzedv.commons.api.licensing.ApplicationLicense;
 import de.kaiserpfalzedv.commons.impl.license.LicenseBuilder;
-
-import javax.validation.constraints.NotNull;
-import java.time.Instant;
-import java.time.OffsetDateTime;
-import java.util.*;
 
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}

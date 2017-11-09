@@ -16,13 +16,14 @@
 
 package de.kaiserpfalzedv.commons.jpa;
 
-import de.kaiserpfalzedv.commons.api.data.Nameable;
+import java.io.Serializable;
 
 import javax.persistence.Access;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.validation.constraints.NotNull;
-import java.io.Serializable;
+
+import de.kaiserpfalzedv.commons.api.data.base.Nameable;
 
 import static javax.persistence.AccessType.FIELD;
 

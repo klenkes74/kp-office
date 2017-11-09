@@ -16,13 +16,13 @@
 
 package de.kaiserpfalzedv.office.finance.chartofaccounts.api.chartofaccounts;
 
-import de.kaiserpfalzedv.commons.api.data.Nameable;
-import de.kaiserpfalzedv.commons.api.data.Tenantable;
-import de.kaiserpfalzedv.office.finance.chartofaccounts.api.account.Account;
-import de.kaiserpfalzedv.office.finance.chartofaccounts.api.account.AccountMultiMappedException;
-
 import java.io.Serializable;
 import java.util.Set;
+
+import de.kaiserpfalzedv.commons.api.data.base.Nameable;
+import de.kaiserpfalzedv.commons.api.data.tenant.Tenantable;
+import de.kaiserpfalzedv.office.finance.chartofaccounts.api.account.Account;
+import de.kaiserpfalzedv.office.finance.chartofaccounts.api.account.AccountMultiMappedException;
 
 /**
  * @author klenkes  {@literal <rlichti@kaiserpfalz-edv.de>}

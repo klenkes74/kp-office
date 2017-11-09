@@ -16,13 +16,14 @@
 
 package de.kaiserpfalzedv.iam.tenant.api.commands;
 
+import java.util.UUID;
+
+import javax.validation.constraints.NotNull;
+
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import de.kaiserpfalzedv.commons.api.commands.CrudCommands;
-import de.kaiserpfalzedv.commons.api.data.Keyable;
-
-import javax.validation.constraints.NotNull;
-import java.util.UUID;
+import de.kaiserpfalzedv.commons.api.data.base.Keyable;
 
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}

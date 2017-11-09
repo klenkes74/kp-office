@@ -16,12 +16,12 @@
 
 package de.kaiserpfalzedv.office.finance.chartofaccounts.api.account;
 
-import de.kaiserpfalzedv.commons.api.data.Identifiable;
-import de.kaiserpfalzedv.commons.api.data.Nameable;
-import de.kaiserpfalzedv.commons.api.data.Tenantable;
-
 import javax.money.CurrencySupplier;
 import javax.money.CurrencyUnit;
+
+import de.kaiserpfalzedv.commons.api.data.base.Identifiable;
+import de.kaiserpfalzedv.commons.api.data.base.Nameable;
+import de.kaiserpfalzedv.commons.api.data.tenant.Tenantable;
 
 /**
  * The real account in the system. Normally it will be used via an charted account (an account mapping practically

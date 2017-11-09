@@ -16,14 +16,23 @@
 
 package de.kaiserpfalzedv.commons.jpa;
 
-import de.kaiserpfalzedv.commons.api.data.Identifiable;
-import de.kaiserpfalzedv.commons.api.data.TenantIdentifiable;
-import org.apache.commons.lang3.builder.ToStringBuilder;
-
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import java.util.Objects;
 import java.util.UUID;
+
+import javax.persistence.Column;
+import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
+import javax.persistence.PostLoad;
+import javax.persistence.PrePersist;
+import javax.persistence.PreRemove;
+import javax.persistence.PreUpdate;
+import javax.persistence.Transient;
+import javax.persistence.Version;
+import javax.validation.constraints.NotNull;
+
+import de.kaiserpfalzedv.commons.api.data.base.Identifiable;
+import de.kaiserpfalzedv.commons.api.data.tenant.TenantIdentifiable;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import static org.apache.commons.lang3.builder.ToStringStyle.SHORT_PREFIX_STYLE;
 

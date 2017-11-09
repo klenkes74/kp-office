@@ -16,8 +16,8 @@
 
 package de.kaiserpfalzedv.office.contacts.api.city;
 
-import de.kaiserpfalzedv.commons.api.data.Pageable;
-import de.kaiserpfalzedv.commons.api.data.PagedListable;
+import de.kaiserpfalzedv.commons.api.data.paging.Pageable;
+import de.kaiserpfalzedv.commons.api.data.paging.PagedListable;
 import de.kaiserpfalzedv.commons.api.init.Closeable;
 import de.kaiserpfalzedv.commons.api.init.Initializable;
 

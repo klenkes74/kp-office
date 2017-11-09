@@ -607,7 +607,7 @@
                                         <artifactItem>
                                             <groupId>org.wildfly</groupId>
                                             <artifactId>wildfly-dist</artifactId>
-                                            <version>10.0.0.Final</version>
+                                            <version>11.0.0.Final</version>
                                             <type>zip</type>
                                             <overWrite>false</overWrite>
                                             <outputDirectory>target</outputDirectory>
@@ -629,7 +629,7 @@
                                             <version>0.2.7</version>
                                             <type>jar</type>
                                             <outputDirectory>
-                                                target/wildfly-10.0.0.Final/modules/org/lazyluke/log4jdbc/main
+                                                target/wildfly-11.0.0.Final/modules/org/lazyluke/log4jdbc/main
                                             </outputDirectory>
                                         </artifactItem>
                                     </artifactItems>
@@ -648,7 +648,7 @@
                                 </goals>
                                 <configuration>
                                     <outputDirectory>
-                                        ${project.build.directory}/wildfly-10.0.0.Final/modules/org/lazyluke/log4jdbc/main
+                                        ${project.build.directory}/wildfly-11.0.0.Final/modules/org/lazyluke/log4jdbc/main
                                     </outputDirectory>
                                     <resources>
                                         <resource>

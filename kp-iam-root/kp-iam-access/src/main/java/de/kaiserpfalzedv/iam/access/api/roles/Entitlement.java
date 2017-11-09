@@ -16,12 +16,12 @@
 
 package de.kaiserpfalzedv.iam.access.api.roles;
 
-import de.kaiserpfalzedv.commons.api.data.Describeable;
-import de.kaiserpfalzedv.commons.api.data.Identifiable;
-import de.kaiserpfalzedv.commons.api.data.Nameable;
-
 import java.io.Serializable;
 import java.security.Principal;
+
+import de.kaiserpfalzedv.commons.api.data.base.Describeable;
+import de.kaiserpfalzedv.commons.api.data.base.Identifiable;
+import de.kaiserpfalzedv.commons.api.data.base.Nameable;
 
 /**
  * A basic entitlement (in some systems called permissions).

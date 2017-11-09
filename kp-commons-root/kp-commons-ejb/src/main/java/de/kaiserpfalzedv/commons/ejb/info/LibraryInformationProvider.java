@@ -16,9 +16,15 @@
 
 package de.kaiserpfalzedv.commons.ejb.info;
 
+import java.time.OffsetDateTime;
+import java.util.Collection;
+import java.util.HashSet;
+
+import javax.enterprise.inject.Produces;
+
 import com.github.zafarkhaja.semver.Version;
-import de.kaiserpfalzedv.commons.api.data.ValidityDuration;
-import de.kaiserpfalzedv.commons.api.data.VersionRange;
+import de.kaiserpfalzedv.commons.api.data.types.ValidityDuration;
+import de.kaiserpfalzedv.commons.api.data.types.VersionRange;
 import de.kaiserpfalzedv.commons.api.info.SoftwareLibrary;
 import de.kaiserpfalzedv.commons.api.info.SoftwareLicense;
 import de.kaiserpfalzedv.commons.impl.info.SoftwareLibraryBuilder;
@@ -26,12 +32,16 @@ import de.kaiserpfalzedv.commons.impl.license.OpenSourceLicense;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.enterprise.inject.Produces;
-import java.time.OffsetDateTime;
-import java.util.Collection;
-import java.util.HashSet;
-
-import static de.kaiserpfalzedv.commons.impl.license.OpenSourceLicense.*;
+import static de.kaiserpfalzedv.commons.impl.license.OpenSourceLicense.APACHEv2_0;
+import static de.kaiserpfalzedv.commons.impl.license.OpenSourceLicense.BSD_2_CLAUSE;
+import static de.kaiserpfalzedv.commons.impl.license.OpenSourceLicense.BSD_3;
+import static de.kaiserpfalzedv.commons.impl.license.OpenSourceLicense.BSD_3_CLAUSE;
+import static de.kaiserpfalzedv.commons.impl.license.OpenSourceLicense.CDDLv1_0;
+import static de.kaiserpfalzedv.commons.impl.license.OpenSourceLicense.GPLv2;
+import static de.kaiserpfalzedv.commons.impl.license.OpenSourceLicense.LGPLv2_1;
+import static de.kaiserpfalzedv.commons.impl.license.OpenSourceLicense.MIT;
+import static de.kaiserpfalzedv.commons.impl.license.OpenSourceLicense.OFLv1_1;
+import static de.kaiserpfalzedv.commons.impl.license.OpenSourceLicense.W3C;
 
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}

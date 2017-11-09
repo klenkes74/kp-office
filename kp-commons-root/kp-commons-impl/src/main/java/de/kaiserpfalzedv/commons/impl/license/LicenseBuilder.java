@@ -16,20 +16,21 @@
 
 package de.kaiserpfalzedv.commons.impl.license;
 
-import com.github.zafarkhaja.semver.Version;
-import de.kaiserpfalzedv.commons.api.BuilderException;
-import de.kaiserpfalzedv.commons.api.data.ValidityDuration;
-import de.kaiserpfalzedv.commons.api.data.VersionRange;
-import de.kaiserpfalzedv.commons.api.info.SoftwareLicense;
-import org.apache.commons.lang3.builder.Builder;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import java.time.ZoneId;
 import java.util.ArrayList;
+
+import javax.validation.constraints.NotNull;
+
+import com.github.zafarkhaja.semver.Version;
+import de.kaiserpfalzedv.commons.api.BuilderException;
+import de.kaiserpfalzedv.commons.api.data.types.ValidityDuration;
+import de.kaiserpfalzedv.commons.api.data.types.VersionRange;
+import de.kaiserpfalzedv.commons.api.info.SoftwareLicense;
+import org.apache.commons.lang3.builder.Builder;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}

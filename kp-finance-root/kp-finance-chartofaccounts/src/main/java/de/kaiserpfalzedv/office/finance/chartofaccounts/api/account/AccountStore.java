@@ -16,12 +16,12 @@
 
 package de.kaiserpfalzedv.office.finance.chartofaccounts.api.account;
 
+import java.util.UUID;
+
 import de.kaiserpfalzedv.commons.api.data.ObjectDoesNotExistException;
 import de.kaiserpfalzedv.commons.api.data.ObjectExistsException;
-import de.kaiserpfalzedv.commons.api.data.Pageable;
-import de.kaiserpfalzedv.commons.api.data.PagedListable;
-
-import java.util.UUID;
+import de.kaiserpfalzedv.commons.api.data.paging.Pageable;
+import de.kaiserpfalzedv.commons.api.data.paging.PagedListable;
 
 /**
  * The interface for accessing persisted account information. May be implemented multiple times.

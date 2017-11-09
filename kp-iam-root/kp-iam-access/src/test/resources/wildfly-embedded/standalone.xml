@@ -401,7 +401,7 @@
                 <host name="default-host" alias="localhost">
                     <location name="/" handler="welcome-content"/>
                     <filter-ref name="server-header"/>
-                    <filter-ref name="x-powered-by-header"/>
+                    <filter-ref name="left-powered-by-header"/>
                 </host>
             </server>
             <servlet-container name="default">
@@ -413,7 +413,7 @@
             </handlers>
             <filters>
                 <response-header name="server-header" header-name="Server" header-value="WildFly/10"/>
-                <response-header name="x-powered-by-header" header-name="X-Powered-By" header-value="Undertow/1"/>
+                <response-header name="left-powered-by-header" header-name="X-Powered-By" header-value="Undertow/1"/>
             </filters>
         </subsystem>
         <subsystem xmlns="urn:jboss:domain:webservices:2.0">

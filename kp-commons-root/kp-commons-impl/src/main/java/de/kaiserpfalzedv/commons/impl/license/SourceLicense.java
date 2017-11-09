@@ -16,15 +16,16 @@
 
 package de.kaiserpfalzedv.commons.impl.license;
 
-import de.kaiserpfalzedv.commons.api.data.ValidityDuration;
-import de.kaiserpfalzedv.commons.api.data.VersionRange;
-import de.kaiserpfalzedv.commons.api.info.SoftwareLicense;
-import org.apache.commons.io.IOUtils;
-
-import javax.validation.constraints.NotNull;
 import java.io.IOException;
 import java.io.InputStream;
 import java.time.OffsetDateTime;
+
+import javax.validation.constraints.NotNull;
+
+import de.kaiserpfalzedv.commons.api.data.types.ValidityDuration;
+import de.kaiserpfalzedv.commons.api.data.types.VersionRange;
+import de.kaiserpfalzedv.commons.api.info.SoftwareLicense;
+import org.apache.commons.io.IOUtils;
 
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}

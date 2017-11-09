@@ -16,9 +16,15 @@
 
 package de.kaiserpfalzedv.commons.api.data;
 
-import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 import java.util.Optional;
 import java.util.UUID;
+
+import javax.validation.constraints.NotNull;
+
+import de.kaiserpfalzedv.commons.api.data.paging.Pageable;
+import de.kaiserpfalzedv.commons.api.data.paging.PagedListable;
+import de.kaiserpfalzedv.commons.api.data.query.Predicate;
 
 /**
  * The default repository interface for simple data.
@@ -34,7 +40,7 @@ public interface Repository<T> {
 
     PagedListable<T> retrieve(@NotNull Pageable page);
 
-    PagedListable<T> retrieve(@NotNull Predicate<T> predicate, @NotNull Pageable page);
+    <P extends Serializable> PagedListable<T> retrieve(@NotNull Predicate<P> predicate, @NotNull Pageable page);
 
     void update(@NotNull T entitlement) throws ObjectDoesNotExistException;
 

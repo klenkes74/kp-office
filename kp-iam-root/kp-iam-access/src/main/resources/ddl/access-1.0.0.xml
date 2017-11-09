@@ -25,7 +25,7 @@
 
         <createTable tableName="ENTITLEMENTS">
             <column name="ID_" type="VARCHAR(40)">
-                <constraints nullable="false" primaryKey="true" primaryKeyName="CONTACTS_PK"/>
+                <constraints nullable="false" primaryKey="true" primaryKeyName="ENTITLEMENTS_PK"/>
             </column>
 
             <column name="VERSION_" type="BIGINT" defaultValue="0">
@@ -45,9 +45,70 @@
             </column>
         </createTable>
 
+        <createTable tableName="ROLES">
+            <column name="ID_" type="VARCHAR(40)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="ROLES_PK"/>
+            </column>
+
+            <column name="VERSION_" type="BIGINT" defaultValue="0">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="TENANT_" type="VARCHAR(40)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="DISPLAY_NAME_" type="VARCHAR(200)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="FULL_NAME_" type="VARCHAR(1000)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="ROLES_ROLES">
+            <column name="MASTER_" type="VARCHAR(40)">
+                <constraints referencedTableName="ROLES"
+                             referencedColumnNames="ID_"
+                             foreignKeyName="ROLES_ROLES_MASTER_FK"/>
+            </column>
+            <column name="SLAVE_" type="VARCHAR(40)">
+                <constraints referencedTableName="ROLES"
+                             referencedColumnNames="ID_"
+                             foreignKeyName="ROLES_ROLES_SLAVE_FK"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="ROLES_ENTITLEMENTS">
+            <column name="ROLE_" type="VARCHAR(40)">
+                <constraints foreignKeyName="ROLES_ENTITLEMENTS_ROLE_FK"
+                             referencedTableName="ROLES"
+                             referencedColumnNames="ID_"/>
+            </column>
+            <column name="ENTITLEMENT_" type="VARCHAR(40)">
+                <constraints foreignKeyName="ROLES_ENTITLEMENTS_ENTITLEMENT_FK"
+                             referencedTableName="ENTITLEMENTS"
+                             referencedColumnNames="ID_"/>
+            </column>
+        </createTable>
 
         <createIndex indexName="ENTITLEMENTS_DISPLAY_NAME_IDX" tableName="ENTITLEMENTS">
             <column name="DISPLAY_NAME_"/>
+        </createIndex>
+
+        <createIndex indexName="ROLES_DISPLAY_NAME_UK" tableName="ROLES">
+            <column name="TENANT_"/>
+            <column name="DISPLAY_NAME_"/>
+        </createIndex>
+
+        <createIndex indexName="ROLES_ROLES_UK" tableName="ROLES_ROLES">
+            <column name="MASTER_"/>
+            <column name="SLAVE_"/>
+        </createIndex>
+        <createIndex indexName="ROLES_ENTITLEMENTS_UK" tableName="ROLES_ENTITLEMENTS">
+            <column name="ROLE_"/>
+            <column name="ENTITLEMENT_"/>
         </createIndex>
     </changeSet>
 </databaseChangeLog>

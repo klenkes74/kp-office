@@ -25,9 +25,18 @@
     <include file="${project.build.outputDirectory}/ddl/changelog-master.xml" relativeToChangelogFile="false"/>
 
 
-    <changeSet id="entitlements-test-data" author="klenkes74">
+    <changeSet id="iam-access-test-data" author="klenkes74">
         <comment>Load initial data</comment>
         <loadData tableName="ENTITLEMENTS" file="../data/ENTITLEMENTS.csv" relativeToChangelogFile="true"
+                  encoding="UTF-8" quotchar="&quot;" separator=";"/>
+
+        <loadData tableName="ROLES" file="../data/ROLES.csv" relativeToChangelogFile="true"
+                  encoding="UTF-8" quotchar="&quot;" separator=";"/>
+
+        <loadData tableName="ROLES_ROLES" file="../data/ROLES_ROLES.csv" relativeToChangelogFile="true"
+                  encoding="UTF-8" quotchar="&quot;" separator=";"/>
+
+        <loadData tableName="ROLES_ENTITLEMENTS" file="../data/ROLES_ENTITLEMENTS.csv" relativeToChangelogFile="true"
                   encoding="UTF-8" quotchar="&quot;" separator=";"/>
     </changeSet>
 

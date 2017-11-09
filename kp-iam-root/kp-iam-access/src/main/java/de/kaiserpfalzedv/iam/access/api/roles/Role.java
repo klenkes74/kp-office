@@ -16,14 +16,15 @@
 
 package de.kaiserpfalzedv.iam.access.api.roles;
 
-import de.kaiserpfalzedv.commons.api.data.Nameable;
-import de.kaiserpfalzedv.commons.api.data.TenantIdentifiable;
-
-import javax.validation.constraints.NotNull;
 import java.security.Principal;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
+
+import javax.validation.constraints.NotNull;
+
+import de.kaiserpfalzedv.commons.api.data.base.Nameable;
+import de.kaiserpfalzedv.commons.api.data.tenant.TenantIdentifiable;
 
 /**
  * The basic role within this system. It can have entitlements and other roles attached.

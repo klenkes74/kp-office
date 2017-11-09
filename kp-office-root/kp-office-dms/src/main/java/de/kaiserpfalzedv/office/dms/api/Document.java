@@ -15,11 +15,11 @@
  */
 package de.kaiserpfalzedv.office.dms.api;
 
-import de.kaiserpfalzedv.commons.api.data.Identifiable;
-import de.kaiserpfalzedv.commons.api.data.Nameable;
-import de.kaiserpfalzedv.commons.api.data.Tenantable;
-
 import java.io.Serializable;
+
+import de.kaiserpfalzedv.commons.api.data.base.Identifiable;
+import de.kaiserpfalzedv.commons.api.data.base.Nameable;
+import de.kaiserpfalzedv.commons.api.data.tenant.Tenantable;
 
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}

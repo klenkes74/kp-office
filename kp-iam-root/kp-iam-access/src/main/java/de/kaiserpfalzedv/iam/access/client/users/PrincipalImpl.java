@@ -16,7 +16,18 @@
 
 package de.kaiserpfalzedv.iam.access.client.users;
 
-import de.kaiserpfalzedv.commons.api.data.Email;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Set;
+import java.util.UUID;
+
+import javax.validation.constraints.NotNull;
+
+import de.kaiserpfalzedv.commons.api.data.types.Email;
 import de.kaiserpfalzedv.iam.access.api.PasswordFailureException;
 import de.kaiserpfalzedv.iam.access.api.roles.Entitlement;
 import de.kaiserpfalzedv.iam.access.api.roles.Role;
@@ -24,9 +35,6 @@ import de.kaiserpfalzedv.iam.access.api.users.PasswordHolding;
 import de.kaiserpfalzedv.iam.access.api.users.Principal;
 import de.kaiserpfalzedv.iam.access.api.users.UserHasNoAccessToTenantException;
 import de.kaiserpfalzedv.iam.access.api.users.UserIsLockedException;
-
-import javax.validation.constraints.NotNull;
-import java.util.*;
 
 /**
  *
