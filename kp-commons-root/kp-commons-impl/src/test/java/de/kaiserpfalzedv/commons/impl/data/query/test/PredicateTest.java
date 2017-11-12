@@ -64,10 +64,10 @@ public class PredicateTest {
 
         Predicate cut = new AttributePredicate(Integer.class, "INT", EQUALS, 5L);
 
-        String result = new PredicateToQueryParser().visit(cut);
+        String result = new PredicateToQueryParser().generateQuery(cut);
         LOG.trace("Result: {}", result);
 
-        assertEquals("INT=5", result);
+        assertEquals("INT=:INT_EQUALS", result);
     }
 
     private void logMethod(@NotNull final String shortName, @NotNull final String message, Object... data) {
@@ -82,10 +82,10 @@ public class PredicateTest {
 
         Predicate cut = new AttributePredicate(String.class, "STRING", EQUALS, "abc");
 
-        String result = new PredicateToQueryParser().visit(cut);
+        String result = new PredicateToQueryParser().generateQuery(cut);
         LOG.trace("Result: {}", result);
 
-        assertEquals("STRING=\"abc\"", result);
+        assertEquals("STRING=:STRING_EQUALS", result);
     }
 
     @Test
@@ -95,10 +95,10 @@ public class PredicateTest {
         Predicate cut = new AttributePredicate(String.class, "STRING", EQUALS, "abc")
                 .and(new AttributePredicate(Integer.class, "INT", BIGGER_AS, 5L));
 
-        String result = new PredicateToQueryParser().visit(cut);
+        String result = new PredicateToQueryParser().generateQuery(cut);
         LOG.trace("Result: {}", result);
 
-        assertEquals("(STRING=\"abc\") and (INT>5)", result);
+        assertEquals("(STRING=:STRING_EQUALS) and (INT>:INT_BIGGER_AS)", result);
     }
 
     @Test
@@ -108,10 +108,10 @@ public class PredicateTest {
         Predicate cut = new AttributePredicate(String.class, "STRING", EQUALS, "abc")
                 .or(new AttributePredicate(Integer.class, "INT", BIGGER_AS, 5L));
 
-        String result = new PredicateToQueryParser().visit(cut);
+        String result = new PredicateToQueryParser().generateQuery(cut);
         LOG.trace("Result: {}", result);
 
-        assertEquals("(STRING=\"abc\") or (INT>5)", result);
+        assertEquals("(STRING=:STRING_EQUALS) or (INT>:INT_BIGGER_AS)", result);
     }
 
     @Test
@@ -124,10 +124,10 @@ public class PredicateTest {
                                 .and(new AttributePredicate(Integer.class, "INT", LOWER_AS_OR_EQUALS, 10L))
                 );
 
-        String result = new PredicateToQueryParser().visit(cut);
+        String result = new PredicateToQueryParser().generateQuery(cut);
         LOG.trace("Result: {}", result);
 
-        assertEquals("(STRING=\"abc\") or ((INT>5) and (INT<=10))", result);
+        assertEquals("(STRING=:STRING_EQUALS) or ((INT>:INT_BIGGER_AS) and (INT<=:INT_LOWER_AS_OR_EQUALS))", result);
     }
 
     @Test
@@ -141,10 +141,10 @@ public class PredicateTest {
                         new AttributePredicate(Integer.class, "INT", LOWER_AS_OR_EQUALS, 10L)
                 );
 
-        String result = new PredicateToQueryParser().visit(cut);
+        String result = new PredicateToQueryParser().generateQuery(cut);
         LOG.trace("Result: {}", result);
 
-        assertEquals("((STRING=\"abc\") or (INT>5)) and (INT<=10)", result);
+        assertEquals("((STRING=:STRING_EQUALS) or (INT>:INT_BIGGER_AS)) and (INT<=:INT_LOWER_AS_OR_EQUALS)", result);
     }
 
 
@@ -161,10 +161,10 @@ public class PredicateTest {
                         new JoinPredicate<TypeA, TypeB>("Second", new AttributePredicate<TypeB, String>(String.class, "linked.second", NOT_EQUALS, "another"))
                 );
 
-        String result = new PredicateToQueryParser<TypeA>().visit(cut);
+        String result = new PredicateToQueryParser<TypeA>().generateQuery(cut);
         LOG.trace("Result: {}", result);
 
-        assertEquals("(((STRING=\"abc\") or (INT>5)) and (INT<=10)) and (linked.second<>\"another\")", result);
+        assertEquals("(((STRING=:STRING_EQUALS) or (INT>:INT_BIGGER_AS)) and (INT<=:INT_LOWER_AS_OR_EQUALS)) and (linked.second<>:linked.second_NOT_EQUALS)", result);
     }
 
     @Before

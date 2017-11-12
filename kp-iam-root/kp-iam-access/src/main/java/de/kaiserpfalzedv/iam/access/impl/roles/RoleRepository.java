@@ -25,26 +25,29 @@ import de.kaiserpfalzedv.commons.api.data.ObjectExistsException;
 import de.kaiserpfalzedv.commons.api.data.paging.Pageable;
 import de.kaiserpfalzedv.commons.api.data.paging.PagedListable;
 import de.kaiserpfalzedv.commons.api.data.query.Predicate;
-import de.kaiserpfalzedv.iam.access.jpa.roles.JPAEntitlement;
+import de.kaiserpfalzedv.iam.access.api.roles.Role;
+import de.kaiserpfalzedv.iam.access.jpa.roles.JPARole;
 
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
  * @version 1.0.0
  * @since 1.0.0
  */
-public interface JPAEntitlementRepository {
-    JPAEntitlement create(@NotNull JPAEntitlement entitlement) throws ObjectExistsException;
+public interface RoleRepository {
+    Role create(@NotNull JPARole entity) throws ObjectExistsException;
 
-    Optional<JPAEntitlement> retrieve(@NotNull UUID id);
+    Optional<Role> retrieve(@NotNull UUID id);
 
-    PagedListable<JPAEntitlement> retrieve(@NotNull Pageable page);
+    PagedListable<Role> retrieve(@NotNull Pageable page);
 
-    PagedListable<JPAEntitlement> retrieve(@NotNull Predicate<JPAEntitlement> predicate,
-                                           @NotNull Pageable page);
+    PagedListable<Role> retrieve(
+            @NotNull Predicate<Role> predicate,
+            @NotNull Pageable page
+    );
 
-    void update(@NotNull JPAEntitlement entitlement);
+    void update(@NotNull Role entity);
 
     void delete(@NotNull UUID id);
 
-    void delete(@NotNull JPAEntitlement entitlement);
+    void delete(@NotNull Role entity);
 }

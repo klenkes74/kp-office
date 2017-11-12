@@ -17,6 +17,7 @@
 package de.kaiserpfalzedv.commons.api.data.query;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
 
 import javax.validation.constraints.NotNull;
@@ -53,8 +54,13 @@ public class JoinPredicate<T extends Serializable, J extends Serializable> imple
     }
 
     @Override
-    public String host(PredicateVisitor<T> visitor) {
-        return visitor.visit(this);
+    public String generateQuery(PredicateQueryGenerator<T> visitor) {
+        return visitor.generateQuery(this);
+    }
+
+    @Override
+    public List<QueryParameter> generateParameter(PredicateParameterGenerator<T> visitor) {
+        return visitor.generateParameters(this);
     }
 
     @Override

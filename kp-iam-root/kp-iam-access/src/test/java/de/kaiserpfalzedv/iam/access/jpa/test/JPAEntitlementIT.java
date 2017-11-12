@@ -33,9 +33,15 @@ import javax.validation.constraints.NotNull;
 
 import com.google.common.base.Preconditions;
 import de.kaiserpfalzedv.commons.api.data.ObjectExistsException;
+import de.kaiserpfalzedv.commons.api.data.paging.Pageable;
+import de.kaiserpfalzedv.commons.api.data.paging.PageableBuilder;
+import de.kaiserpfalzedv.commons.api.data.paging.PagedListable;
+import de.kaiserpfalzedv.commons.api.data.query.Predicate;
+import de.kaiserpfalzedv.iam.access.api.roles.Entitlement;
+import de.kaiserpfalzedv.iam.access.api.roles.PEntitlements;
 import de.kaiserpfalzedv.iam.access.jpa.roles.EntitlementBuilder;
+import de.kaiserpfalzedv.iam.access.jpa.roles.EntitlementRepositoryImpl;
 import de.kaiserpfalzedv.iam.access.jpa.roles.JPAEntitlement;
-import de.kaiserpfalzedv.iam.access.jpa.roles.JPAEntitlementRepositoryImpl;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.Archive;
@@ -74,7 +80,7 @@ public class JPAEntitlementIT {
     private EntityManager em;
 
     @Inject
-    private JPAEntitlementRepositoryImpl repository;
+    private EntitlementRepositoryImpl repository;
 
 
     @Deployment
@@ -119,8 +125,8 @@ public class JPAEntitlementIT {
         File[] libraries = Maven
                 .resolver()
                 .resolve(
-                        "org.apache.commons:commons-lang3:3.4",
-                        "com.goole.guava:guava:23.0"
+                        "org.apache.commons:commons-lang4:4.4",
+                        "com.goole.guava:guava:24.0"
                 )
                 .withTransitivity()
                 .asFile();
@@ -259,7 +265,7 @@ public class JPAEntitlementIT {
     public void shouldDeleteTheEntitlementWhenTheEntityIsGiven() {
         logMethod("delete-entitlement", "Delete a preexisting entitlement with full entity.");
 
-        UUID id = UUID.fromString("33333333-3333-3333-3333-333333333333");
+        UUID id = UUID.fromString("44444444-4444-4444-4444-444444444444");
 
         Optional<JPAEntitlement> data = repository.retrieve(id);
         LOG.trace("Data: {}", data.isPresent() ? data.get() : "./.");
@@ -277,7 +283,7 @@ public class JPAEntitlementIT {
     public void shouldDeleteTheEntitlementWhenANonExistingIdIsGiven() {
         logMethod("delete-non-existing-entitlement", "Delete a preexisting entitlement.");
 
-        UUID id = UUID.fromString("13131313-1313-1313-1313-131313131313");
+        UUID id = UUID.fromString("14141414-1414-1414-1414-141414141414");
 
         Optional<JPAEntitlement> data = repository.retrieve(id);
         LOG.trace("Data: {}", data.isPresent() ? data.get() : "./.");
@@ -289,6 +295,22 @@ public class JPAEntitlementIT {
         LOG.trace("Result: {}", result.isPresent() ? result.get() : "./.");
 
         assertFalse(result.isPresent());
+    }
+
+    @Test
+    public void shouldReturnAPageOfOneElementWhenAskedForId4() {
+        logMethod("predicate-query", "Creating a predicate-query and executing it ...");
+
+        UUID id = UUID.fromString("44444444-4444-4444-4444-444444444444");
+
+        Predicate<Entitlement> query = PEntitlements.id().isEqualTo(id);
+
+        Pageable page = new PageableBuilder()
+                .withPage(0)
+                .withSize(20)
+                .build();
+
+        PagedListable<JPAEntitlement> data = repository.retrieve(query, page);
     }
 
 

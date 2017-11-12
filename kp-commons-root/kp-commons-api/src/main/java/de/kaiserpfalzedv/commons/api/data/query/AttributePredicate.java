@@ -17,6 +17,7 @@
 package de.kaiserpfalzedv.commons.api.data.query;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
 
 import javax.validation.constraints.NotNull;
@@ -56,8 +57,13 @@ public class AttributePredicate<T extends Serializable, V extends Serializable> 
     }
 
     @Override
-    public String host(PredicateVisitor<T> visitor) {
-        return visitor.visit(this);
+    public String generateQuery(PredicateQueryGenerator<T> visitor) {
+        return visitor.generateQuery(this);
+    }
+
+    @Override
+    public List<QueryParameter> generateParameter(PredicateParameterGenerator<T> visitor) {
+        return visitor.generateParameters(this);
     }
 
     public String getName() {
@@ -81,7 +87,7 @@ public class AttributePredicate<T extends Serializable, V extends Serializable> 
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof AttributePredicate)) return false;
-        AttributePredicate<?, ?> predicate = (AttributePredicate<?, ?>) o;
+        AttributePredicate<T, V> predicate = (AttributePredicate<T, V>) o;
         return Objects.equals(getAttributeType(), predicate.getAttributeType()) &&
                 getComparator() == predicate.getComparator() &&
                 Objects.equals(getValue(), predicate.getValue());

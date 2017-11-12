@@ -14,15 +14,23 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzedv.office.contacts.api.commands;
+package de.kaiserpfalzedv.commons.api.data.query;
 
-import de.kaiserpfalzedv.commons.api.commands.CommandExecutor;
+import java.io.Serializable;
 
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
  * @version 1.0.0
- * @since 2016-09-27
+ * @since 2017-11-09
  */
-public interface ContactsCommandExecutor extends CommandExecutor {
-    // void generateParameters(TenantDeleteCommand command) throws ContactsCommandExecutionException;
+public interface PredicateQueryGenerator<T extends Serializable> {
+    String generateQuery(Predicate<T> predicate);
+
+    String generateQuery(And<T> predicate);
+
+    String generateQuery(Or<T> predicate);
+
+    <V extends Serializable> String generateQuery(AttributePredicate<T, V> predicate);
+
+    <J extends Serializable> String generateQuery(JoinPredicate<T, J> predicate);
 }

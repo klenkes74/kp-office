@@ -17,6 +17,7 @@
 package de.kaiserpfalzedv.commons.api.data.query;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.validation.constraints.NotNull;
 
@@ -36,8 +37,13 @@ public class And<T extends Serializable> extends AbstractBasePredicateAction<T> 
     }
 
     @Override
-    public String host(PredicateVisitor<T> visitor) {
-        return visitor.visit(this);
+    public String generateQuery(PredicateQueryGenerator<T> visitor) {
+        return visitor.generateQuery(this);
+    }
+
+    @Override
+    public List<QueryParameter> generateParameter(PredicateParameterGenerator<T> visitor) {
+        return visitor.generateParameters(this);
     }
 
 

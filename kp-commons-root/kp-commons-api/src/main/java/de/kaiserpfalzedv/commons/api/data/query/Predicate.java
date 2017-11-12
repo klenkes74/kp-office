@@ -17,6 +17,7 @@
 package de.kaiserpfalzedv.commons.api.data.query;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
@@ -28,7 +29,9 @@ public interface Predicate<T extends Serializable> extends Serializable {
 
     Predicate<T> or(Predicate<T> join);
 
-    String host(PredicateVisitor<T> visitor);
+    String generateQuery(PredicateQueryGenerator<T> visitor);
+
+    List<QueryParameter> generateParameter(PredicateParameterGenerator<T> visitor);
 
     enum Comparator {
         LOWER_AS("<"),

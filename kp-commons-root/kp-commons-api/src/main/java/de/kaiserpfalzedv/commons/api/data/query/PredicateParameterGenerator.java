@@ -17,20 +17,21 @@
 package de.kaiserpfalzedv.commons.api.data.query;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
  * @version 1.0.0
  * @since 2017-11-09
  */
-public interface PredicateVisitor<T extends Serializable> {
-    String visit(Predicate<T> predicate);
+public interface PredicateParameterGenerator<T extends Serializable> {
+    List<QueryParameter> generateParameters(Predicate<T> predicate);
 
-    String visit(And<T> predicate);
+    List<QueryParameter> generateParameters(And<T> predicate);
 
-    String visit(Or<T> predicate);
+    List<QueryParameter> generateParameters(Or<T> predicate);
 
-    <V extends Serializable> String visit(AttributePredicate<T, V> predicate);
+    <V extends Serializable> List<QueryParameter> generateParameters(AttributePredicate<T, V> predicate);
 
-    <J extends Serializable> String visit(JoinPredicate<T, J> predicate);
+    <J extends Serializable> List<QueryParameter> generateParameters(JoinPredicate<T, J> predicate);
 }

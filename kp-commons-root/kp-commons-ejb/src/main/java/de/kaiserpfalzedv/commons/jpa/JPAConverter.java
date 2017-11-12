@@ -14,15 +14,23 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzedv.office.contacts.api.commands;
+package de.kaiserpfalzedv.commons.jpa;
 
-import de.kaiserpfalzedv.commons.api.commands.CommandExecutor;
+import java.util.Optional;
+
+import javax.validation.constraints.NotNull;
+
+import de.kaiserpfalzedv.commons.api.data.base.Identifiable;
 
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
  * @version 1.0.0
- * @since 2016-09-27
+ * @since 2017-11-12
  */
-public interface ContactsCommandExecutor extends CommandExecutor {
-    // void generateParameters(TenantDeleteCommand command) throws ContactsCommandExecutionException;
+public interface JPAConverter<T extends Identifiable, J extends JPAAbstractIdentifiable> {
+    J toJPA(@NotNull final T model);
+
+    T toModel(@NotNull final J jpa);
+
+    Optional<T> toModel(@NotNull final Optional<J> jpa);
 }

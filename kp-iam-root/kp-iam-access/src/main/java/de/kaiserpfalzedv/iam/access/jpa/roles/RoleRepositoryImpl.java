@@ -31,7 +31,10 @@ import de.kaiserpfalzedv.commons.api.data.paging.Pageable;
 import de.kaiserpfalzedv.commons.api.data.paging.PagedListable;
 import de.kaiserpfalzedv.commons.api.data.query.Predicate;
 import de.kaiserpfalzedv.commons.jpa.JPABaseRepository;
-import de.kaiserpfalzedv.iam.access.impl.roles.JPARoleRepository;
+import de.kaiserpfalzedv.commons.jpa.JPAConverter;
+import de.kaiserpfalzedv.iam.access.api.roles.Role;
+import de.kaiserpfalzedv.iam.access.client.roles.RoleBuilder;
+import de.kaiserpfalzedv.iam.access.impl.roles.RoleRepository;
 
 /**
  * The implementation of a CRUD repository for the entitlement.
@@ -41,50 +44,84 @@ import de.kaiserpfalzedv.iam.access.impl.roles.JPARoleRepository;
  * @since 1.0.0
  */
 @ApplicationScoped
-public class JPARoleRepositoryImpl implements JPARoleRepository, DataUpdater<JPARole> {
+public class RoleRepositoryImpl implements RoleRepository, DataUpdater<JPARole>, JPAConverter<Role, JPARole> {
     @PersistenceContext(unitName = "ACCESS")
     private EntityManager em;
 
-    private JPABaseRepository<JPARole> repo;
+    private JPABaseRepository<Role, JPARole> repo;
 
     @PostConstruct
     public void init() {
-        repo = new JPABaseRepository<>(JPARole.class, "Role");
+        repo = new JPABaseRepository<>(JPARole.class, "Role", this);
     }
 
-    public JPARole create(@NotNull final JPARole entity) throws ObjectExistsException {
+    @Override
+    public Role create(@NotNull final JPARole entity) throws ObjectExistsException {
         return repo.create(em, entity);
     }
 
-    public Optional<JPARole> retrieve(@NotNull final UUID id) {
+    @Override
+    public Optional<Role> retrieve(@NotNull final UUID id) {
         return repo.retrieve(em, id);
     }
 
-    public PagedListable<JPARole> retrieve(@NotNull final Pageable page) {
+    @Override
+    public PagedListable<Role> retrieve(@NotNull final Pageable page) {
         return repo.retrieve(em, page);
     }
 
-    public PagedListable<JPARole> retrieve(
-            @NotNull final Predicate<JPARole> predicate,
+    @Override
+    public PagedListable<Role> retrieve(
+            @NotNull final Predicate<Role> predicate,
             @NotNull final Pageable page
     ) {
         return repo.retrieve(em, predicate, page);
     }
 
-    public void update(@NotNull final JPARole entity) {
+    @Override
+    public void update(@NotNull final Role entity) {
         repo.update(em, entity, this);
     }
 
+    @Override
     public void delete(@NotNull final UUID id) {
         repo.delete(em, id);
     }
 
-    public void delete(@NotNull final JPARole entity) {
+    @Override
+    public void delete(@NotNull final Role entity) {
         repo.delete(em, entity);
     }
 
     @Override
     public void update(@NotNull JPARole old, @NotNull final JPARole data) {
         old.update(data);
+    }
+
+    @Override
+    public JPARole toJPA(Role model) {
+        de.kaiserpfalzedv.iam.access.jpa.roles.RoleBuilder builder
+                = new de.kaiserpfalzedv.iam.access.jpa.roles.RoleBuilder();
+
+        builder
+                .withDisplayName(model.getDisplayName())
+                .withFullName(model.getFullName())
+                .withTenant(model.getTenant());
+
+
+    }
+
+    @Override
+    public Role toModel(JPARole jpa) {
+        return new RoleBuilder().withRole(jpa).build();
+    }
+
+    @Override
+    public Optional<Role> toModel(Optional<JPARole> jpa) {
+        if (jpa.isPresent()) {
+            return Optional.of(new RoleBuilder().withRole(jpa.get()).build());
+        }
+
+        return Optional.empty();
     }
 }

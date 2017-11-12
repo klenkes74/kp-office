@@ -23,7 +23,7 @@ import de.kaiserpfalzedv.commons.api.data.query.AttributePredicate;
 import de.kaiserpfalzedv.commons.api.data.query.JoinPredicate;
 import de.kaiserpfalzedv.commons.api.data.query.Or;
 import de.kaiserpfalzedv.commons.api.data.query.Predicate;
-import de.kaiserpfalzedv.commons.api.data.query.PredicateVisitor;
+import de.kaiserpfalzedv.commons.api.data.query.PredicateQueryGenerator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -32,46 +32,46 @@ import org.slf4j.LoggerFactory;
  * @version 1.0.0
  * @since 2017-11-09
  */
-public class PredicateToQueryParser<T extends Serializable> implements PredicateVisitor<T> {
+public class PredicateToQueryParser<T extends Serializable> implements PredicateQueryGenerator<T> {
     private static final Logger LOG = LoggerFactory.getLogger(PredicateToQueryParser.class);
 
     @Override
-    public String visit(Predicate<T> predicate) {
-        return predicate.host(this);
+    public String generateQuery(Predicate<T> predicate) {
+        return predicate.generateQuery(this);
     }
 
     @Override
-    public String visit(And<T> predicate) {
+    public String generateQuery(And<T> predicate) {
         return new StringBuilder("(")
-                .append(visit(predicate.getLeft()))
+                .append(generateQuery(predicate.getLeft()))
                 .append(") and (")
-                .append(visit(predicate.getRight()))
+                .append(generateQuery(predicate.getRight()))
                 .append(")").toString();
     }
 
     @Override
-    public String visit(Or<T> predicate) {
+    public String generateQuery(Or<T> predicate) {
         return new StringBuilder("(")
-                .append(visit(predicate.getLeft()))
+                .append(generateQuery(predicate.getLeft()))
                 .append(") or (")
-                .append(visit(predicate.getRight()))
+                .append(generateQuery(predicate.getRight()))
                 .append(")").toString();
     }
 
     @Override
-    public <V extends Serializable> String visit(AttributePredicate<T, V> predicate) {
+    public <V extends Serializable> String generateQuery(AttributePredicate<T, V> predicate) {
         return new StringBuilder(predicate.getName())
                 .append(predicate.getComparatorNotation())
-                .append(predicate.quote())
+                .append(":" + predicate.getName() + "_" + predicate.getComparator().toString())
                 .toString();
     }
 
     @Override
-    public <J extends Serializable> String visit(JoinPredicate<T, J> predicate) {
+    public <J extends Serializable> String generateQuery(JoinPredicate<T, J> predicate) {
         PredicateToQueryParser<J> secondParser = new PredicateToQueryParser<>();
 
         return new StringBuilder()
-                .append(secondParser.visit(predicate.getPredicates()))
+                .append(secondParser.generateQuery(predicate.getPredicates()))
                 .toString();
     }
 }

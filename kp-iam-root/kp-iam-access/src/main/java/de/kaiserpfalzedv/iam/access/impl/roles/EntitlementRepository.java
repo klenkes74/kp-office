@@ -25,28 +25,28 @@ import de.kaiserpfalzedv.commons.api.data.ObjectExistsException;
 import de.kaiserpfalzedv.commons.api.data.paging.Pageable;
 import de.kaiserpfalzedv.commons.api.data.paging.PagedListable;
 import de.kaiserpfalzedv.commons.api.data.query.Predicate;
-import de.kaiserpfalzedv.iam.access.jpa.roles.JPARole;
+import de.kaiserpfalzedv.iam.access.api.roles.Entitlement;
 
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
  * @version 1.0.0
  * @since 1.0.0
  */
-public interface JPARoleRepository {
-    JPARole create(@NotNull JPARole entity) throws ObjectExistsException;
+public interface EntitlementRepository {
+    Entitlement create(@NotNull Entitlement entitlement) throws ObjectExistsException;
 
-    Optional<JPARole> retrieve(@NotNull UUID id);
 
-    PagedListable<JPARole> retrieve(@NotNull Pageable page);
+    Optional<Entitlement> retrieve(@NotNull UUID id);
 
-    PagedListable<JPARole> retrieve(
-            @NotNull Predicate<JPARole> predicate,
-            @NotNull Pageable page
-    );
+    PagedListable<Entitlement> retrieve(@NotNull Pageable page);
 
-    void update(@NotNull JPARole entity);
+    PagedListable<Entitlement> retrieve(
+            @NotNull Predicate<Entitlement> predicate,
+                                           @NotNull Pageable page);
+
+    void update(@NotNull Entitlement entitlement);
 
     void delete(@NotNull UUID id);
 
-    void delete(@NotNull JPARole entity);
+    void delete(@NotNull Entitlement entitlement);
 }
