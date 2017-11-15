@@ -16,12 +16,12 @@
 
 package de.kaiserpfalzedv.commons.api.data;
 
-import java.io.Serializable;
 import java.util.Optional;
 import java.util.UUID;
 
 import javax.validation.constraints.NotNull;
 
+import de.kaiserpfalzedv.commons.api.data.base.Identifiable;
 import de.kaiserpfalzedv.commons.api.data.paging.Pageable;
 import de.kaiserpfalzedv.commons.api.data.paging.PagedListable;
 import de.kaiserpfalzedv.commons.api.data.query.Predicate;
@@ -33,16 +33,16 @@ import de.kaiserpfalzedv.commons.api.data.query.Predicate;
  * @version 1.0.0
  * @since 1.0.0
  */
-public interface Repository<T> {
+public interface Repository<T extends Identifiable, P extends Identifiable> {
     T create(T entitlement) throws ObjectExistsException;
 
     Optional<T> retrieve(@NotNull UUID id);
 
     PagedListable<T> retrieve(@NotNull Pageable page);
 
-    <P extends Serializable> PagedListable<T> retrieve(@NotNull Predicate<P> predicate, @NotNull Pageable page);
+    PagedListable<T> retrieve(@NotNull Predicate<P> predicate, @NotNull Pageable page);
 
-    void update(@NotNull T entitlement) throws ObjectDoesNotExistException;
+    void update(@NotNull T entitlement);
 
     void delete(@NotNull UUID id);
 

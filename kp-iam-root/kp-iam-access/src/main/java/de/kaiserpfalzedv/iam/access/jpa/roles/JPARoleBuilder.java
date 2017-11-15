@@ -16,21 +16,22 @@
 
 package de.kaiserpfalzedv.iam.access.jpa.roles;
 
-import de.kaiserpfalzedv.iam.access.api.roles.Role;
-import org.apache.commons.lang3.builder.Builder;
-
-import javax.validation.constraints.NotNull;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
+
+import javax.validation.constraints.NotNull;
+
+import de.kaiserpfalzedv.iam.access.api.roles.Role;
+import org.apache.commons.lang3.builder.Builder;
 
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
  * @version 1.0.0
  * @since 2017-03-11
  */
-public class RoleBuilder implements Builder<Role> {
+public class JPARoleBuilder implements Builder<Role> {
     private final HashSet<JPARole> roles = new HashSet<>();
     private final HashSet<JPAEntitlement> entitlements = new HashSet<>();
 
@@ -48,7 +49,7 @@ public class RoleBuilder implements Builder<Role> {
         return true;
     }
 
-    public RoleBuilder withRole(final JPARole role) {
+    public JPARoleBuilder withRole(final JPARole role) {
         withTenant(role.getTenant());
         withId(role.getId());
         withDisplayName(role.getDisplayName());
@@ -59,59 +60,58 @@ public class RoleBuilder implements Builder<Role> {
         return this;
     }
 
-    public RoleBuilder withId(@NotNull final UUID uniqueId) {
-        this.id = uniqueId;
-        return this;
-    }
-
-    public RoleBuilder withDisplayName(@NotNull final String name) {
-        this.displayName = name;
-        return this;
-    }
-
-    public RoleBuilder withFullName(@NotNull final String name) {
-        this.fullName = name;
-        return this;
-    }
-
-    public RoleBuilder withTenant(@NotNull final UUID tenantId) {
+    public JPARoleBuilder withTenant(@NotNull final UUID tenantId) {
         this.tenant = tenantId;
         return this;
     }
 
-    public RoleBuilder withRoles(@NotNull final Set<JPARole> roles) {
+    public JPARoleBuilder withId(@NotNull final UUID uniqueId) {
+        this.id = uniqueId;
+        return this;
+    }
+
+    public JPARoleBuilder withDisplayName(@NotNull final String name) {
+        this.displayName = name;
+        return this;
+    }
+
+    public JPARoleBuilder withFullName(@NotNull final String name) {
+        this.fullName = name;
+        return this;
+    }
+
+    public JPARoleBuilder withRoles(@NotNull final Set<JPARole> roles) {
         this.roles.clear();
         return addRoles(roles);
     }
 
-    public RoleBuilder addRoles(@NotNull final Set<JPARole> roles) {
-        this.roles.addAll(roles);
-        return this;
-    }
-
-    public RoleBuilder addRole(@NotNull final JPARole role) {
-        this.roles.add(role);
-        return this;
-    }
-
-    public RoleBuilder clearRoles() {
-        this.roles.clear();
-        return this;
-    }
-
-    public RoleBuilder removeRole(@NotNull final JPARole role) {
-        this.roles.remove(role);
-        return this;
-    }
-
-
-    public RoleBuilder withEntitlements(@NotNull final Set<JPAEntitlement> entitlements) {
+    public JPARoleBuilder withEntitlements(@NotNull final Set<JPAEntitlement> entitlements) {
         this.entitlements.clear();
         return addEntitlements(entitlements);
     }
 
-    public RoleBuilder addEntitlements(@NotNull final Set<JPAEntitlement> entitlements) {
+    public JPARoleBuilder addRoles(@NotNull final Set<JPARole> roles) {
+        this.roles.addAll(roles);
+        return this;
+    }
+
+    public JPARoleBuilder addEntitlements(@NotNull final Set<JPAEntitlement> entitlements) {
         this.entitlements.addAll(entitlements);
+        return this;
+    }
+
+    public JPARoleBuilder addRole(@NotNull final JPARole role) {
+        this.roles.add(role);
+        return this;
+    }
+
+    public JPARoleBuilder clearRoles() {
+        this.roles.clear();
+        return this;
+    }
+
+    public JPARoleBuilder removeRole(@NotNull final JPARole role) {
+        this.roles.remove(role);
         return this;
     }
 
@@ -121,18 +121,18 @@ public class RoleBuilder implements Builder<Role> {
      * @param entitlement the entitlement that should be added.
      * @return the builder itself
      */
-    public RoleBuilder addEntitlement(@NotNull final JPAEntitlement entitlement) {
+    public JPARoleBuilder addEntitlement(@NotNull final JPAEntitlement entitlement) {
         this.entitlements.add(entitlement);
         return this;
     }
 
 
-    public RoleBuilder clearEntitlements() {
+    public JPARoleBuilder clearEntitlements() {
         this.entitlements.clear();
         return this;
     }
 
-    public RoleBuilder removeEntitlements(@NotNull final Collection<JPAEntitlement> entitlements) {
+    public JPARoleBuilder removeEntitlements(@NotNull final Collection<JPAEntitlement> entitlements) {
         this.entitlements.removeAll(entitlements);
         return this;
     }
@@ -143,7 +143,7 @@ public class RoleBuilder implements Builder<Role> {
      * @param entitlement the entitlement that should be removed.
      * @return the builder itself
      */
-    public RoleBuilder removeEntitlement(@NotNull final JPAEntitlement entitlement) {
+    public JPARoleBuilder removeEntitlement(@NotNull final JPAEntitlement entitlement) {
         this.entitlements.remove(entitlement);
         return this;
     }

@@ -16,7 +16,6 @@
 
 package de.kaiserpfalzedv.commons.jpa;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -27,7 +26,6 @@ import javax.persistence.TypedQuery;
 import javax.validation.constraints.NotNull;
 
 import de.kaiserpfalzedv.commons.api.data.ObjectExistsException;
-import de.kaiserpfalzedv.commons.api.data.base.DataUpdater;
 import de.kaiserpfalzedv.commons.api.data.base.Identifiable;
 import de.kaiserpfalzedv.commons.api.data.paging.Pageable;
 import de.kaiserpfalzedv.commons.api.data.paging.PageableBuilder;
@@ -43,36 +41,28 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * The implementation of a CRUD repository for the entitlement.
+ * The implementation of a CRUD repository for any class extending {@link JPAAbstractIdentifiable}.
  *
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
  * @version 1.0.0
  * @since 1.0.0
  */
 @SuppressWarnings("unchecked")
-public class JPABaseRepository<T extends Identifiable, J extends JPAAbstractIdentifiable> {
+public class JPABaseRepository<T extends JPAAbstractIdentifiable, P extends Identifiable> {
     private static final Logger LOG = LoggerFactory.getLogger(JPABaseRepository.class);
 
-    private Class<J> clasz;
+    private Class<T> clasz;
     private String entityName;
 
-    private JPAConverter<T, J> converter;
-
     public JPABaseRepository(
-            @NotNull final Class<J> clasz,
-            @NotNull final String entityName,
-            @NotNull final JPAConverter<T, J> converter
+            @NotNull final Class<T> clasz,
+            @NotNull final String entityName
     ) {
         this.clasz = clasz;
         this.entityName = entityName;
-        this.converter = converter;
     }
 
     public T create(@NotNull final EntityManager em, @NotNull final T entity) throws ObjectExistsException {
-        return converter.toModel(createJPA(em, converter.toJPA(entity)));
-    }
-
-    private J createJPA(@NotNull final EntityManager em, @NotNull final J entity) throws ObjectExistsException {
         try {
             em.persist(entity);
         } catch (PersistenceException e) {
@@ -87,15 +77,11 @@ public class JPABaseRepository<T extends Identifiable, J extends JPAAbstractIden
         }
 
         //noinspection ConstantConditions
-        return retrieveJPA(em, entity.getId()).get();
+        return retrieve(em, entity.getId()).get();
     }
 
     public Optional<T> retrieve(@NotNull final EntityManager em, @NotNull final UUID id) {
-        return converter.toModel(retrieveJPA(em, id));
-    }
-
-    private Optional<J> retrieveJPA(@NotNull final EntityManager em, @NotNull final UUID id) {
-        J result = em.find(clasz, id.toString());
+        T result = em.find(clasz, id.toString());
 
         LOG.trace("Loaded entity of type '{}': {}", clasz.getSimpleName(), result != null ? result : "./.");
         return Optional.ofNullable(result);
@@ -103,33 +89,33 @@ public class JPABaseRepository<T extends Identifiable, J extends JPAAbstractIden
 
     public PagedListable<T> retrieve(
             @NotNull final EntityManager em,
-            @NotNull final Predicate<T> predicate,
+            @NotNull final Predicate<P> predicate,
             @NotNull final Pageable page
     ) {
-        PredicateQueryGenerator<T> queryParser = new PredicateToQueryParser<>();
-        PredicateParameterGenerator<T> parameterParser = new PredicateToParameterParser<>();
+        PredicateQueryGenerator<P> queryParser = new PredicateToQueryParser<>();
+        PredicateParameterGenerator<P> parameterParser = new PredicateToParameterParser<>();
 
         String where = queryParser.generateQuery(predicate);
         String queryString = "select t from " + entityName + " t where " + where;
 
-        TypedQuery<J> query = em.createQuery(queryString, clasz);
+        TypedQuery<T> query = em.createQuery(queryString, clasz);
 
         List<QueryParameter> parameters = parameterParser.generateParameters(predicate);
         for (QueryParameter p : parameters) {
             query.setParameter(p.getName(), p.getValue());
         }
 
-        List<J> result = query.setFirstResult(page.getFirstResult())
-                              .setMaxResults(page.getMaxResults())
-                              .getResultList();
+        List<T> data = query.setFirstResult(page.getFirstResult())
+                            .setMaxResults(page.getMaxResults())
+                            .getResultList();
 
-        ArrayList<T> converted = new ArrayList<>(result.size());
-        result.forEach(d -> converted.add(converter.toModel(d)));
-
-        return new PagedListBuilder<T>()
-                .withData(converted)
+        PagedListable<T> result = new PagedListBuilder<T>()
+                .withData(data)
                 .withPageable(page)
                 .build();
+
+        LOG.trace("Loaded page ({}) of type '{}': {}", page, clasz.getSimpleName(), result);
+        return result;
     }
 
     public PagedListable<T> retrieve(@NotNull final EntityManager em, @NotNull final Pageable page) {
@@ -150,72 +136,37 @@ public class JPABaseRepository<T extends Identifiable, J extends JPAAbstractIden
             resultPage = new PageableBuilder().withPaging(page).build();
         }
 
-        List<J> data = em
+        List<T> data = em
                 .createNamedQuery(entityName + ".fetch-all", clasz)
                 .setFirstResult(page.getFirstResult())
                 .setMaxResults(page.getMaxResults())
                 .getResultList();
 
-        ArrayList<T> converted = new ArrayList<>(data.size());
-        data.forEach(d -> converted.add(converter.toModel(d)));
         PagedListable<T> result = new PagedListBuilder<T>()
-                .withData(converted)
+                .withData(data)
                 .withPageable(resultPage)
                 .build();
 
-        LOG.trace("Loaded page of type '{}': {}", clasz.getSimpleName(), result);
+        LOG.trace("Loaded page ({}) of type '{}': {}", resultPage, clasz.getSimpleName(), result);
         return result;
     }
 
     public void update(
             @NotNull final EntityManager em,
-            @NotNull final T entity,
-            @NotNull final DataUpdater<J> updater
+            @NotNull final T entity
     ) {
-        updateJPA(em, converter.toJPA(entity), updater);
-    }
-
-    private void updateJPA(
-            @NotNull final EntityManager em,
-            @NotNull final J entity,
-            @NotNull final DataUpdater<J> updater
-    ) {
-        Optional<J> orig = retrieveJPA(em, entity.getId());
-
-        J data;
-        if (orig.isPresent()) {
-            data = orig.get();
-        } else {
-            try {
-                data = createJPA(em, entity);
-                LOG.debug("Created new entity of type '{}' during update: {}", clasz.getSimpleName(), data);
-            } catch (ObjectExistsException e) {
-                LOG.warn("Duplicate object of type '{}', but first it has not been found: {}",
-                         clasz.getSimpleName(), e.getObjectId()
-                );
-                data = (J) e.getExistingObject();
-            }
-        }
-
-        updater.update(data, entity);
-
-        em.merge(data);
-        LOG.info("Updated entity of type '{}': {}", clasz.getSimpleName(), data);
+        em.merge(entity);
+        LOG.info("Updated entity of type '{}': {}", clasz.getSimpleName(), entity);
     }
 
     public void delete(@NotNull final EntityManager em, @NotNull final UUID id) {
-        Optional<J> data = retrieveJPA(em, id);
+        Optional<T> data = retrieve(em, id);
 
-        data.ifPresent(e -> deleteJPA(em, e));
-    }
-
-    private void deleteJPA(@NotNull final EntityManager em, @NotNull final J entity) {
-        LOG.info("Removing entity of type '{}': {}", clasz.getSimpleName(), entity);
-
-        em.remove(entity);
+        data.ifPresent(e -> delete(em, e));
     }
 
     public void delete(@NotNull final EntityManager em, @NotNull final T entity) {
-        deleteJPA(em, converter.toJPA(entity));
+        em.remove(entity);
+        LOG.info("Deleted entity of type '{}': {}", clasz.getSimpleName(), entity);
     }
 }

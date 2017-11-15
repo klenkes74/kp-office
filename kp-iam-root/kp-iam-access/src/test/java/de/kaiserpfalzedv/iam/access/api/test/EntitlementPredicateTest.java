@@ -26,7 +26,7 @@ import de.kaiserpfalzedv.commons.api.data.query.QueryParameter;
 import de.kaiserpfalzedv.commons.impl.data.query.PredicateToParameterParser;
 import de.kaiserpfalzedv.commons.impl.data.query.PredicateToQueryParser;
 import de.kaiserpfalzedv.iam.access.api.roles.Entitlement;
-import de.kaiserpfalzedv.iam.access.api.roles.PEntitlements;
+import de.kaiserpfalzedv.iam.access.api.roles.EntitlementPredicate;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -44,8 +44,8 @@ import static org.junit.Assert.fail;
  * @version 1.0.0
  * @since 2017-11-09
  */
-public class PEntitlementsTest {
-    private static final Logger LOG = LoggerFactory.getLogger(PEntitlementsTest.class);
+public class EntitlementPredicateTest {
+    private static final Logger LOG = LoggerFactory.getLogger(EntitlementPredicateTest.class);
 
     private static final UUID id = UUID.fromString("44444444-4444-4444-4444-444444444444");
 
@@ -73,7 +73,7 @@ public class PEntitlementsTest {
         LOG.trace("Result: {}", result);
 
         assertEquals(
-                "(((id=:id) and (displayName<>:displayName)) and (fullName<>:fullName)) and (descriptionKey=:descriptionKey)",
+                "(((id=:id_EQUALS) and (displayName<>:displayName_NOT_EQUALS)) and (fullName<>:fullName_NOT_EQUALS)) and (descriptionKey=:descriptionKey_EQUALS)",
                 result
         );
     }
@@ -91,16 +91,16 @@ public class PEntitlementsTest {
         List<QueryParameter> result = parameterParser.generateParameters(cut);
         LOG.trace("Result: {}", result);
 
-        if (!result.contains(new QueryParameter("id", id)))
+        if (!result.contains(new QueryParameter("id_EQUALS", id)))
             fail("ID is missing");
 
-        if (!result.contains(new QueryParameter("displayName", "abc")))
+        if (!result.contains(new QueryParameter("displayName_NOT_EQUALS", "abc")))
             fail("DISPLAYNAME is missing");
 
-        if (!result.contains(new QueryParameter("fullName", "def")))
+        if (!result.contains(new QueryParameter("fullName_NOT_EQUALS", "def")))
             fail("FULLNAME is missing");
 
-        if (!result.contains(new QueryParameter("descriptionKey", "com.iam.testkey"))) {
+        if (!result.contains(new QueryParameter("descriptionKey_EQUALS", "com.iam.testkey"))) {
             fail("DESCRIPTIONKEY is missing!");
         }
     }
@@ -110,10 +110,10 @@ public class PEntitlementsTest {
         queryParser = new PredicateToQueryParser<>();
         parameterParser = new PredicateToParameterParser<>();
 
-        cut = PEntitlements.id().isEqualTo(id)
-                           .and(PEntitlements.displayName().isNotEqualTo("abc"))
-                           .and(PEntitlements.fullName().isNotEqualTo("def"))
-                           .and(PEntitlements.descriptionKey().isEqualTo("com.iam.testkey"));
+        cut = EntitlementPredicate.id().isEqualTo(id)
+                                  .and(EntitlementPredicate.displayName().isNotEqualTo("abc"))
+                                  .and(EntitlementPredicate.fullName().isNotEqualTo("def"))
+                                  .and(EntitlementPredicate.descriptionKey().isEqualTo("com.iam.testkey"));
     }
 
     @After

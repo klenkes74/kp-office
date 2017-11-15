@@ -38,10 +38,10 @@ import de.kaiserpfalzedv.commons.api.data.paging.PageableBuilder;
 import de.kaiserpfalzedv.commons.api.data.paging.PagedListable;
 import de.kaiserpfalzedv.commons.api.data.query.Predicate;
 import de.kaiserpfalzedv.iam.access.api.roles.Entitlement;
-import de.kaiserpfalzedv.iam.access.api.roles.PEntitlements;
-import de.kaiserpfalzedv.iam.access.jpa.roles.EntitlementBuilder;
-import de.kaiserpfalzedv.iam.access.jpa.roles.EntitlementRepositoryImpl;
+import de.kaiserpfalzedv.iam.access.api.roles.EntitlementPredicate;
 import de.kaiserpfalzedv.iam.access.jpa.roles.JPAEntitlement;
+import de.kaiserpfalzedv.iam.access.jpa.roles.JPAEntitlementBuilder;
+import de.kaiserpfalzedv.iam.access.jpa.roles.JPAEntitlementRepositoryImpl;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.Archive;
@@ -74,13 +74,13 @@ public class JPAEntitlementIT {
     private static final Logger LOG = LoggerFactory.getLogger(JPAEntitlementIT.class);
 
     @Inject
-    UserTransaction utx;
+    private UserTransaction utx;
 
     @PersistenceContext(name = "ACCESS")
     private EntityManager em;
 
     @Inject
-    private EntitlementRepositoryImpl repository;
+    private JPAEntitlementRepositoryImpl repository;
 
 
     @Deployment
@@ -94,48 +94,24 @@ public class JPAEntitlementIT {
                 .addAsResource("META-INF/ejb-jar.xml", "META-INF/ejb-jar.xml")
                 .addAsResource("META-INF/beans.xml", "META-INF/beans.xml")
                 .addPackages(true, "de.kaiserpfalzedv.iam")
-                .addClass(com.google.common.base.Preconditions.class)       // used in this test class.
                 .addManifest();
         LOG.trace("Created EJB Archive: {}", ejb);
-
-        JavaArchive commons = ShrinkWrap
-                .create(JavaArchive.class, "kp-commons.jar")
-                .addPackages(
-                        true,
-                        "de.kaiserpfalzedv.commons.jpa",
-                        "de.kaiserpfalzedv.commons.api.data",
-                        "de.kaiserpfalzedv.commons.api.multitenancy",
-                        "de.kaiserpfalzedv.commons.api.init"
-                )
-                .addClasses(
-                        de.kaiserpfalzedv.commons.api.BaseBusinessException.class,
-                        de.kaiserpfalzedv.commons.api.BaseSystemException.class,
-                        de.kaiserpfalzedv.commons.api.BuilderException.class,
-                        de.kaiserpfalzedv.commons.api.Logging.class
-                )
-                .addManifest();
-        LOG.trace("Created 'kp-commons.jar': {}", commons);
-
-        JavaArchive tenant = ShrinkWrap
-                .create(JavaArchive.class, "kp-tenant.jar")
-                .addClass(de.kaiserpfalzedv.iam.tenant.api.Tenant.class)
-                .addManifest();
-        LOG.trace("Created 'kp-tenant.jar': {}", tenant);
 
         File[] libraries = Maven
                 .resolver()
                 .resolve(
-                        "org.apache.commons:commons-lang4:4.4",
-                        "com.goole.guava:guava:24.0"
+                        "org.apache.commons:commons-lang3:3.4",
+                        "com.goole.guava:guava:23.0",
+                        "de.kaiserpfalz-edv.commons:kp-commons-ejb:1.0.0-SNAPSHOT",
+                        "de.kaiserpfalz-edv.iam:kp-iam-tenant:jar:api:1.0.0-SNAPSHOT",
+                        "de.kaiserpfalz-edv.iam:kp-iam-tenant:jar:jpa:1.0.0-SNAPSHOT"
                 )
                 .withTransitivity()
                 .asFile();
-        LOG.trace("Libraries: {}", libraries);
+        LOG.trace("Libraries ({} files): {}", libraries.length, libraries);
 
         EnterpriseArchive ear = ShrinkWrap
                 .create(EnterpriseArchive.class, "kp-iam.ear")
-                .addAsLibrary(commons)
-                .addAsLibrary(tenant)
                 .addAsModule(ejb)
                 .addAsLibraries(libraries)
                 .addManifest();
@@ -167,7 +143,7 @@ public class JPAEntitlementIT {
 
         UUID id = UUID.randomUUID();
 
-        JPAEntitlement data = new EntitlementBuilder()
+        JPAEntitlement data = new JPAEntitlementBuilder()
                 .withId(id)
                 .withDisplayName("new-entitlement")
                 .withFullName("A new entitlement")
@@ -184,7 +160,7 @@ public class JPAEntitlementIT {
     public void shouldThrowExceptionWhenTheEntitlementAlreadyExists() {
         logMethod("create-existing-entitlement", "Create a duplicate of the entitlement");
 
-        JPAEntitlement data = new EntitlementBuilder()
+        JPAEntitlement data = new JPAEntitlementBuilder()
                 .withId(UUID.fromString("11111111-1111-1111-1111-111111111111"))
                 .withDisplayName("new-entitlement")
                 .withFullName("A new entitlement")
@@ -303,7 +279,7 @@ public class JPAEntitlementIT {
 
         UUID id = UUID.fromString("44444444-4444-4444-4444-444444444444");
 
-        Predicate<Entitlement> query = PEntitlements.id().isEqualTo(id);
+        Predicate<Entitlement> query = EntitlementPredicate.id().isEqualTo(id);
 
         Pageable page = new PageableBuilder()
                 .withPage(0)

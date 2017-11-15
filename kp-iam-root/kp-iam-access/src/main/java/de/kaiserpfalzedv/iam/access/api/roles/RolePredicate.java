@@ -25,24 +25,24 @@ import de.kaiserpfalzedv.commons.api.data.query.PredicateBuilder;
  * @version 1.0.0
  * @since 2017-11-09
  */
-public class PEntitlements {
-    public static PredicateBuilder<Entitlement, UUID> id() {
-        return new PredicateBuilder<Entitlement, UUID>().withAttribute("id");
+public class RolePredicate {
+    public static PredicateBuilder<Role, UUID> tenant() {
+        return new PredicateBuilder<Role, UUID>().withAttribute("tenant");
     }
 
-    public static PredicateBuilder<Entitlement, String> name() {
-        return new PredicateBuilder<Entitlement, String>().withAttribute("name");
+    public static PredicateBuilder<Role, UUID> id() {
+        return new PredicateBuilder<Role, UUID>().withAttribute("id");
     }
 
-    public static PredicateBuilder<Entitlement, String> displayName() {
-        return new PredicateBuilder<Entitlement, String>().withAttribute("displayName");
+    public static PredicateBuilder<Role, String> name() {
+        return new PredicateBuilder<Role, String>().withAttribute("name");
     }
 
-    public static PredicateBuilder<Entitlement, String> fullName() {
-        return new PredicateBuilder<Entitlement, String>().withAttribute("fullName");
+    public static PredicateBuilder<Role, String> displayName() {
+        return new PredicateBuilder<Role, String>().withAttribute("displayName");
     }
 
-    public static PredicateBuilder<Entitlement, String> descriptionKey() {
-        return new PredicateBuilder<Entitlement, String>().withAttribute("descriptionKey");
+    public static PredicateBuilder<Role, String> fullName() {
+        return new PredicateBuilder<Role, String>().withAttribute("fullName");
     }
 }

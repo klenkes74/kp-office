@@ -16,11 +16,12 @@
 
 package de.kaiserpfalzedv.iam.access.jpa.roles;
 
-import de.kaiserpfalzedv.iam.access.api.roles.Entitlement;
-import org.apache.commons.lang3.builder.Builder;
+import java.util.UUID;
 
 import javax.validation.constraints.NotNull;
-import java.util.UUID;
+
+import de.kaiserpfalzedv.iam.access.api.roles.Entitlement;
+import org.apache.commons.lang3.builder.Builder;
 
 import static org.apache.commons.lang3.StringUtils.isBlank;
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
@@ -31,7 +32,7 @@ import static org.apache.commons.lang3.StringUtils.isNotBlank;
  * @version 1.0.0
  * @since 2017-11-04
  */
-public class EntitlementBuilder implements Builder<Entitlement> {
+public class JPAEntitlementBuilder implements Builder<Entitlement> {
 
     private UUID id;
     private String fullName;
@@ -69,7 +70,7 @@ public class EntitlementBuilder implements Builder<Entitlement> {
                 && isNotBlank(descriptionKey);
     }
 
-    public EntitlementBuilder withEntitlement(final Entitlement data) {
+    public JPAEntitlementBuilder withEntitlement(final Entitlement data) {
         withId(data.getId());
         withFullName(data.getFullName());
         withDisplayName(data.getDisplayName());
@@ -78,22 +79,22 @@ public class EntitlementBuilder implements Builder<Entitlement> {
         return this;
     }
 
-    public EntitlementBuilder withId(@NotNull final UUID uniqueId) {
+    public JPAEntitlementBuilder withId(@NotNull final UUID uniqueId) {
         this.id = uniqueId;
         return this;
     }
 
-    public EntitlementBuilder withFullName(@NotNull final String name) {
+    public JPAEntitlementBuilder withFullName(@NotNull final String name) {
         this.fullName = name;
         return this;
     }
 
-    public EntitlementBuilder withDisplayName(@NotNull final String name) {
+    public JPAEntitlementBuilder withDisplayName(@NotNull final String name) {
         this.displayName = name;
         return this;
     }
 
-    public EntitlementBuilder withDescriptionKey(@NotNull final String descriptionKey) {
+    public JPAEntitlementBuilder withDescriptionKey(@NotNull final String descriptionKey) {
         this.descriptionKey = descriptionKey;
         return this;
     }

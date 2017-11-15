@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzedv.iam.access.impl.roles;
+package de.kaiserpfalzedv.iam.access.jpa.roles;
 
 import de.kaiserpfalzedv.commons.api.data.Repository;
 import de.kaiserpfalzedv.iam.access.api.roles.Role;
@@ -24,5 +24,5 @@ import de.kaiserpfalzedv.iam.access.api.roles.Role;
  * @version 1.0.0
  * @since 1.0.0
  */
-public interface RoleRepository extends Repository<Role, Role> {
+public interface JPARoleRepository extends Repository<JPARole, Role> {
 }

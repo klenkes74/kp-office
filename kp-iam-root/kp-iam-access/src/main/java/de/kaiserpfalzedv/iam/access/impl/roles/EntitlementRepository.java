@@ -16,15 +16,7 @@
 
 package de.kaiserpfalzedv.iam.access.impl.roles;
 
-import java.util.Optional;
-import java.util.UUID;
-
-import javax.validation.constraints.NotNull;
-
-import de.kaiserpfalzedv.commons.api.data.ObjectExistsException;
-import de.kaiserpfalzedv.commons.api.data.paging.Pageable;
-import de.kaiserpfalzedv.commons.api.data.paging.PagedListable;
-import de.kaiserpfalzedv.commons.api.data.query.Predicate;
+import de.kaiserpfalzedv.commons.api.data.Repository;
 import de.kaiserpfalzedv.iam.access.api.roles.Entitlement;
 
 /**
@@ -32,21 +24,5 @@ import de.kaiserpfalzedv.iam.access.api.roles.Entitlement;
  * @version 1.0.0
  * @since 1.0.0
  */
-public interface EntitlementRepository {
-    Entitlement create(@NotNull Entitlement entitlement) throws ObjectExistsException;
-
-
-    Optional<Entitlement> retrieve(@NotNull UUID id);
-
-    PagedListable<Entitlement> retrieve(@NotNull Pageable page);
-
-    PagedListable<Entitlement> retrieve(
-            @NotNull Predicate<Entitlement> predicate,
-                                           @NotNull Pageable page);
-
-    void update(@NotNull Entitlement entitlement);
-
-    void delete(@NotNull UUID id);
-
-    void delete(@NotNull Entitlement entitlement);
+public interface EntitlementRepository extends Repository<Entitlement, Entitlement> {
 }
