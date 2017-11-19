@@ -30,7 +30,7 @@ import javax.validation.constraints.NotNull;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import de.kaiserpfalzedv.commons.api.MessageInfo;
-import de.kaiserpfalzedv.commons.api.commands.CommandExecutionException;
+import de.kaiserpfalzedv.commons.api.action.CommandExecutionException;
 import de.kaiserpfalzedv.commons.ejb.ResponseSender;
 import de.kaiserpfalzedv.iam.tenant.api.TenantCommandExecutor;
 import de.kaiserpfalzedv.iam.tenant.api.commands.TenantBaseCommand;

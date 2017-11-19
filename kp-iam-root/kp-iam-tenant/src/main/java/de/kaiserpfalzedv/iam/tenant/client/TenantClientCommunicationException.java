@@ -16,13 +16,13 @@
 
 package de.kaiserpfalzedv.iam.tenant.client;
 
-import de.kaiserpfalzedv.commons.api.commands.CrudCommands;
+import java.util.UUID;
+
+import de.kaiserpfalzedv.commons.api.action.CrudCommandType;
 import de.kaiserpfalzedv.commons.api.messaging.ClientCommunicationException;
 import de.kaiserpfalzedv.iam.tenant.api.Tenant;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.util.UUID;
 
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
@@ -33,7 +33,7 @@ public class TenantClientCommunicationException extends ClientCommunicationExcep
     private static final Logger LOG = LoggerFactory.getLogger(TenantClientCommunicationException.class);
 
     public TenantClientCommunicationException(
-            final CrudCommands command,
+            final CrudCommandType command,
             final UUID correlationId,
             final String messageId,
             final UUID objectId,
@@ -43,7 +43,7 @@ public class TenantClientCommunicationException extends ClientCommunicationExcep
     }
 
     public TenantClientCommunicationException(
-            final CrudCommands command,
+            final CrudCommandType command,
             final UUID correlationId,
             final String messageId,
             final Throwable cause

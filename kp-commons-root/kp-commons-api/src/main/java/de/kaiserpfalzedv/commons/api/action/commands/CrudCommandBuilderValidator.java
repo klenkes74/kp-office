@@ -14,13 +14,15 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzedv.commons.api.commands;
+package de.kaiserpfalzedv.commons.api.action.commands;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.UUID;
 
 import javax.validation.constraints.NotNull;
 
+import de.kaiserpfalzedv.commons.api.action.CrudCommandType;
 import de.kaiserpfalzedv.commons.api.data.paging.Pageable;
 import de.kaiserpfalzedv.commons.api.data.query.Predicate;
 
@@ -29,25 +31,25 @@ import de.kaiserpfalzedv.commons.api.data.query.Predicate;
  * @version 1.0.0
  * @since 2017-11-19
  */
-public interface CrudCommandDefaultValueCalculator<T extends Serializable> {
-    UUID setDefaultId(
-            @NotNull final CrudCommands command, @NotNull final UUID dataId, @NotNull final T data,
+public interface CrudCommandBuilderValidator<T extends Serializable> {
+    List<String> validateId(
+            @NotNull final CrudCommandType command, @NotNull final UUID dataId, @NotNull final T data,
             @NotNull final Predicate<T> predicate, @NotNull final Pageable page
     );
 
-    T setDefaultData(
-            @NotNull final CrudCommands command, @NotNull final UUID dataId, @NotNull final T data,
+    List<String> validateData(
+            @NotNull final CrudCommandType command, @NotNull final UUID dataId, @NotNull final T data,
             @NotNull final Predicate<T> predicate, @NotNull final Pageable page
     );
 
-    Predicate<T> setDefaultPredicate(
-            @NotNull final CrudCommands command,
+    List<String> validatePredicate(
+            @NotNull final CrudCommandType command,
             @NotNull final UUID dataId, @NotNull final T data,
             @NotNull final Predicate<T> predicate, @NotNull final Pageable page
     );
 
-    Pageable setDefaultPage(
-            @NotNull final CrudCommands command, @NotNull final UUID dataId, @NotNull final T data,
+    List<String> validatePage(
+            @NotNull final CrudCommandType command, @NotNull final UUID dataId, @NotNull final T data,
             @NotNull final Predicate<T> predicate, @NotNull final Pageable page
     );
 }

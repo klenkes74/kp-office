@@ -14,9 +14,10 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzedv.commons.api.commands;
+package de.kaiserpfalzedv.commons.api.action;
 
 import de.kaiserpfalzedv.commons.api.BaseBusinessException;
+import de.kaiserpfalzedv.commons.api.action.commands.BaseCommand;
 
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}

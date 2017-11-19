@@ -24,25 +24,23 @@ import javax.annotation.PreDestroy;
 import javax.enterprise.context.Dependent;
 import javax.inject.Inject;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import de.kaiserpfalzedv.commons.api.commands.BaseCommand;
-import de.kaiserpfalzedv.commons.api.commands.BaseReply;
-import de.kaiserpfalzedv.commons.api.commands.CommandExecutionException;
+import de.kaiserpfalzedv.commons.api.action.CommandExecutionException;
+import de.kaiserpfalzedv.commons.api.action.commands.BaseCommand;
+import de.kaiserpfalzedv.commons.api.action.replies.BaseReply;
+import de.kaiserpfalzedv.commons.api.action.replies.CrudReplyBuilder;
 import de.kaiserpfalzedv.commons.api.data.paging.PagedListable;
 import de.kaiserpfalzedv.iam.tenant.api.Tenant;
 import de.kaiserpfalzedv.iam.tenant.api.TenantCommandExecutor;
 import de.kaiserpfalzedv.iam.tenant.api.TenantDoesNotExistException;
 import de.kaiserpfalzedv.iam.tenant.api.TenantExistsException;
 import de.kaiserpfalzedv.iam.tenant.api.TenantService;
-import de.kaiserpfalzedv.iam.tenant.api.commands.TenantBaseCommand;
 import de.kaiserpfalzedv.iam.tenant.api.commands.TenantCreateCommand;
 import de.kaiserpfalzedv.iam.tenant.api.commands.TenantDeleteCommand;
 import de.kaiserpfalzedv.iam.tenant.api.commands.TenantRetrieveCommand;
 import de.kaiserpfalzedv.iam.tenant.api.commands.TenantUpdateCommand;
-import de.kaiserpfalzedv.iam.tenant.api.replies.TenantBaseReply;
 import de.kaiserpfalzedv.iam.tenant.api.replies.TenantCreateReply;
+import de.kaiserpfalzedv.iam.tenant.api.replies.TenantCrudReplyBuilderCreator;
 import de.kaiserpfalzedv.iam.tenant.api.replies.TenantDeleteReply;
-import de.kaiserpfalzedv.iam.tenant.api.replies.TenantReplyBuilder;
 import de.kaiserpfalzedv.iam.tenant.api.replies.TenantRetrieveReply;
 import de.kaiserpfalzedv.iam.tenant.api.replies.TenantUpdateReply;
 import org.slf4j.Logger;
@@ -60,12 +58,15 @@ public class TenantCommandExecutorImpl implements TenantCommandExecutor {
     private UUID tenantWorkerId = UUID.randomUUID();
 
     private TenantService service;
+    private TenantCrudReplyBuilderCreator creator;
 
     @Inject
     public TenantCommandExecutorImpl(
-            final TenantService tenantService
+            final TenantService tenantService,
+            final TenantCrudReplyBuilderCreator creator
     ) {
         this.service = tenantService;
+        this.creator = creator;
     }
 
 
@@ -84,8 +85,15 @@ public class TenantCommandExecutorImpl implements TenantCommandExecutor {
         try {
             Tenant data = service.create(command.getTenant());
 
-            return Optional.ofNullable(createReply(command, data));
-        } catch (TenantExistsException | JsonProcessingException e) {
+            TenantCreateReply result
+                    = new CrudReplyBuilder<TenantCreateReply, TenantCreateCommand, Tenant>(TenantCreateReply.class, creator)
+                    .withCommand(command)
+                    .withSource(tenantWorkerId)
+                    .withData(data)
+                    .build();
+
+            return Optional.ofNullable(result);
+        } catch (TenantExistsException e) {
             LOG.error(e.getClass().getSimpleName() + " caught: " + e.getMessage(), e);
 
             throw new CommandExecutionException(command, e);
@@ -96,10 +104,11 @@ public class TenantCommandExecutorImpl implements TenantCommandExecutor {
     public Optional<TenantRetrieveReply> execute(TenantRetrieveCommand command) throws CommandExecutionException {
         PagedListable<Tenant> data = service.retrieve(command.getPredicate(), command.getPage());
 
-        TenantRetrieveReply result = new TenantReplyBuilder<TenantRetrieveReply>()
+        TenantRetrieveReply result
+                = new CrudReplyBuilder<TenantRetrieveReply, TenantRetrieveCommand, Tenant>(TenantRetrieveReply.class, creator)
                 .withCommand(command)
                 .withSource(tenantWorkerId)
-                .withTenants(data)
+                .withDataPage(data)
                 .build();
 
         return Optional.of(result);
@@ -110,8 +119,15 @@ public class TenantCommandExecutorImpl implements TenantCommandExecutor {
         try {
             Tenant data = service.update(command.getTenant());
 
-            return Optional.ofNullable(createReply(command, data));
-        } catch (TenantDoesNotExistException | TenantExistsException | JsonProcessingException e) {
+            TenantUpdateReply result
+                    = new CrudReplyBuilder<TenantUpdateReply, TenantUpdateCommand, Tenant>(TenantUpdateReply.class, creator)
+                    .withCommand(command)
+                    .withSource(tenantWorkerId)
+                    .withData(data)
+                    .build();
+
+            return Optional.ofNullable(result);
+        } catch (TenantDoesNotExistException | TenantExistsException e) {
             LOG.error(e.getClass().getSimpleName() + " caught: " + e.getMessage(), e);
             throw new CommandExecutionException(command, e);
         }
@@ -121,19 +137,15 @@ public class TenantCommandExecutorImpl implements TenantCommandExecutor {
     public Optional<TenantDeleteReply> execute(TenantDeleteCommand command) throws CommandExecutionException {
         service.delete(command.getTenant());
 
-        return Optional.ofNullable(new TenantReplyBuilder<TenantDeleteReply>()
-                                           .withCommand(command)
-                                           .withSource(tenantWorkerId)
-                                           .build());
-    }
-
-    private <T extends TenantBaseCommand, R extends TenantBaseReply> R createReply(T command, Tenant data) throws JsonProcessingException {
-        return new TenantReplyBuilder<R>()
+        TenantDeleteReply result
+                = new CrudReplyBuilder<TenantDeleteReply, TenantDeleteCommand, Tenant>(TenantRetrieveReply.class, creator)
                 .withCommand(command)
                 .withSource(tenantWorkerId)
-                .withTenant(data)
                 .build();
+
+        return Optional.ofNullable(result);
     }
+
 
     @Override
     public Optional<? extends BaseReply> execute(BaseCommand command) throws CommandExecutionException {

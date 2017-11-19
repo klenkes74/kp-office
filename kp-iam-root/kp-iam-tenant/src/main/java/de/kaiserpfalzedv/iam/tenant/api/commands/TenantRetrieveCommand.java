@@ -22,7 +22,7 @@ import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import de.kaiserpfalzedv.commons.api.commands.CrudCommands;
+import de.kaiserpfalzedv.commons.api.action.CrudCommandType;
 import de.kaiserpfalzedv.commons.api.data.paging.Pageable;
 import de.kaiserpfalzedv.commons.api.data.query.Predicate;
 import de.kaiserpfalzedv.iam.tenant.api.Tenant;
@@ -34,7 +34,7 @@ import de.kaiserpfalzedv.iam.tenant.api.Tenant;
  */
 public class TenantRetrieveCommand extends TenantBaseCommand {
     private static final long serialVersionUID = -3920045218010855443L;
-    private static final CrudCommands CRUD_TYPE = CrudCommands.RETRIEVE;
+    private static final CrudCommandType CRUD_TYPE = CrudCommandType.RETRIEVE;
 
     private Predicate<Tenant> predicate;
     private Pageable page;

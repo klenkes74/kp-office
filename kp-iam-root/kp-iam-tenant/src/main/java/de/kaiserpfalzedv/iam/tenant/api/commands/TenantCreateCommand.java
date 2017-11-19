@@ -23,8 +23,8 @@ import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import de.kaiserpfalzedv.commons.api.commands.CommandExecutionException;
-import de.kaiserpfalzedv.commons.api.commands.CrudCommands;
+import de.kaiserpfalzedv.commons.api.action.CommandExecutionException;
+import de.kaiserpfalzedv.commons.api.action.CrudCommandType;
 import de.kaiserpfalzedv.iam.tenant.api.Tenant;
 import de.kaiserpfalzedv.iam.tenant.api.TenantCommandExecutor;
 import de.kaiserpfalzedv.iam.tenant.api.replies.TenantCreateReply;
@@ -35,7 +35,7 @@ import de.kaiserpfalzedv.iam.tenant.api.replies.TenantCreateReply;
  * @since 2016-09-25
  */
 public class TenantCreateCommand extends TenantContainingBaseCommand {
-    public static final CrudCommands CRUD_TYPE = CrudCommands.CREATE;
+    public static final CrudCommandType CRUD_TYPE = CrudCommandType.CREATE;
     private static final long serialVersionUID = 1L;
 
     @JsonCreator

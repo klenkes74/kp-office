@@ -25,9 +25,9 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.validation.constraints.NotNull;
 
+import de.kaiserpfalzedv.commons.api.action.commands.CrudCommandBuilder;
+import de.kaiserpfalzedv.commons.api.action.commands.CrudCommandBuilderCreator;
 import de.kaiserpfalzedv.commons.api.cdi.Implementation;
-import de.kaiserpfalzedv.commons.api.commands.CommandBuilder;
-import de.kaiserpfalzedv.commons.api.commands.CrudCommandCreator;
 import de.kaiserpfalzedv.commons.api.config.ConfigReader;
 import de.kaiserpfalzedv.commons.api.data.paging.Pageable;
 import de.kaiserpfalzedv.commons.api.data.paging.PageableBuilder;
@@ -59,8 +59,8 @@ import de.kaiserpfalzedv.iam.tenant.client.TenantClientCommunicationException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import static de.kaiserpfalzedv.commons.api.commands.CrudCommands.CREATE;
-import static de.kaiserpfalzedv.commons.api.commands.CrudCommands.RETRIEVE;
+import static de.kaiserpfalzedv.commons.api.action.CrudCommandType.CREATE;
+import static de.kaiserpfalzedv.commons.api.action.CrudCommandType.RETRIEVE;
 
 /**
  * @author rlichti {@literal <rlichti@kaiserpfalz-edv.de>}
@@ -76,7 +76,7 @@ public class TenantClientImpl implements TenantClient, Serializable {
     private ConfigReader config;
     private UUID clientId = UUID.randomUUID();
 
-    private CrudCommandCreator<Tenant> commandCreator;
+    private CrudCommandBuilderCreator<Tenant> commandCreator;
     private String destination;
 
 
@@ -92,8 +92,8 @@ public class TenantClientImpl implements TenantClient, Serializable {
 
     @Override
     public Tenant create(Tenant data) throws TenantExistsException {
-        CommandBuilder<TenantCreateCommand, Tenant> commandBuilder
-                = new CommandBuilder<TenantCreateCommand, Tenant>(TenantCreateCommand.class, commandCreator)
+        CrudCommandBuilder<TenantCreateCommand, Tenant> commandBuilder
+                = new CrudCommandBuilder<TenantCreateCommand, Tenant>(TenantCreateCommand.class, commandCreator)
                 .withSource(clientId)
                 .withData(data)
                 .create();
@@ -118,8 +118,8 @@ public class TenantClientImpl implements TenantClient, Serializable {
 
     @Override
     public <P extends Predicate<Tenant>> PagedListable<Tenant> retrieve(P predicate, Pageable page) {
-        CommandBuilder<TenantRetrieveCommand, Tenant> commandBuilder
-                = new CommandBuilder<TenantRetrieveCommand, Tenant>(TenantRetrieveCommand.class, commandCreator)
+        CrudCommandBuilder<TenantRetrieveCommand, Tenant> commandBuilder
+                = new CrudCommandBuilder<TenantRetrieveCommand, Tenant>(TenantRetrieveCommand.class, commandCreator)
                 .withSource(clientId)
                 .withPredicate(predicate)
                 .withPage(page)
@@ -160,8 +160,8 @@ public class TenantClientImpl implements TenantClient, Serializable {
 
     @Override
     public Tenant update(Tenant data) throws TenantDoesNotExistException {
-        CommandBuilder<TenantUpdateCommand, Tenant> commandBuilder
-                = new CommandBuilder<TenantUpdateCommand, Tenant>(TenantUpdateCommand.class, commandCreator)
+        CrudCommandBuilder<TenantUpdateCommand, Tenant> commandBuilder
+                = new CrudCommandBuilder<TenantUpdateCommand, Tenant>(TenantUpdateCommand.class, commandCreator)
                 .withSource(clientId)
                 .withData(data)
                 .update();
@@ -176,8 +176,8 @@ public class TenantClientImpl implements TenantClient, Serializable {
 
     @Override
     public void delete(UUID id) {
-        CommandBuilder<TenantDeleteCommand, Tenant> commandBuilder
-                = new CommandBuilder<TenantDeleteCommand, Tenant>(TenantDeleteCommand.class, commandCreator)
+        CrudCommandBuilder<TenantDeleteCommand, Tenant> commandBuilder
+                = new CrudCommandBuilder<TenantDeleteCommand, Tenant>(TenantDeleteCommand.class, commandCreator)
                 .withSource(clientId)
                 .withId(id)
                 .delete();

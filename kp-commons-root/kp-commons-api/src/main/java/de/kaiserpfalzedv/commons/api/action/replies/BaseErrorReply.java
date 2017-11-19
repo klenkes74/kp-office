@@ -14,21 +14,22 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzedv.commons.api.commands;
+package de.kaiserpfalzedv.commons.api.action.replies;
+
+import java.util.UUID;
+
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
-
-import javax.validation.constraints.NotNull;
-import java.util.UUID;
 
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
  * @version 1.0.0
  * @since 2016-09-27
  */
-public class BaseError extends BaseReplyImpl {
-    private static final long serialVersionUID = 2825378875380581840L;
+public class BaseErrorReply extends BaseReply {
+    private static final long serialVersionUID = 987296875742781345L;
 
     @JsonIgnore
     private Throwable cause;
@@ -42,8 +43,8 @@ public class BaseError extends BaseReplyImpl {
      *
      * @throws IllegalArgumentException if source is null.
      */
-    public BaseError(
-            @JsonProperty("source") @NotNull final UUID source,
+    public BaseErrorReply(
+            @JsonProperty("source") @NotNull final Object source,
             @JsonProperty("command") @NotNull final UUID commandId,
             @JsonProperty("reply") @NotNull final UUID replyId,
             final Throwable cause

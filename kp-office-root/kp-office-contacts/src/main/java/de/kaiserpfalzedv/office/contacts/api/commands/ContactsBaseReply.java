@@ -16,17 +16,18 @@
 
 package de.kaiserpfalzedv.office.contacts.api.commands;
 
-import de.kaiserpfalzedv.commons.api.commands.BaseSuccess;
+import java.util.UUID;
 
 import javax.validation.constraints.NotNull;
-import java.util.UUID;
+
+import de.kaiserpfalzedv.commons.api.action.replies.BaseSuccessReply;
 
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
  * @version 1.0.0
  * @since 2016-09-25
  */
-public abstract class ContactsBaseReply extends BaseSuccess {
+public abstract class ContactsBaseReply extends BaseSuccessReply {
     private static final long serialVersionUID = 3294533004926137938L;
 
     ContactsBaseReply(

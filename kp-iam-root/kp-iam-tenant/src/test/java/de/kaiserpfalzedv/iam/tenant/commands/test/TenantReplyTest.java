@@ -21,18 +21,19 @@ import java.util.UUID;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import de.kaiserpfalzedv.commons.api.commands.CommandBuilder;
+import de.kaiserpfalzedv.commons.api.action.commands.CrudCommandBuilder;
+import de.kaiserpfalzedv.commons.api.action.replies.CrudReplyBuilder;
 import de.kaiserpfalzedv.iam.tenant.api.Tenant;
 import de.kaiserpfalzedv.iam.tenant.api.TenantBuilder;
-import de.kaiserpfalzedv.iam.tenant.api.commands.TenantCommandCreator;
 import de.kaiserpfalzedv.iam.tenant.api.commands.TenantCreateCommand;
+import de.kaiserpfalzedv.iam.tenant.api.commands.TenantCrudCommandBuilderCreator;
 import de.kaiserpfalzedv.iam.tenant.api.commands.TenantDeleteCommand;
 import de.kaiserpfalzedv.iam.tenant.api.commands.TenantUpdateCommand;
 import de.kaiserpfalzedv.iam.tenant.api.replies.TenantBaseReply;
 import de.kaiserpfalzedv.iam.tenant.api.replies.TenantContainingBaseReply;
 import de.kaiserpfalzedv.iam.tenant.api.replies.TenantCreateReply;
+import de.kaiserpfalzedv.iam.tenant.api.replies.TenantCrudReplyBuilderCreator;
 import de.kaiserpfalzedv.iam.tenant.api.replies.TenantDeleteReply;
-import de.kaiserpfalzedv.iam.tenant.api.replies.TenantReplyBuilder;
 import de.kaiserpfalzedv.iam.tenant.api.replies.TenantRetrieveReply;
 import de.kaiserpfalzedv.iam.tenant.api.replies.TenantUpdateReply;
 import org.junit.BeforeClass;
@@ -68,7 +69,8 @@ public class TenantReplyTest {
             .withFullName(FULL_NAME)
             .build();
 
-    private static final TenantCommandCreator creator = new TenantCommandCreator();
+    private static final TenantCrudCommandBuilderCreator commandCreator = new TenantCrudCommandBuilderCreator();
+    private static final TenantCrudReplyBuilderCreator replyCreator = new TenantCrudReplyBuilderCreator();
     private static final ObjectMapper mapper = new ObjectMapper();
 
     @BeforeClass
@@ -80,10 +82,12 @@ public class TenantReplyTest {
     @Test
     public void checkTenantCreateReply() throws IOException {
         TenantCreateCommand command = createTenantCreateCommand(TENANT);
-        TenantCreateReply reply = new TenantReplyBuilder<TenantCreateReply>()
-                .withSource(SOURCE_ID)
+
+        TenantCreateReply reply
+                = new CrudReplyBuilder<TenantCreateReply, TenantCreateCommand, Tenant>(TenantCreateReply.class, replyCreator)
                 .withCommand(command)
-                .withTenant(TENANT)
+                .withSource(SOURCE_ID)
+                .withData(TENANT)
                 .build();
 
         String json = marshalAndUnmarshalCommand(reply);
@@ -94,8 +98,8 @@ public class TenantReplyTest {
     }
 
     private TenantCreateCommand createTenantCreateCommand(final Tenant tenant) {
-        CommandBuilder<TenantCreateCommand, Tenant> commandBuilder
-                = new CommandBuilder<TenantCreateCommand, Tenant>(TenantCreateCommand.class, creator)
+        CrudCommandBuilder<TenantCreateCommand, Tenant> commandBuilder
+                = new CrudCommandBuilder<TenantCreateCommand, Tenant>(TenantCreateCommand.class, commandCreator)
                 .withSource(REQUESTOR_ID)
                 .withData(tenant)
                 .create();
@@ -153,10 +157,11 @@ public class TenantReplyTest {
     @Test
     public void checkTenantUpdateReply() throws IOException {
         TenantUpdateCommand command = createTenantUpdateCommand(TENANT);
-        TenantUpdateReply reply = new TenantReplyBuilder<TenantUpdateReply>()
+        TenantUpdateReply reply
+                = new CrudReplyBuilder<TenantUpdateReply, TenantUpdateCommand, Tenant>(TenantUpdateReply.class, replyCreator)
                 .withSource(SOURCE_ID)
                 .withCommand(command)
-                .withTenant(TENANT)
+                .withData(TENANT)
                 .build();
 
         String json = marshalAndUnmarshalCommand(reply);
@@ -167,8 +172,8 @@ public class TenantReplyTest {
     }
 
     private TenantUpdateCommand createTenantUpdateCommand(final Tenant tenant) {
-        CommandBuilder<TenantUpdateCommand, Tenant> commandBuilder
-                = new CommandBuilder<TenantUpdateCommand, Tenant>(TenantUpdateCommand.class, creator)
+        CrudCommandBuilder<TenantUpdateCommand, Tenant> commandBuilder
+                = new CrudCommandBuilder<TenantUpdateCommand, Tenant>(TenantUpdateCommand.class, commandCreator)
                 .withSource(SOURCE_ID)
                 .withData(tenant)
                 .update();
@@ -182,7 +187,8 @@ public class TenantReplyTest {
     @Test
     public void checkTenantDeleteReply() throws IOException {
         TenantDeleteCommand command = createTenantDeleteCommand(TENANT_ID);
-        TenantDeleteReply reply = new TenantReplyBuilder<TenantDeleteReply>()
+        TenantDeleteReply reply
+                = new CrudReplyBuilder<TenantDeleteReply, TenantDeleteCommand, Tenant>(TenantDeleteReply.class, replyCreator)
                 .withSource(SOURCE_ID)
                 .withCommand(command)
                 .build();
@@ -195,8 +201,8 @@ public class TenantReplyTest {
     }
 
     private TenantDeleteCommand createTenantDeleteCommand(final UUID tenantId) {
-        CommandBuilder<TenantDeleteCommand, Tenant> commandBuilder
-                = new CommandBuilder<TenantDeleteCommand, Tenant>(TenantDeleteCommand.class, creator)
+        CrudCommandBuilder<TenantDeleteCommand, Tenant> commandBuilder
+                = new CrudCommandBuilder<TenantDeleteCommand, Tenant>(TenantDeleteCommand.class, commandCreator)
                 .withSource(SOURCE_ID)
                 .withId(tenantId)
                 .update();

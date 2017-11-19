@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzedv.commons.api.commands;
+package de.kaiserpfalzedv.commons.api.action.commands;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -23,26 +23,27 @@ import java.util.UUID;
 import javax.validation.constraints.NotNull;
 
 import de.kaiserpfalzedv.commons.api.BuilderException;
+import de.kaiserpfalzedv.commons.api.action.CrudCommandType;
 import de.kaiserpfalzedv.commons.api.data.paging.Pageable;
 import de.kaiserpfalzedv.commons.api.data.query.Predicate;
 import org.apache.commons.lang3.builder.Builder;
 
-import static de.kaiserpfalzedv.commons.api.commands.CrudCommands.CREATE;
-import static de.kaiserpfalzedv.commons.api.commands.CrudCommands.DELETE;
-import static de.kaiserpfalzedv.commons.api.commands.CrudCommands.RETRIEVE;
-import static de.kaiserpfalzedv.commons.api.commands.CrudCommands.UPDATE;
+import static de.kaiserpfalzedv.commons.api.action.CrudCommandType.CREATE;
+import static de.kaiserpfalzedv.commons.api.action.CrudCommandType.DELETE;
+import static de.kaiserpfalzedv.commons.api.action.CrudCommandType.RETRIEVE;
+import static de.kaiserpfalzedv.commons.api.action.CrudCommandType.UPDATE;
 
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
  * @version 1.0.0
  * @since 2016-09-25
  */
-public class CommandBuilder<C extends BaseCommand, T extends Serializable> implements Builder<C> {
-    private CrudCommandCreator<T> creator;
-    private CrudCommandDefaultValueCalculator<T> calculator;
-    private CrudCommandValidator<T> validator;
+public class CrudCommandBuilder<C extends CrudCommand<T>, T extends Serializable> implements Builder<C> {
+    private CrudCommandBuilderCreator<T> creator;
+    private CrudCommandBuilderValueCalculator<T> calculator;
+    private CrudCommandBuilderValidator<T> validator;
     private Class<?> clasz;
-    private CrudCommands command;
+    private CrudCommandType command;
 
     private UUID source;
     private UUID id;
@@ -53,22 +54,22 @@ public class CommandBuilder<C extends BaseCommand, T extends Serializable> imple
     private Pageable page;
 
 
-    public CommandBuilder(
+    public CrudCommandBuilder(
             @NotNull final Class<?> clasz,
-            @NotNull final CrudCommandCreator<T> creator
+            @NotNull final CrudCommandBuilderCreator<T> creator
     ) {
         this.clasz = clasz;
         this.creator = creator;
     }
 
-    public CommandBuilder<C, T> withDefaultCalculator(@NotNull final CrudCommandDefaultValueCalculator<T> calculator) {
+    public CrudCommandBuilder<C, T> withDefaultCalculator(@NotNull final CrudCommandBuilderValueCalculator<T> calculator) {
         this.calculator = calculator;
 
         return this;
     }
 
 
-    public CommandBuilder<C, T> withValidator(@NotNull final CrudCommandValidator<T> validator) {
+    public CrudCommandBuilder<C, T> withValidator(@NotNull final CrudCommandBuilderValidator<T> validator) {
         this.validator = validator;
 
         return this;
@@ -143,52 +144,52 @@ public class CommandBuilder<C extends BaseCommand, T extends Serializable> imple
     }
 
 
-    public CommandBuilder<C, T> withSource(UUID source) {
+    public CrudCommandBuilder<C, T> withSource(UUID source) {
         this.source = source;
         return this;
     }
 
-    public CommandBuilder<C, T> withCommandId(@NotNull UUID id) {
+    public CrudCommandBuilder<C, T> withCommandId(@NotNull UUID id) {
         this.id = id;
         return this;
     }
 
-    public CommandBuilder<C, T> withId(@NotNull UUID TId) {
+    public CrudCommandBuilder<C, T> withId(@NotNull UUID TId) {
         this.dataId = TId;
         return this;
     }
 
-    public CommandBuilder withData(@NotNull final T data) {
+    public CrudCommandBuilder withData(@NotNull final T data) {
         this.data = data;
         return this;
     }
 
-    public CommandBuilder<C, T> withPredicate(@NotNull final Predicate<T> predicate) {
+    public CrudCommandBuilder<C, T> withPredicate(@NotNull final Predicate<T> predicate) {
         this.predicate = predicate;
         return this;
     }
 
-    public CommandBuilder<C, T> withPage(@NotNull final Pageable page) {
+    public CrudCommandBuilder<C, T> withPage(@NotNull final Pageable page) {
         this.page = page;
         return this;
     }
 
-    public CommandBuilder<C, T> create() {
+    public CrudCommandBuilder<C, T> create() {
         command = CREATE;
         return this;
     }
 
-    public CommandBuilder<C, T> retrieve() {
+    public CrudCommandBuilder<C, T> retrieve() {
         command = RETRIEVE;
         return this;
     }
 
-    public CommandBuilder<C, T> update() {
+    public CrudCommandBuilder<C, T> update() {
         command = UPDATE;
         return this;
     }
 
-    public CommandBuilder<C, T> delete() {
+    public CrudCommandBuilder<C, T> delete() {
         command = DELETE;
         return this;
     }

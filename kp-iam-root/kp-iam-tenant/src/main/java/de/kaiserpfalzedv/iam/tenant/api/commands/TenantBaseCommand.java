@@ -21,51 +21,30 @@ import java.util.UUID;
 
 import javax.validation.constraints.NotNull;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import de.kaiserpfalzedv.commons.api.commands.BaseCommand;
-import de.kaiserpfalzedv.commons.api.commands.CommandExecutionException;
-import de.kaiserpfalzedv.commons.api.commands.CrudCommands;
+import de.kaiserpfalzedv.commons.api.action.CommandExecutionException;
+import de.kaiserpfalzedv.commons.api.action.CrudCommandType;
+import de.kaiserpfalzedv.commons.api.action.commands.CrudCommand;
+import de.kaiserpfalzedv.iam.tenant.api.Tenant;
 import de.kaiserpfalzedv.iam.tenant.api.TenantCommandExecutor;
 import de.kaiserpfalzedv.iam.tenant.api.replies.TenantBaseReply;
-import org.apache.commons.lang3.builder.ToStringBuilder;
-import org.apache.commons.lang3.builder.ToStringStyle;
 
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
  * @version 1.0.0
  * @since 2016-09-25
  */
-public abstract class TenantBaseCommand extends BaseCommand {
-    private static final long serialVersionUID = -953913734050792152L;
-
-    @JsonIgnore
-    private CrudCommands crudType;
+public abstract class TenantBaseCommand extends CrudCommand<Tenant> {
+    private static final long serialVersionUID = -7995764167329794088L;
 
     TenantBaseCommand(
-            @NotNull final CrudCommands type,
+            @NotNull final CrudCommandType type,
             @NotNull final UUID source,
             @NotNull final UUID commandId
     ) {
-        super(source, commandId);
-
-        crudType = type;
+        super(source, commandId, type);
     }
 
     public Optional<? extends TenantBaseReply> execute(TenantCommandExecutor executor) throws CommandExecutionException {
         throw new UnsupportedOperationException("Can't execute a TenantBaseCommand directly. Only subclasses are supported");
-    }
-
-    @JsonIgnore
-    public CrudCommands getCrudType() {
-        return crudType;
-    }
-
-
-    @Override
-    public String toString() {
-        return new ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE)
-                .appendSuper(super.toString())
-                .append("crudType", crudType)
-                .toString();
     }
 }

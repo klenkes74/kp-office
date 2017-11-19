@@ -21,13 +21,13 @@ import java.util.UUID;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import de.kaiserpfalzedv.commons.api.commands.CommandBuilder;
+import de.kaiserpfalzedv.commons.api.action.commands.CrudCommandBuilder;
 import de.kaiserpfalzedv.iam.tenant.api.Tenant;
 import de.kaiserpfalzedv.iam.tenant.api.TenantBuilder;
 import de.kaiserpfalzedv.iam.tenant.api.commands.TenantBaseCommand;
-import de.kaiserpfalzedv.iam.tenant.api.commands.TenantCommandCreator;
 import de.kaiserpfalzedv.iam.tenant.api.commands.TenantContainingBaseCommand;
 import de.kaiserpfalzedv.iam.tenant.api.commands.TenantCreateCommand;
+import de.kaiserpfalzedv.iam.tenant.api.commands.TenantCrudCommandBuilderCreator;
 import de.kaiserpfalzedv.iam.tenant.api.commands.TenantDeleteCommand;
 import de.kaiserpfalzedv.iam.tenant.api.commands.TenantUpdateCommand;
 import org.junit.BeforeClass;
@@ -63,7 +63,7 @@ public class TenantCommandTest {
             .build();
 
 
-    private static final TenantCommandCreator creator = new TenantCommandCreator();
+    private static final TenantCrudCommandBuilderCreator creator = new TenantCrudCommandBuilderCreator();
     private static final ObjectMapper mapper = new ObjectMapper();
 
     @BeforeClass
@@ -83,8 +83,8 @@ public class TenantCommandTest {
     }
 
     private TenantCreateCommand createTenantCreateCommand(final Tenant tenant) {
-        CommandBuilder<TenantCreateCommand, Tenant> commandBuilder
-                = new CommandBuilder<TenantCreateCommand, Tenant>(TenantCreateCommand.class, creator)
+        CrudCommandBuilder<TenantCreateCommand, Tenant> commandBuilder
+                = new CrudCommandBuilder<TenantCreateCommand, Tenant>(TenantCreateCommand.class, creator)
                 .withSource(SOURCE_ID)
                 .withData(tenant)
                 .create();
@@ -141,8 +141,8 @@ public class TenantCommandTest {
     }
 
     private TenantUpdateCommand createTenantUpdateCommand(final Tenant tenant) {
-        CommandBuilder<TenantUpdateCommand, Tenant> commandBuilder
-                = new CommandBuilder<TenantUpdateCommand, Tenant>(TenantUpdateCommand.class, creator)
+        CrudCommandBuilder<TenantUpdateCommand, Tenant> commandBuilder
+                = new CrudCommandBuilder<TenantUpdateCommand, Tenant>(TenantUpdateCommand.class, creator)
                 .withSource(SOURCE_ID)
                 .withData(tenant)
                 .update();
@@ -164,8 +164,8 @@ public class TenantCommandTest {
     }
 
     private TenantDeleteCommand createTenantDeleteCommand(final UUID tenant) {
-        CommandBuilder<TenantDeleteCommand, Tenant> commandBuilder
-                = new CommandBuilder<TenantDeleteCommand, Tenant>(TenantDeleteCommand.class, creator)
+        CrudCommandBuilder<TenantDeleteCommand, Tenant> commandBuilder
+                = new CrudCommandBuilder<TenantDeleteCommand, Tenant>(TenantDeleteCommand.class, creator)
                 .withSource(SOURCE_ID)
                 .withId(tenant)
                 .update();

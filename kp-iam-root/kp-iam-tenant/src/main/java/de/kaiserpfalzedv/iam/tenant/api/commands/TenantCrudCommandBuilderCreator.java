@@ -18,7 +18,10 @@ package de.kaiserpfalzedv.iam.tenant.api.commands;
 
 import java.util.UUID;
 
-import de.kaiserpfalzedv.commons.api.commands.CrudCommandCreator;
+import javax.enterprise.context.ApplicationScoped;
+
+import de.kaiserpfalzedv.commons.api.action.commands.CrudCommand;
+import de.kaiserpfalzedv.commons.api.action.commands.CrudCommandBuilderCreator;
 import de.kaiserpfalzedv.commons.api.data.paging.Pageable;
 import de.kaiserpfalzedv.commons.api.data.query.Predicate;
 import de.kaiserpfalzedv.iam.tenant.api.Tenant;
@@ -28,9 +31,10 @@ import de.kaiserpfalzedv.iam.tenant.api.Tenant;
  * @version 1.0.0
  * @since 2017-11-19
  */
-public class TenantCommandCreator implements CrudCommandCreator<Tenant> {
+@ApplicationScoped
+public class TenantCrudCommandBuilderCreator implements CrudCommandBuilderCreator<Tenant> {
     @Override
-    public TenantCreateCommand create(UUID source, UUID commandId, Tenant data) {
+    public CrudCommand<Tenant> create(UUID source, UUID commandId, Tenant data) {
         return new TenantCreateCommand(source, commandId, data);
     }
 

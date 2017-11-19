@@ -16,10 +16,10 @@
 
 package de.kaiserpfalzedv.commons.api.messaging;
 
-import de.kaiserpfalzedv.commons.api.BaseSystemException;
-import de.kaiserpfalzedv.commons.api.commands.CrudCommands;
-
 import java.util.UUID;
+
+import de.kaiserpfalzedv.commons.api.BaseSystemException;
+import de.kaiserpfalzedv.commons.api.action.CrudCommandType;
 
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
@@ -32,13 +32,13 @@ public class ClientCommunicationException extends BaseSystemException {
     private String messageId;
     private UUID correlationId;
 
-    private CrudCommands command;
+    private CrudCommandType command;
     private Class<?> clasz;
     private UUID tenantId;
 
     public ClientCommunicationException(
             final Class<?> clasz,
-            final CrudCommands command,
+            final CrudCommandType command,
             final UUID correlationId,
             final String messageId,
             final UUID objectId,
@@ -60,7 +60,7 @@ public class ClientCommunicationException extends BaseSystemException {
 
     public ClientCommunicationException(
             final Class<?> clasz,
-            final CrudCommands command,
+            final CrudCommandType command,
             final UUID correlationId,
             final String messageId,
             Throwable cause
@@ -86,7 +86,7 @@ public class ClientCommunicationException extends BaseSystemException {
         return correlationId;
     }
 
-    public CrudCommands getCommand() {
+    public CrudCommandType getCommand() {
         return command;
     }
 

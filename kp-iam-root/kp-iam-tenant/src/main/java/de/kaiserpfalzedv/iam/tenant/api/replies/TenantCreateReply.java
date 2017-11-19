@@ -16,12 +16,13 @@
 
 package de.kaiserpfalzedv.iam.tenant.api.replies;
 
+import java.util.UUID;
+
+import javax.validation.constraints.NotNull;
+
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import de.kaiserpfalzedv.iam.tenant.api.Tenant;
-
-import javax.validation.constraints.NotNull;
-import java.util.UUID;
 
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
@@ -29,7 +30,7 @@ import java.util.UUID;
  * @since 2016-09-25
  */
 public class TenantCreateReply extends TenantContainingBaseReply {
-    private static final long serialVersionUID = -1525644608280007282L;
+    private static final long serialVersionUID = -3674148597396259161L;
 
 
     @JsonCreator

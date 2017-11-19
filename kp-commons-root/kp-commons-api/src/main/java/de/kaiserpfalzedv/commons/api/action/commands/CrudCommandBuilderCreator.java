@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzedv.commons.api.commands;
+package de.kaiserpfalzedv.commons.api.action.commands;
 
 import java.io.Serializable;
 import java.util.UUID;
@@ -29,15 +29,15 @@ import de.kaiserpfalzedv.commons.api.data.query.Predicate;
  * @version 1.0.0
  * @since 2017-11-19
  */
-public interface CrudCommandCreator<T extends Serializable> {
-    BaseCommand create(@NotNull final UUID source, @NotNull final UUID commandId, @NotNull final T data);
+public interface CrudCommandBuilderCreator<T extends Serializable> {
+    CrudCommand<T> create(@NotNull final UUID source, @NotNull final UUID commandId, @NotNull final T data);
 
-    BaseCommand retrieve(
+    CrudCommand<T> retrieve(
             @NotNull final UUID source, @NotNull final UUID commandId,
             @NotNull final Predicate<T> predicate, @NotNull final Pageable page
     );
 
-    BaseCommand update(@NotNull final UUID source, @NotNull final UUID commandId, @NotNull final T data);
+    CrudCommand<T> update(@NotNull final UUID source, @NotNull final UUID commandId, @NotNull final T data);
 
-    BaseCommand delete(@NotNull final UUID source, @NotNull final UUID commandId, @NotNull final UUID dataId);
+    CrudCommand<T> delete(@NotNull final UUID source, @NotNull final UUID commandId, @NotNull final UUID dataId);
 }

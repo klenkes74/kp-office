@@ -16,15 +16,16 @@
 
 package de.kaiserpfalzedv.iam.tenant.api.commands;
 
+import java.util.UUID;
+
+import javax.validation.constraints.NotNull;
+
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import de.kaiserpfalzedv.commons.api.commands.CrudCommands;
+import de.kaiserpfalzedv.commons.api.action.CrudCommandType;
 import de.kaiserpfalzedv.iam.tenant.api.Tenant;
 import de.kaiserpfalzedv.iam.tenant.api.TenantImpl;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
-
-import javax.validation.constraints.NotNull;
-import java.util.UUID;
 
 import static com.fasterxml.jackson.annotation.JsonTypeInfo.As.PROPERTY;
 
@@ -40,7 +41,7 @@ public abstract class TenantContainingBaseCommand extends TenantBaseCommand {
     protected Tenant tenant;
 
     protected TenantContainingBaseCommand(
-            @NotNull final CrudCommands type,
+            @NotNull final CrudCommandType type,
             @NotNull final UUID source,
             @NotNull final UUID commandId,
             @NotNull final Tenant tenant

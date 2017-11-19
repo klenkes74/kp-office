@@ -14,9 +14,12 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzedv.commons.api.commands;
+package de.kaiserpfalzedv.commons.api.action;
 
 import java.util.Optional;
+
+import de.kaiserpfalzedv.commons.api.action.commands.BaseCommand;
+import de.kaiserpfalzedv.commons.api.action.replies.BaseReply;
 
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}

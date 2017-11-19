@@ -21,7 +21,7 @@ import java.util.UUID;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import de.kaiserpfalzedv.commons.api.commands.CrudCommands;
+import de.kaiserpfalzedv.commons.api.action.CrudCommandType;
 
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
@@ -31,7 +31,7 @@ import de.kaiserpfalzedv.commons.api.commands.CrudCommands;
 public class TenantDeleteCommand extends TenantBaseCommand {
     private static final long serialVersionUID = 3433560321699584058L;
 
-    private static final CrudCommands CRUD_TYPE = CrudCommands.DELETE;
+    private static final CrudCommandType CRUD_TYPE = CrudCommandType.DELETE;
 
     private UUID tenant;
 

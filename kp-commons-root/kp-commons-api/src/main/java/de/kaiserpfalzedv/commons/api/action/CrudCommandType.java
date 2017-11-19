@@ -14,28 +14,17 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzedv.iam.tenant.api.replies;
-
-import java.util.UUID;
-
-import javax.validation.constraints.NotNull;
-
-import de.kaiserpfalzedv.commons.api.action.replies.CrudReply;
-import de.kaiserpfalzedv.iam.tenant.api.Tenant;
+package de.kaiserpfalzedv.commons.api.action;
 
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
  * @version 1.0.0
  * @since 2016-09-25
  */
-public abstract class TenantBaseReply extends CrudReply<Tenant> {
-    private static final long serialVersionUID = 8099976993505528266L;
-
-    TenantBaseReply(
-            @NotNull final UUID source,
-            @NotNull final UUID commandId,
-            @NotNull final UUID replyId
-    ) {
-        super(source, commandId, replyId);
-    }
+public enum CrudCommandType {
+    CREATE,
+    RETRIEVE,
+    UPDATE,
+    DELETE,
+    UNSPECIFIED
 }

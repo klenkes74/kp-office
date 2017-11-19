@@ -14,25 +14,36 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzedv.commons.api.commands;
+package de.kaiserpfalzedv.commons.api.action.replies;
 
 import java.io.Serializable;
 import java.util.UUID;
 
+import javax.validation.constraints.NotNull;
+
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
  * @version 1.0.0
- * @since 2016-09-27
+ * @since 2016-09-25
  */
-public interface BaseReply extends Serializable {
-    UUID getCommand();
+public abstract class BaseSuccessReply<T extends Serializable> extends BaseReply<T> {
+    private static final long serialVersionUID = -8057089620687949428L;
 
-    UUID getReply();
 
     /**
-     * @return The UUID of the source.
+     * Constructs a prototypical Event.
+     *
+     * @param source    The object on which the Event initially occurred.
+     * @param commandId The unique ID of this command.
+     * @param replyId   The unique ID of this reply.
+     *
+     * @throws IllegalArgumentException if source is null.
      */
-    UUID getSource();
-
-    String getActionType();
+    public BaseSuccessReply(
+            @NotNull final Object source,
+            @NotNull final UUID commandId,
+            @NotNull final UUID replyId
+    ) {
+        super(source, commandId, replyId);
+    }
 }

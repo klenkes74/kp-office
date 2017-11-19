@@ -14,17 +14,31 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzedv.commons.api.commands;
+package de.kaiserpfalzedv.commons.api.action.replies;
+
+import java.io.Serializable;
+import java.util.UUID;
+
+import javax.validation.constraints.NotNull;
+
+import de.kaiserpfalzedv.commons.api.action.CrudCommandType;
 
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
  * @version 1.0.0
- * @since 2016-09-25
+ * @since 2017-11-19
  */
-public enum CrudCommands {
-    CREATE,
-    RETRIEVE,
-    UPDATE,
-    DELETE,
-    UNSPECIFIED
+public abstract class CrudReply<T extends Serializable> extends BaseSuccessReply<T> {
+    private static final long serialVersionUID = 8714300736928906962L;
+
+    private CrudCommandType type;
+
+
+    public CrudReply(@NotNull final Object source, @NotNull final UUID command, @NotNull final UUID reply) {
+        super(source, command, reply);
+    }
+
+    public CrudCommandType getType() {
+        return type;
+    }
 }

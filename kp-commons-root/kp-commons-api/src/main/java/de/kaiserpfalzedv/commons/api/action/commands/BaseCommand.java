@@ -14,8 +14,9 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzedv.commons.api.commands;
+package de.kaiserpfalzedv.commons.api.action.commands;
 
+import java.io.Serializable;
 import java.util.EventObject;
 import java.util.Optional;
 import java.util.UUID;
@@ -24,6 +25,9 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import de.kaiserpfalzedv.commons.api.action.CommandExecutionException;
+import de.kaiserpfalzedv.commons.api.action.CommandExecutor;
+import de.kaiserpfalzedv.commons.api.action.replies.BaseReply;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
@@ -37,7 +41,7 @@ import org.apache.commons.lang3.builder.ToStringStyle;
  * @since 2016-09-25
  */
 @JsonTypeInfo(use = JsonTypeInfo.Id.NONE, include = JsonTypeInfo.As.PROPERTY)
-public abstract class BaseCommand extends EventObject {
+public abstract class BaseCommand<T extends Serializable> extends EventObject {
     private static final long serialVersionUID = 1L;
 
     private UUID command;
@@ -66,7 +70,7 @@ public abstract class BaseCommand extends EventObject {
     }
 
     @SuppressWarnings("unused")
-    public Optional<? extends BaseReply> execute(CommandExecutor commandExecutor) throws CommandExecutionException {
+    public Optional<? extends BaseReply<T>> execute(CommandExecutor commandExecutor) throws CommandExecutionException {
         return commandExecutor.execute(this);
     }
 

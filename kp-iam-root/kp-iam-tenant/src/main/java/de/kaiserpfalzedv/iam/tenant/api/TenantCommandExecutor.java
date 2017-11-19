@@ -18,8 +18,8 @@ package de.kaiserpfalzedv.iam.tenant.api;
 
 import java.util.Optional;
 
-import de.kaiserpfalzedv.commons.api.commands.CommandExecutionException;
-import de.kaiserpfalzedv.commons.api.commands.CommandExecutor;
+import de.kaiserpfalzedv.commons.api.action.CommandExecutionException;
+import de.kaiserpfalzedv.commons.api.action.CommandExecutor;
 import de.kaiserpfalzedv.iam.tenant.api.commands.TenantCreateCommand;
 import de.kaiserpfalzedv.iam.tenant.api.commands.TenantDeleteCommand;
 import de.kaiserpfalzedv.iam.tenant.api.commands.TenantRetrieveCommand;

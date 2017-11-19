@@ -14,34 +14,40 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzedv.commons.api.commands;
+package de.kaiserpfalzedv.commons.api.action.commands;
+
+import java.io.Serializable;
+import java.util.UUID;
 
 import javax.validation.constraints.NotNull;
-import java.util.UUID;
+
+import de.kaiserpfalzedv.commons.api.action.CrudCommandType;
 
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
  * @version 1.0.0
- * @since 2016-09-25
+ * @since 2017-11-19
  */
-public abstract class BaseSuccess extends BaseReplyImpl {
-    private static final long serialVersionUID = 5596535699868587163L;
+public abstract class CrudCommand<T extends Serializable> extends BaseCommand<T> {
+    private static final long serialVersionUID = 6549491371815924126L;
 
+    private CrudCommandType type;
 
     /**
      * Constructs a prototypical Event.
      *
-     * @param source    The object on which the Event initially occurred.
-     * @param commandId The unique ID of this command.
-     * @param replyId   The unique ID of this reply.
+     * @param source  The object on which the Event initially occurred.
+     * @param command The unique ID of this command.
      *
      * @throws IllegalArgumentException if source is null.
      */
-    public BaseSuccess(
-            @NotNull final UUID source,
-            @NotNull final UUID commandId,
-            @NotNull final UUID replyId
-    ) {
-        super(source, commandId, replyId);
+    public CrudCommand(@NotNull final UUID source, @NotNull final UUID command, @NotNull final CrudCommandType type) {
+        super(source, command);
+
+        this.type = type;
+    }
+
+    public CrudCommandType getType() {
+        return type;
     }
 }

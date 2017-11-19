@@ -16,14 +16,15 @@
 
 package de.kaiserpfalzedv.office.contacts.api.commands;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import de.kaiserpfalzedv.commons.api.commands.BaseCommand;
-import de.kaiserpfalzedv.commons.api.commands.CrudCommands;
-import org.apache.commons.lang3.builder.ToStringBuilder;
-import org.apache.commons.lang3.builder.ToStringStyle;
+import java.util.UUID;
 
 import javax.validation.constraints.NotNull;
-import java.util.UUID;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import de.kaiserpfalzedv.commons.api.action.CrudCommandType;
+import de.kaiserpfalzedv.commons.api.action.commands.BaseCommand;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
 
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
@@ -33,7 +34,7 @@ import java.util.UUID;
 public abstract class ContactsBaseCommand extends BaseCommand {
 
     @JsonIgnore
-    private CrudCommands crudType;
+    private CrudCommandType crudType;
 
 
     /**
@@ -44,7 +45,7 @@ public abstract class ContactsBaseCommand extends BaseCommand {
      * @throws IllegalArgumentException if source is null.
      */
     public ContactsBaseCommand(
-            @NotNull final CrudCommands crudType,
+            @NotNull final CrudCommandType crudType,
             @NotNull final UUID source,
             @NotNull final UUID command
     ) {
@@ -57,7 +58,7 @@ public abstract class ContactsBaseCommand extends BaseCommand {
     public abstract void execute(@NotNull final ContactsCommandExecutor executor) throws ContactsCommandExecutionException;
 
     @JsonIgnore
-    public CrudCommands getCrudType() {
+    public CrudCommandType getCrudType() {
         return crudType;
     }
 

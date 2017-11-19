@@ -16,13 +16,14 @@
 
 package de.kaiserpfalzedv.iam.tenant.api.commands;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import de.kaiserpfalzedv.commons.api.commands.CrudCommands;
-import de.kaiserpfalzedv.iam.tenant.api.Tenant;
+import java.util.UUID;
 
 import javax.validation.constraints.NotNull;
-import java.util.UUID;
+
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import de.kaiserpfalzedv.commons.api.action.CrudCommandType;
+import de.kaiserpfalzedv.iam.tenant.api.Tenant;
 
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
@@ -30,8 +31,8 @@ import java.util.UUID;
  * @since 2016-09-25
  */
 public class TenantUpdateCommand extends TenantContainingBaseCommand {
-    private static final long serialVersionUID = 1L;
-    private static final CrudCommands CRUD_TYPE = CrudCommands.UPDATE;
+    private static final long serialVersionUID = -9051562688508982153L;
+    private static final CrudCommandType CRUD_TYPE = CrudCommandType.UPDATE;
 
 
     @JsonCreator
