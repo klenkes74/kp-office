@@ -19,7 +19,7 @@ import java.io.Serializable;
 
 import de.kaiserpfalzedv.commons.api.data.base.Identifiable;
 import de.kaiserpfalzedv.commons.api.data.base.Nameable;
-import de.kaiserpfalzedv.commons.api.data.tenant.Tenantable;
+import de.kaiserpfalzedv.commons.api.multitenancy.Tenantable;
 
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}

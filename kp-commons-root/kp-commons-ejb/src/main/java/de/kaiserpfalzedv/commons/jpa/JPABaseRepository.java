@@ -128,12 +128,12 @@ public class JPABaseRepository<T extends JPAAbstractIdentifiable, P extends Iden
                            .getSingleResult();
 
             resultPage = new PageableBuilder()
-                    .withPaging(page)
+                    .withPage(page)
                     .withTotalCount(totalCount)
                     .withTotalPages(0)
                     .build();
         } else {
-            resultPage = new PageableBuilder().withPaging(page).build();
+            resultPage = new PageableBuilder().withPage(page).build();
         }
 
         List<T> data = em

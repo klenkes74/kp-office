@@ -16,29 +16,27 @@
 
 package de.kaiserpfalzedv.iam.tenant.impl;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import de.kaiserpfalzedv.commons.api.MessageInfo;
-import de.kaiserpfalzedv.commons.api.commands.BaseCommand;
-import de.kaiserpfalzedv.commons.api.commands.CommandExecutionException;
-import de.kaiserpfalzedv.commons.ejb.ResponseSender;
-import de.kaiserpfalzedv.iam.tenant.api.Tenant;
-import de.kaiserpfalzedv.iam.tenant.api.TenantDoesNotExistException;
-import de.kaiserpfalzedv.iam.tenant.api.TenantExistsException;
-import de.kaiserpfalzedv.iam.tenant.api.TenantService;
-import de.kaiserpfalzedv.iam.tenant.api.commands.*;
-import de.kaiserpfalzedv.iam.tenant.api.replies.*;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import java.io.IOException;
+import java.util.Optional;
+import java.util.UUID;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.enterprise.context.Dependent;
 import javax.inject.Inject;
 import javax.jms.JMSException;
-import java.io.IOException;
-import java.util.Collection;
-import java.util.UUID;
+import javax.validation.constraints.NotNull;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import de.kaiserpfalzedv.commons.api.MessageInfo;
+import de.kaiserpfalzedv.commons.api.commands.CommandExecutionException;
+import de.kaiserpfalzedv.commons.ejb.ResponseSender;
+import de.kaiserpfalzedv.iam.tenant.api.TenantCommandExecutor;
+import de.kaiserpfalzedv.iam.tenant.api.commands.TenantBaseCommand;
+import de.kaiserpfalzedv.iam.tenant.api.replies.TenantBaseReply;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
@@ -51,7 +49,8 @@ public class TenantWorkerImpl implements TenantWorker {
 
     private UUID tenantWorkerId = UUID.randomUUID();
 
-    private TenantService service;
+    private TenantCommandExecutor executor;
+
     private ResponseSender responseSender;
     private ObjectMapper mapper = new ObjectMapper();
 
@@ -60,10 +59,10 @@ public class TenantWorkerImpl implements TenantWorker {
 
     @Inject
     public TenantWorkerImpl(
-            final TenantService tenantService,
-            final ResponseSender responseSender
+            @NotNull final TenantCommandExecutor executor,
+            @NotNull final ResponseSender responseSender
     ) {
-        this.service = tenantService;
+        this.executor = executor;
         this.responseSender = responseSender;
     }
 
@@ -88,8 +87,12 @@ public class TenantWorkerImpl implements TenantWorker {
         try {
             TenantBaseCommand command = mapper.readValue(message, claszOfAction(actionType));
 
-            command.execute(this);
-        } catch (TenantCommandExecutionException | IOException e) {
+            Optional<? extends TenantBaseReply> reply = command.execute(executor);
+
+            if (reply.isPresent()) {
+                responseSender.sendReply(info, mapper.writeValueAsString(reply.get()));
+            }
+        } catch (CommandExecutionException | IOException e) {
             LOG.error(e.getClass().getSimpleName() + " caught: " + e.getMessage(), e);
 
             String error = mapper.writeValueAsString(e);
@@ -104,105 +107,5 @@ public class TenantWorkerImpl implements TenantWorker {
         } catch (ClassNotFoundException e) {
             throw new IllegalStateException("No valid message type: " + actionType);
         }
-    }
-
-
-    public void execute(TenantCreateCommand command) throws TenantCommandExecutionException {
-        try {
-            Tenant data = service.create(command.getTenant());
-
-            String message = createReply(command, data, TenantCreateReply.class);
-
-            responseSender.sendReply(info, message);
-        } catch (TenantExistsException | JsonProcessingException | JMSException e) {
-            LOG.error(e.getClass().getSimpleName() + " caught: " + e.getMessage(), e);
-
-            throw new TenantCommandExecutionException(command, e);
-        }
-    }
-
-    private <T extends TenantBaseCommand, R extends TenantBaseReply> String createReply(T command, Tenant data, Class<R> clasz) throws JsonProcessingException {
-        R reply = new TenantReplyBuilder<R>()
-                .withCommand(command)
-                .withSource(tenantWorkerId)
-                .withTenant(data)
-                .build();
-
-        return mapper.writeValueAsString(reply);
-    }
-
-
-    @Override
-    public void execute(TenantRetrieveCommand command) throws TenantCommandExecutionException {
-        try {
-            Tenant data = service.retrieve(command.getTenant());
-
-            String message = createReply(command, data, TenantRetrieveReply.class);
-
-            responseSender.sendReply(info, message);
-        } catch (TenantDoesNotExistException | JsonProcessingException | JMSException e) {
-            LOG.error(e.getClass().getSimpleName() + " caught: " + e.getMessage(), e);
-            throw new TenantCommandExecutionException(command, e);
-        }
-    }
-
-
-    @Override
-    public void execute(TenantRetrieveAllCommand command) throws TenantCommandExecutionException {
-        Collection<Tenant> data = service.retrieve();
-
-        TenantRetrieveAllReply reply = new TenantReplyBuilder<TenantRetrieveAllReply>()
-                .withCommand(command)
-                .withSource(tenantWorkerId)
-                .withTenants(data)
-                .build();
-
-        try {
-            String message = mapper.writeValueAsString(reply);
-            responseSender.sendReply(info, message);
-        } catch (JsonProcessingException | JMSException e) {
-            LOG.error(e.getClass().getSimpleName() + " caught: " + e.getMessage(), e);
-
-            throw new TenantCommandExecutionException(command, e);
-        }
-    }
-
-    @Override
-    public void execute(TenantUpdateCommand command) throws TenantCommandExecutionException {
-        try {
-            Tenant data = service.update(command.getTenant());
-
-            String message = createReply(command, data, TenantUpdateReply.class);
-
-            responseSender.sendReply(info, message);
-        } catch (TenantDoesNotExistException | TenantExistsException | JsonProcessingException | JMSException e) {
-            LOG.error(e.getClass().getSimpleName() + " caught: " + e.getMessage(), e);
-            throw new TenantCommandExecutionException(command, e);
-        }
-    }
-
-
-    @Override
-    public void execute(TenantDeleteCommand command) throws TenantCommandExecutionException {
-        service.delete(command.getTenant());
-
-        TenantDeleteReply reply = new TenantReplyBuilder<TenantDeleteReply>()
-                .withCommand(command)
-                .withSource(tenantWorkerId)
-                .build();
-
-        try {
-            String message = mapper.writeValueAsString(reply);
-            responseSender.sendReply(info, message);
-        } catch (JsonProcessingException | JMSException e) {
-            LOG.error(e.getClass().getSimpleName() + " caught: " + e.getMessage(), e);
-            throw new TenantCommandExecutionException(command, e);
-        }
-    }
-
-
-    @Override
-    public void execute(BaseCommand command) throws CommandExecutionException {
-        throw new CommandExecutionException(command, "Invalid command: " + command);
     }
 }

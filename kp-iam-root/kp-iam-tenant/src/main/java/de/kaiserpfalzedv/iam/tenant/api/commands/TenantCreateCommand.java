@@ -16,13 +16,18 @@
 
 package de.kaiserpfalzedv.iam.tenant.api.commands;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import de.kaiserpfalzedv.commons.api.commands.CrudCommands;
-import de.kaiserpfalzedv.iam.tenant.api.Tenant;
+import java.util.Optional;
+import java.util.UUID;
 
 import javax.validation.constraints.NotNull;
-import java.util.UUID;
+
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import de.kaiserpfalzedv.commons.api.commands.CommandExecutionException;
+import de.kaiserpfalzedv.commons.api.commands.CrudCommands;
+import de.kaiserpfalzedv.iam.tenant.api.Tenant;
+import de.kaiserpfalzedv.iam.tenant.api.TenantCommandExecutor;
+import de.kaiserpfalzedv.iam.tenant.api.replies.TenantCreateReply;
 
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
@@ -42,7 +47,7 @@ public class TenantCreateCommand extends TenantContainingBaseCommand {
         super(CRUD_TYPE, source, commandId, tenant);
     }
 
-    public void execute(TenantCommandExecutor commandExecutor) throws TenantCommandExecutionException {
-        commandExecutor.execute(this);
+    public Optional<TenantCreateReply> execute(TenantCommandExecutor commandExecutor) throws CommandExecutionException {
+        return (Optional<TenantCreateReply>) commandExecutor.execute(this);
     }
 }

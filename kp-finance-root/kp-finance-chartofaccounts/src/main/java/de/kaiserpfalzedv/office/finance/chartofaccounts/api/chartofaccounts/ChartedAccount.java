@@ -20,7 +20,7 @@ import java.io.Serializable;
 import java.util.Set;
 
 import de.kaiserpfalzedv.commons.api.data.base.Nameable;
-import de.kaiserpfalzedv.commons.api.data.tenant.Tenantable;
+import de.kaiserpfalzedv.commons.api.multitenancy.Tenantable;
 import de.kaiserpfalzedv.office.finance.chartofaccounts.api.account.Account;
 import de.kaiserpfalzedv.office.finance.chartofaccounts.api.account.AccountMultiMappedException;
 

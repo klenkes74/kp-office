@@ -116,7 +116,7 @@ public class AccountStoreMockingImpl implements AccountStore, Serializable {
         resultData.forEach(e -> result.add(SerializationUtils.clone(e)));
 
         Pageable page = new PageableBuilder()
-                .withPaging(pageable)
+                .withPage(pageable)
                 .withTotalCount(data.size())
                 .withTotalPages(data.size() / pageable.getSize() + (data.size() % pageable.getSize() > 0 ? 1 : 0))
                 .withSize(result.size())

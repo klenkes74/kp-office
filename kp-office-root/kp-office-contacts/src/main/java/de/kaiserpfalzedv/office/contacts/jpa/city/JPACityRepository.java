@@ -84,12 +84,12 @@ public class JPACityRepository implements CityRepository, Serializable {
                            .getSingleResult();
 
             resultPage = new PageableBuilder()
-                    .withPaging(page)
+                    .withPage(page)
                     .withTotalCount(totalCount)
                     .withTotalPages(0)
                     .build();
         } else {
-            resultPage = new PageableBuilder().withPaging(page).build();
+            resultPage = new PageableBuilder().withPage(page).build();
         }
 
         return new PagedListBuilder<JPACity>().withData(data).withPageable(resultPage).build();
@@ -115,12 +115,12 @@ public class JPACityRepository implements CityRepository, Serializable {
                            .getSingleResult();
 
             resultPage = new PageableBuilder()
-                    .withPaging(page)
+                    .withPage(page)
                     .withTotalCount(totalCount)
                     .withTotalPages(0)
                     .build();
         } else {
-            resultPage = new PageableBuilder().withPaging(page).build();
+            resultPage = new PageableBuilder().withPage(page).build();
         }
 
         return new PagedListBuilder<JPACity>().withData(data).withPageable(resultPage).build();
@@ -145,12 +145,12 @@ public class JPACityRepository implements CityRepository, Serializable {
                            .getSingleResult();
 
             resultPage = new PageableBuilder()
-                    .withPaging(page)
+                    .withPage(page)
                     .withTotalCount(totalCount)
                     .withTotalPages(0)
                     .build();
         } else {
-            resultPage = new PageableBuilder().withPaging(page).build();
+            resultPage = new PageableBuilder().withPage(page).build();
         }
 
         return new PagedListBuilder<JPACity>().withData(data).withPageable(resultPage).build();

@@ -16,29 +16,48 @@
 
 package de.kaiserpfalzedv.iam.tenant.client.impl;
 
+import java.io.IOException;
+import java.io.Serializable;
+import java.util.Properties;
+import java.util.UUID;
+
+import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
+import javax.validation.constraints.NotNull;
+
 import de.kaiserpfalzedv.commons.api.cdi.Implementation;
+import de.kaiserpfalzedv.commons.api.commands.CommandBuilder;
+import de.kaiserpfalzedv.commons.api.commands.CrudCommandCreator;
 import de.kaiserpfalzedv.commons.api.config.ConfigReader;
-import de.kaiserpfalzedv.commons.api.messaging.*;
+import de.kaiserpfalzedv.commons.api.data.paging.Pageable;
+import de.kaiserpfalzedv.commons.api.data.paging.PageableBuilder;
+import de.kaiserpfalzedv.commons.api.data.paging.PagedListable;
+import de.kaiserpfalzedv.commons.api.data.query.Predicate;
+import de.kaiserpfalzedv.commons.api.messaging.MessageInfo;
+import de.kaiserpfalzedv.commons.api.messaging.MessageSender;
+import de.kaiserpfalzedv.commons.api.messaging.MessagingCore;
+import de.kaiserpfalzedv.commons.api.messaging.NoBrokerException;
+import de.kaiserpfalzedv.commons.api.messaging.NoResponseException;
+import de.kaiserpfalzedv.commons.api.messaging.ResponseOfWrongTypeException;
 import de.kaiserpfalzedv.commons.client.messaging.MessageSenderImpl;
 import de.kaiserpfalzedv.commons.impl.config.ConfigReaderBuilder;
 import de.kaiserpfalzedv.iam.tenant.api.Tenant;
 import de.kaiserpfalzedv.iam.tenant.api.TenantDoesNotExistException;
 import de.kaiserpfalzedv.iam.tenant.api.TenantExistsException;
-import de.kaiserpfalzedv.iam.tenant.api.commands.*;
-import de.kaiserpfalzedv.iam.tenant.api.replies.*;
+import de.kaiserpfalzedv.iam.tenant.api.TenantPredicate;
+import de.kaiserpfalzedv.iam.tenant.api.commands.TenantCreateCommand;
+import de.kaiserpfalzedv.iam.tenant.api.commands.TenantDeleteCommand;
+import de.kaiserpfalzedv.iam.tenant.api.commands.TenantRetrieveCommand;
+import de.kaiserpfalzedv.iam.tenant.api.commands.TenantUpdateCommand;
+import de.kaiserpfalzedv.iam.tenant.api.replies.TenantContainingBaseReply;
+import de.kaiserpfalzedv.iam.tenant.api.replies.TenantCreateReply;
+import de.kaiserpfalzedv.iam.tenant.api.replies.TenantDeleteReply;
+import de.kaiserpfalzedv.iam.tenant.api.replies.TenantRetrieveReply;
+import de.kaiserpfalzedv.iam.tenant.api.replies.TenantUpdateReply;
 import de.kaiserpfalzedv.iam.tenant.client.TenantClient;
 import de.kaiserpfalzedv.iam.tenant.client.TenantClientCommunicationException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
-import javax.validation.constraints.NotNull;
-import java.io.IOException;
-import java.io.Serializable;
-import java.util.Collection;
-import java.util.Properties;
-import java.util.UUID;
 
 import static de.kaiserpfalzedv.commons.api.commands.CrudCommands.CREATE;
 import static de.kaiserpfalzedv.commons.api.commands.CrudCommands.RETRIEVE;
@@ -57,6 +76,7 @@ public class TenantClientImpl implements TenantClient, Serializable {
     private ConfigReader config;
     private UUID clientId = UUID.randomUUID();
 
+    private CrudCommandCreator<Tenant> commandCreator;
     private String destination;
 
 
@@ -72,10 +92,13 @@ public class TenantClientImpl implements TenantClient, Serializable {
 
     @Override
     public Tenant create(Tenant data) throws TenantExistsException {
-        TenantCreateCommand command = new TenantCommandBuilder<TenantCreateCommand>()
+        CommandBuilder<TenantCreateCommand, Tenant> commandBuilder
+                = new CommandBuilder<TenantCreateCommand, Tenant>(TenantCreateCommand.class, commandCreator)
                 .withSource(clientId)
-                .withTenant(data)
-                .build();
+                .withData(data)
+                .create();
+
+        TenantCreateCommand command = commandBuilder.build();
 
         MessageSender<TenantCreateCommand, TenantCreateReply> sender = new MessageSenderImpl<>(messaging);
         sender.withPayload(command);
@@ -83,9 +106,118 @@ public class TenantClientImpl implements TenantClient, Serializable {
         return getTenantFromResponse(sender, data.getId());
     }
 
-    private Tenant getTenantFromResponse(MessageSender sender, final UUID tenantId) {
-        MessageInfo response = null;
+    @Override
+    public Tenant retrieve(UUID id) throws TenantDoesNotExistException {
+        return retrieve(
+                TenantPredicate.id().isEqualTo(id),
+                new PageableBuilder()
+                        .withPage(new PageableBuilder().withPage(1).withSize(5).build())
+                        .build()
+        ).getEntries().get(0);
+    }
 
+    @Override
+    public <P extends Predicate<Tenant>> PagedListable<Tenant> retrieve(P predicate, Pageable page) {
+        CommandBuilder<TenantRetrieveCommand, Tenant> commandBuilder
+                = new CommandBuilder<TenantRetrieveCommand, Tenant>(TenantRetrieveCommand.class, commandCreator)
+                .withSource(clientId)
+                .withPredicate(predicate)
+                .withPage(page)
+                .retrieve();
+
+        TenantRetrieveCommand command = commandBuilder.build();
+
+        MessageInfo response = null;
+        UUID correlationId = UUID.randomUUID();
+        try (MessageSender<TenantRetrieveCommand, TenantRetrieveReply> sender = new MessageSenderImpl<>(messaging)) {
+            sender.withPayload(command);
+
+            response = sender
+                    .withDestination(destination)
+                    .withCorrelationId(correlationId.toString())
+                    .withResponse()
+                    .sendMessage();
+
+            return ((TenantRetrieveReply) response.waitForResponse()).getTenants();
+        } catch (NoBrokerException | ClassCastException | InterruptedException | NoResponseException
+                | ResponseOfWrongTypeException e) {
+            throw new TenantClientCommunicationException(
+                    RETRIEVE,
+                    correlationId,
+                    e.getMessage(),
+                    e
+            );
+        } finally {
+            if (response != null) {
+                try {
+                    response.close();
+                } catch (IOException e) {
+                    LOG.error(e.getClass().getSimpleName() + " caught: " + e.getMessage(), e);
+                }
+            }
+        }
+    }
+
+    @Override
+    public Tenant update(Tenant data) throws TenantDoesNotExistException {
+        CommandBuilder<TenantUpdateCommand, Tenant> commandBuilder
+                = new CommandBuilder<TenantUpdateCommand, Tenant>(TenantUpdateCommand.class, commandCreator)
+                .withSource(clientId)
+                .withData(data)
+                .update();
+
+        TenantUpdateCommand command = commandBuilder.build();
+
+        MessageSender<TenantUpdateCommand, TenantUpdateReply> sender = new MessageSenderImpl<>(messaging);
+        sender.withPayload(command);
+
+        return getTenantFromResponse(sender, data.getId());
+    }
+
+    @Override
+    public void delete(UUID id) {
+        CommandBuilder<TenantDeleteCommand, Tenant> commandBuilder
+                = new CommandBuilder<TenantDeleteCommand, Tenant>(TenantDeleteCommand.class, commandCreator)
+                .withSource(clientId)
+                .withId(id)
+                .delete();
+
+        TenantDeleteCommand command = commandBuilder.build();
+
+        MessageInfo<TenantDeleteReply> response = null;
+        UUID correlationId = UUID.randomUUID();
+        try (MessageSender<TenantDeleteCommand, TenantDeleteReply> sender = new MessageSenderImpl<>(messaging)) {
+            sender.withPayload(command);
+
+            response = sender
+                    .withDestination(destination)
+                    .withCorrelationId(correlationId.toString())
+                    .withResponse()
+                    .sendMessage();
+
+            response.waitForResponse();
+        } catch (NoBrokerException | ResponseOfWrongTypeException | NoResponseException | InterruptedException e) {
+            throw new TenantClientCommunicationException(
+                    CREATE,
+                    correlationId,
+                    "",
+                    id,
+                    e
+            );
+        } finally {
+            if (response != null) {
+                try {
+                    response.close();
+                } catch (IOException e) {
+                    LOG.error(e.getClass().getSimpleName() + " caught: " + e.getMessage(), e);
+                }
+            }
+        }
+    }
+
+    private Tenant getTenantFromResponse(MessageSender sender, final UUID tenantId) {
+
+        MessageInfo response = null;
         try {
             response = sender
                     .withDestination(destination)
@@ -113,116 +245,11 @@ public class TenantClientImpl implements TenantClient, Serializable {
     }
 
     @Override
-    public Tenant retrieve(UUID id) throws TenantDoesNotExistException {
-        TenantRetrieveCommand command = new TenantCommandBuilder<TenantRetrieveCommand>()
-                .withSource(clientId)
-                .withTenantId(id)
-                .build();
-
-        MessageSender<TenantRetrieveCommand, TenantRetrieveReply> sender = new MessageSenderImpl<>(messaging);
-        sender.withPayload(command);
-
-        return getTenantFromResponse(sender, id);
-    }
-
-    @Override
-    public Collection<Tenant> retrieve() {
-        TenantRetrieveAllCommand command = new TenantCommandBuilder<TenantRetrieveAllCommand>()
-                .withSource(clientId)
-                .build();
-
-        MessageSender<TenantRetrieveAllCommand, TenantRetrieveAllReply> sender = new MessageSenderImpl<>(messaging);
-        sender.withPayload(command);
-
-        MessageInfo<TenantRetrieveAllReply> response = null;
-
-        try {
-            response = sender
-                    .withDestination(destination)
-                    .withResponse()
-                    .sendMessage();
-
-            return response.waitForResponse().getTenants();
-        } catch (NoBrokerException | ResponseOfWrongTypeException | NoResponseException | InterruptedException e) {
-            throw new TenantClientCommunicationException(
-                    RETRIEVE,
-                    UUID.fromString(sender.getCorrelationId()),
-                    "",
-                    e
-            );
-        } finally {
-            if (response != null) {
-                try {
-                    response.close();
-                } catch (IOException e) {
-                    LOG.error(e.getClass().getSimpleName() + " caught: " + e.getMessage(), e);
-                }
-            }
-        }
-    }
-
-    @Override
-    public Tenant update(Tenant data) throws TenantDoesNotExistException {
-        TenantUpdateCommand command = new TenantCommandBuilder<TenantUpdateCommand>()
-                .withSource(clientId)
-                .withTenant(data)
-                .build();
-
-        MessageSender<TenantUpdateCommand, TenantUpdateReply> sender = new MessageSenderImpl<>(messaging);
-        sender.withPayload(command);
-
-        return getTenantFromResponse(sender, data.getId());
-    }
-
-    @Override
-    public void delete(UUID id) {
-        TenantDeleteCommand command = new TenantCommandBuilder<TenantDeleteCommand>()
-                .withSource(clientId)
-                .withTenantId(id)
-                .build();
-
-        MessageSender<TenantDeleteCommand, TenantDeleteReply> sender = new MessageSenderImpl<>(messaging);
-        sender.withPayload(command);
-
-        MessageInfo<TenantDeleteReply> response = null;
-
-        try {
-            response = sender
-                    .withDestination(destination)
-                    .withResponse()
-                    .sendMessage();
-
-            response.waitForResponse();
-        } catch (NoBrokerException | ResponseOfWrongTypeException | NoResponseException | InterruptedException e) {
-            throw new TenantClientCommunicationException(
-                    CREATE,
-                    UUID.fromString(sender.getCorrelationId()),
-                    "",
-                    id,
-                    e
-            );
-        } finally {
-            if (response != null) {
-                try {
-                    response.close();
-                } catch (IOException e) {
-                    LOG.error(e.getClass().getSimpleName() + " caught: " + e.getMessage(), e);
-                }
-            }
-        }
-    }
-
-    @Override
-    public Tenant retrieve(String businessKey) throws TenantDoesNotExistException {
-
-        // TODO klenkes Auto defined stub for: de.kaiserpfalzedv.iam.tenant.client.impl.TenantClientImpl.retrieve
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
-    }
-
-    @Override
     public void close() {
-        // TODO klenkes Auto defined stub for: de.kaiserpfalzedv.iam.tenant.client.TenantClient.close
-        //To change body of implemented methods use File | Settings | File Templates.
+        messaging = null;
+        config = null;
+        clientId = null;
+        destination = null;
     }
 
     @Override

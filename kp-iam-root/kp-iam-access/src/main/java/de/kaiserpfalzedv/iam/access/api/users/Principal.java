@@ -23,8 +23,8 @@ import java.util.UUID;
 
 import de.kaiserpfalzedv.commons.api.data.base.Identifiable;
 import de.kaiserpfalzedv.commons.api.data.base.Nameable;
-import de.kaiserpfalzedv.commons.api.data.tenant.Tenantable;
 import de.kaiserpfalzedv.commons.api.data.types.Email;
+import de.kaiserpfalzedv.commons.api.multitenancy.Tenantable;
 import de.kaiserpfalzedv.iam.access.api.PasswordFailureException;
 import de.kaiserpfalzedv.iam.access.api.roles.Entitlement;
 import de.kaiserpfalzedv.iam.access.api.roles.Role;

@@ -16,6 +16,20 @@
 
 package de.kaiserpfalzedv.commons.client.messaging;
 
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
+
+import javax.jms.Connection;
+import javax.jms.DeliveryMode;
+import javax.jms.Destination;
+import javax.jms.JMSException;
+import javax.jms.Message;
+import javax.jms.MessageProducer;
+import javax.jms.Session;
+
 import de.kaiserpfalzedv.commons.api.BuilderException;
 import de.kaiserpfalzedv.commons.api.messaging.MessageInfo;
 import de.kaiserpfalzedv.commons.api.messaging.MessageSender;
@@ -24,13 +38,6 @@ import de.kaiserpfalzedv.commons.api.messaging.NoBrokerException;
 import de.kaiserpfalzedv.commons.impl.messaging.MessageInfoBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import javax.jms.*;
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
 
 import static org.apache.commons.lang3.StringUtils.isBlank;
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
@@ -359,6 +366,15 @@ public class MessageSenderImpl<T extends Serializable, R extends Serializable> i
     @Override
     public String getCorrelationId() {
         return correlationId;
+    }
+
+    @Override
+    public void close() {
+        if (correlationId != null) {
+            core.getMultiplexer().unregister(correlationId);
+        }
+        // TODO klenkes Auto defined stub for: de.kaiserpfalzedv.commons.client.messaging.MessageSenderImpl.close
+        //To change body of implemented methods use File | Settings | File Templates.
     }
 
     public MessageSenderImpl withWorkflowId(String workflowId) {

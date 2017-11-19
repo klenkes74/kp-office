@@ -24,7 +24,7 @@ import java.util.Set;
 import javax.validation.constraints.NotNull;
 
 import de.kaiserpfalzedv.commons.api.data.base.Nameable;
-import de.kaiserpfalzedv.commons.api.data.tenant.TenantIdentifiable;
+import de.kaiserpfalzedv.commons.api.multitenancy.TenantIdentifiable;
 
 /**
  * The basic role within this system. It can have entitlements and other roles attached.

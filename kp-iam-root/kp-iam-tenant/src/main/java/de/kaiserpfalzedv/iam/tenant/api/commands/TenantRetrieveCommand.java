@@ -16,28 +16,48 @@
 
 package de.kaiserpfalzedv.iam.tenant.api.commands;
 
+import java.util.UUID;
+
+import javax.validation.constraints.NotNull;
+
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import de.kaiserpfalzedv.commons.api.commands.CrudCommands;
-
-import javax.validation.constraints.NotNull;
-import java.util.UUID;
+import de.kaiserpfalzedv.commons.api.data.paging.Pageable;
+import de.kaiserpfalzedv.commons.api.data.query.Predicate;
+import de.kaiserpfalzedv.iam.tenant.api.Tenant;
 
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
  * @version 1.0.0
  * @since 2016-09-25
  */
-public class TenantRetrieveCommand extends TenantIdContainingBaseCommand {
-    private static final long serialVersionUID = -1871568351897272565L;
+public class TenantRetrieveCommand extends TenantBaseCommand {
+    private static final long serialVersionUID = -3920045218010855443L;
     private static final CrudCommands CRUD_TYPE = CrudCommands.RETRIEVE;
+
+    private Predicate<Tenant> predicate;
+    private Pageable page;
+
 
     @JsonCreator
     TenantRetrieveCommand(
             @JsonProperty("source") @NotNull final UUID source,
             @JsonProperty("command") @NotNull final UUID commandId,
-            @JsonProperty("tenant") @NotNull final UUID tenant
+            @JsonProperty("predicate") @NotNull final Predicate<Tenant> predicate,
+            @JsonProperty("page") @NotNull final Pageable page
     ) {
-        super(CRUD_TYPE, source, commandId, tenant);
+        super(CRUD_TYPE, source, commandId);
+
+        this.predicate = predicate;
+        this.page = page;
+    }
+
+    public Predicate<Tenant> getPredicate() {
+        return predicate;
+    }
+
+    public Pageable getPage() {
+        return page;
     }
 }

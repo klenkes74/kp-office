@@ -16,17 +16,19 @@
 
 package de.kaiserpfalzedv.iam.tenant.api.replies;
 
+import java.util.ArrayList;
+import java.util.UUID;
+
 import de.kaiserpfalzedv.commons.api.BuilderException;
+import de.kaiserpfalzedv.commons.api.data.paging.PagedListBuilder;
+import de.kaiserpfalzedv.commons.api.data.paging.PagedListable;
 import de.kaiserpfalzedv.iam.tenant.api.Tenant;
 import de.kaiserpfalzedv.iam.tenant.api.commands.TenantBaseCommand;
 import org.apache.commons.lang3.builder.Builder;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.UUID;
-
-import static de.kaiserpfalzedv.commons.api.commands.CrudCommands.*;
+import static de.kaiserpfalzedv.commons.api.commands.CrudCommands.CREATE;
+import static de.kaiserpfalzedv.commons.api.commands.CrudCommands.RETRIEVE;
+import static de.kaiserpfalzedv.commons.api.commands.CrudCommands.UPDATE;
 
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
@@ -39,7 +41,7 @@ public class TenantReplyBuilder<T extends TenantBaseReply> implements Builder<T>
 
     private TenantBaseCommand command;
     private Tenant tenant;
-    private HashSet<Tenant> tenants;
+    private PagedListable<Tenant> tenants;
 
     @SuppressWarnings("unchecked")
     @Override
@@ -52,9 +54,7 @@ public class TenantReplyBuilder<T extends TenantBaseReply> implements Builder<T>
             case CREATE:
                 return (T) new TenantCreateReply(source, commandId, replyId, tenant);
             case RETRIEVE:
-                return (T) new TenantRetrieveReply(source, commandId, replyId, tenant);
-            case RETRIEVE_ALL:
-                return (T) new TenantRetrieveAllReply(source, commandId, replyId, tenants);
+                return (T) new TenantRetrieveReply(source, commandId, replyId, tenants);
             case UPDATE:
                 return (T) new TenantUpdateReply(source, commandId, replyId, tenant);
             case DELETE:
@@ -78,11 +78,11 @@ public class TenantReplyBuilder<T extends TenantBaseReply> implements Builder<T>
         }
 
         if (tenant == null && command != null
-                && (CREATE.equals(command.getCrudType()) || RETRIEVE.equals(command.getCrudType()) || UPDATE.equals(command.getCrudType()))) {
+                && (CREATE.equals(command.getCrudType()) || UPDATE.equals(command.getCrudType()))) {
             failures.add("No tenant data given for the " + command + " command");
         }
 
-        if (tenants == null && command != null && RETRIEVE_ALL.equals(command.getCrudType())) {
+        if (tenants == null && command != null && RETRIEVE.equals(command.getCrudType())) {
             failures.add("No set of tenants given for the " + command + " command");
         }
 
@@ -115,9 +115,11 @@ public class TenantReplyBuilder<T extends TenantBaseReply> implements Builder<T>
         return this;
     }
 
-    public TenantReplyBuilder<T> withTenants(Collection<Tenant> tenants) {
-        this.tenants = new HashSet<>(tenants.size());
-        this.tenants.addAll(tenants);
+    public TenantReplyBuilder<T> withTenants(PagedListable<Tenant> tenants) {
+        this.tenants = new PagedListBuilder<Tenant>()
+                .withData(tenants.getEntries())
+                .withPageable(tenants.getPage())
+                .build();
         return this;
     }
 }

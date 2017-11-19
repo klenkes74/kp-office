@@ -23,7 +23,7 @@ import java.util.Map;
  * @author rlichti {@literal <rlichti@kaiserpfalz-edv.de>}
  * @since 2016-09-22
  */
-public interface MessageSender<T extends Serializable, R extends Serializable> {
+public interface MessageSender<T extends Serializable, R extends Serializable> extends AutoCloseable {
     MessageInfo<R> sendMessage() throws NoBrokerException;
 
     MessageSender<T, R> withPayload(T payload);
@@ -51,4 +51,11 @@ public interface MessageSender<T extends Serializable, R extends Serializable> {
     MessageSender<T, R> withoutResponse();
 
     String getCorrelationId();
+
+    /**
+     * Removes the exception from the {@link AutoCloseable} interface.
+     *
+     * @see AutoCloseable
+     */
+    void close();
 }

@@ -16,17 +16,12 @@
 
 package de.kaiserpfalzedv.iam.tenant.impl;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import de.kaiserpfalzedv.commons.api.MessageInfo;
-import de.kaiserpfalzedv.iam.tenant.api.commands.TenantCommandExecutor;
-
-import javax.jms.JMSException;
+import de.kaiserpfalzedv.commons.api.messaging.MessageBackendWorker;
 
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
  * @version 1.0.0
  * @since 2016-09-27
  */
-public interface TenantWorker extends TenantCommandExecutor {
-    void workOn(MessageInfo info, String message) throws JMSException, JsonProcessingException;
+public interface TenantWorker extends MessageBackendWorker {
 }

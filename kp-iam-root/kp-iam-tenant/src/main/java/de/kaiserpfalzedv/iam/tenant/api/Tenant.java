@@ -21,7 +21,7 @@ import java.util.UUID;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import de.kaiserpfalzedv.commons.api.data.base.Keyable;
 import de.kaiserpfalzedv.commons.api.data.base.Nameable;
-import de.kaiserpfalzedv.commons.api.data.tenant.TenantIdentifiable;
+import de.kaiserpfalzedv.commons.api.multitenancy.TenantIdentifiable;
 
 import static com.fasterxml.jackson.annotation.JsonTypeInfo.As.PROPERTY;
 

@@ -19,7 +19,7 @@ package de.kaiserpfalzedv.office.contacts.api;
 import java.util.List;
 
 import de.kaiserpfalzedv.commons.api.data.base.Nameable;
-import de.kaiserpfalzedv.commons.api.data.tenant.TenantIdentifiable;
+import de.kaiserpfalzedv.commons.api.multitenancy.TenantIdentifiable;
 import de.kaiserpfalzedv.office.contacts.api.addresses.Address;
 import de.kaiserpfalzedv.office.contacts.api.names.Name;
 

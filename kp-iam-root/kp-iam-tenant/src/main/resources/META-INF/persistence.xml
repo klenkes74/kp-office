@@ -19,7 +19,7 @@
              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
              version="2.1">
 
-    <persistence-unit name="tenant">
+    <persistence-unit name="TENANT">
         <jta-data-source>java:jboss/datasources/tenants</jta-data-source>
 
         <class>de.kaiserpfalzedv.commons.jpa.JPAAbstractIdentifiable</class>

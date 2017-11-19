@@ -16,12 +16,7 @@
 
 package de.kaiserpfalzedv.commons.ejb.messaging;
 
-import de.kaiserpfalzedv.commons.api.config.ConfigReader;
-import de.kaiserpfalzedv.commons.api.init.InitializationException;
-import de.kaiserpfalzedv.commons.api.messaging.MessageMultiplexer;
-import org.apache.commons.pool2.ObjectPool;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import java.util.Properties;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
@@ -31,7 +26,13 @@ import javax.jms.Connection;
 import javax.jms.Destination;
 import javax.jms.JMSContext;
 import javax.validation.constraints.NotNull;
-import java.util.Properties;
+
+import de.kaiserpfalzedv.commons.api.config.ConfigReader;
+import de.kaiserpfalzedv.commons.api.init.InitializationException;
+import de.kaiserpfalzedv.commons.api.messaging.MessageMultiplexer;
+import org.apache.commons.pool2.ObjectPool;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * @author rlichti {@literal <rlichti@kaiserpfalz-edv.de>}
@@ -98,6 +99,11 @@ public class JEEContainerMessagingCoreImpl implements JEEContainerMessagingCore 
     @Override
     public String getClientId() {
         return context.getClientID();
+    }
+
+    @Override
+    public void unregister(@NotNull final String correlationId) {
+        multiplexer.unregister(correlationId);
     }
 
 

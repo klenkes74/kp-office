@@ -16,18 +16,24 @@
 
 package de.kaiserpfalzedv.iam.tenant.commands.test;
 
+import java.io.IOException;
+import java.util.UUID;
+
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import de.kaiserpfalzedv.commons.api.commands.CommandBuilder;
 import de.kaiserpfalzedv.iam.tenant.api.Tenant;
 import de.kaiserpfalzedv.iam.tenant.api.TenantBuilder;
-import de.kaiserpfalzedv.iam.tenant.api.commands.*;
+import de.kaiserpfalzedv.iam.tenant.api.commands.TenantBaseCommand;
+import de.kaiserpfalzedv.iam.tenant.api.commands.TenantCommandCreator;
+import de.kaiserpfalzedv.iam.tenant.api.commands.TenantContainingBaseCommand;
+import de.kaiserpfalzedv.iam.tenant.api.commands.TenantCreateCommand;
+import de.kaiserpfalzedv.iam.tenant.api.commands.TenantDeleteCommand;
+import de.kaiserpfalzedv.iam.tenant.api.commands.TenantUpdateCommand;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.io.IOException;
-import java.util.UUID;
 
 import static com.google.common.base.Preconditions.checkState;
 import static org.junit.Assert.assertEquals;
@@ -57,6 +63,7 @@ public class TenantCommandTest {
             .build();
 
 
+    private static final TenantCommandCreator creator = new TenantCommandCreator();
     private static final ObjectMapper mapper = new ObjectMapper();
 
     @BeforeClass
@@ -76,11 +83,13 @@ public class TenantCommandTest {
     }
 
     private TenantCreateCommand createTenantCreateCommand(final Tenant tenant) {
-        TenantCreateCommand command = new TenantCommandBuilder<TenantCreateCommand>()
+        CommandBuilder<TenantCreateCommand, Tenant> commandBuilder
+                = new CommandBuilder<TenantCreateCommand, Tenant>(TenantCreateCommand.class, creator)
                 .withSource(SOURCE_ID)
-                .withTenant(tenant)
-                .create()
-                .build();
+                .withData(tenant)
+                .create();
+        TenantCreateCommand command = commandBuilder.build();
+
         LOG.trace("Command: {}", command);
         return command;
     }
@@ -113,54 +122,11 @@ public class TenantCommandTest {
         assertEquals(actual.getFullName(), expected.getFullName());
     }
 
-    @Test
-    public void checkTenantRetrieveCommand() throws IOException {
-        TenantRetrieveCommand command = createTenantRetrieveCommand(TENANT_ID);
-
-        String json = marshalAndUnmarshalCommand(command);
-
-        TenantRetrieveCommand result = mapper.readValue(json, TenantRetrieveCommand.class);
-
-        checkCommand(command, result);
-    }
-
-    private TenantRetrieveCommand createTenantRetrieveCommand(final UUID tenant) {
-        TenantRetrieveCommand command = new TenantCommandBuilder<TenantRetrieveCommand>()
-                .withSource(SOURCE_ID)
-                .withTenantId(tenant)
-                .retrieve()
-                .build();
-
-        LOG.trace("Command: {}", command);
-        return command;
-    }
-
-    private void checkCommand(final TenantIdContainingBaseCommand command, final TenantIdContainingBaseCommand result) {
+    private void checkCommand(final TenantDeleteCommand command, final TenantDeleteCommand result) {
         //noinspection RedundantCast
         checkCommand((TenantBaseCommand) command, (TenantBaseCommand) result);
 
         assertEquals(result.getTenant(), command.getTenant());
-    }
-
-    @Test
-    public void checkTenantRetrieveAllCommand() throws IOException {
-        TenantRetrieveAllCommand command = createTenantRetrieveAllCommand();
-
-        String json = marshalAndUnmarshalCommand(command);
-
-        TenantRetrieveCommand result = mapper.readValue(json, TenantRetrieveCommand.class);
-
-        checkCommand(command, result);
-    }
-
-    private TenantRetrieveAllCommand createTenantRetrieveAllCommand() {
-        TenantRetrieveAllCommand command = new TenantCommandBuilder<TenantRetrieveAllCommand>()
-                .withSource(SOURCE_ID)
-                .retrieveAll()
-                .build();
-
-        LOG.trace("Command: {}", command);
-        return command;
     }
 
     @Test
@@ -175,11 +141,13 @@ public class TenantCommandTest {
     }
 
     private TenantUpdateCommand createTenantUpdateCommand(final Tenant tenant) {
-        TenantUpdateCommand command = new TenantCommandBuilder<TenantUpdateCommand>()
+        CommandBuilder<TenantUpdateCommand, Tenant> commandBuilder
+                = new CommandBuilder<TenantUpdateCommand, Tenant>(TenantUpdateCommand.class, creator)
                 .withSource(SOURCE_ID)
-                .withTenant(tenant)
-                .update()
-                .build();
+                .withData(tenant)
+                .update();
+        TenantUpdateCommand command = commandBuilder.build();
+
         LOG.trace("Command: {}", command);
         return command;
     }
@@ -196,11 +164,12 @@ public class TenantCommandTest {
     }
 
     private TenantDeleteCommand createTenantDeleteCommand(final UUID tenant) {
-        TenantDeleteCommand command = new TenantCommandBuilder<TenantDeleteCommand>()
+        CommandBuilder<TenantDeleteCommand, Tenant> commandBuilder
+                = new CommandBuilder<TenantDeleteCommand, Tenant>(TenantDeleteCommand.class, creator)
                 .withSource(SOURCE_ID)
-                .withTenantId(tenant)
-                .delete()
-                .build();
+                .withId(tenant)
+                .update();
+        TenantDeleteCommand command = commandBuilder.build();
 
         LOG.trace("Command: {}", command);
         return command;

@@ -16,20 +16,29 @@
 
 package de.kaiserpfalzedv.iam.tenant.commands.test;
 
+import java.io.IOException;
+import java.util.UUID;
+
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import de.kaiserpfalzedv.commons.api.commands.CommandBuilder;
 import de.kaiserpfalzedv.iam.tenant.api.Tenant;
 import de.kaiserpfalzedv.iam.tenant.api.TenantBuilder;
-import de.kaiserpfalzedv.iam.tenant.api.commands.*;
-import de.kaiserpfalzedv.iam.tenant.api.replies.*;
+import de.kaiserpfalzedv.iam.tenant.api.commands.TenantCommandCreator;
+import de.kaiserpfalzedv.iam.tenant.api.commands.TenantCreateCommand;
+import de.kaiserpfalzedv.iam.tenant.api.commands.TenantDeleteCommand;
+import de.kaiserpfalzedv.iam.tenant.api.commands.TenantUpdateCommand;
+import de.kaiserpfalzedv.iam.tenant.api.replies.TenantBaseReply;
+import de.kaiserpfalzedv.iam.tenant.api.replies.TenantContainingBaseReply;
+import de.kaiserpfalzedv.iam.tenant.api.replies.TenantCreateReply;
+import de.kaiserpfalzedv.iam.tenant.api.replies.TenantDeleteReply;
+import de.kaiserpfalzedv.iam.tenant.api.replies.TenantReplyBuilder;
+import de.kaiserpfalzedv.iam.tenant.api.replies.TenantRetrieveReply;
+import de.kaiserpfalzedv.iam.tenant.api.replies.TenantUpdateReply;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.io.IOException;
-import java.util.HashSet;
-import java.util.UUID;
 
 import static com.google.common.base.Preconditions.checkState;
 import static org.junit.Assert.assertEquals;
@@ -44,7 +53,7 @@ public class TenantReplyTest {
     private static final Logger LOG = LoggerFactory.getLogger(TenantReplyTest.class);
 
     private static final UUID REQUESTOR_ID = UUID.randomUUID();
-    private static final UUID SERVICE_ID = UUID.randomUUID();
+    private static final UUID SOURCE_ID = UUID.randomUUID();
 
     private static final UUID TENANT_ID = UUID.randomUUID();
     private static final UUID TENANT_TENANT = UUID.randomUUID();
@@ -59,6 +68,7 @@ public class TenantReplyTest {
             .withFullName(FULL_NAME)
             .build();
 
+    private static final TenantCommandCreator creator = new TenantCommandCreator();
     private static final ObjectMapper mapper = new ObjectMapper();
 
     @BeforeClass
@@ -71,7 +81,7 @@ public class TenantReplyTest {
     public void checkTenantCreateReply() throws IOException {
         TenantCreateCommand command = createTenantCreateCommand(TENANT);
         TenantCreateReply reply = new TenantReplyBuilder<TenantCreateReply>()
-                .withSource(SERVICE_ID)
+                .withSource(SOURCE_ID)
                 .withCommand(command)
                 .withTenant(TENANT)
                 .build();
@@ -84,11 +94,13 @@ public class TenantReplyTest {
     }
 
     private TenantCreateCommand createTenantCreateCommand(final Tenant tenant) {
-        TenantCreateCommand command = new TenantCommandBuilder<TenantCreateCommand>()
+        CommandBuilder<TenantCreateCommand, Tenant> commandBuilder
+                = new CommandBuilder<TenantCreateCommand, Tenant>(TenantCreateCommand.class, creator)
                 .withSource(REQUESTOR_ID)
-                .withTenant(tenant)
-                .create()
-                .build();
+                .withData(tenant)
+                .create();
+        TenantCreateCommand command = commandBuilder.build();
+
         LOG.trace("Command: {}", command);
         return command;
     }
@@ -126,67 +138,15 @@ public class TenantReplyTest {
     }
 
 
-    @Test
-    public void checkTenantRetrieveReply() throws IOException {
-        TenantRetrieveCommand command = createTenantRetrieveCommand(TENANT_ID);
-        TenantRetrieveReply reply = new TenantReplyBuilder<TenantRetrieveReply>()
-                .withSource(SERVICE_ID)
-                .withCommand(command)
-                .withTenant(TENANT)
-                .build();
-
-        String json = marshalAndUnmarshalCommand(reply);
-
-        TenantRetrieveReply result = mapper.readValue(json, TenantRetrieveReply.class);
-
-        checkReply(result, reply);
-    }
-
-    private TenantRetrieveCommand createTenantRetrieveCommand(final UUID tenantId) {
-        TenantRetrieveCommand command = new TenantCommandBuilder<TenantRetrieveCommand>()
-                .withSource(REQUESTOR_ID)
-                .withTenantId(tenantId)
-                .retrieve()
-                .build();
-        LOG.trace("Command: {}", command);
-        return command;
-    }
-
-
-    @Test
-    public void checkTenantRetrieveAllReply() throws IOException {
-        HashSet<Tenant> tenants = new HashSet<>(1);
-        tenants.add(TENANT);
-
-        TenantRetrieveAllCommand command = createTenantRetrieveAllCommand();
-        TenantRetrieveAllReply reply = new TenantReplyBuilder<TenantRetrieveAllReply>()
-                .withSource(SERVICE_ID)
-                .withCommand(command)
-                .withTenants(tenants)
-                .build();
-
-        String json = marshalAndUnmarshalCommand(reply);
-
-        TenantRetrieveAllReply result = mapper.readValue(json, TenantRetrieveAllReply.class);
-
-        checkReply(result, reply);
-    }
-
-    private TenantRetrieveAllCommand createTenantRetrieveAllCommand() {
-        TenantRetrieveAllCommand command = new TenantCommandBuilder<TenantRetrieveAllCommand>()
-                .withSource(REQUESTOR_ID)
-                .retrieveAll()
-                .build();
-        LOG.trace("Command: {}", command);
-        return command;
-    }
-
-    private void checkReply(final TenantRetrieveAllReply actual, final TenantRetrieveAllReply expected) {
+    private void checkReply(final TenantRetrieveReply actual, final TenantRetrieveReply expected) {
         //noinspection RedundantCast
         checkReply((TenantBaseReply) actual, (TenantBaseReply) expected);
 
-        assertEquals(actual.getTenants().size(), expected.getTenants().size());
-        checkTenant(actual.getTenants().iterator().next(), expected.getTenants().iterator().next());
+        assertEquals(actual.getTenants().getPage().getTotalCount(), expected.getTenants().getPage().getTotalCount());
+        checkTenant(actual.getTenants().getEntries().iterator().next(), expected.getTenants()
+                                                                                .getEntries()
+                                                                                .iterator()
+                                                                                .next());
     }
 
 
@@ -194,7 +154,7 @@ public class TenantReplyTest {
     public void checkTenantUpdateReply() throws IOException {
         TenantUpdateCommand command = createTenantUpdateCommand(TENANT);
         TenantUpdateReply reply = new TenantReplyBuilder<TenantUpdateReply>()
-                .withSource(SERVICE_ID)
+                .withSource(SOURCE_ID)
                 .withCommand(command)
                 .withTenant(TENANT)
                 .build();
@@ -207,11 +167,13 @@ public class TenantReplyTest {
     }
 
     private TenantUpdateCommand createTenantUpdateCommand(final Tenant tenant) {
-        TenantUpdateCommand command = new TenantCommandBuilder<TenantUpdateCommand>()
-                .withSource(REQUESTOR_ID)
-                .withTenant(tenant)
-                .update()
-                .build();
+        CommandBuilder<TenantUpdateCommand, Tenant> commandBuilder
+                = new CommandBuilder<TenantUpdateCommand, Tenant>(TenantUpdateCommand.class, creator)
+                .withSource(SOURCE_ID)
+                .withData(tenant)
+                .update();
+        TenantUpdateCommand command = commandBuilder.build();
+
         LOG.trace("Command: {}", command);
         return command;
     }
@@ -221,7 +183,7 @@ public class TenantReplyTest {
     public void checkTenantDeleteReply() throws IOException {
         TenantDeleteCommand command = createTenantDeleteCommand(TENANT_ID);
         TenantDeleteReply reply = new TenantReplyBuilder<TenantDeleteReply>()
-                .withSource(SERVICE_ID)
+                .withSource(SOURCE_ID)
                 .withCommand(command)
                 .build();
 
@@ -233,11 +195,13 @@ public class TenantReplyTest {
     }
 
     private TenantDeleteCommand createTenantDeleteCommand(final UUID tenantId) {
-        TenantDeleteCommand command = new TenantCommandBuilder<TenantDeleteCommand>()
-                .withSource(REQUESTOR_ID)
-                .withTenantId(tenantId)
-                .delete()
-                .build();
+        CommandBuilder<TenantDeleteCommand, Tenant> commandBuilder
+                = new CommandBuilder<TenantDeleteCommand, Tenant>(TenantDeleteCommand.class, creator)
+                .withSource(SOURCE_ID)
+                .withId(tenantId)
+                .update();
+        TenantDeleteCommand command = commandBuilder.build();
+
         LOG.trace("Command: {}", command);
         return command;
     }

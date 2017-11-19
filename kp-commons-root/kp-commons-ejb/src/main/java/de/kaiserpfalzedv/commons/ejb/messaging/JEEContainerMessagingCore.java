@@ -16,10 +16,10 @@
 
 package de.kaiserpfalzedv.commons.ejb.messaging;
 
+import javax.jms.JMSContext;
+
 import de.kaiserpfalzedv.commons.api.init.Closeable;
 import de.kaiserpfalzedv.commons.api.messaging.MessagingCore;
-
-import javax.jms.JMSContext;
 
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}

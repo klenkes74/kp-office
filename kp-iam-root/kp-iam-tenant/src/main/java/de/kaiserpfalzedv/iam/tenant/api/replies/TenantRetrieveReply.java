@@ -16,29 +16,42 @@
 
 package de.kaiserpfalzedv.iam.tenant.api.replies;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import de.kaiserpfalzedv.iam.tenant.api.Tenant;
+import java.util.UUID;
 
 import javax.validation.constraints.NotNull;
-import java.util.UUID;
+
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import de.kaiserpfalzedv.commons.api.data.paging.PagedListBuilder;
+import de.kaiserpfalzedv.commons.api.data.paging.PagedListable;
+import de.kaiserpfalzedv.iam.tenant.api.Tenant;
 
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
  * @version 1.0.0
  * @since 2016-09-25
  */
-public class TenantRetrieveReply extends TenantContainingBaseReply {
-    private static final long serialVersionUID = 1734996156708357898L;
+public class TenantRetrieveReply extends TenantBaseReply {
+    private static final long serialVersionUID = 8344737895442602079L;
 
+    private PagedListable<Tenant> tenants;
 
     @JsonCreator
-    TenantRetrieveReply(
+    public TenantRetrieveReply(
             @NotNull @JsonProperty("source") final UUID source,
             @NotNull @JsonProperty("command") final UUID commandId,
             @NotNull @JsonProperty("reply") final UUID replyId,
-            @NotNull @JsonProperty("tenant") final Tenant tenant
+            @NotNull @JsonProperty("tenants") final PagedListable<Tenant> tenants
     ) {
-        super(source, commandId, replyId, tenant);
+        super(source, commandId, replyId);
+
+        this.tenants = new PagedListBuilder<Tenant>()
+                .withPageable(tenants.getPage())
+                .withData(tenants.getEntries())
+                .build();
+    }
+
+    public PagedListable<Tenant> getTenants() {
+        return tenants;
     }
 }

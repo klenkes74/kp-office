@@ -16,6 +16,19 @@
 
 package de.kaiserpfalzedv.commons.client.messaging;
 
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
+
+import javax.jms.DeliveryMode;
+import javax.jms.Destination;
+import javax.jms.JMSContext;
+import javax.jms.JMSException;
+import javax.jms.JMSProducer;
+import javax.jms.Message;
+
 import de.kaiserpfalzedv.commons.api.BuilderException;
 import de.kaiserpfalzedv.commons.api.messaging.MessageInfo;
 import de.kaiserpfalzedv.commons.api.messaging.MessageSender;
@@ -25,13 +38,6 @@ import de.kaiserpfalzedv.commons.ejb.messaging.JEEContainerMessagingCore;
 import de.kaiserpfalzedv.commons.impl.messaging.MessageInfoBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import javax.jms.*;
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
 
 import static org.apache.commons.lang3.StringUtils.isBlank;
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
@@ -307,6 +313,13 @@ public class MessageSenderImpl<T extends Serializable, R extends Serializable> i
     @Override
     public String getCorrelationId() {
         return correlationId;
+    }
+
+    @Override
+    public void close() {
+        if (correlationId != null) {
+            core.unregister(correlationId);
+        }
     }
 
     public MessageSenderImpl withWorkflowId(String workflowId) {

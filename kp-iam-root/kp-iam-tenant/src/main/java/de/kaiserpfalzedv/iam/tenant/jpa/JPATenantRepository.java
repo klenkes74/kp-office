@@ -14,23 +14,15 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzedv.commons.api.data.tenant;
+package de.kaiserpfalzedv.iam.tenant.jpa;
 
-import java.io.Serializable;
-import java.util.UUID;
+import de.kaiserpfalzedv.commons.api.data.Repository;
+import de.kaiserpfalzedv.iam.tenant.api.Tenant;
 
 /**
- * All objects implementing this interface can be used in a multi tenant data structure.
- *
- * @author klenkes
- * @version 2015Q1
- * @since 27.12.15 11:36
+ * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
+ * @version 1.0.0
+ * @since 1.0.0
  */
-public interface Tenantable extends Serializable {
-    /**
-     * Returns only the id of the tenant. The data of the tenant may be retrieved by the appropriate service.
-     *
-     * @return The unique tenant id of the owning tenant.
-     */
-    UUID getTenant();
+public interface JPATenantRepository extends Repository<JPATenant, Tenant> {
 }

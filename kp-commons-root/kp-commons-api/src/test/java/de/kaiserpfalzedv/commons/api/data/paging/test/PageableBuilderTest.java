@@ -199,7 +199,7 @@ public class PageableBuilderTest {
 
     @Test
     public void testPagingDuplicator() {
-        Pageable second = new PageableBuilder().withPaging(service).build();
+        Pageable second = new PageableBuilder().withPage(service).build();
 
         assertTrue(service.equals(second));
     }

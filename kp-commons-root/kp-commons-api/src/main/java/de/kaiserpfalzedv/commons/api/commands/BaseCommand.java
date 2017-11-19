@@ -16,6 +16,10 @@
 
 package de.kaiserpfalzedv.commons.api.commands;
 
+import java.util.EventObject;
+import java.util.Optional;
+import java.util.UUID;
+
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -24,9 +28,6 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
-
-import java.util.EventObject;
-import java.util.UUID;
 
 /**
  * A generic base for all commands send within KPO.
@@ -65,8 +66,8 @@ public abstract class BaseCommand extends EventObject {
     }
 
     @SuppressWarnings("unused")
-    public void execute(CommandExecutor commandExecutor) throws CommandExecutionException {
-        commandExecutor.execute(this);
+    public Optional<? extends BaseReply> execute(CommandExecutor commandExecutor) throws CommandExecutionException {
+        return commandExecutor.execute(this);
     }
 
     @Override

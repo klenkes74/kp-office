@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzedv.commons.api.data;
+package de.kaiserpfalzedv.commons.api.commands;
 
 import java.io.Serializable;
 import java.util.UUID;
@@ -22,22 +22,22 @@ import java.util.UUID;
 import javax.validation.constraints.NotNull;
 
 import de.kaiserpfalzedv.commons.api.data.paging.Pageable;
-import de.kaiserpfalzedv.commons.api.data.paging.PagedListable;
 import de.kaiserpfalzedv.commons.api.data.query.Predicate;
 
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
  * @version 1.0.0
- * @since 2016-09-30
+ * @since 2017-11-19
  */
-public interface BaseService<T extends Serializable> {
-    T create(@NotNull final T data) throws ObjectExistsException;
+public interface CrudCommandCreator<T extends Serializable> {
+    BaseCommand create(@NotNull final UUID source, @NotNull final UUID commandId, @NotNull final T data);
 
-    T retrieve(@NotNull final UUID id) throws ObjectDoesNotExistException;
+    BaseCommand retrieve(
+            @NotNull final UUID source, @NotNull final UUID commandId,
+            @NotNull final Predicate<T> predicate, @NotNull final Pageable page
+    );
 
-    <P extends Predicate<T>> PagedListable<T> retrieve(P predicate, Pageable page);
+    BaseCommand update(@NotNull final UUID source, @NotNull final UUID commandId, @NotNull final T data);
 
-    T update(@NotNull final T data) throws ObjectExistsException, ObjectDoesNotExistException;
-
-    void delete(@NotNull final UUID id);
+    BaseCommand delete(@NotNull final UUID source, @NotNull final UUID commandId, @NotNull final UUID dataId);
 }

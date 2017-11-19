@@ -16,6 +16,18 @@
 
 package de.kaiserpfalzedv.commons.client.messaging;
 
+import java.util.Properties;
+import java.util.UUID;
+
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
+import javax.jms.Connection;
+import javax.jms.ConnectionFactory;
+import javax.jms.Destination;
+import javax.validation.constraints.NotNull;
+
 import de.kaiserpfalzedv.commons.api.config.ConfigReader;
 import de.kaiserpfalzedv.commons.api.init.InitializationException;
 import de.kaiserpfalzedv.commons.api.messaging.MessageListener;
@@ -31,17 +43,6 @@ import org.apache.commons.pool2.ObjectPool;
 import org.apache.commons.pool2.impl.GenericObjectPool;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import javax.annotation.PostConstruct;
-import javax.annotation.PreDestroy;
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
-import javax.jms.Connection;
-import javax.jms.ConnectionFactory;
-import javax.jms.Destination;
-import javax.validation.constraints.NotNull;
-import java.util.Properties;
-import java.util.UUID;
 
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
 
@@ -141,5 +142,10 @@ public class JMSMessagingCoreImpl implements MessagingCore {
     @Override
     public String getClientId() {
         return clientId;
+    }
+
+    @Override
+    public void unregister(@NotNull final String correlationId) {
+        getMultiplexer().unregister(correlationId);
     }
 }

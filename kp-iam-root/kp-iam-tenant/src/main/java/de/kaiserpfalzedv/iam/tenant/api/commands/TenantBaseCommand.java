@@ -16,14 +16,19 @@
 
 package de.kaiserpfalzedv.iam.tenant.api.commands;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import de.kaiserpfalzedv.commons.api.commands.BaseCommand;
-import de.kaiserpfalzedv.commons.api.commands.CrudCommands;
-import org.apache.commons.lang3.builder.ToStringBuilder;
-import org.apache.commons.lang3.builder.ToStringStyle;
+import java.util.Optional;
+import java.util.UUID;
 
 import javax.validation.constraints.NotNull;
-import java.util.UUID;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import de.kaiserpfalzedv.commons.api.commands.BaseCommand;
+import de.kaiserpfalzedv.commons.api.commands.CommandExecutionException;
+import de.kaiserpfalzedv.commons.api.commands.CrudCommands;
+import de.kaiserpfalzedv.iam.tenant.api.TenantCommandExecutor;
+import de.kaiserpfalzedv.iam.tenant.api.replies.TenantBaseReply;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
 
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
@@ -46,8 +51,8 @@ public abstract class TenantBaseCommand extends BaseCommand {
         crudType = type;
     }
 
-    public void execute(TenantCommandExecutor executor) throws TenantCommandExecutionException {
-
+    public Optional<? extends TenantBaseReply> execute(TenantCommandExecutor executor) throws CommandExecutionException {
+        throw new UnsupportedOperationException("Can't execute a TenantBaseCommand directly. Only subclasses are supported");
     }
 
     @JsonIgnore

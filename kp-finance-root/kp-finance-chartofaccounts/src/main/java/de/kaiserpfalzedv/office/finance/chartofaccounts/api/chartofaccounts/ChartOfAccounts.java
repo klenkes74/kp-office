@@ -22,7 +22,7 @@ import java.util.UUID;
 
 import de.kaiserpfalzedv.commons.api.data.base.Identifiable;
 import de.kaiserpfalzedv.commons.api.data.base.Nameable;
-import de.kaiserpfalzedv.commons.api.data.tenant.Tenantable;
+import de.kaiserpfalzedv.commons.api.multitenancy.Tenantable;
 import de.kaiserpfalzedv.office.finance.chartofaccounts.api.account.Account;
 import de.kaiserpfalzedv.office.finance.chartofaccounts.api.account.AccountNotMappedException;
 

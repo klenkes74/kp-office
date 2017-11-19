@@ -14,17 +14,19 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzedv.iam.tenant.adapter.data;
+package de.kaiserpfalzedv.commons.api.multitenancy;
 
-import de.kaiserpfalzedv.iam.tenant.api.TenantService;
+import java.io.Serializable;
+
+import de.kaiserpfalzedv.commons.api.data.base.Identifiable;
 
 /**
- * The definition of the data saving adapter for the tenant data.
+ * The interface for retrieving identification information.
  *
- * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
- * @version 1.0.0
- * @since 2016-09-24
+ * @author klenkes
+ * @version 2015Q1
+ * @since 27.12.15 11:31
  */
-public interface TenantDataAdapter extends TenantService {
+public interface TenantIdentifiable extends Tenantable, Serializable, Identifiable {
 
 }

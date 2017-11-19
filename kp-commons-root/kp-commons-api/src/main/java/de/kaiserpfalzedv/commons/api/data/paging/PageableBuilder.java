@@ -86,7 +86,7 @@ public class PageableBuilder implements Builder<Pageable> {
     }
 
 
-    public PageableBuilder withPaging(final Pageable pageable) {
+    public PageableBuilder withPage(final Pageable pageable) {
         withPage(pageable.getPage());
         withSize(pageable.getSize());
         withTotalPages(pageable.getTotalPages());

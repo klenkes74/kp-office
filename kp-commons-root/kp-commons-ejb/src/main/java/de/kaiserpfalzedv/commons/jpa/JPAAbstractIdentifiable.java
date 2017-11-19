@@ -31,7 +31,7 @@ import javax.persistence.Version;
 import javax.validation.constraints.NotNull;
 
 import de.kaiserpfalzedv.commons.api.data.base.Identifiable;
-import de.kaiserpfalzedv.commons.api.data.tenant.TenantIdentifiable;
+import de.kaiserpfalzedv.commons.api.multitenancy.TenantIdentifiable;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import static org.apache.commons.lang3.builder.ToStringStyle.SHORT_PREFIX_STYLE;

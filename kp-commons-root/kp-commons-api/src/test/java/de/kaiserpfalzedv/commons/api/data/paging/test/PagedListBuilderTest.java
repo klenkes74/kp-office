@@ -92,7 +92,7 @@ public class PagedListBuilderTest {
     @Test(expected = BuilderException.class)
     public void testTooMuchData() {
         service
-                .withPageable(new PageableBuilder().withPaging(DEFAULT_PAGEABLE).withTotalCount(1).build())
+                .withPageable(new PageableBuilder().withPage(DEFAULT_PAGEABLE).withTotalCount(1).build())
                 .withData(DEFAULT_DATA)
                 .build();
     }

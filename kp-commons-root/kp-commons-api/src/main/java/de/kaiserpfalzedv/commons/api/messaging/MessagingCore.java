@@ -16,12 +16,13 @@
 
 package de.kaiserpfalzedv.commons.api.messaging;
 
+import javax.jms.Connection;
+import javax.jms.Destination;
+import javax.validation.constraints.NotNull;
+
 import de.kaiserpfalzedv.commons.api.init.Closeable;
 import de.kaiserpfalzedv.commons.api.init.Initializable;
 import org.apache.commons.pool2.ObjectPool;
-
-import javax.jms.Connection;
-import javax.jms.Destination;
 
 /**
  * @author rlichti {@literal <rlichti@kaiserpfalz-edv.de>}
@@ -35,4 +36,6 @@ public interface MessagingCore extends Initializable, Closeable {
     Destination getReplyTo();
 
     String getClientId();
+
+    void unregister(@NotNull final String correlationId);
 }

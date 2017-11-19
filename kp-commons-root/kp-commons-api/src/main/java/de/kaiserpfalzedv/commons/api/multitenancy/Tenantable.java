@@ -14,19 +14,23 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzedv.commons.api.data.tenant;
+package de.kaiserpfalzedv.commons.api.multitenancy;
 
 import java.io.Serializable;
-
-import de.kaiserpfalzedv.commons.api.data.base.Identifiable;
+import java.util.UUID;
 
 /**
- * The interface for retrieving identification information.
+ * All objects implementing this interface can be used in a multi tenant data structure.
  *
  * @author klenkes
  * @version 2015Q1
- * @since 27.12.15 11:31
+ * @since 27.12.15 11:36
  */
-public interface TenantIdentifiable extends Tenantable, Serializable, Identifiable {
-
+public interface Tenantable extends Serializable {
+    /**
+     * Returns only the id of the tenant. The data of the tenant may be retrieved by the appropriate service.
+     *
+     * @return The unique tenant id of the owning tenant.
+     */
+    UUID getTenant();
 }

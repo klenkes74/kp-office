@@ -16,13 +16,16 @@
 
 package de.kaiserpfalzedv.iam.tenant.api;
 
+import java.util.UUID;
+
+import javax.validation.constraints.NotNull;
+
 import de.kaiserpfalzedv.commons.api.data.BaseService;
-import de.kaiserpfalzedv.commons.api.data.BusinessKeyBaseService;
+import de.kaiserpfalzedv.commons.api.data.paging.Pageable;
+import de.kaiserpfalzedv.commons.api.data.paging.PagedListable;
+import de.kaiserpfalzedv.commons.api.data.query.Predicate;
 import de.kaiserpfalzedv.commons.api.init.Closeable;
 import de.kaiserpfalzedv.commons.api.init.Initializable;
-
-import java.util.Collection;
-import java.util.UUID;
 
 /**
  * The tenant service manages the tenant data within the system. It's a simple crud service.
@@ -31,7 +34,7 @@ import java.util.UUID;
  * @version 1.0.0
  * @since 2016-09-04
  */
-public interface TenantService extends BaseService<Tenant>, BusinessKeyBaseService<Tenant>, Initializable, Closeable {
+public interface TenantService extends BaseService<Tenant>, Initializable, Closeable {
     /**
      * Saves a tenant to the database.
      *
@@ -40,7 +43,7 @@ public interface TenantService extends BaseService<Tenant>, BusinessKeyBaseServi
      * @throws TenantExistsException A tenant with the given UUID, full or display name already exists on the system.
      */
     @Override
-    Tenant create(final Tenant data) throws TenantExistsException;
+    Tenant create(@NotNull final Tenant data) throws TenantExistsException;
 
 
     /**
@@ -53,15 +56,10 @@ public interface TenantService extends BaseService<Tenant>, BusinessKeyBaseServi
      * @throws TenantDoesNotExistException If the tenant does not exist.
      */
     @Override
-    Tenant retrieve(final UUID id) throws TenantDoesNotExistException;
+    Tenant retrieve(@NotNull final UUID id) throws TenantDoesNotExistException;
 
-    /**
-     * Retrieve all tenants from the database.
-     *
-     * @return A set of tenants available.
-     */
     @Override
-    Collection<Tenant> retrieve();
+    <P extends Predicate<Tenant>> PagedListable<Tenant> retrieve(@NotNull final P predicate, @NotNull final Pageable page);
 
     /**
      * Saves new tenant data to the database.
@@ -74,7 +72,7 @@ public interface TenantService extends BaseService<Tenant>, BusinessKeyBaseServi
      * @throws TenantExistsException If the new data would break a constraint (unique full or display name).
      */
     @Override
-    Tenant update(final Tenant data) throws TenantDoesNotExistException, TenantExistsException;
+    Tenant update(@NotNull final Tenant data) throws TenantDoesNotExistException, TenantExistsException;
 
     /**
      * Deletes the tenant. If it doesn't existed, then no error is given, since that's exactly the state wanted by the
@@ -83,8 +81,5 @@ public interface TenantService extends BaseService<Tenant>, BusinessKeyBaseServi
      * @param id The UUID of the tenant to be removed.
      */
     @Override
-    void delete(final UUID id);
-
-    @Override
-    Tenant retrieve(final String businessKey) throws TenantDoesNotExistException;
+    void delete(@NotNull final UUID id);
 }

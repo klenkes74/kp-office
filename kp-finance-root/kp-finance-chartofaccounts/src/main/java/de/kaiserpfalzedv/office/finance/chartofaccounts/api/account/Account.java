@@ -21,7 +21,7 @@ import javax.money.CurrencyUnit;
 
 import de.kaiserpfalzedv.commons.api.data.base.Identifiable;
 import de.kaiserpfalzedv.commons.api.data.base.Nameable;
-import de.kaiserpfalzedv.commons.api.data.tenant.Tenantable;
+import de.kaiserpfalzedv.commons.api.multitenancy.Tenantable;
 
 /**
  * The real account in the system. Normally it will be used via an charted account (an account mapping practically

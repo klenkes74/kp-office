@@ -16,13 +16,20 @@
 
 package de.kaiserpfalzedv.iam.tenant.jpa;
 
+import java.util.UUID;
+
+import javax.persistence.Access;
+import javax.persistence.Column;
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+
 import de.kaiserpfalzedv.commons.jpa.JPAAbstractTenantIdentifiable;
 import de.kaiserpfalzedv.commons.jpa.JPANameable;
 import de.kaiserpfalzedv.iam.tenant.api.Tenant;
 import org.apache.commons.lang3.builder.ToStringBuilder;
-
-import javax.persistence.*;
-import java.util.UUID;
 
 import static javax.persistence.AccessType.FIELD;
 import static javax.persistence.LockModeType.NONE;
@@ -44,7 +51,7 @@ import static org.apache.commons.lang3.builder.ToStringStyle.SHORT_PREFIX_STYLE;
         @NamedQuery(name = "fetch-all", query = "SELECT t FROM Tenant t", lockMode = NONE)
 })
 public class JPATenant extends JPAAbstractTenantIdentifiable implements Tenant {
-    private static final long serialVersionUID = -6085847502814790165L;
+    private static final long serialVersionUID = 2140000949299063079L;
 
     @Embedded
     private JPANameable name;
@@ -57,10 +64,6 @@ public class JPATenant extends JPAAbstractTenantIdentifiable implements Tenant {
     @Deprecated // Only for JPA
     protected JPATenant() {}
 
-
-    JPATenant(final Tenant orig) {
-        this(orig.getTenant(), orig.getId(), orig.getKey(), orig.getDisplayName(), orig.getFullName());
-    }
 
     JPATenant(
             final UUID tenant,

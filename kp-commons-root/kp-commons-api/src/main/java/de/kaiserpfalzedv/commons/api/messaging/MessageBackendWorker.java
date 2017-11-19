@@ -14,24 +14,24 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzedv.commons.api.data;
+package de.kaiserpfalzedv.commons.api.messaging;
+
+import de.kaiserpfalzedv.commons.api.MessageInfo;
 
 /**
- * The retrieving method for retrieving objects via their business keys.
- *
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
  * @version 1.0.0
- * @since 2016-09-30
+ * @since 2017-11-17
  */
-public interface BusinessKeyBaseService<T> {
+public interface MessageBackendWorker {
     /**
-     * Retrieves an object via its business key.
+     * This method works on a request.
      *
-     * @param businessKey The human readable business key. Commonly a number is used.
+     * @param info    Metadata for this request.
+     * @param message the message as UTF-8 string.
      *
-     * @return The object associated with the business key.
-     *
-     * @throws ObjectDoesNotExistException If no object of the class has the business number.
+     * @throws Throwable since it could be a {@link de.kaiserpfalzedv.commons.api.BaseBusinessException} or one of its
+     *                   subclasses or some system exceptions depending on the messaging system (like a JMSException).
      */
-    T retrieve(String businessKey) throws ObjectDoesNotExistException;
+    void workOn(MessageInfo info, String message) throws Throwable;
 }

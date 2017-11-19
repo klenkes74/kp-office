@@ -24,8 +24,6 @@ package de.kaiserpfalzedv.commons.api.commands;
 public enum CrudCommands {
     CREATE,
     RETRIEVE,
-    RETRIEVE_BY_KEY,
-    RETRIEVE_ALL,
     UPDATE,
     DELETE,
     UNSPECIFIED

@@ -16,28 +16,37 @@
 
 package de.kaiserpfalzedv.iam.tenant.api.commands;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import de.kaiserpfalzedv.commons.api.commands.CrudCommands;
-
 import java.util.UUID;
+
+import javax.validation.constraints.NotNull;
+
+import com.fasterxml.jackson.annotation.JsonCreator;
+import de.kaiserpfalzedv.commons.api.commands.CrudCommands;
 
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
  * @version 1.0.0
  * @since 2016-09-25
  */
-public class TenantDeleteCommand extends TenantIdContainingBaseCommand {
+public class TenantDeleteCommand extends TenantBaseCommand {
     private static final long serialVersionUID = 3433560321699584058L;
 
     private static final CrudCommands CRUD_TYPE = CrudCommands.DELETE;
 
+    private UUID tenant;
+
     @JsonCreator
-    TenantDeleteCommand(
-            @JsonProperty("source") final UUID source,
-            @JsonProperty("command") final UUID commandId,
-            @JsonProperty("tenant") final UUID tenant
+    public TenantDeleteCommand(
+            @NotNull final UUID source,
+            @NotNull final UUID commandId,
+            @NotNull final UUID tenant
     ) {
-        super(CRUD_TYPE, source, commandId, tenant);
+        super(CRUD_TYPE, source, commandId);
+
+        this.tenant = tenant;
+    }
+
+    public UUID getTenant() {
+        return tenant;
     }
 }

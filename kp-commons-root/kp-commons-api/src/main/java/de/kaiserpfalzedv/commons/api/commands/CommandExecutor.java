@@ -16,11 +16,13 @@
 
 package de.kaiserpfalzedv.commons.api.commands;
 
+import java.util.Optional;
+
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
  * @version 1.0.0
  * @since 2016-09-27
  */
-public interface CommandExecutor {
-    void execute(BaseCommand command) throws CommandExecutionException;
+public interface CommandExecutor<C extends BaseCommand, R extends BaseReply> {
+    Optional<R> execute(C command) throws CommandExecutionException;
 }

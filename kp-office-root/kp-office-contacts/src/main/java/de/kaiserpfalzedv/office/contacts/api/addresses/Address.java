@@ -16,7 +16,7 @@
 
 package de.kaiserpfalzedv.office.contacts.api.addresses;
 
-import de.kaiserpfalzedv.commons.api.data.tenant.TenantIdentifiable;
+import de.kaiserpfalzedv.commons.api.multitenancy.TenantIdentifiable;
 
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
