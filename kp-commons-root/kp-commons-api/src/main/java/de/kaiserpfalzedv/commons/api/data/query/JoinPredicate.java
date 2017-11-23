@@ -59,7 +59,7 @@ public class JoinPredicate<T extends Serializable, J extends Serializable> imple
     }
 
     @Override
-    public List<QueryParameter> generateParameter(PredicateParameterGenerator<T> visitor) {
+    public List<QueryParameter<T>> generateParameter(PredicateParameterGenerator<T> visitor) {
         return visitor.generateParameters(this);
     }
 

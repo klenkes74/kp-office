@@ -59,7 +59,7 @@ public interface TenantService extends BaseService<Tenant>, Initializable, Close
     Tenant retrieve(@NotNull final UUID id) throws TenantDoesNotExistException;
 
     @Override
-    <P extends Predicate<Tenant>> PagedListable<Tenant> retrieve(@NotNull final P predicate, @NotNull final Pageable page);
+    PagedListable<Tenant> retrieve(@NotNull final Predicate<Tenant> predicate, @NotNull final Pageable page);
 
     /**
      * Saves new tenant data to the database.

@@ -30,7 +30,7 @@ import de.kaiserpfalzedv.iam.tenant.api.Tenant;
  * @version 1.0.0
  * @since 2017-11-19
  */
-public class TenantCrudCommandDefaults implements CrudCommandBuilderValueCalculator<Tenant> {
+public class TenantCrudCommandBuilderDefaults implements CrudCommandBuilderValueCalculator<Tenant> {
     @Override
     public UUID setDefaultId(CrudCommandType command, UUID dataId, Tenant data, Predicate<Tenant> predicate, Pageable page) {
         return (dataId == null && data != null) ? data.getId() : dataId;

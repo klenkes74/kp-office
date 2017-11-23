@@ -82,8 +82,8 @@ public class JPATenantServiceImpl implements TenantService {
     }
 
     @Override
-    public <P extends Predicate<Tenant>> PagedListable<Tenant> retrieve(
-            @NotNull final P predicate,
+    public PagedListable<Tenant> retrieve(
+            @NotNull final Predicate<Tenant> predicate,
             @NotNull final Pageable page
     ) {
         PagedListable<JPATenant> data = repository.retrieve(page);

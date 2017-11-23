@@ -14,30 +14,24 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzedv.commons.api.data;
+package de.kaiserpfalzedv.iam.access.api.roles.replies;
 
-import java.io.Serializable;
 import java.util.UUID;
 
 import javax.validation.constraints.NotNull;
 
-import de.kaiserpfalzedv.commons.api.data.paging.Pageable;
-import de.kaiserpfalzedv.commons.api.data.paging.PagedListable;
-import de.kaiserpfalzedv.commons.api.data.query.Predicate;
+import de.kaiserpfalzedv.commons.api.action.replies.CrudReply;
+import de.kaiserpfalzedv.iam.access.api.roles.Role;
 
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
  * @version 1.0.0
- * @since 2016-09-30
+ * @since 2017-11-19
  */
-public interface BaseService<T extends Serializable> {
-    T create(@NotNull final T data) throws ObjectExistsException;
+public abstract class RoleBaseReply extends CrudReply<Role> {
+    private static final long serialVersionUID = 1256213129218604572L;
 
-    T retrieve(@NotNull final UUID id) throws ObjectDoesNotExistException;
-
-    PagedListable<T> retrieve(Predicate<T> predicate, Pageable page);
-
-    T update(@NotNull final T data) throws ObjectExistsException, ObjectDoesNotExistException;
-
-    void delete(@NotNull final UUID id);
+    public RoleBaseReply(@NotNull final Object source, @NotNull final UUID command, @NotNull final UUID reply) {
+        super(source, command, reply);
+    }
 }

@@ -42,7 +42,7 @@ public class Or<T extends Serializable> extends AbstractBasePredicateAction<T> {
     }
 
     @Override
-    public List<QueryParameter> generateParameter(PredicateParameterGenerator<T> visitor) {
+    public List<QueryParameter<T>> generateParameter(PredicateParameterGenerator<T> visitor) {
         return visitor.generateParameters(this);
     }
 }

@@ -100,9 +100,9 @@ public class JPABaseRepository<T extends JPAAbstractIdentifiable, P extends Iden
 
         TypedQuery<T> query = em.createQuery(queryString, clasz);
 
-        List<QueryParameter> parameters = parameterParser.generateParameters(predicate);
-        for (QueryParameter p : parameters) {
-            query.setParameter(p.getName(), p.getValue());
+        List<QueryParameter<P>> parameters = parameterParser.generateParameters(predicate);
+        for (QueryParameter<P> p : parameters) {
+            query = p.setParameterToQuery(query);
         }
 
         List<T> data = query.setFirstResult(page.getFirstResult())

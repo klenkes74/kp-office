@@ -17,6 +17,7 @@
 package de.kaiserpfalzedv.commons.api.data.query;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
 
@@ -34,16 +35,19 @@ public class AttributePredicate<T extends Serializable, V extends Serializable> 
     private AttributeType<T> attributeType;
     private Comparator comparator;
     private V value;
+    private Collection<V> values;
 
-    public AttributePredicate(
+    AttributePredicate(
             @NotNull final Class<?> clasz,
             @NotNull final String name,
             @NotNull final Comparator comparator,
-            @NotNull final V value
+            final V value,
+            final Collection<V> values
     ) {
         this.attributeType = new AttributeType<>(clasz, name);
         this.comparator = comparator;
         this.value = value;
+        this.values = values;
     }
 
     @Override
@@ -62,7 +66,7 @@ public class AttributePredicate<T extends Serializable, V extends Serializable> 
     }
 
     @Override
-    public List<QueryParameter> generateParameter(PredicateParameterGenerator<T> visitor) {
+    public List<QueryParameter<T>> generateParameter(PredicateParameterGenerator<T> visitor) {
         return visitor.generateParameters(this);
     }
 
@@ -80,7 +84,7 @@ public class AttributePredicate<T extends Serializable, V extends Serializable> 
 
     @Override
     public int hashCode() {
-        return Objects.hash(getAttributeType(), getComparator(), getValue());
+        return Objects.hash(getAttributeType(), getComparator(), getValue(), getValues());
     }
 
     @Override
@@ -90,7 +94,8 @@ public class AttributePredicate<T extends Serializable, V extends Serializable> 
         AttributePredicate<T, V> predicate = (AttributePredicate<T, V>) o;
         return Objects.equals(getAttributeType(), predicate.getAttributeType()) &&
                 getComparator() == predicate.getComparator() &&
-                Objects.equals(getValue(), predicate.getValue());
+                Objects.equals(getValue(), predicate.getValue()) &&
+                Objects.equals(getValues(), predicate.getValues());
     }
 
     public AttributeType<T> getAttributeType() {
@@ -107,10 +112,23 @@ public class AttributePredicate<T extends Serializable, V extends Serializable> 
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE)
+        ToStringBuilder result = new ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE)
                 .append("attributeType", attributeType)
-                .append("comparator", comparator)
-                .append("value", value)
-                .toString();
+                .append("comparator", comparator);
+
+        if (value != null) {
+            result.append("value", value);
+        }
+
+        if (values != null) {
+            result.append("values", values);
+        }
+
+
+        return result.toString();
+    }
+
+    public Collection<V> getValues() {
+        return values;
     }
 }

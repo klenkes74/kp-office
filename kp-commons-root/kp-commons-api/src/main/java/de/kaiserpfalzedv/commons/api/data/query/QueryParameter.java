@@ -16,54 +16,20 @@
 
 package de.kaiserpfalzedv.commons.api.data.query;
 
-import java.util.Objects;
+import java.io.Serializable;
 
+import javax.persistence.TypedQuery;
 import javax.validation.constraints.NotNull;
 
-import org.apache.commons.lang3.builder.ToStringBuilder;
-import org.apache.commons.lang3.builder.ToStringStyle;
+import de.kaiserpfalzedv.commons.api.data.base.Identifiable;
 
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
  * @version 1.0.0
- * @since 2017-11-11
+ * @since 2017-11-22
  */
-public class QueryParameter<T> {
-    private String name;
-    private T value;
+public interface QueryParameter<T extends Identifiable> extends Serializable {
+    String getName();
 
-    public QueryParameter(@NotNull final String name, @NotNull final T value) {
-        this.name = name;
-        this.value = value;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(getName(), getValue());
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof QueryParameter)) return false;
-        QueryParameter<?> that = (QueryParameter<?>) o;
-        return Objects.equals(getName(), that.getName()) &&
-                Objects.equals(getValue(), that.getValue());
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public T getValue() {
-        return value;
-    }
-
-    @Override
-    public String toString() {
-        return new ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE)
-                .append("name", name)
-                .append("value", value)
-                .toString();
-    }
+    <P extends Identifiable> TypedQuery<P> setParameterToQuery(@NotNull TypedQuery<P> query);
 }

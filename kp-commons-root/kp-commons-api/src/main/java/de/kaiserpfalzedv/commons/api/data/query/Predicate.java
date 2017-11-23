@@ -31,7 +31,7 @@ public interface Predicate<T extends Serializable> extends Serializable {
 
     String generateQuery(PredicateQueryGenerator<T> visitor);
 
-    List<QueryParameter> generateParameter(PredicateParameterGenerator<T> visitor);
+    List<QueryParameter<T>> generateParameter(PredicateParameterGenerator<T> visitor);
 
     enum Comparator {
         LOWER_AS("<"),
@@ -39,7 +39,8 @@ public interface Predicate<T extends Serializable> extends Serializable {
         EQUALS("="),
         NOT_EQUALS("<>"),
         BIGGER_AS_OR_EQUALS(">="),
-        BIGGER_AS(">");
+        BIGGER_AS(">"),
+        IN(" IN ");
 
         private String sign;
 

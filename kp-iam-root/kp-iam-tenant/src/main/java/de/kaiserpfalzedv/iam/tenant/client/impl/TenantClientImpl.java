@@ -117,7 +117,10 @@ public class TenantClientImpl implements TenantClient, Serializable {
     }
 
     @Override
-    public <P extends Predicate<Tenant>> PagedListable<Tenant> retrieve(P predicate, Pageable page) {
+    public PagedListable<Tenant> retrieve(
+            @NotNull final Predicate<Tenant> predicate,
+            @NotNull final Pageable page
+    ) {
         CrudCommandBuilder<TenantRetrieveCommand, Tenant> commandBuilder
                 = new CrudCommandBuilder<TenantRetrieveCommand, Tenant>(TenantRetrieveCommand.class, commandCreator)
                 .withSource(clientId)

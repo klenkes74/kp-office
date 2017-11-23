@@ -26,9 +26,9 @@ import de.kaiserpfalzedv.commons.api.data.query.JoinPredicate;
 import de.kaiserpfalzedv.commons.api.data.query.Or;
 import de.kaiserpfalzedv.commons.api.data.query.Predicate;
 import de.kaiserpfalzedv.commons.api.data.query.PredicateParameterGenerator;
+import de.kaiserpfalzedv.commons.api.data.query.QueryCollectionParameter;
 import de.kaiserpfalzedv.commons.api.data.query.QueryParameter;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import de.kaiserpfalzedv.commons.api.data.query.QuerySingleValueParameter;
 
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
@@ -36,16 +36,15 @@ import org.slf4j.LoggerFactory;
  * @since 2017-11-09
  */
 public class PredicateToParameterParser<T extends Serializable> implements PredicateParameterGenerator<T> {
-    private static final Logger LOG = LoggerFactory.getLogger(PredicateToParameterParser.class);
 
     @Override
-    public List<QueryParameter> generateParameters(Predicate<T> predicate) {
+    public List<QueryParameter<T>> generateParameters(Predicate<T> predicate) {
         return predicate.generateParameter(this);
     }
 
     @Override
-    public List<QueryParameter> generateParameters(And<T> predicate) {
-        ArrayList<QueryParameter> result = new ArrayList<>();
+    public List<QueryParameter<T>> generateParameters(And<T> predicate) {
+        ArrayList<QueryParameter<T>> result = new ArrayList<>();
 
         result.addAll(generateParameters(predicate.getLeft()));
         result.addAll(generateParameters(predicate.getRight()));
@@ -54,8 +53,8 @@ public class PredicateToParameterParser<T extends Serializable> implements Predi
     }
 
     @Override
-    public List<QueryParameter> generateParameters(Or<T> predicate) {
-        ArrayList<QueryParameter> result = new ArrayList<>();
+    public List<QueryParameter<T>> generateParameters(Or<T> predicate) {
+        ArrayList<QueryParameter<T>> result = new ArrayList<>();
 
         result.addAll(generateParameters(predicate.getLeft()));
         result.addAll(generateParameters(predicate.getRight()));
@@ -64,20 +63,28 @@ public class PredicateToParameterParser<T extends Serializable> implements Predi
     }
 
     @Override
-    public <V extends Serializable> List<QueryParameter> generateParameters(AttributePredicate<T, V> predicate) {
-        ArrayList<QueryParameter> result = new ArrayList<>();
+    public <V extends Serializable> List<QueryParameter<V>> generateParameters(AttributePredicate<T, V> predicate) {
+        ArrayList<QueryParameter<V>> result = new ArrayList<>();
 
-        result.add(new QueryParameter(predicate.getName()
-                                              + "_" + predicate.getComparator().toString(), predicate.getValue()));
+        if (!Predicate.Comparator.IN.equals(predicate.getComparator())) {
+            result.add(new QuerySingleValueParameter<V>(predicate.getName()
+                                                                + "_" + predicate.getComparator()
+                                                                                 .toString(), predicate.getValue()));
+        } else {
+            result.add(new QueryCollectionParameter<V>(
+                    predicate.getName() + "_" + predicate.getComparator().toString(),
+                    predicate.getValues()
+            ));
+        }
 
         return result;
     }
 
     @Override
-    public <J extends Serializable> List<QueryParameter> generateParameters(JoinPredicate<T, J> predicate) {
+    public <J extends Serializable> List<QueryParameter<J>> generateParameters(JoinPredicate<T, J> predicate) {
         PredicateToParameterParser<J> secondParser = new PredicateToParameterParser<>();
 
-        ArrayList<QueryParameter> result = new ArrayList<>();
+        ArrayList<QueryParameter<J>> result = new ArrayList<>();
 
         result.addAll(secondParser.generateParameters(predicate.getPredicates()));
 

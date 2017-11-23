@@ -16,18 +16,34 @@
 
 package de.kaiserpfalzedv.iam.tenant.mock;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Properties;
+import java.util.UUID;
+
+import javax.enterprise.context.ApplicationScoped;
+
 import de.kaiserpfalzedv.commons.api.cdi.Mock;
+import de.kaiserpfalzedv.commons.api.data.paging.Pageable;
+import de.kaiserpfalzedv.commons.api.data.paging.PageableBuilder;
+import de.kaiserpfalzedv.commons.api.data.paging.PagedListBuilder;
+import de.kaiserpfalzedv.commons.api.data.paging.PagedListable;
+import de.kaiserpfalzedv.commons.api.data.query.Predicate;
+import de.kaiserpfalzedv.commons.api.data.query.PredicateParameterGenerator;
+import de.kaiserpfalzedv.commons.api.data.query.QueryCollectionParameter;
+import de.kaiserpfalzedv.commons.api.data.query.QueryParameter;
+import de.kaiserpfalzedv.commons.api.data.query.QuerySingleValueParameter;
 import de.kaiserpfalzedv.commons.api.init.InitializationException;
-import de.kaiserpfalzedv.iam.tenant.api.*;
+import de.kaiserpfalzedv.commons.impl.data.query.PredicateToParameterParser;
+import de.kaiserpfalzedv.iam.tenant.api.NullTenant;
+import de.kaiserpfalzedv.iam.tenant.api.Tenant;
+import de.kaiserpfalzedv.iam.tenant.api.TenantBuilder;
+import de.kaiserpfalzedv.iam.tenant.api.TenantDoesNotExistException;
+import de.kaiserpfalzedv.iam.tenant.api.TenantExistsException;
 import de.kaiserpfalzedv.iam.tenant.client.TenantClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import javax.enterprise.context.ApplicationScoped;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Properties;
-import java.util.UUID;
 
 /**
  * The mock implementation of the TenantService. Can be used as client during the development or testing of other
@@ -147,8 +163,81 @@ public class TenantMock implements TenantClient {
     }
 
     @Override
-    public Collection<Tenant> retrieve() {
-        return tenants.values();
+    public PagedListable<Tenant> retrieve(Predicate<Tenant> predicate, Pageable page) {
+        ArrayList<Tenant> data = new ArrayList<>(tenants.size());
+        PredicateParameterGenerator<Tenant> parameterParser = new PredicateToParameterParser<>();
+        List<QueryParameter<Tenant>> parameters = parameterParser.generateParameters(predicate);
+
+        for (QueryParameter<Tenant> p : parameters) {
+            if (QuerySingleValueParameter.class.isAssignableFrom(p.getClass())) {
+                switch (p.getName()) {
+                    case "id":
+                        data.add(tenants.get(((QuerySingleValueParameter) p).getValue()));
+                        break;
+                    case "key":
+                        data.add(tenantsByKey.get(((QuerySingleValueParameter) p).getValue()));
+                        break;
+                    case "displayName":
+                        tenants.values().forEach(t -> {
+                            if (t.getDisplayName().equals(((QuerySingleValueParameter) p).getValue()))
+                                data.add(t);
+                        });
+                        break;
+                    case "fullName":
+                        tenants.values().forEach(t -> {
+                            if (t.getFullName().equals(((QuerySingleValueParameter) p).getValue()))
+                                data.add(t);
+                        });
+                        break;
+                    default:
+                        throw new IllegalStateException("There is no attribute '" + p.getName() + "'!");
+                }
+            } else {
+                switch (p.getName()) {
+                    case "id":
+                        tenants.values().forEach(t -> {
+                            if (((QueryCollectionParameter) p).getValue().contains(t.getId())) {
+                                data.add(t);
+                            }
+                        });
+                        break;
+                    case "key":
+                        tenants.values().forEach(t -> {
+                            if (((QueryCollectionParameter) p).getValue().contains(t.getKey())) {
+                                data.add(t);
+                            }
+                        });
+                        break;
+                    case "displayName":
+                        tenants.values().forEach(t -> {
+                            if (((QueryCollectionParameter) p).getValue().contains(t.getDisplayName())) {
+                                data.add(t);
+                            }
+                        });
+                        break;
+                    case "fullName":
+                        tenants.values().forEach(t -> {
+                            if (((QueryCollectionParameter) p).getValue().contains(t.getFullName())) {
+                                data.add(t);
+                            }
+                        });
+                        break;
+                    default:
+                        throw new IllegalStateException("There is no attribute '" + p.getName() + "'!");
+                }
+            }
+        }
+
+        List pageData = data.subList(page.getFirstResult(), page.getFirstResult() + (int) page.getSize());
+
+        return new PagedListBuilder<Tenant>()
+                .withData(pageData)
+                .withPageable(
+                        new PageableBuilder()
+                                .withPage(page)
+                                .withTotalCount(data.size())
+                                .build()
+                ).build();
     }
 
     public Tenant update(final Tenant tenant) throws TenantDoesNotExistException, TenantExistsException {
@@ -192,13 +281,5 @@ public class TenantMock implements TenantClient {
         tenants.remove(id);
 
         LOG.info("Deleted tenant with id #{}.", id);
-    }
-
-    public Tenant retrieve(final String key) throws TenantDoesNotExistException {
-        if (!tenantsByKey.containsKey(key)) {
-            throw new TenantDoesNotExistException(key);
-        }
-
-        return tenantsByKey.get(key);
     }
 }

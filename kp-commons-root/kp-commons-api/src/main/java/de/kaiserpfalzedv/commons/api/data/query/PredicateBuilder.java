@@ -17,10 +17,13 @@
 package de.kaiserpfalzedv.commons.api.data.query;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.UUID;
 
 import javax.validation.constraints.NotNull;
 
+import de.kaiserpfalzedv.commons.api.BuilderException;
 import org.apache.commons.lang3.builder.Builder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -37,6 +40,7 @@ public class PredicateBuilder<T extends Serializable, V extends Serializable> im
     private Class<?> clasz;
     private Predicate.Comparator comparator;
     private V value;
+    private Collection<V> values;
 
     public PredicateBuilder<T, V> withAttribute(@NotNull final String entity) {
         this.entity = entity;
@@ -44,7 +48,7 @@ public class PredicateBuilder<T extends Serializable, V extends Serializable> im
         return this;
     }
 
-    public Predicate<T> isLowerAs(V value) {
+    public Predicate<T> isLowerAs(@NotNull final V value) {
         this.value = value;
         this.comparator = Predicate.Comparator.LOWER_AS;
         this.clasz = (UUID.class.equals(value.getClass())) ? String.class : value.getClass();
@@ -53,46 +57,76 @@ public class PredicateBuilder<T extends Serializable, V extends Serializable> im
 
     @Override
     public Predicate<T> build() {
+        validate();
+
         return new AttributePredicate<T, V>(
                 this.clasz,
                 this.entity,
                 this.comparator,
-                this.value
+                this.value,
+                this.values
         );
     }
 
-    public Predicate<T> isLowerAsOrEqualTo(V value) {
+    private void validate() {
+        ArrayList<String> failures = new ArrayList<>();
+
+        if (Predicate.Comparator.IN.equals(comparator) && (values == null || values.size() == 0)) {
+            failures.add("The IN comparator needs at least one element in the values collection!");
+        }
+
+        if (!Predicate.Comparator.IN.equals(comparator) && value == null) {
+            failures.add("The comparator " + comparator + " needs a value!");
+        }
+
+
+        if (failures.size() > 0) {
+            throw new BuilderException(clasz, failures);
+        }
+    }
+
+    public Predicate<T> isLowerAsOrEqualTo(@NotNull final V value) {
         this.value = value;
         this.comparator = Predicate.Comparator.LOWER_AS_OR_EQUALS;
         this.clasz = (UUID.class.equals(value.getClass())) ? String.class : value.getClass();
         return build();
     }
 
-    public Predicate<T> isEqualTo(V value) {
+    public Predicate<T> isEqualTo(@NotNull final V value) {
         this.value = value;
         this.comparator = Predicate.Comparator.EQUALS;
         this.clasz = (UUID.class.equals(value.getClass())) ? String.class : value.getClass();
         return build();
     }
 
-    public Predicate<T> isNotEqualTo(V value) {
+    public Predicate<T> isNotEqualTo(@NotNull final V value) {
         this.value = value;
         this.comparator = Predicate.Comparator.NOT_EQUALS;
         this.clasz = (UUID.class.equals(value.getClass())) ? String.class : value.getClass();
         return build();
     }
 
-    public Predicate<T> isBiggerAsOrEqualTo(V value) {
+    public Predicate<T> isBiggerAsOrEqualTo(@NotNull final V value) {
         this.value = value;
         this.comparator = Predicate.Comparator.BIGGER_AS_OR_EQUALS;
         this.clasz = (UUID.class.equals(value.getClass())) ? String.class : value.getClass();
         return build();
     }
 
-    public Predicate<T> isBiggerAs(V value) {
+    public Predicate<T> isBiggerAs(@NotNull final V value) {
         this.value = value;
         this.comparator = Predicate.Comparator.BIGGER_AS;
         this.clasz = (UUID.class.equals(value.getClass())) ? String.class : value.getClass();
+        return build();
+    }
+
+    public Predicate<T> in(@NotNull final Collection<V> values) {
+        this.values = values;
+        this.comparator = Predicate.Comparator.IN;
+        this.clasz = (UUID.class.equals(values.iterator().next().getClass())) ? String.class : values.iterator()
+                                                                                                     .next()
+                                                                                                     .getClass();
+
         return build();
     }
 }

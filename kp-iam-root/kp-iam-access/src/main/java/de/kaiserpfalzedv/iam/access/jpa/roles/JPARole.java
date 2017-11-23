@@ -16,6 +16,7 @@
 
 package de.kaiserpfalzedv.iam.access.jpa.roles;
 
+import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
@@ -37,8 +38,6 @@ import de.kaiserpfalzedv.commons.jpa.JPAAbstractTenantIdentifiable;
 import de.kaiserpfalzedv.commons.jpa.JPANameable;
 import de.kaiserpfalzedv.iam.access.api.roles.Entitlement;
 import de.kaiserpfalzedv.iam.access.api.roles.Role;
-import org.apache.commons.lang3.builder.EqualsBuilder;
-import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 import static de.kaiserpfalzedv.iam.access.jpa.roles.JPARole.ENTITY_NAME;
 import static javax.persistence.AccessType.FIELD;
@@ -144,35 +143,30 @@ public class JPARole extends JPAAbstractTenantIdentifiable implements Role {
         return Collections.unmodifiableSet(roles);
     }
 
+    void setRoles(@NotNull final Collection<JPARole> roles) {
+        this.roles.clear();
+        this.roles.addAll(roles);
+    }
+
+    void addRole(@NotNull final JPARole role) {
+        roles.add(role);
+    }
+
+    void removeRole(@NotNull final JPARole role) {
+        roles.remove(role);
+    }
+
+
     @Override
     public Set<? extends Entitlement> getEntitlements() {
         return Collections.unmodifiableSet(entitlements);
     }
 
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-
-        if (!(o instanceof Role)) return false;
-
-        Role role = (Role) o;
-
-        return new EqualsBuilder()
-                .appendSuper(super.equals(o))
-                .append(getDisplayName(), role.getDisplayName())
-                .append(getTenant(), role.getTenant())
-                .isEquals();
+    void setEntitlements(@NotNull final Collection<JPAEntitlement> entitlements) {
+        this.entitlements.clear();
+        this.entitlements.addAll(entitlements);
     }
 
-    @Override
-    public int hashCode() {
-        return new HashCodeBuilder(17, 37)
-                .appendSuper(super.hashCode())
-                .append(getDisplayName())
-                .append(getTenant())
-                .toHashCode();
-    }
 
     @Override
     public String toString() {

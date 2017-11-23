@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzedv.iam.tenant.api.replies;
+package de.kaiserpfalzedv.iam.access.api.roles.replies;
 
 import java.util.UUID;
 
@@ -23,7 +23,7 @@ import javax.validation.constraints.NotNull;
 
 import de.kaiserpfalzedv.commons.api.action.replies.CrudReplyBuilderCreator;
 import de.kaiserpfalzedv.commons.api.data.paging.PagedListable;
-import de.kaiserpfalzedv.iam.tenant.api.Tenant;
+import de.kaiserpfalzedv.iam.access.api.roles.Entitlement;
 
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
@@ -31,36 +31,36 @@ import de.kaiserpfalzedv.iam.tenant.api.Tenant;
  * @since 2017-11-19
  */
 @ApplicationScoped
-public class TenantCrudReplyBuilderCreator implements CrudReplyBuilderCreator<Tenant> {
+public class EntitlementCrudReplyBuilderCreator implements CrudReplyBuilderCreator<Entitlement> {
     @Override
-    public TenantCreateReply create(
+    public EntitlementCreateReply create(
             @NotNull final UUID source, @NotNull final UUID commandId, @NotNull final UUID replyId,
-            @NotNull final Tenant data
+            @NotNull final Entitlement data
     ) {
-        return new TenantCreateReply(source, commandId, replyId, data);
+        return new EntitlementCreateReply(source, commandId, replyId, data);
     }
 
     @Override
-    public TenantRetrieveReply retrieve(
+    public EntitlementRetrieveReply retrieve(
             @NotNull final UUID source, @NotNull final UUID commandId, @NotNull final UUID replyId,
-            @NotNull final PagedListable<Tenant> data
+            @NotNull final PagedListable<Entitlement> data
     ) {
-        return new TenantRetrieveReply(source, commandId, replyId, data);
+        return new EntitlementRetrieveReply(source, commandId, replyId, data);
     }
 
     @Override
-    public TenantUpdateReply update(
+    public EntitlementUpdateReply update(
             @NotNull final UUID source, @NotNull final UUID commandId, @NotNull final UUID replyId,
-            @NotNull final Tenant data
+            @NotNull final Entitlement data
     ) {
-        return new TenantUpdateReply(source, commandId, replyId, data);
+        return new EntitlementUpdateReply(source, commandId, replyId, data);
     }
 
     @Override
-    public TenantDeleteReply delete(
+    public EntitlementDeleteReply delete(
             @NotNull final UUID source, @NotNull final UUID commandId, @NotNull final UUID replyId,
             @NotNull final UUID dataId
     ) {
-        return new TenantDeleteReply(source, commandId, replyId);
+        return new EntitlementDeleteReply(source, commandId, replyId);
     }
 }

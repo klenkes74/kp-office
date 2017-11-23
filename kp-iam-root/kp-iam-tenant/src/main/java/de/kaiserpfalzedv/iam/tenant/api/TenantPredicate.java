@@ -39,7 +39,7 @@ public class TenantPredicate {
     }
 
     public static PredicateBuilder<Tenant, String> name() {
-        return new PredicateBuilder<Tenant, String>().withAttribute("name");
+        return new PredicateBuilder<Tenant, String>().withAttribute("displayName");
     }
 
     public static PredicateBuilder<Tenant, String> displayName() {

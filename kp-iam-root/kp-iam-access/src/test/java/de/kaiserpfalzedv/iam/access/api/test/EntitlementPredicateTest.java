@@ -23,6 +23,7 @@ import javax.validation.constraints.NotNull;
 
 import de.kaiserpfalzedv.commons.api.data.query.Predicate;
 import de.kaiserpfalzedv.commons.api.data.query.QueryParameter;
+import de.kaiserpfalzedv.commons.api.data.query.QuerySingleValueParameter;
 import de.kaiserpfalzedv.commons.impl.data.query.PredicateToParameterParser;
 import de.kaiserpfalzedv.commons.impl.data.query.PredicateToQueryParser;
 import de.kaiserpfalzedv.iam.access.api.roles.Entitlement;
@@ -91,16 +92,16 @@ public class EntitlementPredicateTest {
         List<QueryParameter> result = parameterParser.generateParameters(cut);
         LOG.trace("Result: {}", result);
 
-        if (!result.contains(new QueryParameter("id_EQUALS", id)))
+        if (!result.contains(new QuerySingleValueParameter("id_EQUALS", id)))
             fail("ID is missing");
 
-        if (!result.contains(new QueryParameter("displayName_NOT_EQUALS", "abc")))
+        if (!result.contains(new QuerySingleValueParameter("displayName_NOT_EQUALS", "abc")))
             fail("DISPLAYNAME is missing");
 
-        if (!result.contains(new QueryParameter("fullName_NOT_EQUALS", "def")))
+        if (!result.contains(new QuerySingleValueParameter("fullName_NOT_EQUALS", "def")))
             fail("FULLNAME is missing");
 
-        if (!result.contains(new QueryParameter("descriptionKey_EQUALS", "com.iam.testkey"))) {
+        if (!result.contains(new QuerySingleValueParameter("descriptionKey_EQUALS", "com.iam.testkey"))) {
             fail("DESCRIPTIONKEY is missing!");
         }
     }

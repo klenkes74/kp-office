@@ -14,30 +14,29 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzedv.commons.api.data;
+package de.kaiserpfalzedv.iam.access.api.roles.replies;
 
-import java.io.Serializable;
 import java.util.UUID;
 
 import javax.validation.constraints.NotNull;
 
-import de.kaiserpfalzedv.commons.api.data.paging.Pageable;
-import de.kaiserpfalzedv.commons.api.data.paging.PagedListable;
-import de.kaiserpfalzedv.commons.api.data.query.Predicate;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
  * @version 1.0.0
- * @since 2016-09-30
+ * @since 2017-11-19
  */
-public interface BaseService<T extends Serializable> {
-    T create(@NotNull final T data) throws ObjectExistsException;
+public class EntitlementDeleteReply extends EntitlementBaseReply {
+    private static final long serialVersionUID = 3894347311199679530L;
 
-    T retrieve(@NotNull final UUID id) throws ObjectDoesNotExistException;
-
-    PagedListable<T> retrieve(Predicate<T> predicate, Pageable page);
-
-    T update(@NotNull final T data) throws ObjectExistsException, ObjectDoesNotExistException;
-
-    void delete(@NotNull final UUID id);
+    @JsonCreator
+    public EntitlementDeleteReply(
+            @NotNull @JsonProperty("source") final Object source,
+            @NotNull @JsonProperty("command") final UUID command,
+            @NotNull @JsonProperty("reply") final UUID reply
+    ) {
+        super(source, command, reply);
+    }
 }
