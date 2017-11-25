@@ -19,12 +19,14 @@ package de.kaiserpfalzedv.commons.api.data.query;
 import java.io.Serializable;
 import java.util.List;
 
+import de.kaiserpfalzedv.commons.api.data.base.Identifiable;
+
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
  * @version 1.0.0
  * @since 1.0.0
  */
-public interface Predicate<T extends Serializable> extends Serializable {
+public interface Predicate<T extends Identifiable> extends Serializable {
     Predicate<T> and(Predicate<T> join);
 
     Predicate<T> or(Predicate<T> join);

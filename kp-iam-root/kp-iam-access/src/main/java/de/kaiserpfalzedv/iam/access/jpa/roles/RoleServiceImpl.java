@@ -23,7 +23,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-import javax.enterprise.context.Dependent;
+import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.validation.constraints.NotNull;
 
@@ -49,7 +49,7 @@ import org.slf4j.LoggerFactory;
  * @version 1.0.0
  * @since 2017-11-19
  */
-@Dependent
+@ApplicationScoped
 @Implementation
 public class RoleServiceImpl implements RoleService {
     private static final Logger LOG = LoggerFactory.getLogger(RoleServiceImpl.class);

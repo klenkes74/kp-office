@@ -16,12 +16,12 @@
 
 package de.kaiserpfalzedv.commons.api.data.query;
 
-import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
 
 import javax.validation.constraints.NotNull;
 
+import de.kaiserpfalzedv.commons.api.data.base.Identifiable;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 import org.slf4j.Logger;
@@ -32,7 +32,7 @@ import org.slf4j.LoggerFactory;
  * @version 1.0.0
  * @since 2017-11-09
  */
-public class JoinPredicate<T extends Serializable, J extends Serializable> implements Predicate<T> {
+public class JoinPredicate<T extends Identifiable, J extends Identifiable> implements Predicate<T> {
     private static final Logger LOG = LoggerFactory.getLogger(JoinPredicate.class);
 
     private String entity;

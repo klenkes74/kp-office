@@ -14,25 +14,14 @@
  * limitations under the License.
  */
 
-package de.kaiserpfalzedv.commons.api.data.query;
+package de.kaiserpfalzedv.iam.access.api.roles;
 
-import java.util.List;
-
-import de.kaiserpfalzedv.commons.api.data.base.Identifiable;
+import de.kaiserpfalzedv.commons.api.data.BaseService;
 
 /**
  * @author klenkes {@literal <rlichti@kaiserpfalz-edv.de>}
  * @version 1.0.0
- * @since 2017-11-09
+ * @since 2017-11-23
  */
-public interface PredicateParameterGenerator<T extends Identifiable> {
-    List<QueryParameter<T>> generateParameters(Predicate<T> predicate);
-
-    List<QueryParameter<T>> generateParameters(And<T> predicate);
-
-    List<QueryParameter<T>> generateParameters(Or<T> predicate);
-
-    <V extends Identifiable> List<QueryParameter<V>> generateParameters(AttributePredicate<T, V> predicate);
-
-    <J extends Identifiable> List<QueryParameter<J>> generateParameters(JoinPredicate<T, J> predicate);
+public interface EntitlementService extends BaseService<Entitlement> {
 }

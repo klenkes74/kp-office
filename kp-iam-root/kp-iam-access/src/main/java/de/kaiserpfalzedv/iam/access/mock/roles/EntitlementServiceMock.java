@@ -21,13 +21,13 @@ import java.util.UUID;
 import javax.enterprise.context.ApplicationScoped;
 
 import de.kaiserpfalzedv.commons.api.cdi.Mock;
+import de.kaiserpfalzedv.commons.api.data.BaseService;
 import de.kaiserpfalzedv.commons.api.data.ObjectDoesNotExistException;
 import de.kaiserpfalzedv.commons.api.data.ObjectExistsException;
 import de.kaiserpfalzedv.commons.api.data.paging.Pageable;
 import de.kaiserpfalzedv.commons.api.data.paging.PagedListable;
 import de.kaiserpfalzedv.commons.api.data.query.Predicate;
-import de.kaiserpfalzedv.iam.access.api.roles.Role;
-import de.kaiserpfalzedv.iam.access.api.roles.RoleService;
+import de.kaiserpfalzedv.iam.access.api.roles.Entitlement;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -38,36 +38,36 @@ import org.slf4j.LoggerFactory;
  */
 @ApplicationScoped
 @Mock
-public class RoleServiceMock implements RoleService {
-    private static final Logger LOG = LoggerFactory.getLogger(RoleServiceMock.class);
+public class EntitlementServiceMock implements BaseService<Entitlement> {
+    private static final Logger LOG = LoggerFactory.getLogger(EntitlementServiceMock.class);
 
     @Override
-    public Role create(Role data) throws ObjectExistsException {
-        // TODO klenkes Auto defined stub for: de.kaiserpfalzedv.iam.access.mock.roles.RoleServiceMock.create
+    public Entitlement create(Entitlement data) throws ObjectExistsException {
+        // TODO klenkes Auto defined stub for: de.kaiserpfalzedv.iam.access.mock.roles.EntitlementServiceMock.create
         return null;  //To change body of implemented methods use File | Settings | File Templates.
     }
 
     @Override
-    public Role retrieve(UUID id) throws ObjectDoesNotExistException {
-        // TODO klenkes Auto defined stub for: de.kaiserpfalzedv.iam.access.mock.roles.RoleServiceMock.retrieve
+    public Entitlement retrieve(UUID id) throws ObjectDoesNotExistException {
+        // TODO klenkes Auto defined stub for: de.kaiserpfalzedv.iam.access.mock.roles.EntitlementServiceMock.retrieve
         return null;  //To change body of implemented methods use File | Settings | File Templates.
     }
 
     @Override
-    public PagedListable<Role> retrieve(Predicate<Role> predicate, Pageable page) {
-        // TODO klenkes Auto defined stub for: de.kaiserpfalzedv.iam.access.mock.roles.RoleServiceMock.retrieve
+    public PagedListable<Entitlement> retrieve(Predicate<Entitlement> predicate, Pageable page) {
+        // TODO klenkes Auto defined stub for: de.kaiserpfalzedv.iam.access.mock.roles.EntitlementServiceMock.retrieve
         return null;  //To change body of implemented methods use File | Settings | File Templates.
     }
 
     @Override
-    public Role update(Role data) throws ObjectExistsException, ObjectDoesNotExistException {
-        // TODO klenkes Auto defined stub for: de.kaiserpfalzedv.iam.access.mock.roles.RoleServiceMock.update
+    public Entitlement update(Entitlement data) throws ObjectExistsException, ObjectDoesNotExistException {
+        // TODO klenkes Auto defined stub for: de.kaiserpfalzedv.iam.access.mock.roles.EntitlementServiceMock.update
         return null;  //To change body of implemented methods use File | Settings | File Templates.
     }
 
     @Override
     public void delete(UUID id) {
-        // TODO klenkes Auto defined stub for: de.kaiserpfalzedv.iam.access.mock.roles.RoleServiceMock.delete
+        // TODO klenkes Auto defined stub for: de.kaiserpfalzedv.iam.access.mock.roles.EntitlementServiceMock.delete
         //To change body of implemented methods use File | Settings | File Templates.
     }
 }
