@@ -21,6 +21,7 @@ import java.util.UUID;
 
 import javax.validation.constraints.NotNull;
 
+import de.kaiserpfalzedv.commons.api.data.base.Identifiable;
 import de.kaiserpfalzedv.commons.api.data.paging.Pageable;
 import de.kaiserpfalzedv.commons.api.data.paging.PagedListable;
 import de.kaiserpfalzedv.commons.api.data.query.Predicate;
@@ -30,7 +31,7 @@ import de.kaiserpfalzedv.commons.api.data.query.Predicate;
  * @version 1.0.0
  * @since 2016-09-30
  */
-public interface BaseService<T extends Serializable> {
+public interface BaseService<T extends Identifiable> {
     T create(@NotNull final T data) throws ObjectExistsException;
 
     T retrieve(@NotNull final UUID id) throws ObjectDoesNotExistException;

@@ -18,6 +18,7 @@ package de.kaiserpfalzedv.commons.impl.data.query;
 
 import java.io.Serializable;
 
+import de.kaiserpfalzedv.commons.api.data.base.Identifiable;
 import de.kaiserpfalzedv.commons.api.data.query.And;
 import de.kaiserpfalzedv.commons.api.data.query.AttributePredicate;
 import de.kaiserpfalzedv.commons.api.data.query.JoinPredicate;
@@ -32,7 +33,7 @@ import org.slf4j.LoggerFactory;
  * @version 1.0.0
  * @since 2017-11-09
  */
-public class PredicateToQueryParser<T extends Serializable> implements PredicateQueryGenerator<T> {
+public class PredicateToQueryParser<T extends Identifiable> implements PredicateQueryGenerator<T> {
     private static final Logger LOG = LoggerFactory.getLogger(PredicateToQueryParser.class);
 
     @Override
@@ -59,7 +60,7 @@ public class PredicateToQueryParser<T extends Serializable> implements Predicate
     }
 
     @Override
-    public <V extends Serializable> String generateQuery(AttributePredicate<T, V> predicate) {
+    public <V extends Identifiable> String generateQuery(AttributePredicate<T, V> predicate) {
         return new StringBuilder(predicate.getName())
                 .append(predicate.getComparatorNotation())
                 .append(":" + predicate.getName() + "_" + predicate.getComparator().toString())
@@ -67,7 +68,7 @@ public class PredicateToQueryParser<T extends Serializable> implements Predicate
     }
 
     @Override
-    public <J extends Serializable> String generateQuery(JoinPredicate<T, J> predicate) {
+    public <J extends Identifiable> String generateQuery(JoinPredicate<T, J> predicate) {
         PredicateToQueryParser<J> secondParser = new PredicateToQueryParser<>();
 
         return new StringBuilder()

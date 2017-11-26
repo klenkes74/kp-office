@@ -24,6 +24,7 @@ import java.util.UUID;
 import javax.validation.constraints.NotNull;
 
 import de.kaiserpfalzedv.commons.api.BuilderException;
+import de.kaiserpfalzedv.commons.api.data.base.Identifiable;
 import org.apache.commons.lang3.builder.Builder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -33,7 +34,7 @@ import org.slf4j.LoggerFactory;
  * @version 1.0.0
  * @since 2017-11-09
  */
-public class PredicateBuilder<T extends Serializable, V extends Serializable> implements Builder<Predicate<T>> {
+public class PredicateBuilder<T extends Identifiable, V extends Identifiable> implements Builder<Predicate<T>> {
     private static final Logger LOG = LoggerFactory.getLogger(PredicateBuilder.class);
 
     private String entity;

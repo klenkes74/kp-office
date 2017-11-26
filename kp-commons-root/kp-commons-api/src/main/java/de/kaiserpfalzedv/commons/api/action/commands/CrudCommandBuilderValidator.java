@@ -23,6 +23,7 @@ import java.util.UUID;
 import javax.validation.constraints.NotNull;
 
 import de.kaiserpfalzedv.commons.api.action.CrudCommandType;
+import de.kaiserpfalzedv.commons.api.data.base.Identifiable;
 import de.kaiserpfalzedv.commons.api.data.paging.Pageable;
 import de.kaiserpfalzedv.commons.api.data.query.Predicate;
 
@@ -31,7 +32,7 @@ import de.kaiserpfalzedv.commons.api.data.query.Predicate;
  * @version 1.0.0
  * @since 2017-11-19
  */
-public interface CrudCommandBuilderValidator<T extends Serializable> {
+public interface CrudCommandBuilderValidator<T extends Identifiable> {
     List<String> validateId(
             @NotNull final CrudCommandType command, @NotNull final UUID dataId, @NotNull final T data,
             @NotNull final Predicate<T> predicate, @NotNull final Pageable page

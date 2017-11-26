@@ -16,6 +16,8 @@
 
 package de.kaiserpfalzedv.commons.api.data.query;
 
+import de.kaiserpfalzedv.commons.api.data.base.Identifiable;
+
 import java.io.Serializable;
 
 /**
@@ -23,14 +25,14 @@ import java.io.Serializable;
  * @version 1.0.0
  * @since 2017-11-09
  */
-public interface PredicateQueryGenerator<T extends Serializable> {
+public interface PredicateQueryGenerator<T extends Identifiable> {
     String generateQuery(Predicate<T> predicate);
 
     String generateQuery(And<T> predicate);
 
     String generateQuery(Or<T> predicate);
 
-    <V extends Serializable> String generateQuery(AttributePredicate<T, V> predicate);
+    <V extends Identifiable> String generateQuery(AttributePredicate<T, V> predicate);
 
-    <J extends Serializable> String generateQuery(JoinPredicate<T, J> predicate);
+    <J extends Identifiable> String generateQuery(JoinPredicate<T, J> predicate);
 }

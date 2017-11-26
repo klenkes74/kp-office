@@ -21,6 +21,7 @@ import java.util.List;
 
 import javax.validation.constraints.NotNull;
 
+import de.kaiserpfalzedv.commons.api.data.base.Identifiable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -29,7 +30,7 @@ import org.slf4j.LoggerFactory;
  * @version 1.0.0
  * @since 2017-11-08
  */
-public class Or<T extends Serializable> extends AbstractBasePredicateAction<T> {
+public class Or<T extends Identifiable> extends AbstractBasePredicateAction<T> {
     private static final Logger LOG = LoggerFactory.getLogger(Or.class);
 
     public Or(@NotNull final Predicate<T> left, @NotNull final Predicate<T> right) {

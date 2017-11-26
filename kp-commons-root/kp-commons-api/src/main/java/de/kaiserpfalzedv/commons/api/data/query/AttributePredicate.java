@@ -23,6 +23,7 @@ import java.util.Objects;
 
 import javax.validation.constraints.NotNull;
 
+import de.kaiserpfalzedv.commons.api.data.base.Identifiable;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
@@ -31,7 +32,7 @@ import org.apache.commons.lang3.builder.ToStringStyle;
  * @version 1.0.0
  * @since 2017-11-08
  */
-public class AttributePredicate<T extends Serializable, V extends Serializable> implements Predicate<T> {
+public class AttributePredicate<T extends Identifiable, V extends Identifiable> implements Predicate<T> {
     private AttributeType<T> attributeType;
     private Comparator comparator;
     private V value;

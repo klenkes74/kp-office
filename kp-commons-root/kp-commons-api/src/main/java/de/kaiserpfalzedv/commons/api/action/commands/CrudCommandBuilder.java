@@ -24,6 +24,7 @@ import javax.validation.constraints.NotNull;
 
 import de.kaiserpfalzedv.commons.api.BuilderException;
 import de.kaiserpfalzedv.commons.api.action.CrudCommandType;
+import de.kaiserpfalzedv.commons.api.data.base.Identifiable;
 import de.kaiserpfalzedv.commons.api.data.paging.Pageable;
 import de.kaiserpfalzedv.commons.api.data.query.Predicate;
 import org.apache.commons.lang3.builder.Builder;
@@ -38,7 +39,7 @@ import static de.kaiserpfalzedv.commons.api.action.CrudCommandType.UPDATE;
  * @version 1.0.0
  * @since 2016-09-25
  */
-public class CrudCommandBuilder<C extends CrudCommand<T>, T extends Serializable> implements Builder<C> {
+public class CrudCommandBuilder<C extends CrudCommand<T>, T extends Identifiable> implements Builder<C> {
     private CrudCommandBuilderCreator<T> creator;
     private CrudCommandBuilderValueCalculator<T> calculator;
     private CrudCommandBuilderValidator<T> validator;
